@@ -1,28 +1,28 @@
 # Fdb version 4
-["biber 1_Documento"] 0 "1_Documento.bcf" "1_Documento.bbl" "1_Documento" 1788270408.45003 -1
-  "1_Documento.bcf" 1788270407 134156 ed06d4e07c56cb08a1a8f213de08b8f7 "pdflatex"
-  "bibliografia.bib" 1788222411 1168 ff9288d8d4f7f0c613f71c8d273353be ""
+["biber 1_Documento"] 1788277496.99794 "1_Documento.bcf" "1_Documento.bbl" "1_Documento" 1788277521.24769 0
+  "1_Documento.bcf" 1788277520 135000 13d4a8ec14f9182c22fee1cc0143c5a1 "pdflatex"
+  "bibliografia.bib" 1788277495 6209 7526881092b79780d7ab751e36c4b646 ""
   (generated)
   "1_Documento.bbl"
   "1_Documento.blg"
   (rewritten before read)
-["pdflatex"] 1788270401.29491 "c:/Users/Benjo/OneDrive/Desktop/FORMATO_PROYECTO_DE_GRADO/FORMATOLATEX_DOC/1_Documento.tex" "1_Documento.pdf" "1_Documento" 1788270408.4517 0
+["pdflatex"] 1788277514.80172 "c:/Users/Benjo/OneDrive/Desktop/FORMATO_PROYECTO_DE_GRADO/FORMATOLATEX_DOC/1_Documento.tex" "1_Documento.pdf" "1_Documento" 1788277521.24899 0
   "10_Recomendaciones.tex" 1788222411 304 ccbeeda228fa3b1e643b06c2c98fe1e3 ""
   "1_Documento.acr" 0 -1 0 ""
-  "1_Documento.aux" 1788270407 6504 24a81d11882f47adf0642fcc9a7a3ca9 "pdflatex"
-  "1_Documento.bbl" 1788228349 7189 ef010e0e483779837f5797fb4aa5b0fd "biber 1_Documento"
-  "1_Documento.loa" 1788270406 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "1_Documento.lof" 1788270407 786 8e61eefbda792981ef84f45b5d735d60 "pdflatex"
-  "1_Documento.lot" 1788270407 248 c685d5a32337e254f97fead5db89beb6 "pdflatex"
+  "1_Documento.aux" 1788277520 9267 501fee11b426c666a892396f1d36b10d "pdflatex"
+  "1_Documento.bbl" 1788277501 41581 7ce681c8d72c10fdc9116c0ce422f228 "biber 1_Documento"
+  "1_Documento.loa" 1788277518 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "1_Documento.lof" 1788277520 786 acc052a107d46b01af3ed864fb517b07 "pdflatex"
+  "1_Documento.lot" 1788277520 248 360a480b7d9c5f0b026e6369891a68c7 "pdflatex"
   "1_Documento.not" 0 -1 0 ""
-  "1_Documento.out" 1788270407 1740 52908e4ed9f09343e4b34503a7f1a5a8 "pdflatex"
-  "1_Documento.run.xml" 1788270407 2410 2670735e0dc192d56e74acecf3962e25 "pdflatex"
+  "1_Documento.out" 1788277520 1844 8f3fbed87d02bf50da4f9e5c8ddf509f "pdflatex"
+  "1_Documento.run.xml" 1788277520 2410 2670735e0dc192d56e74acecf3962e25 "pdflatex"
   "1_Documento.tex" 1788231127 25708 441c335fe4d78a5fc7cb019aca8ed993 ""
-  "1_Documento.toc" 1788270407 1350 50ad3c373eeca4bc6c291feb2ad56b65 "pdflatex"
+  "1_Documento.toc" 1788277520 1419 910ac127b3f38e5c61fb0e7bb5f18e23 "pdflatex"
   "2_Caratula.tex" 1788270400 2779 8430f3b0b81368b11bf4146c0b2c7540 ""
   "3_Dedicatorias.tex" 1788222411 781 1f5df25bf6a06992cc56d868d8047079 ""
   "4_Resumen.tex" 1788222411 466 d5ae17ee418e8e94d4e0536474d5634f ""
-  "5_Introduccion.tex" 1788269734 5433 7078f4930211640b6222e216a7f8188c ""
+  "5_Introduccion.tex" 1788277264 17090 5c0d64a2bf15702e2997112f4e218281 ""
   "6_Marco_Teorico.tex" 1788222411 6856 c67b6f5f97e0327eb0a54d2559d9e87c ""
   "7_Marco_Metodologico.tex" 1788222411 6226 a3672352cd78d33e8846da20c28b57f7 ""
   "8_Marco_Practico.tex" 1788222411 1063 5c916ecc98f6288bcb85f1351e1730d3 ""

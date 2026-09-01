@@ -19,26 +19,35 @@
 
 \refsection{0}
   \datalist[entry]{apa/apasortcite//global/global/global}
-    \entry{AI}{article}{}{}
-      \name{author}{2}{}{%
-        {{un=0,uniquepart=base,hash=4575fed2da330e256453e443af243723}{%
-           family={\MakeUppercase{Bench-Capon,\bibnamedelimb Trevor\bibnamedelimb JM}},
-           familyi={B\bibinithyphendelim C\bibinitperiod\bibinitdelim T\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
-        {{un=0,uniquepart=base,hash=6ba13e5b3357cae6317d4bdd6037113a}{%
-           family={\MakeUppercase{Dunne,\bibnamedelimb Paul\bibnamedelimb E}},
-           familyi={D\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+    \entry{hamasha2025}{article}{}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=2a9b64746435c3e4f42a8de15e4d7930}{%
+           family={\MakeUppercase{Hamasha,\bibnamedelimb M.\bibnamedelimi M.}},
+           familyi={H\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=e28e7c8396d2a04854c5badd1ae615c3}{%
+           family={\MakeUppercase{Albedoor,\bibnamedelimb Q.}},
+           familyi={A\bibinitperiod\bibinitdelim Q\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=b62990af73b3aef462b25cb5500ab59b}{%
+           family={\MakeUppercase{Hamasha,\bibnamedelimb S.}},
+           familyi={H\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=fee60ac4e76049e46f030a808d80a4ab}{%
+           family={\MakeUppercase{Ali,\bibnamedelimb H.}},
+           familyi={A\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=4e8ae6223f9fdec083be8b13d5fcbefa}{%
+           family={\MakeUppercase{Qamar,\bibnamedelimb A.}},
+           familyi={Q\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=e246ff72d81013935c9afe0859fa6347}{%
+           family={\MakeUppercase{Berrah,\bibnamedelimb F.}},
+           familyi={B\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
       }
-      \list{publisher}{1}{%
-        {Elsevier Science Publishers Ltd.}%
-      }
-      \strng{namehash}{3093721c9bc17ccc85cf301a00464b5e}
-      \strng{fullhash}{3093721c9bc17ccc85cf301a00464b5e}
-      \strng{fullhashraw}{3093721c9bc17ccc85cf301a00464b5e}
-      \strng{bibnamehash}{3093721c9bc17ccc85cf301a00464b5e}
-      \strng{authorbibnamehash}{3093721c9bc17ccc85cf301a00464b5e}
-      \strng{authornamehash}{3093721c9bc17ccc85cf301a00464b5e}
-      \strng{authorfullhash}{3093721c9bc17ccc85cf301a00464b5e}
-      \strng{authorfullhashraw}{3093721c9bc17ccc85cf301a00464b5e}
+      \strng{namehash}{9b9dc37f48b00c2b1562f614b8d0b36a}
+      \strng{fullhash}{08185afc8286cba5affb11bc49b0a1f0}
+      \strng{fullhashraw}{08185afc8286cba5affb11bc49b0a1f0}
+      \strng{bibnamehash}{08185afc8286cba5affb11bc49b0a1f0}
+      \strng{authorbibnamehash}{08185afc8286cba5affb11bc49b0a1f0}
+      \strng{authornamehash}{9b9dc37f48b00c2b1562f614b8d0b36a}
+      \strng{authorfullhash}{08185afc8286cba5affb11bc49b0a1f0}
+      \strng{authorfullhashraw}{08185afc8286cba5affb11bc49b0a1f0}
       \field{sortinit}{M}
       \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
       \field{extradatescope}{labelyear}
@@ -46,34 +55,37 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Artificial intelligence}
-      \field{number}{10-15}
-      \field{title}{Argumentation in artificial intelligence}
-      \field{volume}{171}
-      \field{year}{2007}
-      \field{pages}{619\bibrangedash 641}
-      \range{pages}{23}
+      \field{journaltitle}{Journal of Applied Engineering Science}
+      \field{number}{3}
+      \field{title}{A comprehensive framework for {IoT}-driven predictive maintenance: Leveraging {AI} and edge computing for enhanced equipment reliability}
+      \field{volume}{23}
+      \field{year}{2025}
+      \field{pages}{471\bibrangedash 486}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.5937/jaes0-57002
+      \endverb
     \endentry
-    \entry{pressman1988ingenieria}{article}{}{}
-      \name{author}{2}{}{%
-        {{un=0,uniquepart=base,hash=b12301fdc375c93252243cc123dc6b5b}{%
-           family={\MakeUppercase{Pressman,\bibnamedelimb Roger\bibnamedelimb S}},
-           familyi={P\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
-        {{un=0,uniquepart=base,hash=d729af3189d15899041f76dedf358ff6}{%
-           family={\MakeUppercase{Troya,\bibnamedelimb Jose\bibnamedelimb Maria}},
-           familyi={T\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+    \entry{huang2026}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=23ddae9ffa3f60cc0419f75eb4cc5fd9}{%
+           family={\MakeUppercase{Huang,\bibnamedelimb Y.}},
+           familyi={H\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=c2b1f99f99b6f943d7ef0675e99068e6}{%
+           family={\MakeUppercase{Lu,\bibnamedelimb X.}},
+           familyi={L\bibinitperiod\bibinitdelim X\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=6e36be3255a124c91827367a489a9583}{%
+           family={\MakeUppercase{Zhang,\bibnamedelimb D.}},
+           familyi={Z\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
       }
-      \list{publisher}{1}{%
-        {McGraw Hill}%
-      }
-      \strng{namehash}{9e5639d7069c3e474fa0c6632389f33e}
-      \strng{fullhash}{9e5639d7069c3e474fa0c6632389f33e}
-      \strng{fullhashraw}{9e5639d7069c3e474fa0c6632389f33e}
-      \strng{bibnamehash}{9e5639d7069c3e474fa0c6632389f33e}
-      \strng{authorbibnamehash}{9e5639d7069c3e474fa0c6632389f33e}
-      \strng{authornamehash}{9e5639d7069c3e474fa0c6632389f33e}
-      \strng{authorfullhash}{9e5639d7069c3e474fa0c6632389f33e}
-      \strng{authorfullhashraw}{9e5639d7069c3e474fa0c6632389f33e}
+      \strng{namehash}{485511fb5cd2f4854528c17ffbac0d55}
+      \strng{fullhash}{81c209a40dc11ba295d6010f929fede9}
+      \strng{fullhashraw}{81c209a40dc11ba295d6010f929fede9}
+      \strng{bibnamehash}{81c209a40dc11ba295d6010f929fede9}
+      \strng{authorbibnamehash}{81c209a40dc11ba295d6010f929fede9}
+      \strng{authornamehash}{485511fb5cd2f4854528c17ffbac0d55}
+      \strng{authorfullhash}{81c209a40dc11ba295d6010f929fede9}
+      \strng{authorfullhashraw}{81c209a40dc11ba295d6010f929fede9}
       \field{sortinit}{M}
       \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
       \field{extradatescope}{labelyear}
@@ -81,31 +93,353 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Ingeniería del software}
-      \field{year}{1988}
+      \field{journaltitle}{Sensors}
+      \field{number}{11}
+      \field{title}{Cross-condition tool wear state monitoring via multi-source sensor signal fusion and supervised transfer learning}
+      \field{volume}{26}
+      \field{year}{2026}
+      \field{pages}{3423}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/s26113423
+      \endverb
+    \endentry
+    \entry{jia2025}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=129335f448877fadbc07163280b10709}{%
+           family={\MakeUppercase{Jia,\bibnamedelimb G.}},
+           familyi={J\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=467b5802f229a0a8d7e7811fd9261775}{%
+           family={\MakeUppercase{Yang,\bibnamedelimb J.}},
+           familyi={Y\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=02b3b5f488f0f3f013a433b8ce33c47b}{%
+           family={\MakeUppercase{Liang,\bibnamedelimb H.}},
+           familyi={L\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{ba60f9351bb09a7f9bd463db9705afe1}
+      \strng{fullhash}{36af9cde291699416c845a2a0a6d390c}
+      \strng{fullhashraw}{36af9cde291699416c845a2a0a6d390c}
+      \strng{bibnamehash}{36af9cde291699416c845a2a0a6d390c}
+      \strng{authorbibnamehash}{36af9cde291699416c845a2a0a6d390c}
+      \strng{authornamehash}{ba60f9351bb09a7f9bd463db9705afe1}
+      \strng{authorfullhash}{36af9cde291699416c845a2a0a6d390c}
+      \strng{authorfullhashraw}{36af9cde291699416c845a2a0a6d390c}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Structural Durability \& Health Monitoring}
+      \field{number}{4}
+      \field{title}{A combined denoising method of adaptive {VMD} and wavelet threshold for gear health monitoring}
+      \field{volume}{19}
+      \field{year}{2025}
+      \field{pages}{1057\bibrangedash 1072}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.32604/sdhm.2025.064267
+      \endverb
+    \endentry
+    \entry{lai2025}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=02691f1262a2ad51628c2fac32574344}{%
+           family={\MakeUppercase{Lai,\bibnamedelimb C.-H.}},
+           familyi={L\bibinitperiod\bibinitdelim C\bibinithyphendelim H\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=970c20c927ec574e41b429bee65a4dcf}{%
+           family={\MakeUppercase{Huang,\bibnamedelimb S.-H.}},
+           familyi={H\bibinitperiod\bibinitdelim S\bibinithyphendelim H\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=500207edbcc3d9851dfd8be73c2310cf}{%
+           family={\MakeUppercase{Wu,\bibnamedelimb T.-E.}},
+           familyi={W\bibinitperiod\bibinitdelim T\bibinithyphendelim E\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=fbe34ba1fb076c1c8e7358649ed007ad}{%
+           family={\MakeUppercase{Lai,\bibnamedelimb C.-C.}},
+           familyi={L\bibinitperiod\bibinitdelim C\bibinithyphendelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{ba8be3c51c416be46ffd4902962b9df0}
+      \strng{fullhash}{349308e14309bf8f56a87f30bb7c5fbf}
+      \strng{fullhashraw}{349308e14309bf8f56a87f30bb7c5fbf}
+      \strng{bibnamehash}{349308e14309bf8f56a87f30bb7c5fbf}
+      \strng{authorbibnamehash}{349308e14309bf8f56a87f30bb7c5fbf}
+      \strng{authornamehash}{ba8be3c51c416be46ffd4902962b9df0}
+      \strng{authorfullhash}{349308e14309bf8f56a87f30bb7c5fbf}
+      \strng{authorfullhashraw}{349308e14309bf8f56a87f30bb7c5fbf}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Sensors}
+      \field{number}{13}
+      \field{title}{A study on tool breakage detection technology based on current sensing and non-contact signal analysis}
+      \field{volume}{25}
+      \field{year}{2025}
+      \field{pages}{3880}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/s25133880
+      \endverb
+    \endentry
+    \entry{ramirez2018}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=d14fdb74040776c5ab620cf8f9f3fd6d}{%
+           family={\MakeUppercase{Ramírez-Núñez,\bibnamedelimb J.\bibnamedelimi A.}},
+           familyi={R\bibinithyphendelim N\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{e0f09d9bb1fb03a8d57b626c49ef6402}
+      \strng{fullhash}{e0f09d9bb1fb03a8d57b626c49ef6402}
+      \strng{fullhashraw}{e0f09d9bb1fb03a8d57b626c49ef6402}
+      \strng{bibnamehash}{e0f09d9bb1fb03a8d57b626c49ef6402}
+      \strng{authorbibnamehash}{e0f09d9bb1fb03a8d57b626c49ef6402}
+      \strng{authornamehash}{e0f09d9bb1fb03a8d57b626c49ef6402}
+      \strng{authorfullhash}{e0f09d9bb1fb03a8d57b626c49ef6402}
+      \strng{authorfullhashraw}{e0f09d9bb1fb03a8d57b626c49ef6402}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The International Journal of Advanced Manufacturing Technology}
+      \field{title}{Smart-sensor for tool-breakage detection in milling process under dry and wet conditions based on infrared thermography}
+      \field{volume}{97}
+      \field{year}{2018}
+      \field{pages}{1753\bibrangedash 1766}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1007/s00170-018-2060-4
+      \endverb
+    \endentry
+    \entry{romero2003}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=03aa4b110b9e8b878e319aee183ff37a}{%
+           family={\MakeUppercase{Romero-Troncoso,\bibnamedelimb R.\bibnamedelimi J.}},
+           familyi={R\bibinithyphendelim T\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=7ac6183a607cdec2f872fdecc2f2b3b7}{%
+           family={\MakeUppercase{Herrera-Ruiz,\bibnamedelimb G.}},
+           familyi={H\bibinithyphendelim R\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=39c10a5b5bc597c36a784d052583de20}{%
+           family={\MakeUppercase{Terol-Villalobos,\bibnamedelimb I.\bibnamedelimi R.}},
+           familyi={T\bibinithyphendelim V\bibinitperiod\bibinitdelim I\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=1f9d5de0f0791cc5bf5fbe618105549d}{%
+           family={\MakeUppercase{Jáuregui-Correa,\bibnamedelimb J.\bibnamedelimi C.}},
+           familyi={J\bibinithyphendelim C\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{d4c78a43c37b617f34f2c7a945c125d6}
+      \strng{fullhash}{b85c652db9de05c21009617049b29a54}
+      \strng{fullhashraw}{b85c652db9de05c21009617049b29a54}
+      \strng{bibnamehash}{b85c652db9de05c21009617049b29a54}
+      \strng{authorbibnamehash}{b85c652db9de05c21009617049b29a54}
+      \strng{authornamehash}{d4c78a43c37b617f34f2c7a945c125d6}
+      \strng{authorfullhash}{b85c652db9de05c21009617049b29a54}
+      \strng{authorfullhashraw}{b85c652db9de05c21009617049b29a54}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Journal of Machine Tools and Manufacture}
+      \field{number}{15}
+      \field{title}{Driver current analysis for sensorless tool breakage monitoring of {CNC} milling machines}
+      \field{volume}{43}
+      \field{year}{2003}
+      \field{pages}{1529\bibrangedash 1534}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1016/S0890-6955(03)00176-9
+      \endverb
+    \endentry
+    \entry{sevilla2011}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=607b61800584d4e2906e0f1a691b9cfc}{%
+           family={\MakeUppercase{Sevilla-Camacho,\bibnamedelimb P.\bibnamedelimi Y.}},
+           familyi={S\bibinithyphendelim C\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=7ac6183a607cdec2f872fdecc2f2b3b7}{%
+           family={\MakeUppercase{Herrera-Ruiz,\bibnamedelimb G.}},
+           familyi={H\bibinithyphendelim R\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=95fcb63f4084f27d4033f7f256065527}{%
+           family={\MakeUppercase{Robles-Ocampo,\bibnamedelimb J.\bibnamedelimi B.}},
+           familyi={R\bibinithyphendelim O\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=1f9d5de0f0791cc5bf5fbe618105549d}{%
+           family={\MakeUppercase{Jáuregui-Correa,\bibnamedelimb J.\bibnamedelimi C.}},
+           familyi={J\bibinithyphendelim C\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{cf57fac82b871e5a76a1a6ea048c37aa}
+      \strng{fullhash}{aaac54ab994a6d8a333b77ce1c0bf8e2}
+      \strng{fullhashraw}{aaac54ab994a6d8a333b77ce1c0bf8e2}
+      \strng{bibnamehash}{aaac54ab994a6d8a333b77ce1c0bf8e2}
+      \strng{authorbibnamehash}{aaac54ab994a6d8a333b77ce1c0bf8e2}
+      \strng{authornamehash}{cf57fac82b871e5a76a1a6ea048c37aa}
+      \strng{authorfullhash}{aaac54ab994a6d8a333b77ce1c0bf8e2}
+      \strng{authorfullhashraw}{aaac54ab994a6d8a333b77ce1c0bf8e2}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The International Journal of Advanced Manufacturing Technology}
+      \field{title}{Tool breakage detection in {CNC} high-speed milling based in feed-motor current signals}
+      \field{volume}{53}
+      \field{year}{2011}
+      \field{pages}{1141\bibrangedash 1148}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1007/s00170-010-2907-9
+      \endverb
+    \endentry
+    \entry{trejo2010}{thesis}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=7475f044440647c1e24f2417fcce7c97}{%
+           family={\MakeUppercase{Trejo-Hernández,\bibnamedelimb M.}},
+           familyi={T\bibinithyphendelim H\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Universidad Autónoma de Querétaro}%
+      }
+      \strng{namehash}{7475f044440647c1e24f2417fcce7c97}
+      \strng{fullhash}{7475f044440647c1e24f2417fcce7c97}
+      \strng{fullhashraw}{7475f044440647c1e24f2417fcce7c97}
+      \strng{bibnamehash}{7475f044440647c1e24f2417fcce7c97}
+      \strng{authorbibnamehash}{7475f044440647c1e24f2417fcce7c97}
+      \strng{authornamehash}{7475f044440647c1e24f2417fcce7c97}
+      \strng{authorfullhash}{7475f044440647c1e24f2417fcce7c97}
+      \strng{authorfullhashraw}{7475f044440647c1e24f2417fcce7c97}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Repositorio Institucional de la Universidad Autónoma de Querétaro. \url{https://ri-ng.uaq.mx/handle/123456789/966}}
+      \field{title}{Monitoreo, análisis y modelado fenomenológico del desgaste de la herramienta bajo condiciones de corte variables en torno {CNC}}
+      \field{type}{phdthesis}
+      \field{year}{2010}
+    \endentry
+    \entry{sheffield2021}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=beb40d78532ac6f8fcf73f5d8e18b7af}{%
+           family={\MakeUppercase{{Universidad\bibnamedelimb de\bibnamedelimb Sheffield,\bibnamedelimb Department\bibnamedelimb of\bibnamedelimb Automatic\bibnamedelimb Control\bibnamedelimb and\bibnamedelimb Systems\bibnamedelimb Engineering}}},
+           familyi={U\bibinitperiod}}}%
+      }
+      \strng{namehash}{beb40d78532ac6f8fcf73f5d8e18b7af}
+      \strng{fullhash}{beb40d78532ac6f8fcf73f5d8e18b7af}
+      \strng{fullhashraw}{beb40d78532ac6f8fcf73f5d8e18b7af}
+      \strng{bibnamehash}{beb40d78532ac6f8fcf73f5d8e18b7af}
+      \strng{authorbibnamehash}{beb40d78532ac6f8fcf73f5d8e18b7af}
+      \strng{authornamehash}{beb40d78532ac6f8fcf73f5d8e18b7af}
+      \strng{authorfullhash}{beb40d78532ac6f8fcf73f5d8e18b7af}
+      \strng{authorfullhashraw}{beb40d78532ac6f8fcf73f5d8e18b7af}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{PITCH-IN Project. \url{https://pitch-in.sites.sheffield.ac.uk/projects/internet-of-things-iot-approach-for-predictive-maintenance-case-study}}
+      \field{title}{Internet of Things ({IoT}) approach for predictive maintenance: A manufacturing case study}
+      \field{year}{2021}
+    \endentry
+    \entry{wang2024}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=1860289712602a61285c76ccdaa28e6b}{%
+           family={\MakeUppercase{Wang,\bibnamedelimb K.}},
+           familyi={W\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=0bda5e2eb6b98bc18e4ba5c6c54830e9}{%
+           family={\MakeUppercase{Wang,\bibnamedelimb A.}},
+           familyi={W\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=ad954c245a1d2a9a558b5f0dc4bd762a}{%
+           family={\MakeUppercase{Wu,\bibnamedelimb L.}},
+           familyi={W\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=15ac08f5c787ef0d39d9cd963d472473}{%
+           family={\MakeUppercase{Xie,\bibnamedelimb G.}},
+           familyi={X\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \strng{namehash}{3f0d3f4f1344f21fefb1924209083335}
+      \strng{fullhash}{4d06d51ac579b3725a5e5fec59926c0c}
+      \strng{fullhashraw}{4d06d51ac579b3725a5e5fec59926c0c}
+      \strng{bibnamehash}{4d06d51ac579b3725a5e5fec59926c0c}
+      \strng{authorbibnamehash}{4d06d51ac579b3725a5e5fec59926c0c}
+      \strng{authornamehash}{3f0d3f4f1344f21fefb1924209083335}
+      \strng{authorfullhash}{4d06d51ac579b3725a5e5fec59926c0c}
+      \strng{authorfullhashraw}{4d06d51ac579b3725a5e5fec59926c0c}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Sensors}
+      \field{number}{8}
+      \field{title}{Machine tool wear prediction technology based on multi-sensor information fusion}
+      \field{volume}{24}
+      \field{year}{2024}
+      \field{pages}{2652}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/s24082652
+      \endverb
+    \endentry
+    \entry{icfo2026}{article}{}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Sensors}
+      \field{number}{2}
+      \field{title}{Vibration signal denoising method based on {ICFO-SVMD} and improved wavelet thresholding}
+      \field{volume}{26}
+      \field{year}{2026}
+      \field{pages}{750}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/s26020750
+      \endverb
     \endentry
   \enddatalist
   \datalist[entry]{apa/global//global/global/global}
-    \entry{AI}{article}{}{}
-      \name{author}{2}{}{%
-        {{un=0,uniquepart=base,hash=4575fed2da330e256453e443af243723}{%
-           family={\MakeUppercase{Bench-Capon,\bibnamedelimb Trevor\bibnamedelimb JM}},
-           familyi={B\bibinithyphendelim C\bibinitperiod\bibinitdelim T\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
-        {{un=0,uniquepart=base,hash=6ba13e5b3357cae6317d4bdd6037113a}{%
-           family={\MakeUppercase{Dunne,\bibnamedelimb Paul\bibnamedelimb E}},
-           familyi={D\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+    \entry{hamasha2025}{article}{}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=2a9b64746435c3e4f42a8de15e4d7930}{%
+           family={\MakeUppercase{Hamasha,\bibnamedelimb M.\bibnamedelimi M.}},
+           familyi={H\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=e28e7c8396d2a04854c5badd1ae615c3}{%
+           family={\MakeUppercase{Albedoor,\bibnamedelimb Q.}},
+           familyi={A\bibinitperiod\bibinitdelim Q\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=b62990af73b3aef462b25cb5500ab59b}{%
+           family={\MakeUppercase{Hamasha,\bibnamedelimb S.}},
+           familyi={H\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=fee60ac4e76049e46f030a808d80a4ab}{%
+           family={\MakeUppercase{Ali,\bibnamedelimb H.}},
+           familyi={A\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=4e8ae6223f9fdec083be8b13d5fcbefa}{%
+           family={\MakeUppercase{Qamar,\bibnamedelimb A.}},
+           familyi={Q\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=e246ff72d81013935c9afe0859fa6347}{%
+           family={\MakeUppercase{Berrah,\bibnamedelimb F.}},
+           familyi={B\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
       }
-      \list{publisher}{1}{%
-        {Elsevier Science Publishers Ltd.}%
-      }
-      \strng{namehash}{3093721c9bc17ccc85cf301a00464b5e}
-      \strng{fullhash}{3093721c9bc17ccc85cf301a00464b5e}
-      \strng{fullhashraw}{3093721c9bc17ccc85cf301a00464b5e}
-      \strng{bibnamehash}{3093721c9bc17ccc85cf301a00464b5e}
-      \strng{authorbibnamehash}{3093721c9bc17ccc85cf301a00464b5e}
-      \strng{authornamehash}{3093721c9bc17ccc85cf301a00464b5e}
-      \strng{authorfullhash}{3093721c9bc17ccc85cf301a00464b5e}
-      \strng{authorfullhashraw}{3093721c9bc17ccc85cf301a00464b5e}
+      \strng{namehash}{9b9dc37f48b00c2b1562f614b8d0b36a}
+      \strng{fullhash}{08185afc8286cba5affb11bc49b0a1f0}
+      \strng{fullhashraw}{08185afc8286cba5affb11bc49b0a1f0}
+      \strng{bibnamehash}{08185afc8286cba5affb11bc49b0a1f0}
+      \strng{authorbibnamehash}{08185afc8286cba5affb11bc49b0a1f0}
+      \strng{authornamehash}{9b9dc37f48b00c2b1562f614b8d0b36a}
+      \strng{authorfullhash}{08185afc8286cba5affb11bc49b0a1f0}
+      \strng{authorfullhashraw}{08185afc8286cba5affb11bc49b0a1f0}
       \field{sortinit}{M}
       \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
       \field{extradatescope}{labelyear}
@@ -113,34 +447,37 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Artificial intelligence}
-      \field{number}{10-15}
-      \field{title}{Argumentation in artificial intelligence}
-      \field{volume}{171}
-      \field{year}{2007}
-      \field{pages}{619\bibrangedash 641}
-      \range{pages}{23}
+      \field{journaltitle}{Journal of Applied Engineering Science}
+      \field{number}{3}
+      \field{title}{A comprehensive framework for {IoT}-driven predictive maintenance: Leveraging {AI} and edge computing for enhanced equipment reliability}
+      \field{volume}{23}
+      \field{year}{2025}
+      \field{pages}{471\bibrangedash 486}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.5937/jaes0-57002
+      \endverb
     \endentry
-    \entry{pressman1988ingenieria}{article}{}{}
-      \name{author}{2}{}{%
-        {{un=0,uniquepart=base,hash=b12301fdc375c93252243cc123dc6b5b}{%
-           family={\MakeUppercase{Pressman,\bibnamedelimb Roger\bibnamedelimb S}},
-           familyi={P\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
-        {{un=0,uniquepart=base,hash=d729af3189d15899041f76dedf358ff6}{%
-           family={\MakeUppercase{Troya,\bibnamedelimb Jose\bibnamedelimb Maria}},
-           familyi={T\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+    \entry{huang2026}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=23ddae9ffa3f60cc0419f75eb4cc5fd9}{%
+           family={\MakeUppercase{Huang,\bibnamedelimb Y.}},
+           familyi={H\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=c2b1f99f99b6f943d7ef0675e99068e6}{%
+           family={\MakeUppercase{Lu,\bibnamedelimb X.}},
+           familyi={L\bibinitperiod\bibinitdelim X\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=6e36be3255a124c91827367a489a9583}{%
+           family={\MakeUppercase{Zhang,\bibnamedelimb D.}},
+           familyi={Z\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
       }
-      \list{publisher}{1}{%
-        {McGraw Hill}%
-      }
-      \strng{namehash}{9e5639d7069c3e474fa0c6632389f33e}
-      \strng{fullhash}{9e5639d7069c3e474fa0c6632389f33e}
-      \strng{fullhashraw}{9e5639d7069c3e474fa0c6632389f33e}
-      \strng{bibnamehash}{9e5639d7069c3e474fa0c6632389f33e}
-      \strng{authorbibnamehash}{9e5639d7069c3e474fa0c6632389f33e}
-      \strng{authornamehash}{9e5639d7069c3e474fa0c6632389f33e}
-      \strng{authorfullhash}{9e5639d7069c3e474fa0c6632389f33e}
-      \strng{authorfullhashraw}{9e5639d7069c3e474fa0c6632389f33e}
+      \strng{namehash}{485511fb5cd2f4854528c17ffbac0d55}
+      \strng{fullhash}{81c209a40dc11ba295d6010f929fede9}
+      \strng{fullhashraw}{81c209a40dc11ba295d6010f929fede9}
+      \strng{bibnamehash}{81c209a40dc11ba295d6010f929fede9}
+      \strng{authorbibnamehash}{81c209a40dc11ba295d6010f929fede9}
+      \strng{authornamehash}{485511fb5cd2f4854528c17ffbac0d55}
+      \strng{authorfullhash}{81c209a40dc11ba295d6010f929fede9}
+      \strng{authorfullhashraw}{81c209a40dc11ba295d6010f929fede9}
       \field{sortinit}{M}
       \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
       \field{extradatescope}{labelyear}
@@ -148,10 +485,325 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Ingeniería del software}
-      \field{year}{1988}
+      \field{journaltitle}{Sensors}
+      \field{number}{11}
+      \field{title}{Cross-condition tool wear state monitoring via multi-source sensor signal fusion and supervised transfer learning}
+      \field{volume}{26}
+      \field{year}{2026}
+      \field{pages}{3423}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/s26113423
+      \endverb
+    \endentry
+    \entry{jia2025}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=129335f448877fadbc07163280b10709}{%
+           family={\MakeUppercase{Jia,\bibnamedelimb G.}},
+           familyi={J\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=467b5802f229a0a8d7e7811fd9261775}{%
+           family={\MakeUppercase{Yang,\bibnamedelimb J.}},
+           familyi={Y\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=02b3b5f488f0f3f013a433b8ce33c47b}{%
+           family={\MakeUppercase{Liang,\bibnamedelimb H.}},
+           familyi={L\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{ba60f9351bb09a7f9bd463db9705afe1}
+      \strng{fullhash}{36af9cde291699416c845a2a0a6d390c}
+      \strng{fullhashraw}{36af9cde291699416c845a2a0a6d390c}
+      \strng{bibnamehash}{36af9cde291699416c845a2a0a6d390c}
+      \strng{authorbibnamehash}{36af9cde291699416c845a2a0a6d390c}
+      \strng{authornamehash}{ba60f9351bb09a7f9bd463db9705afe1}
+      \strng{authorfullhash}{36af9cde291699416c845a2a0a6d390c}
+      \strng{authorfullhashraw}{36af9cde291699416c845a2a0a6d390c}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Structural Durability \& Health Monitoring}
+      \field{number}{4}
+      \field{title}{A combined denoising method of adaptive {VMD} and wavelet threshold for gear health monitoring}
+      \field{volume}{19}
+      \field{year}{2025}
+      \field{pages}{1057\bibrangedash 1072}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.32604/sdhm.2025.064267
+      \endverb
+    \endentry
+    \entry{lai2025}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=02691f1262a2ad51628c2fac32574344}{%
+           family={\MakeUppercase{Lai,\bibnamedelimb C.-H.}},
+           familyi={L\bibinitperiod\bibinitdelim C\bibinithyphendelim H\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=970c20c927ec574e41b429bee65a4dcf}{%
+           family={\MakeUppercase{Huang,\bibnamedelimb S.-H.}},
+           familyi={H\bibinitperiod\bibinitdelim S\bibinithyphendelim H\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=500207edbcc3d9851dfd8be73c2310cf}{%
+           family={\MakeUppercase{Wu,\bibnamedelimb T.-E.}},
+           familyi={W\bibinitperiod\bibinitdelim T\bibinithyphendelim E\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=fbe34ba1fb076c1c8e7358649ed007ad}{%
+           family={\MakeUppercase{Lai,\bibnamedelimb C.-C.}},
+           familyi={L\bibinitperiod\bibinitdelim C\bibinithyphendelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{ba8be3c51c416be46ffd4902962b9df0}
+      \strng{fullhash}{349308e14309bf8f56a87f30bb7c5fbf}
+      \strng{fullhashraw}{349308e14309bf8f56a87f30bb7c5fbf}
+      \strng{bibnamehash}{349308e14309bf8f56a87f30bb7c5fbf}
+      \strng{authorbibnamehash}{349308e14309bf8f56a87f30bb7c5fbf}
+      \strng{authornamehash}{ba8be3c51c416be46ffd4902962b9df0}
+      \strng{authorfullhash}{349308e14309bf8f56a87f30bb7c5fbf}
+      \strng{authorfullhashraw}{349308e14309bf8f56a87f30bb7c5fbf}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Sensors}
+      \field{number}{13}
+      \field{title}{A study on tool breakage detection technology based on current sensing and non-contact signal analysis}
+      \field{volume}{25}
+      \field{year}{2025}
+      \field{pages}{3880}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/s25133880
+      \endverb
+    \endentry
+    \entry{ramirez2018}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=d14fdb74040776c5ab620cf8f9f3fd6d}{%
+           family={\MakeUppercase{Ramírez-Núñez,\bibnamedelimb J.\bibnamedelimi A.}},
+           familyi={R\bibinithyphendelim N\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{e0f09d9bb1fb03a8d57b626c49ef6402}
+      \strng{fullhash}{e0f09d9bb1fb03a8d57b626c49ef6402}
+      \strng{fullhashraw}{e0f09d9bb1fb03a8d57b626c49ef6402}
+      \strng{bibnamehash}{e0f09d9bb1fb03a8d57b626c49ef6402}
+      \strng{authorbibnamehash}{e0f09d9bb1fb03a8d57b626c49ef6402}
+      \strng{authornamehash}{e0f09d9bb1fb03a8d57b626c49ef6402}
+      \strng{authorfullhash}{e0f09d9bb1fb03a8d57b626c49ef6402}
+      \strng{authorfullhashraw}{e0f09d9bb1fb03a8d57b626c49ef6402}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The International Journal of Advanced Manufacturing Technology}
+      \field{title}{Smart-sensor for tool-breakage detection in milling process under dry and wet conditions based on infrared thermography}
+      \field{volume}{97}
+      \field{year}{2018}
+      \field{pages}{1753\bibrangedash 1766}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1007/s00170-018-2060-4
+      \endverb
+    \endentry
+    \entry{romero2003}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=03aa4b110b9e8b878e319aee183ff37a}{%
+           family={\MakeUppercase{Romero-Troncoso,\bibnamedelimb R.\bibnamedelimi J.}},
+           familyi={R\bibinithyphendelim T\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=7ac6183a607cdec2f872fdecc2f2b3b7}{%
+           family={\MakeUppercase{Herrera-Ruiz,\bibnamedelimb G.}},
+           familyi={H\bibinithyphendelim R\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=39c10a5b5bc597c36a784d052583de20}{%
+           family={\MakeUppercase{Terol-Villalobos,\bibnamedelimb I.\bibnamedelimi R.}},
+           familyi={T\bibinithyphendelim V\bibinitperiod\bibinitdelim I\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=1f9d5de0f0791cc5bf5fbe618105549d}{%
+           family={\MakeUppercase{Jáuregui-Correa,\bibnamedelimb J.\bibnamedelimi C.}},
+           familyi={J\bibinithyphendelim C\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{d4c78a43c37b617f34f2c7a945c125d6}
+      \strng{fullhash}{b85c652db9de05c21009617049b29a54}
+      \strng{fullhashraw}{b85c652db9de05c21009617049b29a54}
+      \strng{bibnamehash}{b85c652db9de05c21009617049b29a54}
+      \strng{authorbibnamehash}{b85c652db9de05c21009617049b29a54}
+      \strng{authornamehash}{d4c78a43c37b617f34f2c7a945c125d6}
+      \strng{authorfullhash}{b85c652db9de05c21009617049b29a54}
+      \strng{authorfullhashraw}{b85c652db9de05c21009617049b29a54}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Journal of Machine Tools and Manufacture}
+      \field{number}{15}
+      \field{title}{Driver current analysis for sensorless tool breakage monitoring of {CNC} milling machines}
+      \field{volume}{43}
+      \field{year}{2003}
+      \field{pages}{1529\bibrangedash 1534}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1016/S0890-6955(03)00176-9
+      \endverb
+    \endentry
+    \entry{sevilla2011}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=607b61800584d4e2906e0f1a691b9cfc}{%
+           family={\MakeUppercase{Sevilla-Camacho,\bibnamedelimb P.\bibnamedelimi Y.}},
+           familyi={S\bibinithyphendelim C\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=7ac6183a607cdec2f872fdecc2f2b3b7}{%
+           family={\MakeUppercase{Herrera-Ruiz,\bibnamedelimb G.}},
+           familyi={H\bibinithyphendelim R\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=95fcb63f4084f27d4033f7f256065527}{%
+           family={\MakeUppercase{Robles-Ocampo,\bibnamedelimb J.\bibnamedelimi B.}},
+           familyi={R\bibinithyphendelim O\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=1f9d5de0f0791cc5bf5fbe618105549d}{%
+           family={\MakeUppercase{Jáuregui-Correa,\bibnamedelimb J.\bibnamedelimi C.}},
+           familyi={J\bibinithyphendelim C\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{cf57fac82b871e5a76a1a6ea048c37aa}
+      \strng{fullhash}{aaac54ab994a6d8a333b77ce1c0bf8e2}
+      \strng{fullhashraw}{aaac54ab994a6d8a333b77ce1c0bf8e2}
+      \strng{bibnamehash}{aaac54ab994a6d8a333b77ce1c0bf8e2}
+      \strng{authorbibnamehash}{aaac54ab994a6d8a333b77ce1c0bf8e2}
+      \strng{authornamehash}{cf57fac82b871e5a76a1a6ea048c37aa}
+      \strng{authorfullhash}{aaac54ab994a6d8a333b77ce1c0bf8e2}
+      \strng{authorfullhashraw}{aaac54ab994a6d8a333b77ce1c0bf8e2}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The International Journal of Advanced Manufacturing Technology}
+      \field{title}{Tool breakage detection in {CNC} high-speed milling based in feed-motor current signals}
+      \field{volume}{53}
+      \field{year}{2011}
+      \field{pages}{1141\bibrangedash 1148}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1007/s00170-010-2907-9
+      \endverb
+    \endentry
+    \entry{trejo2010}{thesis}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=7475f044440647c1e24f2417fcce7c97}{%
+           family={\MakeUppercase{Trejo-Hernández,\bibnamedelimb M.}},
+           familyi={T\bibinithyphendelim H\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Universidad Autónoma de Querétaro}%
+      }
+      \strng{namehash}{7475f044440647c1e24f2417fcce7c97}
+      \strng{fullhash}{7475f044440647c1e24f2417fcce7c97}
+      \strng{fullhashraw}{7475f044440647c1e24f2417fcce7c97}
+      \strng{bibnamehash}{7475f044440647c1e24f2417fcce7c97}
+      \strng{authorbibnamehash}{7475f044440647c1e24f2417fcce7c97}
+      \strng{authornamehash}{7475f044440647c1e24f2417fcce7c97}
+      \strng{authorfullhash}{7475f044440647c1e24f2417fcce7c97}
+      \strng{authorfullhashraw}{7475f044440647c1e24f2417fcce7c97}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Repositorio Institucional de la Universidad Autónoma de Querétaro. \url{https://ri-ng.uaq.mx/handle/123456789/966}}
+      \field{title}{Monitoreo, análisis y modelado fenomenológico del desgaste de la herramienta bajo condiciones de corte variables en torno {CNC}}
+      \field{type}{phdthesis}
+      \field{year}{2010}
+    \endentry
+    \entry{sheffield2021}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=beb40d78532ac6f8fcf73f5d8e18b7af}{%
+           family={\MakeUppercase{{Universidad\bibnamedelimb de\bibnamedelimb Sheffield,\bibnamedelimb Department\bibnamedelimb of\bibnamedelimb Automatic\bibnamedelimb Control\bibnamedelimb and\bibnamedelimb Systems\bibnamedelimb Engineering}}},
+           familyi={U\bibinitperiod}}}%
+      }
+      \strng{namehash}{beb40d78532ac6f8fcf73f5d8e18b7af}
+      \strng{fullhash}{beb40d78532ac6f8fcf73f5d8e18b7af}
+      \strng{fullhashraw}{beb40d78532ac6f8fcf73f5d8e18b7af}
+      \strng{bibnamehash}{beb40d78532ac6f8fcf73f5d8e18b7af}
+      \strng{authorbibnamehash}{beb40d78532ac6f8fcf73f5d8e18b7af}
+      \strng{authornamehash}{beb40d78532ac6f8fcf73f5d8e18b7af}
+      \strng{authorfullhash}{beb40d78532ac6f8fcf73f5d8e18b7af}
+      \strng{authorfullhashraw}{beb40d78532ac6f8fcf73f5d8e18b7af}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{PITCH-IN Project. \url{https://pitch-in.sites.sheffield.ac.uk/projects/internet-of-things-iot-approach-for-predictive-maintenance-case-study}}
+      \field{title}{Internet of Things ({IoT}) approach for predictive maintenance: A manufacturing case study}
+      \field{year}{2021}
+    \endentry
+    \entry{wang2024}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=1860289712602a61285c76ccdaa28e6b}{%
+           family={\MakeUppercase{Wang,\bibnamedelimb K.}},
+           familyi={W\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=0bda5e2eb6b98bc18e4ba5c6c54830e9}{%
+           family={\MakeUppercase{Wang,\bibnamedelimb A.}},
+           familyi={W\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=ad954c245a1d2a9a558b5f0dc4bd762a}{%
+           family={\MakeUppercase{Wu,\bibnamedelimb L.}},
+           familyi={W\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=15ac08f5c787ef0d39d9cd963d472473}{%
+           family={\MakeUppercase{Xie,\bibnamedelimb G.}},
+           familyi={X\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \strng{namehash}{3f0d3f4f1344f21fefb1924209083335}
+      \strng{fullhash}{4d06d51ac579b3725a5e5fec59926c0c}
+      \strng{fullhashraw}{4d06d51ac579b3725a5e5fec59926c0c}
+      \strng{bibnamehash}{4d06d51ac579b3725a5e5fec59926c0c}
+      \strng{authorbibnamehash}{4d06d51ac579b3725a5e5fec59926c0c}
+      \strng{authornamehash}{3f0d3f4f1344f21fefb1924209083335}
+      \strng{authorfullhash}{4d06d51ac579b3725a5e5fec59926c0c}
+      \strng{authorfullhashraw}{4d06d51ac579b3725a5e5fec59926c0c}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Sensors}
+      \field{number}{8}
+      \field{title}{Machine tool wear prediction technology based on multi-sensor information fusion}
+      \field{volume}{24}
+      \field{year}{2024}
+      \field{pages}{2652}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/s24082652
+      \endverb
+    \endentry
+    \entry{icfo2026}{article}{}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Sensors}
+      \field{number}{2}
+      \field{title}{Vibration signal denoising method based on {ICFO-SVMD} and improved wavelet thresholding}
+      \field{volume}{26}
+      \field{year}{2026}
+      \field{pages}{750}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/s26020750
+      \endverb
     \endentry
   \enddatalist
+  \missing{AI}
+  \missing{pressman1988ingenieria}
 \endrefsection
 \endinput
 

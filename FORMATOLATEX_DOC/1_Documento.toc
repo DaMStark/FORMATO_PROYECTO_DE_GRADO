@@ -1,11 +1,12 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {section}{INTRODUCCIÓN}{10}{section*.1}%
-\contentsline {section}{\numberline {1}MARCO TEÓRICO}{14}{section.1}%
-\contentsline {section}{\numberline {2}MARCO METODOLÓGICO}{19}{section.2}%
-\contentsline {section}{\numberline {3}MARCO PRÁCTICO}{22}{section.3}%
-\contentsline {section}{CONCLUSIONES}{23}{section*.7}%
-\contentsline {section}{RECOMENDACIONES}{24}{section*.8}%
-\contentsline {section}{BIBLIOGRAFÍA}{25}{section*.8}%
+\contentsline {section}{\numberline {1}ANTECEDENTES}{11}{section.1}%
+\contentsline {section}{\numberline {2}MARCO TEÓRICO}{19}{section.2}%
+\contentsline {section}{\numberline {3}MARCO METODOLÓGICO}{24}{section.3}%
+\contentsline {section}{\numberline {4}MARCO PRÁCTICO}{27}{section.4}%
+\contentsline {section}{CONCLUSIONES}{28}{section*.7}%
+\contentsline {section}{RECOMENDACIONES}{29}{section*.8}%
+\contentsline {section}{BIBLIOGRAFÍA}{30}{section*.8}%
 \cftpagenumbersoff {section}
 \contentsline {section}{ANEXOS}{1}{section*.9}%
 \cftpagenumberson {section}

@@ -9,10 +9,183 @@
 %------------------------
 
 \section*{INTRODUCCIÓN}
+En la manufactura moderna, los procesos de mecanizado por arranque de viruta dependen
+críticamente del estado de la herramienta de corte. Un inserto desgastado o roto no solo
+compromete las tolerancias dimensionales y el acabado superficial de la pieza, sino que
+puede generar paros no programados, reprocesos y sobrecostos significativos en la línea
+de producción. Esta problemática ha cobrado nueva relevancia con el auge del
+mantenimiento predictivo dentro del paradigma de Industria 4.0.
 
+Esta necesidad se identificó de manera directa durante el desarrollo de las pasantías
+profesionales en MAINSA, donde se observó que el estado de las herramientas de corte en
+los tornos CNC se determina casi exclusivamente mediante inspección visual periódica y la
+experiencia acumulada del operador. Esta práctica, si bien funcional, no permite anticipar
+fallas incipientes ni detectar una rotura súbita antes de que esta afecte la pieza en
+proceso. A partir de esta observación se planteó la presente propuesta al personal técnico
+de la empresa, la cual fue recibida con interés dada la recurrencia del problema.
+
+Al indagar en soluciones existentes, se encontró que la mayoría de los sistemas
+comerciales de detección de rotura de herramienta requieren integración directa con el
+controlador del CNC o acceso a la salida de monitoreo del servoamplificador. Esta
+condición representa una barrera real para MAINSA, cuyo parque de máquinas está
+compuesto por equipos de distintas marcas y antigüedades, no siempre con dicha salida
+disponible o documentada. Este hallazgo confirmó la pertinencia de orientar el proyecto
+hacia una solución de tipo periférico y no invasivo.
+
+Como punto de partida técnico para abordar este problema se tomó la tesis doctoral de
+\cite{trejo2010}, que demuestra la viabilidad de estimar el desgaste de herramienta
+fusionando señales de corriente y vibración mediante un sensor inteligente. Sin embargo,
+revisar únicamente este documento resultaba insuficiente para sustentar una propuesta
+actual: era necesario establecer si dicho enfoque contaba con antecedentes propios que lo
+validaran en el tiempo, y si existían desarrollos recientes que permitieran superar sus
+limitaciones \citep{trejo2010}.
+
+Por ello, el presente capítulo de antecedentes se organiza en tres bloques
+complementarios. El primero traza el origen y la evolución del monitoreo no invasivo
+basado en corriente eléctrica, mostrando que la tesis base forma parte de una línea de
+investigación continua. El segundo revisa la literatura más reciente (2024-2026) que
+valida este enfoque mediante inteligencia artificial embebida. El tercero examina
+antecedentes de conectividad IoT aplicados a mantenimiento predictivo remoto.
+
+El propósito último de esta revisión es doble: por un lado, demostrar que el problema
+abordado tiene sustento técnico consolidado y no responde a una necesidad aislada de
+MAINSA; por otro, delimitar con precisión el vacío específico que este proyecto busca
+cubrir, sirviendo como base argumentativa para el planteamiento del problema, los
+objetivos y la metodología que se desarrollan en los capítulos siguientes.
 
 \subsection*{Antecedentes}
-Se desglosará de forma breve los contenidos mínimos de un perfil, se reitera que el mismo debe ser trabajado en las materias de Seminario de Grado y Taller de Grado junto al docente de la materia como igualmente con su tutor y relator.
+%---------------------------------------------------------
+%                     ANTECEDENTES
+%---------------------------------------------------------
+\section{ANTECEDENTES}
+
+
+El monitoreo de condición de herramientas de corte constituye una estrategia
+relevante para mejorar la calidad de manufactura, disminuir la generación de
+piezas defectuosas y reducir paradas no planificadas en máquinas CNC. Dentro
+de las técnicas indirectas de monitoreo, el análisis de señales eléctricas de
+los accionamientos de la máquina representa una alternativa de bajo impacto
+para la instrumentación industrial, debido a que permite inferir cambios en la
+carga de corte sin instalar sensores sobre la herramienta. En este enfoque,
+las variaciones de desgaste, pérdida de filo o rotura modifican las fuerzas de
+mecanizado y, en consecuencia, alteran la corriente consumida por el motor del
+husillo o por los motores de avance.
+
+Un antecedente temprano y fundamental de este enfoque es el trabajo de
+\cite{romero2003}, quienes propusieron detectar la rotura de herramientas en
+fresadoras CNC mediante el análisis de la corriente del accionamiento. Su
+propuesta permitió identificar eventos asociados a la rotura sin recurrir a
+dinamómetros, sensores de fuerza de alto costo ni modificaciones importantes en
+la estructura mecánica de la máquina. Este aporte consolidó el uso de señales
+internas o externas de los accionamientos como fuente de información para el
+monitoreo indirecto de herramientas, enfoque frecuentemente denominado monitoreo
+\textit{sensorless} o de instrumentación mínima.
+
+La línea de investigación fue ampliada por \cite{trejo2010}, quien estudió el
+monitoreo, análisis y modelado fenomenológico del desgaste de herramienta bajo
+condiciones variables de corte en torno CNC. La investigación integró señales de
+corriente y vibración mediante un sensor inteligente basado en FPGA, con el
+propósito de estimar cuantitativamente el desgaste de flanco. Este antecedente
+es importante porque no se limita a identificar una falla súbita, sino que
+aborda la evolución progresiva del desgaste. Debido a que la investigación fue
+desarrollada en condiciones de corte variables, evidencia la necesidad de
+considerar la influencia de parámetros como avance, velocidad y profundidad.
+
+Posteriormente, \cite{sevilla2011} validaron un método de detección de rotura
+de herramienta en fresado de alta velocidad a partir de señales de corriente
+del motor de avance. El estudio utilizó la transformada wavelet discreta para
+extraer información transitoria de la señal y aplicó herramientas estadísticas
+para discriminar condiciones normales y anormales de mecanizado. Este aporte
+respalda que las señales de corriente pueden contener patrones útiles para la
+detección de eventos súbitos, particularmente aplicando técnicas de análisis
+tiempo-frecuencia.
+
+Como complemento, \cite{ramirez2018} desarrollaron un sensor inteligente para
+detección de rotura en fresado mediante termografía infrarroja, bajo
+condiciones de corte seco y con refrigerante. Sin embargo, la termografía
+requiere visibilidad hacia la zona de corte y puede verse afectada por viruta,
+refrigerante o restricciones físicas. Por ello, el monitoreo basado en corriente
+mantiene una ventaja relevante cuando se busca una implementación de fácil
+instalación y bajo costo sin acceso visual a la herramienta.
+
+La vigencia del monitoreo no invasivo por corriente se confirma con
+investigaciones recientes que incorporan aprendizaje profundo. \cite{lai2025}
+propusieron un sistema basado en señales de corriente del husillo obtenidas
+con un sensor SCT013. El sensor se instala externamente alrededor del conductor
+eléctrico del motor, sin intervenir el controlador CNC ni la estructura mecánica.
+Los autores analizaron las señales mediante transformada rápida de Fourier y
+compararon modelos de redes neuronales (ANN, DNN, CNN) para clasificar eventos
+de rotura, detectando anomalías características rápidamente.
+
+La utilización de una pinza SCT013 es particularmente pertinente para
+instrumentación de bajo impacto, pues permite implementar un sistema de
+adquisición reversible, adecuado para maquinaria heredada sin conectividad
+digital nativa. No obstante, el diseño debe considerar el rango de corriente,
+la frecuencia de muestreo, el acondicionamiento de señal, el ruido eléctrico
+y las variaciones normales de carga durante el mecanizado.
+
+Por otra parte, \cite{wang2024} propusieron una metodología de predicción
+basada en fusión de información proveniente de múltiples sensores. El estudio
+integra señales de corriente, vibración y fuerza de corte. Esto demuestra que
+las señales eléctricas y mecánicas aportan información complementaria. Debido
+a que los sensores de fuerza son costosos y complejos de instalar, un sistema
+basado únicamente en corriente y vibración externa puede ofrecer un compromiso
+adecuado entre costo y capacidad de diagnóstico.
+
+Una limitación de los modelos tradicionales es su disminución de desempeño
+cuando cambian las condiciones de operación (velocidad, avance, profundidad).
+\cite{huang2026} abordaron este problema mediante fusión de señales de vibración
+y corriente, sumado a un esquema de aprendizaje por transferencia supervisado.
+Su estrategia combina preentrenamiento y ajuste inicial con muestras de la
+condición objetivo. Aunque requiere una cantidad limitada de datos etiquetados
+nuevos, reduce de forma importante la información necesaria para adaptar el
+sistema a condiciones distintas de mecanizado.
+
+La calidad del procesamiento de señales constituye otro aspecto crítico. Las
+señales en una máquina CNC pueden contener ruido eléctrico, vibraciones
+estructurales y cambios de carga. Por esta razón, es necesario implementar
+procedimientos de filtrado y segmentación. \cite{jia2025} propusieron un
+método de reducción de ruido basado en descomposición modal variacional
+adaptativa y umbrales wavelet para separar componentes útiles de ruido, lo
+cual constituye un antecedente metodológico relevante.
+
+De manera similar, el estudio sobre ICFO-SVMD propuso una metodología que
+integra optimización algorítmica y descomposición modal variacional
+\citep{icfo2026}. El objetivo fue procesar señales no estacionarias afectadas
+por ruido, preservando componentes transitorios. En consecuencia, el proyecto
+puede considerar un esquema de procesamiento escalonado: adquisición,
+eliminación de ruido, extracción de características y clasificación,
+comparando experimentalmente alternativas para obtener mayor sensibilidad.
+
+Además de la mejora algorítmica, la incorporación de conectividad IoT permite
+que el monitoreo se convierta en un sistema de apoyo a la toma de decisiones.
+El caso de estudio de la Universidad de Sheffield es un antecedente relevante
+para la digitalización de procesos heredados \citep{sheffield2021}.
+Desarrollaron una solución IoT para mantenimiento predictivo en una instalación
+sin conectividad digital integrada, demostrando que es posible incorporar
+sensores y visualización de datos sin sustituir el equipamiento original.
+
+\cite{hamasha2025} propusieron un marco integral que articula sensores IoT,
+procesamiento en el borde, analítica IA y monitoreo remoto. El trabajo
+identifica beneficios como reducción de tiempos de respuesta y procesamiento
+local con menor latencia. También advierte desafíos industriales:
+ciberseguridad, integración con maquinaria heredada y confiabilidad de
+sensores. Este marco respalda la arquitectura conceptual del proyecto,
+fundamentando el diseño de alertas en niveles de severidad.
+
+A partir de los antecedentes revisados, se observa que existen investigaciones
+consolidadas sobre detección de rotura mediante corriente, estimación de
+desgaste mediante fusión de señales, aprendizaje profundo e IoT. Sin embargo,
+los estudios abordan estos componentes de forma independiente, en contextos
+controlados, o sin enfocarse en herramientas de corte CNC.
+
+Por tanto, no se identificó un estudio que integre simultáneamente: la
+adquisición externa de corriente y vibración sin intervenir el controlador
+CNC; la estimación del estado de desgaste mediante IA embebida libre de
+recalibración manual; conectividad IoT para notificación según niveles de
+severidad; y la validación en una PYME metalmecánica boliviana. El aporte
+del proyecto radica en integrar estas tecnologías consolidadas en un prototipo
+evaluado en las condiciones industriales reales de MAINSA.
 
 \subsection*{Identificación del problema}
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.8.31)  1 SEP 2026 09:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.8.31)  1 SEP 2026 11:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1418,7 +1418,22 @@ Package biblatex Info: Automatic encoding selection.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file '1_Documento.bbl' found.
- (1_Documento.bbl)
+ (1_Documento.bbl
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                AI
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                pressman1988ingenieria
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+)
 Package biblatex Info: Reference section=0 on input line 550.
 Package biblatex Info: Reference segment=0 on input line 550.
 Package babel Info: Main language set to 'spanish'.
@@ -1455,7 +1470,7 @@ Package babel Info: Main language set to 'spanish'.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<Figuras/UCB_logo.png, id=59, 301.40698pt x 126.8955pt>
+<Figuras/UCB_logo.png, id=63, 301.40698pt x 126.8955pt>
 File: Figuras/UCB_logo.png Graphic file (type png)
 <use Figuras/UCB_logo.png>
 Package pdftex.def Info: Figuras/UCB_logo.png  used on input line 12.
@@ -1561,17 +1576,21 @@ LaTeX Info: Redefining \% on input line 1.
 No file 1_Documento.not.
 [8]
 No file 1_Documento.acr.
-(5_Introduccion.tex [9]
+(5_Introduccion.tex [9] [10] [11] [12] [13] [14]
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [10] [11] [12]) (6_Marco_Teorico.tex [13] [14] [15] [16] [17]) (7_Marco_Metodologico.tex [18]
+ [15] [16] [17]) (6_Marco_Teorico.tex [18] [19] [20] [21] [22]) (7_Marco_Metodologico.tex [23]
 File: Figuras/UCB_logo.png Graphic file (type png)
 <use Figuras/UCB_logo.png>
 Package pdftex.def Info: Figuras/UCB_logo.png  used on input line 27.
 (pdftex.def)             Requested size: 60.28032pt x 25.37865pt.
- [19]
+
+
+LaTeX Warning: Citation 'pressman1988ingenieria' on page 24 undefined on input line 27.
+
+[24]
 File: Figuras/UCB_logo.png Graphic file (type png)
 <use Figuras/UCB_logo.png>
 Package pdftex.def Info: Figuras/UCB_logo.png  used on input line 40.
@@ -1592,19 +1611,31 @@ File: Figuras/UCB_logo.png Graphic file (type png)
 <use Figuras/UCB_logo.png>
 Package pdftex.def Info: Figuras/UCB_logo.png  used on input line 86.
 (pdftex.def)             Requested size: 113.81102pt x 47.91678pt.
- [20]) (8_Marco_Practico.tex [21]
+ [25]) (8_Marco_Practico.tex [26]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
-) (9_Conclusiones.tex [22]
+) (9_Conclusiones.tex [27]
+
+LaTeX Warning: Citation 'pressman1988ingenieria' on page 28 undefined on input line 19.
+
+
+LaTeX Warning: Citation 'AI' on page 28 undefined on input line 21.
+
+
 Overfull \hbox (39.17485pt too wide) in paragraph at lines 30--31
 []\T1/ptm/m/n/12 (-20) Entre otras va-ria-cio-nes con-ta-mos con el for-ma-to de ci-ta-do Cf. con el co-man-do [][]\T1/cmtt/m/n/12 \citecf{etiqueta}[]\T1/ptm/m/n/12 (-20) ,
  []
 
-) (10_Recomendaciones.tex [23]) [24] (Anexos.tex [25]
+) (10_Recomendaciones.tex [28]) [29]
+Overfull \hbox (17.93835pt too wide) in paragraph at lines 624--624
+[][]\T1/ptm/m/n/12 (-20) SEVILLA-CAMACHO, P. Y., HERRERA-RUIZ, G., ROBLES-OCAMPO, J. B. & JÁUREGUI-
+ []
+
+(Anexos.tex [30]
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1620,12 +1651,12 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has b
                    \relax 
 l.49 \anex{TÃ­tulo de Anexo 2}
                                [3]
-<PDFs/Google_Academic.pdf, id=265, 597.19106pt x 845.07718pt>
+<PDFs/Google_Academic.pdf, id=352, 597.19106pt x 845.07718pt>
 File: PDFs/Google_Academic.pdf Graphic file (type pdf)
 <use PDFs/Google_Academic.pdf>
 Package pdftex.def Info: PDFs/Google_Academic.pdf  used on input line 50.
 (pdftex.def)             Requested size: 597.1896pt x 845.07512pt.
-<PDFs/Google_Academic.pdf, id=267, page=1, 597.19106pt x 845.07718pt>
+<PDFs/Google_Academic.pdf, id=354, page=1, 597.19106pt x 845.07718pt>
 File: PDFs/Google_Academic.pdf Graphic file (type pdf)
 <use PDFs/Google_Academic.pdf, page 1>
 Package pdftex.def Info: PDFs/Google_Academic.pdf , page1 used on input line 50.
@@ -1699,12 +1730,12 @@ Overfull \hbox (21.4543pt too wide) in paragraph at lines 121--122
 []\T1/ptm/m/n/12 (-20) En la car-pe-ta [][]\T1/cmtt/m/n/12 Template_planos_UCB []\T1/ptm/m/n/12 (-20) bus-car los ar-chi-vos [][]\T1/cmtt/m/n/12 UCB.drwdot []\T1/ptm/m/n/12 (-20) y [][]\T1/cmtt/m/n/12 UCB_Grande.drwdot[]\T1/ptm/m/n/12 (-20) ,
  []
 
-<PDFs/UCB.PDF, id=329, 614.57909pt x 793.83177pt>
+<PDFs/UCB.PDF, id=416, 614.57909pt x 793.83177pt>
 File: PDFs/UCB.PDF Graphic file (type pdf)
 <use PDFs/UCB.PDF>
 Package pdftex.def Info: PDFs/UCB.PDF  used on input line 129.
 (pdftex.def)             Requested size: 614.57759pt x 793.82983pt.
-<PDFs/UCB.PDF, id=331, page=1, 614.57909pt x 793.83177pt>
+<PDFs/UCB.PDF, id=418, page=1, 614.57909pt x 793.83177pt>
 File: PDFs/UCB.PDF Graphic file (type pdf)
 <use PDFs/UCB.PDF, page 1>
 Package pdftex.def Info: PDFs/UCB.PDF , page1 used on input line 129.
@@ -1740,12 +1771,12 @@ Package pdftex.def Info: PDFs/UCB.PDF , page1 used on input line 129.
  [8
 
  <./PDFs/UCB.PDF>]
-<PDFs/UCB_Grande.PDF, id=368, 1228.59pt x 794.97pt>
+<PDFs/UCB_Grande.PDF, id=455, 1228.59pt x 794.97pt>
 File: PDFs/UCB_Grande.PDF Graphic file (type pdf)
 <use PDFs/UCB_Grande.PDF>
 Package pdftex.def Info: PDFs/UCB_Grande.PDF  used on input line 131.
 (pdftex.def)             Requested size: 1228.587pt x 794.96806pt.
-<PDFs/UCB_Grande.PDF, id=370, page=1, 1228.59pt x 794.97pt>
+<PDFs/UCB_Grande.PDF, id=457, page=1, 1228.59pt x 794.97pt>
 File: PDFs/UCB_Grande.PDF Graphic file (type pdf)
 <use PDFs/UCB_Grande.PDF, page 1>
 Package pdftex.def Info: PDFs/UCB_Grande.PDF , page1 used on input line 131.
@@ -1783,17 +1814,17 @@ LaTeX2e <2026-06-01>
 L3 programming layer <2026-08-10>
  ***********
 Package rerunfilecheck Info: File `1_Documento.out' has not changed.
-(rerunfilecheck)             Checksum: 52908E4ED9F09343E4B34503A7F1A5A8;1740.
+(rerunfilecheck)             Checksum: 8F3FBED87D02BF50DA4F9E5C8DDF509F;1844.
 Package logreq Info: Writing requests to '1_Documento.run.xml'.
 \openout1 = `1_Documento.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 41992 strings out of 467440
- 787136 string characters out of 5407570
- 1968581 words of memory out of 5000000
- 70303 multiletter control sequences out of 15000+600000
- 716227 words of font info for 297 fonts, out of 8000000 for 9000
+ 42119 strings out of 467440
+ 789812 string characters out of 5407570
+ 1970217 words of memory out of 5000000
+ 70363 multiletter control sequences out of 15000+600000
+ 718736 words of font info for 326 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  94i,17n,117p,2572b,2906s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
@@ -1806,15 +1837,42 @@ pdfTeX warning (dest): name{glo:theta} has been referenced but does not exist, r
 pdfTeX warning (dest): name{glo:gcd} has been referenced but does not exist, replaced by a fixed one
 
 
-pdfTeX warning (dest): name{cite.0:AI} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{cite.0:hamasha2025} has been referenced but does not exist, replaced by a fixed one
 
 
-pdfTeX warning (dest): name{cite.0:pressman1988ingenieria} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{cite.0:sheffield2021} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{cite.0:icfo2026} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{cite.0:jia2025} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{cite.0:huang2026} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{cite.0:wang2024} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{cite.0:lai2025} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{cite.0:ramirez2018} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{cite.0:sevilla2011} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{cite.0:romero2003} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{cite.0:trejo2010} has been referenced but does not exist, replaced by a fixed one
 
  <C:\Users\Benjo\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk><C:/Users/Benjo/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Benjo/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Benjo/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Benjo/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Benjo/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/Benjo/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/Benjo/AppData/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/Benjo/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Benjo/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Benjo/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Benjo/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Benjo/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on 1_Documento.pdf (39 pages, 852442 bytes).
+Output written on 1_Documento.pdf (44 pages, 882147 bytes).
 PDF statistics:
- 549 PDF objects out of 1000 (max. 8388607)
- 71 named destinations out of 1000 (max. 500000)
- 93359 words of extra memory for PDF output out of 106986 (max. 10000000)
+ 641 PDF objects out of 1000 (max. 8388607)
+ 95 named destinations out of 1000 (max. 500000)
+ 93367 words of extra memory for PDF output out of 106986 (max. 10000000)
 
