@@ -1,0 +1,44 @@
+﻿## Archivos auxiliares de LaTeX y BibLaTeX
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.glo
+*.idx
+*.ilg
+*.ind
+*.ist
+*.loa
+*.lof
+*.log
+*.lot
+*.nav
+*.ntn
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.xdy
+*.acn
+*.acr
+*.alg
+*.glg
+*.gls
+*.slg
+*.symbols
+
+## Archivos de compilación y respaldos
+*.dvi
+*.ps
+*.synctex(busy)
+*.bak
+*~
+
+## Archivos temporales de sistema / VS Code
+.vscode/
+.DS_Store
+Thumbs.db
