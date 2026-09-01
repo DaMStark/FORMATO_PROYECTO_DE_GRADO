@@ -3,88 +3,57 @@
 
 \begin{titlepage}
 
-    \newgeometry{left=3.5cm,right=3cm,top=3cm,bottom=2.6cm}  % El margen de la carátula es diferente
+    \newgeometry{left=3.5cm,right=3cm,top=3cm,bottom=2.6cm} 
+    \definecolor{ucbblue}{RGB}{30, 65, 120}
 
-        % Salto de línea en mm
-        \newcommand{\saltodelinea}{\vspace{1.65mm}}
-        % Espacio entre texto
-        \newcommand{\espaciado}{\vspace{1.5cm}}
+    \begin{center} 
         
-        \renewcommand{\arraystretch}{1.5}
-        \contourlength{0.1pt}       % Borrar si no se usa ´contour´
-        \contournumber{10}
+        % 1. LOGO
+        \includegraphics[width=12cm, height=5cm]{Figuras/UCB_logo.png}
+        
+        \vspace{1.5cm}
+        
+      % 2. DEPARTAMENTO Y CARRERA (14 pt, Azul, forzado a Helvetica para admitir negrilla real)
+        {\color{ucbblue}\fontfamily{phv}\selectfont
+            {\fontsize{14}{16}\selectfont \textbf{\departamento}\par}
+            \vspace{1mm}
+            {\fontsize{14}{16}\selectfont \textbf{Carrera de \carrera}\par}
+        }
+        
+        % Reducimos este espacio para que entre tu título largo
+        \vspace{3cm} 
+        
+        % 3. RESTO DEL DOCUMENTO (Fuente clásica Serif)
+        {\rmfamily
+            % TÍTULO DEL PROYECTO
+            {\fontsize{16}{20}\selectfont \textbf{\thetitle}\par}
+            
+            \vspace{2.5cm}
+            
+            % TIPO DE TITULACIÓN
+            {\fontsize{12}{14}\selectfont \textit{\titulacion \ de \grado \ en \carrera}\par}
+            
+            \vspace{2.5cm}
+            
+            % AUTOR
+            {\fontsize{14}{16}\selectfont \textbf{\theauthor}\par}
+            
+            % Este comando empuja mágicamente la fecha al fondo de la hoja, 
+            % evitando que se salte a la página 2.
+            \vspace{\fill} 
+            
+            % LUGAR Y FECHA
+            {\fontsize{12}{14}\selectfont \unidad \ - Bolivia\par}
+            \vspace{1mm}
+            {\fontsize{12}{14}\selectfont \thedate\par}
+        }
+
+    \end{center}
     
-        \begin{center}          % Centrar texto
-            
-            
-            \begin{textblock}{16}(0.1,1.55)
-               
-               \lsstyle
-                % Universidad
-                %{\fontsize{18}{6}\selectfont{\contour{black}{UNIVERSIDAD CATÓLICA BOLIVIANA "SAN PABLO"\ }}}
-                {\fontsize{18}{6}\selectfont{\textbf{UNIVERSIDAD CATÓLICA BOLIVIANA "SAN PABLO"\ }}}
-                \saltodelinea
-               
-                % Unidad
-                {\fontsize{16}{6}\selectfont{\textbf{UNIDAD ACADÉMICA REGIONAL\ \MakeUppercase{\unidad}}}}
-                \saltodelinea
-                
-                \contournumber{15}%
-                
-                % Departamento
-                {\fontsize{14}{6}\selectfont{\textbf{\departamento}}}
-                \saltodelinea
-                
-                % Carrera
-                {\fontsize{14}{6}\selectfont{\textbf{Carrera de \carrera}}}
-                \saltodelinea
-            
-            \end{textblock}
-            
-            \vspace*{2.8cm}
-            \vspace{\fill}
-            
-            \includesvg[width=4.5cm, height=6.1cm]{UCB_logo}
-            
-            \vspace{\fill}
-            
-            
-            % Título de la tesis
-            {\fontsize{15}{18}\selectfont{\lsstyle{\textbf{\thetitle}}}\par}
-            \saltodelinea
-            
-            
-            \vspace{1.7cm}
-            
-            \contournumber{10}%
-            
-            
-            % Tipo de titulación
-            {\raggedleft{\fontsize{12}{6}\selectfont{{\textit{\titulacion \ de \grado \ en \carrera}}}}\par}
-            
-            \vspace{1.4cm}
-            
-            % Autor(es)
-            {\fontsize{13.5}{6}\selectfont{\textbf{\theauthor}}}
-            
-            \vspace{1.3cm}
-            
-            % Lugar
-            {\fontsize{12}{6}\selectfont{\unidad \ - Bolivia}}
-            
-            \vspace{1.2mm}
-            
-            % Fecha
-            {\fontsize{12}{6}\selectfont{\thedate}}
-            
-
-        \end{center}
-        
-    \restoregeometry{}
-
+    \restoregeometry
 
 \end{titlepage}
-
+    
 
 \newpage
 \begin{center}

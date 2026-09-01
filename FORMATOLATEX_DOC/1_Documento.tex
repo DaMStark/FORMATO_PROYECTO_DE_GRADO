@@ -169,11 +169,11 @@
 \renewcommand{\cftparaaftersnum}{.}%
 \renewcommand{\cftsubparaaftersnum}{.}%
     
-\renewcommand{\cfttoctitlefont}{\hspace*{\fill}\normalsize\bf\MakeUppercase}
+\renewcommand{\cfttoctitlefont}{\hspace*{\fill}\normalsize\bfseries}
 \renewcommand{\cftaftertoctitle}{\hspace*{\fill}}
-\renewcommand{\cftlottitlefont}{\hspace*{\fill}\normalsize\bf\MakeUppercase}
+\renewcommand{\cftlottitlefont}{\hspace*{\fill}\normalsize\bfseries}
 \renewcommand{\cftafterlottitle}{\hspace*{\fill}}
-\renewcommand{\cftloftitlefont}{\hspace*{\fill}\normalsize\bf\MakeUppercase}
+\renewcommand{\cftloftitlefont}{\hspace*{\fill}\normalsize\bfseries}
 \renewcommand{\cftafterloftitle}{\hspace*{\fill}}
 
 \renewcommand{\cftbeforesecskip}{2pt}
@@ -233,7 +233,7 @@ Cf. \printnames[][-\value{listtotal}]{labelname}
 \newbibmacro*{cite:authoryear3}{%
 \printnames[][-\value{listtotal}]{labelname}
 \printtext[bibhyperlink]{%
-(\usebibmacro{cite:labelyear}}}
+(\usebibmacro{cite:labelyear})}}
 
 \newbibmacro*{cite:authoryear4}{%
 \printnames[][-\value{listtotal}]{labelname}
@@ -479,10 +479,11 @@ Cf. \printnames[][-\value{listtotal}]{labelname}
 %-------------------------Personales--------------------------------
 
 % Título del Tema  
-\title{Título del proyecto}                         
+\title{Desarrollo de Sistema periférico no invasivo para monitoreo de desgaste de herramienta
+de Corte en tornos CNC industriales en MAINSA.}                         
 
 % Autor
-\author{Nombre del Autor}             
+\author{Benjamin Jhasiel Zabalaga Ticona}             
 
 % Tutor             
 \newcommand{\tutor}{Nombre del Tutor}     % Si es mujer cambiar \tutor por \tutora (funciona con todo el comité)
@@ -514,7 +515,7 @@ Cf. \printnames[][-\value{listtotal}]{labelname}
 \newcommand{\grado}{Licenciatura}
 
 % Fecha
-\date{Noviembre de 2018}
+\date{Septiembre de 2026}
 
 
 %----------------Comentarios y Sugerencias---------------------------- 
@@ -560,10 +561,10 @@ Cf. \printnames[][-\value{listtotal}]{labelname}
     \input{3_Dedicatorias.tex}
     
         
-    % Espaciados de hoja
+ % Espaciados de hoja
         \setlength{\parindent}{0pt}     % Sangría
         \setlength{\parskip}{4mm}       % Entre párrafos
-        \spacing{1.4}                   % Interlineado
+        \setstretch{1.4}                % Interlineado CORRECTO
     
     
     \input{4_Resumen.tex}
@@ -571,32 +572,34 @@ Cf. \printnames[][-\value{listtotal}]{labelname}
     
     % Índice General
         \setcounter{tocdepth}{3}            % Profundidad de índice
-        \renewcommand{\contentsname}{ÍNDICE GENERAL} 
-        \addtocontents{toc}{\protect\thispagestyle{empty}}
-        \newpage\tableofcontents
+        \renewcommand{\contentsname}{ÍNDICE GENERAL}
+        \tableofcontents
     
     % Índice de figuras
         \renewcommand{\listfigurename}{ÍNDICE DE FIGURAS}
-        \newpage\listoffigures
+        \newpage
+        \listoffigures
         \thispagestyle{empty}
     
-    % Índice de tablas                                  BORRAR SI NO SE USARA
+    % Índice de tablas
         \renewcommand{\listtablename}{ÍNDICE DE TABLAS}
-        \newpage\listoftables
-        \thispagestyle{empty}
-
-    % Lista de pseudocódigos                                  BORRAR SI NO SE USARA
-        \renewcommand{\listalgorithmname}{\centerline{ÍNDICE DE ALGORITMOS}}
-        \newpage\listofalgorithms
+        \newpage
+        \listoftables
         \thispagestyle{empty}
         
-    % Índice de símbolos                                    BORRAR SI NO SE USARA
+    % Lista de pseudocódigos
+        \renewcommand{\listalgorithmname}{\centerline{ÍNDICE DE ALGORITMOS}}
+        \newpage
+        \listofalgorithms
+        \thispagestyle{empty}
+        
+    % Índice de símbolos
         \newpage
         %\glsaddall      % BORRAR PARA SOLO MOSTRAR EN GLOSARIO VALORES UTILIZADOS
         \printglossary[type=symbols, title={\normalsize\centerline{\textbf{ÍNDICE DE SÍMBOLOS}}}]
         \thispagestyle{empty}
 
-    %Glosario de acrónimos                                  BORRAR SI NO SE USARA
+    %Glosario de acrónimos
         \newpage
         \printglossary[type=\acronymtype, title={\normalsize\centerline{\textbf{GLOSARIO DE ACRÓNIMOS}}}]
         \thispagestyle{empty}

@@ -1,0 +1,25 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{INTRODUCCIÓN}{10}{section*.1}%
+\contentsline {section}{\numberline {1}MARCO TEÓRICO}{14}{section.1}%
+\contentsline {section}{\numberline {2}MARCO METODOLÓGICO}{19}{section.2}%
+\contentsline {section}{\numberline {3}MARCO PRÁCTICO}{22}{section.3}%
+\contentsline {section}{CONCLUSIONES}{23}{section*.7}%
+\contentsline {section}{RECOMENDACIONES}{24}{section*.8}%
+\contentsline {section}{BIBLIOGRAFÍA}{25}{section*.8}%
+\cftpagenumbersoff {section}
+\contentsline {section}{ANEXOS}{1}{section*.9}%
+\cftpagenumberson {section}
+\setlength {\cftsecnumwidth }{1.8cm}
+\setstretch {1.2}
+
+\contentsline {section}{\numberline {\normalfont Anexo 1}\normalfont Título de Anexo 1}{1}{appendix.A}%
+\contentsline {section}{\numberline {\normalfont Anexo 2}\normalfont Título de Anexo 2}{3}{appendix.B}%
+\cftpagenumbersoff {section}
+\contentsline {section}{APÉNDICES}{1}{section*.10}%
+\cftpagenumberson {section}
+\setlength {\cftsecnumwidth }{2.3cm}
+\setstretch {1.2}
+
+\contentsline {section}{\numberline {\normalfont Apéndice 1}\normalfont Título de Apéndice 1}{1}{appendix.A}%
+\contentsline {section}{\numberline {\normalfont Apéndice 2}\normalfont Título de Apéndice 2}{4}{appendix.B}%
+\contentsline {section}{\numberline {\normalfont Apéndice 3}\normalfont Título de Apéndice 3}{6}{appendix.C}%
