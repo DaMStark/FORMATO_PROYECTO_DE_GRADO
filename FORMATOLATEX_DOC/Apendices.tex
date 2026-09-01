@@ -1,0 +1,131 @@
+% No modificar estas líneas de código, por favor dirigirse a APÉNDICE más abajo.
+
+            \newpage
+            \addtocontents{toc}{\cftpagenumbersoff{section}} 
+            \phantomsection\addcontentsline{toc}{section}{APÉNDICES}
+            \addtocontents{toc}{\cftpagenumberson{section}} 
+            
+            \newcommand{\apex}[1]
+            {
+                \newpage
+                \vspace*{\fill}
+                \section[\normalfont#1]{#1}
+                \label{apx:#1}
+                \vspace*{\fill}
+                \newpage
+            }
+            
+            \appendix
+            \renewcommand{\thesection}{\normalfont Apéndice \arabic{section}}
+            \addtocontents{toc}{\setlength{\cftsecnumwidth}{2.3cm}}
+            \addtocontents{toc}{\protect\setstretch{1.2}}
+            \addtocontents{toc}{\cftsecpagefont}{}
+            
+            \setcounter{page}{1}
+            \setcounter{figure}{0}
+            \setcounter{table}{0}
+            \titleformat{\section}{\bfseries\normalsize\flushright}{\MakeUppercase{\thesection}}{0em}{\\ \MakeUppercase}
+            \captionsetup{list=no} % Para que no aparezca en índice general 
+            
+%------------------------
+%
+%       APÉNDICE
+%
+%------------------------
+
+\apex{Título de Apéndice 1}
+Introducir lo que se desea... aprovecharemos este espacio para explicar como utilizar el glosario. 
+
+Para introducir un nuevo acrónimo, nos debemos dirigir a \verb|Glosario.tex| y adicionamos la siguiente línea:
+
+\verb|\newacronym{Identificador o label}{Acrónimo}{Acrónimo desglosado}|
+
+Un ejemplo sería:
+\verb|\newacronym{gcd}{GCD}{Greatest Common Divisor}|
+
+
+Para hacer referencia al acrónimo se utiliza los comandos \verb|\acrlong{}|, \verb|\acrshort{}| o \verb|\acrfull{}|, generando las siguientes maneras de representar respectivamente:
+
+\begin{itemize}
+    \item \acrlong{gcd}
+    \item \acrshort{gcd}
+    \item \acrfull{gcd}
+\end{itemize}
+
+Para adicionar un nuevo símbolo o variable, nos dirigimos nuevamente a \verb|Glosario.tex| y adicionamos de la siguiente manera:
+
+\begin{verbatim}
+\newglossaryentry{nombre}
+{
+    type=symbols,
+    name={t},
+    description={something},
+    sort=t
+}
+\end{verbatim}
+
+Para utilizar dichas variables, se utiliza el comando \verb|\gls{}| de la siguiente manera:
+ 
+\begin{itemize}
+    \item \verb|\gls{theta}| resultando: \gls{theta} 
+    \item \verb|\gls{tau}| resultando: \gls{tau}
+\end{itemize}
+
+De todas formas, para mayor detalle de como usar dichos comandos, usted puede dirigirse al archivo \verb|Glosario.tex|, donde ya se encuentran ejemplos debidamente comentados para su fácil entendimiento.
+
+\apex{Título de Apéndice 2}
+Introducir lo que se dese...
+
+Se aprovechará el presente apéndice para dejar un ejemplo de como realizar un pseudocódigo en caso de que fuera necesario para cualquier tipo de \textit{software} u otros. 
+
+\begin{algorithm}[ht!]
+	\caption{Título del pseudo algoritmo}
+	\label{Pseudo_alg} % Etiqueta con la que se va referenciar 
+	\begin{algorithmic}[1] 
+		\REQUIRE $ $
+			\STATE Inicializar variables necesarias
+			\STATE Índices de desempeño IAE, ITAE y TVC
+			\STATE \For{$k=1\dots nit$}
+			{
+			    \hspace{0.5cm} a) Leer señal de salida \\
+				\hspace{0.5cm} b) Calcular el error \\
+				\hspace{0.5cm} c) Calcular señal de control \\
+				\hspace{0.9cm} $u(k)$ \\
+				\hspace{0.5cm} d) Enviar señal de control \\
+				\hspace{0.5cm} e) Calcular índices de desempeño
+			}
+			\STATE Plotear resultados
+			\STATE Mostrar índices de desempeño
+			\ENSURE $ $
+	\end{algorithmic}
+\end{algorithm}
+
+Como podemos apreciar, el código tiene la misma estructura que venimos trabajando tanto en figuras, tablas y ecuaciones. Igualmente tenemos la facilidad de utilizar referencias mediante la etiqueta y que se genere una lista de algoritmos automáticamente. 
+
+Caso usted quisiera adicionar pequeñas líneas de código tal cual fueron introducidas por su persona, puede utilizar el formato a continuación.
+
+\begin{lstlisting}[frame=single]
+  % suma de los elementos de un vector
+  z = 0;
+  n = length(v);
+  for i=1:1:n
+    z = z + v[i];
+  end
+\end{lstlisting}
+
+\apex{Título de Apéndice 3}
+Introducir lo que se dese...
+
+Se aprovechará el presente apéndice para dejar un ejemplo de como usar las plantillas de SolidWorks 2019 para diferentes planos según normas de la institución establecidas en la Guía. Los mismos deben ser adicionados en Apéndices en formato PDF ya que son contribuciones del trabajo. 
+
+En la carpeta \verb|Template_planos_UCB| buscar los archivos \verb|UCB.drwdot| y \verb|UCB_Grande.drwdot|, los mismos deben ser adicionados a la siguiente ubicación de su disco C.
+
+\verb|C:\ProgramData\SOLIDWORKS\SOLIDWORKS 2019\templates|. 
+
+Caso usted cuente con versiones inferiores a la 2019, podrá utilizar \verb|UCB_Grande.SLDDRW| que funcionará para versiones iguales o superiores a la 2016. 
+
+A continuación se adjuntaron ambos PDF, aclarando que el segundo debe ser impreso y doblado como es indicado en la Guía. En el presente documento solo se adiciona para mostrar el formato final de los mismos. 
+
+\includepdf[pages={1}]{PDFs/UCB.PDF}
+
+\includepdf[pages={1}]{PDFs/UCB_Grande.PDF}

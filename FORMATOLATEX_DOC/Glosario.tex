@@ -1,0 +1,44 @@
+% No modificar estas líneas de código, por favor dirigirse a ACRÓNIMOS o GLOSARIO
+
+%------------------------
+%
+%       ACRÓNIMOS
+%
+%------------------------
+
+\newacronym {UCB}      % Nombre
+            {UCB-CBA}  % Acrónimo
+            {Universidad Católica Boliviana "San Pablo", Unidad Académica Regional Cochabamba} % Texto largo
+
+%------------------------
+%
+%       GLOSARIO
+%
+%------------------------
+
+% ------- Lista de acrónimos
+\newacronym {gcd} % Nombre
+            {GCD} % Acrónimo
+            {\textit{Greatest Common Divisor}} % Texto largo
+            
+\newacronym {PID} % Nombre
+            {PID} % Acrónimo
+            {Proporcional, Integral, Derivativo} % Texto largo
+
+% ------- Lista de variables para el glosario 
+
+\newglossaryentry{tau} % Nombre de símbolo
+{
+    type=symbols,   % Tipo de glosario (no cambiar a menos que se desee múltiples glosarios)
+    name={\ensuremath{\tau}}, % Título (\ensuremath{} permite colocar símbolos matemáticos como nombre)
+    description={Constante de tiempo para sistemas de control}, % Breve descripción
+    sort=tau % Ordenamiento (combinación única de letras que sirven para ubicar el símbolo alfabéticamente en el índice)
+}
+
+\newglossaryentry{theta}
+{
+    type=symbols,
+    name={\ensuremath{\theta}},
+    description={Atraso de tiempo en continuo para sistemas de control},
+    sort=theta
+}

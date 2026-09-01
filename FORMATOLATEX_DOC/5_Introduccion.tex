@@ -1,0 +1,134 @@
+% No modificar estas líneas de código, por favor dirigirse a INTRODUCCIÓN 
+\newpage
+\phantomsection\addcontentsline{toc}{section}{INTRODUCCIÓN} 
+
+%------------------------
+%
+%       INTRODUCCIÓN
+%
+%------------------------
+
+\section*{INTRODUCCIÓN}
+
+Introducir lo que se desea con su respectivo respaldo bibliográfico, a forma de dejar ejemplos en el presente \textit{TEMPLATE}, se irá redactando una guía para el usuario como contenido. Para su uso, borrar y modificar únicamente contenidos. Tenga cuidado en no borrar o alterar el formato establecido. 
+
+La presente sección de su tesis representa todo el documento elaborado en Seminario de Grado y no llevará numeración de acuerdo a la norma de la institución.
+
+\subsection*{Antecedentes}
+Se desglosará de forma breve los contenidos mínimos de un perfil, se reitera que el mismo debe ser trabajado en las materias de Seminario de Grado y Taller de Grado junto al docente de la materia como igualmente con su tutor y relator.
+
+\subsection*{Identificación del problema}
+
+En esta parte se desarrolla la identificación del problema, sin mencionar la solución. 
+
+\subsection*{Formulación del problema}
+
+Se pueden utilizar diferentes métodos para identificar como la pregunta, diagrama de Ishikawa, árbol de problemas, causa y efecto, entre otros. 
+
+\subsection*{Objetivos}
+
+Como surgieron nuevos comandos, los mismos se irán presentando a continuación. Se pueden hacer secciones con el comando \verb|\section{}|, que después aparecerán automáticamente en el índice. Al utilizar el asterisco $*$ estamos ordenando que no sea mostrado en el índice. 
+
+De la misma forma se utilizará el comando \verb|\subsection{}| y \verb|\subsubsection{}|.
+
+\subsubsection*{Objetivo general}
+
+También se pueden hacer subsecciones. Incluso, subsubsecciones.
+
+\subsubsection*{Objetivos específicos}
+
+Y seguirán apareciendo en el índice automáticamente.
+
+A continuación se coloca el formato de viñeta a ser utilizado.
+
+\begin{itemize}
+\item Van adicionando simplemente
+\item el comando \verb|\item| dentro de esta parte
+\item e irá siendo adicionado solo en el documento
+\end{itemize}
+
+\subsection*{Hipótesis}
+
+Lo más interesante de \LaTeX es la manera en la que se pueden escribir fórmulas.
+
+\subsection*{Justificación}
+
+Podemos escribir una fórmula en el renglón en el que estamos escribiendo. Por ejemplo, $a^2=b^3+c^4$, escribiendo \verb|$a^2=b^3+c^4$|.
+
+Puede que queramos destacar la fórmula, entonces es conveniente escribirla en \textsl{estilo exposición}, es decir, en un renglón aparte y centrada. Así, $$\lim_{x\to +\infty}\dfrac{x^3-\sqrt[4]{3x^5-\pi^e}}{\sen(x)+\ln(x)}$$
+En este caso, hay que escribir la fórmula doblando los dólares, \verb|$$fórmula$$|. 
+
+\subsection*{Alcance}
+
+Cuando queremos indicar una cadena de cálculos, no se hace en un mismo renglón, separando con iguales, como a veces hacemos en la pizarra, sino que lo correcto es hacerlo así
+$$\begin{array}{lll}
+(x+y)^2&=&(x+y)(x+y)\\
+&=&x^2+xy+yx+y^2\\
+&=&x^2+2xy+y^2
+\end{array}
+$$
+
+\subsection*{Límites}
+
+La forma de presentar el trabajo depende del contenido final. Si no contiene demasiadas fórmulas, quizá se puedan escribir como acabamos de decir antes, pero si la cantidad de fórmulas que aparecen es importante, es conveniente etiquetarlas de alguna forma. Esto hace que cada vez que queremos referirnos a una fórmula anterior, no sea necesario volver a escribirla, sino simplemente escribir una referencia. Veamos un par de ejemplos.
+
+El volumen de una región acotada en el espacio se puede calcular mediante la fórmula siguiente:
+\begin{equation}
+\label{eqn:volumen}
+\text{Vol}(\Omega)=\int _\Omega 1\ dxdydz
+\end{equation}
+
+Y el flujo a través de una superficie $S$ de un campo vectorial $\vec{F}$, se puede calcular mediante la integral siguiente:
+\begin{equation}
+\label{eqn:flujo}
+\int_S \vec{F}\cdot d\vec{S}
+\end{equation}
+
+Estas fórmulas se han escrito con los siguientes códigos:
+
+\begin{verbatim}
+\begin{equation}
+\label{eqn:volumen}
+\text{Vol}(\Omega)=\int _\Omega 1\ dxdydz
+\end{equation}
+\end{verbatim}
+
+Y la segunda,
+
+\begin{verbatim}
+\begin{equation}
+\label{eqn:flujo}
+\int_S \vec{F}\cdot d\vec{S}
+\end{equation}
+\end{verbatim}
+
+Las hemos etiquetado con \verb|volumen| y \verb|flujo|, respectivamente. Si ahora, en cualquier parte del documento, queremos referirnos a la ecuación del volumen...
+% comandos para distinguir de las referencias que se hacen 
+%ch:	chapter
+%sec:	section
+%subsec:	subsection
+%fig:	figure
+%tab:	table
+%eqn:	equation
+%lst:	code listing
+%itm:	enumerated list item
+%alg:	algorithm
+%apx:	apéndice subsection
+%anx:	anexo subsection
+
+\
+
+... Como mencionamos anteriormente, para calcular el volumen de un sólido en el espacio, se puede utilizar la \eqn{volumen}. Y para calcular el flujo de un campo vectorial a través de una superficie, se puede utilizar la fórmula \ref{eqn:flujo}...
+
+\
+
+Hemos escrito \verb|(\eqn{volumen})| y \verb|(\ref{eqn:flujo})|, respectivamente. Incluso en el PDF resultante aparecerá un \textsl{enlace} a la fórmula en cuestión.
+
+Se pueden numerar de diferentes formas las ecuaciones, depende del usuario, en este caso se mantiene la numeración simple.
+
+No olvide que luego de cada ecuación nueva, se debe desarrollar las nuevas variables a ser trabajadas. En el cuerpo del presente documento se irá explicando más comandos para poder facilitar todo este proceso, por favor lea todo antes de comenzar a trabajar. 
+
+Existe formas rápidas de poder escribir las ecuaciones, y es ingresando a las páginas: \url{https://www.codecogs.com/latex/eqneditor.php} \\
+\url{http://formulasheet.com/}
+
+Donde ustedes pueden ingresar de forma gráfica su ecuación y la página se encargara de generar el código correspondiente a \LaTeX.

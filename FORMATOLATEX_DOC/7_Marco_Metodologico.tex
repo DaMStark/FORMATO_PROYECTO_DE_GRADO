@@ -1,0 +1,94 @@
+% No modificar estas líneas de código, por favor dirigirse a MARCO METODOLÓGICO
+
+\newpage
+
+%------------------------
+%
+%       MARCO METODOLÓGICO 
+%
+%------------------------
+
+\section{MARCO METODOLÓGICO}
+Introducir lo que se desea.... ahora aprovecharemos para demostrar como adicionar figuras.
+
+Hay muchas formas de insertar figuras en un documento \LaTeX. En primer lugar, debemos de disponer de un archivo de tipo gráfico con la suficiente calidad, internacionalmente se maneja un mínimo de 300 dpi, que representa la cantidad de puntos por pulgada de cada imagen a ser utilizada. Se admiten muchos formatos, aunque quizá los que mejor funcionen sean los de tipo .png, .jpg y .svg. 
+
+Si bien todos los formatos mencionados en el anterior párrafo son permitidos, es recomendable utilizar todas las imágenes en formato .pdf, siendo que las imágenes mantienen su alta calidad y son utilizadas con mayor facilidad por Overleaf. Explicando más a detalle, el compilador de Overleaf cuando encuentra imágenes que no están en formato PDF, debe llamar a librerías y programas externos para convertir en PDF la imagen solicitada, tomando esto un tiempo extra y ocupando más de 60 segundos de compilación ofrecido en la versión gratuita del servidor (Versión paga tiene 240 segundos de compilación); generando así problemas que demoró mucho en compilar y debe uno intentar nuevamente. 
+
+Para contar con mayor organización, se tiene la carpeta Figuras, donde deberán ser introducidas las figuras para luego ser utilizadas.
+
+Aquí van algunos ejemplos de cómo se pueden poner figuras con diferentes disposiciones dentro del texto. Comenzando por los formatos rápidos y simples, hasta los más avanzados.
+
+\figura[scale=0.2]{UCB_logo} % {Tamaño de la figura, en escala porcentual del 0 al 1}[Seguido del nombre de la figura con el que esta guardado en la carpeta Figuras, sin espacio para no ocurrir problemas al compilar]
+% Igualmente se puede adicionar con tamaños fijos, es decir escalar el ancho y alto [high = valor1 unidades, width = valor2 unidades] ...\figura[high = 3cm, width = 8cm]{a}{b}{c}...
+% Al no colocar el valor de escala, la figura automáticamente se coloca al ancho de la página
+% Si se deja en blanco, es decir [], la figura automáticamente se coloca en su tamaño original 
+{Logo UCB} % Título de la Figura
+{Elaboración propia en base a \cite{pressman1988ingenieria}} % Fuente bibliográfica, esta será desglosada a más detalle en ejemplos a seguir. 
+
+Siendo de suma importancia siempre presentar la figura antes de ser introducida, para esto se utiliza el comando \verb|\fig{UCB_logo}| que nos da el siguiente resultando: \fig{UCB_logo}.
+
+\textbf{Otras formas de insertar figuras manualmente}.- Antes de cualquier figura, tabla o ecuación, siempre se debe presentar o introducir a la misma, no puede aparecer mágicamente sin introducción.
+
+Se presentan a continuación dos formas de introducir figuras conjuntas sobre el mismo espacio de trabajo. Una es trabajada con el comando \verb|qquad| y el otro con el comando \verb|par| respectivamente.
+
+\begin{figure}[!htb]
+    \centering
+    \caption{Título Figura} % Título de figura
+        % Imagen 1
+        %           Título                              Tamaño              nombre img
+        \subfloat[Título de img 1]{\includegraphics[width=0.2\columnwidth]{Figuras/UCB_logo.png}}
+        % separaciones | agregar una de las opciones entre cada par de imágenes, se deja los dos ejemplos.
+            %\qquad      % figuras en la misma linea
+            %\par        % siguiente línea
+            \qquad
+        % Imagen 2
+        %           Título                              Tamaño              nombre img
+        \subfloat[Título de img 2]{\includegraphics[width=0.2\columnwidth]{Figuras/UCB_logo}}
+        \\
+        % Se pueden agregar cuantas imágenes hagan falta
+    \centering{\textbf{Fuente:} Fuente de la información} % Fuente bibliográfica
+    %               label
+    \label{fig:nombre_de_referencia1}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \caption{Título Figura} % Título de figura
+        % Imagen 1
+        %           Título                              Tamaño              nombre img
+        \subfloat[Título de img 1]{\includegraphics[width=0.2\columnwidth]{Figuras/UCB_logo.png}}
+        % separaciones | agregar una de las opciones entre cada par de imágenes, se deja los dos ejemplos.
+            %\qquad      % figuras en la misma linea
+            %\par        % siguiente línea
+            \par
+        % Imagen 2
+        %           Título                              Tamaño              nombre img
+        \subfloat[Título de img 2]{\includegraphics[width=0.2\columnwidth]{Figuras/UCB_logo}}
+        \\
+        % Se pueden agregar cuantas imágenes hagan falta
+    \centering{\textbf{Fuente:} Fuente de la información} % Fuente bibliográfica
+    %               label
+    \label{fig:nombre_de_referencia2}
+\end{figure}
+
+Otra forma en la cual el usuario puede configurar más detalles y a la vez introducir un párrafo a uno de los costados de la figura para mayor detalle sobre la misma, es la siguiente: 
+
+\begin{figure}%[h] Claro ejemplo cuando no se utiliza el comando de donde queremos que la figura este, HERE 
+	\begin{minipage}[c]{.45\linewidth} % Se divide la página en dos
+		Podemos disponer texto junto a una figura, como en este caso.
+		También se puede hacer que la figura aparezca a la izquierda y el texto a la derecha.
+	\end{minipage}
+	\hfill
+	\begin{minipage}[c]{.45\linewidth}
+		\begin{center}
+			\caption{Logo UCB} % Título figura
+            \includegraphics[width=4cm]{Figuras/UCB_logo.png} % Ancho en centímetros de la Figura y Localización manual de la figura
+			\\
+			\textbf{Fuente:} Elaboración propia % Fuente bibliográfica
+		\end{center}
+	\end{minipage}
+\end{figure}
+
+Aunque las figuras se pueden poner en anexos al trabajo, en muchas ocasiones puede resultar útil que estén dentro del texto porque ayudan a comprender mejor las ideas que se quieren exponer. El autor del trabajo debe valorar qué es lo más conveniente. 
+

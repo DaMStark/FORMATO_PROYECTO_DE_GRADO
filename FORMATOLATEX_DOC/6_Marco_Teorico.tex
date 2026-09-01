@@ -1,0 +1,128 @@
+% No modificar estas líneas de código, por favor dirigirse a MARCO TEÓRICO
+
+\newpage
+
+%------------------------
+%
+%       MARCO TEÓRICO
+%
+%------------------------
+
+\section{MARCO TEÓRICO}
+Introducir lo que se desea.... para continuar con la dinámica de explicar el uso de \LaTeX, se detalla como ingresar tablas. 
+
+Las tablas en nuestro trabajo se pueden adicionar de la siguiente forma: 
+
+\begin{tabla}[tabla_ejemplo] % Label de la tabla, caso no llenar este espacio, el label automático será el título de la tabla
+{Tabla Ejemplo} % Título de la tabla
+{Elaboración propia} % Referencia de la tabla
+\centering
+\begin{tabular}{cccll} % Valores de tabulación L, C, R, J (mayúscula) sirven para dar un ancho fijo a las columnas de una tabla... {|C{2cm}|L{5cm}|}
+\cline{1-3}
+\multicolumn{1}{|c|}{}           & \multicolumn{1}{c|}{\textbf{A}} & \multicolumn{1}{c|}{\textbf{B}} &  &  \\ \cline{1-3}
+\multicolumn{1}{|c|}{\textbf{A}} & \multicolumn{1}{c|}{x}          & \multicolumn{1}{c|}{}           &  &  \\ \cline{1-3}
+\multicolumn{1}{|c|}{\textbf{B}} & \multicolumn{1}{c|}{}           & \multicolumn{1}{c|}{x}          &  &  \\ \cline{1-3}
+\multicolumn{1}{l}{}             & \multicolumn{1}{l}{}            & \multicolumn{1}{l}{}            &  & 
+\end{tabular}
+\end{tabla}
+
+Siendo el código utilizado para esto el siguiente:
+\begin{verbatim}
+\begin{tabla}[tabla_ejemplo] 
+{Tabla Ejemplo} 
+{Elaboración propia}
+\centering
+\begin{tabular}{cccll} 
+\cline{1-3}
+\multicolumn{1}{|c|}{}           & \multicolumn{1}{c|}{\textbf{A}}... 
+\multicolumn{1}{|c|}{\textbf{A}} & \multicolumn{1}{c|}{x}         ... 
+\multicolumn{1}{|c|}{\textbf{B}} & \multicolumn{1}{c|}{}          ... 
+\multicolumn{1}{l}{}             & \multicolumn{1}{l}{}           ... 
+\end{tabular}
+\end{tabla}
+\end{verbatim}
+
+Otra forma de introducir tablas si deseamos mayor control sobre la misma, es la siguiente:
+\begin{verbatim}
+\begin{table}[htb] %El valor introducido dentro de las [] determinará
+la posición en el texto
+\centering
+\caption{\textbf{Tabla Ejemplo}} % Título 
+\begin{tabular}{cccll} 
+\cline{1-3}
+\multicolumn{1}{|c|}{}           & \multicolumn{1}{c|}{\textbf{A}}... 
+\multicolumn{1}{|c|}{\textbf{A}} & \multicolumn{1}{c|}{x}         ... 
+\multicolumn{1}{|c|}{\textbf{B}} & \multicolumn{1}{c|}{}          ... 
+\multicolumn{1}{l}{}             & \multicolumn{1}{l}{}           ... 
+\end{tabular} \\
+\label{tabla_ejemplo_1} % Etiqueta 
+\textbf{Fuente:} Elaboración propia % Fuente
+\end{table}
+\end{verbatim}
+
+De igual forma pueden ser referenciadas de forma directa gracias a las etiquetas \textit{labels} de látex. Haciendo uso de Tabla \ref{tab:tabla_ejemplo} o el comando \tab{tabla_ejemplo}.
+
+Existe formas rápidas de poder generar tablas, y es ingresando a la página: \url{https://www.tablesgenerator.com/}
+
+Donde ustedes pueden ingresar de forma gráfica su tabla y la página se encargara de generar el código correspondiente a \LaTeX.
+
+Existe casos en los cuales contamos con tablas que son mayores a una plana, en lo cual debemos utilizar otro formato, el mismo es presentado a continuación:
+
+\begin{longtable}{|l|l|}%[H]
+
+\caption{Objetivos operativos asociados a los objetivos específicos}
+\label{ob_ope}
+\\
+\hline
+\textbf{Objetivo específico} & \textbf{Objetivos operativos} \\
+\hline \hline
+\endfirsthead
+
+\endhead
+
+\endfoot
+
+\multicolumn{2}{c}{\textbf{Fuente:} Elaboración propia}
+\endlastfoot
+
+\begin{tabular}[c]{@{}l@{}}blah blah \\ blah blah,\\ blah blah y blah blah.\end{tabular}        & \begin{tabular}[c]{@{}l@{}}blah blah.\\ blah blah.\\ blah blah.\end{tabular}                                       \\ \hline
+\begin{tabular}[c]{@{}l@{}}blah blah \\ blah blah,\\ blah blah y blah blah.\end{tabular}        & \begin{tabular}[c]{@{}l@{}}blah blah.\\ blah blah.\\ blah blah.\end{tabular}                                       \\ \hline
+\begin{tabular}[c]{@{}l@{}}blah blah \\ blah blah,\\ blah blah y blah blah.\end{tabular}        & \begin{tabular}[c]{@{}l@{}}blah blah.\\ blah blah.\\ blah blah.\end{tabular}                                       \\ \hline
+\begin{tabular}[c]{@{}l@{}}blah blah \\ blah blah,\\ blah blah y blah blah.\end{tabular}        & \begin{tabular}[c]{@{}l@{}}blah blah.\\ blah blah.\\ blah blah.\end{tabular}                                       \\ \hline
+\begin{tabular}[c]{@{}l@{}}blah blah \\ blah blah,\\ blah blah y blah blah.\end{tabular}        & \begin{tabular}[c]{@{}l@{}}blah blah.\\ blah blah.\\ blah blah.\end{tabular}                                       \\ \hline
+\begin{tabular}[c]{@{}l@{}}blah blah \\ blah blah,\\ blah blah y blah blah.\end{tabular}        & \begin{tabular}[c]{@{}l@{}}blah blah.\\ blah blah.\\ blah blah.\end{tabular}                                       \\ \hline
+\begin{tabular}[c]{@{}l@{}}blah blah \\ blah blah,\\ blah blah y blah blah.\end{tabular}        & \begin{tabular}[c]{@{}l@{}}blah blah.\\ blah blah.\\ blah blah.\end{tabular}                                       \\ \hline
+\begin{tabular}[c]{@{}l@{}}blah blah \\ blah blah,\\ blah blah y blah blah.\end{tabular}        & \begin{tabular}[c]{@{}l@{}}blah blah.\\ blah blah.\\ blah blah.\end{tabular}                                       \\ \hline
+\begin{tabular}[c]{@{}l@{}}blah blah \\ blah blah,\\ blah blah y blah blah.\end{tabular}        & \begin{tabular}[c]{@{}l@{}}blah blah.\\ blah blah.\\ blah blah.\end{tabular}                                       \\ \hline
+\begin{tabular}[c]{@{}l@{}}blah blah \\ blah blah,\\ blah blah y blah blah.\end{tabular}        & \begin{tabular}[c]{@{}l@{}}blah blah.\\ blah blah.\\ blah blah.\end{tabular}                                       \\ \hline
+\begin{tabular}[c]{@{}l@{}}blah blah \\ blah blah,\\ blah blah y blah blah.\end{tabular}        & \begin{tabular}[c]{@{}l@{}}blah blah.\\ blah blah.\\ blah blah.\end{tabular}                                       \\ \hline
+\begin{tabular}[c]{@{}l@{}}blah blah \\ blah blah,\\ blah blah y blah blah.\end{tabular}        & \begin{tabular}[c]{@{}l@{}}blah blah.\\ blah blah.\\ blah blah.\end{tabular}                                       \\ \hline
+
+\end{longtable}
+
+Como podemos apreciar, lo principal para estructurar una tabla "larga" son las siguientes líneas de código:
+
+\begin{verbatim}
+\begin{longtable}{|l|l|}%[H]
+
+\caption{Objetivos operativos asociados a los objetivos específicos}
+\label{ob_ope}
+\\
+\hline
+\textbf{Objetivo específico} & \textbf{Objetivos operativos} \\
+\hline \hline
+\endfirsthead
+
+\endhead
+
+\endfoot
+
+\multicolumn{2}{c}{\textbf{Fuente:} Elaboración propia}
+\endlastfoot
+
+CUERPO TABLA
+
+\end{longtable}
+\end{verbatim}
+
+Donde nosotros definimos cuales serán las cabeceras de nuestra tabla larga y el pie de la misma, posterior a eso, se procede con normalidad.

@@ -1,0 +1,50 @@
+% No modificar estas líneas de código, por favor dirigirse a ANEXOS más abajo.
+
+            \newpage
+            \addtocontents{toc}{\cftpagenumbersoff{section}} 
+            \phantomsection\addcontentsline{toc}{section}{ANEXOS}
+            \addtocontents{toc}{\cftpagenumberson{section}} 
+            
+            \newcommand{\anex}[1]
+            {
+                \newpage
+                \vspace*{\fill}
+                \section[\normalfont#1]{#1}
+                \label{anx:#1}
+                \vspace*{\fill}
+                \newpage
+            }
+            
+            \appendix
+            \renewcommand{\thesection}{\normalfont Anexo \arabic{section}}
+            \addtocontents{toc}{\setlength{\cftsecnumwidth}{1.8cm}}
+            \addtocontents{toc}{\protect\setstretch{1.2}}
+            \addtocontents{toc}{\cftsecpagefont}{}
+            
+            \setcounter{page}{1}
+            \setcounter{figure}{0}
+            \setcounter{table}{0}
+            \titleformat{\section}{\bfseries\normalsize\flushright}{\MakeUppercase{\thesection}}{0em}{\\ \MakeUppercase}
+            \captionsetup{list=no} % Para que no aparezca en índice general 
+
+%------------------------
+%
+%       ANEXOS
+%
+%------------------------
+
+\anex{Título de Anexo 1}
+Introducir lo que se desea.... ahora aprovecharemos de dejar indicaciones para utilizar correctamente anexos y apéndices. 
+
+Los comandos \verb|\anex{}| y \verb|\apex{}| crean una hoja de anexo o apéndice con el título que se le asigne. 
+
+Para referenciar anexos o apéndices existen los comandos \verb|\anx{}| y \verb|\apx{}| que funcionan con el mismo título del anexo o apéndice.
+
+Entre otros comandos de mucha ayuda para lo que es anexos y apéndices, es el poder adicionar documentos en formato PDF de forma directa a nuestro \LaTeX, esto podremos realizar con el comando:
+
+\verb|\includepdf[pages={1,2,n pag del pdf}]{PDFs/nombre_archivo.pdf}|. 
+
+El resultado de esto será el presentado en el anexo a continuación.
+
+\anex{Título de Anexo 2}
+\includepdf[pages={1}]{PDFs/Google_Academic.pdf}
