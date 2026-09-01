@@ -9,46 +9,13 @@
 %------------------------
 
 \section*{INTRODUCCIÓN}
-En la manufactura industrial contemporánea, los procesos de mecanizado por arranque de
-viruta dependen críticamente de la integridad y el estado operativo de las herramientas
-de corte. En operaciones de torneado CNC, un inserto desgastado o fracturado compromete
-las tolerancias geométricas y el acabado superficial de las piezas, propiciando paradas
-no programadas de máquina, reprocesos y sobrecostos en la línea de producción. En este
-contexto, el monitoreo continuo de condición se consolida como un pilar fundamental del
-mantenimiento predictivo dentro del paradigma de la Industria 4.0.
 
-La motivación del presente proyecto se originó durante el desarrollo de la práctica
-profesional en la empresa metalmecánica MAINSA, donde se constató que la supervisión de
-las herramientas de corte en los tornos CNC se realiza predominantemente mediante
-inspección visual periódica y el criterio empírico del operador. Si bien este procedimiento
-permite una operación básica, carece de capacidad para anticipar desgastes acelerados o
-detectar roturas súbitas en tiempo real antes de ocasionar mermas en el material o daños
-en el portaherramientas.
+En la manufactura contemporánea, el mecanizado por arranque de viruta depende críticamente del estado operativo de las herramientas de corte. En los tornos CNC, un inserto desgastado o fracturado compromete la calidad geométrica y superficial de la pieza, propiciando paradas no programadas, reprocesos y sobrecostos. Por ello, el monitoreo de condición es un pilar fundamental del mantenimiento predictivo en el marco de la Industria 4.0.
 
-Al evaluar las alternativas comerciales de detección de fallas en herramientas, se
-evidencia que la mayoría exige una integración directa con el controlador numérico o el
-acceso a las salidas analógicas del servoamplificador. Dicho requerimiento constituye una
-limitación operativa para MAINSA, cuyo parque de maquinaria está conformado por tornos CNC
-heterogéneos y de distintas generaciones, donde estas interfaces no siempre se encuentran
-disponibles o documentadas. Por tanto, se fundamenta la necesidad de concebir una solución
-de monitoreo externa, modular y de carácter no invasivo.
+El presente proyecto nace de la necesidad observada en la empresa metalmecánica MAINSA, donde la supervisión de las herramientas se basa en la inspección visual periódica y el criterio empírico del operador. Este enfoque es insuficiente para anticipar desgastes acelerados o roturas súbitas en tiempo real, lo que ocasiona mermas de material y daños en los portaherramientas. Por otro lado, las soluciones comerciales exigen una integración invasiva con el controlador numérico, lo cual resulta inviable operativamente debido a la heterogeneidad y antigüedad del parque de maquinaria en MAINSA. Esto justifica plenamente el desarrollo de una solución tecnológica externa, modular y de carácter no invasivo.
 
-Como antecedente técnico directo para abordar este desafío, la investigación desarrollada
-por \cite{trejo2010} demostró la viabilidad de estimar el desgaste de flanco mediante la
-fusión de señales de corriente eléctrica y vibración mecánica utilizando instrumentación
-dedicada. No obstante, para sustentar una propuesta contemporánea y tecnológicamente
-sostenible, resulta indispensable examinar la evolución de esta línea de investigación y
-analizar los aportes científicos recientes orientados al procesamiento embebido y la
-conectividad digital.
+Para fundamentar técnica y metodológicamente esta solución, es indispensable analizar los aportes científicos. En este sentido, la siguiente sección de antecedentes se estructura en tres ejes temáticos esenciales: la evolución del monitoreo indirecto basado en señales de corriente y vibración; la aplicación reciente (2024-2026) de Inteligencia Artificial en el borde (\textit{Edge AI}) para procesamiento de señales en tiempo real; y las arquitecturas IoT orientadas al mantenimiento predictivo industrial. Esta revisión permite delimitar el vacío tecnológico específico que el presente trabajo abordará, sentando las bases para una propuesta factible, innovadora y adaptada al contexto real de la empresa.
 
-En consecuencia, el apartado de antecedentes que se desarrolla a continuación se estructura
-en tres ejes temáticos: en primer lugar, los fundamentos y la evolución del monitoreo
-indirecto basado en señales eléctricas de los accionamientos; en segundo lugar, las
-investigaciones recientes (2024--2026) que incorporan procesamiento avanzado de señales e
-inteligencia artificial en el borde (\textit{Edge AI}); y en tercer lugar, las arquitecturas
-de conectividad IoT aplicadas al mantenimiento predictivo industrial. Esta revisión permite
-delimitar el vacío de investigación específico que justifica el presente trabajo de grado y
-establece las bases para el planteamiento metodológico de los capítulos posteriores.
 
 \subsection*{Antecedentes}
 
