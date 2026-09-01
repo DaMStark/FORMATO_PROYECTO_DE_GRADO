@@ -9,49 +9,46 @@
 %------------------------
 
 \section*{INTRODUCCIÓN}
-En la manufactura moderna, los procesos de mecanizado por arranque de viruta dependen
-críticamente del estado de la herramienta de corte. Un inserto desgastado o roto no solo
-compromete las tolerancias dimensionales y el acabado superficial de la pieza, sino que
-puede generar paros no programados, reprocesos y sobrecostos significativos en la línea
-de producción. Esta problemática ha cobrado nueva relevancia con el auge del
-mantenimiento predictivo dentro del paradigma de Industria 4.0.
+En la manufactura industrial contemporánea, los procesos de mecanizado por arranque de
+viruta dependen críticamente de la integridad y el estado operativo de las herramientas
+de corte. En operaciones de torneado CNC, un inserto desgastado o fracturado compromete
+las tolerancias geométricas y el acabado superficial de las piezas, propiciando paradas
+no programadas de máquina, reprocesos y sobrecostos en la línea de producción. En este
+contexto, el monitoreo continuo de condición se consolida como un pilar fundamental del
+mantenimiento predictivo dentro del paradigma de la Industria 4.0.
 
-Esta necesidad se identificó de manera directa durante el desarrollo de las pasantías
-profesionales en MAINSA, donde se observó que el estado de las herramientas de corte en
-los tornos CNC se determina casi exclusivamente mediante inspección visual periódica y la
-experiencia acumulada del operador. Esta práctica, si bien funcional, no permite anticipar
-fallas incipientes ni detectar una rotura súbita antes de que esta afecte la pieza en
-proceso. A partir de esta observación se planteó la presente propuesta al personal técnico
-de la empresa, la cual fue recibida con interés dada la recurrencia del problema.
+La motivación del presente proyecto se originó durante el desarrollo de la práctica
+profesional en la empresa metalmecánica MAINSA, donde se constató que la supervisión de
+las herramientas de corte en los tornos CNC se realiza predominantemente mediante
+inspección visual periódica y el criterio empírico del operador. Si bien este procedimiento
+permite una operación básica, carece de capacidad para anticipar desgastes acelerados o
+detectar roturas súbitas en tiempo real antes de ocasionar mermas en el material o daños
+en el portaherramientas.
 
-Al indagar en soluciones existentes, se encontró que la mayoría de los sistemas
-comerciales de detección de rotura de herramienta requieren integración directa con el
-controlador del CNC o acceso a la salida de monitoreo del servoamplificador. Esta
-condición representa una barrera real para MAINSA, cuyo parque de máquinas está
-compuesto por equipos de distintas marcas y antigüedades, no siempre con dicha salida
-disponible o documentada. Este hallazgo confirmó la pertinencia de orientar el proyecto
-hacia una solución de tipo periférico y no invasivo.
+Al evaluar las alternativas comerciales de detección de fallas en herramientas, se
+evidencia que la mayoría exige una integración directa con el controlador numérico o el
+acceso a las salidas analógicas del servoamplificador. Dicho requerimiento constituye una
+limitación operativa para MAINSA, cuyo parque de maquinaria está conformado por tornos CNC
+heterogéneos y de distintas generaciones, donde estas interfaces no siempre se encuentran
+disponibles o documentadas. Por tanto, se fundamenta la necesidad de concebir una solución
+de monitoreo externa, modular y de carácter no invasivo.
 
-Como punto de partida técnico para abordar este problema se tomó la tesis doctoral de
-\cite{trejo2010}, que demuestra la viabilidad de estimar el desgaste de herramienta
-fusionando señales de corriente y vibración mediante un sensor inteligente. Sin embargo,
-revisar únicamente este documento resultaba insuficiente para sustentar una propuesta
-actual: era necesario establecer si dicho enfoque contaba con antecedentes propios que lo
-validaran en el tiempo, y si existían desarrollos recientes que permitieran superar sus
-limitaciones \citep{trejo2010}.
+Como antecedente técnico directo para abordar este desafío, la investigación desarrollada
+por \cite{trejo2010} demostró la viabilidad de estimar el desgaste de flanco mediante la
+fusión de señales de corriente eléctrica y vibración mecánica utilizando instrumentación
+dedicada. No obstante, para sustentar una propuesta contemporánea y tecnológicamente
+sostenible, resulta indispensable examinar la evolución de esta línea de investigación y
+analizar los aportes científicos recientes orientados al procesamiento embebido y la
+conectividad digital.
 
-Por ello, el presente capítulo de antecedentes se organiza en tres bloques
-complementarios. El primero traza el origen y la evolución del monitoreo no invasivo
-basado en corriente eléctrica, mostrando que la tesis base forma parte de una línea de
-investigación continua. El segundo revisa la literatura más reciente (2024-2026) que
-valida este enfoque mediante inteligencia artificial embebida. El tercero examina
-antecedentes de conectividad IoT aplicados a mantenimiento predictivo remoto.
-
-El propósito último de esta revisión es doble: por un lado, demostrar que el problema
-abordado tiene sustento técnico consolidado y no responde a una necesidad aislada de
-MAINSA; por otro, delimitar con precisión el vacío específico que este proyecto busca
-cubrir, sirviendo como base argumentativa para el planteamiento del problema, los
-objetivos y la metodología que se desarrollan en los capítulos siguientes.
+En consecuencia, el apartado de antecedentes que se desarrolla a continuación se estructura
+en tres ejes temáticos: en primer lugar, los fundamentos y la evolución del monitoreo
+indirecto basado en señales eléctricas de los accionamientos; en segundo lugar, las
+investigaciones recientes (2024--2026) que incorporan procesamiento avanzado de señales e
+inteligencia artificial en el borde (\textit{Edge AI}); y en tercer lugar, las arquitecturas
+de conectividad IoT aplicadas al mantenimiento predictivo industrial. Esta revisión permite
+delimitar el vacío de investigación específico que justifica el presente trabajo de grado y
+establece las bases para el planteamiento metodológico de los capítulos posteriores.
 
 \subsection*{Antecedentes}
 
