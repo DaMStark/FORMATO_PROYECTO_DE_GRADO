@@ -19,6 +19,7 @@ Por otro lado, las soluciones comerciales existentes exigen una integración dir
 En este sentido, la siguiente sección de antecedentes se estructura en tres ejes temáticos esenciales. El primero aborda la evolución del monitoreo indirecto basado en el análisis de señales eléctricas de corriente y vibración. El segundo eje explora la aplicación reciente (2024-2026) de Inteligencia Artificial en el borde (\textit{Edge AI}) para inferencia local. Finalmente, el tercero revisa las arquitecturas IoT orientadas al mantenimiento predictivo industrial para delimitar claramente el vacío tecnológico existente.
 
 \subsection*{Antecedentes}
+\phantomsection\addcontentsline{toc}{subsection}{Antecedentes}
 
 El monitoreo de condición de herramientas de corte constituye una estrategia relevante para mejorar la calidad de manufactura. Permite disminuir la generación de piezas defectuosas y reducir paradas no planificadas en máquinas CNC. Dentro de las técnicas indirectas de monitoreo, el análisis de señales eléctricas de los accionamientos representa una alternativa de bajo impacto. Esto permite inferir cambios en la carga de corte sin necesidad de instalar sensores invasivos directamente sobre la herramienta de corte.
 
@@ -59,6 +60,7 @@ Finalmente, \cite{hamasha2025} propusieron un complejo y completo marco integral
 A partir de todos los numerosos antecedentes exhaustivamente revisados, se observa que ya existen sólidas investigaciones consolidadas relativas a detección y fallas. Sin embargo, dichos estudios literarios abordan los diferentes componentes tecnológicos mayoritariamente de manera totalmente independiente y sumamente aislada. Por consiguiente, el gran y ambicioso aporte ingenieril de este proyecto radica en la inusual integración simultánea de estas tecnologías operando en el entorno real de MAINSA.
 
 \subsection*{Identificación del problema}
+\phantomsection\addcontentsline{toc}{subsection}{Identificación del problema}
 
 La presente investigación surge a partir de las observaciones empíricas y experiencias adquiridas durante la práctica profesional en campo. Específicamente, estas vivencias técnicas tuvieron lugar cotidiano en las instalaciones operativas de la empresa metalmecánica Maestranza San Carlos (MAINSA). Durante el seguimiento constante de las complejas operaciones cotidianas en los tornos y fresadoras CNC, se identificó un problema limitante. 
 
@@ -69,19 +71,22 @@ El desprendimiento sumamente irregular generaba de manera directa un pésimo aca
 Al ser este un método productivo y operativo netamente subjetivo y altamente dependiente del caprichoso factor humano, resulta impreciso y deficiente para el demandante entorno industrial. Esta gran carencia y debilidad metodológica afecta gravemente el nivel de profesionalismo del producto final mecanizado y compromete la eficiencia productiva de todo el taller. Resultó, por ende, verdaderamente imperativo abordar tecnológica y audazmente este gran desafío industrial mediante un enfoque netamente ingenieril y con nuevas tecnologías embebidas.
 
 \subsection*{Formulación del problema}
+\phantomsection\addcontentsline{toc}{subsection}{Formulación del problema}
 
 Tomando firmemente como base central la compleja situación empírica recientemente descrita, es imperativo y altamente necesario plantear la interrogante guía. La problemática central, angular y principal de este presente trabajo de grado tecnológico y aplicado se resume fidedignamente en la siguiente pregunta de investigación científica:
 
 ¿De qué manera técnica se puede monitorear de forma continua, cuantitativa y no invasiva el preciso nivel de desgaste de los insertos de corte en los tornos CNC de la empresa MAINSA, con el ineludible propósito de lograr prevenir roturas súbitas imprevisibles, garantizar invariablemente un acabado sumamente profesional y reducir tajantemente los elevados y costosos tiempos por ineficiente retrabajo?
 
-
 \subsection*{Objetivos}
+\phantomsection\addcontentsline{toc}{subsection}{Objetivos}
 
 \subsubsection*{Objetivo general}
+\phantomsection\addcontentsline{toc}{subsubsection}{Objetivo general}
 
 Desarrollar e implementar un sistema embebido de monitoreo no invasivo basado en Internet de las Cosas (IoT) y algoritmos de Inteligencia Artificial en el borde (\textit{Edge AI}) para evaluar continuamente el estado de desgaste de las herramientas de corte en tornos CNC de la empresa MAINSA. Para este propósito central, se realizará la fusión de señales de corriente (sensor SCT013) y vibración mecánica (acelerómetro), buscando anticipar con fiabilidad roturas inesperadas, optimizar acabados superficiales y disminuir los tiempos perdidos en retrabajos.
 
 \subsubsection*{Objetivos específicos}
+\phantomsection\addcontentsline{toc}{subsubsection}{Objetivos específicos}
 
 Para alcanzar de manera exitosa y estructurada el objetivo principal de este trabajo de grado, se han delimitado estratégicamente los siguientes objetivos específicos secuenciales:
 
@@ -94,29 +99,36 @@ Para alcanzar de manera exitosa y estructurada el objetivo principal de este tra
 \end{itemize}
 
 \subsection*{Hipótesis}
+\phantomsection\addcontentsline{toc}{subsection}{Hipótesis}
 
 La integración de un sistema embebido de monitoreo no invasivo basado en la adquisición y fusión de señales de corriente y vibración mecánica, procesadas localmente mediante algoritmos de Inteligencia Artificial en el borde (\textit{Edge AI}) sobre un microcontrolador STM32, permite clasificar el nivel de desgaste de los insertos y anticipar eventos de falla o rotura súbita con una precisión superior al 90\,\% en condiciones de corte reales, reduciendo significativamente las mermas de material y los tiempos improductivos por retrabajo en los tornos CNC de la empresa MAINSA.
 
 \subsection*{Justificación}
+\phantomsection\addcontentsline{toc}{subsection}{Justificación}
 
 \subsubsection*{Justificación técnica}
+\phantomsection\addcontentsline{toc}{subsubsection}{Justificación técnica}
 
 Desde la perspectiva técnica, el parque de maquinaria CNC en talleres metalmecánicos como MAINSA suele presentar una notable heterogeneidad tecnológica, lo que dificulta la incorporación de sistemas comerciales de monitoreo propietarios de alto costo. En este contexto, el desarrollo de una arquitectura de instrumentación externa y no invasiva (\textit{retrofitting}) constituye una solución altamente viable que evita modificar la integridad del controlador numérico. La combinación complementaria de señales de corriente del husillo y acelerometría mecánica permite capturar simultáneamente los esfuerzos globales de corte y las oscilaciones dinámicas de alta frecuencia asociadas a la pérdida de filo.
 
 Asimismo, la implementación de algoritmos de aprendizaje automático directamente en el extremo de la red (\textit{Edge AI}) sobre un microcontrolador STM32 aporta una ventaja operativa determinante al eliminar la latencia de transmisión hacia servidores externos. Esta capacidad de inferencia local garantiza tiempos de respuesta casi instantáneos ante anomalías severas en el mecanizado, asegurando una supervisión continua y robusta frente al elevado ruido electromagnético y las complejas perturbaciones que caracterizan el entorno productivo real del taller industrial.
 
 \subsubsection*{Justificación económica}
+\phantomsection\addcontentsline{toc}{subsubsection}{Justificación económica}
 
 En el ámbito económico, la rotura intempestiva de insertos y el mecanizado con herramientas degradadas generan pérdidas financieras directas debido al desperdicio de materia prima y a la necesidad imperiosa de ejecutar costosos retrabajos sobre piezas fuera de tolerancia. La implementación de un sistema de mantenimiento predictivo de bajo costo permitirá maximizar la vida útil efectiva de cada inserto sin comprometer los acabados superficiales, reduciendo notablemente las paradas no programadas de máquina y optimizando el rendimiento operativo global de la empresa MAINSA.
 
 \subsubsection*{Justificación social y operativa}
+\phantomsection\addcontentsline{toc}{subsubsection}{Justificación social y operativa}
 
 En el plano social y de seguridad industrial, la fractura violenta de una herramienta de corte durante operaciones de desbaste o cilindrado a alta velocidad representa un riesgo latente para la integridad física de los operarios debido a la posible proyección de esquirlas metálicas y potenciales colisiones mecánicas severas. Por consiguiente, dotar al personal técnico de herramientas tecnológicas que anticipen fallas críticas promueve un entorno de trabajo más seguro y confiable, fomentando a la vez la apropiación y transferencia de tecnologías de la Industria 4.0 en el sector productivo regional.
 
 \subsection*{Alcance}
+\phantomsection\addcontentsline{toc}{subsection}{Alcance}
 
 El alcance del presente trabajo de grado comprende el diseño, desarrollo, calibración y validación experimental de un prototipo embebido funcional para el monitoreo de condición de herramientas en tornos CNC de la empresa MAINSA. La solución abarca desde la adquisición y acondicionamiento de señales analógicas de corriente (mediante sensor SCT013) y vibración mecánica (mediante acelerómetro MEMS), pasando por la ejecución del modelo de inferencia \textit{Edge AI} en el microcontrolador STM32, hasta la transmisión inalámbrica de datos hacia una plataforma IoT para visualización remota en tiempo real.
 
 \subsection*{Límites}
+\phantomsection\addcontentsline{toc}{subsection}{Límites}
 
 El proyecto se encuentra delimitado a las condiciones operativas y tipos de mecanizado habituales en el taller de MAINSA, focalizándose principalmente en operaciones de torneado sobre aceros al carbono y aleados bajo parámetros de corte estándar. Asimismo, el sistema operará como una plataforma de supervisión y diagnóstico predictivo con generación de alertas tempranas, sin intervenir directamente los circuitos de paro de emergencia (\textit{E-Stop}) ni alterar los lazos de control internos del CNC, garantizando en todo momento la preservación de las garantías de los equipos.
