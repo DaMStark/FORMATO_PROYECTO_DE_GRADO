@@ -79,18 +79,18 @@ Tomando firmemente como base central la compleja situación empírica recienteme
 
 \subsubsection*{Objetivo general}
 
-Desarrollar e implementar un sistema embebido de monitoreo no invasivo basado en Internet de las Cosas (IoT) y algoritmos de Inteligencia Artificial en el borde (\textit{Edge AI}) para evaluar continuamente el estado de desgaste de las herramientas de corte en tornos CNC de la empresa MAINSA. Para este propósito central, se utilizará el sensor de corriente SCT013, buscando anticipar con fiabilidad roturas inesperadas, optimizar los acabados superficiales y disminuir los tiempos perdidos en retrabajos.
+Desarrollar e implementar un sistema embebido de monitoreo no invasivo basado en Internet de las Cosas (IoT) y algoritmos de Inteligencia Artificial en el borde (\textit{Edge AI}) para evaluar continuamente el estado de desgaste de las herramientas de corte en tornos CNC de la empresa MAINSA. Para este propósito central, se realizará la fusión de señales de corriente (sensor SCT013) y vibración mecánica (acelerómetro), buscando anticipar con fiabilidad roturas inesperadas, optimizar acabados superficiales y disminuir los tiempos perdidos en retrabajos.
 
 \subsubsection*{Objetivos específicos}
 
 Para alcanzar de manera exitosa y estructurada el objetivo principal de este trabajo de grado, se han delimitado estratégicamente los siguientes objetivos específicos secuenciales:
 
 \begin{itemize}
-\item Diseñar la arquitectura de hardware del nodo de adquisición utilizando un microcontrolador STM32 y un sensor SCT013.
-\item Programar el firmware dedicado para el acondicionamiento, muestreo preciso y filtrado digital de las señales de corriente.
-\item Desarrollar y entrenar un modelo algorítmico ligero de aprendizaje automático (\textit{Edge AI}) para clasificar niveles de desgaste.
-\item Implementar una interfaz de plataforma de monitoreo remoto IoT para visualización del estado técnico en tiempo real.
-\item Validar rigurosamente el prototipo en las instalaciones de MAINSA, evaluando la mejora efectiva en los procesos operativos.
+\item Diseñar la arquitectura de hardware del nodo de adquisición utilizando un microcontrolador STM32, un sensor de corriente SCT013 y un sensor de acelerometría para vibraciones.
+\item Programar el firmware dedicado para el acondicionamiento, muestreo síncrono y filtrado digital de las señales de corriente y aceleración mecánica.
+\item Desarrollar y entrenar un modelo algorítmico ligero de aprendizaje automático (\textit{Edge AI}) que aplique fusión sensorial para clasificar niveles de desgaste del inserto.
+\item Implementar una interfaz de plataforma de monitoreo remoto IoT para la visualización del estado técnico y generación de alertas tempranas en tiempo real.
+\item Validar rigurosamente el prototipo en las instalaciones de MAINSA, evaluando la mejora efectiva en los acabados superficiales y la reducción de mermas operativas.
 \end{itemize}
 
 \subsection*{Hipótesis}
