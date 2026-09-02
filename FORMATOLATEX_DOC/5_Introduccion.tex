@@ -95,86 +95,28 @@ Para alcanzar de manera exitosa y estructurada el objetivo principal de este tra
 
 \subsection*{Hipótesis}
 
-Lo más interesante de \LaTeX es la manera en la que se pueden escribir fórmulas.
+La integración de un sistema embebido de monitoreo no invasivo basado en la adquisición y fusión de señales de corriente y vibración mecánica, procesadas localmente mediante algoritmos de Inteligencia Artificial en el borde (\textit{Edge AI}) sobre un microcontrolador STM32, permite clasificar el nivel de desgaste de los insertos y anticipar eventos de falla o rotura súbita con una precisión superior al 90\,\% en condiciones de corte reales, reduciendo significativamente las mermas de material y los tiempos improductivos por retrabajo en los tornos CNC de la empresa MAINSA.
 
 \subsection*{Justificación}
 
-Podemos escribir una fórmula en el renglón en el que estamos escribiendo. Por ejemplo, $a^2=b^3+c^4$, escribiendo \verb|$a^2=b^3+c^4$|.
+\subsubsection*{Justificación técnica}
 
-Puede que queramos destacar la fórmula, entonces es conveniente escribirla en \textsl{estilo exposición}, es decir, en un renglón aparte y centrada. Así, $$\lim_{x\to +\infty}\dfrac{x^3-\sqrt[4]{3x^5-\pi^e}}{\sen(x)+\ln(x)}$$
-En este caso, hay que escribir la fórmula doblando los dólares, \verb|$$fórmula$$|. 
+Desde la perspectiva técnica, el parque de maquinaria CNC en talleres metalmecánicos como MAINSA suele presentar una notable heterogeneidad tecnológica, lo que dificulta la incorporación de sistemas comerciales de monitoreo propietarios de alto costo. En este contexto, el desarrollo de una arquitectura de instrumentación externa y no invasiva (\textit{retrofitting}) constituye una solución altamente viable que evita modificar la integridad del controlador numérico. La combinación complementaria de señales de corriente del husillo y acelerometría mecánica permite capturar simultáneamente los esfuerzos globales de corte y las oscilaciones dinámicas de alta frecuencia asociadas a la pérdida de filo.
+
+Asimismo, la implementación de algoritmos de aprendizaje automático directamente en el extremo de la red (\textit{Edge AI}) sobre un microcontrolador STM32 aporta una ventaja operativa determinante al eliminar la latencia de transmisión hacia servidores externos. Esta capacidad de inferencia local garantiza tiempos de respuesta casi instantáneos ante anomalías severas en el mecanizado, asegurando una supervisión continua y robusta frente al elevado ruido electromagnético y las complejas perturbaciones que caracterizan el entorno productivo real del taller industrial.
+
+\subsubsection*{Justificación económica}
+
+En el ámbito económico, la rotura intempestiva de insertos y el mecanizado con herramientas degradadas generan pérdidas financieras directas debido al desperdicio de materia prima y a la necesidad imperiosa de ejecutar costosos retrabajos sobre piezas fuera de tolerancia. La implementación de un sistema de mantenimiento predictivo de bajo costo permitirá maximizar la vida útil efectiva de cada inserto sin comprometer los acabados superficiales, reduciendo notablemente las paradas no programadas de máquina y optimizando el rendimiento operativo global de la empresa MAINSA.
+
+\subsubsection*{Justificación social y operativa}
+
+En el plano social y de seguridad industrial, la fractura violenta de una herramienta de corte durante operaciones de desbaste o cilindrado a alta velocidad representa un riesgo latente para la integridad física de los operarios debido a la posible proyección de esquirlas metálicas y potenciales colisiones mecánicas severas. Por consiguiente, dotar al personal técnico de herramientas tecnológicas que anticipen fallas críticas promueve un entorno de trabajo más seguro y confiable, fomentando a la vez la apropiación y transferencia de tecnologías de la Industria 4.0 en el sector productivo regional.
 
 \subsection*{Alcance}
 
-Cuando queremos indicar una cadena de cálculos, no se hace en un mismo renglón, separando con iguales, como a veces hacemos en la pizarra, sino que lo correcto es hacerlo así
-$$\begin{array}{lll}
-(x+y)^2&=&(x+y)(x+y)\\
-&=&x^2+xy+yx+y^2\\
-&=&x^2+2xy+y^2
-\end{array}
-$$
+El alcance del presente trabajo de grado comprende el diseño, desarrollo, calibración y validación experimental de un prototipo embebido funcional para el monitoreo de condición de herramientas en tornos CNC de la empresa MAINSA. La solución abarca desde la adquisición y acondicionamiento de señales analógicas de corriente (mediante sensor SCT013) y vibración mecánica (mediante acelerómetro MEMS), pasando por la ejecución del modelo de inferencia \textit{Edge AI} en el microcontrolador STM32, hasta la transmisión inalámbrica de datos hacia una plataforma IoT para visualización remota en tiempo real.
 
 \subsection*{Límites}
 
-La forma de presentar el trabajo depende del contenido final. Si no contiene demasiadas fórmulas, quizá se puedan escribir como acabamos de decir antes, pero si la cantidad de fórmulas que aparecen es importante, es conveniente etiquetarlas de alguna forma. Esto hace que cada vez que queremos referirnos a una fórmula anterior, no sea necesario volver a escribirla, sino simplemente escribir una referencia. Veamos un par de ejemplos.
-
-El volumen de una región acotada en el espacio se puede calcular mediante la fórmula siguiente:
-\begin{equation}
-\label{eqn:volumen}
-\text{Vol}(\Omega)=\int _\Omega 1\ dxdydz
-\end{equation}
-
-Y el flujo a través de una superficie $S$ de un campo vectorial $\vec{F}$, se puede calcular mediante la integral siguiente:
-\begin{equation}
-\label{eqn:flujo}
-\int_S \vec{F}\cdot d\vec{S}
-\end{equation}
-
-Estas fórmulas se han escrito con los siguientes códigos:
-
-\begin{verbatim}
-\begin{equation}
-\label{eqn:volumen}
-\text{Vol}(\Omega)=\int _\Omega 1\ dxdydz
-\end{equation}
-\end{verbatim}
-
-Y la segunda,
-
-\begin{verbatim}
-\begin{equation}
-\label{eqn:flujo}
-\int_S \vec{F}\cdot d\vec{S}
-\end{equation}
-\end{verbatim}
-
-Las hemos etiquetado con \verb|volumen| y \verb|flujo|, respectivamente. Si ahora, en cualquier parte del documento, queremos referirnos a la ecuación del volumen...
-% comandos para distinguir de las referencias que se hacen 
-%ch:	chapter
-%sec:	section
-%subsec:	subsection
-%fig:	figure
-%tab:	table
-%eqn:	equation
-%lst:	code listing
-%itm:	enumerated list item
-%alg:	algorithm
-%apx:	apéndice subsection
-%anx:	anexo subsection
-
-\
-
-... Como mencionamos anteriormente, para calcular el volumen de un sólido en el espacio, se puede utilizar la \eqn{volumen}. Y para calcular el flujo de un campo vectorial a través de una superficie, se puede utilizar la fórmula \ref{eqn:flujo}...
-
-\
-
-Hemos escrito \verb|(\eqn{volumen})| y \verb|(\ref{eqn:flujo})|, respectivamente. Incluso en el PDF resultante aparecerá un \textsl{enlace} a la fórmula en cuestión.
-
-Se pueden numerar de diferentes formas las ecuaciones, depende del usuario, en este caso se mantiene la numeración simple.
-
-No olvide que luego de cada ecuación nueva, se debe desarrollar las nuevas variables a ser trabajadas. En el cuerpo del presente documento se irá explicando más comandos para poder facilitar todo este proceso, por favor lea todo antes de comenzar a trabajar. 
-
-Existe formas rápidas de poder escribir las ecuaciones, y es ingresando a las páginas: \url{https://www.codecogs.com/latex/eqneditor.php} \\
-\url{http://formulasheet.com/}
-
-Donde ustedes pueden ingresar de forma gráfica su ecuación y la página se encargara de generar el código correspondiente a \LaTeX.
+El proyecto se encuentra delimitado a las condiciones operativas y tipos de mecanizado habituales en el taller de MAINSA, focalizándose principalmente en operaciones de torneado sobre aceros al carbono y aleados bajo parámetros de corte estándar. Asimismo, el sistema operará como una plataforma de supervisión y diagnóstico predictivo con generación de alertas tempranas, sin intervenir directamente los circuitos de paro de emergencia (\textit{E-Stop}) ni alterar los lazos de control internos del CNC, garantizando en todo momento la preservación de las garantías de los equipos.
