@@ -6,33 +6,78 @@
 %
 %------------------------
 
-\newacronym {UCB}      % Nombre
-            {UCB-CBA}  % Acrónimo
-            {Universidad Católica Boliviana "San Pablo", Unidad Académica Regional Cochabamba} % Texto largo
+\newacronym {gcd}
+            {GCD}
+            {\textit{Greatest Common Divisor}}
+
+\newacronym {PID}
+            {PID}
+            {Proporcional, Integral, Derivativo}
+
+\newacronym {UCB}
+            {UCB}
+            {Universidad Católica Boliviana ``San Pablo'', Regional Cochabamba}
+
+\newacronym {CNC}
+            {CNC}
+            {Control Numérico Computarizado (\textit{Computer Numerical Control})}
+
+\newacronym {IoT}
+            {IoT}
+            {Internet de las Cosas (\textit{Internet of Things})}
+
+\newacronym {TCM}
+            {TCM}
+            {Monitoreo de Condición de Herramientas (\textit{Tool Condition Monitoring})}
+
+\newacronym {RMS}
+            {RMS}
+            {Valor Eficaz Cuadrático Medio (\textit{Root Mean Square})}
+
+\newacronym {DMA}
+            {DMA}
+            {Acceso Directo a Memoria (\textit{Direct Memory Access})}
+
+\newacronym {ADC}
+            {ADC}
+            {Convertidor Analógico-Digital (\textit{Analog-to-Digital Converter})}
+
+\newacronym {PWM}
+            {PWM}
+            {Modulación por Ancho de Pulsos (\textit{Pulse Width Modulation})}
+
+\newacronym {THD}
+            {THD}
+            {Distorsión Armónica Total (\textit{Total Harmonic Distortion})}
+
+\newacronym {FFT}
+            {FFT}
+            {Transformada Rápida de Fourier (\textit{Fast Fourier Transform})}
+
+\newacronym {MEMS}
+            {MEMS}
+            {Sistemas Microelectromecánicos (\textit{Microelectromechanical Systems})}
+
+\newacronym {PCB}
+            {PCB}
+            {Placa de Circuito Impreso (\textit{Printed Circuit Board})}
+
+\newacronym {MAINSA}
+            {MAINSA}
+            {Maestranza San Carlos}
 
 %------------------------
 %
-%       GLOSARIO
+%       GLOSARIO DE SÍMBOLOS
 %
 %------------------------
 
-% ------- Lista de acrónimos
-\newacronym {gcd} % Nombre
-            {GCD} % Acrónimo
-            {\textit{Greatest Common Divisor}} % Texto largo
-            
-\newacronym {PID} % Nombre
-            {PID} % Acrónimo
-            {Proporcional, Integral, Derivativo} % Texto largo
-
-% ------- Lista de variables para el glosario 
-
-\newglossaryentry{tau} % Nombre de símbolo
+\newglossaryentry{tau}
 {
-    type=symbols,   % Tipo de glosario (no cambiar a menos que se desee múltiples glosarios)
-    name={\ensuremath{\tau}}, % Título (\ensuremath{} permite colocar símbolos matemáticos como nombre)
-    description={Constante de tiempo para sistemas de control}, % Breve descripción
-    sort=tau % Ordenamiento (combinación única de letras que sirven para ubicar el símbolo alfabéticamente en el índice)
+    type=symbols,
+    name={\ensuremath{\tau}},
+    description={Constante de tiempo para sistemas dinámicos y de control},
+    sort=tau
 }
 
 \newglossaryentry{theta}
@@ -41,4 +86,52 @@
     name={\ensuremath{\theta}},
     description={Atraso de tiempo en continuo para sistemas de control},
     sort=theta
+}
+
+\newglossaryentry{VB}
+{
+    type=symbols,
+    name={\ensuremath{VB}},
+    description={Ancho medio de la banda de desgaste de flanco en la herramienta de corte [mm]},
+    sort=VB
+}
+
+\newglossaryentry{Ra}
+{
+    type=symbols,
+    name={\ensuremath{Ra}},
+    description={Rugosidad media aritmética del perfil superficial mecanizado [$\mu$m]},
+    sort=Ra
+}
+
+\newglossaryentry{Irms}
+{
+    type=symbols,
+    name={\ensuremath{I_{RMS}}},
+    description={Valor eficaz de la corriente de fase consumida por el motor del husillo [A]},
+    sort=Irms
+}
+
+\newglossaryentry{Vrms}
+{
+    type=symbols,
+    name={\ensuremath{V_{RMS}}},
+    description={Valor eficaz del voltaje alterno de alimentación del motor [V]},
+    sort=Vrms
+}
+
+\newglossaryentry{arms}
+{
+    type=symbols,
+    name={\ensuremath{a_{RMS}}},
+    description={Valor eficaz de la aceleración mecánica registrada por el sensor de vibración [g]},
+    sort=arms
+}
+
+\newglossaryentry{Ku}
+{
+    type=symbols,
+    name={\ensuremath{Ku}},
+    description={Curtosis estadística como indicador adimensional de impactos impulsivos en vibraciones},
+    sort=Ku
 }
