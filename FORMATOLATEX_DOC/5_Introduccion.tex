@@ -96,6 +96,63 @@ Para alcanzar de manera exitosa y estructurada el objetivo principal de este tra
 \item Validar rigurosamente el prototipo en las instalaciones de MAINSA, evaluando la mejora efectiva en los acabados superficiales y la reducción de mermas operativas.
 \end{itemize}
 
+\subsubsection*{Acciones por objetivo específico}
+\phantomsection\addcontentsline{toc}{subsubsection}{Acciones por objetivo específico}
+
+Con el propósito de operativizar cada uno de los objetivos específicos formulados y garantizar una ejecución técnica viable y rigurosa sin sobreestimar el alcance del proyecto, en la \tab{acciones_objetivos} se detallan las acciones concretas asociadas a cada fase de desarrollo.
+
+\begin{longtable}{|L{4.8cm}|L{9.2cm}|}
+\caption{Acciones asociadas a los objetivos específicos}
+\label{tab:acciones_objetivos}
+\\
+\hline
+\textbf{Objetivo específico} & \textbf{Acciones a desarrollar} \\
+\hline \hline
+\endfirsthead
+
+\hline
+\textbf{Objetivo específico} & \textbf{Acciones a desarrollar} \\
+\hline \hline
+\endhead
+
+\hline
+\endfoot
+
+\multicolumn{2}{c}{\textbf{Fuente:} Elaboración propia}
+\endlastfoot
+
+1. Diseñar la arquitectura de hardware del nodo de adquisición (STM32, SCT013 y acelerómetro). & 
+\textbullet\ Selección y dimensionamiento técnico de los sensores y el microcontrolador.\\
+& \textbullet\ Diseño del circuito de acondicionamiento analógico para conversión a nivel DC/RMS compatible con el ADC.\\
+& \textbullet\ Diseño y fabricación de la placa PCB con aislamiento galvánico para entorno industrial.\\
+& \textbullet\ Ensamble e integración mecánica no invasiva de los módulos en el torno CNC.\\ \hline
+
+2. Programar el firmware dedicado para muestreo y procesamiento digital de señales. & 
+\textbullet\ Configuración de temporizadores y ADC con acceso directo a memoria (DMA) en el STM32.\\
+& \textbullet\ Implementación de rutinas de filtrado digital pasa-bajos para atenuación de ruido electromagnético.\\
+& \textbullet\ Programación de algoritmos para el cálculo del valor eficaz (RMS) y parámetros temporales de vibración.\\
+& \textbullet\ Validación experimental de la sincronía de muestreo y precisión de la adquisición.\\ \hline
+
+3. Desarrollar y entrenar el modelo ligero de \textit{Edge AI} para clasificación de desgaste. & 
+\textbullet\ Adquisición y etiquetado de registros de mecanizado bajo estados de filo nuevo, desgaste y rotura.\\
+& \textbullet\ Entrenamiento y ajuste de hiperparámetros de un clasificador supervisado compacto.\\
+& \textbullet\ Cuantización y optimización del modelo a punto fijo mediante herramientas embebidas.\\
+& \textbullet\ Medición de la exactitud de clasificación y evaluación del tiempo de inferencia local en el microcontrolador.\\ \hline
+
+4. Implementar la interfaz de monitoreo remoto IoT y generación de alertas. & 
+\textbullet\ Configuración del protocolo de comunicación inalámbrico para la transmisión de estados operativos.\\
+& \textbullet\ Desarrollo de una interfaz gráfica de usuario para la visualización remota de parámetros en tiempo real.\\
+& \textbullet\ Programación de umbrales jerárquicos para notificación preventiva de desgaste crítico.\\
+& \textbullet\ Evaluación de la robustez de la comunicación y latencia del enlace en el taller.\\ \hline
+
+5. Validar experimentalmente el prototipo en las instalaciones de MAINSA. & 
+\textbullet\ Instalación del sistema en el torno CNC bajo operaciones reales de cilindrado y desbaste.\\
+& \textbullet\ Medición de la rugosidad superficial ($Ra$) en probetas mecanizadas con herramientas monitoreadas.\\
+& \textbullet\ Registro y comparación de tiempos de parada e incidentes por rotura frente al método tradicional.\\
+& \textbullet\ Análisis estadístico de los resultados obtenidos y redacción del informe técnico final.\\ \hline
+
+\end{longtable}
+
 \subsection*{Hipótesis}
 \phantomsection\addcontentsline{toc}{subsection}{Hipótesis}
 
@@ -130,6 +187,8 @@ El alcance del presente trabajo de grado comprende el diseño, desarrollo, calib
 \phantomsection\addcontentsline{toc}{subsection}{Límites}
 
 El proyecto se encuentra delimitado a las condiciones operativas y tipos de mecanizado habituales en el taller de MAINSA, focalizándose principalmente en operaciones de torneado sobre aceros al carbono y aleados bajo parámetros de corte estándar. Asimismo, el sistema operará como una plataforma de supervisión y diagnóstico predictivo con generación de alertas tempranas, sin intervenir directamente los circuitos de paro de emergencia (\textit{E-Stop}) ni alterar los lazos de control internos del CNC, garantizando en todo momento la preservación de las garantías de los equipos.
+
+Desde la perspectiva del análisis eléctrico, el proyecto delimita la medición al comportamiento de la componente fundamental de corriente y voltaje alterno, asumiendo una señal senoidal pura. Por consiguiente, se excluye deliberadamente el análisis de distorsión armónica total (THD), componentes armónicos de alta frecuencia y fenómenos transitorios derivados de la modulación por ancho de pulsos (PWM) del variador de frecuencia. Las variaciones en el consumo energético se atribuirán y justificarán estrictamente a los cambios en la magnitud eficaz (RMS) de la tensión y la corriente como respuesta a la velocidad del motor y a la carga mecánica de corte, facilitando la conversión a niveles continuos (DC) para un procesamiento simplificado y eficiente en el microcontrolador.
 
 \subsection*{Estructura del documento}
 \phantomsection\addcontentsline{toc}{subsection}{Estructura del documento}
