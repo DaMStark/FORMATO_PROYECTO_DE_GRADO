@@ -100,6 +100,7 @@ Diseñar e implementar un sistema periférico no invasivo para el monitoreo en t
 \phantomsection\addcontentsline{toc}{subsubsection}{Acciones por objetivo específico}
 Con el propósito de operativizar cada uno de los objetivos específicos y detallar la metodología de ejecución técnica, en la \tab{acciones_objetivos} se desglosan las acciones concretas asociadas a cada fase del proyecto.
 
+{\setlength{\parskip}{1.5pt}
 \begin{longtable}{|L{4.8cm}|L{9.2cm}|}
 \caption{Acciones asociadas a los objetivos específicos}
 \label{tab:acciones_objetivos}
@@ -121,36 +122,37 @@ Con el propósito de operativizar cada uno de los objetivos específicos y detal
 \endlastfoot
 
 1. Recopilar y analizar información técnica y operativa sobre mecanizado y desgaste de herramientas en MAINSA. & 
-\textbullet\ Revisión técnica de manuales de operación, cinemática y parámetros de corte de los tornos CNC en planta.\\
-& \textbullet\ Caracterización de las geometrías de insertos de carburo y tipos de aceros mecanizados habitualmente.\\
-& \textbullet\ Análisis de criterios y patrones de desgaste de flanco según la norma internacional ISO 3685.\\
-& \textbullet\ Relevamiento de datos históricos sobre paradas no programadas, defectos superficiales y roturas de filo.\\ \hline
+\textbullet\ Revisión técnica de manuales de operación, cinemática y parámetros de corte de los tornos CNC en planta.\par
+\textbullet\ Caracterización de las geometrías de insertos de carburo y tipos de aceros mecanizados habitualmente.\par
+\textbullet\ Análisis de criterios y patrones de desgaste de flanco según la norma internacional ISO 3685.\par
+\textbullet\ Relevamiento de datos históricos sobre paradas no programadas, defectos superficiales y roturas de filo.\\ \hline
 
 2. Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, acondicionamiento, Edge AI e IoT. & 
-\textbullet\ Definición del diagrama de bloques funcional (adquisición, acondicionamiento, procesamiento y enlace IoT).\\
-& \textbullet\ Diseño del circuito de acondicionamiento para rectificación y conversión a niveles proporcionales al valor eficaz (RMS).\\
-& \textbullet\ Diseño esquemático y ruteo de la placa de circuito impreso (PCB) con aislamiento galvánico industrial.\\
-& \textbullet\ Concepción del gabinete protector y soportes de fijación no invasiva para la instalación en la máquina.\\ \hline
+\textbullet\ Definición del diagrama de bloques funcional (adquisición, acondicionamiento, procesamiento y enlace IoT).\par
+\textbullet\ Diseño del circuito de acondicionamiento para rectificación y conversión a niveles proporcionales al valor eficaz (RMS).\par
+\textbullet\ Diseño esquemático y ruteo de la placa de circuito impreso (PCB) con aislamiento galvánico industrial.\par
+\textbullet\ Concepción del gabinete protector y soportes de fijación no invasiva para la instalación en la máquina.\\ \hline
 
 3. Seleccionar y dimensionar los sensores de corriente, vibración y la unidad de procesamiento embebido. & 
-\textbullet\ Dimensionamiento del rango de medición y relación de transformación del transductor de corriente según la potencia del motor.\\
-& \textbullet\ Selección del acelerómetro considerando sensibilidad, ancho de banda y rango dinámico de vibración en la torreta.\\
-& \textbullet\ Selección del microcontrolador evaluando periféricos ADC, DMA, instrucciones DSP y memoria requerida.\\
-& \textbullet\ Cálculo y selección de componentes pasivos de filtrado analógico, resistencias de carga y fuentes de alimentación.\\ \hline
+\textbullet\ Dimensionamiento del rango de medición y relación de transformación del transductor de corriente según la potencia del motor.\par
+\textbullet\ Selección del acelerómetro considerando sensibilidad, ancho de banda y rango dinámico de vibración en la torreta.\par
+\textbullet\ Selección del microcontrolador evaluando periféricos ADC, DMA, instrucciones DSP y memoria requerida.\par
+\textbullet\ Cálculo y selección de componentes pasivos de filtrado analógico, resistencias de carga y fuentes de alimentación.\\ \hline
 
 4. Implementar e integrar el sistema periférico de adquisición, procesamiento inteligente y supervisión remota. & 
-\textbullet\ Fabricación, ensamble y verificación eléctrica de la tarjeta de circuito impreso y módulos acondicionadores.\\
-& \textbullet\ Programación del firmware para muestreo síncrono, filtrado digital y extracción de descriptores estadísticos temporales.\\
-& \textbullet\ Entrenamiento, cuantización y despliegue del modelo de aprendizaje automático ligero para clasificación de desgaste.\\
-& \textbullet\ Configuración del protocolo de comunicaciones y desarrollo del panel de supervisión remota para visualización y alertas.\\ \hline
+\textbullet\ Fabricación, ensamble y verificación eléctrica de la tarjeta de circuito impreso y módulos acondicionadores.\par
+\textbullet\ Programación del firmware para muestreo síncrono, filtrado digital y extracción de descriptores estadísticos temporales.\par
+\textbullet\ Entrenamiento, cuantización y despliegue del modelo de aprendizaje automático ligero para clasificación de desgaste.\par
+\textbullet\ Configuración del protocolo de comunicaciones y desarrollo del panel de supervisión remota para visualización y alertas.\\ \hline
 
 5. Validar experimentalmente el funcionamiento del sistema integrado mediante pruebas de corte en MAINSA. & 
-\textbullet\ Instalación y calibración del sistema periférico en el torno CNC bajo condiciones operativas de producción real.\\
-& \textbullet\ Ensayos de torneado cilíndrico registrando señales con insertos en estado nuevo, desgaste moderado y crítico.\\
-& \textbullet\ Medición metrológica de la rugosidad superficial ($Ra$) en probetas y verificación de tolerancias dimensionales.\\
-& \textbullet\ Evaluación cuantitativa de la exactitud de clasificación y cuantificación de la reducción de paradas y mermas.\\ \hline
+\textbullet\ Instalación y calibración del sistema periférico en el torno CNC bajo condiciones operativas de producción real.\par
+\textbullet\ Ensayos de torneado cilíndrico registrando señales con insertos en estado nuevo, desgaste moderado y crítico.\par
+\textbullet\ Medición metrológica de la rugosidad superficial ($Ra$) en probetas y verificación de tolerancias dimensionales.\par
+\textbullet\ Evaluación cuantitativa de la exactitud de clasificación y cuantificación de la reducción de paradas y mermas.\\ \hline
 
 \end{longtable}
+}
 
 \subsection*{Hipótesis}
 \phantomsection\addcontentsline{toc}{subsection}{Hipótesis}
