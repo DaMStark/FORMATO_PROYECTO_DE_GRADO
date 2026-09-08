@@ -81,19 +81,19 @@ A partir del diagnóstico técnico y la problemática operacional descrita en el
 \subsubsection*{Objetivo general}
 \phantomsection\addcontentsline{toc}{subsubsection}{Objetivo general}
 
-Desarrollar e implementar un sistema embebido de monitoreo no invasivo basado en Internet de las Cosas (IoT) y algoritmos de Inteligencia Artificial en el borde (\textit{Edge AI}) para evaluar continuamente el estado de desgaste de las herramientas de corte en tornos CNC de la empresa MAINSA. Para este propósito central, se realizará la fusión de señales de corriente (sensor SCT013) y vibración mecánica (acelerómetro), buscando anticipar con fiabilidad roturas inesperadas, optimizar acabados superficiales y disminuir los tiempos perdidos en retrabajos.
+Desarrollar e implementar un sistema mecatrónico periférico de monitoreo no invasivo basado en Internet de las Cosas (IoT) y algoritmos de Inteligencia Artificial en el borde (\textit{Edge AI}), orientado a evaluar continuamente el estado de desgaste de las herramientas de corte en tornos CNC de la empresa MAINSA. Para este propósito central, se efectuará la fusión sensorial de variables de corriente y vibración mecánica, buscando anticipar oportunamente fallas críticas de insertos, optimizar los acabados superficiales y reducir los tiempos improductivos por retrabajo en planta.
 
 \subsubsection*{Objetivos específicos}
 \phantomsection\addcontentsline{toc}{subsubsection}{Objetivos específicos}
 
-Para alcanzar de manera exitosa y estructurada el objetivo principal de este trabajo de grado, se han delimitado estratégicamente los siguientes objetivos específicos secuenciales:
+Para alcanzar de manera exitosa y estructurada el objetivo general formulado en la presente investigación, se han delimitado los siguientes cinco objetivos específicos secuenciales:
 
 \begin{itemize}
-\item Diseñar la arquitectura de hardware del nodo de adquisición utilizando un microcontrolador STM32, un sensor de corriente SCT013 y un sensor de acelerometría para vibraciones.
-\item Programar el firmware dedicado para el acondicionamiento, muestreo síncrono y filtrado digital de las señales de corriente y aceleración mecánica.
-\item Desarrollar y entrenar un modelo algorítmico ligero de aprendizaje automático (\textit{Edge AI}) que aplique fusión sensorial para clasificar niveles de desgaste del inserto.
-\item Implementar una interfaz de plataforma de monitoreo remoto IoT para la visualización del estado técnico y generación de alertas tempranas en tiempo real.
-\item Validar rigurosamente el prototipo en las instalaciones de MAINSA, evaluando la mejora efectiva en los acabados superficiales y la reducción de mermas operativas.
+\item Recopilar y analizar la información técnica, operativa y normativa sobre los procesos de mecanizado por torneado CNC y los mecanismos tribológicos de desgaste de herramientas en el taller de la empresa MAINSA.
+\item Diseñar la arquitectura mecatrónica integral del sistema periférico de monitoreo, estructurando la etapa de acondicionamiento analógico a valores eficaces, el procesamiento digital en el borde (\textit{Edge AI}) y la conectividad IoT.
+\item Seleccionar y dimensionar los transductores de corriente no invasivos, los sensores de acelerometría y la unidad de procesamiento embebido, en función de las exigencias dinámicas y rangos operativos del torno CNC.
+\item Implementar e integrar el prototipo mecatrónico periférico, programando el firmware de adquisición, los algoritmos de filtrado digital, el clasificador ligero de desgaste y la plataforma de supervisión remota.
+\item Validar experimentalmente el funcionamiento y exactitud diagnóstica del sistema integrado bajo condiciones reales de corte en torno CNC en MAINSA, evaluando la mejora en la rugosidad superficial y la reducción de mermas.
 \end{itemize}
 
 \subsubsection*{Acciones por objetivo específico}
@@ -121,42 +121,42 @@ Con el propósito de operativizar cada uno de los objetivos específicos formula
 \multicolumn{2}{c}{\textbf{Fuente:} Elaboración propia}
 \endlastfoot
 
-1. Diseñar la arquitectura de hardware del nodo de adquisición (STM32, SCT013 y acelerómetro). & 
-\textbullet\ Selección y dimensionamiento técnico de los sensores y el microcontrolador.\\
-& \textbullet\ Diseño del circuito de acondicionamiento analógico para conversión a nivel DC/RMS compatible con el ADC.\\
-& \textbullet\ Diseño y fabricación de la placa PCB con aislamiento galvánico para entorno industrial.\\
-& \textbullet\ Ensamble e integración mecánica no invasiva de los módulos en el torno CNC.\\ \hline
+1. Recopilar y analizar información técnica, operativa y normativa sobre mecanizado y desgaste de herramientas en MAINSA. & 
+\textbullet\ Revisión técnica de manuales operativos, cinemática y parámetros de corte de los tornos CNC en planta.\\
+& \textbullet\ Caracterización de las geometrías de insertos de carburo y tipos de aceros mecanizados habitualmente.\\
+& \textbullet\ Análisis de criterios y patrones de desgaste de flanco según la norma internacional ISO 3685.\\
+& \textbullet\ Relevamiento de datos históricos sobre paradas no programadas, defectos superficiales y roturas de filo.\\ \hline
 
-2. Programar el firmware dedicado para muestreo y procesamiento digital de señales. & 
-\textbullet\ Configuración de temporizadores y ADC con acceso directo a memoria (DMA) en el STM32.\\
-& \textbullet\ Implementación de rutinas de filtrado digital pasa-bajos para atenuación de ruido electromagnético.\\
-& \textbullet\ Programación de algoritmos para el cálculo del valor eficaz (RMS) y parámetros temporales de vibración.\\
-& \textbullet\ Validación experimental de la sincronía de muestreo y precisión de la adquisición.\\ \hline
+2. Diseñar la arquitectura mecatrónica del sistema periférico no invasivo, acondicionamiento, Edge AI e IoT. & 
+\textbullet\ Definición del esquema funcional por bloques (adquisición, acondicionamiento, procesamiento y enlace IoT).\\
+& \textbullet\ Diseño del circuito de acondicionamiento para rectificación y conversión a niveles continuos proporcionales a RMS.\\
+& \textbullet\ Diseño esquemático y ruteo de la placa de circuito impreso (PCB) con aislamiento galvánico industrial.\\
+& \textbullet\ Concepción del gabinete y soportes de fijación no invasiva para la instalación periférica en la máquina.\\ \hline
 
-3. Desarrollar y entrenar el modelo ligero de \textit{Edge AI} para clasificación de desgaste. & 
-\textbullet\ Adquisición y etiquetado de registros de mecanizado bajo estados de filo nuevo, desgaste y rotura.\\
-& \textbullet\ Entrenamiento y ajuste de hiperparámetros de un clasificador supervisado compacto.\\
-& \textbullet\ Cuantización y optimización del modelo a punto fijo mediante herramientas embebidas.\\
-& \textbullet\ Medición de la exactitud de clasificación y evaluación del tiempo de inferencia local en el microcontrolador.\\ \hline
+3. Seleccionar y dimensionar los sensores de corriente, acelerómetros y componentes del sistema embebido. & 
+\textbullet\ Dimensionamiento del rango y relación de transformación del transductor de corriente según la potencia del motor.\\
+& \textbullet\ Selección del acelerómetro considerando sensibilidad, ancho de banda y rango dinámico de vibración en la torreta.\\
+& \textbullet\ Selección de la unidad de procesamiento embebido evaluando periféricos ADC, DMA, instrucciones DSP y memoria.\\
+& \textbullet\ Cálculo y selección de componentes pasivos de filtrado analógico, resistencias de carga y fuentes de poder.\\ \hline
 
-4. Implementar la interfaz de monitoreo remoto IoT y generación de alertas. & 
-\textbullet\ Configuración del protocolo de comunicación inalámbrico para la transmisión de estados operativos.\\
-& \textbullet\ Desarrollo de una interfaz gráfica de usuario para la visualización remota de parámetros en tiempo real.\\
-& \textbullet\ Programación de umbrales jerárquicos para notificación preventiva de desgaste crítico.\\
-& \textbullet\ Evaluación de la robustez de la comunicación y latencia del enlace en el taller.\\ \hline
+4. Implementar e integrar el prototipo mecatrónico, firmware, modelo de clasificación y supervisión IoT. & 
+\textbullet\ Fabricación, ensamble y verificación eléctrica de la tarjeta de adquisición y módulos de acondicionamiento.\\
+& \textbullet\ Programación del firmware para muestreo síncrono, filtrado digital y extracción de parámetros estadísticos temporales.\\
+& \textbullet\ Entrenamiento, cuantización y despliegue del modelo de aprendizaje automático ligero para clasificación de desgaste.\\
+& \textbullet\ Configuración del protocolo de comunicaciones y desarrollo del panel de supervisión remota para visualización y alertas.\\ \hline
 
-5. Validar experimentalmente el prototipo en las instalaciones de MAINSA. & 
-\textbullet\ Instalación del sistema en el torno CNC bajo operaciones reales de cilindrado y desbaste.\\
-& \textbullet\ Medición de la rugosidad superficial ($Ra$) en probetas mecanizadas con herramientas monitoreadas.\\
-& \textbullet\ Registro y comparación de tiempos de parada e incidentes por rotura frente al método tradicional.\\
-& \textbullet\ Análisis estadístico de los resultados obtenidos y redacción del informe técnico final.\\ \hline
+5. Validar experimentalmente el funcionamiento y exactitud diagnóstica del sistema integrado en MAINSA. & 
+\textbullet\ Instalación y calibración del sistema periférico en el torno CNC bajo condiciones operativas de producción real.\\
+& \textbullet\ Ejecución de ensayos de torneado cilíndrico registrando señales con insertos nuevos, desgastados y al fin de vida.\\
+& \textbullet\ Medición metrológica de la rugosidad superficial ($Ra$) en probetas y verificación de tolerancias dimensionales.\\
+& \textbullet\ Evaluación cuantitativa de la exactitud de clasificación y cuantificación de la reducción de mermas operativas.\\ \hline
 
 \end{longtable}
 
 \subsection*{Hipótesis}
 \phantomsection\addcontentsline{toc}{subsection}{Hipótesis}
 
-La integración de un sistema embebido de monitoreo no invasivo basado en la adquisición y fusión de señales de corriente y vibración mecánica, procesadas localmente mediante algoritmos de Inteligencia Artificial en el borde (\textit{Edge AI}) sobre un microcontrolador STM32, permite clasificar el nivel de desgaste de los insertos y anticipar eventos de falla o rotura súbita con una precisión superior al 90\,\% en condiciones de corte reales, reduciendo significativamente las mermas de material y los tiempos improductivos por retrabajo en los tornos CNC de la empresa MAINSA.
+La integración de un sistema embebido de monitoreo no invasivo basado en la adquisición y fusión de señales de corriente y vibración mecánica, procesadas localmente mediante algoritmos de Inteligencia Artificial en el borde (\textit{Edge AI}) sobre una unidad de procesamiento embebido, permite clasificar el nivel de desgaste de los insertos y anticipar eventos de rotura súbita con una exactitud superior al 90\,\% en condiciones de corte reales, reduciendo significativamente las mermas de material y los tiempos improductivos por retrabajo en los tornos CNC de la empresa MAINSA.
 
 \subsection*{Justificación}
 \phantomsection\addcontentsline{toc}{subsection}{Justificación}
@@ -166,7 +166,7 @@ La integración de un sistema embebido de monitoreo no invasivo basado en la adq
 
 Desde la perspectiva técnica, el parque de maquinaria CNC en talleres metalmecánicos como MAINSA suele presentar una notable heterogeneidad tecnológica, lo que dificulta la incorporación de sistemas comerciales de monitoreo propietarios de alto costo. En este contexto, el desarrollo de una arquitectura de instrumentación externa y no invasiva (\textit{retrofitting}) constituye una solución altamente viable que evita modificar la integridad del controlador numérico. La combinación complementaria de señales de corriente del husillo y acelerometría mecánica permite capturar simultáneamente los esfuerzos globales de corte y las oscilaciones dinámicas de alta frecuencia asociadas a la pérdida de filo.
 
-Asimismo, la implementación de algoritmos de aprendizaje automático directamente en el extremo de la red (\textit{Edge AI}) sobre un microcontrolador STM32 aporta una ventaja operativa determinante al eliminar la latencia de transmisión hacia servidores externos. Esta capacidad de inferencia local garantiza tiempos de respuesta casi instantáneos ante anomalías severas en el mecanizado, asegurando una supervisión continua y robusta frente al elevado ruido electromagnético y las complejas perturbaciones que caracterizan el entorno productivo real del taller industrial.
+Asimismo, la implementación de algoritmos de aprendizaje automático directamente en el extremo de la red (\textit{Edge AI}) sobre la unidad de procesamiento embebido aporta una ventaja operativa determinante al eliminar la latencia de transmisión hacia servidores externos. Esta capacidad de inferencia local garantiza tiempos de respuesta casi instantáneos ante anomalías severas en el mecanizado, asegurando una supervisión continua y robusta frente al elevado ruido electromagnético y las complejas perturbaciones que caracterizan el entorno productivo real del taller industrial.
 
 \subsubsection*{Justificación económica}
 \phantomsection\addcontentsline{toc}{subsubsection}{Justificación económica}
@@ -181,7 +181,7 @@ En el plano social y de seguridad industrial, la fractura violenta de una herram
 \subsection*{Alcance}
 \phantomsection\addcontentsline{toc}{subsection}{Alcance}
 
-El alcance del presente trabajo de grado comprende el diseño, desarrollo, calibración y validación experimental de un prototipo embebido funcional para el monitoreo de condición de herramientas en tornos CNC de la empresa MAINSA. La solución abarca desde la adquisición y acondicionamiento de señales analógicas de corriente (mediante sensor SCT013) y vibración mecánica (mediante acelerómetro MEMS), pasando por la ejecución del modelo de inferencia \textit{Edge AI} en el microcontrolador STM32, hasta la transmisión inalámbrica de datos hacia una plataforma IoT para visualización remota en tiempo real.
+El alcance del presente trabajo de grado comprende el diseño, desarrollo, calibración y validación experimental de un prototipo embebido funcional para el monitoreo de condición de herramientas en tornos CNC de la empresa MAINSA. La solución abarca desde la adquisición y acondicionamiento de señales analógicas de corriente (mediante transductor no invasivo) y vibración mecánica (mediante acelerometría MEMS), pasando por la ejecución del modelo de inferencia \textit{Edge AI} en la unidad de procesamiento embebido, hasta la transmisión inalámbrica de datos hacia una plataforma IoT para visualización remota en tiempo real.
 
 \subsection*{Límites}
 \phantomsection\addcontentsline{toc}{subsection}{Límites}
