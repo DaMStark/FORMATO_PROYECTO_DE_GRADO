@@ -179,17 +179,38 @@ En el ámbito económico, la rotura intempestiva de insertos y el mecanizado con
 
 En el plano social y de seguridad industrial, la fractura violenta de una herramienta de corte durante operaciones de desbaste o cilindrado a alta velocidad representa un riesgo latente para la integridad física de los operarios debido a la posible proyección de esquirlas metálicas y potenciales colisiones mecánicas severas. Por consiguiente, dotar al personal técnico de herramientas tecnológicas que anticipen fallas críticas promueve un entorno de trabajo más seguro y confiable, fomentando a la vez la apropiación y transferencia de tecnologías de la Industria 4.0 en el sector productivo regional.
 
-\subsection*{Alcance}
-\phantomsection\addcontentsline{toc}{subsection}{Alcance}
+\subsection*{Alcances}%
+\phantomsection\addcontentsline{toc}{subsection}{Alcances}
 
-El alcance del presente trabajo de grado comprende el diseño, desarrollo, calibración y validación experimental de un prototipo embebido funcional para el monitoreo de condición de herramientas en tornos CNC de la empresa MAINSA. La solución abarca desde la adquisición y acondicionamiento de señales analógicas de corriente (mediante transductor no invasivo) y vibración mecánica (mediante acelerometría MEMS), pasando por la ejecución del modelo de inferencia \textit{Edge AI} en la unidad de procesamiento embebido, hasta la transmisión inalámbrica de datos hacia una plataforma IoT para visualización remota en tiempo real.
+\begin{itemize}
+\item Se desarrollará el diseño y dimensionamiento de un sistema mecatrónico periférico no invasivo orientado al monitoreo en tiempo real del desgaste de herramientas de corte en tornos CNC de la empresa metalmecánica MAINSA.
+\item Se diseñará un módulo de acondicionamiento de señal analógica considerando aislamiento galvánico, rectificación y conversión a niveles de tensión continua proporcionales al valor eficaz (RMS) de la corriente, garantizando la compatibilidad con el convertidor analógico-digital del microcontrolador.
+\item Se integrará un sistema de adquisición multisensorial compuesto por un transductor de corriente no invasivo de núcleo partido para el motor del husillo principal y un sensor acelerómetro MEMS para la captación de vibraciones mecánicas en la torreta portaherramientas.
+\item Se implementará una arquitectura de procesamiento en el borde (\textit{Edge AI}) sobre una unidad embebida para el filtrado digital de señales, extracción de descriptores estadísticos en el dominio del tiempo y ejecución local de un algoritmo ligero de clasificación de estados de desgaste.
+\item Se incorporará un esquema de comunicación inalámbrica mediante protocolo IoT industrial (MQTT/HTTP) para la transmisión periódica de métricas de operación y alertas de desgaste crítico hacia un panel de supervisión remota.
+\item Se establecerán criterios físicos, eléctricos y operativos de diseño a partir de las especificaciones técnicas del torno CNC y las condiciones reales de trabajo en MAINSA, definiendo rangos de medición de corriente, anchos de banda para vibración, requerimientos de aislamiento y frecuencia de muestreo.
+\item Se adoptará como referencia operativa una tasa de muestreo adecuada para la captura de transitorios de corte y un tiempo de respuesta inferior a dos segundos para la notificación de advertencias o desgaste severo ante el operador.
+\item Se considerará como escenario de aplicación industrial las operaciones de torneado longitudinal y refrentado en piezas cilíndricas de aceros al carbono y de media aleación (AISI 1045 y AISI 4140) comúnmente procesados en la planta.
+\item Se definirá un plan de pruebas con métricas numéricas, especificando para cada ensayo la variable física a medir, el instrumento de referencia o contraste, el criterio de aprobación y el número de repeticiones experimentales.
+\item Se comprobará la funcionalidad básica del sistema mediante pruebas de laboratorio en banco de pruebas y validación en taller, verificando adquisición de señales, estabilidad del acondicionamiento, exactitud en la inferencia del modelo embebido y confiabilidad en la transmisión de datos.
+\item Se elaborará documentación técnica básica y un procedimiento de instalación y operación segura en máquina, orientado a guiar la colocación no invasiva de los sensores sin alterar las líneas de potencia ni los lazos de control del torno CNC.
+\end{itemize}
 
-\subsection*{Límites}
+\subsection*{Límites}%
 \phantomsection\addcontentsline{toc}{subsection}{Límites}
 
-El proyecto se encuentra delimitado a las condiciones operativas y tipos de mecanizado habituales en el taller de MAINSA, focalizándose principalmente en operaciones de torneado sobre aceros al carbono y aleados bajo parámetros de corte estándar. Asimismo, el sistema operará como una plataforma de supervisión y diagnóstico predictivo con generación de alertas tempranas, sin intervenir directamente los circuitos de paro de emergencia (\textit{E-Stop}) ni alterar los lazos de control internos del CNC, garantizando en todo momento la preservación de las garantías de los equipos.
-
-Desde la perspectiva del análisis eléctrico, el proyecto delimita la medición al comportamiento de la componente fundamental de corriente y voltaje alterno, asumiendo una señal senoidal pura. Por consiguiente, se excluye deliberadamente el análisis de distorsión armónica total (THD), componentes armónicos de alta frecuencia y fenómenos transitorios derivados de la modulación por ancho de pulsos (PWM) del variador de frecuencia. Las variaciones en el consumo energético se atribuirán y justificarán estrictamente a los cambios en la magnitud eficaz (RMS) de la tensión y la corriente como respuesta a la velocidad del motor y a la carga mecánica de corte, facilitando la conversión a niveles continuos (DC) para un procesamiento simplificado y eficiente en el microcontrolador.
+\begin{itemize}
+\item El proyecto se limitará a la detección y clasificación del desgaste en herramientas de torneado con insertos intercambiables de carburo recubierto, por lo que no contemplará geometrías de herramientas para fresado, taladrado ni materiales cerámicos o superabrasivos (CBN/PCD).
+\item El sistema se desarrollará con fines de demostración tecnológica y validación prototípica en entorno productivo real, por lo que no comprenderá el desarrollo de un equipo industrial final comercialmente certificado ni con homologación metrológica de serie.
+\item El diseño y dimensionamiento del sistema se realizarán con criterios de operación industrial real; sin embargo, la construcción física y validación experimental se limitarán a un prototipo funcional periférico implementado en una máquina herramienta específica de MAINSA.
+\item La instalación física del sistema no implicará la intervención directa de los controladores numéricos de la máquina, los servoamplificadores internos ni los circuitos de paro de emergencia (\textit{E-Stop}), garantizando la preservación de las garantías de los equipos.
+\item El procesamiento de datos eléctricos se limitará a la medición de la componente fundamental y a la evaluación de variaciones en el valor eficaz (RMS) mediante rectificación y acondicionamiento a niveles DC, por lo que no comprenderá el análisis espectral de distorsión armónica total (THD), transitorios derivados de la modulación PWM de los variadores de frecuencia ni modelado armónico avanzado.
+\item La adquisición de vibraciones mecánicas se limitará a acelerometría externa montada en puntos accesibles de la torreta portaherramientas o del carro longitudinal, por lo que no incluirá dinamometría piezoeléctrica multieje en la punta de corte ni instrumentación interna en el interior del husillo rotativo.
+\item El modelo de inteligencia artificial se limitará a algoritmos ligeros de aprendizaje supervisado en el borde para clasificar estados discretos de desgaste (inserto nuevo, desgaste funcional y filo crítico), por lo que no comprenderá la estimación continua de vida útil remanente (RUL) ni modelos de aprendizaje profundo pesado basados en gemelos digitales masivos.
+\item La ejecución de pruebas en planta quedará sujeta a factores externos y restricciones del taller de MAINSA, tales como la disponibilidad de turnos en máquina, la programación del plan de producción, los permisos de acceso y las normas de seguridad ocupacional vigentes.
+\item La comprobación del sistema se enfocará en su funcionalidad básica y capacidad de alerta temprana, por lo que no comprenderá ensayos destructivos continuos hasta la rotura violenta deliberada de múltiples herramientas fuera de los márgenes seguros de operación.
+\item El proyecto no incluirá el desarrollo de una plataforma SCADA o software de gestión integral de mantenimiento (CMMS/ERP) a nivel de toda la fábrica, aunque los datos transmitidos podrán servir como insumo preliminar para futuras integraciones en entornos de manufactura inteligente.
+\end{itemize}
 
 \subsection*{Estructura del documento}
 \phantomsection\addcontentsline{toc}{subsection}{Estructura del documento}
