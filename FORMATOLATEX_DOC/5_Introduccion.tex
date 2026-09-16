@@ -67,6 +67,8 @@ El origen técnico de esta situación se sustenta en tres causas fundamentales i
 
 Esta problemática genera efectos operativos y económicos altamente perjudiciales para MAINSA: la degradación no advertida del filo produce piezas fuera de tolerancia dimensional y con rugosidad superficial deficiente, demandando costosos reprocesos y reposición de material; la rotura imprevista de herramientas provoca paradas no planificadas que alteran la programación de entrega; y los operarios sustituyen prematuramente los insertos ante la incertidumbre de su estado, desperdiciando vida útil remanente y encareciendo sensiblemente el costo por consumibles.
 
+Asimismo, un factor operacional crítico observado en planta es la falta de visualización en tiempo real del proceso de generación y desprendimiento de viruta durante el ciclo de mecanizado en cabina cerrada. Cuando la arista de corte pierde agudeza, el inserto deja de cizallar limpiamente el material e inicia una fricción plástica severa que tiende a quemar o frotar la pieza, alterando la morfología y el volumen normal de viruta desprendida. Al no contar con visibilidad directa ni monitoreo continuo de este fenómeno, el operario es incapaz de advertir oportunamente la anomalía, desencadenando dos consecuencias perjudiciales: por un lado, la sobrecarga mecánica provoca el desportillamiento o la rotura violenta del filo que arruina la pieza; y por otro, genera pérdidas considerables de tiempo productivo debido a que el técnico debe detener la máquina para limpiar esquirlas adheridas y realizar complejas labores de retrabajo.
+
 Con el fin de estructurar visualmente las causas de origen técnico y sus respectivas repercusiones operacionales en la planta, en la \fig{arbol_de_problemas} se expone el árbol de problemas correspondiente a las operaciones de torneado CNC en MAINSA.
 
 \figura[width=0.92\textwidth]{arbol_de_problemas}
@@ -75,16 +77,14 @@ Con el fin de estructurar visualmente las causas de origen técnico y sus respec
 
 \subsection*{Formulación del problema}%
 \phantomsection\addcontentsline{toc}{subsection}{Formulación del problema}
-A partir del diagnóstico técnico y la problemática operacional fundamentada en el árbol de problemas de la empresa MAINSA, se establece la interrogante central que orienta la presente investigación:
-
-¿Cómo diseñar e implementar un sistema periférico no invasivo para el monitoreo en tiempo real del desgaste de herramientas de corte en los tornos CNC de la empresa MAINSA, que permita superar la dependencia de la inspección visual subjetiva, prevenir paradas no planificadas por rotura de filo y reducir las mermas operativas en el taller?
+¿Cómo diseñar un sistema periférico no invasivo para el monitoreo en tiempo real del desgaste de herramientas de corte en los tornos CNC de la empresa MAINSA, que permita superar la dependencia de la inspección visual subjetiva, prevenir paradas no planificadas por rotura de filo y reducir las mermas operativas en el taller?
 
 \subsection*{Objetivos}%
 \phantomsection\addcontentsline{toc}{subsection}{Objetivos}
 
 \subsubsection*{Objetivo general}%
 \phantomsection\addcontentsline{toc}{subsubsection}{Objetivo general}
-Diseñar e implementar un sistema periférico no invasivo para el monitoreo en tiempo real del desgaste de herramientas de corte en tornos CNC de la empresa MAINSA, mediante la medición de variables de corriente y vibración procesadas con algoritmos de inteligencia artificial en el borde (\textit{Edge AI}), para anticipar oportunamente fallas críticas en los insertos y reducir paradas no planificadas en el proceso de mecanizado.
+Diseñar un sistema periférico no invasivo para el monitoreo en tiempo real del desgaste de herramientas de corte en tornos CNC de la empresa MAINSA, mediante la medición de variables de corriente y vibración procesadas con algoritmos de inteligencia artificial en el borde (\textit{Edge AI}), para anticipar oportunamente fallas críticas en los insertos y reducir paradas no planificadas en el proceso de mecanizado.
 
 \subsubsection*{Objetivos específicos}%
 \phantomsection\addcontentsline{toc}{subsubsection}{Objetivos específicos}
@@ -92,7 +92,7 @@ Diseñar e implementar un sistema periférico no invasivo para el monitoreo en t
 \item Investigar los tipos de procesos de mecanizado en torno CNC, los mecanismos de desgaste de herramientas de corte y las tecnologías de inteligencia artificial en el borde (\textit{Edge AI}) orientadas al monitoreo de condición.
 \item Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, integrando acondicionamiento de señal, procesamiento en el borde y conectividad IoT.
 \item Seleccionar y dimensionar los sensores de corriente, vibración y la unidad de procesamiento embebido.
-\item Implementar e integrar el sistema periférico de adquisición, procesamiento inteligente y supervisión remota.
+\item Integrar el sistema periférico de adquisición, procesamiento inteligente y supervisión remota.
 \item Validar experimentalmente el funcionamiento del sistema integrado mediante pruebas de corte en los tornos CNC de MAINSA.
 \end{itemize}
 
@@ -139,8 +139,8 @@ Con el propósito de operativizar cada uno de los objetivos específicos y detal
 \textbullet\ Selección del microcontrolador evaluando periféricos ADC, DMA, instrucciones DSP y memoria requerida.\par
 \textbullet\ Cálculo y selección de componentes pasivos de filtrado analógico, resistencias de carga y fuentes de alimentación.\\ \hline
 
-4. Implementar e integrar el sistema periférico de adquisición, procesamiento inteligente y supervisión remota. & 
-\textbullet\ Fabricación, ensamble y verificación eléctrica de la tarjeta de circuito impreso y módulos acondicionadores.\par
+4. Integrar el sistema periférico de adquisición, procesamiento inteligente y supervisión remota. & 
+\textbullet\ Ensamblaje, integración eléctrica y verificación funcional de la placa de circuito impreso (fabricada por servicio externo) y sus módulos acondicionadores.\par
 \textbullet\ Programación del firmware para muestreo síncrono, filtrado digital y extracción de descriptores estadísticos temporales.\par
 \textbullet\ Entrenamiento, cuantización y despliegue del modelo de aprendizaje automático ligero para clasificación de desgaste.\par
 \textbullet\ Configuración del protocolo de comunicaciones y desarrollo del panel de supervisión remota para visualización y alertas.\\ \hline
@@ -153,11 +153,6 @@ Con el propósito de operativizar cada uno de los objetivos específicos y detal
 
 \end{longtable}
 }
-
-\subsection*{Hipótesis}
-\phantomsection\addcontentsline{toc}{subsection}{Hipótesis}
-
-La integración de un sistema embebido de monitoreo no invasivo basado en la adquisición y fusión de señales de corriente y vibración mecánica, procesadas localmente mediante algoritmos de Inteligencia Artificial en el borde (\textit{Edge AI}) sobre una unidad de procesamiento embebido, permite clasificar el nivel de desgaste de los insertos y anticipar eventos de rotura súbita con una exactitud superior al 90\,\% en condiciones de corte reales, reduciendo significativamente las mermas de material y los tiempos improductivos por retrabajo en los tornos CNC de la empresa MAINSA.
 
 \subsection*{Justificación}%
 \phantomsection\addcontentsline{toc}{subsection}{Justificación}
@@ -188,6 +183,7 @@ Por su parte, los beneficiarios secundarios corresponden a los clientes del tall
 \item Se considerará como proceso de manufactura específico las operaciones de mecanizado por arranque de viruta limitadas a torneado CNC longitudinal (cilindrado exterior) y refrentado.
 \item Se considerará como escenario de aplicación industrial el mecanizado de piezas cilíndricas en aceros al carbono y de media aleación (AISI 1045 y AISI 4140) comúnmente procesados en el taller de MAINSA, empleando herramientas con insertos intercambiables de carburo recubierto.
 \item Se diseñará un módulo de acondicionamiento de señal analógica considerando aislamiento galvánico, rectificación y conversión a niveles de tensión continua proporcionales al valor eficaz (RMS) de la corriente, garantizando la compatibilidad con el convertidor analógico-digital del microcontrolador.
+\item Se desarrollará el diseño circuital esquemático, dimensionamiento de componentes y ruteo de la placa de circuito impreso (PCB) para acondicionamiento y procesamiento, contratando el servicio de fabricación física a una empresa terciaria especializada, para posteriormente realizar el ensamble, soldadura manual e integración en el sistema periférico.
 \item Se integrará un sistema de adquisición multisensorial compuesto por un transductor de corriente no invasivo de núcleo partido para el motor del husillo principal y un sensor acelerómetro MEMS para la captación de vibraciones mecánicas en la torreta portaherramientas.
 \item Se implementará una arquitectura de procesamiento en el borde (\textit{Edge AI}) sobre una unidad embebida para el filtrado digital de señales, extracción de descriptores estadísticos en el dominio del tiempo y ejecución local de un algoritmo ligero de clasificación de estados de desgaste.
 \item Se incorporará un esquema de comunicación inalámbrica mediante protocolo IoT industrial (MQTT/HTTP) para la transmisión periódica de métricas de operación y alertas de desgaste crítico hacia un panel de supervisión remota.
@@ -206,7 +202,8 @@ Por su parte, los beneficiarios secundarios corresponden a los clientes del tall
 \item El proyecto se limitará a la detección y clasificación del desgaste en herramientas de torneado con insertos intercambiables de carburo recubierto, por lo que no contemplará geometrías de herramientas cerámicas, cermet ni materiales superabrasivos (CBN/PCD).
 \item El sistema se desarrollará con fines de demostración tecnológica y validación prototípica en entorno productivo real, por lo que no comprenderá el desarrollo de un equipo industrial final comercialmente certificado ni con homologación metrológica de serie.
 \item El diseño y dimensionamiento del sistema se realizarán con criterios de operación industrial real; sin embargo, la construcción física y validación experimental se limitarán a un prototipo funcional periférico implementado en un torno CNC de la empresa MAINSA.
-\item El procesamiento de datos eléctricos se limitará a la medición de la componente fundamental y a la evaluación de variaciones en el valor eficaz (RMS) mediante rectificación y acondicionamiento a niveles DC, por lo que no comprenderá el análisis espectral de distorsión armónica total (THD), transitorios derivados de la modulación PWM de los variadores de frecuencia ni modelado armónico avanzado.
+\item La fabricación física del sustrato y pistas de la placa de circuito impreso (PCB) se delegará a un servicio industrial tercerizado, limitándose el alcance del proyecto al diseño circuital, selección y cálculo de componentes, montaje manual, integración y programación del firmware.
+\item El procesamiento de datos eléctricos se limitará a la medición de la componente fundamental y a la evaluación de variaciones en el valor eficaz (RMS) mediante rectificación y acondicionamiento a niveles DC (asumiendo un comportamiento cuasi-senoidal para la inferencia de variaciones de par de corte), por lo que se excluye explícitamente el análisis espectral de distorsión armónica total (THD), transitorios derivados de la modulación PWM de los variadores de frecuencia ni modelado armónico avanzado.
 \item La adquisición de vibraciones mecánicas se limitará a acelerometría externa montada en puntos accesibles de la torreta portaherramientas o del carro longitudinal, por lo que no incluirá dinamometría piezoeléctrica multieje en la punta de corte ni instrumentación interna en el interior del husillo rotativo.
 \item El modelo de inteligencia artificial se limitará a algoritmos ligeros de aprendizaje supervisado en el borde para clasificar estados discretos de desgaste (inserto nuevo, desgaste funcional y filo crítico), por lo que no comprenderá la estimación continua de vida útil remanente (RUL) ni modelos de aprendizaje profundo pesado basados en gemelos digitales masivos.
 \item La ejecución de pruebas en planta quedará sujeta a factores externos y restricciones del taller de MAINSA, tales como la disponibilidad de turnos en máquina, la programación del plan de producción, los permisos de acceso y las normas de seguridad ocupacional vigentes.
