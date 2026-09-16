@@ -61,15 +61,19 @@ A partir de todos los numerosos antecedentes exhaustivamente revisados, se obser
 
 \subsection*{Identificación del problema}%
 \phantomsection\addcontentsline{toc}{subsection}{Identificación del problema}
-La problemática central en la empresa metalmecánica Maestranza San Carlos (MAINSA) radica en la carencia de un sistema periférico y no invasivo para el monitoreo en tiempo real del desgaste de las herramientas de corte en sus tornos CNC industriales. A partir de observaciones técnicas directas realizadas durante la estancia en el taller de MAINSA, se constató que la presencia recurrente de malos acabados superficiales y piezas fuera de tolerancia dimensional tiene su origen en la degradación progresiva y no advertida del filo de los insertos de corte. Actualmente, la supervisión de estas herramientas depende por completo de la inspección visual periódica y del criterio subjetivo del operador, una práctica tardía y discontinua que resulta incapaz de advertir anomalías incipientes en el filo antes de que se manifieste una falla severa o el descarte de la pieza trabajada.
+En el sector industrial metalmecánico, los procesos de mecanizado por arranque de viruta mediante tornos de Control Numérico Computarizado (CNC) constituyen una etapa fundamental para la fabricación seriada de componentes cilíndricos de alta precisión dimensional y rigurosa calidad superficial.
 
-El origen técnico de esta situación se sustenta en tres causas fundamentales identificadas en planta: primero, las máquinas herramientas no cuentan con sensores ni módulos de adquisición continua para registrar las condiciones de corte; segundo, el diagnóstico humano visual no permite cuantificar la evolución del desgaste en plena operación; y tercero, la arquitectura cerrada de los controladores CNC bloquea el acceso a las señales internas de los servoamplificadores, impidiendo implementar monitoreo por corriente sin alterar la instalación eléctrica existente ni comprometer la estabilidad operativa del equipo.
+En la empresa metalmecánica Maestranza San Carlos (MAINSA), el control del estado y desgaste de los insertos de corte se efectúa de forma manual y empírica. La supervisión depende por completo de inspecciones visuales periódicas en pausas de máquina y del criterio subjetivo del operador, quien evalúa el sonido del corte y el aspecto exterior de la pieza terminada.
 
-Esta problemática genera efectos operativos y económicos altamente perjudiciales para MAINSA: la degradación no advertida del filo produce piezas fuera de tolerancia dimensional y con rugosidad superficial deficiente, demandando costosos reprocesos y reposición de material; la rotura imprevista de herramientas provoca paradas no planificadas que alteran la programación de entrega; y los operarios sustituyen prematuramente los insertos ante la incertidumbre de su estado, desperdiciando vida útil remanente y encareciendo sensiblemente el costo por consumibles.
+Esta supervisión humana y discontinua resulta insuficiente para advertir a tiempo la degradación progresiva del filo de corte o prever la rotura súbita de la herramienta. Dicha limitación se agrava durante el ciclo de mecanizado en cabina cerrada, donde la nula visibilidad directa del punto de corte impide conocer el estado real del inserto en plena operación.
 
-Asimismo, un factor operacional crítico observado en planta es la falta de visualización en tiempo real del proceso de generación y desprendimiento de viruta durante el ciclo de mecanizado en cabina cerrada. Cuando la arista de corte pierde agudeza, el inserto deja de cizallar limpiamente el material e inicia una fricción plástica severa que tiende a quemar o frotar la pieza, alterando la morfología y el volumen normal de viruta desprendida. Al no contar con visibilidad directa ni monitoreo continuo de este fenómeno, el operario es incapaz de advertir oportunamente la anomalía, desencadenando dos consecuencias perjudiciales: por un lado, la sobrecarga mecánica provoca el desportillamiento o la rotura violenta del filo que arruina la pieza; y por otro, genera pérdidas considerables de tiempo productivo debido a que el técnico debe detener la máquina para limpiar esquirlas adheridas y realizar complejas labores de retrabajo.
+El origen técnico de esta problemática se sustenta en tres factores: la carencia de sensores de monitoreo continuo en los tornos CNC de planta, la arquitectura cerrada de sus controladores que bloquea el acceso a señales internas de los servoamplificadores, y la imposibilidad del ojo humano para cuantificar micras de desgaste en caliente durante el mecanizado.
 
-Con el fin de estructurar visualmente las causas de origen técnico y sus respectivas repercusiones operacionales en la planta, en la \fig{arbol_de_problemas} se expone el árbol de problemas correspondiente a las operaciones de torneado CNC en MAINSA.
+Cuando el inserto pierde agudeza, deja de cizallar limpiamente el material y produce una fricción severa que quema la pieza y altera el desprendimiento de viruta. Al no detectarse oportunamente, este fenómeno desencadena rugosidades superficiales deficientes, piezas descartadas fuera de tolerancia, rotura violenta de herramientas y extensos tiempos muertos dedicados al desatasco de viruta y retrabajos.
+
+Ante este escenario, surge la necesidad imperiosa de diseñar un sistema periférico inteligente y no invasivo que capture variables de corriente y vibración mecánica, procesándolas en el borde (\textit{Edge AI}) para alertar al operario en tiempo real, previniendo fallas catastróficas, optimizando la vida útil de los insertos y reduciendo costos operativos.
+
+Con el fin de estructurar de manera organizada y visual las causas de origen técnico y sus respectivas repercusiones operacionales en la planta, en la \fig{arbol_de_problemas} se expone el árbol de problemas correspondiente a las operaciones de torneado CNC en MAINSA.
 
 \figura[width=0.92\textwidth]{arbol_de_problemas}
 {Árbol de problemas del proceso de torneado CNC en MAINSA}
@@ -89,9 +93,9 @@ Diseñar un sistema periférico no invasivo para el monitoreo en tiempo real del
 \subsubsection*{Objetivos específicos}%
 \phantomsection\addcontentsline{toc}{subsubsection}{Objetivos específicos}
 \begin{itemize}
-\item Investigar los tipos de procesos de mecanizado en torno CNC, los mecanismos de desgaste de herramientas de corte y las tecnologías de inteligencia artificial en el borde (\textit{Edge AI}) orientadas al monitoreo de condición.
+\item Investigar las operaciones de mecanizado en torno CNC, los mecanismos de desgaste de herramientas de corte y las tecnologías de inteligencia artificial en el borde (\textit{Edge AI}) orientadas al monitoreo de condición.
 \item Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, integrando acondicionamiento de señal, procesamiento en el borde y conectividad IoT.
-\item Seleccionar y dimensionar los sensores de corriente, vibración y la unidad de procesamiento embebido.
+\item Dimensionar los sensores de corriente, vibración y la unidad de procesamiento embebido.
 \item Integrar el sistema periférico de adquisición, procesamiento inteligente y supervisión remota.
 \item Validar experimentalmente el funcionamiento del sistema integrado mediante pruebas de corte en los tornos CNC de MAINSA.
 \end{itemize}
@@ -133,7 +137,7 @@ Con el propósito de operativizar cada uno de los objetivos específicos y detal
 \textbullet\ Diseño esquemático y ruteo de la placa de circuito impreso (PCB) con aislamiento galvánico industrial.\par
 \textbullet\ Concepción del gabinete protector y soportes de fijación no invasiva para la instalación en la máquina.\\ \hline
 
-3. Seleccionar y dimensionar los sensores de corriente, vibración y la unidad de procesamiento embebido. & 
+3. Dimensionar los sensores de corriente, vibración y la unidad de procesamiento embebido. & 
 \textbullet\ Dimensionamiento del rango de medición y relación de transformación del transductor de corriente según la potencia del motor.\par
 \textbullet\ Selección del acelerómetro considerando sensibilidad, ancho de banda y rango dinámico de vibración en la torreta.\par
 \textbullet\ Selección del microcontrolador evaluando periféricos ADC, DMA, instrucciones DSP y memoria requerida.\par
@@ -156,6 +160,7 @@ Con el propósito de operativizar cada uno de los objetivos específicos y detal
 
 \subsection*{Justificación}%
 \phantomsection\addcontentsline{toc}{subsection}{Justificación}
+La justificación del presente proyecto expone las razones que sustentan su desarrollo, articulando la necesidad identificada en el taller de mecanizado, el beneficio técnico-operativo de la solución mecatrónica, la importancia de la innovación tecnológica y los beneficiarios directos e indirectos, estructurándose en tres dimensiones:
 
 \subsubsection*{Justificación técnica}%
 \phantomsection\addcontentsline{toc}{subsubsection}{Justificación técnica}
@@ -177,6 +182,7 @@ Por su parte, los beneficiarios secundarios corresponden a los clientes del tall
 
 \subsection*{Alcances}%
 \phantomsection\addcontentsline{toc}{subsection}{Alcances}
+El alcance establece con precisión el nivel de desarrollo de la solución, los procesos considerados, las funcionalidades incluidas y los resultados tangibles que el proyecto entregará a su conclusión en estricta coherencia con los objetivos específicos. A continuación, se detallan los alcances técnicos del sistema:
 
 \begin{itemize}
 \item Se desarrollará el diseño y dimensionamiento de un sistema mecatrónico periférico no invasivo orientado al monitoreo en tiempo real del desgaste de herramientas de corte en tornos CNC de la empresa metalmecánica MAINSA.
@@ -194,8 +200,34 @@ Por su parte, los beneficiarios secundarios corresponden a los clientes del tall
 \item Se elaborará documentación técnica básica y un procedimiento de instalación y operación segura en máquina, orientado a guiar la colocación no invasiva de los sensores sin alterar las líneas de potencia ni los lazos de control del torno CNC.
 \end{itemize}
 
+\newpage
 \subsection*{Límites}%
 \phantomsection\addcontentsline{toc}{subsection}{Límites}
+Los límites establecen con rigurosidad qué aspectos no serán desarrollados o considerados dentro del proyecto, permitiendo delimitar el campo de acción para evitar expectativas que excedan los recursos y tiempos disponibles. Con el propósito de contrastar de forma directa lo que el proyecto desarrollará frente a lo que no desarrollará, en la \tab{alcance_limites} se presenta la matriz comparativa de alcances y límites según las pautas metodológicas de la asignatura.
+
+{\setlength{\parskip}{1.5pt}
+\begin{table}[htbp]
+\centering
+\caption{Matriz comparativa de alcances y límites del proyecto}
+\label{tab:alcance_limites}
+\begin{tabular}{|L{6.8cm}|L{7.2cm}|}
+\hline
+\textbf{Alcance (Lo que se desarrollará)} & \textbf{Límites (Lo que no se desarrollará)} \\ \hline \hline
+Prototipo funcional periférico probado en un torno CNC real en MAINSA. & Equipo comercial certificado con homologación metrológica de serie. \\ \hline
+Operaciones de torneado longitudinal y refrentado en aceros AISI 1045 y 4140. & Procesos de fresado, taladrado, rectificado o mecanizado en aleaciones especiales. \\ \hline
+Herramientas con insertos intercambiables de carburo de tungsteno recubierto. & Insertos cerámicos, cermet o materiales superabrasivos (CBN/PCD). \\ \hline
+Medición de corriente del husillo y acelerometría MEMS en la torreta. & Dinamometría piezoeléctrica multieje directa ni instrumentación interna de husillo. \\ \hline
+Acondicionamiento RMS y componente fundamental cuasi-senoidal (inferencia de par). & Análisis espectral de distorsión armónica total (THD) ni transitorios de conmutación PWM. \\ \hline
+Clasificación discreta de estados de desgaste mediante modelo ligero Edge AI. & Estimación continua de vida útil remanente (RUL) ni gemelos digitales pesados. \\ \hline
+Diseño esquemático, ruteo y ensamblado propio; fabricación física por servicio externo. & Fabricación física del sustrato de PCB en laboratorio propio. \\ \hline
+Transmisión IoT (MQTT/HTTP) hacia panel de supervisión local del taller. & Plataforma SCADA de planta ni integración ERP/CMMS corporativo. \\ \hline
+\end{tabular}
+\\[2pt]
+{\footnotesize \textbf{Fuente:} Elaboración propia}
+\end{table}
+}
+
+A continuación, se describen en detalle los límites y restricciones operativas del proyecto:
 
 \begin{itemize}
 \item El proyecto se limitará a operaciones de torneado CNC en torno horizontal, por lo que no contemplará procesos de fresado, taladrado, rectificado ni electroerosión.
