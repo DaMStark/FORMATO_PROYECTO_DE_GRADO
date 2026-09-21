@@ -1,18 +1,20 @@
-(indexentry :tkey (("GCD" "\\glossentry{gcd}") ) :locref "{}{10}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("PID" "\\glossentry{PID}") ) :locref "{}{10}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("UCB" "\\glossentry{UCB}") ) :locref "{}{10}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("CNC" "\\glossentry{CNC}") ) :locref "{}{10}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("IoT" "\\glossentry{IoT}") ) :locref "{}{10}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("TCM" "\\glossentry{TCM}") ) :locref "{}{10}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("RMS" "\\glossentry{RMS}") ) :locref "{}{10}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("DMA" "\\glossentry{DMA}") ) :locref "{}{10}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("ADC" "\\glossentry{ADC}") ) :locref "{}{10}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("PWM" "\\glossentry{PWM}") ) :locref "{}{10}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("THD" "\\glossentry{THD}") ) :locref "{}{10}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("FFT" "\\glossentry{FFT}") ) :locref "{}{10}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("MEMS" "\\glossentry{MEMS}") ) :locref "{}{10}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("PCB" "\\glossentry{PCB}") ) :locref "{}{10}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("MAINSA" "\\glossentry{MAINSA}") ) :locref "{}{10}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("GCD" "\\glossentry{gcd}") ) :locref "{}{2}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("GCD" "\\glossentry{gcd}") ) :locref "{}{2}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("GCD" "\\glossentry{gcd}") ) :locref "{}{2}" :attr "pageglsnumberformat" ) 
+\glossaryentry{UCB?\glossentry{UCB}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{MAINSA?\glossentry{MAINSA}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{CNC?\glossentry{CNC}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{TCM?\glossentry{TCM}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{Edge AI?\glossentry{EdgeAI}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{TinyML?\glossentry{TinyML}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{IoT?\glossentry{IoT}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{MQTT?\glossentry{MQTT}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{MEMS?\glossentry{MEMS}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{RMS?\glossentry{RMS}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{DSP?\glossentry{DSP}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{ADC?\glossentry{ADC}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{DMA?\glossentry{DMA}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{PWM?\glossentry{PWM}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{THD?\glossentry{THD}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{FFT?\glossentry{FFT}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{PCB?\glossentry{PCB}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{ISO?\glossentry{ISO}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{AISI?\glossentry{AISI}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{SAE?\glossentry{SAE}|setentrycounter[]{page}"\glsnumberformat}{8}

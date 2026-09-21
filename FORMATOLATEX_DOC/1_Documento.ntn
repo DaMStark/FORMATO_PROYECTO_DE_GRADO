@@ -1,10 +1,30 @@
-(indexentry :tkey (("tau" "\\glossentry{tau}") ) :locref "{}{10}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("theta" "\\glossentry{theta}") ) :locref "{}{10}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("VB" "\\glossentry{VB}") ) :locref "{}{10}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("Ra" "\\glossentry{Ra}") ) :locref "{}{10}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("Irms" "\\glossentry{Irms}") ) :locref "{}{10}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("Vrms" "\\glossentry{Vrms}") ) :locref "{}{10}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("arms" "\\glossentry{arms}") ) :locref "{}{10}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("Ku" "\\glossentry{Ku}") ) :locref "{}{10}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("theta" "\\glossentry{theta}") ) :locref "{}{2}" :attr "pageglsnumberformat" ) 
-(indexentry :tkey (("tau" "\\glossentry{tau}") ) :locref "{}{2}" :attr "pageglsnumberformat" ) 
+\glossaryentry{Vc?\glossentry{Vc}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{D?\glossentry{D}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{n?\glossentry{n}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{MRR?\glossentry{MRR}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{f?\glossentry{f}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{ap?\glossentry{ap}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{Pc?\glossentry{Pc}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{Fc?\glossentry{Fc}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{Fa?\glossentry{Fa}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{Fr?\glossentry{Fr}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{gamma?\glossentry{gamma}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{alpha?\glossentry{alpha}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{beta?\glossentry{beta}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{phi?\glossentry{phi}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{lambda?\glossentry{lambda}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{etaC?\glossentry{etaC}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{VB?\glossentry{VB}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{VBmax?\glossentry{VBmax}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{Af?\glossentry{Af}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{Ra?\glossentry{Ra}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{repsilon?\glossentry{repsilon}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{Tm?\glossentry{Tm}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{Irms?\glossentry{Irms}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{Vrms?\glossentry{Vrms}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{cosphi?\glossentry{cosphi}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{eta?\glossentry{eta}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{omegam?\glossentry{omegam}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{arms?\glossentry{arms}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{Ku?\glossentry{Ku}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{CF?\glossentry{CF}|setentrycounter[]{page}"\glsnumberformat}{8}

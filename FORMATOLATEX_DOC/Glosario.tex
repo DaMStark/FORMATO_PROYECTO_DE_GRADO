@@ -1,4 +1,5 @@
-% No modificar estas líneas de código, por favor dirigirse a ACRÓNIMOS o GLOSARIO
+% Glosario y Símbolos oficiales del Proyecto de Grado - MAINSA
+% Depurado de elementos de plantilla genérica
 
 %------------------------
 %
@@ -6,41 +7,57 @@
 %
 %------------------------
 
-\newacronym {gcd}
-            {GCD}
-            {\textit{Greatest Common Divisor}}
-
-\newacronym {PID}
-            {PID}
-            {Proporcional, Integral, Derivativo}
-
 \newacronym {UCB}
             {UCB}
             {Universidad Católica Boliviana ``San Pablo'', Regional Cochabamba}
+
+\newacronym {MAINSA}
+            {MAINSA}
+            {Maestranza San Carlos}
 
 \newacronym {CNC}
             {CNC}
             {Control Numérico Computarizado (\textit{Computer Numerical Control})}
 
+\newacronym {TCM}
+            {TCM}
+            {Monitoreo de Condición de Herramientas (\textit{Tool Condition Monitoring})}
+
+\newacronym {EdgeAI}
+            {Edge AI}
+            {Inteligencia Artificial en el Borde (\textit{Edge Artificial Intelligence})}
+
+\newacronym {TinyML}
+            {TinyML}
+            {Aprendizaje Automático en Microcontroladores (\textit{Tiny Machine Learning})}
+
 \newacronym {IoT}
             {IoT}
             {Internet de las Cosas (\textit{Internet of Things})}
 
-\newacronym {TCM}
-            {TCM}
-            {Monitoreo de Condición de Herramientas (\textit{Tool Condition Monitoring})}
+\newacronym {MQTT}
+            {MQTT}
+            {Protocolo de Transporte de Telemetría de Colas de Mensajes (\textit{Message Queuing Telemetry Transport})}
+
+\newacronym {MEMS}
+            {MEMS}
+            {Sistemas Microelectromecánicos (\textit{Microelectromechanical Systems})}
 
 \newacronym {RMS}
             {RMS}
             {Valor Eficaz Cuadrático Medio (\textit{Root Mean Square})}
 
-\newacronym {DMA}
-            {DMA}
-            {Acceso Directo a Memoria (\textit{Direct Memory Access})}
+\newacronym {DSP}
+            {DSP}
+            {Procesamiento Digital de Señales (\textit{Digital Signal Processing})}
 
 \newacronym {ADC}
             {ADC}
             {Convertidor Analógico-Digital (\textit{Analog-to-Digital Converter})}
+
+\newacronym {DMA}
+            {DMA}
+            {Acceso Directo a Memoria (\textit{Direct Memory Access})}
 
 \newacronym {PWM}
             {PWM}
@@ -54,17 +71,21 @@
             {FFT}
             {Transformada Rápida de Fourier (\textit{Fast Fourier Transform})}
 
-\newacronym {MEMS}
-            {MEMS}
-            {Sistemas Microelectromecánicos (\textit{Microelectromechanical Systems})}
-
 \newacronym {PCB}
             {PCB}
             {Placa de Circuito Impreso (\textit{Printed Circuit Board})}
 
-\newacronym {MAINSA}
-            {MAINSA}
-            {Maestranza San Carlos}
+\newacronym {ISO}
+            {ISO}
+            {Organización Internacional de Normalización (\textit{International Organization for Standardization})}
+
+\newacronym {AISI}
+            {AISI}
+            {Instituto Americano del Hierro y el Acero (\textit{American Iron and Steel Institute})}
+
+\newacronym {SAE}
+            {SAE}
+            {Sociedad de Ingenieros Automotrices (\textit{Society of Automotive Engineers})}
 
 %------------------------
 %
@@ -72,28 +93,156 @@
 %
 %------------------------
 
-\newglossaryentry{tau}
+\newglossaryentry{Vc}
 {
     type=symbols,
-    name={\ensuremath{\tau}},
-    description={Constante de tiempo para sistemas dinámicos y de control},
-    sort=tau
+    name={\ensuremath{V_c}},
+    description={Velocidad de corte periférica en la superficie de la pieza [m/min]},
+    sort=Vc
 }
 
-\newglossaryentry{theta}
+\newglossaryentry{D}
 {
     type=symbols,
-    name={\ensuremath{\theta}},
-    description={Atraso de tiempo en continuo para sistemas de control},
-    sort=theta
+    name={\ensuremath{D}},
+    description={Diámetro inicial de la pieza de trabajo [mm]},
+    sort=D
+}
+
+\newglossaryentry{n}
+{
+    type=symbols,
+    name={\ensuremath{n}},
+    description={Velocidad rotacional del husillo principal del torno [rpm]},
+    sort=n
+}
+
+\newglossaryentry{MRR}
+{
+    type=symbols,
+    name={\ensuremath{MRR}},
+    description={Tasa volumétrica de remoción de material [$\text{mm}^3/\text{min}$]},
+    sort=MRR
+}
+
+\newglossaryentry{f}
+{
+    type=symbols,
+    name={\ensuremath{f}},
+    description={Avance lineal de la herramienta portaherramientas [mm/rev]},
+    sort=f
+}
+
+\newglossaryentry{ap}
+{
+    type=symbols,
+    name={\ensuremath{a_p}},
+    description={Profundidad efectiva de pasada en mecanizado [mm]},
+    sort=ap
+}
+
+\newglossaryentry{Pc}
+{
+    type=symbols,
+    name={\ensuremath{P_c}},
+    description={Potencia neta demandada en el corte [kW]},
+    sort=Pc
+}
+
+\newglossaryentry{Fc}
+{
+    type=symbols,
+    name={\ensuremath{F_c}},
+    description={Fuerza tangencial principal de corte [N]},
+    sort=Fc
+}
+
+\newglossaryentry{Fa}
+{
+    type=symbols,
+    name={\ensuremath{F_a}},
+    description={Fuerza de avance longitudinal [N]},
+    sort=Fa
+}
+
+\newglossaryentry{Fr}
+{
+    type=symbols,
+    name={\ensuremath{F_r}},
+    description={Fuerza radial de empuje [N]},
+    sort=Fr
+}
+
+\newglossaryentry{gamma}
+{
+    type=symbols,
+    name={\ensuremath{\gamma_o}},
+    description={Ángulo de ataque o desprendimiento en el plano ortogonal [$^\circ$]},
+    sort=gamma
+}
+
+\newglossaryentry{alpha}
+{
+    type=symbols,
+    name={\ensuremath{\alpha_o}},
+    description={Ángulo de incidencia o desahogo en el plano ortogonal [$^\circ$]},
+    sort=alpha
+}
+
+\newglossaryentry{beta}
+{
+    type=symbols,
+    name={\ensuremath{\beta_o}},
+    description={Ángulo de cuña de la herramienta de corte [$^\circ$]},
+    sort=beta
+}
+
+\newglossaryentry{phi}
+{
+    type=symbols,
+    name={\ensuremath{\phi}},
+    description={Ángulo del plano primario de cizallamiento [$^\circ$]},
+    sort=phi
+}
+
+\newglossaryentry{lambda}
+{
+    type=symbols,
+    name={\ensuremath{\lambda_s}},
+    description={Ángulo de inclinación de la arista en corte oblicuo [$^\circ$]},
+    sort=lambda
+}
+
+\newglossaryentry{etaC}
+{
+    type=symbols,
+    name={\ensuremath{\eta_c}},
+    description={Ángulo de dirección del flujo de viruta [$^\circ$]},
+    sort=etaC
 }
 
 \newglossaryentry{VB}
 {
     type=symbols,
     name={\ensuremath{VB}},
-    description={Ancho medio de la banda de desgaste de flanco en la herramienta de corte [mm]},
+    description={Ancho medio de la banda de desgaste de flanco del inserto [mm]},
     sort=VB
+}
+
+\newglossaryentry{VBmax}
+{
+    type=symbols,
+    name={\ensuremath{VB_{\max}}},
+    description={Ancho máximo puntual de desgaste de flanco según ISO 3685 [mm]},
+    sort=VBmax
+}
+
+\newglossaryentry{Af}
+{
+    type=symbols,
+    name={\ensuremath{A_f}},
+    description={Área superficial total de desgaste de flanco [$\text{mm}^2$]},
+    sort=Af
 }
 
 \newglossaryentry{Ra}
@@ -102,6 +251,22 @@
     name={\ensuremath{Ra}},
     description={Rugosidad media aritmética del perfil superficial mecanizado [$\mu$m]},
     sort=Ra
+}
+
+\newglossaryentry{repsilon}
+{
+    type=symbols,
+    name={\ensuremath{r_\varepsilon}},
+    description={Radio geométrico de la punta o nariz del inserto de corte [mm]},
+    sort=repsilon
+}
+
+\newglossaryentry{Tm}
+{
+    type=symbols,
+    name={\ensuremath{T_m}},
+    description={Par electromecánico resistente generado en el árbol del husillo [$\text{N}\cdot\text{m}$]},
+    sort=Tm
 }
 
 \newglossaryentry{Irms}
@@ -116,15 +281,39 @@
 {
     type=symbols,
     name={\ensuremath{V_{RMS}}},
-    description={Valor eficaz del voltaje alterno de alimentación del motor [V]},
+    description={Valor eficaz del voltaje alterno de fase de alimentación [V]},
     sort=Vrms
+}
+
+\newglossaryentry{cosphi}
+{
+    type=symbols,
+    name={\ensuremath{\cos(\varphi)}},
+    description={Factor de potencia operativo del accionamiento del husillo},
+    sort=cosphi
+}
+
+\newglossaryentry{eta}
+{
+    type=symbols,
+    name={\ensuremath{\eta}},
+    description={Rendimiento cinemático global de la transmisión mecánica del torno},
+    sort=eta
+}
+
+\newglossaryentry{omegam}
+{
+    type=symbols,
+    name={\ensuremath{\omega_m}},
+    description={Velocidad angular mecánica del husillo principal [rad/s]},
+    sort=omegam
 }
 
 \newglossaryentry{arms}
 {
     type=symbols,
     name={\ensuremath{a_{RMS}}},
-    description={Valor eficaz de la aceleración mecánica registrada por el sensor de vibración [g]},
+    description={Valor eficaz de la aceleración mecánica registrada por el sensor [g]},
     sort=arms
 }
 
@@ -132,6 +321,14 @@
 {
     type=symbols,
     name={\ensuremath{Ku}},
-    description={Curtosis estadística como indicador adimensional de impactos impulsivos en vibraciones},
+    description={Curtosis estadística como indicador adimensional de impactos impulsivos},
     sort=Ku
+}
+
+\newglossaryentry{CF}
+{
+    type=symbols,
+    name={\ensuremath{CF}},
+    description={Factor de cresta de la señal de aceleración de vibración mecánica},
+    sort=CF
 }

@@ -67,7 +67,7 @@
 \usepackage{multicol}                   % MULTIPLE COLUMNAS
 \usepackage{multirow}                   % MULTIPLES FILAS
 \usepackage[absolute]{textpos}
-\usepackage[acronym,xindy]{glossaries}
+\usepackage[acronym,nonumberlist]{glossaries}
 %\usepackage{glossary-mcols}
 \usepackage{array}
 \usepackage{makecell} %eol on tables
@@ -589,11 +589,11 @@ de Corte en tornos CNC industriales en MAINSA.}
         \listoftables
         \thispagestyle{empty}
         
-    % Lista de pseudocódigos
-        \renewcommand{\listalgorithmname}{\centerline{ÍNDICE DE ALGORITMOS}}
-        \newpage
-        \listofalgorithms
-        \thispagestyle{empty}
+    % Lista de pseudocódigos (desactivado: no se emplean algoritmos en esta etapa)
+    %    \renewcommand{\listalgorithmname}{\centerline{ÍNDICE DE ALGORITMOS}}
+    %    \newpage
+    %    \listofalgorithms
+    %    \thispagestyle{empty}
         
     % Índice de símbolos
         \newpage
@@ -611,10 +611,10 @@ de Corte en tornos CNC industriales en MAINSA.}
 
     \input{5_Introduccion.tex}
     \input{6_Marco_Teorico.tex}
-    \input{7_Marco_Metodologico.tex}
-    \input{8_Marco_Practico.tex}
-    \input{9_Conclusiones.tex}
-    \input{10_Recomendaciones.tex}
+    %\input{7_Marco_Metodologico.tex}
+    %\input{8_Marco_Practico.tex}
+    %\input{9_Conclusiones.tex}
+    %\input{10_Recomendaciones.tex}
 
     % Bibliografía
         \newpage
@@ -626,7 +626,7 @@ de Corte en tornos CNC industriales en MAINSA.}
         \printbibliography[heading=bibintoc,title={BIBLIOGRAFÍA}]
         \endgroup
 
-    \input{Anexos.tex}
-    \input{Apendices.tex}
+    %\input{Anexos.tex}
+    %\input{Apendices.tex}
     
 \end{document}
