@@ -1,0 +1,63 @@
+\newpage
+\section{ALCANCES Y LÍMITES}
+
+\subsection{Alcances}
+El alcance establece con precisión el nivel de desarrollo de la solución, los procesos considerados, las funcionalidades incluidas y los resultados tangibles que el proyecto entregará a su conclusión en estricta coherencia con los objetivos específicos. A continuación, se detallan los alcances técnicos del sistema:
+
+\begin{itemize}
+\item Se desarrollará el diseño y dimensionamiento de un sistema mecatrónico periférico no invasivo orientado al monitoreo en tiempo real del desgaste de herramientas de corte en tornos CNC de la empresa metalmecánica MAINSA.
+\item Se considerará como proceso de manufactura específico las operaciones de mecanizado por arranque de viruta limitadas a torneado CNC longitudinal (cilindrado exterior) y refrentado.
+\item Se considerará como escenario de aplicación industrial el mecanizado de piezas cilíndricas en aceros de alta solicitación mecánica comúnmente procesados en MAINSA, priorizando aceros aleados y de bonificación de elevada dureza y resistencia como AISI/SAE 4340 (acero al cromo-níquel-molibdeno, equivalente ISO 683-1 / 34CrNiMo6), AISI 4140 y acero al carbono AISI 1045, empleando herramientas con insertos intercambiables de carburo recubierto.
+\item Se diseñará un módulo de acondicionamiento de señal analógica considerando aislamiento galvánico, rectificación y conversión a niveles de tensión continua proporcionales al valor eficaz (RMS) de la corriente, garantizando la compatibilidad con el convertidor analógico-digital del microcontrolador.
+\item Se desarrollará el diseño circuital esquemático, dimensionamiento de componentes y ruteo de la placa de circuito impreso (PCB) para acondicionamiento y procesamiento, contratando el servicio de fabricación física a una empresa terciaria especializada, para posteriormente realizar el ensamble, soldadura manual e integración en el sistema periférico.
+\item Se integrará un sistema de adquisición multisensorial compuesto por un transductor de corriente no invasivo de núcleo partido para el motor del husillo principal y un sensor acelerómetro MEMS para la captación de vibraciones mecánicas en la torreta portaherramientas.
+\item Se implementará una arquitectura de procesamiento en el borde (\textit{Edge AI}) sobre una unidad embebida para el filtrado digital de señales, extracción de descriptores estadísticos en el dominio del tiempo y ejecución local de un algoritmo ligero de clasificación de estados de desgaste.
+\item Se incorporará un esquema de comunicación inalámbrica mediante protocolo IoT industrial (MQTT/HTTP) para la transmisión periódica de métricas de operación y alertas de desgaste crítico hacia un panel de supervisión remota.
+\item Se establecerán criterios físicos, eléctricos y operativos de diseño a partir de las especificaciones técnicas del torno CNC y las condiciones reales de trabajo en MAINSA, definiendo rangos de medición de corriente, anchos de banda para vibración, requerimientos de aislamiento y frecuencia de muestreo.
+\item Se adoptará como referencia operativa una tasa de muestreo adecuada para la captura de transitorios de corte y un tiempo de respuesta inferior a dos segundos para la notificación de advertencias o desgaste severo ante el operador.
+\item Se definirá un plan de pruebas con métricas numéricas, especificando para cada ensayo la variable física a medir, el instrumento de referencia o contraste, el criterio de aprobación y el número de repeticiones experimentales.
+\item Se comprobará la funcionalidad del sistema mediante un prototipo funcional periférico ensayado preliminarmente en laboratorio y validado experimentalmente en un torno CNC real en MAINSA, verificando adquisición de señales, estabilidad del acondicionamiento, exactitud en la inferencia del modelo embebido y confiabilidad en la transmisión de datos.
+\item Se elaborará documentación técnica básica y un procedimiento de instalación y operación segura en máquina, orientado a guiar la colocación no invasiva de los sensores sin alterar las líneas de potencia ni los lazos de control del torno CNC.
+\end{itemize}
+
+\subsection{Límites}
+Los límites establecen con rigurosidad qué aspectos no serán desarrollados o considerados dentro del proyecto, permitiendo delimitar el campo de acción para evitar expectativas que excedan los recursos y tiempos disponibles. Con el propósito de contrastar de forma directa lo que el proyecto desarrollará frente a lo que no desarrollará, en la \tab{alcance_limites} se presenta la matriz comparativa de alcances y límites según las pautas metodológicas de la asignatura.
+
+{\setlength{\parskip}{1.5pt}
+\begin{table}[htbp]
+\centering
+\caption{Matriz comparativa de alcances y límites del proyecto}
+\label{tab:alcance_limites}
+\begin{tabular}{|L{6.8cm}|L{7.2cm}|}
+\hline
+\textbf{Alcance (Lo que se desarrollará)} & \textbf{Límites (Lo que no se desarrollará)} \\ \hline \hline
+Prototipo funcional periférico probado en un torno CNC real en MAINSA. & Equipo comercial certificado con homologación metrológica de serie. \\ \hline
+Torneado en aceros de alta exigencia mecánica en MAINSA (AISI 1045, 4140 y 4340). & Procesos de fresado/taladrado; y pruebas en materiales de bajo esfuerzo (nylon, bronce) de MAINSA. \\ \hline
+Herramientas con insertos intercambiables de carburo de tungsteno recubierto. & Insertos cerámicos, cermet o materiales superabrasivos (CBN/PCD). \\ \hline
+Medición de corriente del husillo y acelerometría MEMS en la torreta. & Dinamometría piezoeléctrica multieje directa ni instrumentación interna de husillo. \\ \hline
+Acondicionamiento RMS y componente fundamental cuasi-senoidal (inferencia de par). & Análisis espectral de distorsión armónica total (THD) ni transitorios de conmutación PWM. \\ \hline
+Clasificación discreta de estados de desgaste mediante modelo ligero Edge AI. & Estimación continua de vida útil remanente (RUL) ni gemelos digitales pesados. \\ \hline
+Diseño esquemático, ruteo y ensamblado propio; fabricación física por servicio externo. & Fabricación física del sustrato de PCB en laboratorio propio. \\ \hline
+Transmisión IoT (MQTT/HTTP) hacia panel de supervisión local del taller. & Plataforma SCADA de planta ni integración ERP/CMMS corporativo. \\ \hline
+\end{tabular}
+\\[2pt]
+{\footnotesize \textbf{Fuente:} Elaboración propia}
+\end{table}
+}
+
+A continuación, se describen en detalle los límites y restricciones operativas del proyecto:
+
+\begin{itemize}
+\item El proyecto se limitará a operaciones de torneado CNC en torno horizontal, por lo que no contemplará procesos de fresado, taladrado, rectificado ni electroerosión.
+\item El proyecto se limitará a la detección y clasificación del desgaste en herramientas de torneado con insertos intercambiables de carburo recubierto, por lo que no contemplará geometrías de herramientas cerámicas, cermet ni materiales superabrasivos (CBN/PCD).
+\item Si bien en el taller de la empresa MAINSA se cuenta con disponibilidad y se trabaja eventualmente con materiales como nylon, teflón, bronce y otros plásticos de ingeniería o aleaciones blandas, el proyecto no orientará las pruebas experimentales ni el entrenamiento del modelo hacia dichos materiales. Esta decisión técnica responde a que tales materiales demandan un esfuerzo de corte reducido y no provocan un desgaste notorio en los insertos de carburo, generando variaciones de corriente y perfiles de vibración prácticamente imperceptibles que impiden reproducir los patrones de falla crítica reales que el sistema se propone anticipar.
+\item El sistema se desarrollará con fines de demostración tecnológica y validación prototípica en entorno productivo real, por lo que no comprenderá el desarrollo de un equipo industrial final comercialmente certificado ni con homologación metrológica de serie.
+\item El diseño y dimensionamiento del sistema se realizarán con criterios de operación industrial real; sin embargo, la construcción física y validación experimental se limitarán a un prototipo funcional periférico implementado en un torno CNC de la empresa MAINSA.
+\item La fabricación física del sustrato y pistas de la placa de circuito impreso (PCB) se delegará a un servicio industrial tercerizado, limitándose el alcance del proyecto al diseño circuital, selección y cálculo de componentes, montaje manual, integración y programación del firmware.
+\item El procesamiento de datos eléctricos se limitará a la medición de la componente fundamental y a la evaluación de variaciones en el valor eficaz (RMS) mediante rectificación y acondicionamiento a niveles DC (asumiendo un comportamiento cuasi-senoidal para la inferencia de variaciones de par de corte), por lo que se excluye explícitamente el análisis espectral de distorsión armónica total (THD), transitorios derivados de la modulación PWM de los variadores de frecuencia ni modelado armónico avanzado.
+\item La adquisición de vibraciones mecánicas se limitará a acelerometría externa montada en puntos accesibles de la torreta portaherramientas o del carro longitudinal, por lo que no incluirá dinamometría piezoeléctrica multieje en la punta de corte ni instrumentación interna en el interior del husillo rotativo.
+\item El modelo de inteligencia artificial se limitará a algoritmos ligeros de aprendizaje supervisado en el borde para clasificar estados discretos de desgaste (inserto nuevo, desgaste funcional y filo crítico), por lo que no comprenderá la estimación continua de vida útil remanente (RUL) ni modelos de aprendizaje profundo pesado basados en gemelos digitales masivos.
+\item La ejecución de pruebas en planta quedará sujeta a factores externos y restricciones del taller de MAINSA, tales como la disponibilidad de turnos en máquina, la programación del plan de producción, los permisos de acceso y las normas de seguridad ocupacional vigentes.
+\item La comprobación del sistema se enfocará en su funcionalidad básica y capacidad de alerta temprana, por lo que no comprenderá ensayos destructivos continuos hasta la rotura violenta deliberada de múltiples herramientas fuera de los márgenes seguros de operación.
+\item El proyecto no incluirá el desarrollo de una plataforma SCADA o software de gestión integral de mantenimiento (CMMS/ERP) a nivel de toda la fábrica, aunque los datos transmitidos podrán servir como insumo preliminar para futuras integraciones en entornos de manufactura inteligente.
+\end{itemize}

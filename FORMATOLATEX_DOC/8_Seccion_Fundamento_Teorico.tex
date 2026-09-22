@@ -1,0 +1,247 @@
+\newpage
+\section{FUNDAMENTO TEÓRICO}
+
+El presente capítulo expone los fundamentos teóricos y conceptuales que sustentan el diseño e implementación del sistema periférico no invasivo para el monitoreo de desgaste de herramientas de corte en tornos CNC industriales en MAINSA. Se articulan coherentemente los principios cinemáticos del mecanizado por arranque de viruta, los mecanismos tribológicos de degradación del inserto conforme a normas internacionales, las metodologías de supervisión indirecta mediante variables electromecánicas, las técnicas de acondicionamiento y procesamiento digital de señales, así como los modelos de aprendizaje automático en el borde y las arquitecturas de conectividad industrial.
+
+\subsection{Contenido temático}
+Con la finalidad de estructurar rigurosamente las bases conceptuales que respaldan el cumplimiento de los objetivos específicos y las acciones técnicas del proyecto, en la \tab{contenido_tematico} se presenta la matriz esquemática del contenido temático desarrollado.
+
+{\setlength{\parskip}{1.5pt}
+\begin{longtable}{|L{3.8cm}|L{4.8cm}|L{4.4cm}|}
+\caption{Matriz esquemática del contenido temático del fundamento teórico}
+\label{tab:contenido_tematico}
+\\
+\hline
+\textbf{Área temática} & \textbf{Temas fundamentales} & \textbf{Relevancia en el proyecto} \\
+\hline \hline
+\endfirsthead
+
+\hline
+\textbf{Área temática} & \textbf{Temas fundamentales} & \textbf{Relevancia en el proyecto} \\
+\hline \hline
+\endhead
+
+\hline
+\endfoot
+
+\multicolumn{3}{c}{\textbf{Fuente:} Elaboración propia}
+\endlastfoot
+
+1. Mecánica de corte y procesos de torneado CNC & 
+Operaciones de torneado, cinemática de corte ($V_c, f, a_p$), tasa de remoción de material ($MRR$), descomposición de fuerzas ($F_c, F_a, F_r$) y potencia de corte. & 
+Modelado del régimen de operación del torno en MAINSA y cálculo del esfuerzo mecánico sobre el husillo.\\ \hline
+
+2. Tribología y degradación de herramientas & 
+Mecanismos de desgaste (abrasión, adhesión, difusión), norma ISO 3685, morfología del desgaste de flanco ($VB, Af$), curvas de Taylor y rugosidad teórica ($Ra$). & 
+Definición de los umbrales de desgaste admisible y correlación con la pérdida de calidad superficial en piezas.\\ \hline
+
+3. Monitoreo de condición de herramientas (TCM) & 
+Métodos directos vs. indirectos de supervisión, monitoreo por corriente eléctrica, acelerometría en torreta y fusión sensorial multimodal. & 
+Sustento de la instrumentación periférica no invasiva para operar sin perturbar el ciclo productivo.\\ \hline
+
+4. Transductores y acondicionamiento analógico & 
+Transformadores de corriente de núcleo partido (SCT013), acelerómetros piezoeléctricos/MEMS, circuitos rectificadores de precisión, filtrado pasivo y balance electromecánico. & 
+Aislamiento galvánico, acondicionamiento de señales alternas a niveles proporcionales de tensión DC y captura de vibración.\\ \hline
+
+5. Procesamiento digital de señales (DSP) & 
+Criterio de Nyquist-Shannon, filtrado digital IIR/Butterworth, extracción de descriptores temporales ($I_{RMS}, a_{RMS}$, Curtosis, Factor de Cresta). & 
+Acondicionamiento digital y reducción dimensional para la conformación del vector de características de entrada a la IA.\\ \hline
+
+6. Inteligencia artificial en el borde (TinyML) & 
+Paradigmas de inferencia local en microcontroladores, arquitecturas ARM Cortex-M4/M7, cuantización entera (INT8), algoritmos de clasificación (MLP, SVM, Random Forest). & 
+Diagnóstico determinista y en tiempo real del estado de desgaste sin depender de conectividad a servidores externos.\\ \hline
+
+7. Telemática industrial e IoT & 
+Protocolo ligero MQTT, arquitectura Publicador/Suscriptor, Calidad de Servicio (QoS), serialización JSON y paneles de control operativos (dashboards). & 
+Transmisión eficiente de telemetría y generación de alertas jerárquicas tempranas para los operarios y supervisores en planta.\\
+\end{longtable}
+}
+
+\subsection{Desarrollo del fundamento teórico}
+
+\subsubsection{Cinemática y parámetros del proceso de torneado en torno CNC}
+
+El proceso de torneado en máquinas de Control Numérico Computarizado (CNC) constituye una operación de conformado mecánico mediante la remoción controlada de material, donde la pieza cilíndrica adquiere rotación continua mientras la herramienta se desplaza en trayectorias programadas \citep{groover2010}. La interacción geométrica entre el filo del inserto y la pieza genera una concentración localizada de esfuerzos cortantes en la zona de cizallamiento, promoviendo la deformación plástica severa y el desprendimiento continuo o discontinuo de viruta metálica.
+
+La máquina herramienta de torno CNC permite ejecutar una amplia gama de operaciones de remoción de metal en función de la orientación geométrica, trayectoria del carro y geometría de la herramienta de corte seleccionada \citep{kalpakjian2014, trejo2010}. Estas operaciones abarcan desde el mecanizado de superficies cilíndricas exteriores e interiores hasta geometrías complejas, como se sintetiza esquemáticamente en la \fig{operaciones_torneado}.
+
+\figura[width=0.82\textwidth]{operaciones_torneado}{Operaciones fundamentales de mecanizado por arranque de viruta en torno CNC}{Adaptado de \textcite{kalpakjian2014} y \textcite{trejo2010}}
+
+Entre las operaciones representadas en la \fig{operaciones_torneado}, destacan el cilindrado longitudinal para reducción del diámetro exterior, el refrentado o careado para generación de caras planas perpendiculares al eje, el torneado cónico, el perfilado mediante trayectorias interpoladas, el ranurado exterior o frontal, el tronzado y el roscado. En los ciclos productivos industriales de talleres de mecanizado como MAINSA, el desbaste cilíndrico continuo concentra la mayor tasa de volumen de material desalojado, sometiendo la arista de corte a solicitaciones tribológicas y mecánicas severas y sostenidas.
+
+La cinemática del proceso de torneado se rige fundamentalmente por tres parámetros de corte gobernados numéricamente: la velocidad de corte periférica, la velocidad de avance lineal y la profundidad de pasada radial o axial \citep{kalpakjian2014}. La velocidad de corte establece la rapidez superficial relativa entre la herramienta y la superficie exterior de la pieza, determinándose de manera analítica mediante la formulación clásica vinculada con el diámetro y las revoluciones:
+
+\begin{equation}
+V_c = \frac{\pi \cdot D \cdot n}{1000}
+\label{eq:velocidad_corte}
+\end{equation}
+
+donde $V_c$ representa la velocidad de corte periférica expresada en metros por minuto, $D$ corresponde al diámetro inicial de la pieza de trabajo medido en milímetros y $n$ cuantifica la velocidad rotacional instantánea del husillo principal en revoluciones por minuto. Esta velocidad condiciona de forma directa la generación de calor en la interfaz de corte y la rapidez con la que se manifiesta el desgaste abrasivo sobre el filo.
+
+A partir de los parámetros cinemáticos fijados numéricamente, se determina analíticamente la tasa volumétrica de remoción de material, la cual cuantifica el volumen desprendido por unidad de tiempo y condiciona la productividad global del proceso \citep{trent2000}. Dicha variable operacional se deduce matemáticamente considerando de forma conjunta la velocidad superficial relativa, el desplazamiento de avance lineal por cada vuelta y la penetración radial de la herramienta de corte en el material:
+
+\begin{equation}
+MRR = V_c \cdot f \cdot a_p \cdot 1000
+\label{eq:mrr}
+\end{equation}
+
+donde $MRR$ denota la tasa volumétrica de remoción de material calculada en milímetros cúbicos por minuto, $f$ simboliza el avance lineal de la torreta portaherramientas en milímetros por revolución y $a_p$ es la profundidad efectiva de pasada expresada en milímetros. Un incremento sustancial en el régimen de remoción eleva proporcionalmente las solicitaciones mecánicas sobre el inserto, acelerando los fenómenos tribológicos de degradación estructural.
+
+Durante la interacción física de corte, las reacciones mecánicas tridimensionales generadas sobre la punta de la herramienta se descomponen ortogonalmente en tres componentes de fuerza fundamentales \citep{trejo2010, sandvik2020}. La disposición vectorial y orientación espacial de dichas fuerzas respecto al sistema cartesiano del torno CNC se ilustran en la \fig{torneado_geometria_fuerzas}.
+
+\figura[width=0.68\textwidth]{torneado_geometria_fuerzas}{Cinemática del proceso de torneado cilíndrico y descomposición vectorial de las fuerzas de mecanizado}{Adaptado de \textcite{trejo2010}}
+
+De acuerdo con la \fig{torneado_geometria_fuerzas}, la componente tangencial de corte $F_t$ (o $F_c$) actúa perpendicularmente al eje de la pieza en la dirección tangencial del movimiento principal de rotación. Esta fuerza representa entre el setenta y el ochenta por ciento de la fuerza resultante total, constituyendo la magnitud determinante en el par resistente aplicado al husillo y en la potencia consumida por el motor principal:
+
+\begin{equation}
+P_c = \frac{F_c \cdot V_c}{60 \cdot 1000}
+\label{eq:potencia_corte}
+\end{equation}
+
+donde $P_c$ representa la potencia neta de corte demandada en kilovatios, $F_c$ cuantifica la fuerza tangencial principal en newtons y $V_c$ denota la velocidad de corte periférica calculada previamente. Por su parte, la fuerza de avance $F_a$ actúa paralelamente al eje longitudinal de la pieza en la dirección del desplazamiento lineal $f$, repercutiendo de forma directa sobre el servomotor del carro longitudinal, mientras que la fuerza radial $F_r$ actúa en dirección perpendicular a la superficie torneada, empujando la herramienta hacia afuera e incidiendo fuertemente en las deformaciones elásticas, vibraciones dinámicas y desviaciones dimensionales de la pieza mecanizada \citep{trejo2010}.
+
+Desde la perspectiva de la mecánica del mecanizado por arranque de viruta, la formación de viruta se analiza convencionalmente a partir de dos esquemas cinemáticos: el modelo ideal de corte ortogonal bidimensional y el régimen tridimensional real de corte oblicuo \citep{trejo2010}, cuyos esquemas morfológicos se contrastan en la \fig{mecanica_corte}.
+
+\begin{figure}[!htb]
+    \centering
+    \caption{Comparativa esquemática entre el modelo de corte ortogonal y corte oblicuo}
+    \subfloat[Corte ortogonal (modelo bidimensional)]{\includegraphics[width=0.40\columnwidth]{corte_ortogonal}}
+    \qquad
+    \subfloat[Corte oblicuo (modelo tridimensional)]{\includegraphics[width=0.40\columnwidth]{corte_oblicuo}}
+    \\
+    \centering{\textbf{Fuente:} Adaptado de \textcite{trejo2010}}
+    \label{fig:mecanica_corte}
+\end{figure}
+
+En el corte ortogonal (\fig{mecanica_corte}a), la arista cortante se posiciona rigurosamente perpendicular a la dirección del vector de velocidad relativa de corte, de modo que el plano de deformación plástica y el flujo de viruta se restringen a un plano bidimensional. La geometría de corte en este modelo se define mediante tres ángulos fundamentales acoplados en el plano ortogonal de referencia: el ángulo de ataque o desprendimiento $\gamma_o$, el ángulo de incidencia o de desahogo $\alpha_o$, y el ángulo de cuña del material $\beta_o$, cumpliendo la relación trigonométrica complementaria $\alpha_o + \beta_o + \gamma_o = 90^\circ$ \citep{kalpakjian2014}. Asimismo, el plano primario de cizallamiento se define mediante el ángulo de cizallamiento $\phi$, el cual relaciona la fuerza cortante y la fricción superficial según la solución teórica de Merchant ($\phi = 45^\circ + \frac{\gamma_o}{2} - \frac{\beta_{\text{fric}}}{2}$).
+
+En contraste, las operaciones industriales de torneado operan bajo el régimen de corte oblicuo (\fig{mecanica_corte}b), donde la arista cortante presenta una inclinación angular $\lambda_s$ respecto a la normal del vector velocidad. Dicha inclinación provoca que la viruta no deslice paralelamente a la cara, sino que fluya lateralmente con un ángulo de dirección de flujo de viruta $\eta_c$. Conforme a la hipótesis fenomenológica de Stabler, se cumple la aproximación $\eta_c \approx \lambda_s$, lo cual desvía la viruta lejos de la superficie mecanizada de la pieza, reduciendo la concentración térmica en el filo principal y redistribuyendo la presión de corte sobre la pastilla de carburo \citep{trejo2010}.
+
+En la manufactura moderna en tornos CNC, el corte se efectúa mediante insertos intercambiables estandarizados según normas ISO, fabricados en substratos duros de carburo de tungsteno (WC-Co) con recubrimientos protectores multicapa de TiN, TiCN o $\text{Al}_2\text{O}_3$ \citep{groover2010}. La geometría básica de un inserto viene definida por su forma geométrica y por el ángulo de punta incluido, magnitudes que condicionan de manera crítica la tenacidad y la durabilidad mecánica del filo, tal como se esquematiza en la \fig{formas_insertos_resistencia}.
+
+\figura[width=0.85\textwidth]{formas_insertos_resistencia}{Geometría de insertos intercambiables de corte, ángulo de punta incluido y correlación con la resistencia mecánica frente a despostillamiento}{Adaptado de \textcite{trejo2010}}
+
+Como se aprecia en la \fig{formas_insertos_resistencia}, existe una relación intrínseca de compromiso ingenieril entre la versatilidad geométrica de copiado y la resistencia mecánica de la punta de corte. Los insertos con ángulos incluidos amplios, como los redondos de $100^\circ$ e insertos cuadrados de $90^\circ$, disponen de un gran volumen de material de soporte que disipa eficazmente el calor y minimiza el riesgo de rotura catastrófica. Por el contrario, pastillas rómbicas de ángulo reducido como las de $55^\circ$ (tipo D) o $35^\circ$ (tipo V) ofrecen mayor accesibilidad para perfiles intrincados, pero su menor ángulo las vuelve vulnerables al astillamiento, microdespostillamiento y fractura repentina ante vibraciones o cortes discontinuos \citep{trejo2010}.
+
+Para mitigar la tendencia a la rotura en condiciones industriales pesadas, los fabricantes realizan tratamientos mecánicos específicos sobre la microgeometría de la arista cortante, denominados acondicionamiento o preparación del filo \citep{kalpakjian2014, trejo2010}. Las principales tipologías de acondicionamiento de arista se resumen gráficamente en la \fig{preparacion_filo_insertos}.
+
+\figura[width=0.62\textwidth]{preparacion_filo_insertos}{Tipologías de acondicionamiento y microgeometría del filo de corte para refuerzo estructural del flanco}{Adaptado de \textcite{trejo2010}}
+
+La \fig{preparacion_filo_insertos} evidencia que un filo con preparación negativa, dotado de cara inclinada o chaflán protector (\textit{chamfer} o \textit{T-land}) y microasentado (\textit{honing}), traslada las solicitaciones cortantes hacia el núcleo de compresión del inserto, incrementando sustancialmente la resistencia del flanco. En contraposición, los filos con ángulo positivo agudo presentan menor esfuerzo de corte inicial pero resultan altamente frágiles, siendo propensos a fallas microscópicas prematuras ante las sobrecargas mecánicas presentes en tornos industriales como los empleados en MAINSA.
+
+\subsubsection{Fenomenología del desgaste y mecanismos de falla en herramientas de corte}
+
+El desgaste de las herramientas de mecanizado constituye un fenómeno tribológico inevitable, originado por las condiciones extremas de presión de contacto, fricción dinámica y gradientes térmicos elevados que concurren en la interfaz de corte \citep{trent2000}. Durante el maquinado de aceros al carbono en tornos industriales, las temperaturas en la zona de contacto pueden superar holgadamente los ochocientos grados centígrados, debilitando la fase aglutinante de cobalto y facilitando la degradación microestructural del carburo de tungsteno.
+
+Los mecanismos primarios responsables del deterioro progresivo del filo comprenden la abrasión mecánica, la adhesión metálica, la difusión química y la fatiga termo-mecánica superficial \citep{kalpakjian2014}. La abrasión se produce por el frotamiento de carburos duros presentes en la pieza contra el flanco de la herramienta. Simultáneamente, la adhesión genera microsoldaduras en frío bajo altas presiones, cuyo desprendimiento periódico arranca fragmentos micrométricos de la matriz dura del inserto.
+
+Bajo las pautas de la norma técnica internacional ISO 3685, se tipifican formalmente las distintas morfologías espaciales de deterioro del inserto y se definen los parámetros dimensionales cuantitativos para la evaluación del desgaste de flanco \citep{iso3685, trejo2010}. La configuración topológica de estas zonas de desgaste y la caracterización de sus regiones críticas se detallan en la \fig{tipos_desgaste_herramienta}.
+
+\figura[width=0.85\textwidth]{tipos_desgaste_herramienta}{Morfología de los tipos de desgaste en la herramienta de corte y parámetros dimensionales de desgaste de flanco según ISO 3685}{Adaptado de \textcite{trejo2010}}
+
+Tal como se ilustra en la \fig{tipos_desgaste_herramienta}a, el desgaste se manifiesta en regiones bien diferenciadas del inserto: el desgaste de flanco sobre la cara de incidencia (1), el desgaste de cráter sobre la cara de ataque (2), la entalla o ranura primaria en la línea de profundidad de pasada (3), la ranura secundaria (4) y la muesca de contacto externo con viruta (5). En la \fig{tipos_desgaste_herramienta}b se aprecia la zonificación normalizada del flanco: la zona C correspondiente a la punta o radio de nariz con desgaste $VC$, la zona B central con ancho uniforme de desgaste de flanco $VB$ y valor máximo $VB_{\max}$, y la zona exterior T con la entalla de profundidad $VT$.
+
+Tradicionalmente, las investigaciones académicas e industriales evalúan el límite de vida útil admisible mediante el umbral escalar unidimensional de $VB = 0.3\,\text{mm}$ fijado por la norma ISO 3685 \citep{iso3685}. No obstante, tal como fundamenta analíticamente \textcite{trejo2010}, la consideración exclusiva de la cota puntual $VB$ desestima los efectos acumulativos del desgaste de nariz y las entallas laterales. Por consiguiente, se propone la integración del área superficial de desgaste de flanco $A_f$ como un descriptor morfométrico bidimensional mucho más fidedigno y directamente acoplado a la demanda electromecánica de potencia y al espectro vibratorio de la máquina herramienta.
+
+La evolución temporal del desgaste sobre el inserto durante el ciclo continuo de torneado no sigue un patrón uniforme, sino que atraviesa tres regímenes cinemáticos y tribológicos claramente diferenciados \citep{trejo2010}. Esta fenomenología clásica de vida de la herramienta se modela a partir del comportamiento experimental formulado por Taylor, cuyo comportamiento ante diversas velocidades de corte se ilustra en la \fig{curva_vida_desgaste_flanco}.
+
+\figura[width=0.75\textwidth]{curva_vida_desgaste_flanco}{Curvas de evolución temporal del desgaste de flanco a diferentes velocidades de corte y delimitación de zonas tribológicas de desgaste}{Adaptado de \textcite{trejo2010}}
+
+La \fig{curva_vida_desgaste_flanco} evidencia las tres etapas características de degradación: la Zona de desgaste primario o de rodaje inicial, donde la arista viva recién instalada experimenta una rápida atenuación plástica; la Zona de desgaste secundario o régimen estacionario, en la que la velocidad de desgaste permanece casi constante y predecible; y la Zona de desgaste terciario o acelerado, caracterizada por un incremento exponencial del desgaste, fricción incontrolada y sobrecalentamiento térmico severo. Asimismo, se comprueba que un incremento en la velocidad de corte ($V_4 > V_3 > V_2 > V_1$) contrae drásticamente el tiempo disponible de operación estable ($T_4 < T_3 < T_2 < T_1$), precipitando la entrada en la fase terciaria y elevando de forma inminente el peligro de fractura estructural del inserto \citep{trejo2010}.
+
+La progresión del desgaste de flanco incide de manera adversa e irreversible sobre la calidad geométrica del producto torneado, degradando el acabado superficial y elevando los niveles de rugosidad media aritmética \citep{sandvik2020}. En condiciones iniciales teóricas con arista íntegra y afilada, el acabado superficial se predice analíticamente en función del avance por revolución y del radio de curvatura de la punta:
+
+\begin{equation}
+R_{a,\text{teórico}} \approx \frac{f^2}{32 \cdot r_\varepsilon}
+\label{eq:rugosidad_teorica}
+\end{equation}
+
+donde $R_{a,\text{teórico}}$ representa el valor medio de rugosidad aritmética superficial en milímetros, $f$ denota el avance lineal por vuelta y $r_\varepsilon$ simboliza el radio geométrico de la nariz de corte. A medida que el flanco de incidencia pierde agudeza por abrasión, el área de contacto elasto-plástico con la pieza se amplifica desproporcionadamente \citep{trejo2010}. Este frotamiento parásito no sólo arruina la tolerancia dimensional de diámetro exterior de las piezas procesadas en MAINSA, sino que actúa como una fuente directa de autoexcitación de vibraciones mecánicas dinámicas (\textit{chatter}), justificando con plena solidez técnica la necesidad de implementar sistemas de monitoreo continuo en línea.
+
+\subsubsection{Sistemas de monitoreo de condición de herramientas (TCM)}
+
+Los sistemas de Monitoreo de Condición de Herramientas (TCM) comprenden el conjunto de arquitecturas mecatrónicas y algoritmos computacionales destinados a diagnosticar en tiempo real el desgaste y posibles averías en herramientas de mecanizado \citep{byrne1995}. En el contexto de la manufactura inteligente moderna, los sistemas TCM evitan la fabricación de piezas fuera de especificación dimensional, optimizan los intervalos de reemplazo preventivo y previenen paradas no programadas de maquinaria en líneas de producción continua.
+
+Las metodologías de adquisición en sistemas TCM se clasifican comúnmente en dos enfoques estructurales: métodos directos y métodos indirectos \citep{teti2010}. Los métodos directos valoran físicamente la geometría del desgaste mediante sistemas ópticos, perfilometría tridimensional por triangulación láser o análisis de resistencia de contacto. Aunque proporcionan una elevada precisión geométrica, su viabilidad industrial en planta resulta inviable debido a la presencia constante de lubricante refrigerante, proyección de virutas incandescentes y escasa visibilidad interna.
+
+En contraste con las limitaciones ópticas, los métodos indirectos infieren la condición del filo mediante la adquisición continua de magnitudes físicas secundarias del proceso de mecanizado, tales como fuerzas de corte, vibraciones mecánicas y corrientes de accionamiento \citep{byrne1995}. Estos esquemas se adaptan armónicamente a las exigencias operativas de planta, dado que no interfieren con la zona de corte ni requieren interrumpir el flujo productivo del torno para llevar a cabo la evaluación del desgaste del inserto.
+
+Dentro de las técnicas indirectas, la monitorización sustentada en la corriente eléctrica consumida por el motor del husillo principal destaca por su carácter no invasivo y su nulo costo de adaptación en la máquina \citep{romero2003}. Al degradarse el filo, el incremento en la fuerza de corte genera un mayor par resistente en el husillo, reflejándose de forma directa en un aumento medible de la corriente eficaz consumida por el motor.
+
+De forma complementaria, las vibraciones mecánicas registradas sobre la torreta portaherramientas constituyen una fuente de información de alta sensibilidad ante eventos dinámicos transitorios y fricción superficial \citep{wang2024}. La modificación de la geometría de contacto altera las componentes de frecuencia de excitación mecánica, manifestándose en el incremento de energía vibratoria en bandas espectrales particulares que permiten discriminar oportunamente estados incipientes de desgaste anormal y posibles desportillamientos del inserto intercambiable en servicio.
+
+A pesar de sus bondades intrínsecas, el monitoreo fundamentado en una única variable presenta vulnerabilidad frente a alteraciones ambientales y fluctuaciones en los parámetros operativos de avance y profundidad \citep{huang2026}. Por consiguiente, los sistemas avanzados convergen hacia la fusión sensorial multimodal, integrando variables eléctricas y dinámicas mecánicas para construir patrones diagnósticos complementarios, robustos y confiables, capaces de responder eficazmente ante condiciones cambiantes en el entorno productivo real.
+
+\subsubsection{Transductores y acondicionamiento analógico de señales}
+
+La medición segura de las variaciones de corriente del motor del husillo en instalaciones industriales exige transductores que ofrezcan aislamiento galvánico intrínseco sin requerir la apertura del conexionado de fuerza \citep{lai2025}. El sensor de corriente de núcleo partido SCT013 satisface plenamente estos requisitos operativos, fundamentando su funcionamiento en el principio electromagnético de inducción mutua de Faraday mediante un transformador que se acopla magnéticamente alrededor de uno de los conductores de fase del motor.
+
+El transformador de corriente SCT013 presenta una relación de vueltas de mil a uno, entregando una corriente secundaria proporcional al flujo magnético inducido en su núcleo de ferrita de alta permeabilidad \citep{lai2025}. Mediante la incorporación de una resistencia de carga de precisión conectada en paralelo a sus terminales secundarios, se convierte la corriente inducida en un nivel de voltaje proporcional, garantizando una respuesta lineal y evitando la saturación magnética dentro del rango de operación establecido.
+
+Conforme a las recomendaciones de ingeniería de potencia asumidas en este trabajo, el análisis eléctrico se focaliza estrictamente en la componente senoidal fundamental del motor, prescindiendo del estudio complejo de armónicos parásitos o modulaciones PWM de alta frecuencia \citep{lai2025}. Bajo esta premisa, la señal de voltaje alterno es sometida a una etapa analógica de rectificación de precisión y filtrado pasivo, transformándola en un nivel de tensión continua directamente proporcional al valor eficaz de la corriente consumida.
+
+La obtención de un nivel de tensión continua proporcional al valor eficaz simplifica drásticamente el procesamiento algorítmico en el microcontrolador, al permitir lecturas periódicas mediante su convertidor analógico-digital sin requerir muestreos ultrarrápidos de ondas completas \citep{romero2003}. La interrelación electromecánica entre el par resistente del husillo principal y las variables eléctricas eficaces fundamentales de la máquina de inducción se formaliza analíticamente a través de la relación de balance energético trifásico:
+
+\begin{equation}
+T_m = \frac{\sqrt{3} \cdot V_{RMS} \cdot I_{RMS} \cdot \cos(\varphi) \cdot \eta}{\omega_m}
+\label{eq:par_electromecanico}
+\end{equation}
+
+donde $T_m$ simboliza el par mecánico generado en el árbol del husillo en newton-metro, $V_{RMS}$ e $I_{RMS}$ constituyen los valores eficaces de tensión y corriente de fase, $\cos(\varphi)$ representa el factor de potencia operativo del accionamiento, $\eta$ cuantifica el rendimiento cinemático de transmisión y $\omega_m$ denota la velocidad angular mecánica en radianes por segundo. El seguimiento de estas magnitudes eléctricas permite detectar variaciones sutiles de par causadas por el desgaste.
+
+Para la medición de las vibraciones mecánicas del proceso se emplean acelerómetros fundamentados en sistemas microelectromecánicos, caracterizados por su tamaño ultra compacto, bajo consumo y adecuada respuesta en frecuencia \citep{wang2024}. Estos transductores MEMS incorporan internamente una microestructura móvil de silicio suspendida elásticamente, la cual se desplaza ante aceleraciones externas modificando la capacidad de peines diferenciales, proporcionando una señal eléctrica proporcional a la intensidad de oscilación mecánica.
+
+El montaje del sensor acelerómetro sobre la torreta portaherramientas del torno CNC debe asegurar un acoplamiento mecánico rígido y exento de amortiguamientos espurios que pudieran atenuar las señales de alta frecuencia \citep{icfo2026}. Se suele recurrir a una fijación mediante perno roscado o acoplamiento magnético de neodimio en proximidad inmediata al asiento del portaherramientas, maximizando la captación de oscilaciones transitorias generadas por la interacción directa entre el filo del inserto y el material.
+
+\subsubsection{Procesamiento digital de señales (DSP) en entornos industriales}
+
+El procesamiento digital de señales conforma la etapa computacional donde las magnitudes analógicas adquiridas son discretizadas, condicionadas y condensadas matemáticamente para extraer patrones representativos del proceso de remoción \citep{trejo2010}. En instalaciones de manufactura pesada, las señales registradas sufren severas interferencias electromagnéticas ocasionadas por la conmutación de contactores de potencia, accionamientos de variadores de velocidad e inductancias parásitas inherentes a la red eléctrica de suministro en planta.
+
+La digitalización de las magnitudes analógicas exige respetar rigurosamente el criterio de muestreo de Nyquist-Shannon, garantizando que la tasa de adquisición del convertidor supere el doble del ancho de banda de interés para evitar distorsiones por solapamiento espectral \citep{sevilla2011}. Para las señales continuas proporcionales de corriente resultan idóneas frecuencias de muestreo moderadas de varios cientos de hercios, mientras que la dinámica vibratoria demanda tasas discretas sensiblemente más elevadas en el orden de varios kilohercios.
+
+Tras la conversión analógica a digital, se implementan algoritmos de filtrado digital en tiempo real directamente sobre el microcontrolador para suprimir ruido blanco remanente y fluctuaciones térmicas \citep{jia2025}. Se estructuran filtros digitales de respuesta al impulso infinito de topología Butterworth paso bajo, seleccionados por su respuesta en frecuencia uniformemente plana en la banda de paso y su bajo coste de cómputo, asegurando series temporales depuradas para la subsiguiente extracción de características.
+
+A partir de las series numéricas filtradas, se procede a la extracción de descriptores estadísticos en el dominio del tiempo capaces de correlacionar cuantitativamente con la degradación progresiva del filo \citep{huang2026}. El parámetro estadístico elemental más representativo lo constituye el valor cuadrático medio o valor eficaz, el cual cuantifica el contenido energético total acumulado por la señal a lo largo de una ventana temporal discreta de observación conformada por $N$ muestras consecutivas:
+
+\begin{equation}
+x_{RMS} = \sqrt{\frac{1}{N} \sum_{i=1}^{N} x_i^2}
+\label{eq:rms}
+\end{equation}
+
+donde $x_i$ corresponde a cada valor numérico individual adquirido dentro de la ventana de procesamiento temporal y $N$ simboliza la cantidad total de muestras integradas en el cálculo. El seguimiento cronológico del valor eficaz permite evidenciar la tendencia gradual y sostenida del incremento de fuerza de corte vinculada directamente al desgaste de flanco de la herramienta, descartando perturbaciones transitorias ajenas al mecanizado.
+
+De manera simultánea, se computan parámetros estadísticos de orden superior altamente sensibles a eventos dinámicos anómalos, tales como impactos intermitentes derivados de fracturas de filo o desprendimientos microscópicos de recubrimiento \citep{sevilla2011}. Entre estos descriptores destacan la Curtosis, indicativa de la agudeza o pesadez de las colas de distribución de la señal, y el Factor de Cresta, definido como la razón entre el valor pico absoluto instantáneo y el valor eficaz cuadrático medio:
+
+\begin{equation}
+Ku = \frac{\frac{1}{N}\sum_{i=1}^{N}(x_i - \bar{x})^4}{\left(\frac{1}{N}\sum_{i=1}^{N}(x_i - \bar{x})^2\right)^2}
+\label{eq:curtosis}
+\end{equation}
+
+\begin{equation}
+CF = \frac{\max(|x_i|)}{x_{RMS}}
+\label{eq:factor_cresta}
+\end{equation}
+
+donde $\bar{x}$ simboliza el promedio aritmético de las muestras contenidas en el intervalo analizado. Cuando el filo de corte sufre una rotura violenta o fractura imprevista, la presencia de picos transitorios repentinos eleva de forma abrupta los valores de curtosis y factor de cresta, permitiendo diferenciar con notable claridad un régimen de desgaste progresivo frente a una catástrofe mecánica inminente en plena operación.
+
+\subsubsection{Inteligencia artificial en el borde (Edge AI / TinyML)}
+
+El enfoque tradicional de mantenimiento predictivo fundamentado en la nube presenta serios inconvenientes operacionales en aplicaciones industriales críticas, asociados a retardos impredecibles de transmisión, saturación del canal de comunicaciones y dependencia vulnerable de redes externas \citep{hamasha2025}. La Inteligencia Artificial en el Borde supera radicalmente tales desventajas transfiriendo la inferencia analítica y la toma de decisiones algorítmicas hacia el propio hardware embebido instalado de forma periférica en la máquina herramienta.
+
+La disciplina de TinyML promueve la ejecución eficiente de modelos de aprendizaje automático directamente sobre microcontroladores con recursos rigurosamente limitados de memoria estática y potencia de cómputo \citep{warden2019}. Microcontroladores modernos de treinta y dos bits basados en la arquitectura ARM Cortex-M4, dotados de unidad de punto flotante e instrucciones de procesamiento digital de señales por hardware, ofrecen el entorno computacional propicio para ejecutar clasificadores inteligentes en milisegundos.
+
+Para el diagnóstico inteligente del estado de la herramienta se emplean algoritmos supervisados de clasificación capaces de cartografiar las características estadísticas hacia clases discretas de desgaste \citep{huang2026}. Modelos clásicos como los Perceptrones Multicapa, las Máquinas de Vectores de Soporte y los Bosques Aleatorios permiten definir fronteras de decisión precisas con requerimientos computacionales sumamente moderados, adecuados para entornos embebidos de respuesta temporal estricta y predecible.
+
+El despliegue efectivo de modelos de aprendizaje automático en microcontroladores de la familia STM32 se viabiliza mediante herramientas especializadas de optimización y cuantización como STM32Cube.AI \citep{stmicroelectronics2021}. Esta plataforma analiza la topología de la red entrenada en entornos como Scikit-Learn o TensorFlow y efectúa una conversión automática hacia código ANSI C altamente optimizado, adaptado de forma óptima a las capacidades arquitectónicas internas del silicio de procesamiento seleccionado.
+
+El proceso de cuantización a números enteros de ocho bits disminuye la huella de memoria del modelo en almacenamiento no volátil en aproximadamente un setenta y cinco por ciento, reduciendo simultáneamente la ocupación de memoria dinámica y acelerando la ejecución aritmética \citep{warden2019}. Esta optimización algorítmica permite efectuar diagnósticos en tiempo real deterministas, categorizando el estado operativo del inserto de corte en categorías estandarizadas: herramienta afilada óptima, desgaste admisible de producción o condición crítica de reemplazo perentorio.
+
+\subsubsection{Arquitectura de conectividad IoT para mantenimiento predictivo}
+
+La incorporación de capacidades de conectividad IoT en el nodo periférico de monitoreo complementa la autonomía del procesamiento en el borde, permitiendo la telemetría remota y la centralización de registros para la gestión integral del taller \citep{sheffield2021}. A través de enlaces inalámbricos confiables, el sistema embebido reporta continuamente el estado de desgaste y variables físicas representativas hacia plataformas de supervisión en planta, apoyando al personal técnico en la toma de decisiones informadas.
+
+En el plano de los protocolos de transporte para telemetría industrial de bajo ancho de banda, el estándar MQTT destaca como la solución preponderante, fundamentado en un paradigma asíncrono y desacoplado de Publicador y Suscriptor coordinado por un servidor central \citep{hamasha2025}. MQTT se caracteriza por presentar una cabecera de trama excepcionalmente reducida de únicamente dos bytes, minimizando la carga computacional en el microcontrolador y maximizando la eficiencia de transmisión sobre canales de comunicación compartidos.
+
+La arquitectura del sistema organiza jerárquicamente tópicos temáticos orientados a eventos funcionales, tales como el estado de la herramienta y la telemetría periódica de variables electromecánicas, asignando niveles adecuados de Calidad de Servicio según la criticidad \citep{sheffield2021}. Para el envío recurrente de variables continuas se utiliza QoS cero optimizando velocidad, mientras que para alertas de desgaste crítico se selecciona QoS uno, garantizando la recepción efectiva de notificaciones urgentes en el servidor de control.
+
+La serialización de los paquetes diagnósticos transmitidos hacia la red se realiza mediante el estándar de notación ligera de objetos JSON, garantizando completa interoperabilidad entre el hardware embebido periférico y diversas aplicaciones de gestión analítica en servidores \citep{hamasha2025}. El payload estructurado incluye identificador de máquina, valor eficaz de corriente, descriptor de aceleración, clase diagnóstica predicha y marca temporal, posibilitando su integración ágil en cuadros de mando operativos como ThingsBoard o Node-RED.

@@ -509,7 +509,7 @@ de Corte en tornos CNC industriales en MAINSA.}
 \newcommand{\carrera}{Ingeniería Mecatrónica}
 
 % Tipo de titulación
-\newcommand{\titulacion}{Proyecto de Grado}
+\newcommand{\titulacion}{Perfil de Proyecto de Grado}
 
 % Grado Académico
 \newcommand{\grado}{Licenciatura}
@@ -558,7 +558,7 @@ de Corte en tornos CNC industriales en MAINSA.}
 
 
     \input{2_Caratula.tex}
-    \input{3_Dedicatorias.tex}
+    % \input{3_Dedicatorias.tex} % Excluido para presentación de Perfil de Grado
     
         
  % Espaciados de hoja
@@ -609,22 +609,28 @@ de Corte en tornos CNC industriales en MAINSA.}
     % Estilo de hoja
         \pagestyle{fancy}
 
-    \input{5_Introduccion.tex}
-    \input{6_Marco_Teorico.tex}
-    %\input{7_Marco_Metodologico.tex}
-    %\input{8_Marco_Practico.tex}
-    %\input{9_Conclusiones.tex}
-    %\input{10_Recomendaciones.tex}
+    \input{1_Seccion_Introduccion.tex}
+    \input{2_Seccion_Antecedentes.tex}
+    \input{3_Seccion_Planteamiento_Problema.tex}
+    \input{4_Seccion_Objetivo_General.tex}
+    \input{5_Seccion_Objetivos_Especificos.tex}
+    \input{6_Seccion_Alcances_Limites.tex}
+    \input{7_Seccion_Justificacion.tex}
+    \input{8_Seccion_Fundamento_Teorico.tex}
+    \input{9_Seccion_Propuesta_Metodologica.tex}
+    \input{10_Seccion_Presupuesto.tex}
+    \input{11_Seccion_Cronograma.tex}
 
-    % Bibliografía
-        \newpage
-        \begingroup
-        \setstretch{0.8}
-        \setlength{\bibhang}{0pt}
-        \setlength\bibitemsep{12pt}
-%        \nocite{*}  % Adicionar para mostrar mostrar todas las bibliografías siempre
-        \printbibliography[heading=bibintoc,title={BIBLIOGRAFÍA}]
-        \endgroup
+    % 12. BIBLIOGRAFÍA
+    \newpage
+    \section{BIBLIOGRAFÍA}
+    \begingroup
+    \setstretch{0.8}
+    \setlength{\bibhang}{0pt}
+    \setlength\bibitemsep{12pt}
+    \nocite{*}
+    \printbibliography[heading=none]
+    \endgroup
 
     %\input{Anexos.tex}
     %\input{Apendices.tex}

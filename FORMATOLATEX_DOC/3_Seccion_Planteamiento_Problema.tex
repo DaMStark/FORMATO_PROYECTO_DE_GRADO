@@ -1,0 +1,29 @@
+\newpage
+\section{PLANTEAMIENTO DEL PROBLEMA}
+
+\subsection{Identificación del problema}
+En el sector industrial metalmecánico, los procesos de mecanizado por arranque de viruta mediante tornos de Control Numérico Computarizado (CNC) constituyen una etapa fundamental para la fabricación seriada de componentes cilíndricos de alta precisión dimensional y rigurosa calidad superficial.
+
+En la empresa metalmecánica Maestranza San Carlos (MAINSA), el control del estado y desgaste de los insertos de corte se efectúa de forma manual y empírica. La supervisión depende por completo de inspecciones visuales periódicas en pausas de máquina y del criterio subjetivo del operador, quien evalúa el sonido del corte y el aspecto exterior de la pieza terminada.
+
+Esta supervisión humana y discontinua resulta insuficiente para advertir a tiempo la degradación progresiva del filo de corte o prever la rotura súbita de la herramienta. Dicha limitación se agrava durante el ciclo de mecanizado en cabina cerrada, donde la nula visibilidad directa del punto de corte impide conocer el estado real del inserto en plena operación.
+
+El origen técnico de esta problemática se sustenta en tres factores: la carencia de sensores de monitoreo continuo en los tornos CNC de planta, la arquitectura cerrada de sus controladores que bloquea el acceso a señales internas de los servoamplificadores, y la imposibilidad del ojo humano para cuantificar micras de desgaste en caliente durante el mecanizado.
+
+Cuando el inserto pierde agudeza, deja de cizallar limpiamente el material y produce una fricción severa que quema la pieza y altera el desprendimiento de viruta. Al no detectarse oportunamente, este fenómeno desencadena rugosidades superficiales deficientes, piezas descartadas fuera de tolerancia, rotura violenta de herramientas y extensos tiempos muertos dedicados al desatasco de viruta y retrabajos.
+
+Ante este escenario, surge la necesidad imperiosa de diseñar un sistema periférico inteligente y no invasivo que capture variables de corriente y vibración mecánica, procesándolas en el borde (\textit{Edge AI}) para alertar al operario en tiempo real, previniendo fallas catastróficas, optimizando la vida útil de los insertos y reduciendo costos operativos.
+
+Con el fin de estructurar de manera organizada y visual las causas de origen técnico y sus respectivas repercusiones operacionales en la planta, en la \fig{arbol_de_problemas} se expone el árbol de problemas correspondiente a las operaciones de torneado CNC en MAINSA.
+
+\begin{figure}[H]
+    \centering
+    \caption{Árbol de problemas del proceso de torneado CNC en MAINSA}
+    \includegraphics[width=0.80\textwidth]{arbol_de_problemas}
+    \par
+    \centering{\textbf{Fuente:} Elaboración propia}
+    \label{fig:arbol_de_problemas}
+\end{figure}
+
+\subsection{Formulación del problema}
+¿Cómo diseñar un sistema periférico no invasivo para el monitoreo en tiempo real del desgaste de herramientas de corte en los tornos CNC de la empresa MAINSA, que permita superar la dependencia de la inspección visual subjetiva, prevenir paradas no planificadas por rotura de filo y reducir las mermas operativas en el taller?

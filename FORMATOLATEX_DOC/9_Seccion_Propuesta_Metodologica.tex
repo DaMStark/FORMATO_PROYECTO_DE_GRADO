@@ -1,0 +1,99 @@
+\newpage
+\section{PROPUESTA METODOLÓGICA}
+
+La presente sección describe el marco metodológico que guía el diseño, desarrollo, integración y validación experimental del sistema periférico no invasivo para el monitoreo de desgaste de herramientas de corte en tornos CNC en MAINSA. Se fundamenta en un enfoque cuantitativo y experimental propio de la ingeniería mecatrónica, estructurado conforme al modelo de ciclo en V de la norma internacional VDI 2206 para el diseño de sistemas mecatrónicos.
+
+\subsection{Enfoque y tipo de investigación}
+El proyecto adopta un enfoque metodológico cuantitativo de tipo aplicado y tecnológico-experimental. Es cuantitativo puesto que se sustenta en la adquisición, discretización, medición y análisis numérico de variables físicas continuas (corriente eléctrica eficaz, oscilaciones dinámicas de aceleración, rugosidad superficial aritmética $Ra$ y magnitud dimensional del desgaste de flanco $VB$). Es aplicado y experimental dado que el prototipo mecatrónico desarrollado será implementado e integrado directamente en un entorno operacional real sobre maquinaria industrial en el taller metalmecánico de MAINSA, manipulando controladamente los regímenes de avance y velocidad de corte para contrastar el comportamiento de herramientas nuevas frente a insertos degradados.
+
+\subsection{Metodología de diseño mecatrónico (Norma VDI 2206)}
+El desarrollo de la solución mecatrónica se articula a través del ciclo en V formalizado en la directriz VDI 2206 para el diseño de sistemas mecatrónicos y sistemas ciberfísicos industriales, estructurado en cuatro fases secuenciales e iterativas:
+
+\begin{enumerate}
+    \item \textbf{Fase 1: Análisis de requerimientos y especificación en planta (MAINSA):} Diagnóstico in situ de los tornos CNC del taller, caracterización de la cinemática de corte en operaciones de desbaste cilíndrico, identificación de las fases eléctricas de alimentación del motor del husillo, determinación de zonas de fijación mecánica rígida en la torreta y definición de especificaciones técnicas de no invasividad y aislamiento galvánico.
+    \item \textbf{Fase 2: Diseño en dominios disciplinarios específicos:}
+    \begin{itemize}
+        \item \textit{Dominio electrónico y de instrumentación:} Diseño del circuito de acondicionamiento para el sensor de corriente SCT013 con rectificación de precisión y filtrado pasivo para la obtención de niveles proporcionales al valor eficaz ($I_{RMS}$), acondicionamiento de acoplamiento para acelerómetro y diseño de placa de circuito impreso (PCB) con planos de masa diferenciados.
+        \item \textit{Dominio computacional y de firmware embebido:} Configuración de temporizadores de muestreo por hardware, lectura por DMA sin bloqueo de CPU en microcontrolador STM32, algoritmos de filtrado digital IIR/Butterworth y rutinas DSP para el cómputo de descriptores temporales ($x_{RMS}$, Curtosis, Factor de Cresta).
+        \item \textit{Dominio de inteligencia artificial (TinyML):} Entrenamiento supervisado de modelos ligeros de clasificación (MLP / Random Forest / SVM) a partir del dataset experimental recolectado, optimización por cuantización entera a ocho bits (INT8) mediante STM32Cube.AI y despliegue del modelo en la memoria de la unidad embebida.
+        \item \textit{Dominio telemático e IoT:} Implementación de enlace serial con módulo ESP32, configuración del protocolo MQTT para publicación asíncrona de eventos y desarrollo de un panel de supervisión (dashboard) con semaforización de estado y alertas tempranas.
+    \end{itemize}
+    \item \textbf{Fase 3: Integración de subsistemas y pruebas de laboratorio:} Ensamble modular del hardware en su gabinete industrial de protección, integración del firmware con el motor de inferencia y calibración estática de los canales de adquisición analógica.
+    \item \textbf{Fase 4: Validación experimental en entorno productivo real:} Ensayos de corte continuo sobre barras de acero AISI 4340 y AISI 4140 en el torno CNC de MAINSA, evaluando la exactitud diagnóstica del clasificador, la latencia de inferencia y la correlación directa entre las alertas del sistema y la rugosidad superficial $Ra$ obtenida en las piezas torneadas.
+\end{enumerate}
+
+\subsection{Matriz de consistencia metodológica}
+Para garantizar la coherencia estructural entre el problema planteado, los objetivos, la hipótesis formulada, las variables de estudio y las técnicas de evaluación, en la \tab{matriz_consistencia} se sintetiza la matriz de consistencia metodológica del proyecto.
+
+{\setlength{\parskip}{1.5pt}
+\begin{longtable}{|L{2.3cm}|L{3.0cm}|L{3.7cm}|L{3.7cm}|}
+\caption{Matriz de consistencia metodológica del proyecto}
+\label{tab:matriz_consistencia}
+\\
+\hline
+\textbf{Elemento} & \textbf{Definición conceptual} & \textbf{Variables / Parámetros} & \textbf{Indicador de verificación} \\
+\hline \hline
+\endfirsthead
+
+\hline
+\textbf{Elemento} & \textbf{Definición conceptual} & \textbf{Variables / Parámetros} & \textbf{Indicador de verificación} \\
+\hline \hline
+\endhead
+
+\hline
+\endfoot
+
+\multicolumn{4}{c}{\textbf{Fuente:} Elaboración propia}
+\endlastfoot
+
+Problema General & 
+¿De qué manera un sistema no invasivo basado en corriente, acelerometría, Edge AI e IoT permite monitorear el desgaste en MAINSA? & 
+Condición operativa de corte, interferencias electromagnéticas y parque de tornos CNC heredado. & 
+Incidencia de roturas intempestivas y piezas fuera de tolerancia dimensional registradas en taller.\\ \hline
+
+Objetivo General & 
+Diseñar e implementar un sistema periférico no invasivo para monitoreo de desgaste de herramientas en tornos CNC en MAINSA. & 
+Integración de transductores SCT013, acelerometría, microcontrolador STM32 y módulo IoT. & 
+Prototipo mecatrónico funcional montado en gabinete industrial operativo al pie de máquina.\\ \hline
+
+Hipótesis Ingenieril & 
+La fusión no invasiva de corriente y acelerometría con TinyML en STM32 detecta desgaste crítico ($VB \ge 0.3\,\text{mm}$) en tiempo real. & 
+Capacidad discriminante del clasificador embebido frente a variaciones de régimen de corte. & 
+Exactitud de clasificación $\ge 90\%$, latencia de inferencia $\le 20\,\text{ms}$ y cero invasión en cableado interno.\\ \hline
+
+Variables Independientes & 
+Señales físicas primarias generadas durante la remoción de material en el proceso de torneado. & 
+- Corriente eficaz del husillo ($I_{RMS}$).\par
+- Aceleración dinámica en torreta ($a_{RMS}$).\par
+- Curtosis ($Ku$) y Factor de Cresta ($CF$). & 
+Amplitud en amperios (A), aceleración en gravedad ($g$) y coeficientes estadísticos adimensionales.\\ \hline
+
+Variables Dependientes & 
+Estado tribológico del inserto de carburo y calidad geométrica superficial resultante en la pieza. & 
+- Desgaste de flanco ($VB$ en mm según ISO 3685).\par
+- Clase de condición: Óptima, Desgaste Normal o Reemplazo Crítico.\par
+- Rugosidad media superficial ($Ra$ en $\upmu\text{m}$). & 
+Medición con lupa óptica/micrómetro ($VB$), rugosímetro de taller ($Ra$) y matriz de confusión del modelo.\\ \hline
+
+Variables Intervinientes & 
+Factores externos del entorno operacional de planta que inciden en el régimen de corte. & 
+- Material de trabajo (AISI 4340 / 4140).\par
+- Profundidad de pasada ($a_p$) y avance ($f$).\par
+- Presencia y flujo de fluido de corte refrigerante. & 
+Registro riguroso de parámetros programados en el código G del control numérico del torno CNC.\\
+\end{longtable}
+}
+
+\subsection{Técnicas e instrumentos de recolección y análisis de datos}
+Para la adquisición y validación cuantitativa de las variables involucradas en el sistema mecatrónico se emplearán los siguientes instrumentos y procedimientos técnicos:
+
+\begin{itemize}
+    \item \textbf{Instrumentación de corriente:} Pinza amperimétrica de núcleo partido SCT013 instalada con aislamiento galvánico en una fase del motor del husillo, acoplada al circuito de acondicionamiento analógico de precisión.
+    \item \textbf{Instrumentación dinámica de vibración:} Acelerómetro con base de fijación rígida por perno o acoplamiento magnético directo sobre la torreta portaherramientas del torno CNC.
+    \item \textbf{Instrumentación de referencia metrológica (Ground Truth):}
+    \begin{itemize}
+        \item Rugosímetro de contacto de precisión para la medición directa de la rugosidad aritmética superficial $Ra$ en las probetas mecanizadas, verificando el deterioro del acabado según la progresión del corte.
+        \item Microscopio óptico de taller o lupa micrométrica de graduación centesimal para la medición física del ancho medio de desgaste de flanco $VB$ sobre la arista del inserto de carburo de acuerdo con la norma ISO 3685.
+    \end{itemize}
+    \item \textbf{Procesamiento estadístico y métricas de desempeño:} Evaluación del clasificador mediante matrices de confusión, cuantificando la exactitud global (\textit{Accuracy}), precisión, sensibilidad (\textit{Recall}), puntuación $F_1$-Score y tasa de falsas alarmas frente a perturbaciones del mecanizado.
+\end{itemize}

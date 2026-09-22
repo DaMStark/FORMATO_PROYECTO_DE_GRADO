@@ -1,0 +1,53 @@
+\newpage
+\section{PRESUPUESTO}
+
+El desarrollo e implementación del sistema periférico no invasivo comprende la adquisición de componentes electrónicos de instrumentación, transductores industriales, hardware de procesamiento embebido, fabricación de circuitos impresos, gabinete protector, materiales mecánicos fungibles para los ensayos de corte en MAINSA y servicios de metrología. En la \tab{presupuesto_detallado} se presenta el desglose analítico de los costos estimados, expresados en moneda nacional (Bolivianos, Bs.) y su equivalencia en Dólares Estadounidenses (\$USD), considerando un tipo de cambio de referencia de 6.96 Bs./USD.
+
+{\setlength{\parskip}{1.5pt}
+\begin{longtable}{|L{0.8cm}|L{5.4cm}|C{1.0cm}|R{1.7cm}|R{1.7cm}|R{1.7cm}|}
+\caption{Presupuesto detallado para el desarrollo y validación del proyecto}
+\label{tab:presupuesto_detallado}
+\\
+\hline
+\textbf{Ítem} & \textbf{Descripción del componente / servicio} & \textbf{Cant.} & \textbf{P. Unit. (Bs.)} & \textbf{Total (Bs.)} & \textbf{Total (\$USD)} \\
+\hline \hline
+\endfirsthead
+
+\hline
+\textbf{Ítem} & \textbf{Descripción del componente / servicio} & \textbf{Cant.} & \textbf{P. Unit. (Bs.)} & \textbf{Total (Bs.)} & \textbf{Total (\$USD)} \\
+\hline \hline
+\endhead
+
+\hline
+\endfoot
+
+\multicolumn{6}{c}{\textbf{Fuente:} Elaboración propia}
+\endlastfoot
+
+\multicolumn{6}{|l|}{\textbf{1. Sensores, instrumentación y procesamiento electrónico}} \\ \hline
+1.1 & Placa de desarrollo STM32 Nucleo-F401RE (ARM Cortex-M4 a 84 MHz, FPU y DSP) & 1 & 220.00 & 220.00 & 31.61 \\ \hline
+1.2 & Sensor de corriente de núcleo partido no invasivo SCT013-000 (0-100 A) & 2 & 85.00 & 170.00 & 24.43 \\ \hline
+1.3 & Sensor acelerómetro digital triaxial ADXL345 / MEMS dinámico & 2 & 60.00 & 120.00 & 17.24 \\ \hline
+1.4 & Módulo microcontrolador de comunicaciones Wi-Fi/Bluetooth ESP32 NodeMCU & 1 & 75.00 & 75.00 & 10.78 \\ \hline
+1.5 & Componentes de acondicionamiento analógico (Op-Amps rail-to-rail, diodos rápidos, pasivos de precisión al 1\%, optoacopladores) & 1 lote & 150.00 & 150.00 & 21.55 \\ \hline
+1.6 & Fuente de alimentación industrial conmutada y reguladores LDO con aislamiento & 1 & 140.00 & 140.00 & 20.11 \\ \hline
+
+\multicolumn{6}{|l|}{\textbf{2. Fabricación de hardware, montaje y encapsulado industrial}} \\ \hline
+2.1 & Servicio de fabricación de placas de circuito impreso (PCB doble capa FR4) & 1 lote & 180.00 & 180.00 & 25.86 \\ \hline
+2.2 & Gabinete industrial estanco con grado de protección IP65 y prensaestopas & 1 & 130.00 & 130.00 & 18.68 \\ \hline
+2.3 & Base magnética de alta fijación y elementos de desacople mecánico en torreta & 1 & 110.00 & 110.00 & 15.80 \\ \hline
+2.4 & Cableado apantallado para instrumentación industrial, borneras y conectores & 1 lote & 100.00 & 100.00 & 14.37 \\ \hline
+
+\multicolumn{6}{|l|}{\textbf{3. Materiales fungibles para experimentación y maquinado en torno CNC}} \\ \hline
+3.1 & Barras de acero aleado de alta resistencia AISI 4340 y AISI 4140 para corte & 3 barras & 210.00 & 630.00 & 90.52 \\ \hline
+3.2 & Paquete de insertos intercambiables de carburo de tungsteno recubierto (ISO P) & 1 caja & 350.00 & 350.00 & 50.29 \\ \hline
+
+\multicolumn{6}{|l|}{\textbf{4. Servicios metrológicos y consumibles de laboratorio}} \\ \hline
+4.1 & Servicios de metrología de taller (acceso a rugosímetro de contacto y microscopía para medición de desgaste de flanco $VB$) & 1 serv. & 280.00 & 280.00 & 40.23 \\ \hline
+4.2 & Insumos de soldadura, estaño, fundente, fijadores y elementos de protección & 1 lote & 90.00 & 90.00 & 12.93 \\ \hline \hline
+
+\multicolumn{4}{|r|}{\textbf{TOTAL ESTIMADO DEL PROYECTO:}} & \textbf{2645.00} & \textbf{380.03} \\
+\end{longtable}
+}
+
+El financiamiento del presupuesto requerido será asumido íntegramente por el postulante como parte de su proyecto de grado, contando adicionalmente con el respaldo logístico de la empresa MAINSA para la disponibilidad de horas de máquina en torno CNC, suministro de fluido de corte refrigerante y facilidades de instalación en planta.
