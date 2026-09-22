@@ -351,11 +351,10 @@ Cf. \printnames[][-\value{listtotal}]{labelname}
     {
         \begin{figure}[!htb]                        % si la fig se mueve usar [h]
             \centering                              % centrado
-            \caption{#3}                   % titulo de la fig
+            \caption{#3}\label{fig:#2}              % titulo de la fig y etiqueta
             \includegraphics[#1]{#2}                % figura
             \par
-            \centering{\textbf{Fuente:} #4}                  % fuente
-            \label{fig:#2}                          % referencia
+            \centering{\textbf{Fuente:} #4}         % fuente
         \end{figure}
     }
     
@@ -617,19 +616,18 @@ de Corte en tornos CNC industriales en MAINSA.}
     \input{6_Seccion_Alcances_Limites.tex}
     \input{7_Seccion_Justificacion.tex}
     \input{8_Seccion_Fundamento_Teorico.tex}
-    \input{9_Seccion_Propuesta_Metodologica.tex}
-    \input{10_Seccion_Presupuesto.tex}
-    \input{11_Seccion_Cronograma.tex}
+    %\input{9_Seccion_Propuesta_Metodologica.tex}
+    %\input{10_Seccion_Presupuesto.tex}
+    %\input{11_Seccion_Cronograma.tex}
 
-    % 12. BIBLIOGRAFÍA
+    % Bibliografía
     \newpage
-    \section{BIBLIOGRAFÍA}
     \begingroup
     \setstretch{0.8}
     \setlength{\bibhang}{0pt}
     \setlength\bibitemsep{12pt}
     \nocite{*}
-    \printbibliography[heading=none]
+    \printbibliography[heading=bibintoc,title={BIBLIOGRAFÍA}]
     \endgroup
 
     %\input{Anexos.tex}

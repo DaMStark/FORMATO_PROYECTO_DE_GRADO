@@ -1,4 +1,3 @@
-\newpage
 \section{FUNDAMENTO TEÓRICO}
 
 El presente capítulo expone los fundamentos teóricos y conceptuales que sustentan el diseño e implementación del sistema periférico no invasivo para el monitoreo de desgaste de herramientas de corte en tornos CNC industriales en MAINSA. Se articulan coherentemente los principios cinemáticos del mecanizado por arranque de viruta, los mecanismos tribológicos de degradación del inserto conforme a normas internacionales, las metodologías de supervisión indirecta mediante variables electromecánicas, las técnicas de acondicionamiento y procesamiento digital de señales, así como los modelos de aprendizaje automático en el borde y las arquitecturas de conectividad industrial.
@@ -7,9 +6,8 @@ El presente capítulo expone los fundamentos teóricos y conceptuales que susten
 Con la finalidad de estructurar rigurosamente las bases conceptuales que respaldan el cumplimiento de los objetivos específicos y las acciones técnicas del proyecto, en la \tab{contenido_tematico} se presenta la matriz esquemática del contenido temático desarrollado.
 
 {\setlength{\parskip}{1.5pt}
-\begin{longtable}{|L{3.8cm}|L{4.8cm}|L{4.4cm}|}
-\caption{Matriz esquemática del contenido temático del fundamento teórico}
-\label{tab:contenido_tematico}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{3.8cm}|>{\raggedright\arraybackslash}p{4.8cm}|>{\raggedright\arraybackslash}p{4.4cm}|}
+\caption{Matriz esquemática del contenido temático del fundamento teórico\label{tab:contenido_tematico}}
 \\
 \hline
 \textbf{Área temática} & \textbf{Temas fundamentales} & \textbf{Relevancia en el proyecto} \\
@@ -104,13 +102,12 @@ Desde la perspectiva de la mecánica del mecanizado por arranque de viruta, la f
 
 \begin{figure}[!htb]
     \centering
-    \caption{Comparativa esquemática entre el modelo de corte ortogonal y corte oblicuo}
+    \caption{Comparativa esquemática entre el modelo de corte ortogonal y corte oblicuo}\label{fig:mecanica_corte}
     \subfloat[Corte ortogonal (modelo bidimensional)]{\includegraphics[width=0.40\columnwidth]{corte_ortogonal}}
     \qquad
     \subfloat[Corte oblicuo (modelo tridimensional)]{\includegraphics[width=0.40\columnwidth]{corte_oblicuo}}
     \\
     \centering{\textbf{Fuente:} Adaptado de \textcite{trejo2010}}
-    \label{fig:mecanica_corte}
 \end{figure}
 
 En el corte ortogonal (\fig{mecanica_corte}a), la arista cortante se posiciona rigurosamente perpendicular a la dirección del vector de velocidad relativa de corte, de modo que el plano de deformación plástica y el flujo de viruta se restringen a un plano bidimensional. La geometría de corte en este modelo se define mediante tres ángulos fundamentales acoplados en el plano ortogonal de referencia: el ángulo de ataque o desprendimiento $\gamma_o$, el ángulo de incidencia o de desahogo $\alpha_o$, y el ángulo de cuña del material $\beta_o$, cumpliendo la relación trigonométrica complementaria $\alpha_o + \beta_o + \gamma_o = 90^\circ$ \citep{kalpakjian2014}. Asimismo, el plano primario de cizallamiento se define mediante el ángulo de cizallamiento $\phi$, el cual relaciona la fuerza cortante y la fricción superficial según la solución teórica de Merchant ($\phi = 45^\circ + \frac{\gamma_o}{2} - \frac{\beta_{\text{fric}}}{2}$).

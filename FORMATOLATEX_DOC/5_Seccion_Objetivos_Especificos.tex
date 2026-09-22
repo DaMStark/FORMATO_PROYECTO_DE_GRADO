@@ -1,4 +1,3 @@
-\newpage
 \section{OBJETIVOS ESPECÍFICOS}
 
 \begin{itemize}
@@ -13,9 +12,8 @@
 Con el propósito de operativizar cada uno de los objetivos específicos y detallar la metodología de ejecución técnica, en la \tab{acciones_objetivos} se desglosan las acciones concretas asociadas a cada fase del proyecto.
 
 {\setlength{\parskip}{1.5pt}
-\begin{longtable}{|L{4.8cm}|L{9.2cm}|}
-\caption{Acciones asociadas a los objetivos específicos}
-\label{tab:acciones_objetivos}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{4.8cm}|>{\raggedright\arraybackslash}p{9.2cm}|}
+\caption{Acciones asociadas a los objetivos específicos\label{tab:acciones_objetivos}}
 \\
 \hline
 \textbf{Objetivo específico} & \textbf{Acciones a desarrollar} \\
@@ -33,35 +31,35 @@ Con el propósito de operativizar cada uno de los objetivos específicos y detal
 \multicolumn{2}{c}{\textbf{Fuente:} Elaboración propia}
 \endlastfoot
 
-1. Investigar operaciones de mecanizado en torno CNC, fenomenología del desgaste de herramientas y tecnologías de Edge AI para monitoreo. & 
-\textbullet\ Revisión y caracterización de las operaciones de torneado CNC (cilindrado, refrentado, ranurado) y cinemática de corte.\par
-\textbullet\ Análisis de la fenomenología del desgaste de herramientas y patrones de falla según la norma ISO 3685.\par
-\textbullet\ Estudio del estado del arte en sistemas de monitoreo indirecto de herramientas (TCM) mediante corriente y vibración.\par
-\textbullet\ Evaluación de tecnologías de Inteligencia Artificial en el borde (\textit{Edge AI} / TinyML) y plataformas embebidas.\\ \hline
+Investigar operaciones de mecanizado en torno CNC, fenomenología del desgaste de herramientas y tecnologías de Edge AI para monitoreo. & 
+• Revisión y caracterización de las operaciones de torneado CNC (cilindrado, refrentado, ranurado) y cinemática de corte.\par\vspace{1mm}
+• Análisis de la fenomenología del desgaste de herramientas y patrones de falla según la norma ISO 3685.\par\vspace{1mm}
+• Estudio del estado del arte en sistemas de monitoreo indirecto de herramientas (TCM) mediante corriente y vibración.\par\vspace{1mm}
+• Evaluación de tecnologías de Inteligencia Artificial en el borde (\textit{Edge AI} / TinyML) y plataformas embebidas.\\ \hline
 
-2. Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, acondicionamiento, Edge AI e IoT. & 
-\textbullet\ Definición del diagrama de bloques funcional (adquisición, acondicionamiento, procesamiento y enlace IoT).\par
-\textbullet\ Diseño del circuito de acondicionamiento para rectificación y conversión a niveles proporcionales al valor eficaz (RMS).\par
-\textbullet\ Diseño esquemático y ruteo de la placa de circuito impreso (PCB) con aislamiento galvánico industrial.\par
-\textbullet\ Concepción del gabinete protector y soportes de fijación no invasiva para la instalación en la máquina.\\ \hline
+Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, acondicionamiento, Edge AI e IoT. & 
+• Definición del diagrama de bloques funcional (adquisición, acondicionamiento, procesamiento y enlace IoT).\par\vspace{1mm}
+• Diseño del circuito de acondicionamiento para rectificación y conversión a niveles proporcionales al valor eficaz (RMS).\par\vspace{1mm}
+• Diseño esquemático y ruteo de la placa de circuito impreso (PCB) con aislamiento galvánico industrial.\par\vspace{1mm}
+• Concepción del gabinete protector y soportes de fijación no invasiva para la instalación en la máquina.\\ \hline
 
-3. Dimensionar los sensores de corriente, vibración y la unidad de procesamiento embebido. & 
-\textbullet\ Dimensionamiento del rango de medición y relación de transformación del transductor de corriente según la potencia del motor.\par
-\textbullet\ Selección del acelerómetro considerando sensibilidad, ancho de banda y rango dinámico de vibración en la torreta.\par
-\textbullet\ Selección del microcontrolador evaluando periféricos ADC, DMA, instrucciones DSP y memoria requerida.\par
-\textbullet\ Cálculo y selección de componentes pasivos de filtrado analógico, resistencias de carga y fuentes de alimentación.\\ \hline
+Dimensionar los sensores de corriente, vibración y la unidad de procesamiento embebido. & 
+• Dimensionamiento del rango de medición y relación de transformación del transductor de corriente según la potencia del motor.\par\vspace{1mm}
+• Selección del acelerómetro considerando sensibilidad, ancho de banda y rango dinámico de vibración en la torreta.\par\vspace{1mm}
+• Selección del microcontrolador evaluando periféricos ADC, DMA, instrucciones DSP y memoria requerida.\par\vspace{1mm}
+• Cálculo y selección de componentes pasivos de filtrado analógico, resistencias de carga y fuentes de alimentación.\\ \hline
 
-4. Integrar el sistema periférico de adquisición, procesamiento inteligente y supervisión remota. & 
-\textbullet\ Ensamblaje, integración eléctrica y verificación funcional de la placa de circuito impreso (fabricada por servicio externo) y sus módulos acondicionadores.\par
-\textbullet\ Programación del firmware para muestreo síncrono, filtrado digital y extracción de descriptores estadísticos temporales.\par
-\textbullet\ Entrenamiento, cuantización y despliegue del modelo de aprendizaje automático ligero para clasificación de desgaste.\par
-\textbullet\ Configuración del protocolo de comunicaciones y desarrollo del panel de supervisión remota para visualización y alertas.\\ \hline
+Integrar el sistema periférico de adquisición, procesamiento inteligente y supervisión remota. & 
+• Ensamblaje, integración eléctrica y verificación funcional de la placa de circuito impreso y módulos acondicionadores.\par\vspace{1mm}
+• Programación del firmware para muestreo síncrono, filtrado digital y extracción de descriptores estadísticos temporales.\par\vspace{1mm}
+• Entrenamiento, cuantización y despliegue del modelo de aprendizaje automático ligero para clasificación de desgaste.\par\vspace{1mm}
+• Configuración del protocolo de comunicaciones y desarrollo del panel de supervisión remota para visualización y alertas.\\ \hline
 
-5. Validar experimentalmente el funcionamiento del sistema integrado mediante pruebas de corte en MAINSA. & 
-\textbullet\ Instalación y calibración del sistema periférico en el torno CNC bajo condiciones operativas de producción real.\par
-\textbullet\ Ensayos de torneado cilíndrico registrando señales con insertos en estado nuevo, desgaste moderado y crítico.\par
-\textbullet\ Medición metrológica de la rugosidad superficial ($Ra$) en probetas y verificación de tolerancias dimensionales.\par
-\textbullet\ Evaluación cuantitativa de la exactitud de clasificación y cuantificación de la reducción de paradas y mermas.\\ \hline
+Validar experimentalmente el funcionamiento del sistema integrado mediante pruebas de corte en MAINSA. & 
+• Instalación y calibración del sistema periférico en el torno CNC bajo condiciones operativas de producción real.\par\vspace{1mm}
+• Ensayos de torneado cilíndrico registrando señales con insertos en estado nuevo, desgaste moderado y crítico.\par\vspace{1mm}
+• Medición metrológica de la rugosidad superficial ($Ra$) en probetas y verificación de tolerancias dimensionales.\par\vspace{1mm}
+• Evaluación cuantitativa de la exactitud de clasificación y cuantificación de la reducción de paradas y mermas.\\ \hline
 
 \end{longtable}
 }
