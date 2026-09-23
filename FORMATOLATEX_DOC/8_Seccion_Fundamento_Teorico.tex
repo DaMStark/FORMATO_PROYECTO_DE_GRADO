@@ -1,3 +1,4 @@
+\newpage
 \section{FUNDAMENTO TEÓRICO}
 
 El presente capítulo expone los fundamentos teóricos y conceptuales que sustentan el diseño e implementación del sistema periférico no invasivo para el monitoreo de desgaste de herramientas de corte en tornos CNC industriales en MAINSA. Se articulan coherentemente los principios cinemáticos del mecanizado por arranque de viruta, los mecanismos tribológicos de degradación del inserto conforme a normas internacionales, las metodologías de supervisión indirecta mediante variables electromecánicas, las técnicas de acondicionamiento y procesamiento digital de señales, así como los modelos de aprendizaje automático en el borde y las arquitecturas de conectividad industrial.
@@ -5,8 +6,9 @@ El presente capítulo expone los fundamentos teóricos y conceptuales que susten
 \subsection{Contenido temático}
 Con la finalidad de estructurar rigurosamente las bases conceptuales que respaldan el cumplimiento de los objetivos específicos y las acciones técnicas del proyecto, en la \tab{contenido_tematico} se presenta la matriz esquemática del contenido temático desarrollado.
 
-{\setlength{\parskip}{1.5pt}
-\begin{longtable}{|>{\raggedright\arraybackslash}p{3.8cm}|>{\raggedright\arraybackslash}p{4.8cm}|>{\raggedright\arraybackslash}p{4.4cm}|}
+{\small
+\setlength{\parskip}{1.5pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{3.3cm}|>{\raggedright\arraybackslash}p{5.7cm}|>{\raggedright\arraybackslash}p{4.7cm}|}
 \caption{Matriz esquemática del contenido temático del fundamento teórico\label{tab:contenido_tematico}}
 \\
 \hline
@@ -22,6 +24,7 @@ Con la finalidad de estructurar rigurosamente las bases conceptuales que respald
 \hline
 \endfoot
 
+\hline
 \multicolumn{3}{c}{\textbf{Fuente:} Elaboración propia}
 \endlastfoot
 
@@ -51,7 +54,7 @@ Diagnóstico determinista y en tiempo real del estado de desgaste sin depender d
 
 7. Telemática industrial e IoT & 
 Protocolo ligero MQTT, arquitectura Publicador/Suscriptor, Calidad de Servicio (QoS), serialización JSON y paneles de control operativos (dashboards). & 
-Transmisión eficiente de telemetría y generación de alertas jerárquicas tempranas para los operarios y supervisores en planta.\\
+Transmisión eficiente de telemetría y generación de alertas jerárquicas tempranas para los operarios y supervisores en planta.\\ \hline
 \end{longtable}
 }
 
