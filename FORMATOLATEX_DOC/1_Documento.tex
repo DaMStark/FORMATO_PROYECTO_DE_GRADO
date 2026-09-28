@@ -467,9 +467,9 @@ Cf. \printnames[][-\value{listtotal}]{labelname}
 % \acrfull{lcm} -> Greatest Common Divisor (GCD)
 
 %\setglossarystyle{long}% puede cambiar
-\newglossary[slg]{symbols}{not}{ntn}{Symbols}   %crea el tipo symbols en los glosarios
-\makeglossaries
-\input{Glosario.tex}
+%\newglossary[slg]{symbols}{not}{ntn}{Symbols}   %crea el tipo symbols en los glosarios
+%\makeglossaries
+%\input{Glosario.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DATOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -583,17 +583,6 @@ de Corte en tornos CNC industriales en MAINSA.}
     \renewcommand{\listtablename}{ÍNDICE DE TABLAS}
     \newpage
     \listoftables
-    \thispagestyle{empty}
-        
-    % Índice de símbolos
-    \newpage
-    \glsaddall
-    \printglossary[type=symbols, title={\normalsize\centerline{\textbf{ÍNDICE DE SÍMBOLOS}}}]
-    \thispagestyle{empty}
-
-    % Glosario de acrónimos
-    \newpage
-    \printglossary[type=\acronymtype, title={\normalsize\centerline{\textbf{GLOSARIO DE ACRÓNIMOS}}}]
     \thispagestyle{empty}
 
     % Estilo de hoja para el cuerpo del perfil
