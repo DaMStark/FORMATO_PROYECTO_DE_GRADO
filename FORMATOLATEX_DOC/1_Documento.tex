@@ -573,28 +573,30 @@ de Corte en tornos CNC industriales en MAINSA.}
     \tableofcontents
     \thispagestyle{empty}
     
-    % Listas de figuras, tablas y glosarios excluidos para formato de Perfil de Grado (evita hojas en blanco)
-    % \renewcommand{\listfigurename}{ÍNDICE DE FIGURAS}
-    % \newpage
-    % \listoffigures
-    % \thispagestyle{empty}
-    % 
-    % \renewcommand{\listtablename}{ÍNDICE DE TABLAS}
-    % \newpage
-    % \listoftables
-    % \thispagestyle{empty}
-    % 
-    % \newpage
-    % \glsaddall
-    % \printglossary[type=symbols, title={\normalsize\centerline{\textbf{ÍNDICE DE SÍMBOLOS}}}]
-    % \thispagestyle{empty}
-    % 
-    % \newpage
-    % \printglossary[type=\acronymtype, title={\normalsize\centerline{\textbf{GLOSARIO DE ACRÓNIMOS}}}]
-    % \thispagestyle{empty}
+    % Índice de figuras
+    \renewcommand{\listfigurename}{ÍNDICE DE FIGURAS}
+    \newpage
+    \listoffigures
+    \thispagestyle{empty}
+    
+    % Índice de tablas
+    \renewcommand{\listtablename}{ÍNDICE DE TABLAS}
+    \newpage
+    \listoftables
+    \thispagestyle{empty}
+        
+    % Índice de símbolos
+    \newpage
+    \glsaddall
+    \printglossary[type=symbols, title={\normalsize\centerline{\textbf{ÍNDICE DE SÍMBOLOS}}}]
+    \thispagestyle{empty}
+
+    % Glosario de acrónimos
+    \newpage
+    \printglossary[type=\acronymtype, title={\normalsize\centerline{\textbf{GLOSARIO DE ACRÓNIMOS}}}]
+    \thispagestyle{empty}
 
     % Estilo de hoja para el cuerpo del perfil
-    \newpage
     \pagestyle{fancy}
 
     \input{1_Seccion_Introduccion.tex}
