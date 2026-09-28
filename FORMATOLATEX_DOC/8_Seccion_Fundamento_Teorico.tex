@@ -1,4 +1,3 @@
-\newpage
 \section{FUNDAMENTO TEÓRICO}
 
 El presente capítulo expone los fundamentos teóricos y conceptuales que sustentan el diseño e implementación del sistema periférico no invasivo para el monitoreo de desgaste de herramientas de corte en tornos CNC industriales en MAINSA. Se articulan coherentemente los principios cinemáticos del mecanizado por arranque de viruta, los mecanismos tribológicos de degradación del inserto conforme a normas internacionales, las metodologías de supervisión indirecta mediante variables electromecánicas, las técnicas de acondicionamiento y procesamiento digital de señales, así como los modelos de aprendizaje automático en el borde y las arquitecturas de conectividad industrial.
@@ -28,31 +27,31 @@ Con la finalidad de estructurar rigurosamente las bases conceptuales que respald
 \multicolumn{3}{c}{\textbf{Fuente:} Elaboración propia}
 \endlastfoot
 
-1. Mecánica de corte y procesos de torneado CNC & 
+Mecánica de corte y procesos de torneado CNC & 
 Operaciones de torneado, cinemática de corte ($V_c, f, a_p$), tasa de remoción de material ($MRR$), descomposición de fuerzas ($F_c, F_a, F_r$) y potencia de corte. & 
 Modelado del régimen de operación del torno en MAINSA y cálculo del esfuerzo mecánico sobre el husillo.\\ \hline
 
-2. Tribología y degradación de herramientas & 
+Tribología y degradación de herramientas & 
 Mecanismos de desgaste (abrasión, adhesión, difusión), norma ISO 3685, morfología del desgaste de flanco ($VB, Af$), curvas de Taylor y rugosidad teórica ($Ra$). & 
 Definición de los umbrales de desgaste admisible y correlación con la pérdida de calidad superficial en piezas.\\ \hline
 
-3. Monitoreo de condición de herramientas (TCM) & 
+Monitoreo de condición de herramientas (TCM) & 
 Métodos directos vs. indirectos de supervisión, monitoreo por corriente eléctrica, acelerometría en torreta y fusión sensorial multimodal. & 
 Sustento de la instrumentación periférica no invasiva para operar sin perturbar el ciclo productivo.\\ \hline
 
-4. Transductores y acondicionamiento analógico & 
+Transductores y acondicionamiento analógico & 
 Transformadores de corriente de núcleo partido (SCT013), acelerómetros piezoeléctricos/MEMS, circuitos rectificadores de precisión, filtrado pasivo y balance electromecánico. & 
 Aislamiento galvánico, acondicionamiento de señales alternas a niveles proporcionales de tensión DC y captura de vibración.\\ \hline
 
-5. Procesamiento digital de señales (DSP) & 
+Procesamiento digital de señales (DSP) & 
 Criterio de Nyquist-Shannon, filtrado digital IIR/Butterworth, extracción de descriptores temporales ($I_{RMS}, a_{RMS}$, Curtosis, Factor de Cresta). & 
 Acondicionamiento digital y reducción dimensional para la conformación del vector de características de entrada a la IA.\\ \hline
 
-6. Inteligencia artificial en el borde (TinyML) & 
+Inteligencia artificial en el borde (TinyML) & 
 Paradigmas de inferencia local en microcontroladores, arquitecturas ARM Cortex-M4/M7, cuantización entera (INT8), algoritmos de clasificación (MLP, SVM, Random Forest). & 
 Diagnóstico determinista y en tiempo real del estado de desgaste sin depender de conectividad a servidores externos.\\ \hline
 
-7. Telemática industrial e IoT & 
+Telemática industrial e IoT & 
 Protocolo ligero MQTT, arquitectura Publicador/Suscriptor, Calidad de Servicio (QoS), serialización JSON y paneles de control operativos (dashboards). & 
 Transmisión eficiente de telemetría y generación de alertas jerárquicas tempranas para los operarios y supervisores en planta.\\ \hline
 \end{longtable}

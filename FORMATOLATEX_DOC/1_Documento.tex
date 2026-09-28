@@ -559,54 +559,43 @@ de Corte en tornos CNC industriales en MAINSA.}
     \input{2_Caratula.tex}
     % \input{3_Dedicatorias.tex} % Excluido para presentación de Perfil de Grado
     
-        
- % Espaciados de hoja
-        \setlength{\parindent}{0pt}     % Sangría
-        \setlength{\parskip}{4mm}       % Entre párrafos
-        \setstretch{1.4}                % Interlineado CORRECTO
+    % Espaciados de hoja
+    \setlength{\parindent}{0pt}     % Sangría
+    \setlength{\parskip}{4mm}       % Entre párrafos
+    \setstretch{1.4}                % Interlineado CORRECTO
     
-    
-    \input{4_Resumen.tex}
-    
+    % \input{4_Resumen.tex}          % Excluido: el Perfil de Grado no incluye Resumen/Abstract
     
     % Índice General
-        \newpage
-        \setcounter{tocdepth}{3}            % Profundidad de índice
-        \renewcommand{\contentsname}{ÍNDICE GENERAL}
-        \tableofcontents
-        \thispagestyle{empty}
+    \newpage
+    \setcounter{tocdepth}{3}            % Profundidad de índice
+    \renewcommand{\contentsname}{ÍNDICE GENERAL}
+    \tableofcontents
+    \thispagestyle{empty}
     
-    % Índice de figuras
-        \renewcommand{\listfigurename}{ÍNDICE DE FIGURAS}
-        \newpage
-        \listoffigures
-        \thispagestyle{empty}
-    
-    % Índice de tablas
-        \renewcommand{\listtablename}{ÍNDICE DE TABLAS}
-        \newpage
-        \listoftables
-        \thispagestyle{empty}
-        
-    % Lista de pseudocódigos (desactivado: no se emplean algoritmos en esta etapa)
-    %    \renewcommand{\listalgorithmname}{\centerline{ÍNDICE DE ALGORITMOS}}
-    %    \newpage
-    %    \listofalgorithms
-    %    \thispagestyle{empty}
-        
-    % Índice de símbolos
-        \newpage
-        \glsaddall      % Mostrar todos los acrónimos y símbolos definidos
-        \printglossary[type=symbols, title={\normalsize\centerline{\textbf{ÍNDICE DE SÍMBOLOS}}}]
-        \thispagestyle{empty}
+    % Listas de figuras, tablas y glosarios excluidos para formato de Perfil de Grado (evita hojas en blanco)
+    % \renewcommand{\listfigurename}{ÍNDICE DE FIGURAS}
+    % \newpage
+    % \listoffigures
+    % \thispagestyle{empty}
+    % 
+    % \renewcommand{\listtablename}{ÍNDICE DE TABLAS}
+    % \newpage
+    % \listoftables
+    % \thispagestyle{empty}
+    % 
+    % \newpage
+    % \glsaddall
+    % \printglossary[type=symbols, title={\normalsize\centerline{\textbf{ÍNDICE DE SÍMBOLOS}}}]
+    % \thispagestyle{empty}
+    % 
+    % \newpage
+    % \printglossary[type=\acronymtype, title={\normalsize\centerline{\textbf{GLOSARIO DE ACRÓNIMOS}}}]
+    % \thispagestyle{empty}
 
-    %Glosario de acrónimos
-        \newpage
-        \printglossary[type=\acronymtype, title={\normalsize\centerline{\textbf{GLOSARIO DE ACRÓNIMOS}}}]
-        \thispagestyle{empty}
-
-    % Estilo de hoja
-        \pagestyle{fancy}
+    % Estilo de hoja para el cuerpo del perfil
+    \newpage
+    \pagestyle{fancy}
 
     \input{1_Seccion_Introduccion.tex}
     \input{2_Seccion_Antecedentes.tex}
