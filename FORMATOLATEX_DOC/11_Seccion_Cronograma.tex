@@ -1,15 +1,118 @@
 \newpage
 \section{CRONOGRAMA DE ACTIVIDADES}
 
-La planificación temporal para el desarrollo y ejecución del proyecto de grado abarca un período total de dos semestres académicos consecutivos (diez meses de trabajo continuo), correspondientes a las asignaturas de Taller de Grado I y Taller de Grado II del plan de estudios de Ingeniería Mecatrónica en la Universidad Católica Boliviana San Pablo.
+El cronograma de actividades constituye la organización gráfica y temporal sistemática donde se distribuyen en semanas y meses calendario las tareas técnicas, etapas de desarrollo e hitos de validación que se ejecutarán a lo largo del proyecto. Conforme a las directrices metodológicas de Taller de Grado de la Universidad Católica Boliviana San Pablo, la planificación abarca un horizonte de diez meses lectivos distribuidos en dos semestres académicos continuos: \textbf{Taller de Grado I} (fase de perfil, especificación de requerimientos, diseño conceptual y prototipo preliminar de acondicionamiento) y \textbf{Taller de Grado II} (fabricación de hardware, desarrollo de firmware embebido, entrenamiento y despliegue de modelos TinyML, campaña experimental en taller y titulación profesional).
 
-Conforme a las directrices de la materia, la organización temporal se estructura en semanas y meses calendario reales, cubriendo desde el ajuste del perfil inicial hasta la defensa pública final de titulación. En la \tab{cronograma_actividades} se presenta el cronograma analítico de actividades desglosado por fases, meses reales y semanas de ejecución.
+\subsection{Matriz gráfica del cronograma de actividades (Diagrama de Gantt)}
+
+En concordancia con el modelo pedagógico expuesto en la asignatura y la normativa institucional, en la \tab{cronograma_gantt_grafico} se presenta la organización gráfica del tiempo bajo un esquema matricial tipo Gantt. La matriz abarca 40 semanas operativas estructuradas en bloques mensuales de 4 semanas (Marzo a Diciembre), distinguiendo la secuencia de tareas críticas y los tres hitos evaluativos fundamentales del proceso de graduación.
+
+\begin{landscape}
+\vspace*{\fill}
+\begin{table}[htbp]
+\centering
+\caption{Matriz gráfica del cronograma de actividades tipo Gantt (Taller I y Taller II)}
+\label{tab:cronograma_gantt_grafico}
+\vspace{0.2cm}
+\definecolor{ghdr}{RGB}{44,62,80}
+\definecolor{gsub}{RGB}{127,140,141}
+\definecolor{gbar}{RGB}{41,128,185}
+\definecolor{ghito}{RGB}{192,57,43}
+\definecolor{gsep}{RGB}{236,240,241}
+\newcommand{\gb}{\cellcolor{gbar}}
+\newcommand{\gh}{\cellcolor{ghito}\textcolor{white}{\textbf{\tiny H}}}
+\newcommand{\gw}{\cellcolor{white}}
+\setlength{\tabcolsep}{1.1pt}
+\renewcommand{\arraystretch}{1.15}
+\fontsize{7pt}{8.5pt}\selectfont
+\begin{tabular}{|p{5.6cm}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}}
+\hline
+\rowcolor{ghdr}
+\multicolumn{1}{|c|}{\textcolor{white}{\textbf{ACTIVIDADES TÉCNICAS / FASES}}} &
+\multicolumn{4}{c||}{\textcolor{white}{\textbf{Marzo}}} &
+\multicolumn{4}{c||}{\textcolor{white}{\textbf{Abril}}} &
+\multicolumn{4}{c||}{\textcolor{white}{\textbf{Mayo}}} &
+\multicolumn{4}{c||}{\textcolor{white}{\textbf{Junio}}} &
+\multicolumn{4}{c||}{\textcolor{white}{\textbf{Julio}}} &
+\multicolumn{4}{c||}{\textcolor{white}{\textbf{Agosto}}} &
+\multicolumn{4}{c||}{\textcolor{white}{\textbf{Sept.}}} &
+\multicolumn{4}{c||}{\textcolor{white}{\textbf{Oct.}}} &
+\multicolumn{4}{c||}{\textcolor{white}{\textbf{Nov.}}} &
+\multicolumn{4}{c|}{\textcolor{white}{\textbf{Dic.}}} \\
+\hline
+\rowcolor{gsub}
+\textcolor{white}{\textbf{Semanas del cronograma}} &
+\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
+\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
+\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
+\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
+\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
+\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
+\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
+\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
+\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
+\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} \\
+\hline \hline
+
+\multicolumn{41}{|l|}{\cellcolor{gsep}\textbf{\tiny ETAPA I: TALLER DE GRADO I (FASE DE PERFIL, DISEÑO CONCEPTUAL Y PROTOTIPADO PRELIMINAR)}} \\ \hline
+
+A1: Ajuste del documento de Perfil y observaciones & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+
+A2: Revisión bibliográfica, normativas (ISO 3685, VDI) & & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+
+A3: \textbf{Defensa y aprobación del Perfil [Hito 1]} & & & & \gh & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+
+A4: Diagnóstico in situ en MAINSA y requerimientos & & & & & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+
+A5: Diseño preliminar mecatrónico (fuerzas, hw, fw) & & & & & & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+
+A6: Acondicionamiento sensor Hall y ADXL345 (banco) & & & & & & & & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+
+A7: Calibración estática transductores y enlace serial & & & & & & & & & & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+
+A8: Documento de avance Taller I y \textbf{Defensa [Hito 2]} & & & & & & & & & & & & \gb & \gh & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline \hline
+
+\multicolumn{41}{|l|}{\cellcolor{gsep}\textbf{\tiny ETAPA II: TALLER DE GRADO II (FABRICACIÓN, DESPLIEGUE TINYML, VALIDACIÓN EN PLANTA Y TITULACIÓN)}} \\ \hline
+
+A9: Ruteo, fabricación PCB doble capa y gabinete IP65 & & & & & & & & & & & & & & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+
+A10: Firmware STM32 (muestreo DMA, CMSIS-DSP) & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+
+A11: Campaña mecanizado torno CNC y dataset & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & \\ \hline
+
+A12: Modelos Python, cuantización INT8 y TinyML & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & & & & & & & & & & & & & & & & & \\ \hline
+
+A13: Nodo IoT (ESP32 / MQTT) y panel de supervisión & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & & & & & & & & & & & & & & & & \\ \hline
+
+A14: Validación experimental en régimen continuo & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & & & & & & & & & & & & & & \\ \hline
+
+A15: Evaluación metrológica rugosidad ($Ra$) y flanco ($VB$) & & & & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & & & & & & & & & & & \\ \hline
+
+A16: Redacción memoria de tesis (Capítulos 1 al 6) & & & & & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & & & & & \\ \hline
+
+A17: Revisión con tutor, correcciones y visto bueno & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & \gb & & & & \\ \hline
+
+A18: \textbf{Defensa Pública de Grado y Titulación [Hito 3]} & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gh & \gh & & \\ \hline
+\end{tabular}
+\par\vspace{0.15cm}
+\raggedright\fontsize{7pt}{8pt}\selectfont
+\textbf{Convenciones del cronograma:} \quad
+\colorbox{gbar}{\phantom{xx}} Semanas de ejecución técnica activa \quad \vline \quad
+\colorbox{ghito}{\textcolor{white}{\textbf{\tiny H}}} Hito institucional de evaluación / defensa pública \quad \vline \quad
+\textbf{Fuente:} Elaboración propia basada en las directrices docentes de Taller de Grado I.
+\end{table}
+\vfill
+\end{landscape}
+
+\subsection{Plan analítico de actividades, semanas y entregables por hito}
+
+Para complementar la representación gráfica y facilitar la fiscalización metodológica del avance, en la \tab{cronograma_actividades_detallado} se desglosan los objetivos, períodos cronológicos y entregables verificables asociados a cada una de las actividades del proyecto.
 
 {\small
 \setlength{\parskip}{1.5pt}
 \begin{longtable}{|L{0.8cm}|L{6.2cm}|C{2.4cm}|C{1.8cm}|L{3.2cm}|}
-\caption{Cronograma de actividades y plan de ejecución del proyecto (Taller I y Taller II)}
-\label{tab:cronograma_actividades}
+\caption{Plan detallado de actividades, calendario y entregables técnicos del proyecto}
+\label{tab:cronograma_actividades_detallado}
 \\
 \hline
 \textbf{Ítem} & \textbf{Actividad / Tarea técnica} & \textbf{Meses calendario} & \textbf{Semanas} & \textbf{Hito / Entregable} \\
@@ -29,7 +132,7 @@ Conforme a las directrices de la materia, la organización temporal se estructur
 \endlastfoot
 
 \multicolumn{5}{|l|}{\textbf{ETAPA I: TALLER DE GRADO I}} \\ \hline
-1 & Ajuste final del documento de Perfil de Grado y observaciones. & Marzo & Sem. 1--2 & Perfil depurado preliminar. \\ \hline
+1 & Ajuste final del documento de Perfil de Grado y observaciones docentes. & Marzo & Sem. 1--2 & Perfil depurado preliminar. \\ \hline
 2 & Revisión bibliográfica exhaustiva, marco teórico y normativas (ISO 3685, VDI 2206). & Marzo & Sem. 2--4 & Fundamento teórico inicial. \\ \hline
 3 & \textbf{Defensa y aprobación oficial del Perfil de Grado} ante Tribunal ad hoc. & Marzo & Sem. 4 & \textbf{Hito 1: Perfil Aprobado.} \\ \hline
 4 & Diagnóstico in situ en MAINSA y especificación de requerimientos de monitoreo. & Abril & Sem. 1--2 & Requerimientos técnicos fijados. \\ \hline
