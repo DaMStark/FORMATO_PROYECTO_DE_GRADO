@@ -5,13 +5,13 @@ El cronograma de actividades constituye la organización gráfica y temporal sis
 
 \subsection{Matriz gráfica del cronograma de actividades (Diagrama de Gantt)}
 
-En concordancia con el modelo metodológico de la asignatura y la normativa institucional, en la \fig{cronograma_gantt_grafico} y en la \fig{cronograma_gantt_2027} se presenta la organización gráfica del tiempo bajo un esquema matricial tipo Gantt. La planificación abarca 40 semanas operativas estructuradas en bloques mensuales de cuatro semanas, organizadas en una secuencia técnica continua sin divisiones artificiales. Para garantizar una óptima legibilidad y permitir márgenes y tipografía uniformes con el resto del documento, el diagrama se presenta en dos hojas consecutivas: la primera comprende las actividades correspondientes a la \textbf{Gestión 2026 (Agosto a Diciembre)}, y la segunda abarca la \textbf{Gestión 2027 (Febrero a Junio)}, repitiéndose en ambas los encabezados completos de meses y semanas.
+En concordancia con el modelo metodológico de la asignatura y la normativa institucional, en la \fig{cronograma_gantt_grafico} se presenta la organización gráfica del tiempo bajo un esquema matricial tipo Gantt. La planificación abarca 40 semanas operativas estructuradas cronológicamente en bloques mensuales de cuatro semanas (Agosto de 2026 a Junio de 2027), desplegadas en una única matriz técnica continua sin divisiones intermedias. Para maximizar la visibilidad y legibilidad del cronograma en el formato de página del documento, la matriz se orienta de forma vertical en el cuerpo de la lámina, manteniendo el título de la figura y la referencia de fuente en posición horizontal estándar.
 
 \begin{figure}[!htb]
 \centering
-\caption{Diagrama de Gantt del cronograma de actividades -- Gestión 2026 (Semestre II)}
+\caption{Diagrama de Gantt del cronograma general de actividades (Gestión 2026 -- 2027)}
 \label{fig:cronograma_gantt_grafico}
-\vspace{0.25cm}
+\vspace{0.2cm}
 \definecolor{ghdr}{RGB}{44,62,80}
 \definecolor{gsub}{RGB}{127,140,141}
 \definecolor{gbar}{RGB}{41,128,185}
@@ -19,69 +19,24 @@ En concordancia con el modelo metodológico de la asignatura y la normativa inst
 \definecolor{gsep}{RGB}{236,240,241}
 \newcommand{\gb}{\cellcolor{gbar}}
 \newcommand{\gh}{\cellcolor{ghito}\textcolor{white}{\textbf{\scriptsize H}}}
-\setlength{\tabcolsep}{2.5pt}
-\renewcommand{\arraystretch}{1.55}
-\fontsize{8.5pt}{10.5pt}\selectfont
-\begin{tabular}{|L{7.5cm}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}}
+\setlength{\tabcolsep}{1.6pt}
+\renewcommand{\arraystretch}{1.24}
+\fontsize{7.5pt}{9pt}\selectfont
+\rotatebox{90}{%
+\begin{tabular}{|L{6.6cm}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}||*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}}
 \hline
 \rowcolor{ghdr}
-\multicolumn{1}{|c|}{\textcolor{white}{\textbf{ACTIVIDADES TÉCNICAS (2026)}}} &
+\multicolumn{1}{|c|}{\textcolor{white}{\textbf{ACTIVIDADES TÉCNICAS DEL PROYECTO}}} &
+\multicolumn{20}{c||}{\textcolor{white}{\textbf{GESTIÓN 2026 (SEGUNDO SEMESTRE)}}} &
+\multicolumn{20}{c|}{\textcolor{white}{\textbf{GESTIÓN 2027 (PRIMER SEMESTRE)}}} \\
+\hline
+\rowcolor{ghdr}
+\multicolumn{1}{|c|}{\textcolor{white}{\textbf{Secuencia continua de desarrollo (A1 a A18)}}} &
 \multicolumn{4}{c||}{\textcolor{white}{\textbf{Agosto}}} &
 \multicolumn{4}{c||}{\textcolor{white}{\textbf{Sept.}}} &
 \multicolumn{4}{c||}{\textcolor{white}{\textbf{Octubre}}} &
 \multicolumn{4}{c||}{\textcolor{white}{\textbf{Nov.}}} &
-\multicolumn{4}{c|}{\textcolor{white}{\textbf{Dic.}}} \\
-\hline
-\rowcolor{gsub}
-\textcolor{white}{\textbf{Semanas del cronograma}} &
-\textcolor{white}{\scriptsize 1} & \textcolor{white}{\scriptsize 2} & \textcolor{white}{\scriptsize 3} & \textcolor{white}{\scriptsize 4} &
-\textcolor{white}{\scriptsize 1} & \textcolor{white}{\scriptsize 2} & \textcolor{white}{\scriptsize 3} & \textcolor{white}{\scriptsize 4} &
-\textcolor{white}{\scriptsize 1} & \textcolor{white}{\scriptsize 2} & \textcolor{white}{\scriptsize 3} & \textcolor{white}{\scriptsize 4} &
-\textcolor{white}{\scriptsize 1} & \textcolor{white}{\scriptsize 2} & \textcolor{white}{\scriptsize 3} & \textcolor{white}{\scriptsize 4} &
-\textcolor{white}{\scriptsize 1} & \textcolor{white}{\scriptsize 2} & \textcolor{white}{\scriptsize 3} & \textcolor{white}{\scriptsize 4} \\
-\hline \hline
-
-A1: Ajuste del documento de Perfil y observaciones & \gb & \gb & & & & & & & & & & & & & & & & & & \\ \hline
-
-A2: Revisión bibliográfica, normativas (ISO 3685, VDI) & & \gb & \gb & \gb & & & & & & & & & & & & & & & & \\ \hline
-
-A3: \textbf{Defensa y aprobación del Perfil [Hito 1]} & & & & \gh & & & & & & & & & & & & & & & & \\ \hline
-
-A4: Diagnóstico in situ en MAINSA y requerimientos & & & & & \gb & \gb & & & & & & & & & & & & & & \\ \hline
-
-A5: Diseño preliminar mecatrónico (fuerzas, hw, fw) & & & & & & \gb & \gb & \gb & & & & & & & & & & & & \\ \hline
-
-A6: Acondicionamiento sensor Hall y ADXL345 (banco) & & & & & & & & \gb & \gb & \gb & & & & & & & & & & \\ \hline
-
-A7: Calibración estática transductores y enlace serial & & & & & & & & & & \gb & \gb & \gb & \gb & & & & & & & \\ \hline
-
-A8: Documento de avance y \textbf{Defensa [Hito 2]} & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & \gh & & \\ \hline
-\end{tabular}
-\par\vspace{0.25cm}
-\centering{\textbf{Fuente:} Elaboración propia, 2026.}
-\end{figure}
-
-\clearpage
-
-\begin{figure}[!htb]
-\centering
-\caption{Diagrama de Gantt del cronograma de actividades -- Gestión 2027 (Semestre I)}
-\label{fig:cronograma_gantt_2027}
-\vspace{0.25cm}
-\definecolor{ghdr}{RGB}{44,62,80}
-\definecolor{gsub}{RGB}{127,140,141}
-\definecolor{gbar}{RGB}{41,128,185}
-\definecolor{ghito}{RGB}{192,57,43}
-\definecolor{gsep}{RGB}{236,240,241}
-\newcommand{\gb}{\cellcolor{gbar}}
-\newcommand{\gh}{\cellcolor{ghito}\textcolor{white}{\textbf{\scriptsize H}}}
-\setlength{\tabcolsep}{2.5pt}
-\renewcommand{\arraystretch}{1.55}
-\fontsize{8.5pt}{10.5pt}\selectfont
-\begin{tabular}{|L{7.5cm}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}}
-\hline
-\rowcolor{ghdr}
-\multicolumn{1}{|c|}{\textcolor{white}{\textbf{ACTIVIDADES TÉCNICAS (2027)}}} &
+\multicolumn{4}{c||}{\textcolor{white}{\textbf{Dic.}}} &
 \multicolumn{4}{c||}{\textcolor{white}{\textbf{Febrero}}} &
 \multicolumn{4}{c||}{\textcolor{white}{\textbf{Marzo}}} &
 \multicolumn{4}{c||}{\textcolor{white}{\textbf{Abril}}} &
@@ -89,35 +44,57 @@ A8: Documento de avance y \textbf{Defensa [Hito 2]} & & & & & & & & & & & & & & 
 \multicolumn{4}{c|}{\textcolor{white}{\textbf{Junio}}} \\
 \hline
 \rowcolor{gsub}
-\textcolor{white}{\textbf{Semanas del cronograma}} &
-\textcolor{white}{\scriptsize 1} & \textcolor{white}{\scriptsize 2} & \textcolor{white}{\scriptsize 3} & \textcolor{white}{\scriptsize 4} &
-\textcolor{white}{\scriptsize 1} & \textcolor{white}{\scriptsize 2} & \textcolor{white}{\scriptsize 3} & \textcolor{white}{\scriptsize 4} &
-\textcolor{white}{\scriptsize 1} & \textcolor{white}{\scriptsize 2} & \textcolor{white}{\scriptsize 3} & \textcolor{white}{\scriptsize 4} &
-\textcolor{white}{\scriptsize 1} & \textcolor{white}{\scriptsize 2} & \textcolor{white}{\scriptsize 3} & \textcolor{white}{\scriptsize 4} &
-\textcolor{white}{\scriptsize 1} & \textcolor{white}{\scriptsize 2} & \textcolor{white}{\scriptsize 3} & \textcolor{white}{\scriptsize 4} \\
+\textcolor{white}{\textbf{Semanas del cronograma (1 a 40)}} &
+\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
+\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
+\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
+\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
+\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
+\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
+\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
+\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
+\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
+\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} \\
 \hline \hline
 
-A9: Ruteo, fabricación PCB doble capa y gabinete IP65 & \gb & \gb & \gb & & & & & & & & & & & & & & & & & \\ \hline
+A1: Ajuste del documento de Perfil y observaciones & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
 
-A10: Firmware STM32 (muestreo DMA, CMSIS-DSP) & & & \gb & \gb & \gb & \gb & & & & & & & & & & & & & & \\ \hline
+A2: Revisión bibliográfica, normativas (ISO 3685, VDI) & & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
 
-A11: Campaña mecanizado torno CNC y dataset & & & & & & \gb & \gb & \gb & & & & & & & & & & & & \\ \hline
+A3: \textbf{Defensa y aprobación del Perfil [Hito 1]} & & & & \gh & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
 
-A12: Modelos Python, cuantización INT8 y TinyML & & & & & & & & \gb & \gb & \gb & \gb & & & & & & & & & \\ \hline
+A4: Diagnóstico in situ en MAINSA y requerimientos & & & & & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
 
-A13: Nodo IoT (ESP32 / MQTT) y panel de supervisión & & & & & & & & & & \gb & \gb & \gb & & & & & & & & \\ \hline
+A5: Diseño preliminar mecatrónico (fuerzas, hw, fw) & & & & & & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
 
-A14: Validación experimental en régimen continuo & & & & & & & & & & & & \gb & \gb & \gb & \gb & & & & & \\ \hline
+A6: Acondicionamiento sensor Hall y ADXL345 (banco) & & & & & & & & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
 
-A15: Evaluación metrológica rugosidad ($Ra$) y flanco ($VB$) & & & & & & & & & & & & & & \gb & \gb & \gb & & & & \\ \hline
+A7: Calibración estática transductores y enlace serial & & & & & & & & & & \gb & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
 
-A16: Redacción memoria de tesis (Capítulos 1 al 6) & & & & & & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & & \\ \hline
+A8: Documento de avance y \textbf{Defensa [Hito 2]} & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & \gh & & & & & & & & & & & & & & & & & & & & & \\ \hline
 
-A17: Revisión con tutor, correcciones y visto bueno & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & & \\ \hline
+A9: Ruteo, fabricación PCB doble capa y gabinete IP65 & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & & & & & & & & & & & & & & & & & \\ \hline
 
-A18: \textbf{Defensa Pública de Grado y Titulación [Hito 3]} & & & & & & & & & & & & & & & & & & & \gh & \gh \\ \hline
-\end{tabular}
-\par\vspace{0.25cm}
+A10: Firmware STM32 (muestreo DMA, CMSIS-DSP) & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & & & & & & & & & & & & & & \\ \hline
+
+A11: Campaña mecanizado torno CNC y dataset & & & & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & & & & & & & & & & & & \\ \hline
+
+A12: Modelos Python, cuantización INT8 y TinyML & & & & & & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & & & & & & & & & \\ \hline
+
+A13: Nodo IoT (ESP32 / MQTT) y panel de supervisión & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & & & & & & & & \\ \hline
+
+A14: Validación experimental en régimen continuo & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & & & & & \\ \hline
+
+A15: Evaluación metrológica rugosidad ($Ra$) y flanco ($VB$) & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & & & & \\ \hline
+
+A16: Redacción memoria de tesis (Capítulos 1 al 6) & & & & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & & \\ \hline
+
+A17: Revisión con tutor, correcciones y visto bueno & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & & \\ \hline
+
+A18: \textbf{Defensa Pública de Grado y Titulación [Hito 3]} & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \gh & \gh \\ \hline
+\end{tabular}%
+}
+\par\vspace{0.2cm}
 \centering{\textbf{Fuente:} Elaboración propia, 2026.}
 \end{figure}
 
