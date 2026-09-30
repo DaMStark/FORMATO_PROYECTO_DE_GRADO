@@ -177,9 +177,9 @@
 \renewcommand{\cftloftitlefont}{\hspace*{\fill}\normalsize\bfseries}
 \renewcommand{\cftafterloftitle}{\hspace*{\fill}}
 
-\renewcommand{\cftbeforesecskip}{2pt}
-\renewcommand{\cftbeforesubsecskip}{-6pt}
-\renewcommand{\cftbeforesubsubsecskip}{-6pt}
+\renewcommand{\cftbeforesecskip}{1pt}
+\renewcommand{\cftbeforesubsecskip}{-7pt}
+\renewcommand{\cftbeforesubsubsecskip}{-7pt}
 \renewcommand{\cftbeforeparaskip}{-6pt}
 \renewcommand{\cftbeforesubparaskip}{-6pt}
 \renewcommand{\cftbeforefigskip}{-6pt}
@@ -571,20 +571,30 @@ de Corte en tornos CNC industriales en MAINSA.}
     \newpage
     \setcounter{tocdepth}{3}            % Profundidad de índice
     \renewcommand{\contentsname}{ÍNDICE GENERAL}
+    \begingroup
+    \enlargethispage{2.5\baselineskip}
+    \setlength{\parskip}{0pt}
     \tableofcontents
     \thispagestyle{empty}
+    \endgroup
     
     % Índice de figuras
     \renewcommand{\listfigurename}{ÍNDICE DE FIGURAS}
     \newpage
+    \begingroup
+    \setlength{\parskip}{0pt}
     \listoffigures
     \thispagestyle{empty}
+    \endgroup
     
     % Índice de tablas
     \renewcommand{\listtablename}{ÍNDICE DE TABLAS}
     \newpage
+    \begingroup
+    \setlength{\parskip}{0pt}
     \listoftables
     \thispagestyle{empty}
+    \endgroup
 
     % Estilo de hoja para el cuerpo del perfil
     \pagestyle{fancy}
@@ -604,6 +614,7 @@ de Corte en tornos CNC industriales en MAINSA.}
     % Bibliografía
     \newpage
     \begingroup
+    \sloppy
     \setstretch{0.8}
     \setlength{\bibhang}{0pt}
     \setlength\bibitemsep{12pt}
