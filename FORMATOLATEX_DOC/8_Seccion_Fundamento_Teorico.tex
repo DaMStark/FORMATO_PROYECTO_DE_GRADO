@@ -3,21 +3,21 @@
 
 El presente capítulo expone los fundamentos teóricos y conceptuales que sustentan el diseño e implementación del sistema periférico no invasivo para el monitoreo de desgaste de herramientas de corte en tornos CNC industriales en MAINSA. Se articulan coherentemente los principios cinemáticos del mecanizado por arranque de viruta, los mecanismos tribológicos de degradación del inserto conforme a normas internacionales, las metodologías de supervisión indirecta mediante variables electromecánicas, las técnicas de acondicionamiento y procesamiento digital de señales, así como los modelos de aprendizaje automático en el borde y las arquitecturas de conectividad industrial.
 
-\subsection{Contenido temático}
-Con la finalidad de estructurar rigurosamente las bases conceptuales que respaldan el cumplimiento de los objetivos específicos y las acciones técnicas del proyecto, en la \tab{contenido_tematico} se presenta la matriz esquemática del contenido temático desarrollado.
+\subsection{Contenido temático y matriz de trazabilidad}
+Con la finalidad de garantizar que cada base conceptual sustente de manera directa el desarrollo técnico del proyecto, en la \tab{contenido_tematico} se presenta la matriz de trazabilidad que vincula los objetivos específicos, las acciones de ingeniería y los temas correspondientes del fundamento teórico, conforme a los lineamientos metodológicos de Taller de Grado.
 
 {\small
 \setlength{\parskip}{1.5pt}
-\begin{longtable}{|>{\raggedright\arraybackslash}p{3.3cm}|>{\raggedright\arraybackslash}p{5.7cm}|>{\raggedright\arraybackslash}p{4.7cm}|}
-\caption{Matriz esquemática del contenido temático del fundamento teórico\label{tab:contenido_tematico}}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{3.5cm}|>{\raggedright\arraybackslash}p{5.1cm}|>{\raggedright\arraybackslash}p{5.1cm}|}
+\caption{Matriz de trazabilidad entre objetivos específicos, acciones y fundamento teórico\label{tab:contenido_tematico}}
 \\
 \hline
-\textbf{Área temática} & \textbf{Temas fundamentales} & \textbf{Relevancia en el proyecto} \\
+\textbf{Objetivo Específico} & \textbf{Acción del Proyecto} & \textbf{Tema del Fundamento Teórico} \\
 \hline \hline
 \endfirsthead
 
 \hline
-\textbf{Área temática} & \textbf{Temas fundamentales} & \textbf{Relevancia en el proyecto} \\
+\textbf{Objetivo Específico} & \textbf{Acción del Proyecto} & \textbf{Tema del Fundamento Teórico} \\
 \hline \hline
 \endhead
 
@@ -28,33 +28,55 @@ Con la finalidad de estructurar rigurosamente las bases conceptuales que respald
 \multicolumn{3}{c}{\textbf{Fuente:} Elaboración propia}
 \endlastfoot
 
-Mecánica de corte y procesos de torneado CNC & 
-Operaciones de torneado, cinemática de corte ($V_c, f, a_p$), tasa de remoción de material ($MRR$), descomposición de fuerzas ($F_c, F_a, F_r$) y potencia de corte. & 
-Modelado del régimen de operación del torno en MAINSA y cálculo del esfuerzo mecánico sobre el husillo.\\ \hline
+OE1: Caracterizar el régimen operacional y variables críticas de los tornos CNC en MAINSA. & 
+- Diagnóstico in situ de cabina y espacio en tornos CNC.\par
+- Caracterización cinemática de torneado en aceros AISI 1045 y 4140.\par
+- Relevamiento de líneas de alimentación del husillo.\par
+- Medición preliminar de vibración en la torreta. & 
+- Cinemática de corte ortogonal y oblicuo ($V_c, f, a_p, MRR$).\par
+- Dinámica de fuerzas de corte ($F_c, F_a, F_r$) y potencia ($P_c$).\par
+- Accionamientos de husillo y análisis de corriente (MCSA).\par
+- Vibraciones forzadas e inducidas en máquinas herramienta.\\ \hline
 
-Tribología y degradación de herramientas & 
-Mecanismos de desgaste (abrasión, adhesión, difusión), norma ISO 3685, morfología del desgaste de flanco ($VB, Af$), curvas de Taylor y rugosidad teórica ($Ra$). & 
-Definición de los umbrales de desgaste admisible y correlación con la pérdida de calidad superficial en piezas.\\ \hline
+OE2: Diseñar e implementar el circuito de acondicionamiento de señal no invasivo. & 
+- Selección y dimensionamiento del sensor de corriente.\par
+- Selección del sensor de aceleración triaxial.\par
+- Diseño del elevador de nivel DC a 2.5V y filtro pasa-bajas pasivo.\par
+- Fabricación de la placa PCB con aislamiento galvánico. & 
+- Transductores de efecto Hall y transformadores de corriente (CT).\par
+- Acelerómetros inerciales piezoeléctricos y MEMS.\par
+- Filtros analógicos pasa-bajas y offset DC unipolar.\par
+- Compatibilidad electromagnética (EMC) y aislamiento galvánico.\\ \hline
 
-Monitoreo de condición de herramientas (TCM) & 
-Métodos directos vs. indirectos de supervisión, monitoreo por corriente eléctrica, acelerometría en torreta y fusión sensorial multimodal. & 
-Sustento de la instrumentación periférica no invasiva para operar sin perturbar el ciclo productivo.\\ \hline
+OE3: Desarrollar el firmware embebido en STM32 para adquisición DMA y procesamiento DSP. & 
+- Configuración de temporizadores por hardware.\par
+- Transferencias por Acceso Directo a Memoria (DMA).\par
+- Algoritmos de filtrado digital IIR/Butterworth.\par
+- Extracción de descriptores estadísticos temporales. & 
+- Teorema de muestreo de Nyquist-Shannon y anti-aliasing.\par
+- Arquitectura ARM Cortex-M4 y periféricos DMA circulares.\par
+- Librería CMSIS-DSP y procesamiento digital de señales.\par
+- Descriptores estadísticos ($I_{RMS}, a_{RMS}$, Curtosis, Factor de Cresta).\\ \hline
 
-Transductores y acondicionamiento analógico & 
-Transformadores de corriente de núcleo partido (SCT013), acelerómetros piezoeléctricos/MEMS, circuitos rectificadores de precisión, filtrado pasivo y balance electromecánico. & 
-Aislamiento galvánico, acondicionamiento de señales alternas a niveles proporcionales de tensión DC y captura de vibración.\\ \hline
+OE4: Entrenar y desplegar el modelo de Machine Learning en el borde (TinyML). & 
+- Recolección y etiquetado del dataset experimental.\par
+- Preprocesamiento y normalización de vectores de entrada.\par
+- Entrenamiento y validación de clasificadores.\par
+- Cuantización entera INT8 y despliegue con STM32Cube.AI. & 
+- Aprendizaje automático supervisado para diagnóstico.\par
+- Cuantización y optimización de redes para microcontroladores.\par
+- Criterios de desgaste de flanco según norma ISO 3685 ($VB$).\par
+- Métricas de exactitud, matriz de confusión y latencia.\\ \hline
 
-Procesamiento digital de señales (DSP) & 
-Criterio de Nyquist-Shannon, filtrado digital IIR/Butterworth, extracción de descriptores temporales ($I_{RMS}, a_{RMS}$, Curtosis, Factor de Cresta). & 
-Acondicionamiento digital y reducción dimensional para la conformación del vector de características de entrada a la IA.\\ \hline
-
-Inteligencia artificial en el borde (TinyML) & 
-Paradigmas de inferencia local en microcontroladores, arquitecturas ARM Cortex-M4/M7, cuantización entera (INT8), algoritmos de clasificación (MLP, SVM, Random Forest). & 
-Diagnóstico determinista y en tiempo real del estado de desgaste sin depender de conectividad a servidores externos.\\ \hline
-
-Telemática industrial e IoT & 
-Protocolo ligero MQTT, arquitectura Publicador/Suscriptor, Calidad de Servicio (QoS), serialización JSON y paneles de control operativos (dashboards). & 
-Transmisión eficiente de telemetría y generación de alertas jerárquicas tempranas para los operarios y supervisores en planta.\\ \hline
+OE5: Integrar el módulo telemático IoT (ESP32) y validar en condiciones reales. & 
+- Diseño del protocolo serial binario con CRC16.\par
+- Programación de la pasarela ESP32 bajo MQTT.\par
+- Despliegue del dashboard web de supervisión y alertas.\par
+- Validación experimental en torno CNC y contraste con $Ra$. & 
+- Protocolos de telemetría IoT industrial (MQTT sobre TCP/IP).\par
+- Algoritmos de verificación de integridad (CRC16-CCITT).\par
+- Arquitecturas desacopladas Dual-MCU para tiempo real.\par
+- Rugosidad geométrica superficial ($Ra$) y calidad de corte.\\ \hline
 \end{longtable}
 }
 
@@ -245,3 +267,31 @@ En el plano de los protocolos de transporte para telemetría industrial de bajo 
 La arquitectura del sistema organiza jerárquicamente tópicos temáticos orientados a eventos funcionales, tales como el estado de la herramienta y la telemetría periódica de variables electromecánicas, asignando niveles adecuados de Calidad de Servicio según la criticidad \citep{sheffield2021}. Para el envío recurrente de variables continuas se utiliza QoS cero optimizando velocidad, mientras que para alertas de desgaste crítico se selecciona QoS uno, garantizando la recepción efectiva de notificaciones urgentes en el servidor de control.
 
 La serialización de los paquetes diagnósticos transmitidos hacia la red se realiza mediante el estándar de notación ligera de objetos JSON, garantizando completa interoperabilidad entre el hardware embebido periférico y diversas aplicaciones de gestión analítica en servidores \citep{hamasha2025}. El payload estructurado incluye identificador de máquina, valor eficaz de corriente, descriptor de aceleración, clase diagnóstica predicha y marca temporal, posibilitando su integración ágil en cuadros de mando operativos como ThingsBoard o Node-RED.
+
+\subsubsection{Análisis comparativo y selección de componentes clave del sistema}
+
+Conforme a las buenas prácticas de diseño en ingeniería mecatrónica y a las directrices metodológicas de evaluación técnica, para cada subsistema crítico del proyecto se evaluaron al menos dos opciones tecnológicas (idealmente tres), fundamentando rigurosamente la selección final en función de los requerimientos de no invasividad, determinismo temporal y robustez industrial.
+
+\paragraph{A. Unidad de procesamiento embebido y ejecución de TinyML}
+Se contrastaron tres alternativas de microcontroladores de amplia difusión industrial:
+\begin{itemize}
+    \item \textbf{STM32F411 / Nucleo-F401RE (ARM Cortex-M4 @ 84--100 MHz):} Incorpora unidad de punto flotante (FPU), controlador DMA multicanal e instrucciones DSP dedicadas (CMSIS-DSP). Posee soporte nativo para compresión y cuantización INT8 mediante STM32Cube.AI, logrando inferencias deterministas en menos de 15~ms sin latencias de red. \textit{Opción seleccionada para el procesamiento analítico y la inferencia en el borde.}
+    \item \textbf{ESP32 (Xtensa Dual-Core @ 240 MHz):} Ofrece conectividad Wi-Fi y Bluetooth nativa; sin embargo, su convertidor ADC interno presenta severas no-linealidades (especialmente por debajo de 0.1~V y por encima de 2.6~V) y el RTOS de conectividad interrumpe el determinismo temporal del muestreo periódico. Por tal motivo, \textit{se descarta para tareas duras de muestreo y DSP, destinándolo exclusivamente como pasarela telemática IoT desacoplada.}
+    \item \textbf{ATmega328P (Arquitectura AVR @ 16 MHz):} Microcontrolador clásico de 8 bits sin FPU ni instrucciones DSP. Su baja tasa de muestreo analógico (máximo 15~kSPS a 10 bits) y su limitada memoria (2~KB SRAM) lo hacen completamente inviable para alojar buffers DMA y modelos de clasificación inteligente. \textit{Opción descartada.}
+\end{itemize}
+
+\paragraph{B. Sensor de corriente para monitoreo no invasivo del husillo}
+Se analizaron tres tecnologías de transducción de corriente eléctrica alterna:
+\begin{itemize}
+    \item \textbf{Sensor de núcleo partido SCT-013-000 (0--100 A):} Basado en acoplamiento magnético inductivo. Su pinza abisagrada permite abrazar el conductor de fase sin seccionar el cableado ni alterar la instalación interna del torno CNC, cumpliendo con la exigencia de cero invasividad impuesta por MAINSA. \textit{Opción seleccionada para operación industrial en planta.}
+    \item \textbf{Sensor de efecto Hall integrado ACS712-20A:} Dispositivo galvanicamente aislado con ancho de banda de 80~kHz, adecuado para la captura detallada de microperturbaciones de torque en régimen transitorio en bancos de prueba y tableros accesibles. \textit{Opción seleccionada como sensor complementario de validación en laboratorio.}
+    \item \textbf{Resistencia Shunt de potencia:} Exige cortar el conductor de fase e intercalar un resistor de bajo ohmiaje, disipando calor y careciendo de aislamiento galvánico intrínseco. \textit{Opción descartada por representar un riesgo operacional y violar el principio de no invasividad.}
+\end{itemize}
+
+\paragraph{C. Sensor de aceleración para vibración mecánica en torreta}
+Se evaluaron tres variantes de sensado inercial:
+\begin{itemize}
+    \item \textbf{ADXL345 (Digital MEMS triaxial de Analog Devices):} Comunicación digital mediante bus SPI a 5~MHz y tasa de datos de salida (ODR) de hasta 3200~Hz ($BW = 1600\,\text{Hz}$), resolución de 13 bits y bajo consumo. Su inmunidad al ruido y su enlace SPI determinista lo convierten en la \textit{opción seleccionada para captura de vibración en la torreta portaherramientas.}
+    \item \textbf{MPU-6050 (Acelerómetro + Giroscopio MEMS):} Opera únicamente mediante bus I2C (máximo 400~kHz), susceptible a bloqueos de bus por transitorios electromagnéticos (EMI) severos producidos por los servodrivers del torno. \textit{Opción descartada.}
+    \item \textbf{Acelerómetro piezoeléctrico industrial IEPE:} Proporciona ancho de banda superior (>10~kHz) pero exige acondicionadores de señal costosos y cables coaxiales especializados, elevando el presupuesto individual a más de \$350~USD. \textit{Opción descartada por inviabilidad económica.}
+\end{itemize}

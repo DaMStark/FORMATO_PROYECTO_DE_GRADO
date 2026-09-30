@@ -1,46 +1,53 @@
 \newpage
-\section{CRONOGRAMA}
+\section{CRONOGRAMA DE ACTIVIDADES}
 
-La planificación temporal para el desarrollo del proyecto de grado abarca un período total estimado de dos semestres académicos consecutivos, correspondientes a las asignaturas de Taller de Grado I y Taller de Grado II del plan de estudios de Ingeniería Mecatrónica en la Universidad Católica Boliviana San Pablo.
+La planificación temporal para el desarrollo y ejecución del proyecto de grado abarca un período total de dos semestres académicos consecutivos (diez meses de trabajo continuo), correspondientes a las asignaturas de Taller de Grado I y Taller de Grado II del plan de estudios de Ingeniería Mecatrónica en la Universidad Católica Boliviana San Pablo.
 
-En la \tab{cronograma_actividades} se presenta el cronograma analítico de actividades desglosado por fases, semanas de trabajo y períodos evaluativos, identificando los hitos de control académico y los entregables técnicos asociados.
+Conforme a las directrices de la materia, la organización temporal se estructura en semanas y meses calendario reales, cubriendo desde el ajuste del perfil inicial hasta la defensa pública final de titulación. En la \tab{cronograma_actividades} se presenta el cronograma analítico de actividades desglosado por fases, meses reales y semanas de ejecución.
 
-{\setlength{\parskip}{1.5pt}
-\begin{longtable}{|L{0.8cm}|L{5.5cm}|C{1.7cm}|C{1.5cm}|L{3.3cm}|}
-\caption{Cronograma de actividades y plan de ejecución del proyecto}
+{\small
+\setlength{\parskip}{1.5pt}
+\begin{longtable}{|L{0.8cm}|L{6.2cm}|C{2.4cm}|C{1.8cm}|L{3.2cm}|}
+\caption{Cronograma de actividades y plan de ejecución del proyecto (Taller I y Taller II)}
 \label{tab:cronograma_actividades}
 \\
 \hline
-\textbf{Fase} & \textbf{Actividad / Tarea técnica} & \textbf{Duración} & \textbf{Período} & \textbf{Hito / Entregable} \\
+\textbf{Ítem} & \textbf{Actividad / Tarea técnica} & \textbf{Meses calendario} & \textbf{Semanas} & \textbf{Hito / Entregable} \\
 \hline \hline
 \endfirsthead
 
 \hline
-\textbf{Fase} & \textbf{Actividad / Tarea técnica} & \textbf{Duración} & \textbf{Período} & \textbf{Hito / Entregable} \\
+\textbf{Ítem} & \textbf{Actividad / Tarea técnica} & \textbf{Meses calendario} & \textbf{Semanas} & \textbf{Hito / Entregable} \\
 \hline \hline
 \endhead
 
 \hline
 \endfoot
 
+\hline
 \multicolumn{5}{c}{\textbf{Fuente:} Elaboración propia}
 \endlastfoot
 
 \multicolumn{5}{|l|}{\textbf{ETAPA I: TALLER DE GRADO I}} \\ \hline
-1 & Planteamiento del problema, formulación de objetivos, justificación y alcances en MAINSA. & Semanas 1 a 4 & Mes 1 & Documento de Perfil de Proyecto elaborado. \\ \hline
-2 & \textbf{Defensa y aprobación del Perfil de Grado} ante Tribunal ad hoc del DCEI. & Semana 5 & Mes 2 & \textbf{Hito 1: Perfil aprobado.} \\ \hline
-3 & Revisión bibliográfica exhaustiva, desarrollo del fundamento teórico y normativas (ISO 3685, VDI 2206). & Semanas 6 a 9 & Mes 2 - 3 & Fundamento teórico estructurado y bibliografía APA 7. \\ \hline
-4 & Diseño analógico del circuito de acondicionamiento de corriente (SCT013) y acelerometría. & Semanas 10 a 13 & Mes 3 - 4 & Esquemático electrónico y simulación funcional. \\ \hline
-5 & Adquisición preliminar de sensores, pruebas de concepto en protoboard y configuración base STM32. & Semanas 14 a 17 & Mes 4 - 5 & Prototipo experimental de laboratorio. \\ \hline
-6 & Elaboración del documento de avance de Taller de Grado I y \textbf{Defensa de Avance Semestral}. & Semanas 18 a 20 & Mes 5 & \textbf{Hito 2: Aprobación de Taller de Grado I.} \\ \hline
+1 & Ajuste final del documento de Perfil de Grado y observaciones. & Marzo & Sem. 1--2 & Perfil depurado preliminar. \\ \hline
+2 & Revisión bibliográfica exhaustiva, marco teórico y normativas (ISO 3685, VDI 2206). & Marzo & Sem. 2--4 & Fundamento teórico inicial. \\ \hline
+3 & \textbf{Defensa y aprobación oficial del Perfil de Grado} ante Tribunal ad hoc. & Marzo & Sem. 4 & \textbf{Hito 1: Perfil Aprobado.} \\ \hline
+4 & Diagnóstico in situ en MAINSA y especificación de requerimientos de monitoreo. & Abril & Sem. 1--2 & Requerimientos técnicos fijados. \\ \hline
+5 & Diseño preliminar de subsistemas mecatrónicos (fuerzas de corte, hardware y firmware). & Abril & Sem. 2--4 & Planos y esquemáticos base. \\ \hline
+6 & Diseño, simulación y montaje en banco del acondicionamiento analógico (Hall y ADXL345). & Abril -- Mayo & Sem. 4--2 & Prototipo electrónico en protoboard. \\ \hline
+7 & Calibración estática de sensores de corriente en laboratorio y enlace serial básico. & Mayo & Sem. 2--4 & Curvas de calibración y factores. \\ \hline
+8 & Elaboración del documento de avance de Taller I y \textbf{Defensa de Avance Semestral}. & Mayo -- Junio & Sem. 4--1 & \textbf{Hito 2: Aprobación Taller I.} \\ \hline
 
 \multicolumn{5}{|l|}{\textbf{ETAPA II: TALLER DE GRADO II}} \\ \hline
-7 & Diseño final y ruteo de PCB, fabricación de tarjeta y ensamble mecánico en gabinete IP65. & Semanas 1 a 4 & Mes 6 & Placa PCB ensamblada y probada. \\ \hline
-8 & Desarrollo de firmware embebido en STM32 (muestreo continuo con DMA y filtros digitales DSP). & Semanas 5 a 7 & Mes 7 & Firmware de adquisición validado. \\ \hline
-9 & Pruebas en torno CNC de MAINSA y recolección del dataset experimental con probetas AISI 4340/4140. & Semanas 8 a 10 & Mes 7 - 8 & Dataset experimental etiquetado. \\ \hline
-10 & Entrenamiento de clasificadores en Python, cuantización a 8 bits (INT8) y despliegue con STM32Cube.AI. & Semanas 11 a 13 & Mes 8 - 9 & Modelo TinyML embebido en STM32. \\ \hline
-11 & Integración de enlace IoT (ESP32 / MQTT), configuración de alertas tempranas y panel de supervisión. & Semanas 14 a 16 & Mes 9 - 10 & Dashboard web operativo con telemetría. \\ \hline
-12 & Validación experimental en planta: contraste metrológico de rugosidad ($Ra$) y desgaste de flanco ($VB$). & Semanas 17 a 19 & Mes 10 & Métricas de exactitud y desempeño en planta. \\ \hline
-13 & Redacción final del documento de grado, correcciones del comité revisor y \textbf{Defensa Pública de Tesis}. & Semanas 20 a 24 & Mes 11 - 12 & \textbf{Hito 3: Titulación Profesional de Grado.} \\
+9 & Ruteo, fabricación de PCB doble capa FR-4 y ensamble en gabinete IP65. & Junio & Sem. 2--3 & Placa PCB y gabinete listos. \\ \hline
+10 & Desarrollo de firmware embebido en STM32 (muestreo DMA y descriptores CMSIS-DSP). & Junio -- Julio & Sem. 3--1 & Firmware de adquisición operativo. \\ \hline
+11 & Campaña de mecanizado en torno CNC de MAINSA y recolección de dataset experimental. & Julio & Sem. 2--4 & Dataset etiquetado ($VB, Ra$). \\ \hline
+12 & Entrenamiento de clasificadores en Python, cuantización INT8 y despliegue TinyML. & Julio -- Agosto & Sem. 4--2 & Modelo de inferencia en STM32. \\ \hline
+13 & Integración del módulo telemático IoT (ESP32 / MQTT) y panel de supervisión. & Agosto & Sem. 2--3 & Dashboard web con telemetría. \\ \hline
+14 & Validación integral en régimen productivo continuo en MAINSA y matriz de confusión. & Agosto -- Sept. & Sem. 3--2 & Métricas de exactitud y latencia. \\ \hline
+15 & Evaluación metrológica de rugosidad ($Ra$) en probetas y desgaste de flanco ($VB$). & Septiembre & Sem. 2--3 & Correlación metrológica final. \\ \hline
+16 & Redacción integral del documento final de tesis de grado (Capítulos 1 al 6). & Sept. -- Octubre & Sem. 3--3 & Borrador completo de grado. \\ \hline
+17 & Revisión con tutor de tesis, corrección de observaciones y visto bueno del relator. & Octubre -- Nov. & Sem. 4--2 & Documento avalado para defensa. \\ \hline
+18 & \textbf{Defensa Pública de Tesis de Grado y Titulación Profesional en Mecatrónica}. & Nov. -- Diciembre & Sem. 3--2 & \textbf{Hito 3: Titulación Profesional.} \\
 \end{longtable}
 }
