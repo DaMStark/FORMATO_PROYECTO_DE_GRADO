@@ -1,16 +1,16 @@
 \newpage
 \section{CRONOGRAMA DE ACTIVIDADES}
 
-El cronograma de actividades constituye la organización gráfica y temporal sistemática donde se distribuyen en semanas y meses calendario las tareas técnicas, etapas de desarrollo e hitos de validación que se ejecutarán a lo largo del proyecto. Conforme a las directrices metodológicas de Taller de Grado de la Universidad Católica Boliviana San Pablo, la planificación abarca un horizonte de diez meses lectivos distribuidos en dos semestres académicos continuos: \textbf{Taller de Grado I} (fase de perfil, especificación de requerimientos, diseño conceptual y prototipo preliminar de acondicionamiento) y \textbf{Taller de Grado II} (fabricación de hardware, desarrollo de firmware embebido, entrenamiento y despliegue de modelos TinyML, campaña experimental en taller y titulación profesional).
+El cronograma de actividades constituye la organización gráfica y temporal sistemática donde se distribuyen en semanas y meses calendario las tareas técnicas, etapas de desarrollo e hitos de validación que se ejecutarán a lo largo del proyecto. Conforme a las directrices de la carrera de Ingeniería Mecatrónica de la Universidad Católica Boliviana San Pablo, la planificación contempla una secuencia continua e integrada de diez meses lectivos estructurados en dos períodos académicos consecutivos: el \textbf{segundo semestre de 2026} (fase de perfil, especificación de requerimientos, diseño conceptual y prototipo preliminar de acondicionamiento) y el \textbf{primer semestre de 2027} (fabricación de hardware, desarrollo de firmware embebido, entrenamiento y despliegue de modelos TinyML, validación experimental en taller y titulación profesional).
 
 \subsection{Matriz gráfica del cronograma de actividades (Diagrama de Gantt)}
 
-En concordancia con el modelo pedagógico expuesto en la asignatura y la normativa institucional, en la \tab{cronograma_gantt_grafico} se presenta la organización gráfica del tiempo bajo un esquema matricial tipo Gantt. La matriz abarca 40 semanas operativas estructuradas en bloques mensuales de 4 semanas (Marzo a Diciembre), distinguiendo la secuencia de tareas críticas y los tres hitos evaluativos fundamentales del proceso de graduación.
+En concordancia con el modelo metodológico de la asignatura y la normativa institucional, en la \fig{cronograma_gantt_grafico} y en la \fig{cronograma_gantt_2027} se presenta la organización gráfica del tiempo bajo un esquema matricial tipo Gantt. La planificación abarca 40 semanas operativas estructuradas en bloques mensuales de cuatro semanas, organizadas en una secuencia técnica continua sin divisiones artificiales. Para garantizar una óptima legibilidad y permitir márgenes y tipografía uniformes con el resto del documento, el diagrama se presenta en dos hojas consecutivas: la primera comprende las actividades correspondientes a la \textbf{Gestión 2026 (Agosto a Diciembre)}, y la segunda abarca la \textbf{Gestión 2027 (Febrero a Junio)}, repitiéndose en ambas los encabezados completos de meses y semanas.
 
-\begin{sidewaystable}[htbp]
+\begin{figure}[!htb]
 \centering
-\caption{Matriz gráfica del cronograma de actividades tipo Gantt (Taller I y Taller II)}
-\label{tab:cronograma_gantt_grafico}
+\caption{Diagrama de Gantt del cronograma de actividades -- Gestión 2026 (Semestre II)}
+\label{fig:cronograma_gantt_grafico}
 \vspace{0.25cm}
 \definecolor{ghdr}{RGB}{44,62,80}
 \definecolor{gsub}{RGB}{127,140,141}
@@ -18,89 +18,114 @@ En concordancia con el modelo pedagógico expuesto en la asignatura y la normati
 \definecolor{ghito}{RGB}{192,57,43}
 \definecolor{gsep}{RGB}{236,240,241}
 \newcommand{\gb}{\cellcolor{gbar}}
-\newcommand{\gh}{\cellcolor{ghito}\textcolor{white}{\textbf{\tiny H}}}
-\newcommand{\gw}{\cellcolor{white}}
-\setlength{\tabcolsep}{1.2pt}
-\renewcommand{\arraystretch}{1.22}
-\fontsize{7.5pt}{9pt}\selectfont
-\begin{tabular}{|p{6.6cm}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}}
+\newcommand{\gh}{\cellcolor{ghito}\textcolor{white}{\textbf{\scriptsize H}}}
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1.55}
+\fontsize{8.5pt}{10.5pt}\selectfont
+\begin{tabular}{|L{7.5cm}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}}
 \hline
 \rowcolor{ghdr}
-\multicolumn{1}{|c|}{\textcolor{white}{\textbf{ACTIVIDADES TÉCNICAS / FASES}}} &
-\multicolumn{4}{c||}{\textcolor{white}{\textbf{Marzo}}} &
-\multicolumn{4}{c||}{\textcolor{white}{\textbf{Abril}}} &
-\multicolumn{4}{c||}{\textcolor{white}{\textbf{Mayo}}} &
-\multicolumn{4}{c||}{\textcolor{white}{\textbf{Junio}}} &
-\multicolumn{4}{c||}{\textcolor{white}{\textbf{Julio}}} &
+\multicolumn{1}{|c|}{\textcolor{white}{\textbf{ACTIVIDADES TÉCNICAS (2026)}}} &
 \multicolumn{4}{c||}{\textcolor{white}{\textbf{Agosto}}} &
 \multicolumn{4}{c||}{\textcolor{white}{\textbf{Sept.}}} &
-\multicolumn{4}{c||}{\textcolor{white}{\textbf{Oct.}}} &
+\multicolumn{4}{c||}{\textcolor{white}{\textbf{Octubre}}} &
 \multicolumn{4}{c||}{\textcolor{white}{\textbf{Nov.}}} &
 \multicolumn{4}{c|}{\textcolor{white}{\textbf{Dic.}}} \\
 \hline
 \rowcolor{gsub}
 \textcolor{white}{\textbf{Semanas del cronograma}} &
-\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
-\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
-\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
-\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
-\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
-\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
-\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
-\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
-\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} &
-\textcolor{white}{\tiny 1} & \textcolor{white}{\tiny 2} & \textcolor{white}{\tiny 3} & \textcolor{white}{\tiny 4} \\
+\textcolor{white}{\scriptsize 1} & \textcolor{white}{\scriptsize 2} & \textcolor{white}{\scriptsize 3} & \textcolor{white}{\scriptsize 4} &
+\textcolor{white}{\scriptsize 1} & \textcolor{white}{\scriptsize 2} & \textcolor{white}{\scriptsize 3} & \textcolor{white}{\scriptsize 4} &
+\textcolor{white}{\scriptsize 1} & \textcolor{white}{\scriptsize 2} & \textcolor{white}{\scriptsize 3} & \textcolor{white}{\scriptsize 4} &
+\textcolor{white}{\scriptsize 1} & \textcolor{white}{\scriptsize 2} & \textcolor{white}{\scriptsize 3} & \textcolor{white}{\scriptsize 4} &
+\textcolor{white}{\scriptsize 1} & \textcolor{white}{\scriptsize 2} & \textcolor{white}{\scriptsize 3} & \textcolor{white}{\scriptsize 4} \\
 \hline \hline
 
-\multicolumn{41}{|l|}{\cellcolor{gsep}\textbf{\scriptsize ETAPA I: TALLER DE GRADO I (FASE DE PERFIL, DISEÑO CONCEPTUAL Y PROTOTIPADO PRELIMINAR)}} \\ \hline
+A1: Ajuste del documento de Perfil y observaciones & \gb & \gb & & & & & & & & & & & & & & & & & & \\ \hline
 
-A1: Ajuste del documento de Perfil y observaciones & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+A2: Revisión bibliográfica, normativas (ISO 3685, VDI) & & \gb & \gb & \gb & & & & & & & & & & & & & & & & \\ \hline
 
-A2: Revisión bibliográfica, normativas (ISO 3685, VDI) & & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+A3: \textbf{Defensa y aprobación del Perfil [Hito 1]} & & & & \gh & & & & & & & & & & & & & & & & \\ \hline
 
-A3: \textbf{Defensa y aprobación del Perfil [Hito 1]} & & & & \gh & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+A4: Diagnóstico in situ en MAINSA y requerimientos & & & & & \gb & \gb & & & & & & & & & & & & & & \\ \hline
 
-A4: Diagnóstico in situ en MAINSA y requerimientos & & & & & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+A5: Diseño preliminar mecatrónico (fuerzas, hw, fw) & & & & & & \gb & \gb & \gb & & & & & & & & & & & & \\ \hline
 
-A5: Diseño preliminar mecatrónico (fuerzas, hw, fw) & & & & & & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+A6: Acondicionamiento sensor Hall y ADXL345 (banco) & & & & & & & & \gb & \gb & \gb & & & & & & & & & & \\ \hline
 
-A6: Acondicionamiento sensor Hall y ADXL345 (banco) & & & & & & & & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+A7: Calibración estática transductores y enlace serial & & & & & & & & & & \gb & \gb & \gb & \gb & & & & & & & \\ \hline
 
-A7: Calibración estática transductores y enlace serial & & & & & & & & & & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
-
-A8: Documento de avance Taller I y \textbf{Defensa [Hito 2]} & & & & & & & & & & & & \gb & \gh & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline \hline
-
-\multicolumn{41}{|l|}{\cellcolor{gsep}\textbf{\scriptsize ETAPA II: TALLER DE GRADO II (FABRICACIÓN, DESPLIEGUE TINYML, VALIDACIÓN EN PLANTA Y TITULACIÓN)}} \\ \hline
-
-A9: Ruteo, fabricación PCB doble capa y gabinete IP65 & & & & & & & & & & & & & & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
-
-A10: Firmware STM32 (muestreo DMA, CMSIS-DSP) & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & \\ \hline
-
-A11: Campaña mecanizado torno CNC y dataset & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & \\ \hline
-
-A12: Modelos Python, cuantización INT8 y TinyML & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & & & & & & & & & & & & & & & & & \\ \hline
-
-A13: Nodo IoT (ESP32 / MQTT) y panel de supervisión & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & & & & & & & & & & & & & & & & \\ \hline
-
-A14: Validación experimental en régimen continuo & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & & & & & & & & & & & & & & \\ \hline
-
-A15: Evaluación metrológica rugosidad ($Ra$) y flanco ($VB$) & & & & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & & & & & & & & & & & \\ \hline
-
-A16: Redacción memoria de tesis (Capítulos 1 al 6) & & & & & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & & & & & \\ \hline
-
-A17: Revisión con tutor, correcciones y visto bueno & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & \gb & & & & \\ \hline
-
-A18: \textbf{Defensa Pública de Grado y Titulación [Hito 3]} & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gh & \gh & & \\ \hline
+A8: Documento de avance y \textbf{Defensa [Hito 2]} & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & \gh & & \\ \hline
 \end{tabular}
 \par\vspace{0.25cm}
 \centering{\textbf{Fuente:} Elaboración propia, 2026.}
-\end{sidewaystable}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[!htb]
+\centering
+\caption{Diagrama de Gantt del cronograma de actividades -- Gestión 2027 (Semestre I)}
+\label{fig:cronograma_gantt_2027}
+\vspace{0.25cm}
+\definecolor{ghdr}{RGB}{44,62,80}
+\definecolor{gsub}{RGB}{127,140,141}
+\definecolor{gbar}{RGB}{41,128,185}
+\definecolor{ghito}{RGB}{192,57,43}
+\definecolor{gsep}{RGB}{236,240,241}
+\newcommand{\gb}{\cellcolor{gbar}}
+\newcommand{\gh}{\cellcolor{ghito}\textcolor{white}{\textbf{\scriptsize H}}}
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1.55}
+\fontsize{8.5pt}{10.5pt}\selectfont
+\begin{tabular}{|L{7.5cm}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}|*{4}{c|}}
+\hline
+\rowcolor{ghdr}
+\multicolumn{1}{|c|}{\textcolor{white}{\textbf{ACTIVIDADES TÉCNICAS (2027)}}} &
+\multicolumn{4}{c||}{\textcolor{white}{\textbf{Febrero}}} &
+\multicolumn{4}{c||}{\textcolor{white}{\textbf{Marzo}}} &
+\multicolumn{4}{c||}{\textcolor{white}{\textbf{Abril}}} &
+\multicolumn{4}{c||}{\textcolor{white}{\textbf{Mayo}}} &
+\multicolumn{4}{c|}{\textcolor{white}{\textbf{Junio}}} \\
+\hline
+\rowcolor{gsub}
+\textcolor{white}{\textbf{Semanas del cronograma}} &
+\textcolor{white}{\scriptsize 1} & \textcolor{white}{\scriptsize 2} & \textcolor{white}{\scriptsize 3} & \textcolor{white}{\scriptsize 4} &
+\textcolor{white}{\scriptsize 1} & \textcolor{white}{\scriptsize 2} & \textcolor{white}{\scriptsize 3} & \textcolor{white}{\scriptsize 4} &
+\textcolor{white}{\scriptsize 1} & \textcolor{white}{\scriptsize 2} & \textcolor{white}{\scriptsize 3} & \textcolor{white}{\scriptsize 4} &
+\textcolor{white}{\scriptsize 1} & \textcolor{white}{\scriptsize 2} & \textcolor{white}{\scriptsize 3} & \textcolor{white}{\scriptsize 4} &
+\textcolor{white}{\scriptsize 1} & \textcolor{white}{\scriptsize 2} & \textcolor{white}{\scriptsize 3} & \textcolor{white}{\scriptsize 4} \\
+\hline \hline
+
+A9: Ruteo, fabricación PCB doble capa y gabinete IP65 & \gb & \gb & \gb & & & & & & & & & & & & & & & & & \\ \hline
+
+A10: Firmware STM32 (muestreo DMA, CMSIS-DSP) & & & \gb & \gb & \gb & \gb & & & & & & & & & & & & & & \\ \hline
+
+A11: Campaña mecanizado torno CNC y dataset & & & & & & \gb & \gb & \gb & & & & & & & & & & & & \\ \hline
+
+A12: Modelos Python, cuantización INT8 y TinyML & & & & & & & & \gb & \gb & \gb & \gb & & & & & & & & & \\ \hline
+
+A13: Nodo IoT (ESP32 / MQTT) y panel de supervisión & & & & & & & & & & \gb & \gb & \gb & & & & & & & & \\ \hline
+
+A14: Validación experimental en régimen continuo & & & & & & & & & & & & \gb & \gb & \gb & \gb & & & & & \\ \hline
+
+A15: Evaluación metrológica rugosidad ($Ra$) y flanco ($VB$) & & & & & & & & & & & & & & \gb & \gb & \gb & & & & \\ \hline
+
+A16: Redacción memoria de tesis (Capítulos 1 al 6) & & & & & & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & & \\ \hline
+
+A17: Revisión con tutor, correcciones y visto bueno & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & & \\ \hline
+
+A18: \textbf{Defensa Pública de Grado y Titulación [Hito 3]} & & & & & & & & & & & & & & & & & & & \gh & \gh \\ \hline
+\end{tabular}
+\par\vspace{0.25cm}
+\centering{\textbf{Fuente:} Elaboración propia, 2026.}
+\end{figure}
 
 \clearpage
 
 \subsection{Plan analítico de actividades, semanas y entregables por hito}
 
-Para complementar la representación gráfica y facilitar la fiscalización metodológica del avance, en la \tab{cronograma_actividades_detallado} se desglosan los objetivos, períodos cronológicos y entregables verificables asociados a cada una de las actividades del proyecto.
+Para complementar la representación gráfica y facilitar la fiscalización metodológica del avance, en la \tab{cronograma_actividades_detallado} se desglosan los objetivos, períodos cronológicos y entregables verificables asociados a cada una de las actividades del proyecto, distribuidas de forma continua a lo largo del período 2026--2027.
 
 {\small
 \setlength{\parskip}{1.5pt}
@@ -126,26 +151,23 @@ Para complementar la representación gráfica y facilitar la fiscalización meto
 \multicolumn{5}{c}{\textbf{Fuente:} Elaboración propia, 2026.}
 \endlastfoot
 
-\multicolumn{5}{|l|}{\textbf{ETAPA I: TALLER DE GRADO I}} \\ \hline
-1 & Ajuste final del documento de Perfil de Grado y observaciones docentes. & Marzo & Sem. 1--2 & Perfil depurado preliminar. \\ \hline
-2 & Revisión bibliográfica exhaustiva, marco teórico y normativas (ISO 3685, VDI 2206). & Marzo & Sem. 2--4 & Fundamento teórico inicial. \\ \hline
-3 & \textbf{Defensa y aprobación oficial del Perfil de Grado} ante Tribunal ad hoc. & Marzo & Sem. 4 & \textbf{Hito 1: Perfil Aprobado.} \\ \hline
-4 & Diagnóstico in situ en MAINSA y especificación de requerimientos de monitoreo. & Abril & Sem. 1--2 & Requerimientos técnicos fijados. \\ \hline
-5 & Diseño preliminar de subsistemas mecatrónicos (fuerzas de corte, hardware y firmware). & Abril & Sem. 2--4 & Planos y esquemáticos base. \\ \hline
-6 & Diseño, simulación y montaje en banco del acondicionamiento analógico (Hall y ADXL345). & Abril -- Mayo & Sem. 4--2 & Prototipo electrónico en protoboard. \\ \hline
-7 & Calibración estática de sensores de corriente en laboratorio y enlace serial básico. & Mayo & Sem. 2--4 & Curvas de calibración y factores. \\ \hline
-8 & Elaboración del documento de avance de Taller I y \textbf{Defensa de Avance Semestral}. & Mayo -- Junio & Sem. 4--1 & \textbf{Hito 2: Aprobación Taller I.} \\ \hline
-
-\multicolumn{5}{|l|}{\textbf{ETAPA II: TALLER DE GRADO II}} \\ \hline
-9 & Ruteo, fabricación de PCB doble capa FR-4 y ensamble en gabinete IP65. & Junio & Sem. 2--3 & Placa PCB y gabinete listos. \\ \hline
-10 & Desarrollo de firmware embebido en STM32 (muestreo DMA y descriptores CMSIS-DSP). & Junio -- Julio & Sem. 3--1 & Firmware de adquisición operativo. \\ \hline
-11 & Campaña de mecanizado en torno CNC de MAINSA y recolección de dataset experimental. & Julio & Sem. 2--4 & Dataset etiquetado ($VB, Ra$). \\ \hline
-12 & Entrenamiento de clasificadores en Python, cuantización INT8 y despliegue TinyML. & Julio -- Agosto & Sem. 4--2 & Modelo de inferencia en STM32. \\ \hline
-13 & Integración del módulo telemático IoT (ESP32 / MQTT) y panel de supervisión. & Agosto & Sem. 2--3 & Dashboard web con telemetría. \\ \hline
-14 & Validación integral en régimen productivo continuo en MAINSA y matriz de confusión. & Agosto -- Sept. & Sem. 3--2 & Métricas de exactitud y latencia. \\ \hline
-15 & Evaluación metrológica de rugosidad ($Ra$) en probetas y desgaste de flanco ($VB$). & Septiembre & Sem. 2--3 & Correlación metrológica final. \\ \hline
-16 & Redacción integral del documento final de tesis de grado (Capítulos 1 al 6). & Sept. -- Octubre & Sem. 3--3 & Borrador completo de grado. \\ \hline
-17 & Revisión con tutor de tesis, corrección de observaciones y visto bueno del relator. & Octubre -- Nov. & Sem. 4--2 & Documento avalado para defensa. \\ \hline
-18 & \textbf{Defensa Pública de Tesis de Grado y Titulación Profesional en Mecatrónica}. & Nov. -- Diciembre & Sem. 3--2 & \textbf{Hito 3: Titulación Profesional.} \\
+1 & Ajuste final del documento de Perfil de Grado y observaciones docentes. & Agosto 2026 & Sem. 1--2 & Perfil depurado preliminar. \\ \hline
+2 & Revisión bibliográfica exhaustiva, marco teórico y normativas (ISO 3685, VDI 2206). & Agosto 2026 & Sem. 2--4 & Fundamento teórico inicial. \\ \hline
+3 & \textbf{Defensa y aprobación oficial del Perfil de Grado} ante Tribunal ad hoc. & Agosto 2026 & Sem. 4 & \textbf{Hito 1: Perfil Aprobado.} \\ \hline
+4 & Diagnóstico in situ en MAINSA y especificación de requerimientos de monitoreo. & Septiembre 2026 & Sem. 1--2 & Requerimientos técnicos fijados. \\ \hline
+5 & Diseño preliminar de subsistemas mecatrónicos (fuerzas de corte, hardware y firmware). & Septiembre 2026 & Sem. 2--4 & Planos y esquemáticos base. \\ \hline
+6 & Diseño, simulación y montaje en banco del acondicionamiento analógico (Hall y ADXL345). & Sept. -- Octubre 2026 & Sem. 4--2 & Prototipo electrónico en protoboard. \\ \hline
+7 & Calibración estática de sensores de corriente en laboratorio y enlace serial básico. & Oct. -- Noviembre 2026 & Sem. 2--1 & Curvas de calibración y factores. \\ \hline
+8 & Elaboración del documento de avance semestral y \textbf{Defensa de Avance}. & Nov. -- Diciembre 2026 & Sem. 2--2 & \textbf{Hito 2: Aprobación Avance Semestral.} \\ \hline
+9 & Ruteo, fabricación de PCB doble capa FR-4 y ensamble en gabinete IP65. & Febrero 2027 & Sem. 1--3 & Placa PCB y gabinete listos. \\ \hline
+10 & Desarrollo de firmware embebido en STM32 (muestreo DMA y descriptores CMSIS-DSP). & Febrero -- Marzo 2027 & Sem. 3--2 & Firmware de adquisición operativo. \\ \hline
+11 & Campaña de mecanizado en torno CNC de MAINSA y recolección de dataset experimental. & Marzo 2027 & Sem. 2--4 & Dataset etiquetado ($VB, Ra$). \\ \hline
+12 & Entrenamiento de clasificadores en Python, cuantización INT8 y despliegue TinyML. & Marzo -- Abril 2027 & Sem. 4--3 & Modelo de inferencia en STM32. \\ \hline
+13 & Integración del módulo telemático IoT (ESP32 / MQTT) y panel de supervisión. & Abril 2027 & Sem. 2--4 & Dashboard web con telemetría. \\ \hline
+14 & Validación integral en régimen productivo continuo en MAINSA y matriz de confusión. & Abril -- Mayo 2027 & Sem. 4--3 & Métricas de exactitud y latencia. \\ \hline
+15 & Evaluación metrológica de rugosidad ($Ra$) en probetas y desgaste de flanco ($VB$). & Mayo 2027 & Sem. 2--4 & Correlación metrológica final. \\ \hline
+16 & Redacción integral del documento final de tesis de grado (Capítulos 1 al 6). & Marzo -- Junio 2027 & Sem. 2--2 & Borrador completo de grado. \\ \hline
+17 & Revisión con tutor de tesis, corrección de observaciones y visto bueno del relator. & Mayo -- Junio 2027 & Sem. 3--2 & Documento avalado para defensa. \\ \hline
+18 & \textbf{Defensa Pública de Tesis de Grado y Titulación Profesional en Mecatrónica}. & Junio 2027 & Sem. 3--4 & \textbf{Hito 3: Titulación Profesional.} \\
 \end{longtable}
 }
