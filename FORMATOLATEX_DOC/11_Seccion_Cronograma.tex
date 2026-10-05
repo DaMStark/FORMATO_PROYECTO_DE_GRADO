@@ -27,7 +27,7 @@ El cronograma de actividades distribuye en 40 semanas operativas continuas (Gest
 \setlength{\tabcolsep}{0.65pt}
 \renewcommand{\arraystretch}{0.96}
 \fontsize{5.5pt}{6.6pt}\selectfont
-\rotatebox{90}{%
+\makebox[\textwidth][c]{\rotatebox{90}{%
 \begin{tabular}{|L{3.3cm}|C{0.55cm}|*{40}{c|}}
 \hline
 \rowcolor{ghdrMes}
@@ -58,60 +58,66 @@ El cronograma de actividades distribuye en 40 semanas operativas continuas (Gest
 \sem{S1} & \sem{S2} & \sem{S3} & \sem{S4} &
 \sem{S1} & \sem{S2} & \sem{S3} & \sem{S4} \\
 \hline \hline
-
 % ──── OBJETIVO ESPECÍFICO 1 ────────────────────────────────────────────────────────
-\multicolumn{2}{|l|}{\cellcolor{goebg}\textbf{1. Investigar mecanizado CNC, desgaste de herramienta y Edge AI}} & \gblue & \gblue & \gblue & \gblue & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+\multicolumn{2}{|l|}{\cellcolor{goebg}\textbf{1. Investigar mecanizado CNC, desgaste de herramienta y Edge AI}} & \gblue & \gblue & \gblue & \gblue &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Ajuste del perfil de grado y observaciones docentes & \textbf{A1} & \ggreen & \ggreen & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+Caracterización de operaciones de torneado y cinemática & \textbf{A1} & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Revisión bibliográfica y normativas (ISO 3685, VDI 2206) & \textbf{A2} & & \ggreen & \ggreen & \ggreen & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+Análisis de desgaste de herramientas según ISO 3685 & \textbf{A2} &  & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Defensa y aprobación del Perfil de Grado [Hito 1] & \textbf{A3} & & & & \ghito & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline \hline
+Estado del arte en monitoreo indirecto (TCM) y Edge AI & \textbf{A3} &  & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+
+Defensa y aprobación del Perfil de Grado [Hito 1] & \textbf{A4} &  &  & \ggreen & \ghito &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline \hline
 
 % ──── OBJETIVO ESPECÍFICO 2 ────────────────────────────────────────────────────────
-\multicolumn{2}{|l|}{\cellcolor{goebg}\textbf{2. Diseñar arquitectura mecatrónica, acondicionamiento analógico e IoT}} & & & & & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+\multicolumn{2}{|l|}{\cellcolor{goebg}\textbf{2. Diseñar arquitectura mecatrónica, acondicionamiento analógico e IoT}} &  &  &  &  & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Diagnóstico in situ en MAINSA y requerimientos de monitoreo & \textbf{A1} & & & & & \ggreen & \ggreen & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+Diagnóstico in situ en MAINSA y diagrama funcional & \textbf{A1} &  &  &  &  & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Diseño de arquitectura, esquemático PCB y gabinete & \textbf{A2} & & & & & & \ggreen & \ggreen & \ggreen & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+Diseño del circuito de acondicionamiento analógico y RMS & \textbf{A2} &  &  &  &  &  & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Acondicionamiento analógico sensor Hall y ADXL345 en banco & \textbf{A3} & & & & & & & & \ggreen & \ggreen & \ggreen & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline \hline
+Diseño esquemático y ruteo de PCB con aislamiento galvánico & \textbf{A3} &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+
+Concepción de gabinete IP65 y carcasa estanca IP67 imantada & \textbf{A4} &  &  &  &  &  &  &  &  & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline \hline
 
 % ──── OBJETIVO ESPECÍFICO 3 ────────────────────────────────────────────────────────
-\multicolumn{2}{|l|}{\cellcolor{goebg}\textbf{3. Dimensionar sensores, unidad embebida y elaborar avance semestral}} & & & & & & & & & & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+\multicolumn{2}{|l|}{\cellcolor{goebg}\textbf{3. Dimensionar sensores de corriente, aceleración y unidad embebida}} &  &  &  &  &  &  &  &  &  & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Calibración estática de transductores y enlace serial básico & \textbf{A1} & & & & & & & & & & \ggreen & \ggreen & \ggreen & \ggreen & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+Dimensionamiento de transductor SCT-013 y sensor Hall & \textbf{A1} &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Documento de avance semestral y Defensa de Avance [Hito 2] & \textbf{A2} & & & & & & & & & & & & & & \ggreen & \ggreen & \ggreen & \ggreen & \ghito & & & & & & & & & & & & & & & & & & & & & & \\ \hline \hline
+Selección de acelerómetro ADXL345 y microcontrolador STM32 & \textbf{A2} &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+
+Cálculo de componentes pasivos y fuentes conmutadas & \textbf{A3} &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+
+Documento de avance semestral y Defensa de Avance [Hito 2] & \textbf{A4} &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ghito &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline \hline
 
 % ──── OBJETIVO ESPECÍFICO 4 ────────────────────────────────────────────────────────
-\multicolumn{2}{|l|}{\cellcolor{goebg}\textbf{4. Integrar adquisición, procesamiento Edge AI y supervisión IoT}} & & & & & & & & & & & & & & & & & & & & & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & & & & & & & & \\ \hline
+\multicolumn{2}{|l|}{\cellcolor{goebg}\textbf{4. Integrar adquisición embebida, modelo Edge AI y supervisión IoT}} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue &  &  &  &  &  &  &  &  \\ \hline
 
-Ruteo, fabricación de PCB doble capa y ensamble en gabinete & \textbf{A1} & & & & & & & & & & & & & & & & & & & & & \ggreen & \ggreen & \ggreen & & & & & & & & & & & & & & & & & \\ \hline
+Fabricación de PCB industrial, ensamble y gabinete & \textbf{A1} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Firmware STM32: muestreo DMA y descriptores CMSIS-DSP & \textbf{A2} & & & & & & & & & & & & & & & & & & & & & & & \ggreen & \ggreen & \ggreen & \ggreen & & & & & & & & & & & & & \\ \hline
+Firmware STM32: muestreo DMA y descriptores CMSIS-DSP & \textbf{A2} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Campaña de mecanizado en torno CNC de MAINSA y dataset & \textbf{A3} & & & & & & & & & & & & & & & & & & & & & & & & & & \ggreen & \ggreen & \ggreen & & & & & & & & & & & & \\ \hline
+Campaña de mecanizado en torno CNC de MAINSA y dataset & \textbf{A3} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Modelos Python, cuantización INT8 y despliegue TinyML en STM32 & \textbf{A4} & & & & & & & & & & & & & & & & & & & & & & & & & & & & \ggreen & \ggreen & \ggreen & \ggreen & & & & & & & & & \\ \hline
+Modelos Python, cuantización INT8 y despliegue TinyML & \textbf{A4} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  \\ \hline
 
-Nodo IoT (ESP32 / MQTT) y panel de supervisión remota & \textbf{A5} & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \ggreen & \ggreen & \ggreen & & & & & & & & \\ \hline \hline
+Nodo gateway IoT (ESP32 / MQTT) y panel de supervisión & \textbf{A5} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  \\ \hline \hline
 
 % ──── OBJETIVO ESPECÍFICO 5 ────────────────────────────────────────────────────────
-\multicolumn{2}{|l|}{\cellcolor{goebg}\textbf{5. Validar experimentalmente el sistema integrado y titulación}} & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue \\ \hline
+\multicolumn{2}{|l|}{\cellcolor{goebg}\textbf{5. Validar experimentalmente el sistema integrado y titulación}} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue \\ \hline
 
-Validación experimental en régimen productivo continuo & \textbf{A1} & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \ggreen & \ggreen & \ggreen & \ggreen & & & & & \\ \hline
+Instalación de sistema periférico y calibración en torno CNC & \textbf{A1} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ggreen &  &  &  &  &  \\ \hline
 
-Evaluación metrológica rugosidad ($Ra$) y desgaste de flanco ($VB$) & \textbf{A2} & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \ggreen & \ggreen & \ggreen & & & & \\ \hline
+Ensayos con insertos nuevo, desgaste funcional y crítico & \textbf{A2} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ggreen &  &  &  \\ \hline
 
-Redacción del informe final de tesis de grado (Caps. 1 al 6) & \textbf{A3} & & & & & & & & & & & & & & & & & & & & & & & & & & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen \\ \hline
+Evaluación metrológica rugosidad ($Ra$) y exactitud & \textbf{A3} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen &  &  \\ \hline
 
-Revisión con tutor de tesis, correcciones y visto bueno & \textbf{A4} & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen \\ \hline
+Redacción del informe final de grado y revisión con tutor & \textbf{A4} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen &  \\ \hline
 
-\textbf{Defensa Pública de Grado y Titulación Profesional [Hito 3]} & \textbf{A5} & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \ghito & \ghito \\ \hline
-
+\textbf{Defensa Pública de Grado y Titulación Profesional [Hito 3]} & \textbf{A5} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ghito \\ \hline
 \end{tabular}%
-}
+}}
 \par\vspace{0.25cm}
 \centering{\textbf{Fuente:} Elaboración propia, 2026.}
 \end{figure}

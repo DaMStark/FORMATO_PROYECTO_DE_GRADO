@@ -22,8 +22,11 @@ Se adopta el \textbf{método ingenieril estructurado bajo un enfoque iterativo e
 
 Para asegurar la coherencia lógica interna entre los componentes metodológicos del proyecto, en la \tab{matriz_consistencia} se sintetiza la matriz de consistencia metodológica.
 
-{\setlength{\parskip}{1.5pt}
-\begin{longtable}{|L{2.3cm}|L{3.0cm}|L{3.7cm}|L{3.7cm}|}
+{\footnotesize
+\setstretch{1.05}
+\setlength{\parskip}{1.5pt}
+\setlength{\tabcolsep}{3.5pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{2.1cm}|>{\raggedright\arraybackslash}p{3.8cm}|>{\raggedright\arraybackslash}p{3.8cm}|>{\raggedright\arraybackslash}p{3.8cm}|}
 \caption{Matriz de consistencia metodológica del proyecto}
 \label{tab:matriz_consistencia}
 \\
@@ -45,13 +48,13 @@ Para asegurar la coherencia lógica interna entre los componentes metodológicos
 \endlastfoot
 
 Problema General & 
-¿De qué manera un sistema no invasivo basado en corriente, acelerometría, Edge AI e IoT permite monitorear el desgaste en MAINSA? & 
+¿Cómo diseñar un sistema periférico no invasivo para el monitoreo en tiempo real del desgaste de herramientas de corte en los tornos CNC de la empresa MAINSA, que permita superar la dependencia de la inspección visual subjetiva, prevenir paradas no planificadas y reducir las mermas operativas en el taller? & 
 Condición operativa de corte, interferencias electromagnéticas y parque de tornos CNC heredado. & 
 Incidencia de roturas intempestivas y piezas fuera de tolerancia dimensional registradas en taller.\\ \hline
 
 Objetivo General & 
-Diseñar e implementar un sistema periférico no invasivo para monitoreo de desgaste de herramientas en tornos CNC en MAINSA. & 
-Integración de transductores SCT013, acelerometría, microcontrolador STM32 y módulo IoT. & 
+Diseñar un sistema periférico no invasivo para el monitoreo en tiempo real del desgaste de herramientas de corte en tornos CNC de la empresa MAINSA, mediante la medición de variables de corriente y vibración procesadas con algoritmos de inteligencia artificial en el borde (\textit{Edge AI}), para anticipar oportunamente fallas críticas en los insertos y reducir paradas no planificadas. & 
+Integración de transductores de corriente no invasivos, acelerometría en torreta, microcontrolador STM32 y módulo IoT. & 
 Prototipo mecatrónico funcional montado en gabinete industrial operativo al pie de máquina.\\ \hline
 
 Hipótesis Ingenieril & 
@@ -61,36 +64,36 @@ Exactitud de clasificación $\ge 90\%$, latencia de inferencia $\le 20\,\text{ms
 
 Variables Independientes & 
 Señales físicas primarias generadas durante la remoción de material en el proceso de torneado. & 
-- Corriente eficaz del husillo ($I_{RMS}$).\par
-- Aceleración dinámica en torreta ($a_{RMS}$).\par
-- Curtosis ($Ku$) y Factor de Cresta ($CF$). & 
+• Corriente eficaz del husillo ($I_{RMS}$).\par\vspace{1mm}
+• Aceleración dinámica en torreta ($a_{RMS}$).\par\vspace{1mm}
+• Curtosis ($Ku$) y Factor de Cresta ($CF$). & 
 Amplitud en amperios (A), aceleración en gravedad ($g$) y coeficientes estadísticos adimensionales.\\ \hline
 
 Variables Dependientes & 
 Estado tribológico del inserto de carburo y calidad geométrica superficial resultante en la pieza. & 
-- Desgaste de flanco ($VB$ en mm según ISO 3685).\par
-- Clase de condición: Óptima, Desgaste Normal o Reemplazo Crítico.\par
-- Rugosidad media superficial ($Ra$ en $\upmu\text{m}$). & 
-Medición con lupa óptica/micrómetro ($VB$), rugosímetro de taller ($Ra$) y matriz de confusión del modelo.\\ \hline
+• Desgaste de flanco ($VB$ en mm según ISO 3685).\par\vspace{1mm}
+• Clase de condición: Inserto nuevo, Desgaste funcional o Filo crítico.\par\vspace{1mm}
+• Rugosidad media superficial ($Ra$ en $\upmu\text{m}$). & 
+Medición con microscopio óptico ($VB$), rugosímetro de contacto ($Ra$) y matriz de confusión del modelo.\\ \hline
 
 Variables Intervinientes & 
 Factores externos del entorno operacional de planta que inciden en el régimen de corte. & 
-- Material de trabajo (AISI 1045 / 4140).\par
-- Profundidad de pasada ($a_p$) y avance ($f$).\par
-- Presencia y flujo de fluido de corte refrigerante. & 
-Registro riguroso de parámetros programados en el código G del control numérico del torno CNC.\\
+• Material de trabajo (AISI 1045 y 4140).\par\vspace{1mm}
+• Profundidad de pasada ($a_p$) y avance ($f$).\par\vspace{1mm}
+• Presencia y flujo de fluido refrigerante (taladrina). & 
+Registro riguroso de parámetros programados en el código G del control numérico del torno CNC.\\ \hline
 \end{longtable}
 }
 
 \subsection{Técnicas e instrumentos de recolección de datos}
 Para el levantamiento y validación rigurosa de la información técnica del proyecto, se seleccionaron técnicas estructuradas e instrumentos especializados, redactados a continuación en prosa técnica contextualizada:
 
-\paragraph{A. Técnicas cualitativas de diagnóstico industrial}
+\subsubsection{Técnicas cualitativas de diagnóstico industrial}
 Se empleará la técnica de \textbf{entrevista semiestructurada}, aplicada al jefe de planta y a los operarios especializados de torneado de MAINSA mediante una \textit{Guía de Entrevista Técnica}. Este instrumento permite recolectar información de primera mano sobre las pautas empíricas de sustitución de insertos, el historial de paradas de máquina por rotura catastrófica de filo, las marcas y geometrías de insertos más utilizadas (CNMG 120408) y los horarios y rutinas de mantenimiento del parque de tornos CNC.
 
 Asimismo, se implementará la \textbf{observación técnica directa en planta}, utilizando una \textit{Ficha de Relevamiento Operacional y de Entorno}. Mediante este instrumento se registrarán las dimensiones físicas disponibles en la torreta portaherramientas, los puntos de fijación mecánica inmunes a proyecciones de viruta incandescente, la disposición del cableado eléctrico en el gabinete de fuerza y los niveles de ruido electromagnético ambiental producidos por los servodrivers.
 
-\paragraph{B. Técnicas cuantitativas de adquisición y metrología experimental}
+\subsubsection{Técnicas cuantitativas de adquisición y metrología experimental}
 Para la captura de las magnitudes electromecánicas en tiempo real se aplicará la técnica de \textbf{adquisición digital de datos (DAQ embebido)}, instrumentada a través del microcontrolador \textit{STM32F4 (ARM Cortex-M4)}, el cual realiza la digitalización síncrona de las señales de corriente y aceleración a 12 bits mediante transferencias DMA circulares gobernadas por temporizadores de hardware sin retardo de CPU.
 
 Con la finalidad de garantizar la fiabilidad metrológica de las lecturas, se empleará como instrumentación patrón de laboratorio una \textbf{pinza amperimétrica digital True RMS calibrada} y un \textbf{osciloscopio digital de almacenamiento}, utilizados para contrastar las curvas de respuesta temporal y calibrar estáticamente el factor de escala de los sensores de corriente.

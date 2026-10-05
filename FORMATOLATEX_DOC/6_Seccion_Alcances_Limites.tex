@@ -7,7 +7,7 @@ El alcance establece con precisión el nivel de desarrollo de la solución, los 
 \begin{itemize}
 \item Se desarrollará el diseño y dimensionamiento de un sistema mecatrónico periférico no invasivo orientado al monitoreo en tiempo real del desgaste de herramientas de corte en tornos CNC de la empresa metalmecánica MAINSA.
 \item Se considerará como proceso de manufactura específico las operaciones de mecanizado por arranque de viruta limitadas a torneado CNC longitudinal (cilindrado exterior) y refrentado.
-\item Se considerará como escenario de aplicación industrial el mecanizado de piezas cilíndricas en aceros de alta solicitación mecánica comúnmente procesados en MAINSA, priorizando aceros aleados y de bonificación de elevada dureza y resistencia como AISI/SAE 4340 (acero al cromo-níquel-molibdeno, equivalente ISO 683-1 / 34CrNiMo6), AISI 4140 y acero al carbono AISI 1045, empleando herramientas con insertos intercambiables de carburo recubierto.
+\item Se considerará como escenario de aplicación industrial el mecanizado de piezas cilíndricas en aceros de alta solicitación mecánica comúnmente procesados en MAINSA, priorizando aceros aleados y de bonificación comúnmente utilizados en piezas de alta exigencia mecánica como AISI 4140 y acero al carbono AISI 1045, empleando herramientas con insertos intercambiables de carburo recubierto.
 \item Se diseñará un módulo de acondicionamiento de señal analógica considerando aislamiento galvánico, rectificación y conversión a niveles de tensión continua proporcionales al valor eficaz (RMS) de la corriente, garantizando la compatibilidad con el convertidor analógico-digital del microcontrolador.
 \item Se desarrollará el diseño circuital esquemático, dimensionamiento de componentes y ruteo de la placa de circuito impreso (PCB) para acondicionamiento y procesamiento, contratando el servicio de fabricación física a una empresa terciaria especializada, para posteriormente realizar el ensamble, soldadura manual e integración en el sistema periférico.
 \item Se integrará un sistema de adquisición multisensorial compuesto por un transductor de corriente no invasivo de núcleo partido para el motor del husillo principal y un sensor acelerómetro MEMS para la captación de vibraciones mecánicas en la torreta portaherramientas. Para este último, se especificará una carcasa estanca de grado industrial con nivel de protección hermética IP67 que aísle el módulo transductor contra la niebla de fluido de corte refrigerante (taladrina), aceites lubricantes y proyecciones de viruta en la cabina. La sujeción mecánica sobre la torreta ferrosa se implementará mediante un montaje magnético no invasivo con imanes permanentes de neodimio de alta adherencia (grado N52), garantizando rigidez acústica sin perforar ni alterar la máquina, quedando formalmente consignado como tarea pendiente de ingeniería de detalle el diseño geométrico CAD y la fabricación de dicha caja imantada.
@@ -23,7 +23,9 @@ El alcance establece con precisión el nivel de desarrollo de la solución, los 
 \subsection{Límites}
 Los límites establecen con rigurosidad qué aspectos no serán desarrollados o considerados dentro del proyecto, permitiendo delimitar el campo de acción para evitar expectativas que excedan los recursos y tiempos disponibles. Con el propósito de contrastar de forma directa lo que el proyecto desarrollará frente a lo que no desarrollará, en la \tab{alcance_limites} se presenta la matriz comparativa de alcances y límites según las pautas metodológicas de la asignatura.
 
-{\setlength{\parskip}{1.5pt}
+{\small
+\setstretch{1.05}
+\setlength{\parskip}{1.5pt}
 \begin{table}[H]
 \centering
 \caption{Matriz comparativa de alcances y límites del proyecto}\label{tab:alcance_limites}
@@ -31,7 +33,7 @@ Los límites establecen con rigurosidad qué aspectos no serán desarrollados o 
 \hline
 \textbf{Alcance (Lo que se desarrollará)} & \textbf{Límites (Lo que no se desarrollará)} \\ \hline \hline
 Prototipo funcional periférico probado en un torno CNC real en MAINSA. & Equipo comercial certificado con homologación metrológica de serie. \\ \hline
-Torneado en aceros de alta exigencia mecánica en MAINSA (AISI 1045, 4140 y 4340). & Procesos de fresado/taladrado; y pruebas en materiales de bajo esfuerzo (nylon, bronce) de MAINSA. \\ \hline
+Torneado en aceros de alta exigencia mecánica en MAINSA (AISI 1045 y AISI 4140). & Procesos de fresado/taladrado; y pruebas en materiales de bajo esfuerzo (nylon, bronce) de MAINSA. \\ \hline
 Herramientas con insertos intercambiables de carburo de tungsteno recubierto. & Insertos cerámicos, cermet o materiales superabrasivos (CBN/PCD). \\ \hline
 Medición de corriente del husillo y acelerometría MEMS en torreta bajo encapsulado IP67 con base imantada. & Dinamometría directa, perforaciones mecánicas invasivas ni instrumentación interna de husillo. \\ \hline
 Acondicionamiento RMS y componente fundamental cuasi-senoidal (inferencia de par). & Análisis espectral de distorsión armónica total (THD) ni transitorios de conmutación PWM. \\ \hline

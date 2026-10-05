@@ -6,18 +6,20 @@ El presente capítulo expone los fundamentos teóricos y conceptuales que susten
 \subsection{Contenido temático y matriz de trazabilidad}
 Con la finalidad de garantizar que cada base conceptual sustente de manera directa el desarrollo técnico del proyecto, en la \tab{contenido_tematico} se presenta la matriz de trazabilidad que vincula los objetivos específicos, las acciones de ingeniería y los temas correspondientes del fundamento teórico, conforme a los lineamientos metodológicos de Taller de Grado.
 
-{\small
+{\footnotesize
+\setstretch{1.05}
 \setlength{\parskip}{1.5pt}
-\begin{longtable}{|>{\raggedright\arraybackslash}p{3.5cm}|>{\raggedright\arraybackslash}p{5.1cm}|>{\raggedright\arraybackslash}p{5.1cm}|}
+\setlength{\tabcolsep}{4.0pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{3.3cm}|>{\raggedright\arraybackslash}p{5.2cm}|>{\raggedright\arraybackslash}p{5.2cm}|}
 \caption{Matriz de trazabilidad entre objetivos específicos, acciones y fundamento teórico\label{tab:contenido_tematico}}
 \\
 \hline
-\textbf{Objetivo Específico} & \textbf{Acción del Proyecto} & \textbf{Tema del Fundamento Teórico} \\
+\textbf{Objetivo específico} & \textbf{Acciones del proyecto} & \textbf{Tema del fundamento teórico} \\
 \hline \hline
 \endfirsthead
 
 \hline
-\textbf{Objetivo Específico} & \textbf{Acción del Proyecto} & \textbf{Tema del Fundamento Teórico} \\
+\textbf{Objetivo específico} & \textbf{Acciones del proyecto} & \textbf{Tema del fundamento teórico} \\
 \hline \hline
 \endhead
 
@@ -28,55 +30,54 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 \multicolumn{3}{c}{\textbf{Fuente:} Elaboración propia, 2026.}
 \endlastfoot
 
-OE1: Caracterizar el régimen operacional y variables críticas de los tornos CNC en MAINSA. & 
-- Diagnóstico in situ de cabina y espacio en tornos CNC.\par
-- Caracterización cinemática de torneado en aceros AISI 1045 y 4140.\par
-- Relevamiento de líneas de alimentación del husillo.\par
-- Medición preliminar de vibración en la torreta. & 
-- Cinemática de corte ortogonal y oblicuo ($V_c, f, a_p, MRR$).\par
-- Dinámica de fuerzas de corte ($F_c, F_a, F_r$) y potencia ($P_c$).\par
-- Accionamientos de husillo y análisis de corriente (MCSA).\par
-- Vibraciones forzadas e inducidas en máquinas herramienta.\\ \hline
+\textbf{OE1.} Investigar las operaciones de mecanizado en torno CNC, los mecanismos de desgaste de herramientas de corte y las tecnologías de inteligencia artificial en el borde (\textit{Edge AI}) orientadas al monitoreo de condición. &
+• Caracterización de operaciones de torneado CNC y cinemática de corte.\par\vspace{1mm}
+• Análisis de fenomenología del desgaste y patrones de falla según ISO 3685.\par\vspace{1mm}
+• Estudio del estado del arte en monitoreo indirecto (TCM) por corriente y vibración.\par\vspace{1mm}
+• Evaluación de \textit{Edge AI} / TinyML y plataformas embebidas. &
+• 8.2.1 Cinemática del torneado ($V_c, f, a_p, MRR$), fuerzas de corte y potencia ($P_c$).\par\vspace{1mm}
+• 8.2.2 Mecanismos tribológicos de desgaste y criterio $VB$ (ISO 3685).\par\vspace{1mm}
+• 8.2.3 Monitoreo de condición (TCM) indirecto mediante corriente y acelerometría.\par\vspace{1mm}
+• 8.2.6 Inteligencia artificial en el borde (\textit{Edge AI} / TinyML). \\ \hline
 
-OE2: Diseñar e implementar el circuito de acondicionamiento de señal no invasivo. & 
-- Selección y dimensionamiento del sensor de corriente.\par
-- Selección del sensor de aceleración triaxial.\par
-- Diseño del elevador de nivel DC a 2.5V y filtro pasa-bajas pasivo.\par
-- Fabricación de la placa PCB con aislamiento galvánico. & 
-- Transductores de efecto Hall y transformadores de corriente (CT).\par
-- Acelerómetros inerciales piezoeléctricos y MEMS.\par
-- Filtros analógicos pasa-bajas y offset DC unipolar.\par
-- Compatibilidad electromagnética (EMC) y aislamiento galvánico.\\ \hline
+\textbf{OE2.} Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, integrando acondicionamiento de señal, procesamiento en el borde y conectividad IoT. &
+• Definición del diagrama de bloques funcional (adquisición, acondicionamiento y telemetría).\par\vspace{1mm}
+• Diseño de circuito acondicionador analógico (rectificación y conversión a nivel RMS).\par\vspace{1mm}
+• Diseño esquemático y ruteo de PCB industrial con aislamiento galvánico.\par\vspace{1mm}
+• Concepción de gabinete IP65 y carcasa estanca IP67 con base magnética de neodimio. &
+• 8.2.4 Transductores y acondicionamiento analógico (efecto Hall, acelerómetros MEMS, offset DC y EMC).\par\vspace{1mm}
+• 8.2.5 Procesamiento digital de señales (adquisición determinista).\par\vspace{1mm}
+• 8.2.7 Arquitectura de conectividad IoT para mantenimiento predictivo. \\ \hline
 
-OE3: Desarrollar el firmware embebido en STM32 para adquisición DMA y procesamiento DSP. & 
-- Configuración de temporizadores por hardware.\par
-- Transferencias por Acceso Directo a Memoria (DMA).\par
-- Algoritmos de filtrado digital IIR/Butterworth.\par
-- Extracción de descriptores estadísticos temporales. & 
-- Teorema de muestreo de Nyquist-Shannon y anti-aliasing.\par
-- Arquitectura ARM Cortex-M4 y periféricos DMA circulares.\par
-- Librería CMSIS-DSP y procesamiento digital de señales.\par
-- Descriptores estadísticos ($I_{RMS}, a_{RMS}$, Curtosis, Factor de Cresta).\\ \hline
+\textbf{OE3.} Dimensionar los sensores de corriente, vibración y la unidad de procesamiento embebido. &
+• Dimensionamiento de transductor SCT-013 según potencia del motor del husillo.\par\vspace{1mm}
+• Selección del acelerómetro considerando ancho de banda y rango dinámico en torreta.\par\vspace{1mm}
+• Selección de microcontrolador analizando ADC, DMA, FPU, CMSIS-DSP y memoria.\par\vspace{1mm}
+• Cálculo y dimensionamiento de componentes pasivos de filtrado y fuentes conmutadas.\par\vspace{1mm}
+• Elaboración del documento de avance semestral y Defensa de Avance [Hito 2]. &
+• 8.2.4 Transductores de corriente y acelerómetros piezoeléctricos/MEMS.\par\vspace{1mm}
+• 8.2.5 Teorema de Nyquist, filtrado anti-aliasing y arquitectura ARM Cortex-M4.\par\vspace{1mm}
+• 8.2.8 Análisis comparativo y selección de componentes (microcontrolador, corriente y aceleración). \\ \hline
 
-OE4: Entrenar y desplegar el modelo de Machine Learning en el borde (TinyML). & 
-- Recolección y etiquetado del dataset experimental.\par
-- Preprocesamiento y normalización de vectores de entrada.\par
-- Entrenamiento y validación de clasificadores.\par
-- Cuantización entera INT8 y despliegue con STM32Cube.AI. & 
-- Aprendizaje automático supervisado para diagnóstico.\par
-- Cuantización y optimización de redes para microcontroladores.\par
-- Criterios de desgaste de flanco según norma ISO 3685 ($VB$).\par
-- Métricas de exactitud, matriz de confusión y latencia.\\ \hline
+\textbf{OE4.} Integrar el sistema periférico de adquisición, procesamiento inteligente y supervisión remota. &
+• Ensamblaje, integración eléctrica y verificación funcional de PCB y gabinete.\par\vspace{1mm}
+• Programación del firmware STM32 para muestreo síncrono DMA y CMSIS-DSP.\par\vspace{1mm}
+• Campaña de mecanizado en MAINSA y construcción de dataset etiquetado.\par\vspace{1mm}
+• Entrenamiento, cuantización INT8 y despliegue del clasificador con STM32Cube.AI.\par\vspace{1mm}
+• Configuración de enlace IoT (MQTT/JSON) y desarrollo del panel de supervisión. &
+• 8.2.5 Descriptores estadísticos ($I_{RMS}, a_{RMS}$, curtosis, factor de cresta).\par\vspace{1mm}
+• 8.2.6 Aprendizaje automático supervisado, cuantización INT8 y despliegue STM32Cube.AI.\par\vspace{1mm}
+• 8.2.7 Protocolo MQTT sobre TCP/IP, calidad de servicio QoS y tramas JSON. \\ \hline
 
-OE5: Integrar el módulo telemático IoT (ESP32) y validar en condiciones reales. & 
-- Diseño del protocolo serial binario con CRC16.\par
-- Programación de la pasarela ESP32 bajo MQTT.\par
-- Despliegue del dashboard web de supervisión y alertas.\par
-- Validación experimental en torno CNC y contraste con $Ra$. & 
-- Protocolos de telemetría IoT industrial (MQTT sobre TCP/IP).\par
-- Algoritmos de verificación de integridad (CRC16-CCITT).\par
-- Arquitecturas desacopladas Dual-MCU para tiempo real.\par
-- Rugosidad geométrica superficial ($Ra$) y calidad de corte.\\ \hline
+\textbf{OE5.} Validar experimentalmente el funcionamiento del sistema integrado mediante pruebas de corte en los tornos CNC de MAINSA. &
+• Instalación y calibración no invasiva del sistema periférico en torno CNC de taller.\par\vspace{1mm}
+• Ensayos de torneado cilíndrico con insertos nuevo, desgaste funcional y crítico.\par\vspace{1mm}
+• Medición metrológica de rugosidad ($Ra$) en probetas y verificación dimensional.\par\vspace{1mm}
+• Evaluación de exactitud de clasificación y reducción de paradas y mermas.\par\vspace{1mm}
+• Redacción del informe final de grado y preparación de Defensa Pública [Hito 3]. &
+• 8.2.2 Desgaste de flanco ($VB$) y su impacto en rugosidad superficial ($Ra$).\par\vspace{1mm}
+• 8.2.6 Métricas de exactitud, matriz de confusión y latencia de inferencia en milisegundos.\par\vspace{1mm}
+• 8.2.7 Verificación de telemetría y supervisión remota en planta. \\ \hline
 \end{longtable}
 }
 
@@ -256,7 +257,7 @@ Para el diagnóstico inteligente del estado de la herramienta se emplean algorit
 
 El despliegue efectivo de modelos de aprendizaje automático en microcontroladores de la familia STM32 se viabiliza mediante herramientas especializadas de optimización y cuantización como STM32Cube.AI \citep{stmicroelectronics2021}. Esta plataforma analiza la topología de la red entrenada en entornos como Scikit-Learn o TensorFlow y efectúa una conversión automática hacia código ANSI C altamente optimizado, adaptado de forma óptima a las capacidades arquitectónicas internas del silicio de procesamiento seleccionado.
 
-El proceso de cuantización a números enteros de ocho bits disminuye la huella de memoria del modelo en almacenamiento no volátil en aproximadamente un setenta y cinco por ciento, reduciendo simultáneamente la ocupación de memoria dinámica y acelerando la ejecución aritmética \citep{warden2019}. Esta optimización algorítmica permite efectuar diagnósticos en tiempo real deterministas, categorizando el estado operativo del inserto de corte en categorías estandarizadas: herramienta afilada óptima, desgaste admisible de producción o condición crítica de reemplazo perentorio.
+El proceso de cuantización a números enteros de ocho bits disminuye la huella de memoria del modelo en almacenamiento no volátil en aproximadamente un setenta y cinco por ciento, reduciendo simultáneamente la ocupación de memoria dinámica y acelerando la ejecución aritmética \citep{warden2019}. Esta optimización algorítmica permite efectuar diagnósticos en tiempo real deterministas, categorizando el estado operativo del inserto de corte en tres clases discretas de condición: inserto nuevo, desgaste funcional y filo crítico.
 
 \subsubsection{Arquitectura de conectividad IoT para mantenimiento predictivo}
 

@@ -5,14 +5,15 @@ La viabilidad económica para el diseño, desarrollo y validación experimental 
 
 \enlargethispage{2.5\baselineskip}
 {\footnotesize
-\setlength{\parskip}{1.0pt}
-\setlength{\tabcolsep}{2.2pt}
-\renewcommand{\arraystretch}{1.02}
+\setstretch{1.0}
+\setlength{\parskip}{0.8pt}
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{0.98}
 \definecolor{phdr}{RGB}{31,78,121}
 \definecolor{psub}{RGB}{222,235,247}
 \definecolor{ptot}{RGB}{198,224,180}
 
-\begin{longtable}{|C{0.8cm}|L{5.6cm}|C{1.0cm}|R{1.8cm}|R{1.7cm}|L{3.0cm}|}
+\begin{longtable}{|C{0.8cm}|L{5.7cm}|C{1.2cm}|R{1.6cm}|R{1.5cm}|L{2.8cm}|}
 \caption{Presupuesto detallado para el desarrollo y validación del proyecto (en \$USD)}
 \label{tab:presupuesto_detallado}
 \\
@@ -51,12 +52,12 @@ La viabilidad económica para el diseño, desarrollo y validación experimental 
 1.1 & Sensor de corriente de núcleo partido no invasivo SCT013-000 (0--100~A) & 2 & 14.50 & 29.00 & DigiKey / Importación \\ \hline
 1.2 & Sensor de corriente de efecto Hall integrado ACS712-20A (módulo calibrado) & 1 & 8.50 & 8.50 & Pololu / Tienda local \\ \hline
 1.3 & Acelerómetro digital triaxial MEMS ADXL345 (enlace SPI de bajo ruido) & 2 & 9.00 & 18.00 & Analog Devices / Mouser \\ \hline
-1.4 & Componentes de acondicionamiento pasivo (filtros RC, zener 3.3V, resistencias 1\%) & 1 lote & 12.00 & 12.00 & Mouser / Tienda local \\ \hline
+1.4 & Componentes de acondicionamiento (filtros RC, zener 3.3V, resistencias 1\%) & 1 lote & 12.00 & 12.00 & Mouser / Tienda local \\ \hline
 
 \hline
 \rowcolor{psub}
 \multicolumn{6}{|l|}{\textbf{2. Subsistema de procesamiento embebido, telemetría y potencia}} \\ \hline
-2.1 & Placa de cómputo STM32 (ARM Cortex-M4 @ 84~MHz, FPU y CMSIS-DSP) & 1 & 24.00 & 24.00 & STMicroelectronics / Local \\ \hline
+2.1 & Placa de cómputo STM32F4 (ARM Cortex-M4 @ 84~MHz, FPU, CMSIS-DSP) & 1 & 24.00 & 24.00 & STMicroelectronics / Local \\ \hline
 2.2 & Módulo microcontrolador Wi-Fi / Bluetooth ESP32 (nodo gateway MQTT) & 1 & 9.50 & 9.50 & Espressif / RobotShop \\ \hline
 2.3 & Fuente industrial conmutada 5V/2A con aislamiento galvánico y filtro EMI & 1 & 18.00 & 18.00 & Mean Well / Importación \\ \hline
 
@@ -64,7 +65,7 @@ La viabilidad económica para el diseño, desarrollo y validación experimental 
 \rowcolor{psub}
 \multicolumn{6}{|l|}{\textbf{3. Fabricación, encapsulado estanco y montaje magnético}} \\ \hline
 3.1 & Fabricación de placa de circuito impreso PCB doble capa FR-4 industrial & 1 lote & 22.00 & 22.00 & JLCPCB / PCBWay \\ \hline
-3.2 & Gabinete principal IP65 y carcasa estanca IP67 con base de imanes de neodimio N52 & 1 lote & 25.00 & 25.00 & Schneider / Neodimio N52 \\ \hline
+3.2 & Gabinete IP65 y carcasa estanca IP67 con base magnética NdFeB N52 & 1 lote & 25.00 & 25.00 & Schneider / Neodimio N52 \\ \hline
 3.3 & Cable balanceado apantallado y conectores industriales estancos IP67 (M8/M12) & 1 lote & 16.00 & 16.00 & Belden / Amphenol \\ \hline
 
 \hline
@@ -76,12 +77,12 @@ La viabilidad económica para el diseño, desarrollo y validación experimental 
 \hline
 \rowcolor{psub}
 \multicolumn{6}{|l|}{\textbf{5. Servicios metrológicos de calibración y laboratorio}} \\ \hline
-5.1 & Acceso a rugosímetro de contacto Mitutoyo e inspección microscópica ISO 3685 & 1 serv. & 35.00 & 35.00 & Laboratorio UCB / CETA \\ \hline \hline
+5.1 & Rugosímetro Mitutoyo e inspección microscópica ISO 3685 & 1 serv. & 35.00 & 35.00 & Laboratorio UCB / CETA \\ \hline \hline
 
 \multicolumn{4}{|r|}{\textbf{SUBTOTAL DE RECURSOS DIRECTOS:}} & \textbf{301.00} & -- \\ \hline
-\multicolumn{4}{|r|}{\textbf{CONTINGENCIA TÉCNICA Y CAMBIARIA (15\%):}} & \textbf{45.15} & Margen por fletes/precios \\ \hline \hline
+\multicolumn{4}{|r|}{\textbf{CONTINGENCIA TÉCNICA Y CAMBIARIA (15\%):}} & \textbf{45.15} & Fletes y aranceles \\ \hline \hline
 \rowcolor{ptot}
-\multicolumn{4}{|r|}{\textbf{COSTO TOTAL ESTIMADO DEL PROYECTO (\$USD):}} & \textbf{346.15} & Financiamiento postulante \\ \hline
+\multicolumn{4}{|r|}{\textbf{COSTO TOTAL ESTIMADO DEL PROYECTO (\$USD):}} & \textbf{346.15} & Aporte postulante \\ \hline
 \end{longtable}
 }
 
