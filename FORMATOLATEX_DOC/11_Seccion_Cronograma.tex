@@ -1,11 +1,6 @@
-﻿\newpage
+\newpage
 \section{CRONOGRAMA DE ACTIVIDADES}
-
-El cronograma de actividades constituye la organización gráfica y temporal sistemática donde se distribuyen en semanas y meses calendario las acciones técnicas, etapas de desarrollo e hitos de validación que se ejecutarán a lo largo del proyecto. Conforme a las directrices de la carrera de Ingeniería Mecatrónica de la Universidad Católica Boliviana San Pablo, la planificación contempla una secuencia continua e integrada de diez meses lectivos estructurados en dos períodos académicos consecutivos: el \textbf{segundo semestre de 2026} (investigación, diseño conceptual, dimensionamiento y avance semestral) y el \textbf{primer semestre de 2027} (integración de hardware y firmware embebido, despliegue de modelos TinyML, validación experimental en taller y titulación profesional).
-
-\subsection{Matriz gráfica del cronograma de actividades (Diagrama de Gantt)}
-
-En concordancia con el modelo metodológico de la asignatura y la normativa institucional, en la \fig{cronograma_gantt_grafico} se presenta la organización gráfica del tiempo bajo un esquema matricial tipo Gantt estructurado por objetivos específicos. Cada objetivo específico (OE~1 a OE~5) agrupa las acciones técnicas que operativizan su cumplimiento; las filas de encabezado del objetivo muestran el período total de ejecución de la fase, y las filas individuales despliegan cada acción con su duración específica. La planificación abarca 40 semanas operativas distribuidas en diez meses lectivos (Agosto~2026 a Junio~2027). Para maximizar la visibilidad y legibilidad del cronograma en el formato de página del documento, la matriz se orienta de forma vertical en el cuerpo de la lámina, manteniendo el título y la fuente en posición horizontal estándar.
+El cronograma de actividades distribuye en 40 semanas operativas (Gestión 2026--2027) las acciones técnicas e hitos del proyecto, estructuradas bajo los cinco objetivos específicos en la \fig{cronograma_gantt_grafico}.
 
 % Colores del cronograma (definidos aquí para estar disponibles en la figura y en el longtable)
 \definecolor{ghdr}{RGB}{31,78,121}
@@ -16,16 +11,16 @@ En concordancia con el modelo metodológico de la asignatura y la normativa inst
 \newcommand{\gb}{\cellcolor{gbar}}
 \newcommand{\gh}{\cellcolor{ghito}\textcolor{white}{\textbf{\tiny H}}}
 
-\begin{figure}[!htb]
+\begin{figure}[H]
 \centering
 \caption{Diagrama de Gantt del cronograma de actividades por objetivo específico (Gestión 2026 -- 2027)}
 \label{fig:cronograma_gantt_grafico}
-\vspace{0.2cm}
+\vspace{0.15cm}
 \setlength{\tabcolsep}{1.4pt}
-\renewcommand{\arraystretch}{1.32}
+\renewcommand{\arraystretch}{1.18}
 \fontsize{7pt}{8.5pt}\selectfont
 \rotatebox{90}{%
-\begin{tabular}{|C{0.9cm}|L{6.5cm}|*{40}{c|}}
+\begin{tabular}{|C{0.8cm}|L{5.0cm}|*{40}{c|}}
 \hline
 \rowcolor{ghdr}
 \multicolumn{1}{|c|}{} &
@@ -117,78 +112,5 @@ En concordancia con el modelo metodológico de la asignatura y la normativa inst
 \par\vspace{0.25cm}
 \centering{\textbf{Fuente:} Elaboración propia, 2026.}
 \end{figure}
-
 \clearpage
 
-\subsection{Plan analítico de actividades, semanas y entregables por objetivo específico}
-
-Para complementar la representación gráfica y facilitar la fiscalización metodológica del avance, en la \tab{cronograma_actividades_detallado} se desglosan los objetivos específicos, períodos cronológicos y entregables verificables asociados a cada acción del proyecto, organizados conforme a los cinco objetivos específicos del perfil de grado y distribuidos a lo largo del período 2026--2027.
-
-{\small
-\setlength{\parskip}{1.5pt}
-\setlength{\tabcolsep}{2.5pt}
-\begin{longtable}{|C{0.9cm}|L{5.6cm}|C{2.3cm}|C{1.6cm}|L{3.0cm}|}
-\caption{Plan detallado de actividades, calendario y entregables técnicos por objetivo específico}
-\label{tab:cronograma_actividades_detallado}
-\\
-\hline
-\textbf{Ítem} & \textbf{Actividad / Tarea técnica} & \textbf{Meses calendario} & \textbf{Semanas} & \textbf{Hito / Entregable} \\
-\hline \hline
-\endfirsthead
-
-\hline
-\textbf{Ítem} & \textbf{Actividad / Tarea técnica} & \textbf{Meses calendario} & \textbf{Semanas} & \textbf{Hito / Entregable} \\
-\hline \hline
-\endhead
-
-\hline
-\endfoot
-
-\hline
-\multicolumn{5}{c}{\textbf{Fuente:} Elaboración propia, 2026.}
-\endlastfoot
-
-\hline
-\rowcolor{ghdr}
-\multicolumn{5}{|l|}{\textcolor{white}{\textbf{OE 1: Investigar operaciones de mecanizado CNC, mecanismos de desgaste y tecnologías Edge AI}}} \\ \hline
-
-1 & Ajuste final del documento de Perfil de Grado y observaciones docentes. & Agosto 2026 & Sem. 1--2 & Perfil depurado preliminar. \\ \hline
-2 & Revisión bibliográfica exhaustiva, marco teórico y normativas (ISO 3685, VDI 2206). & Agosto 2026 & Sem. 2--4 & Fundamento teórico inicial. \\ \hline
-3 & \textbf{Defensa y aprobación oficial del Perfil de Grado} ante Tribunal ad hoc. & Agosto 2026 & Sem. 4 & \textbf{Hito 1: Perfil Aprobado.} \\ \hline
-
-\hline
-\rowcolor{ghdr}
-\multicolumn{5}{|l|}{\textcolor{white}{\textbf{OE 2: Diseñar la arquitectura mecatrónica del sistema de acondicionamiento, Edge AI e IoT}}} \\ \hline
-
-4 & Diagnóstico in situ en MAINSA y especificación de requerimientos de monitoreo. & Septiembre 2026 & Sem. 1--2 & Requerimientos técnicos fijados. \\ \hline
-5 & Diseño del diagrama de bloques funcional, esquemático PCB y concepción del gabinete. & Septiembre 2026 & Sem. 2--4 & Planos y esquemáticos base. \\ \hline
-6 & Diseño, simulación y montaje en banco del acondicionamiento analógico (Hall y ADXL345). & Sept. -- Octubre 2026 & Sem. 4--2 & Prototipo electrónico en protoboard. \\ \hline
-
-\hline
-\rowcolor{ghdr}
-\multicolumn{5}{|l|}{\textcolor{white}{\textbf{OE 3: Dimensionar los sensores, la unidad embebida y elaborar el documento de avance}}} \\ \hline
-
-7 & Calibración estática de transductores, selección de componentes pasivos y enlace serial. & Oct. -- Noviembre 2026 & Sem. 2--1 & Curvas de calibración y factores. \\ \hline
-8 & Elaboración del documento de avance semestral y \textbf{Defensa de Avance} ante tribunal. & Nov. -- Diciembre 2026 & Sem. 2--2 & \textbf{Hito 2: Avance Semestral Aprobado.} \\ \hline
-
-\hline
-\rowcolor{ghdr}
-\multicolumn{5}{|l|}{\textcolor{white}{\textbf{OE 4: Integrar el sistema de adquisición, procesamiento Edge AI y supervisión IoT}}} \\ \hline
-
-9 & Ruteo, fabricación de PCB doble capa FR-4 y ensamble en gabinete IP65. & Febrero 2027 & Sem. 1--3 & Placa PCB y gabinete listos. \\ \hline
-10 & Desarrollo de firmware embebido en STM32 (muestreo DMA y descriptores CMSIS-DSP). & Febrero -- Marzo 2027 & Sem. 3--2 & Firmware de adquisición operativo. \\ \hline
-11 & Campaña de mecanizado en torno CNC de MAINSA y recolección del dataset experimental. & Marzo 2027 & Sem. 2--4 & Dataset etiquetado ($VB, Ra$). \\ \hline
-12 & Entrenamiento de clasificadores en Python, cuantización INT8 y despliegue TinyML. & Marzo -- Abril 2027 & Sem. 4--3 & Modelo de inferencia en STM32. \\ \hline
-13 & Integración del módulo telemático IoT (ESP32 / MQTT) y panel de supervisión. & Abril 2027 & Sem. 2--4 & Dashboard web con telemetría. \\ \hline
-
-\hline
-\rowcolor{ghdr}
-\multicolumn{5}{|l|}{\textcolor{white}{\textbf{OE 5: Validar experimentalmente el sistema integrado mediante pruebas en MAINSA y titulación}}} \\ \hline
-
-14 & Validación integral del sistema en régimen productivo continuo y matriz de confusión. & Abril -- Mayo 2027 & Sem. 4--3 & Métricas de exactitud y latencia. \\ \hline
-15 & Evaluación metrológica de rugosidad ($Ra$) en probetas y desgaste de flanco ($VB$). & Mayo 2027 & Sem. 2--4 & Correlación metrológica final. \\ \hline
-16 & Redacción integral del documento final de tesis de grado (Capítulos 1 al 6). & Marzo -- Junio 2027 & Sem. 2--2 & Borrador completo de grado. \\ \hline
-17 & Revisión con tutor de tesis, corrección de observaciones y visto bueno del relator. & Mayo -- Junio 2027 & Sem. 3--2 & Documento avalado para defensa. \\ \hline
-18 & \textbf{Defensa Pública de Tesis de Grado y Titulación Profesional en Mecatrónica}. & Junio 2027 & Sem. 3--4 & \textbf{Hito 3: Titulación Profesional.} \\
-\end{longtable}
-}

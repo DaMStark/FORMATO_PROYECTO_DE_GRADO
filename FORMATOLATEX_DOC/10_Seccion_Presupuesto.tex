@@ -1,24 +1,41 @@
 \newpage
 \section{PRESUPUESTO}
 
-La viabilidad económica para el diseño, desarrollo, implementación y validación experimental del sistema periférico de monitoreo de herramientas comprende la adquisición de transductores industriales, componentes electrónicos de acondicionamiento, hardware de cómputo embebido, fabricación de circuitos impresos, materiales fungibles para maquinado en taller y servicios metrológicos de contraste.
+La viabilidad económica para el diseño, desarrollo, implementación y validación experimental del sistema periférico comprende la adquisición de transductores industriales, acondicionamiento de señal, cómputo embebido, circuitos impresos, materiales fungibles y servicios metrológicos de contraste.
 
-Conforme a las directrices metodológicas de Taller de Grado y a la coyuntura del mercado tecnológico en Bolivia, la totalidad de los costos se expresa de manera estandarizada en \textbf{Dólares Estadounidenses (\$USD)}, integrando en cada ítem las estimaciones correspondientes a logística, transporte de importación e impuestos asociados. En la \tab{presupuesto_detallado} se presenta la estimación presupuestaria desglosada por subsistemas, incorporando un rubro explícito de contingencia técnica y cambiaria del 15\%.
+Conforme a la coyuntura del mercado tecnológico en Bolivia, la totalidad de los costos se expresa en \textbf{Dólares Estadounidenses (\$USD)}, integrando fletes de importación e impuestos asociados. En la \tab{presupuesto_detallado} se presenta la estimación presupuestaria desglosada por subsistemas técnicos, incorporando un rubro de contingencia técnica y cambiaria del 15\%.
 
 {\footnotesize
 \setlength{\parskip}{1.5pt}
-\setlength{\tabcolsep}{2pt}
-\begin{longtable}{|C{0.7cm}|L{5.2cm}|C{0.9cm}|R{1.8cm}|R{1.8cm}|L{2.6cm}|}
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1.12}
+\definecolor{ghdr}{RGB}{31,78,121}
+\definecolor{gsub}{RGB}{222,235,247}
+\definecolor{gtot}{RGB}{189,215,238}
+
+\begin{longtable}{|C{0.8cm}|L{5.6cm}|C{1.0cm}|R{1.8cm}|R{1.7cm}|L{3.0cm}|}
 \caption{Presupuesto detallado para el desarrollo y validación del proyecto (en \$USD)}
 \label{tab:presupuesto_detallado}
 \\
 \hline
-\textbf{Ítem} & \textbf{Descripción del componente / servicio} & \textbf{Cant.} & \textbf{P. Unit. (\$USD)} & \textbf{Total (\$USD)} & \textbf{Fuente / Proveedor} \\
+\rowcolor{ghdr}
+\textcolor{white}{\textbf{Ítem}} & 
+\textcolor{white}{\textbf{Descripción del componente / servicio}} & 
+\textcolor{white}{\textbf{Cant.}} & 
+\textcolor{white}{\textbf{P. Unit. (\$)}} & 
+\textcolor{white}{\textbf{Total (\$)}} & 
+\textcolor{white}{\textbf{Fuente / Proveedor}} \\
 \hline \hline
 \endfirsthead
 
 \hline
-\textbf{Ítem} & \textbf{Descripción del componente / servicio} & \textbf{Cant.} & \textbf{P. Unit. (\$USD)} & \textbf{Total (\$USD)} & \textbf{Fuente / Proveedor} \\
+\rowcolor{ghdr}
+\textcolor{white}{\textbf{Ítem}} & 
+\textcolor{white}{\textbf{Descripción del componente / servicio}} & 
+\textcolor{white}{\textbf{Cant.}} & 
+\textcolor{white}{\textbf{P. Unit. (\$)}} & 
+\textcolor{white}{\textbf{Total (\$)}} & 
+\textcolor{white}{\textbf{Fuente / Proveedor}} \\
 \hline \hline
 \endhead
 
@@ -29,35 +46,48 @@ Conforme a las directrices metodológicas de Taller de Grado y a la coyuntura de
 \multicolumn{6}{c}{\textbf{Fuente:} Elaboración propia, 2026.}
 \endlastfoot
 
+\hline
+\rowcolor{gsub}
 \multicolumn{6}{|l|}{\textbf{1. Subsistema de sensado e instrumentación analógica}} \\ \hline
-1.1 & Sensor de corriente de núcleo partido no invasivo SCT013-000 (0--100 A) & 2 & 14.50 & 29.00 & DigiKey / Importación \\ \hline
-1.2 & Sensor de corriente de efecto Hall integrado ACS712-20A (módulo calibrado) & 1 & 8.50 & 8.50 & Tienda local / Pololu \\ \hline
-1.3 & Acelerómetro digital triaxial MEMS ADXL345 (interfaz SPI de bajo ruido) & 2 & 9.00 & 18.00 & Analog Devices / Adafruit \\ \hline
-1.4 & Componentes de acondicionamiento analógico (pasivos al 1\%, zener 3.3V, filtros) & 1 lote & 12.00 & 12.00 & Mouser / Tienda local \\ \hline
+1.1 & Sensor de corriente de núcleo partido no invasivo SCT013-000 (0--100~A) & 2 & 14.50 & 29.00 & DigiKey / Importación \\ \hline
+1.2 & Sensor de corriente de efecto Hall integrado ACS712-20A (módulo calibrado) & 1 & 8.50 & 8.50 & Pololu / Tienda local \\ \hline
+1.3 & Acelerómetro digital triaxial MEMS ADXL345 (enlace SPI de bajo ruido) & 2 & 9.00 & 18.00 & Analog Devices / Mouser \\ \hline
+1.4 & Componentes de acondicionamiento pasivo (filtros RC, zener 3.3V, resistencias al 1\%) & 1 lote & 12.00 & 12.00 & Mouser / Tienda local \\ \hline
 
+\hline
+\rowcolor{gsub}
 \multicolumn{6}{|l|}{\textbf{2. Subsistema de procesamiento embebido, telemetría y potencia}} \\ \hline
-2.1 & Placa de desarrollo STM32 Nucleo-F401RE / BlackPill (ARM Cortex-M4 @ 84 MHz) & 1 & 24.00 & 24.00 & STMicroelectronics / DFRobot \\ \hline
-2.2 & Módulo microcontrolador de telemetría Wi-Fi/Bluetooth ESP32 (Gateway MQTT) & 1 & 9.50 & 9.50 & Espressif / RobotShop \\ \hline
-2.3 & Fuente de alimentación industrial conmutada 5V/2A con aislamiento y filtro EMI & 1 & 18.00 & 18.00 & Mean Well / Importación \\ \hline
+2.1 & Placa de cómputo STM32 (ARM Cortex-M4 @ 84~MHz, FPU y CMSIS-DSP) & 1 & 24.00 & 24.00 & STMicroelectronics / Local \\ \hline
+2.2 & Módulo microcontrolador Wi-Fi / Bluetooth ESP32 (nodo gateway MQTT) & 1 & 9.50 & 9.50 & Espressif / RobotShop \\ \hline
+2.3 & Fuente industrial conmutada 5V/2A con aislamiento galvánico y filtro EMI & 1 & 18.00 & 18.00 & Mean Well / Importación \\ \hline
 
-\multicolumn{6}{|l|}{\textbf{3. Fabricación, integración y encapsulado industrial}} \\ \hline
-3.1 & Fabricación de circuito impreso PCB doble capa FR-4 de grado industrial & 1 lote & 22.00 & 22.00 & JLCPCB / PCBWay \\ \hline
-3.2 & Gabinete estanco con protección IP65, prensaestopas y base magnética & 1 & 25.00 & 25.00 & Fibox / Schneider Electric \\ \hline
-3.3 & Cableado balanceado apantallado para instrumentación industrial con malla & 1 lote & 16.00 & 16.00 & Belden / Importación \\ \hline
+\hline
+\rowcolor{gsub}
+\multicolumn{6}{|l|}{\textbf{3. Fabricación, encapsulado estanco y montaje magnético}} \\ \hline
+3.1 & Fabricación de placa de circuito impreso PCB doble capa FR-4 industrial & 1 lote & 22.00 & 22.00 & JLCPCB / PCBWay \\ \hline
+3.2 & Gabinete principal IP65 y carcasa estanca IP67 con base de imanes de neodimio N52 & 1 lote & 25.00 & 25.00 & Schneider / Neodimio N52 \\ \hline
+3.3 & Cable balanceado apantallado y conectores industriales estancos IP67 (M8/M12) & 1 lote & 16.00 & 16.00 & Belden / Amphenol \\ \hline
 
+\hline
+\rowcolor{gsub}
 \multicolumn{6}{|l|}{\textbf{4. Materiales fungibles de experimentación y mecanizado en MAINSA}} \\ \hline
 4.1 & Barras cilíndricas de acero aleado AISI 1045 y AISI 4140 para ensayos de corte & 3 barras & 18.00 & 54.00 & Aceros Arequipa / Barraca \\ \hline
-4.2 & Caja de insertos intercambiables de carburo de tungsteno (ISO CNMG 120408) & 1 caja & 30.00 & 30.00 & Sandvik / Walter \\ \hline
+4.2 & Caja de insertos intercambiables de carburo de tungsteno (ISO CNMG 120408) & 1 caja & 30.00 & 30.00 & Sandvik Coromant / Walter \\ \hline
 
+\hline
+\rowcolor{gsub}
 \multicolumn{6}{|l|}{\textbf{5. Servicios metrológicos de calibración y laboratorio}} \\ \hline
 5.1 & Acceso a rugosímetro de contacto Mitutoyo e inspección microscópica ISO 3685 & 1 serv. & 35.00 & 35.00 & Laboratorio UCB / CETA \\ \hline \hline
 
 \multicolumn{4}{|r|}{\textbf{SUBTOTAL DE RECURSOS DIRECTOS:}} & \textbf{301.00} & -- \\ \hline
 \multicolumn{4}{|r|}{\textbf{CONTINGENCIA TÉCNICA Y CAMBIARIA (15\%):}} & \textbf{45.15} & Margen por fletes/precios \\ \hline \hline
-\multicolumn{4}{|r|}{\textbf{COSTO TOTAL ESTIMADO DEL PROYECTO (\$USD):}} & \textbf{346.15} & Financiamiento postulante \\
+\rowcolor{gtot}
+\multicolumn{4}{|r|}{\textbf{COSTO TOTAL ESTIMADO DEL PROYECTO (\$USD):}} & \textbf{346.15} & Financiamiento postulante \\ \hline
 \end{longtable}
 }
 
-El costo total estimado para la ejecución integral del proyecto asciende a \textbf{\$346.15 USD} (trescientos cuarenta y seis con 15/100 Dólares Estadounidenses), monto que contempla un margen de reserva prudencial del 15\% (\$45.15 USD) para mitigar variaciones en aranceles de importación o fluctuaciones en la cotización de componentes electrónicos. La totalidad de los recursos financieros será cubierta por el postulante, en tanto que la empresa colaboradora MAINSA facilitará el acceso a horas de torno CNC, herramientas de sujeción, fluidos refrigerantes y probetas de trabajo complementarias.
+\enlargethispage{2.5\baselineskip}
+El costo total estimado para la ejecución integral del proyecto asciende a \textbf{\$346.15 USD}, monto que contempla un margen de reserva prudencial del 15\% (\$45.15 USD) para mitigar variaciones en aranceles o fluctuaciones en la cotización de componentes. La totalidad de los recursos financieros será cubierta por el postulante, en tanto que la empresa colaboradora MAINSA facilitará el acceso a horas de torno CNC, herramientas de sujeción, fluidos refrigerantes y probetas de trabajo complementarias.
 
-En términos de viabilidad económica industrial, los sistemas comerciales propietarios de monitoreo de herramientas (Tool Condition Monitoring, TCM) existentes en el mercado global ---basados en dinamómetros de cuarzo multicomponente o consolas industriales cerradas--- demandan inversiones que oscilan entre los \$10,000 y \$30,000 USD, resultando prohibitivos para maestranzas medianas en Bolivia. El sistema propuesto representa un costo inferior al 3.5\% de una solución comercial, comprobando una alta viabilidad económica, un rápido retorno de inversión y un elevado valor de transferencia tecnológica para la industria manufacturera nacional.
+En términos de viabilidad económica industrial, los sistemas comerciales propietarios de monitoreo de herramientas (TCM) existentes en el mercado global ---basados en dinamómetros de cuarzo multicomponente o consolas cerradas--- demandan inversiones entre los \$10,000 y \$30,000 USD, resultando prohibitivos para maestranzas medianas en Bolivia. El sistema propuesto representa un costo inferior al 3.5\% de una solución comercial, comprobando una alta viabilidad económica, un rápido retorno de inversión y un elevado valor de transferencia tecnológica para la industria manufacturera nacional.
+
