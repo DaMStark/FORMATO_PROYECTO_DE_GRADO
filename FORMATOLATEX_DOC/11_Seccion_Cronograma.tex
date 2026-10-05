@@ -1,111 +1,114 @@
 \newpage
 \section{CRONOGRAMA DE ACTIVIDADES}
-El cronograma de actividades distribuye en 40 semanas operativas (Gestión 2026--2027) las acciones técnicas e hitos del proyecto, estructuradas bajo los cinco objetivos específicos en la \fig{cronograma_gantt_grafico}.
 
-% Colores del cronograma (definidos aquí para estar disponibles en la figura y en el longtable)
-\definecolor{ghdr}{RGB}{31,78,121}
-\definecolor{goe}{RGB}{16,99,168}
-\definecolor{gsub}{RGB}{189,215,238}
-\definecolor{gbar}{RGB}{91,155,213}
-\definecolor{ghito}{RGB}{192,57,43}
-\newcommand{\gb}{\cellcolor{gbar}}
-\newcommand{\gh}{\cellcolor{ghito}\textcolor{white}{\textbf{\tiny H}}}
+El cronograma de actividades distribuye en 40 semanas operativas continuas (Gestión 2026--2027) las acciones técnicas e hitos del proyecto, estructuradas de forma jerárquica bajo los cinco objetivos específicos en la \fig{cronograma_gantt_grafico}.
 
+% Paleta cromática oficial adoptada de la estructura de referencia de clase (Gantt por OE)
+\definecolor{ghdrObj}{RGB}{217,225,242}  % Gris azulado suave (#D9E1F2) para cabecera Objetivos
+\definecolor{ghdrAct}{RGB}{248,203,173}  % Melocotón coral (#F8CBAD) para cabecera Actividad (A)
+\definecolor{ghdrMes}{RGB}{248,203,173}  % Melocotón coral (#F8CBAD) para fila de Meses
+\definecolor{ghdrSem}{RGB}{217,217,217}  % Gris claro (#D9D9D9) para fila de Semanas (S1-S4)
+\definecolor{goebg}{RGB}{198,224,180}    % Verde claro pastel (#C6E0B4) para texto de Objetivos
+\definecolor{goebar}{RGB}{46,117,182}    % Azul corporativo sólido (#2E75B6) para barra resumen de OE
+\definecolor{gactbar}{RGB}{112,173,71}   % Verde vivo (#70AD47) para barras de actividades individuales
+\definecolor{ghitobar}{RGB}{192,57,43}   % Rojo carmesí (#C0392B) para hitos evaluativos críticos
+
+\providecommand{\gblue}{\cellcolor{goebar}}
+\providecommand{\ggreen}{\cellcolor{gactbar}}
+\providecommand{\ghito}{\cellcolor{ghitobar}\textcolor{white}{\textbf{\tiny H}}}
+
+\enlargethispage{2.5\baselineskip}
 \begin{figure}[H]
 \centering
 \caption{Diagrama de Gantt del cronograma de actividades por objetivo específico (Gestión 2026 -- 2027)}
 \label{fig:cronograma_gantt_grafico}
-\vspace{0.15cm}
-\setlength{\tabcolsep}{1.4pt}
-\renewcommand{\arraystretch}{1.18}
-\fontsize{7pt}{8.5pt}\selectfont
+\vspace{0.08cm}
+\newcommand{\sem}[1]{\textbf{\fontsize{4.2pt}{5.0pt}\selectfont #1}}
+\setlength{\tabcolsep}{0.65pt}
+\renewcommand{\arraystretch}{0.96}
+\fontsize{5.5pt}{6.6pt}\selectfont
 \rotatebox{90}{%
-\begin{tabular}{|C{0.8cm}|L{5.0cm}|*{40}{c|}}
+\begin{tabular}{|L{3.3cm}|C{0.55cm}|*{40}{c|}}
 \hline
-\rowcolor{ghdr}
-\multicolumn{1}{|c|}{} &
-\multicolumn{1}{c|}{} &
-\multicolumn{4}{c|}{\textcolor{white}{\textbf{Agosto}}} &
-\multicolumn{4}{c|}{\textcolor{white}{\textbf{Sept.}}} &
-\multicolumn{4}{c|}{\textcolor{white}{\textbf{Octubre}}} &
-\multicolumn{4}{c|}{\textcolor{white}{\textbf{Nov.}}} &
-\multicolumn{4}{c|}{\textcolor{white}{\textbf{Dic.}}} &
-\multicolumn{4}{c|}{\textcolor{white}{\textbf{Febrero}}} &
-\multicolumn{4}{c|}{\textcolor{white}{\textbf{Marzo}}} &
-\multicolumn{4}{c|}{\textcolor{white}{\textbf{Abril}}} &
-\multicolumn{4}{c|}{\textcolor{white}{\textbf{Mayo}}} &
-\multicolumn{4}{c|}{\textcolor{white}{\textbf{Junio}}} \\
+\rowcolor{ghdrMes}
+\multicolumn{1}{|c|}{\cellcolor{ghdrObj}\textbf{Objetivos}} &
+\multicolumn{1}{c|}{\cellcolor{ghdrAct}\textbf{Actividad (A)}} &
+\multicolumn{4}{c|}{\textbf{Agosto}} &
+\multicolumn{4}{c|}{\textbf{Sept.}} &
+\multicolumn{4}{c|}{\textbf{Octubre}} &
+\multicolumn{4}{c|}{\textbf{Nov.}} &
+\multicolumn{4}{c|}{\textbf{Dic.}} &
+\multicolumn{4}{c|}{\textbf{Febrero}} &
+\multicolumn{4}{c|}{\textbf{Marzo}} &
+\multicolumn{4}{c|}{\textbf{Abril}} &
+\multicolumn{4}{c|}{\textbf{Mayo}} &
+\multicolumn{4}{c|}{\textbf{Junio}} \\
 \cline{3-42}
-\rowcolor{gsub}
-\multicolumn{1}{|c|}{\cellcolor{ghdr}\multirow{-2}{*}{\textcolor{white}{\textbf{Código}}}} &
-\multicolumn{1}{c|}{\cellcolor{ghdr}\multirow{-2}{*}{\textcolor{white}{\textbf{Actividades}}}} &
-\textcolor{black}{\textbf{\tiny 1}} & \textcolor{black}{\textbf{\tiny 2}} & \textcolor{black}{\textbf{\tiny 3}} & \textcolor{black}{\textbf{\tiny 4}} &
-\textcolor{black}{\textbf{\tiny 1}} & \textcolor{black}{\textbf{\tiny 2}} & \textcolor{black}{\textbf{\tiny 3}} & \textcolor{black}{\textbf{\tiny 4}} &
-\textcolor{black}{\textbf{\tiny 1}} & \textcolor{black}{\textbf{\tiny 2}} & \textcolor{black}{\textbf{\tiny 3}} & \textcolor{black}{\textbf{\tiny 4}} &
-\textcolor{black}{\textbf{\tiny 1}} & \textcolor{black}{\textbf{\tiny 2}} & \textcolor{black}{\textbf{\tiny 3}} & \textcolor{black}{\textbf{\tiny 4}} &
-\textcolor{black}{\textbf{\tiny 1}} & \textcolor{black}{\textbf{\tiny 2}} & \textcolor{black}{\textbf{\tiny 3}} & \textcolor{black}{\textbf{\tiny 4}} &
-\textcolor{black}{\textbf{\tiny 1}} & \textcolor{black}{\textbf{\tiny 2}} & \textcolor{black}{\textbf{\tiny 3}} & \textcolor{black}{\textbf{\tiny 4}} &
-\textcolor{black}{\textbf{\tiny 1}} & \textcolor{black}{\textbf{\tiny 2}} & \textcolor{black}{\textbf{\tiny 3}} & \textcolor{black}{\textbf{\tiny 4}} &
-\textcolor{black}{\textbf{\tiny 1}} & \textcolor{black}{\textbf{\tiny 2}} & \textcolor{black}{\textbf{\tiny 3}} & \textcolor{black}{\textbf{\tiny 4}} &
-\textcolor{black}{\textbf{\tiny 1}} & \textcolor{black}{\textbf{\tiny 2}} & \textcolor{black}{\textbf{\tiny 3}} & \textcolor{black}{\textbf{\tiny 4}} &
-\textcolor{black}{\textbf{\tiny 1}} & \textcolor{black}{\textbf{\tiny 2}} & \textcolor{black}{\textbf{\tiny 3}} & \textcolor{black}{\textbf{\tiny 4}} \\
+\rowcolor{ghdrSem}
+\multicolumn{1}{|c|}{\cellcolor{ghdrObj}} &
+\multicolumn{1}{c|}{\cellcolor{ghdrAct}} &
+\sem{S1} & \sem{S2} & \sem{S3} & \sem{S4} &
+\sem{S1} & \sem{S2} & \sem{S3} & \sem{S4} &
+\sem{S1} & \sem{S2} & \sem{S3} & \sem{S4} &
+\sem{S1} & \sem{S2} & \sem{S3} & \sem{S4} &
+\sem{S1} & \sem{S2} & \sem{S3} & \sem{S4} &
+\sem{S1} & \sem{S2} & \sem{S3} & \sem{S4} &
+\sem{S1} & \sem{S2} & \sem{S3} & \sem{S4} &
+\sem{S1} & \sem{S2} & \sem{S3} & \sem{S4} &
+\sem{S1} & \sem{S2} & \sem{S3} & \sem{S4} &
+\sem{S1} & \sem{S2} & \sem{S3} & \sem{S4} \\
 \hline \hline
 
-% ──── OE 1: INVESTIGAR ────────────────────────────────────────────────────────
-\rowcolor{goe}
-\textcolor{white}{\textbf{OE 1}} & \textcolor{white}{\textbf{Investigar: mecanizado CNC, desgaste de herramienta y Edge AI}} & \gb & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+% ──── OBJETIVO ESPECÍFICO 1 ────────────────────────────────────────────────────────
+\multicolumn{2}{|l|}{\cellcolor{goebg}\textbf{1. Investigar mecanizado CNC, desgaste de herramienta y Edge AI}} & \gblue & \gblue & \gblue & \gblue & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
 
-\textbf{A1} & Ajuste del perfil de grado y observaciones docentes & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+Ajuste del perfil de grado y observaciones docentes & \textbf{A1} & \ggreen & \ggreen & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
 
-\textbf{A2} & Revisión bibliográfica y normativas (ISO~3685, VDI~2206) & & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+Revisión bibliográfica y normativas (ISO 3685, VDI 2206) & \textbf{A2} & & \ggreen & \ggreen & \ggreen & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
 
-\textbf{A3} & \textbf{Defensa y aprobación del Perfil de Grado [Hito 1]} & & & & \gh & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+Defensa y aprobación del Perfil de Grado [Hito 1] & \textbf{A3} & & & & \ghito & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline \hline
 
-% ──── OE 2: DISEÑAR ──────────────────────────────────────────────────────────
-\rowcolor{goe}
-\textcolor{white}{\textbf{OE 2}} & \textcolor{white}{\textbf{Diseñar: arquitectura mecatrónica, acondicionamiento e IoT}} & & & & & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+% ──── OBJETIVO ESPECÍFICO 2 ────────────────────────────────────────────────────────
+\multicolumn{2}{|l|}{\cellcolor{goebg}\textbf{2. Diseñar arquitectura mecatrónica, acondicionamiento analógico e IoT}} & & & & & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
 
-\textbf{A4} & Diagnóstico in situ en MAINSA y requerimientos de monitoreo & & & & & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+Diagnóstico in situ en MAINSA y requerimientos de monitoreo & \textbf{A1} & & & & & \ggreen & \ggreen & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
 
-\textbf{A5} & Diseño del diagrama de bloques, esquemático PCB y gabinete & & & & & & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+Diseño de arquitectura, esquemático PCB y gabinete & \textbf{A2} & & & & & & \ggreen & \ggreen & \ggreen & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
 
-\textbf{A6} & Acondicionamiento analógico sensor Hall y ADXL345 en banco & & & & & & & & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+Acondicionamiento analógico sensor Hall y ADXL345 en banco & \textbf{A3} & & & & & & & & \ggreen & \ggreen & \ggreen & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline \hline
 
-% ──── OE 3: DIMENSIONAR ──────────────────────────────────────────────────────
-\rowcolor{goe}
-\textcolor{white}{\textbf{OE 3}} & \textcolor{white}{\textbf{Dimensionar: sensores, MCU y elaborar documento de avance}} & & & & & & & & & & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+% ──── OBJETIVO ESPECÍFICO 3 ────────────────────────────────────────────────────────
+\multicolumn{2}{|l|}{\cellcolor{goebg}\textbf{3. Dimensionar sensores, unidad embebida y elaborar avance semestral}} & & & & & & & & & & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & & & & & & & & & & & & & & & & & & & & & & \\ \hline
 
-\textbf{A7} & Calibración estática de transductores y enlace serial básico & & & & & & & & & & \gb & \gb & \gb & \gb & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
+Calibración estática de transductores y enlace serial básico & \textbf{A1} & & & & & & & & & & \ggreen & \ggreen & \ggreen & \ggreen & & & & & & & & & & & & & & & & & & & & & & & & & & & \\ \hline
 
-\textbf{A8} & \textbf{Documento de avance semestral y Defensa de Avance [Hito 2]} & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & \gh & & & & & & & & & & & & & & & & & & & & & \\ \hline
+Documento de avance semestral y Defensa de Avance [Hito 2] & \textbf{A2} & & & & & & & & & & & & & & \ggreen & \ggreen & \ggreen & \ggreen & \ghito & & & & & & & & & & & & & & & & & & & & & & \\ \hline \hline
 
-% ──── OE 4: INTEGRAR ─────────────────────────────────────────────────────────
-\rowcolor{goe}
-\textcolor{white}{\textbf{OE 4}} & \textcolor{white}{\textbf{Integrar: adquisición, procesamiento Edge AI e IoT}} & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & & & & & & & & \\ \hline
+% ──── OBJETIVO ESPECÍFICO 4 ────────────────────────────────────────────────────────
+\multicolumn{2}{|l|}{\cellcolor{goebg}\textbf{4. Integrar adquisición, procesamiento Edge AI y supervisión IoT}} & & & & & & & & & & & & & & & & & & & & & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & & & & & & & & \\ \hline
 
-\textbf{A9} & Ruteo, fabricación de PCB doble capa y ensamble en gabinete IP65 & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & & & & & & & & & & & & & & & & & \\ \hline
+Ruteo, fabricación de PCB doble capa y ensamble en gabinete & \textbf{A1} & & & & & & & & & & & & & & & & & & & & & \ggreen & \ggreen & \ggreen & & & & & & & & & & & & & & & & & \\ \hline
 
-\textbf{A10} & Firmware STM32: muestreo DMA y descriptores CMSIS-DSP & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & & & & & & & & & & & & & \\ \hline
+Firmware STM32: muestreo DMA y descriptores CMSIS-DSP & \textbf{A2} & & & & & & & & & & & & & & & & & & & & & & & \ggreen & \ggreen & \ggreen & \ggreen & & & & & & & & & & & & & \\ \hline
 
-\textbf{A11} & Campaña de mecanizado en torno CNC de MAINSA y dataset & & & & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & & & & & & & & & & & & \\ \hline
+Campaña de mecanizado en torno CNC de MAINSA y dataset & \textbf{A3} & & & & & & & & & & & & & & & & & & & & & & & & & & \ggreen & \ggreen & \ggreen & & & & & & & & & & & & \\ \hline
 
-\textbf{A12} & Modelos Python, cuantización INT8 y despliegue TinyML en STM32 & & & & & & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & & & & & & & & & \\ \hline
+Modelos Python, cuantización INT8 y despliegue TinyML en STM32 & \textbf{A4} & & & & & & & & & & & & & & & & & & & & & & & & & & & & \ggreen & \ggreen & \ggreen & \ggreen & & & & & & & & & \\ \hline
 
-\textbf{A13} & Nodo IoT (ESP32 / MQTT) y panel de supervisión remota & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & & & & & & & & \\ \hline
+Nodo IoT (ESP32 / MQTT) y panel de supervisión remota & \textbf{A5} & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \ggreen & \ggreen & \ggreen & & & & & & & & \\ \hline \hline
 
-% ──── OE 5: VALIDAR ──────────────────────────────────────────────────────────
-\rowcolor{goe}
-\textcolor{white}{\textbf{OE 5}} & \textcolor{white}{\textbf{Validar: experimentación, metrología, redacción y titulación}} & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb \\ \hline
+% ──── OBJETIVO ESPECÍFICO 5 ────────────────────────────────────────────────────────
+\multicolumn{2}{|l|}{\cellcolor{goebg}\textbf{5. Validar experimentalmente el sistema integrado y titulación}} & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue \\ \hline
 
-\textbf{A14} & Validación experimental en régimen productivo continuo & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & & & & & \\ \hline
+Validación experimental en régimen productivo continuo & \textbf{A1} & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \ggreen & \ggreen & \ggreen & \ggreen & & & & & \\ \hline
 
-\textbf{A15} & Evaluación metrológica rugosidad ($Ra$) y desgaste de flanco ($VB$) & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & & & & \\ \hline
+Evaluación metrológica rugosidad ($Ra$) y desgaste de flanco ($VB$) & \textbf{A2} & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \ggreen & \ggreen & \ggreen & & & & \\ \hline
 
-\textbf{A16} & Redacción del informe final de tesis de grado (Caps. 1 al 6) & & & & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb & \gb \\ \hline
+Redacción del informe final de tesis de grado (Caps. 1 al 6) & \textbf{A3} & & & & & & & & & & & & & & & & & & & & & & & & & & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen \\ \hline
 
-\textbf{A17} & Revisión con tutor de tesis, correcciones y visto bueno & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \gb & \gb & \gb & \gb & \gb & \gb \\ \hline
+Revisión con tutor de tesis, correcciones y visto bueno & \textbf{A4} & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen \\ \hline
 
-\textbf{A18} & \textbf{Defensa Pública de Grado y Titulación Profesional [Hito 3]} & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \gh & \gh \\ \hline
+\textbf{Defensa Pública de Grado y Titulación Profesional [Hito 3]} & \textbf{A5} & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & \ghito & \ghito \\ \hline
 
 \end{tabular}%
 }
@@ -113,4 +116,3 @@ El cronograma de actividades distribuye en 40 semanas operativas (Gestión 2026-
 \centering{\textbf{Fuente:} Elaboración propia, 2026.}
 \end{figure}
 \clearpage
-
