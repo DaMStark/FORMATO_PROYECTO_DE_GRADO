@@ -1,8 +1,6 @@
 \newpage
 \section{CRONOGRAMA DE ACTIVIDADES}
 
-El cronograma de actividades distribuye en 40 semanas operativas continuas (Gestión 2026--2027) las acciones técnicas e hitos del proyecto, estructuradas de forma jerárquica bajo los cinco objetivos específicos en la \fig{cronograma_gantt_grafico}.
-
 % Paleta cromática oficial adoptada de la estructura de referencia de clase (Gantt por OE)
 \definecolor{ghdrObj}{RGB}{217,225,242}  % Gris azulado suave (#D9E1F2) para cabecera Objetivos
 \definecolor{ghdrAct}{RGB}{248,203,173}  % Melocotón coral (#F8CBAD) para cabecera Actividad (A)
@@ -17,22 +15,24 @@ El cronograma de actividades distribuye en 40 semanas operativas continuas (Gest
 \providecommand{\ggreen}{\cellcolor{gactbar}}
 \providecommand{\ghito}{\cellcolor{ghitobar}\textcolor{white}{\textbf{\tiny H}}}
 
-\enlargethispage{2.5\baselineskip}
 \begin{figure}[H]
 \centering
 \caption{Diagrama de Gantt del cronograma de actividades por objetivo específico (Gestión 2026 -- 2027)}
 \label{fig:cronograma_gantt_grafico}
-\vspace{0.08cm}
+\vspace{0.15cm}
+\begingroup
+\setstretch{1.0}
 \newcommand{\sem}[1]{\textbf{\fontsize{4.2pt}{5.0pt}\selectfont #1}}
 \setlength{\tabcolsep}{0.65pt}
-\renewcommand{\arraystretch}{0.96}
-\fontsize{5.5pt}{6.6pt}\selectfont
-\makebox[\textwidth][c]{\rotatebox{90}{%
-\begin{tabular}{|L{3.3cm}|C{0.55cm}|*{40}{c|}}
+\renewcommand{\arraystretch}{0.92}
+\fontsize{5.2pt}{6.2pt}\selectfont
+\resizebox{!}{17.5cm}{%
+\rotatebox{90}{%
+\begin{tabular}{|L{4.3cm}|C{0.45cm}|*{40}{c|}}
 \hline
 \rowcolor{ghdrMes}
 \multicolumn{1}{|c|}{\cellcolor{ghdrObj}\textbf{Objetivos}} &
-\multicolumn{1}{c|}{\cellcolor{ghdrAct}\textbf{Actividad (A)}} &
+\multicolumn{1}{c|}{\cellcolor{ghdrAct}\textbf{Actividad}} &
 \multicolumn{4}{c|}{\textbf{Agosto}} &
 \multicolumn{4}{c|}{\textbf{Sept.}} &
 \multicolumn{4}{c|}{\textbf{Octubre}} &
@@ -57,67 +57,69 @@ El cronograma de actividades distribuye en 40 semanas operativas continuas (Gest
 \sem{S1} & \sem{S2} & \sem{S3} & \sem{S4} &
 \sem{S1} & \sem{S2} & \sem{S3} & \sem{S4} &
 \sem{S1} & \sem{S2} & \sem{S3} & \sem{S4} \\
-\hline \hline
+\hline
 % ──── OBJETIVO ESPECÍFICO 1 ────────────────────────────────────────────────────────
 \multicolumn{2}{|l|}{\cellcolor{goebg}\textbf{1. Investigar mecanizado CNC, desgaste de herramienta y Edge AI}} & \gblue & \gblue & \gblue & \gblue &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Caracterización de operaciones de torneado y cinemática & \textbf{A1} & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+Revisión y caracterización del torneado CNC (cilindrado, refrentado y ranurado) y cinemática de corte & \textbf{A1} & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Análisis de desgaste de herramientas según ISO 3685 & \textbf{A2} &  & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+Análisis de la fenomenología del desgaste y patrones de falla según ISO 3685 & \textbf{A2} &  & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Estado del arte en monitoreo indirecto (TCM) y Edge AI & \textbf{A3} &  & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+Estudio del estado del arte en monitoreo indirecto de herramientas (TCM) mediante corriente y vibración & \textbf{A3} &  & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Defensa y aprobación del Perfil de Grado [Hito 1] & \textbf{A4} &  &  & \ggreen & \ghito &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline \hline
+Evaluación de tecnologías Edge AI y plataformas embebidas  & \textbf{A4} &  &  & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\ \hline
 
 % ──── OBJETIVO ESPECÍFICO 2 ────────────────────────────────────────────────────────
 \multicolumn{2}{|l|}{\cellcolor{goebg}\textbf{2. Diseñar arquitectura mecatrónica, acondicionamiento analógico e IoT}} &  &  &  &  & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Diagnóstico in situ en MAINSA y diagrama funcional & \textbf{A1} &  &  &  &  & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+Definición del diagrama funcional de adquisición, acondicionamiento, procesamiento y enlace IoT & \textbf{A1} &  &  &  &  & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Diseño del circuito de acondicionamiento analógico y RMS & \textbf{A2} &  &  &  &  &  & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+Diseño del acondicionamiento para rectificación y conversión a niveles proporcionales al valor eficaz (RMS) & \textbf{A2} &  &  &  &  &  & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
 Diseño esquemático y ruteo de PCB con aislamiento galvánico & \textbf{A3} &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Concepción de gabinete IP65 y carcasa estanca IP67 imantada & \textbf{A4} &  &  &  &  &  &  &  &  & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline \hline
+Concepción del gabinete principal y especificación de carcasa IP67 imantada para el acelerómetro & \textbf{A4} &  &  &  &  &  &  &  &  & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
 % ──── OBJETIVO ESPECÍFICO 3 ────────────────────────────────────────────────────────
 \multicolumn{2}{|l|}{\cellcolor{goebg}\textbf{3. Dimensionar sensores de corriente, aceleración y unidad embebida}} &  &  &  &  &  &  &  &  &  & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Dimensionamiento de transductor SCT-013 y sensor Hall & \textbf{A1} &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+Dimensionamiento del rango de medición y relación de transformación del transductor de corriente & \textbf{A1} &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Selección de acelerómetro ADXL345 y microcontrolador STM32 & \textbf{A2} &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+Selección del acelerómetro según sensibilidad, ancho de banda y rango dinámico & \textbf{A2} &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Cálculo de componentes pasivos y fuentes conmutadas & \textbf{A3} &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+Selección del microcontrolador según ADC, DMA, instrucciones DSP y memoria & \textbf{A3} &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Documento de avance semestral y Defensa de Avance [Hito 2] & \textbf{A4} &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ghito &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline \hline
+Cálculo y selección de componentes pasivos de filtrado, resistencias de carga y fuentes & \textbf{A4} &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+Elaboración del documento de avance semestral & \textbf{A5} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
 % ──── OBJETIVO ESPECÍFICO 4 ────────────────────────────────────────────────────────
 \multicolumn{2}{|l|}{\cellcolor{goebg}\textbf{4. Integrar adquisición embebida, modelo Edge AI y supervisión IoT}} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue &  &  &  &  &  &  &  &  \\ \hline
 
-Fabricación de PCB industrial, ensamble y gabinete & \textbf{A1} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+Ensamblaje, integración eléctrica y verificación funcional de PCB y módulos acondicionadores & \textbf{A1} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Firmware STM32: muestreo DMA y descriptores CMSIS-DSP & \textbf{A2} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+Programación del firmware para muestreo síncrono, filtrado digital y extracción de descriptores & \textbf{A2} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Campaña de mecanizado en torno CNC de MAINSA y dataset & \textbf{A3} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+Campaña de mecanizado en MAINSA con insertos en distintos estados de desgaste y conjunto de datos etiquetado & \textbf{A3} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
 
-Modelos Python, cuantización INT8 y despliegue TinyML & \textbf{A4} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  \\ \hline
+Entrenamiento, cuantización y despliegue del modelo ligero para clasificación de desgaste & \textbf{A4} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  &  \\ \hline
 
-Nodo gateway IoT (ESP32 / MQTT) y panel de supervisión & \textbf{A5} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  \\ \hline \hline
+Configuración de comunicaciones y desarrollo del panel remoto de visualización y alertas & \textbf{A5} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ggreen &  &  &  &  &  &  &  &  \\ \hline
 
 % ──── OBJETIVO ESPECÍFICO 5 ────────────────────────────────────────────────────────
-\multicolumn{2}{|l|}{\cellcolor{goebg}\textbf{5. Validar experimentalmente el sistema integrado y titulación}} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue \\ \hline
+\multicolumn{2}{|l|}{\cellcolor{goebg}\textbf{5. Validar experimentalmente el funcionamiento del sistema integrado}} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue & \gblue \\ \hline
 
-Instalación de sistema periférico y calibración en torno CNC & \textbf{A1} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ggreen &  &  &  &  &  \\ \hline
+Instalación y calibración del sistema periférico en torno CNC bajo condiciones reales de producción & \textbf{A1} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ggreen &  &  &  &  &  \\ \hline
 
-Ensayos con insertos nuevo, desgaste funcional y crítico & \textbf{A2} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ggreen &  &  &  \\ \hline
+Ensayos de torneado cilíndrico con insertos nuevos, en desgaste funcional y crítico, registrando señales & \textbf{A2} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ggreen &  &  &  \\ \hline
 
-Evaluación metrológica rugosidad ($Ra$) y exactitud & \textbf{A3} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen &  &  \\ \hline
+Medición de rugosidad superficial ($Ra$) y verificación de tolerancias dimensionales & \textbf{A3} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen &  &  \\ \hline
 
-Redacción del informe final de grado y revisión con tutor & \textbf{A4} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen &  \\ \hline
+Evaluación cuantitativa de la exactitud de clasificación y reducción de paradas y mermas & \textbf{A4} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen &  \\ \hline
+Redacción del informe final de grado y revisión con el tutor designado & \textbf{A5} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen & \ggreen &  \\ \hline
 
-\textbf{Defensa Pública de Grado y Titulación Profesional [Hito 3]} & \textbf{A5} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \ghito \\ \hline
 \end{tabular}%
 }}
+\endgroup
 \par\vspace{0.25cm}
 \centering{\textbf{Fuente:} Elaboración propia, 2026.}
 \end{figure}
