@@ -8,7 +8,7 @@ La presente sección describe el marco metodológico que guía el diseño, desar
 El presente proyecto adopta un \textbf{enfoque de investigación mixto con predominancia cuantitativa}, articulando coherentemente métodos empíricos de diagnóstico con técnicas de medición e inferencia de alta precisión:
 \begin{itemize}
     \item \textbf{Dimensión cualitativa:} Se orienta al levantamiento preliminar de requerimientos operacionales y funcionales en la planta de MAINSA. A través de entrevistas técnicas y observación directa en el taller, se indagan las prácticas habituales de los torneros, las frecuencias estimadas de cambio de inserto, la percepción empírica de fallas de corte y las restricciones físicas del espacio de cabina y conexionado de los tornos CNC.
-    \item \textbf{Dimensión cuantitativa:} Constituye el núcleo del desarrollo ingenieril y se fundamenta en la adquisición analógica, discretización periódica, procesamiento digital y modelado matemático de magnitudes físicas continuas: el valor eficaz de la corriente de fase del husillo ($I_{RMS}$ en amperios), la aceleración vibratoria en la torreta portaherramientas ($a_{RMS}$ en $g$), métricas estadísticas de distribución (Curtosis y Factor de Cresta), el ancho de desgaste de flanco ($VB$ en milímetros) y la rugosidad superficial aritmética de las piezas maquinadas ($Ra$ en micrómetros).
+    \item \textbf{Dimensión cuantitativa:} Constituye el núcleo del desarrollo ingenieril y se fundamenta en la adquisición analógica, discretización periódica, procesamiento digital y modelado matemático de magnitudes físicas continuas: el valor eficaz de la corriente de fase del servomotor de avance del carro portaherramientas ($I_{\text{RMS}}$ en amperios), la aceleración vibratoria en la torreta portaherramientas ($a_{\text{RMS}}$ en $g$), métricas estadísticas de distribución (Curtosis y Factor de Cresta), el ancho de desgaste de flanco ($VB$ en milímetros) y la rugosidad superficial aritmética de las piezas maquinadas ($Ra$ en micrómetros).
 \end{itemize}
 
 \subsection{Tipo de investigación}
@@ -49,13 +49,13 @@ Para asegurar la coherencia lógica interna entre los componentes metodológicos
 \endlastfoot
 
 Problema General & 
-¿Cómo diseñar un sistema periférico no invasivo para el monitoreo en tiempo real del desgaste de herramientas de corte en los tornos CNC de la empresa MAINSA, que permita superar la dependencia de la inspección visual subjetiva, prevenir paradas no planificadas y reducir las mermas operativas en el taller? & 
-Condición operativa de corte, interferencias electromagnéticas y parque de tornos CNC heredado. & 
-Incidencia de roturas intempestivas y piezas fuera de tolerancia dimensional registradas en taller.\\ \hline
+¿Cómo diseñar un sistema periférico no invasivo para el monitoreo en tiempo real del desgaste de herramientas de corte en tornos CNC de la empresa MAINSA, mediante la medición de variables de corriente en el servomotor de avance del carro portaherramientas y aceleración en la torreta procesadas con algoritmos de inteligencia artificial en el borde (\textit{Edge AI}), con visualización en dashboard local y señalización luminosa mediante indicador LED, que permita anticipar oportunamente fallas críticas en los insertos, prevenir paradas no planificadas y restituir la confiabilidad dimensional en el proceso de mecanizado? & 
+Condición operativa de corte, interferencias electromagnéticas y parque de tornos CNC subutilizado. & 
+Incidencia de roturas intempestivas, piezas fuera de tolerancia dimensional y desvío de producción hacia tornos manuales.\\ \hline
 
 Objetivo General & 
-Diseñar un sistema periférico no invasivo para el monitoreo en tiempo real del desgaste de herramientas de corte en tornos CNC de la empresa MAINSA, mediante la medición de variables de corriente y vibración procesadas con algoritmos de inteligencia artificial en el borde (\textit{Edge AI}), para anticipar oportunamente fallas críticas en los insertos y reducir paradas no planificadas. & 
-Integración de transductores de corriente no invasivos, acelerometría en torreta, microcontrolador STM32, dashboard e indicador LED. & 
+Diseñar un sistema periférico no invasivo para el monitoreo en tiempo real del desgaste de herramientas de corte en tornos CNC de la empresa MAINSA, mediante la medición de variables de corriente en el servomotor de avance del carro portaherramientas y aceleración en la torreta procesadas con algoritmos de inteligencia artificial en el borde (\textit{Edge AI}), con visualización en dashboard local y señalización luminosa mediante indicador LED, para anticipar oportunamente fallas críticas en los insertos, prevenir paradas no planificadas y restituir la confiabilidad dimensional en el proceso de mecanizado. & 
+Integración de transductores de corriente SCT-013, acelerometría ADXL345 en torreta, microcontrolador STM32F4, dashboard e indicador LED triestado. & 
 Prototipo mecatrónico funcional montado en gabinete industrial operativo al pie de máquina.\\ \hline
 
 Hipótesis Ingenieril & 
