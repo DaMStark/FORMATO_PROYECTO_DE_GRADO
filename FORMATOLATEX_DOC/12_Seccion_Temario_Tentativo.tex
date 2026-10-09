@@ -1,0 +1,74 @@
+\newpage
+\section{TEMARIO TENTATIVO DEL PROYECTO DE GRADO}
+
+A continuación, se presenta la estructura capitular tentativa propuesta para el documento final de Proyecto de Grado, formulada en estricta consonancia con los objetivos de la investigación y el reglamento de titulación del Departamento de Ciencias Exactas e Ingenierías (DCEI) de la Universidad Católica Boliviana ``San Pablo'':
+
+\subsection*{Capítulo I: Marco Introductorio y Antecedentes}
+\begin{itemize}
+    \item 1.1 Introducción y contextualización en el sector metalmecánico.
+    \item 1.2 Diagnóstico operativo del parque de tornos en MAINSA.
+    \item 1.3 Planteamiento del problema (árbol de problemas, causas raíz y efectos).
+    \item 1.4 Pregunta de investigación y formulación del problema.
+    \item 1.5 Objetivos de la investigación (General y Específicos).
+    \item 1.6 Alcances, limitaciones y delimitación técnica del proyecto.
+    \item 1.7 Justificación técnica, económica, social y ambiental.
+\end{itemize}
+
+\subsection*{Capítulo II: Marco Teórico y Estado del Arte}
+\begin{itemize}
+    \item 2.1 Cinemática del mecanizado CNC y dinámica de fuerzas en torneado cilíndrico.
+    \item 2.2 Tribología de herramientas de corte y mecanismos de desgaste (norma ISO 3685).
+    \item 2.3 Métodos de monitoreo indirecto de condición de herramientas (TCM).
+    \item 2.4 Fundamentos de transducción de corriente en servomotores y acelerometría MEMS.
+    \item 2.5 Acondicionamiento analógico de señales, aislamiento galvánico y filtrado pasivo.
+    \item 2.6 Procesamiento digital de señales (DSP) y análisis espectral.
+    \item 2.7 Inteligencia Artificial en el borde (\textit{Edge AI} y \textit{TinyML}) en microcontroladores ARM.
+    \item 2.8 Revisión del estado del arte y análisis de soluciones comerciales vs. periféricas.
+\end{itemize}
+
+\subsection*{Capítulo III: Ingeniería del Proyecto: Diseño Mecatrónico y Hardware}
+\begin{itemize}
+    \item 3.1 Arquitectura funcional del sistema periférico no invasivo.
+    \item 3.2 Diseño del subsistema de sensado de corriente en el servomotor de avance (SCT-013).
+    \item 3.3 Diseño del circuito de acondicionamiento de señal (rectificación True-RMS y offset DC).
+    \item 3.4 Diseño del módulo de acelerometría y encapsulado estanco IP67 con base magnética en torreta.
+    \item 3.5 Diseño, ruteo y fabricación de la placa de circuito impreso (PCB) industrial.
+    \item 3.6 Diseño del circuito de alimentación regulada, protecciones eléctricas y gabinete industrial.
+    \item 3.7 Diseño de la interfaz de supervisión local: dashboard en pantalla y módulo de alerta LED.
+\end{itemize}
+
+\subsection*{Capítulo IV: Desarrollo de Software y Modelos de Inteligencia Artificial en el Borde}
+\begin{itemize}
+    \item 4.1 Arquitectura del firmware embebido en microcontrolador STM32F4 (DMA, ADC y timers).
+    \item 4.2 Pipeline de procesamiento digital de señales mediante biblioteca CMSIS-DSP.
+    \item 4.3 Extracción y selección de características estadísticas en tiempo y frecuencia.
+    \item 4.4 Entrenamiento, optimización y cuantización a INT8 del modelo clasificador TinyML.
+    \item 4.5 Despliegue e inferencia determinista en tiempo real en la unidad de borde.
+    \item 4.6 Lógica de control para la activación de alertas visuales en dashboard e indicador LED.
+\end{itemize}
+
+\subsection*{Capítulo V: Pruebas Experimentales y Validación en Planta}
+\begin{itemize}
+    \item 5.1 Plan de pruebas experimentales y protocolo de validación en tornos CNC de MAINSA.
+    \item 5.2 Ensayos de torneado longitudinal (cilindrado) en aceros aleados AISI 1045 y 4140.
+    \item 5.3 Medición metrológica del desgaste de flanco ($VB$) mediante microscopio digital óptico.
+    \item 5.4 Evaluación de la rugosidad superficial ($Ra$) mediante rugosímetro Mitutoyo.
+    \item 5.5 Evaluación del desempeño del modelo Edge AI: matriz de confusión, exactitud y latencia.
+    \item 5.6 Análisis comparativo dimensional: piezas maquinadas con y sin monitoreo de desgaste.
+\end{itemize}
+
+\subsection*{Capítulo VI: Análisis Económico y Estudio de Factibilidad}
+\begin{itemize}
+    \item 6.1 Costos finales consolidados de desarrollo, prototipado e instrumentación.
+    \item 6.2 Análisis costo-beneficio para MAINSA: mitigación de paradas no planificadas y ahorro en insertos.
+    \item 6.3 Comparativa económica frente a soluciones comerciales propietarias.
+    \item 6.4 Análisis de escalabilidad y viabilidad de adopción en talleres metalmecánicos medianos.
+\end{itemize}
+
+\subsection*{Capítulo VII: Conclusiones y Recomendaciones}
+\begin{itemize}
+    \item 7.1 Conclusiones generales del proyecto de grado.
+    \item 7.2 Verificación del cumplimiento de objetivos específicos e hipótesis técnica.
+    \item 7.3 Recomendaciones operativas para la utilización y mantenimiento del sistema en planta.
+    \item 7.4 Líneas de trabajo futuro (extensión a otras geometrías de mecanizado y gemelos digitales).
+\end{itemize}

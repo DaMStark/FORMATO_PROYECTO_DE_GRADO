@@ -183,38 +183,98 @@ donde $R_{a,\text{teórico}}$ representa el valor medio de rugosidad aritmética
 
 \subsubsection{Sistemas de monitoreo de condición de herramientas (TCM)}
 
-Los sistemas de Monitoreo de Condición de Herramientas (TCM) comprenden el conjunto de arquitecturas mecatrónicas y algoritmos computacionales destinados a diagnosticar en tiempo real el desgaste y posibles averías en herramientas de mecanizado \citep{byrne1995}. En el contexto de la manufactura inteligente moderna, los sistemas TCM evitan la fabricación de piezas fuera de especificación dimensional, optimizan los intervalos de reemplazo preventivo y previenen paradas no programadas de maquinaria en líneas de producción continua.
+Los sistemas de Monitoreo de Condición de Herramientas (TCM, por sus siglas en inglés \textit{Tool Condition Monitoring}) comprenden el conjunto de arquitecturas mecatrónicas y algoritmos computacionales destinados a diagnosticar en tiempo real el desgaste y posibles averías en herramientas de mecanizado \citep{byrne1995}. En el contexto de la manufactura inteligente moderna, los sistemas TCM evitan la fabricación de piezas fuera de especificación dimensional, optimizan los intervalos de reemplazo preventivo y previenen paradas no programadas de maquinaria en líneas de producción continua.
 
-Las metodologías de adquisición en sistemas TCM se clasifican comúnmente en dos enfoques estructurales: métodos directos y métodos indirectos \citep{teti2010}. Los métodos directos valoran físicamente la geometría del desgaste mediante sistemas ópticos, perfilometría tridimensional por triangulación láser o análisis de resistencia de contacto. Aunque proporcionan una elevada precisión geométrica, su viabilidad industrial en planta resulta inviable debido a la presencia constante de lubricante refrigerante, proyección de virutas incandescentes y escasa visibilidad interna.
+Las metodologías de adquisición en sistemas TCM se clasifican comúnmente en dos enfoques estructurales: métodos directos y métodos indirectos \citep{teti2010}. Los métodos directos valoran físicamente la geometría del desgaste mediante sistemas ópticos, perfilometría tridimensional por triangulación láser o análisis de resistencia de contacto eléctrico. Aunque proporcionan una elevada precisión geométrica, su viabilidad industrial en planta resulta inviable durante el ciclo de trabajo debido a la presencia constante de lubricante refrigerante a presión, proyección de virutas incandescentes y nula visibilidad dentro de la cabina cerrada.
 
-En contraste con las limitaciones ópticas, los métodos indirectos infieren la condición del filo mediante la adquisición continua de magnitudes físicas secundarias del proceso de mecanizado, tales como fuerzas de corte, vibraciones mecánicas y corrientes de accionamiento \citep{byrne1995}. Estos esquemas se adaptan armónicamente a las exigencias operativas de planta, dado que no interfieren con la zona de corte ni requieren interrumpir el flujo productivo del torno para llevar a cabo la evaluación del desgaste del inserto.
+En contraste, los métodos indirectos infieren la condición del filo mediante la adquisición continua de magnitudes físicas secundarias correlacionadas con el proceso de arranque de viruta \citep{byrne1995}. En la \tab{comparativa_variables_tcm} se sintetiza el análisis comparativo de las principales variables físicas empleadas en la literatura técnica para el monitoreo de condición en torneado CNC.
 
-Dentro de las técnicas indirectas, la monitorización sustentada en la corriente eléctrica consumida por el motor del husillo principal destaca por su carácter no invasivo y su nulo costo de adaptación en la máquina \citep{romero2003}. Al degradarse el filo, el incremento en la fuerza de corte genera un mayor par resistente en el husillo, reflejándose de forma directa en un aumento medible de la corriente eficaz consumida por el motor.
+{\small
+\setstretch{1.0}
+\setlength{\tabcolsep}{3.0pt}
+\begin{table}[htbp]
+\centering
+\caption{Comparativa de variables físicas para monitoreo indirecto de herramientas (TCM)}
+\label{tab:comparativa_variables_tcm}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|L{2.7cm}|L{2.8cm}|C{1.8cm}|C{2.0cm}|L{5.0cm}|}
+\hline
+\textbf{Variable Física} & \textbf{Principio de Transducción} & \textbf{Invasividad} & \textbf{Viabilidad en Planta CNC} & \textbf{Evaluación Técnica y Limitaciones} \\ \hline \hline
+\textbf{Fuerza de corte dinámica ($F_c, F_a, F_r$)} & Dinamómetro piezoeléctrico de cuarzo multicomponente & Alta (modifica montaje de torreta) & Muy baja en producción & Máxima fidelidad física, pero costo prohibitivo (>15,000~USD) y reduce rigidez mecánica estructural del torno. \\ \hline
+\textbf{Corriente de servomotor de avance ($I_a$)} & Transformador de corriente de núcleo partido (SCT-013) & Nula (no invasivo, sobre cable) & Alta & Alta sensibilidad a fuerzas de avance y repulsión; inmune a taladrina; aislamiento galvánico natural. \\ \hline
+\textbf{Aceleración / Vibración mecánica} & Acelerómetro MEMS con base magnética & Nula (adhesión magnética en torreta) & Alta & Elevada sensibilidad a fricción y microfractura; requiere encapsulado estanco IP67 frente a taladrina. \\ \hline
+\textbf{Emisión acústica (AE)} & Sensor piezoeléctrico de alta frecuencia (>100~kHz) & Baja / Media & Media & Detecta agrietamiento incipiente, pero requiere tasas de muestreo de megamuestras/s (inviable en Edge AI de bajo costo). \\ \hline
+\textbf{Temperatura en la herramienta} & Termopares incrustados o pirómetros infrarrojos & Media / Alta & Muy baja con refrigerante & Termopares debilitan el portaherramientas; niebla de taladrina a presión bloquea la radiación infrarroja y falsea lecturas. \\ \hline
+\end{tabular}%
+}
+\par\vspace{1mm}
+\centering{\textbf{Fuente:} Elaboración propia, 2026.}
+\end{table}
+}
 
-De forma complementaria, las vibraciones mecánicas registradas sobre la torreta portaherramientas constituyen una fuente de información de alta sensibilidad ante eventos dinámicos transitorios y fricción superficial \citep{wang2024}. La modificación de la geometría de contacto altera las componentes de frecuencia de excitación mecánica, manifestándose en el incremento de energía vibratoria en bandas espectrales particulares que permiten discriminar oportunamente estados incipientes de desgaste anormal y posibles desportillamientos del inserto intercambiable en servicio.
+Tal como se desprende de la \tab{comparativa_variables_tcm}, la medición de temperatura en la zona de corte ---a pesar de su evidente relación termodinámica con la fricción del filo--- resulta inviable en tornos CNC de producción real que operan con flujo continuo de taladrina a alta presión (3 a 6~bar). La niebla densa de refrigerante y el vapor bloquean la línea de visión de pirómetros ópticos o cámaras térmicas infrarrojas, mientras que el fluido genera un enfriamiento violento y discontinuo en la superficie externa que enmascara el gradiente térmico real del filo. Asimismo, la inserción de termopares requiere perforar el portaherramientas o el inserto, vulnerando el principio rector de no invasividad y comprometiendo la rigidez mecánica. 
 
-A pesar de sus bondades intrínsecas, el monitoreo fundamentado en una única variable presenta vulnerabilidad frente a alteraciones ambientales y fluctuaciones en los parámetros operativos de avance y profundidad \citep{huang2026}. Por consiguiente, los sistemas avanzados convergen hacia la fusión sensorial multimodal, integrando variables eléctricas y dinámicas mecánicas para construir patrones diagnósticos complementarios, robustos y confiables, capaces de responder eficazmente ante condiciones cambiantes en el entorno productivo real.
+No obstante, la influencia del factor temporal en la degradación térmica y tribológica se incorpora en la presente investigación a través del seguimiento del \textbf{tiempo acumulado de corte activo ($t_{\text{corte}}$)}. Este parámetro contextual se registra en el firmware y se supervisa en el panel local, correlacionándose con el modelo empírico de vida útil de Taylor ($v_c \cdot T^n = C$), lo que complementa de manera determinista la inferencia dinámica de los modelos inteligentes.
 
-\subsubsection{Transductores y acondicionamiento analógico de señales}
+En virtud de estas consideraciones, la arquitectura del proyecto se fundamenta en la fusión sensorial de dos magnitudes indirectas plenamente viables y complementarias: la corriente eléctrica consumida por el servomotor de avance del carro portaherramientas y la vibración mecánica capturada en la torreta portaherramientas.
 
-La medición segura de las variaciones de corriente del motor del husillo en instalaciones industriales exige transductores que ofrezcan aislamiento galvánico intrínseco sin requerir la apertura del conexionado de fuerza \citep{lai2025}. El sensor de corriente de núcleo partido SCT013 satisface plenamente estos requisitos operativos, fundamentando su funcionamiento en el principio electromagnético de inducción mutua de Faraday mediante un transformador que se acopla magnéticamente alrededor de uno de los conductores de fase del motor.
+\subsubsection{Transductores y fundamentación analítica del sensado de corriente en el servomotor de avance}
 
-El transformador de corriente SCT013 presenta una relación de vueltas de mil a uno, entregando una corriente secundaria proporcional al flujo magnético inducido en su núcleo de ferrita de alta permeabilidad \citep{lai2025}. Mediante la incorporación de una resistencia de carga de precisión conectada en paralelo a sus terminales secundarios, se convierte la corriente inducida en un nivel de voltaje proporcional, garantizando una respuesta lineal y evitando la saturación magnética dentro del rango de operación establecido.
+En el torneado de piezas cilíndricas, la monitorización sustentada en la corriente del motor del husillo principal presenta una limitación física relevante: la elevada inercia mecánica del plato de garras y el rotor, sumada a la fricción parásita de rodamientos de gran porte, diluye las pequeñas variaciones de par provocadas por el desgaste incipiente de la herramienta \citep{romero2003, trejo2010}. Por el contrario, tal como demostraron experimentalmente Romero-Troncoso et al. \citep{romero2003} y Sevilla-Camacho et al. \citep{sevilla2011}, el servomotor de avance del carro portaherramientas (eje longitudinal $Z$ y transversal $X$) ofrece una relación señal-ruido significativamente más favorable, debido a que su cadena cinemática acopla directamente el esfuerzo de empuje contra el filo de corte.
 
-Conforme a las recomendaciones de ingeniería de potencia asumidas en este trabajo, el análisis eléctrico se focaliza estrictamente en la componente senoidal fundamental del motor, prescindiendo del estudio complejo de armónicos parásitos o modulaciones PWM de alta frecuencia \citep{lai2025}. Bajo esta premisa, la señal de voltaje alterno es sometida a una etapa analógica de rectificación de precisión y filtrado pasivo, transformándola en un nivel de tensión continua directamente proporcional al valor eficaz de la corriente consumida.
-
-La obtención de un nivel de tensión continua proporcional al valor eficaz simplifica drásticamente el procesamiento algorítmico en el microcontrolador, al permitir lecturas periódicas mediante su convertidor analógico-digital sin requerir muestreos ultrarrápidos de ondas completas \citep{romero2003}. La interrelación electromecánica entre el par resistente del husillo principal y las variables eléctricas eficaces fundamentales de la máquina de inducción se formaliza analíticamente a través de la relación de balance energético trifásico:
+La relación física entre el desgaste de flanco ($VB$) y la corriente demandada por el servomotor de avance se modela a partir de la interacción tribomecánica de corte. A medida que el inserto pierde agudeza, el contacto de frotamiento entre la zona de incidencia y la superficie mecanizada se amplifica, provocando un incremento progresivo en la componente axial de avance $F_a$ y en la componente radial de repulsión $F_r$ \citep{groover2010, trent2000}. De acuerdo con el modelo fenomenológico de corte ortogonal y oblicuo, la fuerza de avance en función del ancho de desgaste de flanco $VB$ puede aproximarse mediante:
 
 \begin{equation}
-T_m = \frac{\sqrt{3} \cdot V_{RMS} \cdot I_{RMS} \cdot \cos(\varphi) \cdot \eta}{\omega_m}
-\label{eq:par_electromecanico}
+F_a(VB) = F_{a0} + k_w \cdot VB
+\label{eq:fuerza_avance_desgaste}
 \end{equation}
 
-donde $T_m$ simboliza el par mecánico generado en el árbol del husillo en newton-metro, $V_{RMS}$ e $I_{RMS}$ constituyen los valores eficaces de tensión y corriente de fase, $\cos(\varphi)$ representa el factor de potencia operativo del accionamiento, $\eta$ cuantifica el rendimiento cinemático de transmisión y $\omega_m$ denota la velocidad angular mecánica en radianes por segundo. El seguimiento de estas magnitudes eléctricas permite detectar variaciones sutiles de par causadas por el desgaste.
+donde $F_{a0}$ representa la fuerza de avance en régimen estacionario con herramienta afilada nueva en newtons (dependiente del avance $f$, la profundidad de pasada $a_p$ y la resistencia específica de corte del material), $k_w$ simboliza el coeficiente empírico de incremento de fuerza por desgaste en newtons por milímetro ($\text{N/mm}$), y $VB$ denota el ancho medio de la franja de desgaste de flanco en milímetros.
 
-Para la medición de las vibraciones mecánicas del proceso se emplean acelerómetros fundamentados en sistemas microelectromecánicos, caracterizados por su tamaño ultra compacto, bajo consumo y adecuada respuesta en frecuencia \citep{wang2024}. Estos transductores MEMS incorporan internamente una microestructura móvil de silicio suspendida elásticamente, la cual se desplaza ante aceleraciones externas modificando la capacidad de peines diferenciales, proporcionando una señal eléctrica proporcional a la intensidad de oscilación mecánica.
+En un torno CNC, el movimiento de avance del carro portaherramientas es gobernado por un mecanismo de tornillo sinfín con husillo a bolas recirculantes acoplado al eje del servomotor. El par mecánico resistente $\tau_m$ que el mecanismo traslada al eje del servomotor se expresa analíticamente según:
 
-El montaje del sensor acelerómetro sobre la torreta portaherramientas del torno CNC debe asegurar un acoplamiento mecánico rígido y exento de amortiguamientos espurios que pudieran atenuar las señales de alta frecuencia \citep{icfo2026}. Dado que el entorno interno de la cabina de mecanizado impone severas condiciones ambientales ---incluyendo la pulverización continua de fluido de corte refrigerante (emulsión acuosa u oleosa de taladrina a presión), salpicaduras térmicas y proyecciones de viruta metálica incandescente---, se requiere dotar al módulo sensor de una carcasa de encapsulado hermético con grado de protección industrial \textbf{IP67} (estanqueidad total frente a polvo y resistencia a inmersión temporal en fluidos). Para conciliar la rigidez de transmisión acústica con la estricta condición de no invasividad en la máquina, la sujeción a la estructura ferrosa de la torreta se realizará mediante una base con imanes permanentes de neodimio de alto rendimiento magnético (grado N52), los cuales proporcionan una fuerza de retención suficiente para evitar deslizamientos o desacoplamientos resonantes bajo regímenes de corte severo, sin requerir perforaciones mecánicas ni adhesivos degradables. Cabe precisar que el modelado geométrico CAD detallado y la manufactura material de esta caja imantada estanca constituyen una tarea técnica de ingeniería que se desarrollará formalmente durante la fase de implementación y prototipado físico.
+\begin{equation}
+\tau_m = \frac{F_a(VB) \cdot p}{2\pi \cdot \eta}
+\label{eq:par_mecanico_carro}
+\end{equation}
+
+donde $p$ corresponde al paso del husillo a bolas en metros por revolución y $\eta$ denota el rendimiento mecánico cinemático de la transmisión (típicamente entre 0.90 y 0.95 en transmisiones a bolas precomprimidas).
+
+A su vez, en servomotores síncronos de imanes permanentes (PMSM o servomotores \textit{brushless} de CA) empleados universalmente en los ejes de avance CNC, el par electromagnético desarrollado $\tau_e$ guarda una relación estrictamente lineal con la corriente eficaz de armadura $I_a$ demandada por el convertidor de potencia:
+
+\begin{equation}
+\tau_e = k_t \cdot I_a
+\label{eq:par_electrico_servo}
+\end{equation}
+
+donde $k_t$ es la constante de par del servomotor expresada en newton-metro por amperio ($\text{N}\cdot\text{m/A}$). Igualando el par electromagnético generado con el par resistente en régimen de maquinado cuasi-estacionario ($\tau_e \approx \tau_m$) y sustituyendo las relaciones \eqref{eq:fuerza_avance_desgaste} y \eqref{eq:par_mecanico_carro}, se obtiene la ecuación analítica directa que vincula el desgaste del inserto con la corriente del actuador:
+
+\begin{equation}
+I_a = \frac{p}{2\pi \cdot \eta \cdot k_t} \cdot \left( F_{a0} + k_w \cdot VB \right)
+\label{eq:corriente_avance_desgaste}
+\end{equation}
+
+La \eqref{eq:corriente_avance_desgaste} demuestra con rigor físico que un incremento continuo en el desgaste de flanco $VB$ genera un incremento proporcional y medible en la corriente eficaz $I_a$ del servomotor de avance, sustentando la premisa del monitoreo no invasivo.
+
+Para capturar esta magnitud eléctrica sin alterar el conexionado interno del accionamiento, se implementa un transformador de corriente de núcleo partido SCT-013-000 abrazado externamente a una de las líneas de alimentación del servomotor en el armario eléctrico \citep{lai2025}. El SCT-013 opera bajo el principio de inducción mutua de Faraday con una relación de transformación de 1000:1. Al conectar una resistencia de carga (\textit{burden}) de precisión en sus terminales secundarios, la corriente inducida se transforma en una señal de tensión alterna que refleja fidedignamente la dinámica del consumo de potencia. Dicha señal es acondicionada mediante un circuito de rectificación de precisión de valor eficaz verdadero (True-RMS) y filtrado pasivo paso bajo, entregando un nivel de tensión continua proporcional a la corriente eficaz, óptimo para la conversión analógica a digital en el microcontrolador.
+
+\subsubsection{Sensado de vibraciones mecánicas y discriminación de ruidos espurios de máquina}
+
+De forma complementaria a la corriente, las vibraciones mecánicas registradas en la torreta portaherramientas ofrecen una sensibilidad superior ante eventos dinámicos transitorios, microfisuras y fricción de alta frecuencia en la interfaz herramienta-pieza \citep{wang2024}. Para su transducción se emplea un acelerómetro digital triaxial basado en sistemas microelectromecánicos (MEMS), caracterizado por su reducido tamaño, enlace digital SPI de alta inmunidad y respuesta en frecuencia adecuada.
+
+Uno de los desafíos técnicos más críticos en el monitoreo vibratorio en entornos industriales reales radica en la presencia de vibraciones mecánicas espurias originadas por fuentes ajenas al proceso de corte, tales como el desbalanceo del cabezal principal, la holgura en rodamientos, el engranamiento de transmisiones y la excitación de los propios motores del torno. Para asegurar que el sistema discrimine con precisión las vibraciones atribuibles exclusivamente a la degradación del inserto, se implementan cuatro estrategias de ingeniería complementarias:
+
+\begin{enumerate}[leftmargin=0.8cm]
+    \item \textbf{Camino de transmisión acústica directo:} El acelerómetro se fija rígidamente sobre la estructura ferrosa de la torreta portaherramientas, a escasos centímetros del vástago porta-insertos. Dado que las vibraciones mecánicas se atenúan exponencialmente al atravesar interfaces mecánicas desacopladas (guías lineales, bancada y juntas de unión), la torreta actúa como un filtro espacial natural, maximizando la relación de amplitud entre la señal del filo y el ruido de fondo transmitido desde el cabezal del torno.
+    
+    \item \textbf{Discriminación espectral por bandas de frecuencia:} Las vibraciones parásitas de máquina se concentran de manera predominante en la banda de bajas frecuencias (típicamente entre 10~Hz y 1000~Hz), correspondientes a la frecuencia de giro del husillo $f_{\text{rot}} = N/60$, armónicos de desbalance y frecuencias de paso de dientes de engranajes. En contraposición, los fenómenos tribológicos asociados al desgaste de flanco abrasivo y adhesivo excitan resonancias estructurales del conjunto portaherramientas en la banda media y alta, comprendida entre 2~kHz y 8~kHz \citep{trejo2010, jia2025}. El filtrado digital paso banda implementado aísla selectivamente este rango de frecuencias útiles.
+    
+    \item \textbf{Uso de descriptores estadísticos impulsivos:} Las vibraciones de rotación de la máquina presentan un comportamiento predominantemente armónico y estacionario (distribución cuasi-gaussiana con Curtosis $Ku \approx 3$). Por el contrario, el frotamiento irregular del filo desgastado y el desprendimiento de micropartículas generan impactos transitorios no gaussianos que disparan el valor de la Curtosis ($Ku > 4.5$) y el Factor de Cresta ($CF$). Estos indicadores permiten discriminar la condición del inserto independientemente de la amplitud de vibración basal de la máquina.
+    
+    \item \textbf{Ventaneo sincrónico gobernado por corriente de corte activo:} El algoritmo de procesamiento en el borde condiciona la adquisición y el cálculo de descriptores vibratorios al estado de corte efectivo. Únicamente cuando la corriente del servomotor de avance supera el umbral característico de acoplamiento de carga ($I_a > I_{\text{vacío}}$), el microcontrolador valida la ventana de datos de aceleración, descartando automáticamente vibraciones parásitas registradas durante fases de aproximación rápida en vacío (código G00) o detenciones de ciclo.
+\end{enumerate}
+
+El montaje físico del acelerómetro sobre la torreta portaherramientas se resuelve mediante una carcasa de encapsulado hermético con grado de protección industrial \textbf{IP67}, mecanizada en aleación de aluminio o polímero técnico resistente a hidrocarburos, y dotada de una base magnética integrada por imanes permanentes de neodimio de alto rendimiento (grado N52). Esta configuración asegura un acoplamiento acústico rígido de alta rigidez estática y dinámica, inmune al flujo continuo de taladrina a alta presión y a la proyección de viruta caliente, preservando plenamente la condición de no invasividad al no exigir taladros ni adhesivos permanentes sobre la máquina herramienta de MAINSA.
 
 \subsubsection{Procesamiento digital de señales (DSP) en entornos industriales}
 
