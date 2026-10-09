@@ -7,12 +7,12 @@
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Corte oblicuo (modelo tridimensional)}}}{31}{subfigure.4.2}%
 \contentsline {figure}{\numberline {5}{\ignorespaces Geometría de insertos intercambiables de corte, ángulo de punta incluido y correlación con la resistencia mecánica frente a despostillamiento}}{32}{figure.caption.6}%
 \contentsline {figure}{\numberline {6}{\ignorespaces Tipologías de acondicionamiento y microgeometría del filo de corte para refuerzo estructural del flanco}}{33}{figure.caption.7}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Morfología de los tipos de desgaste en la herramienta de corte y parámetros dimensionales de desgaste de flanco según ISO 3685}}{34}{figure.caption.8}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Curvas de evolución temporal del desgaste de flanco a diferentes velocidades de corte y delimitación de zonas tribológicas de desgaste}}{35}{figure.caption.9}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Esquema circuital del acondicionamiento analógico para sensor SCT-013 y forma de onda con desplazamiento de offset continuo}}{41}{figure.caption.11}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Morfología de los tipos de desgaste en la herramienta de corte y parámetros dimensionales de desgaste de flanco según ISO 3685}}{35}{figure.caption.8}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Curvas de evolución temporal del desgaste de flanco a diferentes velocidades de corte y delimitación de zonas tribológicas de desgaste}}{36}{figure.caption.9}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Esquema circuital del acondicionamiento analógico para sensor SCT-013 y forma de onda con desplazamiento de offset continuo}}{42}{figure.caption.11}%
 \contentsline {figure}{\numberline {10}{\ignorespaces Evolución temporal de la señal de corriente tras cada etapa de acondicionamiento analógico y rectificación de valor eficaz para el convertidor analógico-digital (ADC)}}{43}{figure.caption.12}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Arquitectura y flujo secuencial de procesamiento de señales e inferencia Edge AI (TinyML) implementada en el sistema}}{48}{figure.caption.13}%
-\contentsline {figure}{\numberline {12}{\ignorespaces Ciclo iterativo de diseño, entrenamiento, cuantización INT8 y despliegue embebido de modelos TinyML}}{48}{figure.caption.14}%
-\contentsline {figure}{\numberline {13}{\ignorespaces Sensor acelerómetro digital MEMS triaxial ADXL345: (a) Módulo físico para encapsulado estanco IP67 y (b) Ejes ortogonales de sensibilidad triaxial (+X, +Y, +Z) vinculados a la cinemática de torneado}}{52}{figure.caption.15}%
-\contentsline {figure}{\numberline {14}{\ignorespaces Diagrama de bloques funcional de la propuesta de solución mecatrónica periférica para monitoreo no invasivo en tornos CNC}}{58}{figure.caption.16}%
-\contentsline {figure}{\numberline {15}{\ignorespaces Cronograma de actividades por objetivo específico (Gestión 2026 -- 2027)}}{63}{figure.caption.17}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Arquitectura y flujo secuencial de procesamiento de señales e inferencia Edge AI (TinyML) implementada en el sistema}}{49}{figure.caption.13}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Ciclo iterativo de diseño, entrenamiento, cuantización INT8 y despliegue embebido de modelos TinyML}}{50}{figure.caption.14}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Sensor acelerómetro digital MEMS triaxial ADXL345: (a) Módulo físico para encapsulado estanco IP67 y (b) Ejes ortogonales de sensibilidad triaxial (+X, +Y, +Z) vinculados a la cinemática de torneado}}{53}{figure.caption.15}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Diagrama de bloques funcional de la propuesta de solución mecatrónica periférica para monitoreo no invasivo en tornos CNC}}{59}{figure.caption.16}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Cronograma de actividades por objetivo específico (Gestión 2026 -- 2027)}}{64}{figure.caption.17}%
