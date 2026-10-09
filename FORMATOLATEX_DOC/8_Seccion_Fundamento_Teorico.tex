@@ -256,7 +256,23 @@ I_a = \frac{p}{2\pi \cdot \eta \cdot k_t} \cdot \left( F_{a0} + k_w \cdot VB \ri
 
 La \eqref{eq:corriente_avance_desgaste} demuestra con rigor físico que un incremento continuo en el desgaste de flanco $VB$ genera un incremento proporcional y medible en la corriente eficaz $I_a$ del servomotor de avance, sustentando la premisa del monitoreo no invasivo.
 
-Para capturar esta magnitud eléctrica sin alterar el conexionado interno del accionamiento, se implementa un transformador de corriente de núcleo partido SCT-013-000 abrazado externamente a una de las líneas de alimentación del servomotor en el armario eléctrico \citep{lai2025}. El SCT-013 opera bajo el principio de inducción mutua de Faraday con una relación de transformación de 1000:1. Al conectar una resistencia de carga (\textit{burden}) de precisión en sus terminales secundarios, la corriente inducida se transforma en una señal de tensión alterna que refleja fidedignamente la dinámica del consumo de potencia. Dicha señal es acondicionada mediante un circuito de rectificación de precisión de valor eficaz verdadero (True-RMS) y filtrado pasivo paso bajo, entregando un nivel de tensión continua proporcional a la corriente eficaz, óptimo para la conversión analógica a digital en el microcontrolador.
+Para capturar esta magnitud eléctrica sin alterar el conexionado interno del accionamiento, se implementa un transformador de corriente de núcleo partido SCT-013-000 abrazado externamente a una de las líneas de alimentación del servomotor en el armario eléctrico \citep{lai2025}. El SCT-013 opera bajo el principio de inducción mutua de Faraday con una relación de transformación de 1000:1. Al conectar una resistencia de carga (\textit{burden}) de precisión en sus terminales secundarios, la corriente inducida se transforma en una señal de tensión alterna que refleja fidedignamente la dinámica del consumo de potencia.
+
+En la \fig{circuito_offset_forma_onda} se ilustra el esquema de principio del circuito de acondicionamiento analógico desarrollado para el transductor SCT-013. Dado que las entradas del convertidor analógico a digital (ADC) del microcontrolador STM32 operan exclusivamente en un rango unipolar estricto de 0 a 3.3~V, cualquier semiciclo negativo de la señal alterna inducida provocaría la saturación inmediata o la destrucción por sobretensión negativa de la compuerta interna del silicio. Por este motivo, el circuito integra una red de polarización mediante un divisor resistivo simétrico ($R_1 = R_2 = 10\,\text{k}\Omega$) desacoplado con un condensador electrolítico ($C = 10\,\upmu\text{F}$), el cual genera un nivel de referencia continuo estable $V_{\text{bias}} = V_{cc}/2 = 1.65\,\text{V}$. Al superponer la señal secundaria alterna sobre esta tensión continua, la señal resultante oscila de manera centrada y segura dentro del rango unipolar admisible del microcontrolador.
+
+\figura[width=0.88\textwidth]{circuito_offset_forma_onda}{Esquema circuital del acondicionamiento analógico para sensor SCT-013 y forma de onda con desplazamiento de offset continuo}{Elaboración propia con base en OpenEnergyMonitor (2024)}
+
+Para garantizar la comprensión rigurosa de la evolución de la magnitud eléctrica a través de la cadena física de medición, en la \fig{etapas_rectificacion_acondicionamiento} se detalla de forma secuencial la forma de onda registrada tras cada componente individual del circuito:
+
+\begin{enumerate}[leftmargin=0.8cm]
+    \item \textbf{Etapa 1 (Conductor del servomotor):} Corriente alterna pura de fase $i_{\text{ac}}(t)$, de naturaleza bipolar simétrica con amplitudes de hasta $\pm 8.5\,\text{A}$, portadora de armónicos de conmutación de los transistores IGBT del servodriver.
+    \item \textbf{Etapa 2 (Terminales de la resistencia Burden $R_B$):} Tensión alterna reducida $v_{\text{burden}}(t)$ proporcional a la corriente primaria (con amplitud típica de $\pm 1.0\,\text{V}$). Aunque se encuentra escalada en magnitud, conserva semiciclos negativos que impiden su conexión directa al microcontrolador.
+    \item \textbf{Etapa 3 (Salida de la red de desplazamiento DC Bias):} Señal alterna desplazada verticalmente en $+1.65\,\text{V}$, oscilando íntegramente en el rango de tensión positiva entre $0.65\,\text{V}$ y $2.65\,\text{V}$, manteniendo un margen de guarda de $0.65\,\text{V}$ respecto a los raíles de alimentación (0~V y 3.3~V).
+    \item \textbf{Etapa 4 (Etapa de rectificación de precisión y filtrado pasivo True-RMS):} A través de un amplificador operacional (LM358) configurado como seguidor de baja impedancia y un filtro activo paso bajo de segundo orden, se atenúa el rizado de alta frecuencia y se extrae el valor eficaz continuo proporcional a $I_{\text{RMS}}$, entregando una tensión continua pura y libre de ruido al canal de muestreo analógico de 12 bits.
+\end{enumerate}
+
+\figura[width=0.92\textwidth]{etapas_rectificacion_acondicionamiento}{Evolución temporal de la señal de corriente tras cada etapa de acondicionamiento analógico y rectificación de valor eficaz para el convertidor analógico-digital (ADC)}{Elaboración propia, 2026}
+
 
 \subsubsection{Sensado de vibraciones mecánicas y discriminación de ruidos espurios de máquina}
 
@@ -317,6 +333,14 @@ Para el diagnóstico inteligente del estado de la herramienta se emplean algorit
 
 El despliegue efectivo de modelos de aprendizaje automático en microcontroladores de la familia STM32 se viabiliza mediante herramientas especializadas de optimización y cuantización como STM32Cube.AI \citep{stmicroelectronics2021}. Esta plataforma analiza la topología de la red entrenada en entornos como Scikit-Learn o TensorFlow y efectúa una conversión automática hacia código ANSI C altamente optimizado, adaptado de forma óptima a las capacidades arquitectónicas internas del silicio de procesamiento seleccionado.
 
+En la \fig{tinyml_pipeline_dos_colores} se esquematiza el flujo funcional y secuencial de procesamiento de señales e inferencia en el borde adoptado en el prototipo, estructurado en dos colores sobrios institucionales. La arquitectura articula coherentemente la adquisición síncrona de magnitudes físicas de corriente y vibración, el acondicionamiento y ventaneo digital DSP, la síntesis analítica de descriptores representativos (RMS, Curtosis, Factor de Cresta), la inferencia algorítmica cuantizada sobre el silicio ARM Cortex-M4 y la generación final de diagnósticos al pie de máquina en menos de 15~ms.
+
+\figura[width=0.98\textwidth]{tinyml_pipeline_dos_colores}{Arquitectura y flujo secuencial de procesamiento de señales e inferencia Edge AI (TinyML) implementada en el sistema}{Elaboración propia, 2026}
+
+Asimismo, en la \fig{tinyml_ciclo_optimizacion} se describe el ciclo metodológico iterativo de desarrollo para modelos TinyML en entornos industriales. Este flujo comprende la recolección de series temporales brutas en planta, el entrenamiento del modelo en estación de ingeniería, la posterior poda y cuantización post-entrenamiento a enteros de 8 bits (INT8) para reducir drásticamente los requisitos de memoria y cómputo, culminando en la validación experimental directa sobre el microcontrolador al pie de torno.
+
+\figura[width=0.82\textwidth]{tinyml_ciclo_optimizacion}{Ciclo iterativo de diseño, entrenamiento, cuantización INT8 y despliegue embebido de modelos TinyML}{Elaboración propia con base en Warden y Situnayake (2019)}
+
 El proceso de cuantización a números enteros de ocho bits disminuye la huella de memoria del modelo en almacenamiento no volátil en aproximadamente un setenta y cinco por ciento, reduciendo simultáneamente la ocupación de memoria dinámica y acelerando la ejecución aritmética \citep{warden2019}. Esta optimización algorítmica permite efectuar diagnósticos en tiempo real deterministas, categorizando el estado operativo del inserto de corte en tres clases discretas de condición: inserto nuevo, desgaste funcional y filo crítico.
 
 \subsubsection{Arquitectura de supervisión local y señalización visual de desgaste}
@@ -352,3 +376,8 @@ Se evaluaron tres variantes de sensado inercial:
     \item \textbf{MPU-6050 (Acelerómetro + Giroscopio MEMS):} Opera únicamente mediante bus I2C (máximo 400~kHz), susceptible a bloqueos de bus por transitorios electromagnéticos (EMI) severos producidos por los servodrivers del torno. \textit{Opción descartada.}
     \item \textbf{Acelerómetro piezoeléctrico industrial IEPE:} Proporciona ancho de banda superior (>10~kHz) pero exige acondicionadores de señal costosos y cables coaxiales especializados, elevando el presupuesto individual a más de \$350~USD. \textit{Opción descartada por inviabilidad económica.}
 \end{itemize}
+
+En la \fig{adxl345_composicion_acelerometro} se presenta el dispositivo ADXL345 seleccionado y su disposición tridimensional de medición. Como se observa en el panel (a), el sensor cuenta con un factor de forma ultra compacto que permite su alojamiento dentro de una cápsula estanca IP67 con base magnética de neodimio N52. El panel (b) ilustra los tres ejes ortogonales de sensibilidad: el eje $+X$ se hace coincidir con la dirección radial de penetración ($F_r$), el eje $+Y$ con la dirección tangencial o de fuerza principal de corte ($F_c$), y el eje $+Z$ con la dirección longitudinal de avance del carro ($F_a$), garantizando la detección integral de la dinámica tribomecánica de remoción.
+
+\figura[width=0.92\textwidth]{adxl345_composicion_acelerometro}{Sensor acelerómetro digital MEMS triaxial ADXL345: (a) Módulo físico para encapsulado estanco IP67 y (b) Ejes ortogonales de sensibilidad triaxial (+X, +Y, +Z) vinculados a la cinemática de torneado}{Elaboración propia con base en Analog Devices (2024)}
+

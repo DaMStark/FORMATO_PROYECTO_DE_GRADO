@@ -101,3 +101,38 @@ Con la finalidad de garantizar la fiabilidad metrológica de las lecturas, se em
 Para la medición objetiva del desgaste de la herramienta (referencia patrón o \textit{Ground Truth}), se aplicará la técnica de \textbf{inspección microscópica óptica} mediante un \textit{microscopio óptico digital con retícula micrométrica calibrada}, registrando la evolución milimétrica del ancho de la banda de desgaste de flanco ($VB$) conforme a las pautas de la norma internacional \textbf{ISO 3685}.
 
 Finalmente, para evaluar el impacto del desgaste sobre el producto final torneado, se utilizará la técnica de \textbf{rugosimetría de contacto}, empleando un \textit{rugosímetro digital de precisión con palpador inductivo} para medir la rugosidad media aritmética ($Ra$) en diversas secciones longitudinales de las probetas maquinadas, correlacionando cuantitativamente el deterioro del filo con la degradación del acabado superficial.
+
+\subsection{Arquitectura y diagrama de bloques de la propuesta de solución mecatrónica}
+
+Para materializar los requerimientos de no invasividad, procesamiento determinista al pie de máquina y desacoplamiento absoluto de redes externas, se estructuró la arquitectura de la propuesta de solución mecatrónica articulando cinco módulos funcionales interconectados. En la \fig{diagrama_bloques_propuesta_solucion} se presenta el diagrama de bloques general del sistema periférico propuesto.
+
+\figura[width=0.98\textwidth]{diagrama_bloques_propuesta_solucion}{Diagrama de bloques funcional de la propuesta de solución mecatrónica periférica para monitoreo no invasivo en tornos CNC}{Elaboración propia, 2026}
+
+A continuación se detalla la función ingenieril y la justificación técnica de cada uno de los bloques constitutivos:
+
+\begin{enumerate}[leftmargin=0.8cm]
+    \item \textbf{Módulo I: Proceso físico de torneado y máquina herramienta:} Comprende el torno CNC de taller de MAINSA donde se ejecutan las operaciones de desbaste y acabado sobre barras de acero AISI 1045 y 4140. La interacción de corte genera esfuerzos mecánicos sobre el inserto de carburo cementado CNMG 120408, los cuales se transmiten cinemáticamente hacia el carro longitudinal (eje $Z$) y transversal (eje $X$), así como perturbaciones acústicas y vibratorias a través de la torreta portaherramientas.
+    
+    \item \textbf{Módulo II: Transducción sensorial no invasiva:} Diseñado para capturar la fenomenología de corte sin intervenir la máquina herramienta:
+    \begin{itemize}
+        \item \textit{Sensor de corriente de núcleo partido SCT-013-000:} Abrazado externamente sobre una de las fases de alimentación del servomotor de avance del carro portaherramientas dentro del armario eléctrico, capturando variaciones de par de empuje sin alterar el cableado.
+        \item \textit{Acelerómetro digital triaxial ADXL345:} Fijado sobre la torreta portaherramientas mediante una base magnética integrada con imanes de neodimio N52 dentro de un encapsulado con grado de protección industrial IP67, inmune a la proyección directa de viruta y fluido de corte (taladrina).
+    \end{itemize}
+    
+    \item \textbf{Módulo III: Acondicionamiento analógico y enlace digital industrial:}
+    \begin{itemize}
+        \item Para la señal analógica del SCT-013, se implementa una resistencia de carga (\textit{burden}) $R_B$, acoplada a una red divisora resistiva de desplazamiento DC ($V_{\text{bias}} = 1.65\,\text{V}$) y un amplificador operacional en configuración seguidora de baja impedancia, adaptando la señal alterna al rango dinámico unipolar admisible del ADC (0 a 3.3~V).
+        \item Para el acelerómetro ADXL345, la señal se transmite de forma puramente digital mediante un enlace serie SPI a 5~MHz dotado de cable con apantallamiento trenzado frente a perturbaciones electromagnéticas (EMI) inducidas por los servodrivers.
+    \end{itemize}
+    
+    \item \textbf{Módulo IV: Procesamiento embebido y Edge AI (Cerebro mecatrónico):}
+    Gobernado por un microcontrolador de 32 bits \textit{STM32F4 (ARM Cortex-M4 @ 84--100~MHz)}. La adquisición de corriente se ejecuta mediante transferencias circulares DMA disparadas por temporizadores de hardware sin consumir ciclos de CPU. Los datos son filtrados digitalmente mediante algoritmos Butterworth y ventaneados sincrónicamente durante fases de corte activo ($I_a > I_{\text{vacío}}$). Posteriormente se extraen descriptores estadísticos temporales y frecuenciales ($I_{\text{RMS}}, a_{\text{RMS}}, Ku, CF$). Estos vectores alimentan un clasificador inteligente optimizado y cuantizado a enteros de 8 bits (INT8) mediante STM32Cube.AI, logrando tiempos de inferencia deterministas inferiores a 15~ms.
+    
+    \item \textbf{Módulo V: Supervisión local al pie de máquina y señalización de alerta:}
+    Para garantizar que la advertencia de desgaste sea inmediata y comprensible para el operario de taller sin depender de internet ni de la nube:
+    \begin{itemize}
+        \item \textit{Dashboard local al pie de máquina:} Interfaz gráfica desplegada en pantalla de gabinete o estación técnica local comunicada vía UART/RS485, que visualiza la curva de evolución de corriente, el nivel de vibración y el valor estimado de desgaste de flanco ($VB$).
+        \item \textit{Semáforo luminoso LED triestado:} Módulo de señalización óptica de alta visibilidad en el frontal del sistema periférico: indicador verde para inserto en condición óptima ($VB < 0.15\,\text{mm}$), indicador amarillo para advertencia de desgaste funcional ($0.15 \le VB < 0.30\,\text{mm}$) e indicador rojo de alerta crítica de cambio inmediato cuando el modelo clasifica desgaste normativo severo ($VB \ge 0.30\,\text{mm}$), evitando desviaciones dimensionales o roturas catastróficas.
+    \end{itemize}
+\end{enumerate}
+
