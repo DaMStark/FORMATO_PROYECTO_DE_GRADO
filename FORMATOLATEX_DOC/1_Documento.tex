@@ -177,13 +177,13 @@
 \renewcommand{\cftloftitlefont}{\hspace*{\fill}\normalsize\bfseries}
 \renewcommand{\cftafterloftitle}{\hspace*{\fill}}
 
-\renewcommand{\cftbeforesecskip}{2pt}
-\renewcommand{\cftbeforesubsecskip}{-1pt}
-\renewcommand{\cftbeforesubsubsecskip}{-1pt}
-\renewcommand{\cftbeforeparaskip}{-2pt}
-\renewcommand{\cftbeforesubparaskip}{-2pt}
-\renewcommand{\cftbeforefigskip}{-3pt}
-\renewcommand{\cftbeforetabskip}{-3pt}
+\renewcommand{\cftbeforesecskip}{6pt}
+\renewcommand{\cftbeforesubsecskip}{-4pt}
+\renewcommand{\cftbeforesubsubsecskip}{-4pt}
+\renewcommand{\cftbeforeparaskip}{-4pt}
+\renewcommand{\cftbeforesubparaskip}{-4pt}
+\renewcommand{\cftbeforefigskip}{-4pt}
+\renewcommand{\cftbeforetabskip}{-4pt}
 
 \renewcommand{\cftsecfont}{\bfseries}
 \renewcommand{\cftsubsecfont}{\bfseries}
@@ -193,8 +193,8 @@
 
 \renewcommand{\cftsecpagefont}{}
 
-\cftsetrmarg{3.0em}
-\cftsetpnumwidth{1.8em}
+\cftsetrmarg{3.5em}
+\cftsetpnumwidth{2.0em}
 
 \cftsetindents{figure}{0em}{5em}
 \renewcommand{\cftfigpresnum}{\bfseries Figura }
@@ -578,33 +578,21 @@ de Corte en tornos CNC industriales en MAINSA.}
     \setcounter{tocdepth}{3}            % Profundidad de índice
     \renewcommand{\contentsname}{ÍNDICE GENERAL}
     \addtocontents{toc}{\protect\thispagestyle{empty}}
-    \begingroup
-    \setstretch{1.02}
-    \setlength{\parskip}{0pt}
     \tableofcontents
-    \endgroup
     \thispagestyle{empty}
     
     % Índice de figuras
     \renewcommand{\listfigurename}{ÍNDICE DE FIGURAS}
     \newpage
     \addtocontents{lof}{\protect\thispagestyle{empty}}
-    \begingroup
-    \setstretch{1.02}
-    \setlength{\parskip}{0pt}
     \listoffigures
-    \endgroup
     \thispagestyle{empty}
     
     % Índice de tablas
     \renewcommand{\listtablename}{ÍNDICE DE TABLAS}
     \newpage
     \addtocontents{lot}{\protect\thispagestyle{empty}}
-    \begingroup
-    \setstretch{1.02}
-    \setlength{\parskip}{0pt}
     \listoftables
-    \endgroup
     \thispagestyle{empty}
 
     % Estilo de hoja para el cuerpo del perfil

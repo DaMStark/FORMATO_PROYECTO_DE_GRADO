@@ -152,7 +152,7 @@ Para mitigar la tendencia a la rotura en condiciones industriales pesadas, los f
 
 La \fig{preparacion_filo_insertos} evidencia que un filo con preparación negativa, dotado de cara inclinada o chaflán protector (\textit{chamfer} o \textit{T-land}) y microasentado (\textit{honing}), traslada las solicitaciones cortantes hacia el núcleo de compresión del inserto, incrementando sustancialmente la resistencia del flanco. En contraposición, los filos con ángulo positivo agudo presentan menor esfuerzo de corte inicial pero resultan altamente frágiles, siendo propensos a fallas microscópicas prematuras ante las sobrecargas mecánicas presentes en tornos industriales como los empleados en MAINSA.
 
-\subsubsection[Fenomenología y mecanismos de desgaste del filo]{Fenomenología del desgaste y mecanismos de falla en herramientas de corte}
+\subsubsection{Fenomenología del desgaste y mecanismos de falla en herramientas de corte}
 
 El desgaste de las herramientas de mecanizado constituye un fenómeno tribológico inevitable, originado por las condiciones extremas de presión de contacto, fricción dinámica y gradientes térmicos elevados que concurren en la interfaz de corte \citep{trent2000}. Durante el maquinado de aceros al carbono en tornos industriales, las temperaturas en la zona de contacto pueden superar holgadamente los ochocientos grados centígrados, debilitando la fase aglutinante de cobalto y facilitando la degradación microestructural del carburo de tungsteno.
 
@@ -218,7 +218,7 @@ No obstante, la influencia del factor temporal en la degradación térmica y tri
 
 En virtud de estas consideraciones, la arquitectura del proyecto se fundamenta en la fusión sensorial de dos magnitudes indirectas plenamente viables y complementarias: la corriente eléctrica consumida por el servomotor de avance del carro portaherramientas y la vibración mecánica capturada en la torreta portaherramientas.
 
-\subsubsection[Transductores y sensado de corriente en avance]{Transductores y fundamentación analítica del sensado de corriente en el servomotor de avance}
+\subsubsection{Transductores y fundamentación analítica del sensado de corriente en el servomotor de avance}
 
 En el torneado de piezas cilíndricas, la monitorización sustentada en la corriente del motor del husillo principal presenta una limitación física relevante: la elevada inercia mecánica del plato de garras y el rotor, sumada a la fricción parásita de rodamientos de gran porte, diluye las pequeñas variaciones de par provocadas por el desgaste incipiente de la herramienta \citep{romero2003, trejo2010}. Por el contrario, tal como demostraron experimentalmente Romero-Troncoso et al. \citep{romero2003} y Sevilla-Camacho et al. \citep{sevilla2011}, el servomotor de avance del carro portaherramientas (eje longitudinal $Z$ y transversal $X$) ofrece una relación señal-ruido significativamente más favorable, debido a que su cadena cinemática acopla directamente el esfuerzo de empuje contra el filo de corte.
 
@@ -274,7 +274,7 @@ Para garantizar la comprensión rigurosa de la evolución de la magnitud eléctr
 \figura[width=0.92\textwidth]{etapas_rectificacion_acondicionamiento}{Evolución temporal de la señal de corriente tras cada etapa de acondicionamiento analógico y rectificación de valor eficaz para el convertidor analógico-digital (ADC)}{Elaboración propia, 2026}
 
 
-\subsubsection[Sensado de vibraciones mecánicas y discriminación de ruidos]{Sensado de vibraciones mecánicas y discriminación de ruidos espurios de máquina}
+\subsubsection{Sensado de vibraciones mecánicas y discriminación de ruidos espurios de máquina}
 
 De forma complementaria a la corriente, las vibraciones mecánicas registradas en la torreta portaherramientas ofrecen una sensibilidad superior ante eventos dinámicos transitorios, microfisuras y fricción de alta frecuencia en la interfaz herramienta-pieza \citep{wang2024}. Para su transducción se emplea un acelerómetro digital triaxial basado en sistemas microelectromecánicos (MEMS), caracterizado por su reducido tamaño, enlace digital SPI de alta inmunidad y respuesta en frecuencia adecuada.
 
@@ -343,13 +343,13 @@ Asimismo, en la \fig{tinyml_ciclo_optimizacion} se describe el ciclo metodológi
 
 El proceso de cuantización a números enteros de ocho bits disminuye la huella de memoria del modelo en almacenamiento no volátil en aproximadamente un setenta y cinco por ciento, reduciendo simultáneamente la ocupación de memoria dinámica y acelerando la ejecución aritmética \citep{warden2019}. Esta optimización algorítmica permite efectuar diagnósticos en tiempo real deterministas, categorizando el estado operativo del inserto de corte en tres clases discretas de condición: inserto nuevo, desgaste funcional y filo crítico.
 
-\subsubsection[Supervisión local y señalización visual de desgaste]{Arquitectura de supervisión local y señalización visual de desgaste}
+\subsubsection{Arquitectura de supervisión local y señalización visual de desgaste}
 
 La supervisión del estado tribológico de la herramienta de corte se estructura a nivel de planta mediante una interfaz gráfica local tipo dashboard y un sistema de señalización luminosa mediante indicadores LED acoplados directamente al gabinete periférico. Esta disposición permite una advertencia directa, rápida y sin depender de servicios en la nube o redes externas que introduzcan latencias o riesgos de desconexión en el taller industrial.
 
 El panel de supervisión local (dashboard) consolida en tiempo real las métricas descriptivas del proceso (corriente eficaz, aceleración dinámica, curtosis y estado inferido por el modelo TinyML), facilitando al operario la visualización cuantitativa del desgaste de flanco ($VB$) estimado. De manera complementaria, el módulo de señalización visual incorpora indicadores luminosos LED de alta visibilidad montados en el frontal del sistema periférico: un indicador verde señaliza la condición de inserto nuevo u operativo, un indicador amarillo advierte un desgaste funcional moderado en evolución, y un indicador rojo de alerta crítica se activa cuando el modelo clasifica que el inserto ha alcanzado o superado el umbral normativo de desgaste de flanco ($VB \ge 0.3\,\text{mm}$), indicando la necesidad de sustitución inmediata antes de que se susciten desviaciones de tolerancia en la pieza o roturas catastróficas del filo.
 
-\subsubsection[Análisis comparativo y selección de componentes]{Análisis comparativo y selección de componentes clave del sistema}
+\subsubsection{Análisis comparativo y selección de componentes clave del sistema}
 
 Conforme a las buenas prácticas de diseño en ingeniería mecatrónica y a las directrices metodológicas de evaluación técnica, para cada subsistema crítico del proyecto se evaluaron al menos dos opciones tecnológicas (idealmente tres), fundamentando rigurosamente la selección final en función de los requerimientos de no invasividad, determinismo temporal y robustez industrial.
 
