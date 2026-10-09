@@ -3,90 +3,68 @@
 
 La viabilidad económica para el diseño, desarrollo y validación experimental del sistema comprende la adquisición de transductores, hardware embebido, placas de circuito impreso, consumibles de taller y servicios metrológicos. En la \tab{presupuesto_detallado} se presenta la estimación presupuestaria desglosada por subsistemas técnicos en \textbf{Dólares Estadounidenses (\$USD)}, incorporando un margen de contingencia técnica y cambiaria del 15\%.
 
-\enlargethispage{2.5\baselineskip}
 {\footnotesize
 \setstretch{1.0}
-\setlength{\parskip}{0.8pt}
-\setlength{\tabcolsep}{2.5pt}
-\renewcommand{\arraystretch}{0.98}
-\definecolor{phdr}{RGB}{31,78,121}
-\definecolor{psub}{RGB}{222,235,247}
-\definecolor{ptot}{RGB}{198,224,180}
+\setlength{\tabcolsep}{3.0pt}
+\renewcommand{\arraystretch}{0.95}
 
-\begin{longtable}{|C{0.8cm}|L{5.7cm}|C{1.2cm}|R{1.6cm}|R{1.5cm}|L{2.8cm}|}
+\begin{longtable}{|C{1.0cm}|L{7.4cm}|C{1.4cm}|R{1.8cm}|R{1.8cm}|}
 \caption{Presupuesto detallado para el desarrollo y validación del proyecto (en \$USD)}
 \label{tab:presupuesto_detallado}
 \\
 \hline
-\rowcolor{white}
-\textcolor{black}{\textbf{Ítem}} & 
-\textcolor{black}{\textbf{Descripción del componente / servicio}} & 
-\textcolor{black}{\textbf{Cant.}} & 
-\textcolor{black}{\textbf{P. Unit. (\$)}} & 
-\textcolor{black}{\textbf{Total (\$)}} & 
-\textcolor{black}{\textbf{Fuente / Proveedor}} \\
-\hline \hline
+\textbf{Ítem} & 
+\textbf{Descripción del componente / servicio} & 
+\textbf{Cant.} & 
+\textbf{P. Unit. (\$)} & 
+\textbf{Total (\$)} \\ \hline \hline
 \endfirsthead
 
 \hline
-\rowcolor{white}
-\textcolor{black}{\textbf{Ítem}} & 
-\textcolor{black}{\textbf{Descripción del componente / servicio}} & 
-\textcolor{black}{\textbf{Cant.}} & 
-\textcolor{black}{\textbf{P. Unit. (\$)}} & 
-\textcolor{black}{\textbf{Total (\$)}} & 
-\textcolor{black}{\textbf{Fuente / Proveedor}} \\
-\hline \hline
+\textbf{Ítem} & 
+\textbf{Descripción del componente / servicio} & 
+\textbf{Cant.} & 
+\textbf{P. Unit. (\$)} & 
+\textbf{Total (\$)} \\ \hline \hline
 \endhead
 
 \hline
 \endfoot
 
 \hline
-\multicolumn{6}{c}{\textbf{Fuente:} Elaboración propia, 2026.}
 \endlastfoot
 
-\hline
-\rowcolor{white}
-\multicolumn{6}{|l|}{\textbf{1. Subsistema de sensado e instrumentación analógica}} \\ \hline
-1.1 & Sensor de corriente de núcleo partido no invasivo SCT013-000 (0--100~A) & 2 & 14.50 & 29.00 & DigiKey / Importación \\ \hline
-1.2 & Sensor de corriente de efecto Hall integrado ACS712-20A (módulo calibrado) & 1 & 8.50 & 8.50 & Pololu / Tienda local \\ \hline
-1.3 & Acelerómetro digital triaxial MEMS ADXL345 (enlace SPI de bajo ruido) & 2 & 9.00 & 18.00 & Analog Devices / Mouser \\ \hline
-1.4 & Componentes de acondicionamiento (filtros RC, zener 3.3V, resistencias 1\%) & 1 lote & 12.00 & 12.00 & Mouser / Tienda local \\ \hline
+\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{1. Subsistema de sensado e instrumentación analógica}} \\ \hline
+1.1 & Sensor de corriente de núcleo partido no invasivo SCT013-000 (0--100~A) & 2 & 14.50 & 29.00 \\ \hline
+1.2 & Sensor de corriente de efecto Hall integrado ACS712-20A (módulo calibrado) & 1 & 8.50 & 8.50 \\ \hline
+1.3 & Acelerómetro digital triaxial MEMS ADXL345 (enlace SPI de bajo ruido) & 2 & 9.00 & 18.00 \\ \hline
+1.4 & Componentes de acondicionamiento (filtros RC, zener 3.3V, resistencias 1\%) & 1 lote & 12.00 & 12.00 \\ \hline
 
-\hline
-\rowcolor{white}
-\multicolumn{6}{|l|}{\textbf{2. Subsistema de procesamiento embebido, telemetría y potencia}} \\ \hline
-2.1 & Placa de cómputo STM32F4 (ARM Cortex-M4 @ 84~MHz, FPU, CMSIS-DSP) & 1 & 24.00 & 24.00 & STMicroelectronics / Local \\ \hline
-2.2 & Módulo microcontrolador Wi-Fi / Bluetooth ESP32 (nodo gateway MQTT) & 1 & 9.50 & 9.50 & Espressif / RobotShop \\ \hline
-2.3 & Fuente industrial conmutada 5V/2A con aislamiento galvánico y filtro EMI & 1 & 18.00 & 18.00 & Mean Well / Importación \\ \hline
+\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{2. Subsistema de procesamiento embebido, telemetría y potencia}} \\ \hline
+2.1 & Placa de cómputo STM32F4 (ARM Cortex-M4 @ 84~MHz, FPU, CMSIS-DSP) & 1 & 24.00 & 24.00 \\ \hline
+2.2 & Módulo microcontrolador Wi-Fi / Bluetooth ESP32 (nodo gateway MQTT) & 1 & 9.50 & 9.50 \\ \hline
+2.3 & Fuente industrial conmutada 5V/2A con aislamiento galvánico y filtro EMI & 1 & 18.00 & 18.00 \\ \hline
 
-\hline
-\rowcolor{white}
-\multicolumn{6}{|l|}{\textbf{3. Fabricación, encapsulado estanco y montaje magnético}} \\ \hline
-3.1 & Fabricación de placa de circuito impreso PCB doble capa FR-4 industrial & 1 lote & 22.00 & 22.00 & JLCPCB / PCBWay \\ \hline
-3.2 & Gabinete IP65 y carcasa estanca IP67 con base magnética NdFeB N52 & 1 lote & 25.00 & 25.00 & Schneider / Neodimio N52 \\ \hline
-3.3 & Cable balanceado apantallado y conectores industriales estancos IP67 (M8/M12) & 1 lote & 16.00 & 16.00 & Belden / Amphenol \\ \hline
+\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{3. Fabricación, encapsulado estanco y montaje magnético}} \\ \hline
+3.1 & Fabricación de placa de circuito impreso PCB doble capa FR-4 industrial & 1 lote & 22.00 & 22.00 \\ \hline
+3.2 & Gabinete IP65 y carcasa estanca IP67 con base magnética NdFeB N52 & 1 lote & 25.00 & 25.00 \\ \hline
+3.3 & Cable balanceado apantallado y conectores industriales estancos IP67 (M8/M12) & 1 lote & 16.00 & 16.00 \\ \hline
 
-\hline
-\rowcolor{white}
-\multicolumn{6}{|l|}{\textbf{4. Materiales fungibles de experimentación y mecanizado en MAINSA}} \\ \hline
-4.1 & Barras cilíndricas de acero aleado AISI 1045 y AISI 4140 para ensayos de corte & 3 barras & 18.00 & 54.00 & Aceros Arequipa / Barraca \\ \hline
-4.2 & Caja de insertos intercambiables de carburo de tungsteno (ISO CNMG 120408) & 1 caja & 30.00 & 30.00 & Sandvik Coromant / Walter \\ \hline
+\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{4. Materiales fungibles de experimentación y mecanizado en MAINSA}} \\ \hline
+4.1 & Barras cilíndricas de acero aleado AISI 1045 y AISI 4140 para ensayos de corte & 3 barras & 18.00 & 54.00 \\ \hline
+4.2 & Caja de insertos intercambiables de carburo de tungsteno (ISO CNMG 120408) & 1 caja & 30.00 & 30.00 \\ \hline
 
-\hline
-\rowcolor{white}
-\multicolumn{6}{|l|}{\textbf{5. Servicios metrológicos de calibración y laboratorio}} \\ \hline
-5.1 & Rugosímetro Mitutoyo e inspección microscópica ISO 3685 & 1 serv. & 35.00 & 35.00 & Laboratorio UCB / CETA \\ \hline \hline
+\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{5. Servicios metrológicos de calibración y laboratorio}} \\ \hline
+5.1 & Rugosímetro Mitutoyo e inspección microscópica ISO 3685 & 1 serv. & 35.00 & 35.00 \\ \hline
 
-\multicolumn{4}{|r|}{\textbf{SUBTOTAL DE RECURSOS DIRECTOS:}} & \textbf{301.00} & -- \\ \hline
-\multicolumn{4}{|r|}{\textbf{CONTINGENCIA TÉCNICA Y CAMBIARIA (15\%):}} & \textbf{45.15} & Fletes y aranceles \\ \hline \hline
-\rowcolor{white}
-\multicolumn{4}{|r|}{\textbf{COSTO TOTAL ESTIMADO DEL PROYECTO (\$USD):}} & \textbf{346.15} & Aporte postulante \\ \hline
+\multicolumn{2}{|l|}{\textbf{SUBTOTAL DE RECURSOS DIRECTOS}} & \textbf{--} & \textbf{--} & \textbf{301.00} \\ \hline
+\multicolumn{2}{|l|}{\textbf{CONTINGENCIA TÉCNICA Y CAMBIARIA (15\%)}} & \textbf{--} & \textbf{--} & \textbf{45.15} \\ \hline
+\multicolumn{2}{|l|}{\textbf{COSTO TOTAL ESTIMADO DEL PROYECTO (\$USD)}} & \textbf{--} & \textbf{--} & \textbf{346.15} \\ \hline
+\multicolumn{5}{c}{\rule{0pt}{3ex}\textbf{Fuente:} Elaboración propia, 2026.} \\
 \end{longtable}
 }
 
-\enlargethispage{3.5\baselineskip}
+\vspace{0.2cm}
 El costo total estimado para la ejecución integral del proyecto asciende a \textbf{\$346.15 USD}, monto que contempla un margen de reserva prudencial del 15\% (\$45.15 USD) para mitigar variaciones en aranceles o fluctuaciones en la cotización de componentes. La totalidad de los recursos financieros será cubierta por el postulante, en tanto que la empresa colaboradora MAINSA facilitará el acceso a horas de torno CNC, herramientas de sujeción, fluidos refrigerantes y probetas de trabajo complementarias.
 
 En términos de viabilidad económica industrial, los sistemas comerciales propietarios de monitoreo de herramientas (TCM) existentes en el mercado global ---basados en dinamómetros de cuarzo multicomponente o consolas cerradas--- demandan inversiones entre los \$10,000 y \$30,000 USD, resultando prohibitivos para maestranzas medianas en Bolivia. El sistema propuesto representa un costo inferior al 3.5\% de una solución comercial, comprobando una alta viabilidad económica, un rápido retorno de inversión y un elevado valor de transferencia tecnológica para la industria manufacturera nacional.
