@@ -177,13 +177,13 @@
 \renewcommand{\cftloftitlefont}{\hspace*{\fill}\normalsize\bfseries}
 \renewcommand{\cftafterloftitle}{\hspace*{\fill}}
 
-\renewcommand{\cftbeforesecskip}{1pt}
-\renewcommand{\cftbeforesubsecskip}{-7pt}
-\renewcommand{\cftbeforesubsubsecskip}{-7pt}
-\renewcommand{\cftbeforeparaskip}{-6pt}
-\renewcommand{\cftbeforesubparaskip}{-6pt}
-\renewcommand{\cftbeforefigskip}{-6pt}
-\renewcommand{\cftbeforetabskip}{-6pt}
+\renewcommand{\cftbeforesecskip}{2pt}
+\renewcommand{\cftbeforesubsecskip}{-1pt}
+\renewcommand{\cftbeforesubsubsecskip}{-1pt}
+\renewcommand{\cftbeforeparaskip}{-2pt}
+\renewcommand{\cftbeforesubparaskip}{-2pt}
+\renewcommand{\cftbeforefigskip}{-3pt}
+\renewcommand{\cftbeforetabskip}{-3pt}
 
 \renewcommand{\cftsecfont}{\bfseries}
 \renewcommand{\cftsubsecfont}{\bfseries}
@@ -192,6 +192,9 @@
 \renewcommand{\cftsubparafont}{\itshape}
 
 \renewcommand{\cftsecpagefont}{}
+
+\cftsetrmarg{3.0em}
+\cftsetpnumwidth{1.8em}
 
 \cftsetindents{figure}{0em}{5em}
 \renewcommand{\cftfigpresnum}{\bfseries Figura }
@@ -560,6 +563,9 @@ de Corte en tornos CNC industriales en MAINSA.}
     \input{2_Caratula.tex}
     % \input{3_Dedicatorias.tex} % Excluido para presentación de Perfil de Grado
     
+    % Asegurar pagestyle empty para todos los preliminares
+    \pagestyle{empty}
+    
     % Espaciados de hoja
     \setlength{\parindent}{0pt}     % Sangría
     \setlength{\parskip}{4mm}       % Entre párrafos
@@ -571,32 +577,38 @@ de Corte en tornos CNC industriales en MAINSA.}
     \newpage
     \setcounter{tocdepth}{3}            % Profundidad de índice
     \renewcommand{\contentsname}{ÍNDICE GENERAL}
+    \addtocontents{toc}{\protect\thispagestyle{empty}}
     \begingroup
-    \enlargethispage{2.5\baselineskip}
+    \setstretch{1.02}
     \setlength{\parskip}{0pt}
     \tableofcontents
-    \thispagestyle{empty}
     \endgroup
+    \thispagestyle{empty}
     
     % Índice de figuras
     \renewcommand{\listfigurename}{ÍNDICE DE FIGURAS}
     \newpage
+    \addtocontents{lof}{\protect\thispagestyle{empty}}
     \begingroup
+    \setstretch{1.02}
     \setlength{\parskip}{0pt}
     \listoffigures
-    \thispagestyle{empty}
     \endgroup
+    \thispagestyle{empty}
     
     % Índice de tablas
     \renewcommand{\listtablename}{ÍNDICE DE TABLAS}
     \newpage
+    \addtocontents{lot}{\protect\thispagestyle{empty}}
     \begingroup
+    \setstretch{1.02}
     \setlength{\parskip}{0pt}
     \listoftables
-    \thispagestyle{empty}
     \endgroup
+    \thispagestyle{empty}
 
     % Estilo de hoja para el cuerpo del perfil
+    \newpage
     \pagestyle{fancy}
 
     \input{1_Seccion_Introduccion.tex}
