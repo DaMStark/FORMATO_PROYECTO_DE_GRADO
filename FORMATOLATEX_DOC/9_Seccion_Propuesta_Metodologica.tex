@@ -54,7 +54,7 @@ Incidencia de roturas intempestivas y piezas fuera de tolerancia dimensional reg
 
 Objetivo General & 
 Diseñar un sistema periférico no invasivo para el monitoreo en tiempo real del desgaste de herramientas de corte en tornos CNC de la empresa MAINSA, mediante la medición de variables de corriente y vibración procesadas con algoritmos de inteligencia artificial en el borde (\textit{Edge AI}), para anticipar oportunamente fallas críticas en los insertos y reducir paradas no planificadas. & 
-Integración de transductores de corriente no invasivos, acelerometría en torreta, microcontrolador STM32 y módulo IoT. & 
+Integración de transductores de corriente no invasivos, acelerometría en torreta, microcontrolador STM32, dashboard e indicador LED. & 
 Prototipo mecatrónico funcional montado en gabinete industrial operativo al pie de máquina.\\ \hline
 
 Hipótesis Ingenieril & 
@@ -64,7 +64,7 @@ Exactitud de clasificación $\ge 90\%$, latencia de inferencia $\le 20\,\text{ms
 
 Variables Independientes & 
 Señales físicas primarias generadas durante la remoción de material en el proceso de torneado. & 
-• Corriente eficaz del husillo ($I_{RMS}$).\par\vspace{1mm}
+• Corriente eficaz del servomotor del carro ($I_{RMS}$).\par\vspace{1mm}
 • Aceleración dinámica en torreta ($a_{RMS}$).\par\vspace{1mm}
 • Curtosis ($Ku$) y Factor de Cresta ($CF$). & 
 Amplitud en amperios (A), aceleración en gravedad ($g$) y coeficientes estadísticos adimensionales.\\ \hline

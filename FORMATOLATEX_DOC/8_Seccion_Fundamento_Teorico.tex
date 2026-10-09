@@ -40,17 +40,17 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 • 8.2.3 Monitoreo de condición (TCM) indirecto mediante corriente y acelerometría.\par\vspace{1mm}
 • 8.2.6 Inteligencia artificial en el borde (\textit{Edge AI} / TinyML). \\ \hline
 
-\textbf{OE2.} Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, integrando acondicionamiento de señal, procesamiento en el borde y conectividad IoT. &
-• Definición del diagrama de bloques funcional (adquisición, acondicionamiento y telemetría).\par\vspace{1mm}
+\textbf{OE2.} Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, integrando acondicionamiento de señal, procesamiento en el borde, dashboard e indicador LED. &
+• Definición del diagrama de bloques funcional (adquisición, acondicionamiento y visualización).\par\vspace{1mm}
 • Diseño de circuito acondicionador analógico (rectificación y conversión a nivel RMS).\par\vspace{1mm}
 • Diseño esquemático y ruteo de PCB industrial con aislamiento galvánico.\par\vspace{1mm}
 • Concepción de gabinete IP65 y carcasa estanca IP67 con base magnética de neodimio. &
 • 8.2.4 Transductores y acondicionamiento analógico (efecto Hall, acelerómetros MEMS, offset DC y EMC).\par\vspace{1mm}
 • 8.2.5 Procesamiento digital de señales (adquisición determinista).\par\vspace{1mm}
-• 8.2.7 Arquitectura de conectividad IoT para mantenimiento predictivo. \\ \hline
+• 8.2.7 Arquitectura de supervisión local y señalización visual de desgaste. \\ \hline
 
 \textbf{OE3.} Dimensionar los sensores de corriente, vibración y la unidad de procesamiento embebido. &
-• Dimensionamiento de transductor SCT-013 según potencia del motor del husillo.\par\vspace{1mm}
+• Dimensionamiento de transductor SCT-013 según potencia del motor de avance del carro.\par\vspace{1mm}
 • Selección del acelerómetro considerando ancho de banda y rango dinámico en torreta.\par\vspace{1mm}
 • Selección de microcontrolador analizando ADC, DMA, FPU, CMSIS-DSP y memoria.\par\vspace{1mm}
 • Cálculo y dimensionamiento de componentes pasivos de filtrado y fuentes conmutadas.\par\vspace{1mm}
@@ -59,15 +59,15 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 • 8.2.5 Teorema de Nyquist, filtrado anti-aliasing y arquitectura ARM Cortex-M4.\par\vspace{1mm}
 • 8.2.8 Análisis comparativo y selección de componentes (microcontrolador, corriente y aceleración). \\ \hline
 
-\textbf{OE4.} Integrar el sistema periférico de adquisición, procesamiento inteligente y supervisión remota. &
+\textbf{OE4.} Integrar el sistema periférico de adquisición, procesamiento inteligente, panel de visualización e indicador LED. &
 • Ensamblaje, integración eléctrica y verificación funcional de PCB y gabinete.\par\vspace{1mm}
 • Programación del firmware STM32 para muestreo síncrono DMA y CMSIS-DSP.\par\vspace{1mm}
 • Campaña de mecanizado en MAINSA y construcción de dataset etiquetado.\par\vspace{1mm}
 • Entrenamiento, cuantización INT8 y despliegue del clasificador con STM32Cube.AI.\par\vspace{1mm}
-• Configuración de enlace IoT (MQTT/JSON) y desarrollo del panel de supervisión. &
+• Desarrollo del panel/dashboard de visualización local e integración del indicador LED de alerta. &
 • 8.2.5 Descriptores estadísticos ($I_{RMS}, a_{RMS}$, curtosis, factor de cresta).\par\vspace{1mm}
 • 8.2.6 Aprendizaje automático supervisado, cuantización INT8 y despliegue STM32Cube.AI.\par\vspace{1mm}
-• 8.2.7 Protocolo MQTT sobre TCP/IP, calidad de servicio QoS y tramas JSON. \\ \hline
+• 8.2.7 Interfaz visual de supervisión local e indicadores LED de alerta. \\ \hline
 
 \textbf{OE5.} Validar experimentalmente el funcionamiento del sistema integrado mediante pruebas de corte en los tornos CNC de MAINSA. &
 • Instalación y calibración no invasiva del sistema periférico en torno CNC de taller.\par\vspace{1mm}
@@ -259,15 +259,11 @@ El despliegue efectivo de modelos de aprendizaje automático en microcontrolador
 
 El proceso de cuantización a números enteros de ocho bits disminuye la huella de memoria del modelo en almacenamiento no volátil en aproximadamente un setenta y cinco por ciento, reduciendo simultáneamente la ocupación de memoria dinámica y acelerando la ejecución aritmética \citep{warden2019}. Esta optimización algorítmica permite efectuar diagnósticos en tiempo real deterministas, categorizando el estado operativo del inserto de corte en tres clases discretas de condición: inserto nuevo, desgaste funcional y filo crítico.
 
-\subsubsection{Arquitectura de conectividad IoT para mantenimiento predictivo}
+\subsubsection{Arquitectura de supervisión local y señalización visual de desgaste}
 
-La incorporación de capacidades de conectividad IoT en el nodo periférico de monitoreo complementa la autonomía del procesamiento en el borde, permitiendo la telemetría remota y la centralización de registros para la gestión integral del taller \citep{sheffield2021}. A través de enlaces inalámbricos confiables, el sistema embebido reporta continuamente el estado de desgaste y variables físicas representativas hacia plataformas de supervisión en planta, apoyando al personal técnico en la toma de decisiones informadas.
+La supervisión del estado tribológico de la herramienta de corte se estructura a nivel de planta mediante una interfaz gráfica local tipo dashboard y un sistema de señalización luminosa mediante indicadores LED acoplados directamente al gabinete periférico. Esta disposición permite una advertencia directa, rápida y sin depender de servicios en la nube o redes externas que introduzcan latencias o riesgos de desconexión en el taller industrial.
 
-En el plano de los protocolos de transporte para telemetría industrial de bajo ancho de banda, el estándar MQTT destaca como la solución preponderante, fundamentado en un paradigma asíncrono y desacoplado de Publicador y Suscriptor coordinado por un servidor central \citep{hamasha2025}. MQTT se caracteriza por presentar una cabecera de trama excepcionalmente reducida de únicamente dos bytes, minimizando la carga computacional en el microcontrolador y maximizando la eficiencia de transmisión sobre canales de comunicación compartidos.
-
-La arquitectura del sistema organiza jerárquicamente tópicos temáticos orientados a eventos funcionales, tales como el estado de la herramienta y la telemetría periódica de variables electromecánicas, asignando niveles adecuados de Calidad de Servicio según la criticidad \citep{sheffield2021}. Para el envío recurrente de variables continuas se utiliza QoS cero optimizando velocidad, mientras que para alertas de desgaste crítico se selecciona QoS uno, garantizando la recepción efectiva de notificaciones urgentes en el servidor de control.
-
-La serialización de los paquetes diagnósticos transmitidos hacia la red se realiza mediante el estándar de notación ligera de objetos JSON, garantizando completa interoperabilidad entre el hardware embebido periférico y diversas aplicaciones de gestión analítica en servidores \citep{hamasha2025}. El payload estructurado incluye identificador de máquina, valor eficaz de corriente, descriptor de aceleración, clase diagnóstica predicha y marca temporal, posibilitando su integración ágil en cuadros de mando operativos como ThingsBoard o Node-RED.
+El panel de supervisión local (dashboard) consolida en tiempo real las métricas descriptivas del proceso (corriente eficaz, aceleración dinámica, curtosis y estado inferido por el modelo TinyML), facilitando al operario la visualización cuantitativa del desgaste de flanco ($VB$) estimado. De manera complementaria, el módulo de señalización visual incorpora indicadores luminosos LED de alta visibilidad montados en el frontal del sistema periférico: un indicador verde señaliza la condición de inserto nuevo u operativo, un indicador amarillo advierte un desgaste funcional moderado en evolución, y un indicador rojo de alerta crítica se activa cuando el modelo clasifica que el inserto ha alcanzado o superado el umbral normativo de desgaste de flanco ($VB \ge 0.3\,\text{mm}$), indicando la necesidad de sustitución inmediata antes de que se susciten desviaciones de tolerancia en la pieza o roturas catastróficas del filo.
 
 \subsubsection{Análisis comparativo y selección de componentes clave del sistema}
 
@@ -277,14 +273,14 @@ Conforme a las buenas prácticas de diseño en ingeniería mecatrónica y a las 
 Se contrastaron tres alternativas de microcontroladores de amplia difusión industrial:
 \begin{itemize}
     \item \textbf{STM32F411 / Nucleo-F401RE (ARM Cortex-M4 @ 84--100 MHz):} Incorpora unidad de punto flotante (FPU), controlador DMA multicanal e instrucciones DSP dedicadas (CMSIS-DSP). Posee soporte nativo para compresión y cuantización INT8 mediante STM32Cube.AI, logrando inferencias deterministas en menos de 15~ms sin latencias de red. \textit{Opción seleccionada para el procesamiento analítico y la inferencia en el borde.}
-    \item \textbf{ESP32 (Xtensa Dual-Core @ 240 MHz):} Ofrece conectividad Wi-Fi y Bluetooth nativa; sin embargo, su convertidor ADC interno presenta severas no-linealidades (especialmente por debajo de 0.1~V y por encima de 2.6~V) y el RTOS de conectividad interrumpe el determinismo temporal del muestreo periódico. Por tal motivo, \textit{se descarta para tareas duras de muestreo y DSP, destinándolo exclusivamente como pasarela telemática IoT desacoplada.}
+    \item \textbf{ESP32 (Xtensa Dual-Core @ 240 MHz):} Ofrece conectividad Wi-Fi y Bluetooth nativa; sin embargo, su convertidor ADC interno presenta severas no-linealidades (especialmente por debajo de 0.1~V y por encima de 2.6~V) y el RTOS de conectividad interrumpe el determinismo temporal del muestreo periódico. Por tal motivo, \textit{se descarta para tareas duras de muestreo y DSP, destinándolo opcionalmente como controlador auxiliar de visualización.}
     \item \textbf{ATmega328P (Arquitectura AVR @ 16 MHz):} Microcontrolador clásico de 8 bits sin FPU ni instrucciones DSP. Su baja tasa de muestreo analógico (máximo 15~kSPS a 10 bits) y su limitada memoria (2~KB SRAM) lo hacen completamente inviable para alojar buffers DMA y modelos de clasificación inteligente. \textit{Opción descartada.}
 \end{itemize}
 
-\paragraph{B. Sensor de corriente para monitoreo no invasivo del husillo}
-Se analizaron tres tecnologías de transducción de corriente eléctrica alterna:
+\paragraph{B. Sensor de corriente para monitoreo no invasivo en el carro portaherramientas}
+Se analizaron tres tecnologías de transducción de corriente eléctrica alterna para el monitoreo del accionamiento de avance del carro:
 \begin{itemize}
-    \item \textbf{Sensor de núcleo partido SCT-013-000 (0--100 A):} Basado en acoplamiento magnético inductivo. Su pinza abisagrada permite abrazar el conductor de fase sin seccionar el cableado ni alterar la instalación interna del torno CNC, cumpliendo con la exigencia de cero invasividad impuesta por MAINSA. \textit{Opción seleccionada para operación industrial en planta.}
+    \item \textbf{Sensor de núcleo partido SCT-013-000 (0--100 A):} Basado en acoplamiento magnético inductivo. Su pinza abisagrada permite abrazar el conductor de fase del servomotor de avance del carro portaherramientas sin seccionar el cableado ni alterar la instalación interna del torno CNC, cumpliendo con la exigencia de cero invasividad impuesta por MAINSA. \textit{Opción seleccionada para operación industrial en planta.}
     \item \textbf{Sensor de efecto Hall integrado ACS712-20A:} Dispositivo galvanicamente aislado con ancho de banda de 80~kHz, adecuado para la captura detallada de microperturbaciones de torque en régimen transitorio en bancos de prueba y tableros accesibles. \textit{Opción seleccionada como sensor complementario de validación en laboratorio.}
     \item \textbf{Resistencia Shunt de potencia:} Exige cortar el conductor de fase e intercalar un resistor de bajo ohmiaje, disipando calor y careciendo de aislamiento galvánico intrínseco. \textit{Opción descartada por representar un riesgo operacional y violar el principio de no invasividad.}
 \end{itemize}
