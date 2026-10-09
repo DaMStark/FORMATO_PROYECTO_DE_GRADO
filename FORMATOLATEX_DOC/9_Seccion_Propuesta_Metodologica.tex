@@ -49,19 +49,19 @@ Para asegurar la coherencia lógica interna entre los componentes metodológicos
 \endlastfoot
 
 Problema General & 
-¿Cómo diseñar un sistema periférico no invasivo para el monitoreo en tiempo real del desgaste de herramientas de corte en tornos CNC de la empresa MAINSA, mediante la medición de variables de corriente en el servomotor de avance del carro portaherramientas y aceleración en la torreta procesadas con algoritmos de inteligencia artificial en el borde (\textit{Edge AI}), con visualización en dashboard local y señalización luminosa mediante indicador LED, que permita anticipar oportunamente fallas críticas en los insertos, prevenir paradas no planificadas y restituir la confiabilidad dimensional en el proceso de mecanizado? & 
+¿Cómo diseñar y validar, en un torno CNC de la empresa MAINSA, un sistema periférico no invasivo que, mediante la corriente del servomotor de avance y la aceleración en la torreta procesadas en el borde (\textit{Edge AI}), clasifique el estado de desgaste del inserto (nuevo, funcional, crítico) con una exactitud $\ge 90$\% y lo señalice en un dashboard local e indicador LED, para sustituir la inspección visual subjetiva por una alerta objetiva de reemplazo que reduzca el riesgo de paradas no planificadas y piezas fuera de tolerancia dimensional? & 
 Condición operativa de corte, interferencias electromagnéticas y parque de tornos CNC subutilizado. & 
 Incidencia de roturas intempestivas, piezas fuera de tolerancia dimensional y desvío de producción hacia tornos manuales.\\ \hline
 
 Objetivo General & 
-Diseñar un sistema periférico no invasivo para el monitoreo en tiempo real del desgaste de herramientas de corte en tornos CNC de la empresa MAINSA, mediante la medición de variables de corriente en el servomotor de avance del carro portaherramientas y aceleración en la torreta procesadas con algoritmos de inteligencia artificial en el borde (\textit{Edge AI}), con visualización en dashboard local y señalización luminosa mediante indicador LED, para anticipar oportunamente fallas críticas en los insertos, prevenir paradas no planificadas y restituir la confiabilidad dimensional en el proceso de mecanizado. & 
+Diseñar y validar un sistema periférico no invasivo de monitoreo del desgaste de insertos de corte en un torno CNC de la empresa MAINSA, mediante la medición de corriente en el servomotor de avance y aceleración en la torreta procesadas con inteligencia artificial en el borde (\textit{Edge AI}), que clasifique tres estados de desgaste con una exactitud $\ge 90$\% y lo señalice en un dashboard local e indicador LED, para sustituir la inspección visual subjetiva por una alerta objetiva de reemplazo del inserto que reduzca el riesgo de paradas no planificadas y la ocurrencia de piezas fuera de tolerancia dimensional. & 
 Integración de transductores de corriente SCT-013, acelerometría ADXL345 en torreta, microcontrolador STM32F4, dashboard e indicador LED triestado. & 
 Prototipo mecatrónico funcional montado en gabinete industrial operativo al pie de máquina.\\ \hline
 
 Hipótesis Ingenieril & 
-La fusión no invasiva de corriente y acelerometría con TinyML en STM32 detecta desgaste crítico ($VB \ge 0.3\,\text{mm}$) en tiempo real. & 
-Capacidad discriminante del clasificador embebido frente a variaciones de régimen de corte. & 
-Exactitud de clasificación $\ge 90\%$, latencia de inferencia $\le 20\,\text{ms}$ y cero invasión en cableado interno.\\ \hline
+La fusión de la corriente eficaz del servomotor de avance ($I_{\text{RMS}}$) con descriptores de aceleración en la torreta ($a_{\text{RMS}}$, curtosis, factor de cresta), clasificada mediante un modelo ligero cuantizado en STM32, identifica tres estados de desgaste ($VB$, ISO 3685) con mejor desempeño que cada variable por separado y sin intervenir el cableado interno ni el control del torno. & 
+Capacidad discriminante de la fusión sensorial frente al desgaste progresivo de flanco. & 
+Exactitud de clasificación global $\ge 90\%$ evaluada mediante matriz de confusión y cero invasión en cableado ni control de máquina.\\ \hline
 
 Variables Independientes & 
 Señales físicas primarias generadas durante la remoción de material en el proceso de torneado. & 
