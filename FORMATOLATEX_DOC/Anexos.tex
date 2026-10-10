@@ -15,6 +15,7 @@
 \renewcommand{\theHtable}{A.\arabic{table}}
 \captionsetup{list=no} % Para que no aparezca en índice de figuras del cuerpo preliminar
 
+\phantomsection
 \subsection*{Anexo 1: Diagrama de bloques funcional de la propuesta de solución mecatrónica}
 \label{anx:diagrama_bloques}
 \addcontentsline{toc}{subsection}{Anexo 1. Diagrama de bloques funcional de la propuesta de solución}
@@ -39,6 +40,7 @@ El presente anexo describe la arquitectura mecatrónica general y la interconexi
 \end{enumerate}
 
 \newpage
+\phantomsection
 \subsection*{Anexo 2: Estimación presupuestaria comparativa con componentes de grado industrial robusto}
 \label{anx:presupuesto_industrial}
 \addcontentsline{toc}{subsection}{Anexo 2. Estimación presupuestaria con componentes de grado industrial}
@@ -105,11 +107,18 @@ Con el propósito de atender las recomendaciones formuladas por el comité docen
 \end{longtable}
 }
 
-\vspace{0.2cm}
+\vspace{0.1cm}
+\enlargethispage{3.5\baselineskip}
+\begingroup
+\setstretch{1.03}
+\setlength{\parskip}{1.0pt}
 El análisis técnico-económico comparativo entre el prototipo experimental, la variante proyectada de grado industrial y las soluciones comerciales del mercado internacional permite sintetizar las siguientes conclusiones de ingeniería:
 
 \begin{itemize}
-    \item \textbf{Pertinencia del prototipo de laboratorio (\$346.15 USD):} Cumple de manera rigurosa con los objetivos académicos y experimentales del proyecto de grado. Permite validar la correlación física de las variables no invasivas, la efectividad del pipeline de extracción estadística y el desempeño del modelo TinyML (exactitud $\ge 90$\%) sin comprometer un presupuesto desmedido ni inducir riesgos de sobrecosto en la fase formativa.
+    \setlength{\itemsep}{1pt}
+    \setlength{\parsep}{0pt}
+    \item \textbf{Pertinencia del prototipo de laboratorio (\$346.15 USD):} Cumple rigurosamente con los objetivos formativos y experimentales del proyecto de grado. Permite validar la correlación física de las variables no invasivas, la efectividad del pipeline de extracción estadística y el desempeño del clasificador TinyML (exactitud $\ge 90$\%) sin comprometer un presupuesto elevado en la etapa formativa.
     \item \textbf{Viabilidad del escalamiento industrial (\$1,145.40 USD):} Proporciona a la empresa colaboradora MAINSA una hoja de ruta técnica concreta para la implementación de un producto de planta permanente. Los componentes seleccionados garantizan inmunidad a fluidos de corte y viruta metálica (IP66/IP68), compatibilidad con la red de 24~VDC del armario eléctrico del torno CNC y un tiempo medio entre fallos (MTBF) compatible con exigencias de producción continua.
-    \item \textbf{Ventaja económica frente a sistemas comerciales cerrados (\$10,000 -- \$30,000 USD):} Aun considerando la totalidad de componentes de grado industrial robusto, la solución periférica proyectada representa un costo aproximado del 4\% al 11\% de los sistemas comerciales propietarios (como Kistler, Marposs o Artis). Esto ratifica una reducción de costos superior al 88\%, posicionando a la propuesta como una alternativa altamente competitiva y transferible para el sector metalmecánico nacional.
+    \item \textbf{Ventaja económica frente a sistemas comerciales cerrados (\$10,000 -- \$30,000 USD):} Aun considerando la totalidad de componentes de grado industrial robusto, la solución periférica proyectada representa un costo aproximado del 4\% al 11\% de los sistemas comerciales propietarios (como Kistler, Marposs o Artis), ratificando una reducción de costos superior al 88\% y posicionando a la propuesta como una alternativa altamente competitiva y transferible para la industria nacional.
 \end{itemize}
+\endgroup
