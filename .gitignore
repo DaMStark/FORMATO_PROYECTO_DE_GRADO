@@ -1,6 +1,7 @@
-﻿## Archivos auxiliares de LaTeX y BibLaTeX
+## Archivos auxiliares de LaTeX y BibLaTeX
 *.aux
 *.bbl
+!1_Documento.bbl
 *.bcf
 *.blg
 *.fdb_latexmk
