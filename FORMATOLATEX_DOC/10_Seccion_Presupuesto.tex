@@ -1,38 +1,24 @@
 \newpage
 \section{PRESUPUESTO}
 
-La viabilidad económica para el diseño, desarrollo y validación experimental del sistema comprende la adquisición de transductores, hardware embebido, placas de circuito impreso, consumibles de taller y servicios metrológicos. En la \tab{presupuesto_detallado} se presenta la estimación presupuestaria desglosada por subsistemas técnicos en \textbf{Dólares Estadounidenses (\$USD)}, incorporando un margen de contingencia técnica y cambiaria del 15\%.
+La viabilidad económica para el diseño, desarrollo y validación experimental del sistema comprende la adquisición de transductores, hardware embebido, placas de circuito impreso, consumibles de taller y servicios metrológicos. En la \tab{presupuesto_detallado} se presenta la estimación presupuestaria preliminar y tentativa desglosada por subsistemas técnicos en \textbf{Dólares Estadounidenses (\$USD)}, incorporando un margen de contingencia técnica y cambiaria del 15\%.
 
-{\footnotesize
-\setstretch{1.0}
-\setlength{\tabcolsep}{3.0pt}
-\renewcommand{\arraystretch}{0.95}
-
-\begin{longtable}{|C{1.0cm}|L{7.4cm}|C{1.4cm}|R{1.8cm}|R{1.8cm}|}
+\begin{table}[H]
+\centering
 \caption{Presupuesto detallado para el desarrollo y validación del proyecto (en \$USD)}
 \label{tab:presupuesto_detallado}
-\\
+\vspace{1.0mm}
+{\scriptsize
+\setstretch{0.95}
+\setlength{\tabcolsep}{2.8pt}
+\renewcommand{\arraystretch}{0.90}
+\begin{tabular}{|C{1.0cm}|L{7.4cm}|C{1.4cm}|R{1.8cm}|R{1.8cm}|}
 \hline
 \textbf{Ítem} & 
 \textbf{Descripción del componente / servicio} & 
 \textbf{Cant.} & 
 \textbf{P. Unit. (\$)} & 
 \textbf{Total (\$)} \\ \hline \hline
-\endfirsthead
-
-\hline
-\textbf{Ítem} & 
-\textbf{Descripción del componente / servicio} & 
-\textbf{Cant.} & 
-\textbf{P. Unit. (\$)} & 
-\textbf{Total (\$)} \\ \hline \hline
-\endhead
-
-\hline
-\endfoot
-
-\hline
-\endlastfoot
 
 \multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{1. Subsistema de sensado e instrumentación analógica}} \\ \hline
 1.1 & Sensor de corriente de núcleo partido no invasivo SCT013-000 (0--100~A) & 2 & 14.50 & 29.00 \\ \hline
@@ -60,14 +46,19 @@ La viabilidad económica para el diseño, desarrollo y validación experimental 
 \multicolumn{2}{|l|}{\textbf{SUBTOTAL DE RECURSOS DIRECTOS}} & \textbf{--} & \textbf{--} & \textbf{301.00} \\ \hline
 \multicolumn{2}{|l|}{\textbf{CONTINGENCIA TÉCNICA Y CAMBIARIA (15\%)}} & \textbf{--} & \textbf{--} & \textbf{45.15} \\ \hline
 \multicolumn{2}{|l|}{\textbf{COSTO TOTAL ESTIMADO DEL PROYECTO (\$USD)}} & \textbf{--} & \textbf{--} & \textbf{346.15} \\ \hline
-\multicolumn{5}{c}{\rule{0pt}{3ex}\textbf{Fuente:} Elaboración propia, 2026.} \\
-\end{longtable}
+\end{tabular}
 }
+\vspace{1.5mm}
+\small \textbf{Fuente:} Elaboración propia, 2026.
+\end{table}
 
-\vspace{0.2cm}
-El costo total estimado para la ejecución integral del proyecto asciende a \textbf{\$346.15 USD}, monto que contempla un margen de reserva prudencial del 15\% (\$45.15 USD) para mitigar variaciones en aranceles o fluctuaciones en la cotización de componentes. La totalidad de los recursos financieros será cubierta por el postulante, en tanto que la empresa colaboradora MAINSA facilitará el acceso a horas de torno CNC, herramientas de sujeción, fluidos refrigerantes y probetas de trabajo complementarias.
+\vspace{0.15cm}
+El costo total estimado para la ejecución experimental del proyecto asciende a \textbf{\$346.15 USD}, contemplando una reserva del 15\% (\$45.15 USD) frente a contingencias y variaciones de cambio. La totalidad de los recursos será asumida por el postulante, mientras que MAINSA facilitará horas de torno CNC, herramientas de sujeción, fluidos refrigerantes y probetas de trabajo. Es indispensable precisar que los costos de la \tab{presupuesto_detallado} poseen un \textbf{carácter preliminar y tentativo}, formulado estrictamente para el prototipo de laboratorio y banco de pruebas; durante la fase de ejecución en Taller de Grado II, estos rubros se contemplarán y reajustarán con mayor cautela analítica mediante cotizaciones comerciales formales.
 
-En términos de viabilidad económica industrial, los sistemas comerciales propietarios de monitoreo de herramientas (TCM) existentes en el mercado global ---basados en dinamómetros de cuarzo multicomponente o consolas cerradas--- demandan inversiones entre los \$10,000 y \$30,000 USD, resultando prohibitivos para maestranzas medianas en Bolivia. El sistema propuesto representa un costo inferior al 3.5\% de una solución comercial, comprobando una alta viabilidad económica, un rápido retorno de inversión y un elevado valor de transferencia tecnológica para la industria manufacturera nacional.
+En términos de viabilidad económica, los sistemas comerciales propietarios de monitoreo de herramientas (TCM) en el mercado internacional ---basados en dinamómetros de cuarzo o consolas cerradas--- demandan entre \$10,000 y \$30,000 USD, resultando prohibitivos para maestranzas bolivianas. El sistema propuesto representa menos del 3.5\% de dicha inversión, demostrando alta viabilidad, rápido retorno y un relevante valor de transferencia tecnológica.
 
-Asimismo, con el propósito de optimizar los recursos sin comprometer la fiabilidad técnica del proyecto, se establece una clara distinción metodológica entre la fase de prototipado experimental y la especificación de grado industrial final. Para la etapa de desarrollo y validación en banco de pruebas y en los ensayos preliminares de planta, se seleccionaron componentes electrónicos de alta disponibilidad comercial en el medio local y bajo costo unitario (tales como transductores SCT-013, placas de desarrollo STM32F4 y acelerómetros MEMS comerciales). No obstante, para garantizar su operación confiable bajo el severo ambiente metalmecánico de MAINSA (presencia de fluido de corte refrigerante a presión, viruta y ruido electromagnético), el diseño periférico incorpora criterios de robustez industrial mediante encapsulados estancos mecanizados con grado de protección IP67, acoplamiento magnético por neodimio N52, aislamiento galvánico de señales analógicas y filtros de compatibilidad electromagnética (EMC). Esta estrategia de ingeniería permite demostrar la funcionalidad metrológica y algorítmica del sistema a una fracción mínima del costo comercial, sentando las bases para su posterior escalamiento a circuitos impresos de integración superficial (SMD) de grado automotriz o industrial.
+Asimismo, se establece una clara distinción metodológica entre la fase de prototipado de laboratorio y la especificación de grado industrial. Para la validación experimental se seleccionaron componentes de alta disponibilidad local y bajo costo (transductores SCT-013, microcontrolador STM32F4 y acelerómetros MEMS), complementados con encapsulados estancos IP67, acoplamiento magnético NdFeB N52, aislamiento galvánico de señales analógicas y filtros EMC. Esta estrategia permite validar la correlación física y el desempeño algorítmico a coste mínimo, sentando las bases para su posterior escalamiento a circuitos SMD industriales.
+
+Atendiendo a las recomendaciones del comité evaluador sobre robustez en planta, en el \textbf{Anexo 2} se presenta de forma complementaria la estimación presupuestaria proyectada con componentes de grado industrial robusto (transductores certificados 4--20~mA, acelerómetro piezoeléctrico IEPE/IP68 en acero inoxidable, acondicionamiento de riel DIN y envolventes IP66). Dicho análisis ratifica que, aun con componentes de máxima exigencia industrial, la solución proyectada conserva un ahorro superior al 88\% frente a los sistemas comerciales de importación.
+
 

@@ -11,6 +11,8 @@
 \setcounter{table}{0}
 \renewcommand{\thefigure}{A.\arabic{figure}}
 \renewcommand{\thetable}{A.\arabic{table}}
+\renewcommand{\theHfigure}{A.\arabic{figure}}
+\renewcommand{\theHtable}{A.\arabic{table}}
 \captionsetup{list=no} % Para que no aparezca en índice de figuras del cuerpo preliminar
 
 \subsection*{Anexo 1: Diagrama de bloques funcional de la propuesta de solución mecatrónica}
@@ -35,3 +37,79 @@ El presente anexo describe la arquitectura mecatrónica general y la interconexi
     \item \textbf{Módulo IV (Cerebro Mecatrónico y Edge AI):} Unidad de procesamiento embebido sobre microcontrolador STM32F4 (ARM Cortex-M4 @ 100~MHz), con adquisición síncrona por DMA multicanal a 12 bits, filtrado digital Butterworth, ventaneo sincrónico activo durante el arranque de viruta ($I_a > I_{\text{vacío}}$), extracción de descriptores estadísticos temporales y frecuenciales ($I_{\text{RMS}}, a_{\text{RMS}}, Ku, CF$) e inferencia determinista ($<15\,\text{ms}$) con clasificador TinyML cuantizado en enteros de 8 bits (INT8) mediante STM32Cube.AI.
     \item \textbf{Módulo V (Supervisión Local y Alerta Visual en Planta):} Despliegue de métricas en panel gráfico local (dashboard) al pie del torno comunicado vía UART/RS485, e indicación luminosa triestado mediante semáforo LED de alta visibilidad: verde (inserto óptimo), amarillo (desgaste funcional moderado) y rojo (alerta crítica de parada preventiva por desgaste de flanco $VB \ge 0.3\,\text{mm}$ según norma ISO 3685).
 \end{enumerate}
+
+\newpage
+\subsection*{Anexo 2: Estimación presupuestaria comparativa con componentes de grado industrial robusto}
+\label{anx:presupuesto_industrial}
+\addcontentsline{toc}{subsection}{Anexo 2. Estimación presupuestaria con componentes de grado industrial}
+
+Con el propósito de atender las recomendaciones formuladas por el comité docente evaluador en relación con la fiabilidad operativa en ambientes hostiles de manufactura y proyectar la industrialización del sistema periférico, se presenta a continuación una estimación presupuestaria comparativa estructurada con componentes de grado industrial de alta robustez. A diferencia del presupuesto principal del proyecto (\tab{presupuesto_detallado}), concebido para la validación experimental y prototipado de laboratorio funcional (\$346.15~USD), la arquitectura proyectada en la \tab{presupuesto_industrial} incorpora sensores con certificación metrológica de fábrica, transductores con inmunidad electromagnética reforzada, cableado industrial con apantallamiento de poliuretano (PUR) resistente a taladrina, acondicionadores de riel DIN y módulos con protección ambiental IP66/IP68. Se reitera que los costos consignados poseen un \textbf{carácter preliminar y tentativo}, debiendo evaluarse y cotizarse formalmente con mayor cautela analítica durante las fases de ingeniería de detalle e implementación en planta (Taller de Grado II).
+
+{\footnotesize
+\setstretch{1.0}
+\setlength{\tabcolsep}{3.0pt}
+\renewcommand{\arraystretch}{0.95}
+
+\begin{longtable}{|C{1.0cm}|L{7.4cm}|C{1.4cm}|R{1.8cm}|R{1.8cm}|}
+\caption{Estimación presupuestaria comparativa con componentes de grado industrial robusto (en \$USD)}
+\label{tab:presupuesto_industrial}
+\\
+\hline
+\textbf{Ítem} & 
+\textbf{Descripción del componente / servicio de grado industrial} & 
+\textbf{Cant.} & 
+\textbf{P. Unit. (\$)} & 
+\textbf{Total (\$)} \\ \hline \hline
+\endfirsthead
+
+\hline
+\textbf{Ítem} & 
+\textbf{Descripción del componente / servicio de grado industrial} & 
+\textbf{Cant.} & 
+\textbf{P. Unit. (\$)} & 
+\textbf{Total (\$)} \\ \hline \hline
+\endhead
+
+\hline
+\endfoot
+
+\hline
+\endlastfoot
+
+\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{1. Subsistema de sensado e instrumentación industrial}} \\ \hline
+1.1 & Transductor de corriente de núcleo partido industrial (LEM / Carlo Gavazzi, 0--50~A, salida normalizada 4--20~mA, aislamiento 3~kV, CE/UL) & 2 & 85.00 & 170.00 \\ \hline
+1.2 & Acelerómetro industrial piezoeléctrico IEPE (Wilcoxon / Hansford Sensors, cápsula inox 316L, IP68 hermético, conector M12/MIL) & 1 & 220.00 & 220.00 \\ \hline
+1.3 & Cable industrial apantallado PUR de alta flexibilidad, resistente a taladrina, aceites y viruta, conector M12 metálico IP68 & 1 lote & 45.00 & 45.00 \\ \hline
+
+\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{2. Subsistema de acondicionamiento, procesamiento y potencia}} \\ \hline
+2.1 & Acondicionador / aislador galvánico de señal para riel DIN (excitación IEPE 2--4~mA, conversión 4--20~mA a 0--3.3~V, filtro activo) & 1 & 95.00 & 95.00 \\ \hline
+2.2 & Módulo embebido industrial para riel DIN (ARM Cortex-M4/M7, 24~VDC, protección EMC IEC 61000-6-4, watchdog por hardware) & 1 & 140.00 & 140.00 \\ \hline
+2.3 & Fuente de alimentación industrial de riel DIN 24~VDC / 2.5~A (Mean Well NDR-60-24, filtro EMI, protección contra sobrecarga) & 1 & 32.00 & 32.00 \\ \hline
+
+\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{3. Envolvente estanca, señalización y supervisión HMI}} \\ \hline
+3.1 & Gabinete industrial de fundición de aluminio inyectado / chapa de acero (grado IP66 / NEMA 4X, prensaestopas metálicos) & 1 & 55.00 & 55.00 \\ \hline
+3.2 & Columna de señalización luminosa LED industrial triestado (verde, ámbar, rojo) de 24~VDC con zumbador acústico y grado IP65 & 1 & 38.00 & 38.00 \\ \hline
+3.3 & Pantalla táctil HMI industrial de 4.3'' para montaje en tablero (frontal IP65, comunicación Modbus RTU / RS485 o Ethernet, 24~VDC) & 1 & 115.00 & 115.00 \\ \hline
+
+\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{4. Materiales fungibles y ensayos de mecanizado en MAINSA}} \\ \hline
+4.1 & Barras cilíndricas de acero aleado AISI 1045 y AISI 4140 para ensayos de corte y calibración & 3 barras & 18.00 & 54.00 \\ \hline
+4.2 & Caja de insertos intercambiables de carburo de tungsteno ISO CNMG 120408 de grado comercial medio & 1 caja & 32.00 & 32.00 \\ \hline
+
+\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{5. Servicios metrológicos y calibración de laboratorio}} \\ \hline
+5.1 & Verificación dimensional de desgaste con microscopía óptica de taller y rugosímetro calibrado según norma ISO 3685 & 1 serv. & 35.00 & 35.00 \\ \hline
+
+\multicolumn{2}{|l|}{\textbf{SUBTOTAL DE RECURSOS DIRECTOS}} & \textbf{--} & \textbf{--} & \textbf{996.00} \\ \hline
+\multicolumn{2}{|l|}{\textbf{CONTINGENCIA TÉCNICA Y CAMBIARIA (15\%)}} & \textbf{--} & \textbf{--} & \textbf{149.40} \\ \hline
+\multicolumn{2}{|l|}{\textbf{COSTO TOTAL ESTIMADO INDUSTRIAL (\$USD)}} & \textbf{--} & \textbf{--} & \textbf{1,145.40} \\ \hline
+\multicolumn{5}{c}{\rule{0pt}{3ex}\textbf{Fuente:} Elaboración propia, 2026.} \\
+\end{longtable}
+}
+
+\vspace{0.2cm}
+El análisis técnico-económico comparativo entre el prototipo experimental, la variante proyectada de grado industrial y las soluciones comerciales del mercado internacional permite sintetizar las siguientes conclusiones de ingeniería:
+
+\begin{itemize}
+    \item \textbf{Pertinencia del prototipo de laboratorio (\$346.15 USD):} Cumple de manera rigurosa con los objetivos académicos y experimentales del proyecto de grado. Permite validar la correlación física de las variables no invasivas, la efectividad del pipeline de extracción estadística y el desempeño del modelo TinyML (exactitud $\ge 90$\%) sin comprometer un presupuesto desmedido ni inducir riesgos de sobrecosto en la fase formativa.
+    \item \textbf{Viabilidad del escalamiento industrial (\$1,145.40 USD):} Proporciona a la empresa colaboradora MAINSA una hoja de ruta técnica concreta para la implementación de un producto de planta permanente. Los componentes seleccionados garantizan inmunidad a fluidos de corte y viruta metálica (IP66/IP68), compatibilidad con la red de 24~VDC del armario eléctrico del torno CNC y un tiempo medio entre fallos (MTBF) compatible con exigencias de producción continua.
+    \item \textbf{Ventaja económica frente a sistemas comerciales cerrados (\$10,000 -- \$30,000 USD):} Aun considerando la totalidad de componentes de grado industrial robusto, la solución periférica proyectada representa un costo aproximado del 4\% al 11\% de los sistemas comerciales propietarios (como Kistler, Marposs o Artis). Esto ratifica una reducción de costos superior al 88\%, posicionando a la propuesta como una alternativa altamente competitiva y transferible para el sector metalmecánico nacional.
+\end{itemize}
