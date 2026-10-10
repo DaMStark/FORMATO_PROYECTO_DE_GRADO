@@ -424,7 +424,8 @@ Cf. \printnames[][-\value{listtotal}]{labelname}
 
 %--------Formato de Tablas----------
 
-\captionsetup[table]{labelfont={bf},labelformat=simple,labelsep=newline,name={Tabla}}
+\captionsetup[table]{labelfont={bf},labelformat=simple,labelsep=newline,name={Tabla},justification=centering}
+\captionsetup[longtable]{labelfont={bf},labelformat=simple,labelsep=newline,name={Tabla},justification=centering}
 
 \newenvironment{tabla}[3][]
     { \begin{table}[!htb]

@@ -22,11 +22,11 @@
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{Figuras/diagrama_bloques_propuesta_solucion.png}
-    \caption{Diagrama de bloques funcional general de la arquitectura mecatrónica periférica para monitoreo no invasivo en tornos CNC}
+    \caption{Sistema periférico mecatrónico no invasivo para monitoreo de condición en torno CNC}\label{fig:anexo_diagrama_bloques}
     \vspace{2mm}
+    \includegraphics[width=0.96\textwidth]{Figuras/anexo_a1_monitoreo.png}
+    \par\vspace{2mm}
     \small \textbf{Fuente:} Elaboración propia, 2026
-    \label{fig:anexo_diagrama_bloques}
 \end{figure}
 
 El presente anexo describe la arquitectura mecatrónica general y la interconexión modular del sistema periférico propuesto al pie de máquina en taller, estructurado en cinco módulos de ingeniería:
@@ -72,10 +72,8 @@ Con el propósito de atender las recomendaciones formuladas por el comité docen
 \textbf{Total (\$)} \\ \hline \hline
 \endhead
 
-\hline
 \endfoot
 
-\hline
 \endlastfoot
 
 \multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{1. Subsistema de sensado e instrumentación industrial}} \\ \hline
@@ -107,18 +105,5 @@ Con el propósito de atender las recomendaciones formuladas por el comité docen
 \end{longtable}
 }
 
-\vspace{0.1cm}
+\vspace{0.35cm}
 \enlargethispage{3.5\baselineskip}
-\begingroup
-\setstretch{1.03}
-\setlength{\parskip}{1.0pt}
-El análisis técnico-económico comparativo entre el prototipo experimental, la variante proyectada de grado industrial y las soluciones comerciales del mercado internacional permite sintetizar las siguientes conclusiones de ingeniería:
-
-\begin{itemize}
-    \setlength{\itemsep}{1pt}
-    \setlength{\parsep}{0pt}
-    \item \textbf{Pertinencia del prototipo de laboratorio (\$346.15 USD):} Cumple rigurosamente con los objetivos formativos y experimentales del proyecto de grado. Permite validar la correlación física de las variables no invasivas, la efectividad del pipeline de extracción estadística y el desempeño del clasificador TinyML (exactitud $\ge 90$\%) sin comprometer un presupuesto elevado en la etapa formativa.
-    \item \textbf{Viabilidad del escalamiento industrial (\$1,145.40 USD):} Proporciona a la empresa colaboradora MAINSA una hoja de ruta técnica concreta para la implementación de un producto de planta permanente. Los componentes seleccionados garantizan inmunidad a fluidos de corte y viruta metálica (IP66/IP68), compatibilidad con la red de 24~VDC del armario eléctrico del torno CNC y un tiempo medio entre fallos (MTBF) compatible con exigencias de producción continua.
-    \item \textbf{Ventaja económica frente a sistemas comerciales cerrados (\$10,000 -- \$30,000 USD):} Aun considerando la totalidad de componentes de grado industrial robusto, la solución periférica proyectada representa un costo aproximado del 4\% al 11\% de los sistemas comerciales propietarios (como Kistler, Marposs o Artis), ratificando una reducción de costos superior al 88\% y posicionando a la propuesta como una alternativa altamente competitiva y transferible para la industria nacional.
-\end{itemize}
-\endgroup
