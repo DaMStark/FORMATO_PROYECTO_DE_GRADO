@@ -30,7 +30,7 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 \multicolumn{3}{c}{\textbf{Fuente:} Elaboración propia, 2026.}
 \endlastfoot
 
-OE1. Investigar las operaciones de mecanizado en torno CNC, los mecanismos de desgaste de herramientas de corte y las tecnologías de inteligencia artificial en el borde (\textit{Edge AI}) orientadas al monitoreo de condición. &
+\textbf{OE1.} Investigar las operaciones de mecanizado en torno CNC, los mecanismos de desgaste de herramientas de corte y las tecnologías de inteligencia artificial en el borde (\textit{Edge AI}) orientadas al monitoreo de condición. &
 • Caracterización de operaciones de torneado CNC y cinemática de corte.\par\vspace{1mm}
 • Análisis de fenomenología del desgaste y patrones de falla según ISO 3685.\par\vspace{1mm}
 • Estudio del estado del arte en monitoreo indirecto (TCM) por corriente y vibración.\par\vspace{1mm}
@@ -40,7 +40,7 @@ OE1. Investigar las operaciones de mecanizado en torno CNC, los mecanismos de de
 • 8.2.3 Monitoreo de condición (TCM) indirecto mediante corriente y acelerometría.\par\vspace{1mm}
 • 8.2.6 Inteligencia artificial en el borde (\textit{Edge AI} / TinyML). \\ \hline
 
-OE2. Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, integrando acondicionamiento de señal, procesamiento en el borde, dashboard e indicador LED. &
+\textbf{OE2.} Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, integrando acondicionamiento de señal, procesamiento en el borde, dashboard e indicador LED. &
 • Definición del diagrama de bloques funcional (adquisición, acondicionamiento y visualización).\par\vspace{1mm}
 • Diseño de circuito acondicionador analógico (rectificación y conversión a nivel RMS).\par\vspace{1mm}
 • Diseño esquemático y ruteo de PCB industrial con aislamiento galvánico.\par\vspace{1mm}
@@ -49,7 +49,7 @@ OE2. Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo,
 • 8.2.5 Procesamiento digital de señales (adquisición determinista).\par\vspace{1mm}
 • 8.2.7 Arquitectura de supervisión local y señalización visual de desgaste. \\ \hline
 
-OE3. Dimensionar los sensores de corriente, vibración y la unidad de procesamiento embebido. &
+\textbf{OE3.} Dimensionar los sensores de corriente, vibración y la unidad de procesamiento embebido. &
 • Dimensionamiento de transductor SCT-013 según potencia del motor de avance del carro.\par\vspace{1mm}
 • Selección del acelerómetro considerando ancho de banda y rango dinámico en torreta.\par\vspace{1mm}
 • Selección de microcontrolador analizando ADC, DMA, FPU, CMSIS-DSP y memoria.\par\vspace{1mm}
@@ -59,7 +59,7 @@ OE3. Dimensionar los sensores de corriente, vibración y la unidad de procesamie
 • 8.2.5 Teorema de Nyquist, filtrado anti-aliasing y arquitectura ARM Cortex-M4.\par\vspace{1mm}
 • 8.2.8 Análisis comparativo y selección de componentes (microcontrolador, corriente y aceleración). \\ \hline
 
-OE4. Integrar el sistema periférico de adquisición, procesamiento inteligente, panel de visualización e indicador LED. &
+\textbf{OE4.} Integrar el sistema periférico de adquisición, procesamiento inteligente, panel de visualización e indicador LED. &
 • Ensamblaje, integración eléctrica y verificación funcional de PCB y gabinete.\par\vspace{1mm}
 • Programación del firmware STM32 para muestreo síncrono DMA y CMSIS-DSP.\par\vspace{1mm}
 • Campaña de mecanizado en MAINSA y construcción de dataset etiquetado.\par\vspace{1mm}
@@ -69,7 +69,7 @@ OE4. Integrar el sistema periférico de adquisición, procesamiento inteligente,
 • 8.2.6 Aprendizaje automático supervisado, cuantización INT8 y despliegue STM32Cube.AI.\par\vspace{1mm}
 • 8.2.7 Interfaz visual de supervisión local e indicadores LED de alerta. \\ \hline
 
-OE5. Validar experimentalmente el funcionamiento del sistema integrado mediante pruebas de corte en los tornos CNC de MAINSA. &
+\textbf{OE5.} Validar experimentalmente el funcionamiento del sistema integrado mediante pruebas de corte en los tornos CNC de MAINSA. &
 • Instalación y calibración no invasiva del sistema periférico en torno CNC de taller.\par\vspace{1mm}
 • Ensayos de torneado cilíndrico con insertos nuevo, desgaste funcional y crítico.\par\vspace{1mm}
 • Medición metrológica de rugosidad ($Ra$) en probetas y verificación dimensional.\par\vspace{1mm}
@@ -200,11 +200,11 @@ En contraste, los métodos indirectos infieren la condición del filo mediante l
 \begin{tabular}{|L{2.7cm}|L{2.8cm}|C{1.8cm}|C{2.0cm}|L{5.0cm}|}
 \hline
 \textbf{Variable Física} & \textbf{Principio de Transducción} & \textbf{Invasividad} & \textbf{Viabilidad en Planta CNC} & \textbf{Evaluación Técnica y Limitaciones} \\ \hline \hline
-Fuerza de corte dinámica ($F_c, F_a, F_r$) & Dinamómetro piezoeléctrico de cuarzo multicomponente & Alta (modifica montaje de torreta) & Muy baja en producción & Máxima fidelidad física, pero costo prohibitivo (>15,000~USD) y reduce rigidez mecánica estructural del torno. \\ \hline
-Corriente de servomotor de avance ($I_a$) & Transformador de corriente de núcleo partido (SCT-013) & Nula (no invasivo, sobre cable) & Alta & Alta sensibilidad a fuerzas de avance y repulsión; inmune a taladrina; aislamiento galvánico natural. \\ \hline
-Aceleración / Vibración mecánica & Acelerómetro MEMS con base magnética & Nula (adhesión magnética en torreta) & Alta & Elevada sensibilidad a fricción y microfractura; requiere encapsulado estanco IP67 frente a taladrina. \\ \hline
-Emisión acústica (AE) & Sensor piezoeléctrico de alta frecuencia (>100~kHz) & Baja / Media & Media & Detecta agrietamiento incipiente, pero requiere tasas de muestreo de megamuestras/s (inviable en Edge AI de bajo costo). \\ \hline
-Temperatura en la herramienta & Termopares incrustados o pirómetros infrarrojos & Media / Alta & Muy baja con refrigerante & Termopares debilitan el portaherramientas; niebla de taladrina a presión bloquea la radiación infrarroja y falsea lecturas. \\ \hline
+\textbf{Fuerza de corte dinámica ($F_c, F_a, F_r$)} & Dinamómetro piezoeléctrico de cuarzo multicomponente & Alta (modifica montaje de torreta) & Muy baja en producción & Máxima fidelidad física, pero costo prohibitivo (>15,000~USD) y reduce rigidez mecánica estructural del torno. \\ \hline
+\textbf{Corriente de servomotor de avance ($I_a$)} & Transformador de corriente de núcleo partido (SCT-013) & Nula (no invasivo, sobre cable) & Alta & Alta sensibilidad a fuerzas de avance y repulsión; inmune a taladrina; aislamiento galvánico natural. \\ \hline
+\textbf{Aceleración / Vibración mecánica} & Acelerómetro MEMS con base magnética & Nula (adhesión magnética en torreta) & Alta & Elevada sensibilidad a fricción y microfractura; requiere encapsulado estanco IP67 frente a taladrina. \\ \hline
+\textbf{Emisión acústica (AE)} & Sensor piezoeléctrico de alta frecuencia (>100~kHz) & Baja / Media & Media & Detecta agrietamiento incipiente, pero requiere tasas de muestreo de megamuestras/s (inviable en Edge AI de bajo costo). \\ \hline
+\textbf{Temperatura en la herramienta} & Termopares incrustados o pirómetros infrarrojos & Media / Alta & Muy baja con refrigerante & Termopares debilitan el portaherramientas; niebla de taladrina a presión bloquea la radiación infrarroja y falsea lecturas. \\ \hline
 \end{tabular}%
 }
 \par\vspace{1mm}
