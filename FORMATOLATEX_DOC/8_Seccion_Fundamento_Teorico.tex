@@ -30,7 +30,7 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 \multicolumn{3}{c}{\textbf{Fuente:} Elaboración propia, 2026.}
 \endlastfoot
 
-\textbf{OE1.} Investigar las operaciones de mecanizado en torno CNC, los mecanismos de desgaste de herramientas de corte y las tecnologías de inteligencia artificial en el borde (\textit{Edge AI}) orientadas al monitoreo de condición. &
+OE1. Investigar las operaciones de mecanizado en torno CNC, los mecanismos de desgaste de herramientas de corte y las tecnologías de inteligencia artificial en el borde (\textit{Edge AI}) orientadas al monitoreo de condición. &
 • Caracterización de operaciones de torneado CNC y cinemática de corte.\par\vspace{1mm}
 • Análisis de fenomenología del desgaste y patrones de falla según ISO 3685.\par\vspace{1mm}
 • Estudio del estado del arte en monitoreo indirecto (TCM) por corriente y vibración.\par\vspace{1mm}
@@ -40,7 +40,7 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 • 8.2.3 Monitoreo de condición (TCM) indirecto mediante corriente y acelerometría.\par\vspace{1mm}
 • 8.2.6 Inteligencia artificial en el borde (\textit{Edge AI} / TinyML). \\ \hline
 
-\textbf{OE2.} Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, integrando acondicionamiento de señal, procesamiento en el borde, dashboard e indicador LED. &
+OE2. Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, integrando acondicionamiento de señal, procesamiento en el borde, dashboard e indicador LED. &
 • Definición del diagrama de bloques funcional (adquisición, acondicionamiento y visualización).\par\vspace{1mm}
 • Diseño de circuito acondicionador analógico (rectificación y conversión a nivel RMS).\par\vspace{1mm}
 • Diseño esquemático y ruteo de PCB industrial con aislamiento galvánico.\par\vspace{1mm}
@@ -49,7 +49,7 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 • 8.2.5 Procesamiento digital de señales (adquisición determinista).\par\vspace{1mm}
 • 8.2.7 Arquitectura de supervisión local y señalización visual de desgaste. \\ \hline
 
-\textbf{OE3.} Dimensionar los sensores de corriente, vibración y la unidad de procesamiento embebido. &
+OE3. Dimensionar los sensores de corriente, vibración y la unidad de procesamiento embebido. &
 • Dimensionamiento de transductor SCT-013 según potencia del motor de avance del carro.\par\vspace{1mm}
 • Selección del acelerómetro considerando ancho de banda y rango dinámico en torreta.\par\vspace{1mm}
 • Selección de microcontrolador analizando ADC, DMA, FPU, CMSIS-DSP y memoria.\par\vspace{1mm}
@@ -59,7 +59,7 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 • 8.2.5 Teorema de Nyquist, filtrado anti-aliasing y arquitectura ARM Cortex-M4.\par\vspace{1mm}
 • 8.2.8 Análisis comparativo y selección de componentes (microcontrolador, corriente y aceleración). \\ \hline
 
-\textbf{OE4.} Integrar el sistema periférico de adquisición, procesamiento inteligente, panel de visualización e indicador LED. &
+OE4. Integrar el sistema periférico de adquisición, procesamiento inteligente, panel de visualización e indicador LED. &
 • Ensamblaje, integración eléctrica y verificación funcional de PCB y gabinete.\par\vspace{1mm}
 • Programación del firmware STM32 para muestreo síncrono DMA y CMSIS-DSP.\par\vspace{1mm}
 • Campaña de mecanizado en MAINSA y construcción de dataset etiquetado.\par\vspace{1mm}
@@ -69,7 +69,7 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 • 8.2.6 Aprendizaje automático supervisado, cuantización INT8 y despliegue STM32Cube.AI.\par\vspace{1mm}
 • 8.2.7 Interfaz visual de supervisión local e indicadores LED de alerta. \\ \hline
 
-\textbf{OE5.} Validar experimentalmente el funcionamiento del sistema integrado mediante pruebas de corte en los tornos CNC de MAINSA. &
+OE5. Validar experimentalmente el funcionamiento del sistema integrado mediante pruebas de corte en los tornos CNC de MAINSA. &
 • Instalación y calibración no invasiva del sistema periférico en torno CNC de taller.\par\vspace{1mm}
 • Ensayos de torneado cilíndrico con insertos nuevo, desgaste funcional y crítico.\par\vspace{1mm}
 • Medición metrológica de rugosidad ($Ra$) en probetas y verificación dimensional.\par\vspace{1mm}
@@ -200,11 +200,11 @@ En contraste, los métodos indirectos infieren la condición del filo mediante l
 \begin{tabular}{|L{2.7cm}|L{2.8cm}|C{1.8cm}|C{2.0cm}|L{5.0cm}|}
 \hline
 \textbf{Variable Física} & \textbf{Principio de Transducción} & \textbf{Invasividad} & \textbf{Viabilidad en Planta CNC} & \textbf{Evaluación Técnica y Limitaciones} \\ \hline \hline
-\textbf{Fuerza de corte dinámica ($F_c, F_a, F_r$)} & Dinamómetro piezoeléctrico de cuarzo multicomponente & Alta (modifica montaje de torreta) & Muy baja en producción & Máxima fidelidad física, pero costo prohibitivo (>15,000~USD) y reduce rigidez mecánica estructural del torno. \\ \hline
-\textbf{Corriente de servomotor de avance ($I_a$)} & Transformador de corriente de núcleo partido (SCT-013) & Nula (no invasivo, sobre cable) & Alta & Alta sensibilidad a fuerzas de avance y repulsión; inmune a taladrina; aislamiento galvánico natural. \\ \hline
-\textbf{Aceleración / Vibración mecánica} & Acelerómetro MEMS con base magnética & Nula (adhesión magnética en torreta) & Alta & Elevada sensibilidad a fricción y microfractura; requiere encapsulado estanco IP67 frente a taladrina. \\ \hline
-\textbf{Emisión acústica (AE)} & Sensor piezoeléctrico de alta frecuencia (>100~kHz) & Baja / Media & Media & Detecta agrietamiento incipiente, pero requiere tasas de muestreo de megamuestras/s (inviable en Edge AI de bajo costo). \\ \hline
-\textbf{Temperatura en la herramienta} & Termopares incrustados o pirómetros infrarrojos & Media / Alta & Muy baja con refrigerante & Termopares debilitan el portaherramientas; niebla de taladrina a presión bloquea la radiación infrarroja y falsea lecturas. \\ \hline
+Fuerza de corte dinámica ($F_c, F_a, F_r$) & Dinamómetro piezoeléctrico de cuarzo multicomponente & Alta (modifica montaje de torreta) & Muy baja en producción & Máxima fidelidad física, pero costo prohibitivo (>15,000~USD) y reduce rigidez mecánica estructural del torno. \\ \hline
+Corriente de servomotor de avance ($I_a$) & Transformador de corriente de núcleo partido (SCT-013) & Nula (no invasivo, sobre cable) & Alta & Alta sensibilidad a fuerzas de avance y repulsión; inmune a taladrina; aislamiento galvánico natural. \\ \hline
+Aceleración / Vibración mecánica & Acelerómetro MEMS con base magnética & Nula (adhesión magnética en torreta) & Alta & Elevada sensibilidad a fricción y microfractura; requiere encapsulado estanco IP67 frente a taladrina. \\ \hline
+Emisión acústica (AE) & Sensor piezoeléctrico de alta frecuencia (>100~kHz) & Baja / Media & Media & Detecta agrietamiento incipiente, pero requiere tasas de muestreo de megamuestras/s (inviable en Edge AI de bajo costo). \\ \hline
+Temperatura en la herramienta & Termopares incrustados o pirómetros infrarrojos & Media / Alta & Muy baja con refrigerante & Termopares debilitan el portaherramientas; niebla de taladrina a presión bloquea la radiación infrarroja y falsea lecturas. \\ \hline
 \end{tabular}%
 }
 \par\vspace{1mm}
@@ -214,7 +214,7 @@ En contraste, los métodos indirectos infieren la condición del filo mediante l
 
 Tal como se desprende de la \tab{comparativa_variables_tcm}, la medición de temperatura en la zona de corte, a pesar de su evidente relación termodinámica con la fricción del filo, resulta inviable en tornos CNC de producción real que operan con flujo continuo de taladrina a alta presión (3 a 6~bar). La niebla densa de refrigerante y el vapor bloquean la línea de visión de pirómetros ópticos o cámaras térmicas infrarrojas, mientras que el fluido genera un enfriamiento violento y discontinuo en la superficie externa que enmascara el gradiente térmico real del filo. Asimismo, la inserción de termopares requiere perforar el portaherramientas o el inserto, vulnerando el principio rector de no invasividad y comprometiendo la rigidez mecánica. 
 
-No obstante, la influencia del factor temporal en la degradación térmica y tribológica se incorpora en la presente investigación a través del seguimiento del \textbf{tiempo acumulado de corte activo ($t_{\text{corte}}$)}. Este parámetro contextual se registra en el firmware y se supervisa en el panel local, correlacionándose con el modelo empírico de vida útil de Taylor ($v_c \cdot T^n = C$), lo que complementa de manera determinista la inferencia dinámica de los modelos inteligentes.
+No obstante, la influencia del factor temporal en la degradación térmica y tribológica se incorpora en la presente investigación a través del seguimiento del tiempo acumulado de corte activo ($t_{\text{corte}}$). Este parámetro contextual se registra en el firmware y se supervisa en el panel local, correlacionándose con el modelo empírico de vida útil de Taylor ($v_c \cdot T^n = C$), lo que complementa de manera determinista la inferencia dinámica de los modelos inteligentes.
 
 En virtud de estas consideraciones, la arquitectura del proyecto se fundamenta en la fusión sensorial de dos magnitudes indirectas plenamente viables y complementarias: la corriente eléctrica consumida por el servomotor de avance del carro portaherramientas y la vibración mecánica capturada en la torreta portaherramientas.
 
@@ -265,10 +265,10 @@ En la \fig{circuito_offset_forma_onda} se ilustra el esquema de principio del ci
 Para garantizar la comprensión rigurosa de la evolución de la magnitud eléctrica a través de la cadena física de medición, en la \fig{etapas_rectificacion_acondicionamiento} se detalla de forma secuencial la forma de onda registrada tras cada componente individual del circuito:
 
 \begin{enumerate}[leftmargin=0.8cm]
-    \item \textbf{Etapa 1 (Conductor del servomotor):} Corriente alterna pura de fase $i_{\text{ac}}(t)$, de naturaleza bipolar simétrica con amplitudes de hasta $\pm 8.5\,\text{A}$, portadora de armónicos de conmutación de los transistores IGBT del servodriver.
-    \item \textbf{Etapa 2 (Terminales de la resistencia Burden $R_B$):} Tensión alterna reducida $v_{\text{burden}}(t)$ proporcional a la corriente primaria (con amplitud típica de $\pm 1.0\,\text{V}$). Aunque se encuentra escalada en magnitud, conserva semiciclos negativos que impiden su conexión directa al microcontrolador.
-    \item \textbf{Etapa 3 (Salida de la red de desplazamiento DC Bias):} Señal alterna desplazada verticalmente en $+1.65\,\text{V}$, oscilando íntegramente en el rango de tensión positiva entre $0.65\,\text{V}$ y $2.65\,\text{V}$, manteniendo un margen de guarda de $0.65\,\text{V}$ respecto a los raíles de alimentación (0~V y 3.3~V).
-    \item \textbf{Etapa 4 (Etapa de rectificación de precisión y filtrado pasivo True-RMS):} A través de un amplificador operacional (LM358) configurado como seguidor de baja impedancia y un filtro activo paso bajo de segundo orden, se atenúa el rizado de alta frecuencia y se extrae el valor eficaz continuo proporcional a $I_{\text{RMS}}$, entregando una tensión continua pura y libre de ruido al canal de muestreo analógico de 12 bits.
+    \item Etapa 1 (Conductor del servomotor): Corriente alterna pura de fase $i_{\text{ac}}(t)$, de naturaleza bipolar simétrica con amplitudes de hasta $\pm 8.5\,\text{A}$, portadora de armónicos de conmutación de los transistores IGBT del servodriver.
+    \item Etapa 2 (Terminales de la resistencia Burden $R_B$): Tensión alterna reducida $v_{\text{burden}}(t)$ proporcional a la corriente primaria (con amplitud típica de $\pm 1.0\,\text{V}$). Aunque se encuentra escalada en magnitud, conserva semiciclos negativos que impiden su conexión directa al microcontrolador.
+    \item Etapa 3 (Salida de la red de desplazamiento DC Bias): Señal alterna desplazada verticalmente en $+1.65\,\text{V}$, oscilando íntegramente en el rango de tensión positiva entre $0.65\,\text{V}$ y $2.65\,\text{V}$, manteniendo un margen de guarda de $0.65\,\text{V}$ respecto a los raíles de alimentación (0~V y 3.3~V).
+    \item Etapa 4 (Etapa de rectificación de precisión y filtrado pasivo True-RMS): A través de un amplificador operacional (LM358) configurado como seguidor de baja impedancia y un filtro activo paso bajo de segundo orden, se atenúa el rizado de alta frecuencia y se extrae el valor eficaz continuo proporcional a $I_{\text{RMS}}$, entregando una tensión continua pura y libre de ruido al canal de muestreo analógico de 12 bits.
 \end{enumerate}
 
 \figura[width=0.92\textwidth]{etapas_rectificacion_acondicionamiento}{Evolución temporal de la señal de corriente tras cada etapa de acondicionamiento analógico y rectificación de valor eficaz para el convertidor analógico-digital (ADC)}{Elaboración propia, 2026}
@@ -281,16 +281,16 @@ De forma complementaria a la corriente, las vibraciones mecánicas registradas e
 Uno de los desafíos técnicos más críticos en el monitoreo vibratorio en entornos industriales reales radica en la presencia de vibraciones mecánicas espurias originadas por fuentes ajenas al proceso de corte, tales como el desbalanceo del cabezal principal, la holgura en rodamientos, el engranamiento de transmisiones y la excitación de los propios motores del torno. Para asegurar que el sistema discrimine con precisión las vibraciones atribuibles exclusivamente a la degradación del inserto, se implementan cuatro estrategias de ingeniería complementarias:
 
 \begin{enumerate}[leftmargin=0.8cm]
-    \item \textbf{Camino de transmisión acústica directo:} El acelerómetro se fija rígidamente sobre la estructura ferrosa de la torreta portaherramientas, a escasos centímetros del vástago porta-insertos. Dado que las vibraciones mecánicas se atenúan exponencialmente al atravesar interfaces mecánicas desacopladas (guías lineales, bancada y juntas de unión), la torreta actúa como un filtro espacial natural, maximizando la relación de amplitud entre la señal del filo y el ruido de fondo transmitido desde el cabezal del torno.
+    \item Camino de transmisión acústica directo: El acelerómetro se fija rígidamente sobre la estructura ferrosa de la torreta portaherramientas, a escasos centímetros del vástago porta-insertos. Dado que las vibraciones mecánicas se atenúan exponencialmente al atravesar interfaces mecánicas desacopladas (guías lineales, bancada y juntas de unión), la torreta actúa como un filtro espacial natural, maximizando la relación de amplitud entre la señal del filo y el ruido de fondo transmitido desde el cabezal del torno.
     
-    \item \textbf{Discriminación espectral por bandas de frecuencia:} Las vibraciones parásitas de máquina se concentran de manera predominante en la banda de bajas frecuencias (típicamente entre 10~Hz y 1000~Hz), correspondientes a la frecuencia de giro del husillo $f_{\text{rot}} = N/60$, armónicos de desbalance y frecuencias de paso de dientes de engranajes. En contraposición, los fenómenos tribológicos asociados al desgaste de flanco abrasivo y adhesivo excitan resonancias estructurales del conjunto portaherramientas en la banda media y alta, comprendida entre 2~kHz y 8~kHz \citep{trejo2010, jia2025}. El filtrado digital paso banda implementado aísla selectivamente este rango de frecuencias útiles.
+    \item Discriminación espectral por bandas de frecuencia: Las vibraciones parásitas de máquina se concentran de manera predominante en la banda de bajas frecuencias (típicamente entre 10~Hz y 1000~Hz), correspondientes a la frecuencia de giro del husillo $f_{\text{rot}} = N/60$, armónicos de desbalance y frecuencias de paso de dientes de engranajes. En contraposición, los fenómenos tribológicos asociados al desgaste de flanco abrasivo y adhesivo excitan resonancias estructurales del conjunto portaherramientas en la banda media y alta, comprendida entre 2~kHz y 8~kHz \citep{trejo2010, jia2025}. El filtrado digital paso banda implementado aísla selectivamente este rango de frecuencias útiles.
     
-    \item \textbf{Uso de descriptores estadísticos impulsivos:} Las vibraciones de rotación de la máquina presentan un comportamiento predominantemente armónico y estacionario (distribución cuasi-gaussiana con Curtosis $Ku \approx 3$). Por el contrario, el frotamiento irregular del filo desgastado y el desprendimiento de micropartículas generan impactos transitorios no gaussianos que disparan el valor de la Curtosis ($Ku > 4.5$) y el Factor de Cresta ($CF$). Estos indicadores permiten discriminar la condición del inserto independientemente de la amplitud de vibración basal de la máquina.
+    \item Uso de descriptores estadísticos impulsivos: Las vibraciones de rotación de la máquina presentan un comportamiento predominantemente armónico y estacionario (distribución cuasi-gaussiana con Curtosis $Ku \approx 3$). Por el contrario, el frotamiento irregular del filo desgastado y el desprendimiento de micropartículas generan impactos transitorios no gaussianos que disparan el valor de la Curtosis ($Ku > 4.5$) y el Factor de Cresta ($CF$). Estos indicadores permiten discriminar la condición del inserto independientemente de la amplitud de vibración basal de la máquina.
     
-    \item \textbf{Ventaneo sincrónico gobernado por corriente de corte activo:} El algoritmo de procesamiento en el borde condiciona la adquisición y el cálculo de descriptores vibratorios al estado de corte efectivo. Únicamente cuando la corriente del servomotor de avance supera el umbral característico de acoplamiento de carga ($I_a > I_{\text{vacío}}$), el microcontrolador valida la ventana de datos de aceleración, descartando automáticamente vibraciones parásitas registradas durante fases de aproximación rápida en vacío (código G00) o detenciones de ciclo.
+    \item Ventaneo sincrónico gobernado por corriente de corte activo: El algoritmo de procesamiento en el borde condiciona la adquisición y el cálculo de descriptores vibratorios al estado de corte efectivo. Únicamente cuando la corriente del servomotor de avance supera el umbral característico de acoplamiento de carga ($I_a > I_{\text{vacío}}$), el microcontrolador valida la ventana de datos de aceleración, descartando automáticamente vibraciones parásitas registradas durante fases de aproximación rápida en vacío (código G00) o detenciones de ciclo.
 \end{enumerate}
 
-El montaje físico del acelerómetro sobre la torreta portaherramientas se resuelve mediante una carcasa de encapsulado hermético con grado de protección industrial \textbf{IP67}, mecanizada en aleación de aluminio o polímero técnico resistente a hidrocarburos, y dotada de una base magnética integrada por imanes permanentes de neodimio de alto rendimiento (grado N52). Esta configuración asegura un acoplamiento acústico rígido de alta rigidez estática y dinámica, inmune al flujo continuo de taladrina a alta presión y a la proyección de viruta caliente, preservando plenamente la condición de no invasividad al no exigir taladros ni adhesivos permanentes sobre la máquina herramienta de MAINSA.
+El montaje físico del acelerómetro sobre la torreta portaherramientas se resuelve mediante una carcasa de encapsulado hermético con grado de protección industrial IP67, mecanizada en aleación de aluminio o polímero técnico resistente a hidrocarburos, y dotada de una base magnética integrada por imanes permanentes de neodimio de alto rendimiento (grado N52). Esta configuración asegura un acoplamiento acústico rígido de alta rigidez estática y dinámica, inmune al flujo continuo de taladrina a alta presión y a la proyección de viruta caliente, preservando plenamente la condición de no invasividad al no exigir taladros ni adhesivos permanentes sobre la máquina herramienta de MAINSA.
 
 \subsubsection{Procesamiento digital de señales (DSP) en entornos industriales}
 
@@ -356,25 +356,25 @@ Conforme a las buenas prácticas de diseño en ingeniería mecatrónica y a las 
 \paragraph{A. Unidad de procesamiento embebido y ejecución de TinyML}
 Se contrastaron tres alternativas de microcontroladores de amplia difusión industrial:
 \begin{itemize}
-    \item \textbf{STM32F411 / Nucleo-F401RE (ARM Cortex-M4 @ 84--100 MHz):} Incorpora unidad de punto flotante (FPU), controlador DMA multicanal e instrucciones DSP dedicadas (CMSIS-DSP). Posee soporte nativo para compresión y cuantización INT8 mediante STM32Cube.AI, logrando inferencias deterministas en menos de 15~ms sin latencias de red. \textit{Opción seleccionada para el procesamiento analítico y la inferencia en el borde.}
-    \item \textbf{ESP32 (Xtensa Dual-Core @ 240 MHz):} Ofrece conectividad Wi-Fi y Bluetooth nativa; sin embargo, su convertidor ADC interno presenta severas no-linealidades (especialmente por debajo de 0.1~V y por encima de 2.6~V) y el RTOS de conectividad interrumpe el determinismo temporal del muestreo periódico. Por tal motivo, \textit{se descarta para tareas duras de muestreo y DSP, destinándolo opcionalmente como controlador auxiliar de visualización.}
-    \item \textbf{ATmega328P (Arquitectura AVR @ 16 MHz):} Microcontrolador clásico de 8 bits sin FPU ni instrucciones DSP. Su baja tasa de muestreo analógico (máximo 15~kSPS a 10 bits) y su limitada memoria (2~KB SRAM) lo hacen completamente inviable para alojar buffers DMA y modelos de clasificación inteligente. \textit{Opción descartada.}
+    \item STM32F411 / Nucleo-F401RE (ARM Cortex-M4 @ 84--100 MHz): Incorpora unidad de punto flotante (FPU), controlador DMA multicanal e instrucciones DSP dedicadas (CMSIS-DSP). Posee soporte nativo para compresión y cuantización INT8 mediante STM32Cube.AI, logrando inferencias deterministas en menos de 15~ms sin latencias de red. \textit{Opción seleccionada para el procesamiento analítico y la inferencia en el borde.}
+    \item ESP32 (Xtensa Dual-Core @ 240 MHz): Ofrece conectividad Wi-Fi y Bluetooth nativa; sin embargo, su convertidor ADC interno presenta severas no-linealidades (especialmente por debajo de 0.1~V y por encima de 2.6~V) y el RTOS de conectividad interrumpe el determinismo temporal del muestreo periódico. Por tal motivo, \textit{se descarta para tareas duras de muestreo y DSP, destinándolo opcionalmente como controlador auxiliar de visualización.}
+    \item ATmega328P (Arquitectura AVR @ 16 MHz): Microcontrolador clásico de 8 bits sin FPU ni instrucciones DSP. Su baja tasa de muestreo analógico (máximo 15~kSPS a 10 bits) y su limitada memoria (2~KB SRAM) lo hacen completamente inviable para alojar buffers DMA y modelos de clasificación inteligente. \textit{Opción descartada.}
 \end{itemize}
 
 \paragraph{B. Sensor de corriente para monitoreo no invasivo en el carro portaherramientas}
 Se analizaron tres tecnologías de transducción de corriente eléctrica alterna para el monitoreo del accionamiento de avance del carro:
 \begin{itemize}
-    \item \textbf{Sensor de núcleo partido SCT-013-000 (0--100 A):} Basado en acoplamiento magnético inductivo. Su pinza abisagrada permite abrazar el conductor de fase del servomotor de avance del carro portaherramientas sin seccionar el cableado ni alterar la instalación interna del torno CNC, cumpliendo con la exigencia de cero invasividad impuesta por MAINSA. \textit{Opción seleccionada para operación industrial en planta.}
-    \item \textbf{Sensor de efecto Hall integrado ACS712-20A:} Dispositivo galvanicamente aislado con ancho de banda de 80~kHz, adecuado para la captura detallada de microperturbaciones de torque en régimen transitorio en bancos de prueba y tableros accesibles. \textit{Opción seleccionada como sensor complementario de validación en laboratorio.}
-    \item \textbf{Resistencia Shunt de potencia:} Exige cortar el conductor de fase e intercalar un resistor de bajo ohmiaje, disipando calor y careciendo de aislamiento galvánico intrínseco. \textit{Opción descartada por representar un riesgo operacional y violar el principio de no invasividad.}
+    \item Sensor de núcleo partido SCT-013-000 (0--100 A): Basado en acoplamiento magnético inductivo. Su pinza abisagrada permite abrazar el conductor de fase del servomotor de avance del carro portaherramientas sin seccionar el cableado ni alterar la instalación interna del torno CNC, cumpliendo con la exigencia de cero invasividad impuesta por MAINSA. \textit{Opción seleccionada para operación industrial en planta.}
+    \item Sensor de efecto Hall integrado ACS712-20A: Dispositivo galvanicamente aislado con ancho de banda de 80~kHz, adecuado para la captura detallada de microperturbaciones de torque en régimen transitorio en bancos de prueba y tableros accesibles. \textit{Opción seleccionada como sensor complementario de validación en laboratorio.}
+    \item Resistencia Shunt de potencia: Exige cortar el conductor de fase e intercalar un resistor de bajo ohmiaje, disipando calor y careciendo de aislamiento galvánico intrínseco. \textit{Opción descartada por representar un riesgo operacional y violar el principio de no invasividad.}
 \end{itemize}
 
 \paragraph{C. Sensor de aceleración para vibración mecánica en torreta}
 Se evaluaron tres variantes de sensado inercial:
 \begin{itemize}
-    \item \textbf{ADXL345 (Digital MEMS triaxial de Analog Devices):} Comunicación digital mediante bus SPI a 5~MHz y tasa de datos de salida (ODR) de hasta 3200~Hz ($BW = 1600\,\text{Hz}$), resolución de 13 bits y bajo consumo. Su inmunidad al ruido y su enlace SPI determinista lo convierten en la \textit{opción seleccionada para captura de vibración en la torreta portaherramientas.}
-    \item \textbf{MPU-6050 (Acelerómetro + Giroscopio MEMS):} Opera únicamente mediante bus I2C (máximo 400~kHz), susceptible a bloqueos de bus por transitorios electromagnéticos (EMI) severos producidos por los servodrivers del torno. \textit{Opción descartada.}
-    \item \textbf{Acelerómetro piezoeléctrico industrial IEPE:} Proporciona ancho de banda superior (>10~kHz) pero exige acondicionadores de señal costosos y cables coaxiales especializados, elevando el presupuesto individual a más de \$350~USD. \textit{Opción descartada por inviabilidad económica.}
+    \item ADXL345 (Digital MEMS triaxial de Analog Devices): Comunicación digital mediante bus SPI a 5~MHz y tasa de datos de salida (ODR) de hasta 3200~Hz ($BW = 1600\,\text{Hz}$), resolución de 13 bits y bajo consumo. Su inmunidad al ruido y su enlace SPI determinista lo convierten en la \textit{opción seleccionada para captura de vibración en la torreta portaherramientas.}
+    \item MPU-6050 (Acelerómetro + Giroscopio MEMS): Opera únicamente mediante bus I2C (máximo 400~kHz), susceptible a bloqueos de bus por transitorios electromagnéticos (EMI) severos producidos por los servodrivers del torno. \textit{Opción descartada.}
+    \item Acelerómetro piezoeléctrico industrial IEPE: Proporciona ancho de banda superior (>10~kHz) pero exige acondicionadores de señal costosos y cables coaxiales especializados, elevando el presupuesto individual a más de \$350~USD. \textit{Opción descartada por inviabilidad económica.}
 \end{itemize}
 
 En la \fig{adxl345_composicion_acelerometro} se presenta el dispositivo ADXL345 seleccionado y su disposición tridimensional de medición. Como se observa en el panel (a), el sensor cuenta con un factor de forma ultra compacto que permite su alojamiento dentro de una cápsula estanca IP67 con base magnética de neodimio N52. El panel (b) ilustra los tres ejes ortogonales de sensibilidad: el eje $+X$ se hace coincidir con la dirección radial de penetración ($F_r$), el eje $+Y$ con la dirección tangencial o de fuerza principal de corte ($F_c$), y el eje $+Z$ con la dirección longitudinal de avance del carro ($F_a$), garantizando la detección integral de la dinámica tribomecánica de remoción.

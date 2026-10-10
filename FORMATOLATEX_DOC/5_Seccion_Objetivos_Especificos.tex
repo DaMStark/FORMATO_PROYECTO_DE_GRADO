@@ -32,33 +32,33 @@ Con el propósito de operativizar cada uno de los objetivos específicos y detal
 \multicolumn{2}{c}{\textbf{Fuente:} Elaboración propia, 2026.}
 \endlastfoot
 
-\textbf{OE1.} Investigar la operación de mecanizado en torno CNC (cilindrado longitudinal), los mecanismos de desgaste de herramientas de corte y las tecnologías de inteligencia artificial en el borde (\textit{Edge AI}) orientadas al monitoreo de condición. & 
+OE1. Investigar la operación de mecanizado en torno CNC (cilindrado longitudinal), los mecanismos de desgaste de herramientas de corte y las tecnologías de inteligencia artificial en el borde (\textit{Edge AI}) orientadas al monitoreo de condición. & 
 • Revisión y caracterización de la operación de torneado CNC (cilindrado longitudinal) y cinemática de corte.\par\vspace{1mm}
 • Análisis de la fenomenología del desgaste de herramientas y patrones de falla según la norma ISO 3685.\par\vspace{1mm}
 • Estudio del estado del arte en sistemas de monitoreo indirecto de herramientas (TCM) mediante corriente y vibración.\par\vspace{1mm}
 • Evaluación de tecnologías de Inteligencia Artificial en el borde (\textit{Edge AI} / TinyML) y plataformas embebidas.\\ \hline
 
-\textbf{OE2.} Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, integrando acondicionamiento de señal, procesamiento en el borde, visualización en dashboard e indicador LED. & 
+OE2. Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, integrando acondicionamiento de señal, procesamiento en el borde, visualización en dashboard e indicador LED. & 
 • Definición del diagrama de bloques funcional (adquisición, acondicionamiento, procesamiento, panel de visualización y circuito de alerta visual por LED).\par\vspace{1mm}
 • Diseño del circuito de acondicionamiento para rectificación y conversión a niveles proporcionales al valor eficaz (RMS).\par\vspace{1mm}
 • Diseño esquemático y ruteo de la placa de circuito impreso (PCB) con aislamiento galvánico industrial.\par\vspace{1mm}
 • Concepción del gabinete principal y especificación de la carcasa estanca IP67 con base imantada de neodimio para el acelerómetro en la torreta (quedando el modelado CAD detallado de la caja imantada como tarea de ingeniería de implementación).\\ \hline
 
-\textbf{OE3.} Dimensionar los sensores de corriente, vibración y la unidad de procesamiento embebido. & 
+OE3. Dimensionar los sensores de corriente, vibración y la unidad de procesamiento embebido. & 
 • Dimensionamiento del rango de medición y relación de transformación del transductor de corriente según la potencia del motor.\par\vspace{1mm}
 • Selección del acelerómetro considerando sensibilidad, ancho de banda y rango dinámico de vibración en la torreta.\par\vspace{1mm}
 • Selección del microcontrolador evaluando periféricos ADC, DMA, instrucciones DSP y memoria requerida.\par\vspace{1mm}
 • Cálculo y selección de componentes pasivos de filtrado analógico, resistencias de carga y fuentes de alimentación.\par\vspace{1mm}
 • Elaboración del documento de avance semestral y preparación de la Defensa de Avance.\\ \hline
 
-\textbf{OE4.} Integrar el sistema periférico de adquisición, procesamiento inteligente, panel de visualización e indicador LED. & 
+OE4. Integrar el sistema periférico de adquisición, procesamiento inteligente, panel de visualización e indicador LED. & 
 • Ensamblaje, integración eléctrica y verificación funcional de la placa de circuito impreso y módulos acondicionadores.\par\vspace{1mm}
 • Programación del firmware para muestreo síncrono, filtrado digital y extracción de descriptores estadísticos temporales.\par\vspace{1mm}
 • Campaña de mecanizado en MAINSA con insertos en distintos estados de desgaste y construcción del conjunto de datos etiquetado.\par\vspace{1mm}
 • Entrenamiento, cuantización y despliegue del modelo de aprendizaje automático ligero para clasificación de desgaste.\par\vspace{1mm}
 • Desarrollo del panel/dashboard de visualización local del estado de desgaste e integración del indicador luminoso LED para alertas de desgaste crítico.\\ \hline
 
-\textbf{OE5.} Validar experimentalmente el funcionamiento del sistema integrado mediante pruebas de corte en los tornos CNC de MAINSA. & 
+OE5. Validar experimentalmente el funcionamiento del sistema integrado mediante pruebas de corte en los tornos CNC de MAINSA. & 
 • Instalación y calibración del sistema periférico en el torno CNC bajo condiciones operativas de producción real.\par\vspace{1mm}
 • Ensayos de torneado cilíndrico registrando señales con insertos en estado nuevo, desgaste funcional y crítico.\par\vspace{1mm}
 • Medición metrológica de la rugosidad superficial ($Ra$) en probetas y verificación de tolerancias dimensionales.\par\vspace{1mm}
