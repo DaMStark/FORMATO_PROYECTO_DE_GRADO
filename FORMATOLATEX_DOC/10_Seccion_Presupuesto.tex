@@ -1,11 +1,11 @@
 \newpage
 \section{PRESUPUESTO}
 
-La viabilidad económica para el diseño, desarrollo y validación experimental del sistema comprende la adquisición de transductores, hardware embebido, placas de circuito impreso, consumibles de taller y servicios metrológicos. En la \tab{presupuesto_detallado} se presenta la estimación presupuestaria preliminar y tentativa desglosada por subsistemas técnicos en Dólares Estadounidenses (\$USD), incorporando un margen de contingencia técnica y cambiaria del 15\%.
+La viabilidad económica para la implementación ideal del sistema periférico de monitoreo mecatrónico en los tornos CNC de Maestranza San Carlos (MAINSA) comprende la selección e integración de componentes de grado industrial de alta robustez, concebidos para operar de forma continua y fiable bajo condiciones severas de taller (presencia de niebla de fluido refrigerante, aceites y severas interferencias electromagnéticas). En la \tab{presupuesto_detallado} se presenta la estimación presupuestaria formal e ideal desglosada por subsistemas técnicos en Dólares Estadounidenses (\$USD), incorporando un margen de contingencia técnica y cambiaria del 15\%.
 
 \begin{table}[H]
 \centering
-\caption{Presupuesto detallado para el desarrollo y validación del proyecto (en \$USD)}
+\caption{Presupuesto detallado para la implementación industrial ideal del sistema (en \$USD)}
 \label{tab:presupuesto_detallado}
 \vspace{1.0mm}
 {\scriptsize
@@ -15,37 +15,36 @@ La viabilidad económica para el diseño, desarrollo y validación experimental 
 \begin{tabular}{|C{1.0cm}|L{7.4cm}|C{1.4cm}|R{1.8cm}|R{1.8cm}|}
 \hline
 \textbf{Ítem} & 
-\textbf{Descripción del componente / servicio} & 
+\textbf{Descripción del componente / servicio de grado industrial} & 
 \textbf{Cant.} & 
 \textbf{P. Unit. (\$)} & 
 \textbf{Total (\$)} \\ \hline \hline
 
-\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{1. Subsistema de sensado e instrumentación analógica}} \\ \hline
-1.1 & Sensor de corriente de núcleo partido no invasivo SCT013-000 (0--100~A) & 2 & 14.50 & 29.00 \\ \hline
-1.2 & Sensor de corriente de efecto Hall integrado ACS712-20A  & 1 & 8.50 & 8.50 \\ \hline
-1.3 & Acelerómetro digital triaxial MEMS ADXL345  & 2 & 9.00 & 18.00 \\ \hline
-1.4 & Componentes de acondicionamiento  & 1 lote & 12.00 & 12.00 \\ \hline
+\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{1. Subsistema de sensado e instrumentación industrial}} \\ \hline
+1.1 & Transductor de corriente de núcleo partido industrial (LEM / Carlo Gavazzi, 0--50~A, salida normalizada 4--20~mA, aislamiento 3~kV, CE/UL) & 2 & 85.00 & 170.00 \\ \hline
+1.2 & Acelerómetro industrial piezoeléctrico IEPE (Wilcoxon / Hansford Sensors, cápsula inox 316L, IP68 hermético, conector M12/MIL) & 1 & 220.00 & 220.00 \\ \hline
+1.3 & Cable industrial apantallado PUR de alta flexibilidad, resistente a taladrina, aceites y viruta, conector M12 metálico IP68 & 1 lote & 45.00 & 45.00 \\ \hline
 
-\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{2. Subsistema de procesamiento embebido, telemetría y potencia}} \\ \hline
-2.1 & Placa de cómputo STM32F4 (ARM Cortex-M4 @ 84~MHz, FPU, CMSIS-DSP) & 1 & 24.00 & 24.00 \\ \hline
-2.2 & Módulo microcontrolador Wi-Fi / Bluetooth ESP32 & 1 & 9.50 & 9.50 \\ \hline
-2.3 & Fuente de alimentacion 5V/2A & 1 & 18.00 & 18.00 \\ \hline
+\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{2. Subsistema de acondicionamiento, procesamiento y potencia}} \\ \hline
+2.1 & Acondicionador / aislador galvánico de señal para riel DIN (excitación IEPE 2--4~mA, conversión 4--20~mA a 0--3.3~V, filtro activo) & 1 & 95.00 & 95.00 \\ \hline
+2.2 & Módulo embebido industrial para riel DIN (ARM Cortex-M4/M7, 24~VDC, protección EMC IEC 61000-6-4, watchdog por hardware) & 1 & 140.00 & 140.00 \\ \hline
+2.3 & Fuente de alimentación industrial de riel DIN 24~VDC / 2.5~A (Mean Well NDR-60-24, filtro EMI, protección contra sobrecarga) & 1 & 32.00 & 32.00 \\ \hline
 
-\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{3. Fabricación, encapsulado estanco y montaje magnético}} \\ \hline
-3.1 & Fabricación de placa de circuito impreso PCB & 1 & 22.00 & 22.00 \\ \hline
-3.2 & Gabinete y carcasa con base magnética & 1 & 25.00 & 25.00 \\ \hline
-3.3 & Cables de conexiones (M8/M12) & 3 metros & 16.00 & 16.00 \\ \hline
+\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{3. Envolvente estanca, señalización y supervisión HMI}} \\ \hline
+3.1 & Gabinete industrial de fundición de aluminio inyectado / chapa de acero (grado IP66 / NEMA 4X, prensaestopas metálicos) & 1 & 55.00 & 55.00 \\ \hline
+3.2 & Columna de señalización luminosa LED industrial triestado (verde, ámbar, rojo) de 24~VDC con zumbador acústico y grado IP65 & 1 & 38.00 & 38.00 \\ \hline
+3.3 & Pantalla táctil HMI industrial de 4.3'' para montaje en tablero (frontal IP65, comunicación Modbus RTU / RS485 o Ethernet, 24~VDC) & 1 & 115.00 & 115.00 \\ \hline
 
-\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{4. Materiales fungibles de experimentación y mecanizado en MAINSA}} \\ \hline
-4.1 & Barras cilíndricas de acero aleado AISI 1045 y AISI 4140  & 3 barras & 18.00 & 54.00 \\ \hline
-4.2 & Insertos intercambiables de carburo de tungsteno  & 3 & 30.00 & 30.00 \\ \hline
+\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{4. Materiales fungibles y ensayos de mecanizado en MAINSA}} \\ \hline
+4.1 & Barras cilíndricas de acero aleado AISI 1045 y AISI 4140 para ensayos de corte y calibración & 3 barras & 18.00 & 54.00 \\ \hline
+4.2 & Caja de insertos intercambiables de carburo de tungsteno ISO CNMG 120408 de grado comercial medio & 1 caja & 32.00 & 32.00 \\ \hline
 
-\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{5. Servicios metrológicos de calibración y laboratorio}} \\ \hline
-5.1 & Gafas especiales para inspección microscópica & 1 & 35.00 & 35.00 \\ \hline
+\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{5. Servicios metrológicos y calibración de laboratorio}} \\ \hline
+5.1 & Verificación dimensional de desgaste con microscopía óptica de taller y rugosímetro calibrado según norma ISO 3685 & 1 serv. & 35.00 & 35.00 \\ \hline
 
-\multicolumn{2}{|l|}{\textbf{SUBTOTAL DE RECURSOS DIRECTOS}} & \textbf{--} & \textbf{--} & \textbf{301.00} \\ \hline
-\multicolumn{2}{|l|}{\textbf{CONTINGENCIA TÉCNICA Y CAMBIARIA (15\%)}} & \textbf{--} & \textbf{--} & \textbf{45.15} \\ \hline
-\multicolumn{2}{|l|}{\textbf{COSTO TOTAL ESTIMADO DEL PROYECTO (\$USD)}} & \textbf{--} & \textbf{--} & \textbf{346.15} \\ \hline
+\multicolumn{2}{|l|}{\textbf{SUBTOTAL DE RECURSOS DIRECTOS}} & \textbf{--} & \textbf{--} & \textbf{1,031.00} \\ \hline
+\multicolumn{2}{|l|}{\textbf{CONTINGENCIA TÉCNICA Y CAMBIARIA (15\%)}} & \textbf{--} & \textbf{--} & \textbf{154.65} \\ \hline
+\multicolumn{2}{|l|}{\textbf{COSTO TOTAL ESTIMADO INDUSTRIAL (\$USD)}} & \textbf{--} & \textbf{--} & \textbf{1,185.65} \\ \hline
 \end{tabular}
 }
 \vspace{1.5mm}
@@ -53,12 +52,8 @@ La viabilidad económica para el diseño, desarrollo y validación experimental 
 \end{table}
 
 \vspace{0.15cm}
-El costo total estimado para la ejecución experimental del proyecto asciende a \$346.15 USD, contemplando una reserva del 15\% (\$45.15 USD) frente a contingencias y variaciones de cambio. La totalidad de los recursos será asumida por el postulante, mientras que MAINSA facilitará horas de torno CNC, herramientas de sujeción, fluidos refrigerantes y probetas de trabajo. Es indispensable precisar que los costos de la \tab{presupuesto_detallado} poseen un carácter preliminar y tentativo, formulado estrictamente para el prototipo de laboratorio y banco de pruebas; durante la fase de ejecución en Taller de Grado II, estos rubros se contemplarán y reajustarán con mayor cautela analítica mediante cotizaciones comerciales formales.
+El costo total estimado para la implementación industrial ideal del sistema asciende a \$1,185.65~USD, contemplando un subtotal de recursos directos de \$1,031.00~USD y una reserva de contingencia técnica y cambiaria del 15\% (\$154.65~USD). Esta formulación presupuestaria refleja la arquitectura técnica definitiva y óptima que se debería realizar en un entorno de manufactura seriada de alta exigencia, dotando al torno CNC de instrumentación normalizada (lazos de corriente 4--20~mA, acelerómetro piezoeléctrico IEPE hermético IP68, acondicionamiento de riel DIN y envolventes estancas IP66).
 
-En términos de viabilidad económica, los sistemas comerciales propietarios de monitoreo de herramientas (TCM) en el mercado internacional, basados en dinamómetros de cuarzo o consolas cerradas, demandan entre \$10,000 y \$30,000 USD, resultando prohibitivos para maestranzas bolivianas. El sistema propuesto representa menos del 3.5\% de dicha inversión, demostrando alta viabilidad, rápido retorno y un relevante valor de transferencia tecnológica.
+En términos de viabilidad económica y análisis costo-beneficio, las soluciones comerciales propietarias de Monitoreo de Condición de Herramientas (TCM) existentes en el mercado internacional (basadas en dinamómetros de cuarzo o consolas cerradas de fabricante) demandan presupuestos que oscilan entre \$10,000 y \$30,000~USD, resultando financieramente inviables para talleres metalmecánicos medianos en el contexto boliviano. La propuesta industrial ideal desarrollada en el presente proyecto representa una inversión inferior al 11.9\% del costo de los sistemas comerciales más económicos, garantizando un ahorro superior al 88\% a 96\% y consolidando una alta tasa de retorno de inversión mediante la reactivación productiva del parque CNC y la reducción de mermas por piezas fuera de tolerancia dimensional.
 
-Asimismo, se establece una clara distinción metodológica entre la fase de prototipado de laboratorio y la especificación de grado industrial. Para la validación experimental se seleccionaron componentes de alta disponibilidad local y bajo costo (transductores SCT-013, microcontrolador STM32F4 y acelerómetros MEMS), complementados con encapsulados estancos IP67, acoplamiento magnético NdFeB N52, aislamiento galvánico de señales analógicas y filtros EMC. Esta estrategia permite validar la correlación física y el desempeño algorítmico a coste mínimo, sentando las bases para su posterior escalamiento a circuitos SMD industriales.
-
-Atendiendo a las recomendaciones del comité evaluador sobre robustez en planta, en el Anexo 2 se presenta de forma complementaria la estimación presupuestaria proyectada con componentes de grado industrial robusto (transductores certificados 4--20~mA, acelerómetro piezoeléctrico IEPE/IP68 en acero inoxidable, acondicionamiento de riel DIN y envolventes IP66). Dicho análisis ratifica que, aun con componentes de máxima exigencia industrial, la solución proyectada conserva un ahorro superior al 88\% frente a los sistemas comerciales de importación.
-
-
+Por otra parte, atendiendo a la realidad académica y con el propósito de viabilizar la ejecución empírica de las pruebas de laboratorio en las etapas de Taller de Grado I y II, se desarrolló una propuesta alternativa de prototipado funcional experimental. Dicha propuesta sustituye temporalmente los componentes de alta gama industrial por elementos de instrumentación periférica accesible (sensores de corriente SCT-013, acelerómetros MEMS ADXL345, microcontrolador STM32F4 y tarjetas PCB a medida), preservando con estricto rigor la correlación física y el desempeño algorítmico a una fracción del costo. El análisis detallado y desglose de costos de esta propuesta de prototipo (\$346.15~USD) se presenta de forma complementaria en el Anexo 2 (\tab{presupuesto_prototipo}).

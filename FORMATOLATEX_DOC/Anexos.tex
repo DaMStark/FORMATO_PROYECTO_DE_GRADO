@@ -41,69 +41,57 @@ El presente anexo describe la arquitectura mecatrónica general y la interconexi
 
 \newpage
 \phantomsection
-\subsection*{Anexo 2: Estimación presupuestaria comparativa con componentes de grado industrial robusto}
-\label{anx:presupuesto_industrial}
-\addcontentsline{toc}{subsection}{Anexo 2. Estimación presupuestaria con componentes de grado industrial}
+\subsection*{Anexo 2: Estimación presupuestaria para el diseño y validación del prototipo experimental}
+\label{anx:presupuesto_prototipo}
+\addcontentsline{toc}{subsection}{Anexo 2. Estimación presupuestaria del prototipo experimental}
 
-Con el propósito de atender las recomendaciones formuladas por el comité docente evaluador en relación con la fiabilidad operativa en ambientes hostiles de manufactura y proyectar la industrialización del sistema periférico, se presenta a continuación una estimación presupuestaria comparativa estructurada con componentes de grado industrial de alta robustez. A diferencia del presupuesto principal del proyecto (\tab{presupuesto_detallado}), concebido para la validación experimental y prototipado de laboratorio funcional (\$346.15~USD), la arquitectura proyectada en la \tab{presupuesto_industrial} incorpora sensores con certificación metrológica de fábrica, transductores con inmunidad electromagnética reforzada, cableado industrial con apantallamiento de poliuretano (PUR) resistente a taladrina, acondicionadores de riel DIN y módulos con protección ambiental IP66/IP68. Se reitera que los costos consignados poseen un carácter preliminar y tentativo, debiendo evaluarse y cotizarse formalmente con mayor cautela analítica durante las fases de ingeniería de detalle e implementación en planta (Taller de Grado II).
+Con el propósito de garantizar la viabilidad técnica, empírica y económica del proyecto durante las fases de investigación, desarrollo y validación experimental en banco de pruebas y en los tornos CNC de MAINSA (Taller de Grado I y II), se formuló la propuesta de prototipado funcional periférico presentada en la \tab{presupuesto_prototipo}. A diferencia del presupuesto de implementación industrial ideal presentado en el cuerpo principal del documento (\tab{presupuesto_detallado}), concebido con transductores y envolventes de máxima robustez (\$1,185.65~USD), la arquitectura del prototipo de laboratorio prioriza componentes modulares de alta disponibilidad local y bajo costo (transductor de núcleo partido SCT-013, acelerómetro digital triaxial MEMS ADXL345, tarjeta de cómputo STM32F4 y fabricación de PCB propia). Esta selección estratégica optimiza la inversión directa a \$301.00~USD (\$346.15~USD incluyendo el 15\% de contingencia técnica), permitiendo al investigador financiar la construcción y ajuste algorítmico del sistema sin comprometer la fidelidad física de las variables de corte ni la exactitud del modelo TinyML.
 
-{\footnotesize
-\setstretch{1.0}
-\setlength{\tabcolsep}{3.0pt}
-\renewcommand{\arraystretch}{0.95}
-
-\begin{longtable}{|C{1.0cm}|L{7.4cm}|C{1.4cm}|R{1.8cm}|R{1.8cm}|}
-\caption{Estimación presupuestaria comparativa con componentes de grado industrial robusto (en \$USD)}
-\label{tab:presupuesto_industrial}
-\\
+\begin{table}[H]
+\centering
+\caption{Presupuesto detallado para el prototipado y validación experimental de laboratorio (en \$USD)}
+\label{tab:presupuesto_prototipo}
+\vspace{1.0mm}
+{\scriptsize
+\setstretch{0.95}
+\setlength{\tabcolsep}{2.8pt}
+\renewcommand{\arraystretch}{0.90}
+\begin{tabular}{|C{1.0cm}|L{7.4cm}|C{1.4cm}|R{1.8cm}|R{1.8cm}|}
 \hline
 \textbf{Ítem} & 
-\textbf{Descripción del componente / servicio de grado industrial} & 
+\textbf{Descripción del componente / servicio} & 
 \textbf{Cant.} & 
 \textbf{P. Unit. (\$)} & 
 \textbf{Total (\$)} \\ \hline \hline
-\endfirsthead
 
-\hline
-\textbf{Ítem} & 
-\textbf{Descripción del componente / servicio de grado industrial} & 
-\textbf{Cant.} & 
-\textbf{P. Unit. (\$)} & 
-\textbf{Total (\$)} \\ \hline \hline
-\endhead
+\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{1. Subsistema de sensado e instrumentación analógica}} \\ \hline
+1.1 & Sensor de corriente de núcleo partido no invasivo SCT-013-000 (0--100~A) & 2 & 14.50 & 29.00 \\ \hline
+1.2 & Sensor de corriente de efecto Hall integrado ACS712-20A (respaldo analógico) & 1 & 8.50 & 8.50 \\ \hline
+1.3 & Acelerómetro digital triaxial MEMS ADXL345 ($\pm 16g$, interfaz SPI/I2C) & 2 & 9.00 & 18.00 \\ \hline
+1.4 & Componentes de acondicionamiento analógico (amplificadores LM358, resistencias Burden, diodos y filtros) & 1 lote & 12.00 & 12.00 \\ \hline
 
-\endfoot
+\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{2. Subsistema de procesamiento embebido, telemetría y potencia}} \\ \hline
+2.1 & Placa de cómputo STM32F4 (ARM Cortex-M4 @ 100~MHz, FPU, soporte CMSIS-DSP) & 1 & 24.00 & 24.00 \\ \hline
+2.2 & Módulo microcontrolador y puente de telemetría Wi-Fi / Bluetooth ESP32 & 1 & 9.50 & 9.50 \\ \hline
+2.3 & Fuente de alimentación conmutada regulada 5~VDC / 2~A (con filtro EMI) & 1 & 18.00 & 18.00 \\ \hline
 
-\endlastfoot
+\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{3. Fabricación, encapsulado estanco y montaje magnético}} \\ \hline
+3.1 & Fabricación de placa de circuito impreso PCB en fibra de vidrio FR-4 & 1 & 22.00 & 22.00 \\ \hline
+3.2 & Carcasa estanca con base magnética de neodimio N52 y gabinete plástico ABS & 1 & 25.00 & 25.00 \\ \hline
+3.3 & Cable industrial apantallado de conexión de señales y conectores de acople rápido & 1 lote & 16.00 & 16.00 \\ \hline
 
-\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{1. Subsistema de sensado e instrumentación industrial}} \\ \hline
-1.1 & Transductor de corriente de núcleo partido industrial (LEM / Carlo Gavazzi, 0--50~A, salida normalizada 4--20~mA, aislamiento 3~kV, CE/UL) & 2 & 85.00 & 170.00 \\ \hline
-1.2 & Acelerómetro industrial piezoeléctrico IEPE (Wilcoxon / Hansford Sensors, cápsula inox 316L, IP68 hermético, conector M12/MIL) & 1 & 220.00 & 220.00 \\ \hline
-1.3 & Cable industrial apantallado PUR de alta flexibilidad, resistente a taladrina, aceites y viruta, conector M12 metálico IP68 & 1 lote & 45.00 & 45.00 \\ \hline
+\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{4. Materiales fungibles de experimentación y mecanizado en MAINSA}} \\ \hline
+4.1 & Barras cilíndricas de acero aleado AISI 1045 y AISI 4140 para probetas de torneado & 3 barras & 18.00 & 54.00 \\ \hline
+4.2 & Caja de insertos intercambiables de carburo de tungsteno ISO CNMG 120408 para ensayos de corte & 1 caja & 30.00 & 30.00 \\ \hline
 
-\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{2. Subsistema de acondicionamiento, procesamiento y potencia}} \\ \hline
-2.1 & Acondicionador / aislador galvánico de señal para riel DIN (excitación IEPE 2--4~mA, conversión 4--20~mA a 0--3.3~V, filtro activo) & 1 & 95.00 & 95.00 \\ \hline
-2.2 & Módulo embebido industrial para riel DIN (ARM Cortex-M4/M7, 24~VDC, protección EMC IEC 61000-6-4, watchdog por hardware) & 1 & 140.00 & 140.00 \\ \hline
-2.3 & Fuente de alimentación industrial de riel DIN 24~VDC / 2.5~A (Mean Well NDR-60-24, filtro EMI, protección contra sobrecarga) & 1 & 32.00 & 32.00 \\ \hline
+\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{5. Servicios metrológicos de calibración y laboratorio}} \\ \hline
+5.1 & Servicio de microscopía digital USB de taller y rugosímetro para verificación de desgaste $VB$ y $Ra$ & 1 serv. & 35.00 & 35.00 \\ \hline
 
-\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{3. Envolvente estanca, señalización y supervisión HMI}} \\ \hline
-3.1 & Gabinete industrial de fundición de aluminio inyectado / chapa de acero (grado IP66 / NEMA 4X, prensaestopas metálicos) & 1 & 55.00 & 55.00 \\ \hline
-3.2 & Columna de señalización luminosa LED industrial triestado (verde, ámbar, rojo) de 24~VDC con zumbador acústico y grado IP65 & 1 & 38.00 & 38.00 \\ \hline
-3.3 & Pantalla táctil HMI industrial de 4.3'' para montaje en tablero (frontal IP65, comunicación Modbus RTU / RS485 o Ethernet, 24~VDC) & 1 & 115.00 & 115.00 \\ \hline
-
-\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{4. Materiales fungibles y ensayos de mecanizado en MAINSA}} \\ \hline
-4.1 & Barras cilíndricas de acero aleado AISI 1045 y AISI 4140 para ensayos de corte y calibración & 3 barras & 18.00 & 54.00 \\ \hline
-4.2 & Caja de insertos intercambiables de carburo de tungsteno ISO CNMG 120408 de grado comercial medio & 1 caja & 32.00 & 32.00 \\ \hline
-
-\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{5. Servicios metrológicos y calibración de laboratorio}} \\ \hline
-5.1 & Verificación dimensional de desgaste con microscopía óptica de taller y rugosímetro calibrado según norma ISO 3685 & 1 serv. & 35.00 & 35.00 \\ \hline
-
-\multicolumn{2}{|l|}{\textbf{SUBTOTAL DE RECURSOS DIRECTOS}} & \textbf{--} & \textbf{--} & \textbf{996.00} \\ \hline
-\multicolumn{2}{|l|}{\textbf{CONTINGENCIA TÉCNICA Y CAMBIARIA (15\%)}} & \textbf{--} & \textbf{--} & \textbf{149.40} \\ \hline
-\multicolumn{2}{|l|}{\textbf{COSTO TOTAL ESTIMADO INDUSTRIAL (\$USD)}} & \textbf{--} & \textbf{--} & \textbf{1,145.40} \\ \hline
-\multicolumn{5}{c}{\rule{0pt}{3ex}\textbf{Fuente:} Elaboración propia, 2026.} \\
-\end{longtable}
+\multicolumn{2}{|l|}{\textbf{SUBTOTAL DE RECURSOS DIRECTOS}} & \textbf{--} & \textbf{--} & \textbf{301.00} \\ \hline
+\multicolumn{2}{|l|}{\textbf{CONTINGENCIA TÉCNICA Y CAMBIARIA (15\%)}} & \textbf{--} & \textbf{--} & \textbf{45.15} \\ \hline
+\multicolumn{2}{|l|}{\textbf{COSTO TOTAL ESTIMADO DEL PROYECTO (\$USD)}} & \textbf{--} & \textbf{--} & \textbf{346.15} \\ \hline
+\end{tabular}
 }
-
-\vspace{0.35cm}
-\enlargethispage{3.5\baselineskip}
+\vspace{1.5mm}
+\small \textbf{Fuente:} Elaboración propia, 2026.
+\end{table}
