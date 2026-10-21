@@ -41,15 +41,15 @@ El presente anexo describe la arquitectura mecatrónica general y la interconexi
 
 \newpage
 \phantomsection
-\subsection*{Anexo 2: Estimación presupuestaria para el diseño y validación del prototipo experimental}
+\subsection*{Anexo 2: Estimación presupuestaria para el diseño del prototipo}
 \label{anx:presupuesto_prototipo}
-\addcontentsline{toc}{subsection}{Anexo 2. Estimación presupuestaria del prototipo experimental}
+\addcontentsline{toc}{subsection}{Anexo 2. Estimación presupuestaria del prototipo}
 
-Con el propósito de garantizar la viabilidad técnica, empírica y económica del proyecto durante las fases de investigación, desarrollo y validación experimental en banco de pruebas y en los tornos CNC de MAINSA (Taller de Grado I y II), se formuló la propuesta de prototipado funcional periférico presentada en la \tab{presupuesto_prototipo}. A diferencia del presupuesto de implementación industrial ideal presentado en el cuerpo principal del documento (\tab{presupuesto_detallado}), concebido con transductores y envolventes de máxima robustez (\$1,185.65~USD), la arquitectura del prototipo de laboratorio prioriza componentes modulares de alta disponibilidad local y bajo costo (transductor de núcleo partido SCT-013, acelerómetro digital triaxial MEMS ADXL345, tarjeta de cómputo STM32F4 y fabricación de PCB propia). Esta selección estratégica optimiza la inversión directa a \$301.00~USD (\$346.15~USD incluyendo el 15\% de contingencia técnica), permitiendo al investigador financiar la construcción y ajuste algorítmico del sistema sin comprometer la fidelidad física de las variables de corte ni la exactitud del modelo TinyML.
+A continuación se presenta la estimación presupuestaria correspondiente a la propuesta del caso prototipo para el diseño, desarrollo y validación experimental del sistema en laboratorio y taller, en contraste con el caso ideal presentado en la Sección de Presupuesto (\tab{presupuesto_detallado}).
 
 \begin{table}[H]
 \centering
-\caption{Presupuesto detallado para el prototipado y validación experimental de laboratorio (en \$USD)}
+\caption{Presupuesto detallado para el desarrollo y validación del prototipo (en \$USD)}
 \label{tab:presupuesto_prototipo}
 \vspace{1.0mm}
 {\scriptsize
@@ -65,27 +65,27 @@ Con el propósito de garantizar la viabilidad técnica, empírica y económica d
 \textbf{Total (\$)} \\ \hline \hline
 
 \multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{1. Subsistema de sensado e instrumentación analógica}} \\ \hline
-1.1 & Sensor de corriente de núcleo partido no invasivo SCT-013-000 (0--100~A) & 2 & 14.50 & 29.00 \\ \hline
-1.2 & Sensor de corriente de efecto Hall integrado ACS712-20A (respaldo analógico) & 1 & 8.50 & 8.50 \\ \hline
-1.3 & Acelerómetro digital triaxial MEMS ADXL345 ($\pm 16g$, interfaz SPI/I2C) & 2 & 9.00 & 18.00 \\ \hline
-1.4 & Componentes de acondicionamiento analógico (amplificadores LM358, resistencias Burden, diodos y filtros) & 1 lote & 12.00 & 12.00 \\ \hline
+1.1 & Sensor de corriente de núcleo partido no invasivo SCT013-000 (0--100~A) & 2 & 14.50 & 29.00 \\ \hline
+1.2 & Sensor de corriente de efecto Hall integrado ACS712-20A  & 1 & 8.50 & 8.50 \\ \hline
+1.3 & Acelerómetro digital triaxial MEMS ADXL345  & 2 & 9.00 & 18.00 \\ \hline
+1.4 & Componentes de acondicionamiento  & 1 lote & 12.00 & 12.00 \\ \hline
 
 \multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{2. Subsistema de procesamiento embebido, telemetría y potencia}} \\ \hline
-2.1 & Placa de cómputo STM32F4 (ARM Cortex-M4 @ 100~MHz, FPU, soporte CMSIS-DSP) & 1 & 24.00 & 24.00 \\ \hline
-2.2 & Módulo microcontrolador y puente de telemetría Wi-Fi / Bluetooth ESP32 & 1 & 9.50 & 9.50 \\ \hline
-2.3 & Fuente de alimentación conmutada regulada 5~VDC / 2~A (con filtro EMI) & 1 & 18.00 & 18.00 \\ \hline
+2.1 & Placa de cómputo STM32F4 (ARM Cortex-M4 @ 84~MHz, FPU, CMSIS-DSP) & 1 & 24.00 & 24.00 \\ \hline
+2.2 & Módulo microcontrolador Wi-Fi / Bluetooth ESP32 & 1 & 9.50 & 9.50 \\ \hline
+2.3 & Fuente de alimentacion 5V/2A & 1 & 18.00 & 18.00 \\ \hline
 
 \multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{3. Fabricación, encapsulado estanco y montaje magnético}} \\ \hline
-3.1 & Fabricación de placa de circuito impreso PCB en fibra de vidrio FR-4 & 1 & 22.00 & 22.00 \\ \hline
-3.2 & Carcasa estanca con base magnética de neodimio N52 y gabinete plástico ABS & 1 & 25.00 & 25.00 \\ \hline
-3.3 & Cable industrial apantallado de conexión de señales y conectores de acople rápido & 1 lote & 16.00 & 16.00 \\ \hline
+3.1 & Fabricación de placa de circuito impreso PCB & 1 & 22.00 & 22.00 \\ \hline
+3.2 & Gabinete y carcasa con base magnética & 1 & 25.00 & 25.00 \\ \hline
+3.3 & Cables de conexiones (M8/M12) & 3 metros & 16.00 & 16.00 \\ \hline
 
 \multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{4. Materiales fungibles de experimentación y mecanizado en MAINSA}} \\ \hline
-4.1 & Barras cilíndricas de acero aleado AISI 1045 y AISI 4140 para probetas de torneado & 3 barras & 18.00 & 54.00 \\ \hline
-4.2 & Caja de insertos intercambiables de carburo de tungsteno ISO CNMG 120408 para ensayos de corte & 1 caja & 30.00 & 30.00 \\ \hline
+4.1 & Barras cilíndricas de acero aleado AISI 1045 y AISI 4140  & 3 barras & 18.00 & 54.00 \\ \hline
+4.2 & Insertos intercambiables de carburo de tungsteno  & 3 & 30.00 & 30.00 \\ \hline
 
 \multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{5. Servicios metrológicos de calibración y laboratorio}} \\ \hline
-5.1 & Servicio de microscopía digital USB de taller y rugosímetro para verificación de desgaste $VB$ y $Ra$ & 1 serv. & 35.00 & 35.00 \\ \hline
+5.1 & Gafas especiales para inspección microscópica & 1 & 35.00 & 35.00 \\ \hline
 
 \multicolumn{2}{|l|}{\textbf{SUBTOTAL DE RECURSOS DIRECTOS}} & \textbf{--} & \textbf{--} & \textbf{301.00} \\ \hline
 \multicolumn{2}{|l|}{\textbf{CONTINGENCIA TÉCNICA Y CAMBIARIA (15\%)}} & \textbf{--} & \textbf{--} & \textbf{45.15} \\ \hline

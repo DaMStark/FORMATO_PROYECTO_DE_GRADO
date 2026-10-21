@@ -1,11 +1,11 @@
 \newpage
 \section{PRESUPUESTO}
 
-La viabilidad económica para la implementación ideal del sistema periférico de monitoreo mecatrónico en los tornos CNC de Maestranza San Carlos (MAINSA) comprende la selección e integración de componentes de grado industrial de alta robustez, concebidos para operar de forma continua y fiable bajo condiciones severas de taller (presencia de niebla de fluido refrigerante, aceites y severas interferencias electromagnéticas). En la \tab{presupuesto_detallado} se presenta la estimación presupuestaria formal e ideal desglosada por subsistemas técnicos en Dólares Estadounidenses (\$USD), incorporando un margen de contingencia técnica y cambiaria del 15\%.
+La viabilidad económica para el diseño, desarrollo y validación del sistema comprende la adquisición de transductores, hardware embebido, placas de circuito impreso, consumibles de taller y servicios metrológicos. En la \tab{presupuesto_detallado} se presenta la estimación presupuestaria correspondiente al caso ideal de implementación industrial en Dólares Estadounidenses (\$USD), incorporando un margen de contingencia técnica y cambiaria del 15\%. Por su parte, la propuesta correspondiente al caso prototipo para pruebas y validación experimental se presenta detalladamente en el Anexo 2.
 
 \begin{table}[H]
 \centering
-\caption{Presupuesto detallado para la implementación industrial ideal del sistema (en \$USD)}
+\caption{Presupuesto detallado para la implementación industrial del caso ideal (en \$USD)}
 \label{tab:presupuesto_detallado}
 \vspace{1.0mm}
 {\scriptsize
@@ -42,9 +42,9 @@ La viabilidad económica para la implementación ideal del sistema periférico d
 \multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{5. Servicios metrológicos y calibración de laboratorio}} \\ \hline
 5.1 & Verificación dimensional de desgaste con microscopía óptica de taller y rugosímetro calibrado según norma ISO 3685 & 1 serv. & 35.00 & 35.00 \\ \hline
 
-\multicolumn{2}{|l|}{\textbf{SUBTOTAL DE RECURSOS DIRECTOS}} & \textbf{--} & \textbf{--} & \textbf{1,031.00} \\ \hline
-\multicolumn{2}{|l|}{\textbf{CONTINGENCIA TÉCNICA Y CAMBIARIA (15\%)}} & \textbf{--} & \textbf{--} & \textbf{154.65} \\ \hline
-\multicolumn{2}{|l|}{\textbf{COSTO TOTAL ESTIMADO INDUSTRIAL (\$USD)}} & \textbf{--} & \textbf{--} & \textbf{1,185.65} \\ \hline
+\multicolumn{2}{|l|}{\textbf{SUBTOTAL DE RECURSOS DIRECTOS}} & \textbf{--} & \textbf{--} & \textbf{996.00} \\ \hline
+\multicolumn{2}{|l|}{\textbf{CONTINGENCIA TÉCNICA Y CAMBIARIA (15\%)}} & \textbf{--} & \textbf{--} & \textbf{149.40} \\ \hline
+\multicolumn{2}{|l|}{\textbf{COSTO TOTAL ESTIMADO INDUSTRIAL (\$USD)}} & \textbf{--} & \textbf{--} & \textbf{1,145.40} \\ \hline
 \end{tabular}
 }
 \vspace{1.5mm}
@@ -52,8 +52,6 @@ La viabilidad económica para la implementación ideal del sistema periférico d
 \end{table}
 
 \vspace{0.15cm}
-El costo total estimado para la implementación industrial ideal del sistema asciende a \$1,185.65~USD, contemplando un subtotal de recursos directos de \$1,031.00~USD y una reserva de contingencia técnica y cambiaria del 15\% (\$154.65~USD). Esta formulación presupuestaria refleja la arquitectura técnica definitiva y óptima que se debería realizar en un entorno de manufactura seriada de alta exigencia, dotando al torno CNC de instrumentación normalizada (lazos de corriente 4--20~mA, acelerómetro piezoeléctrico IEPE hermético IP68, acondicionamiento de riel DIN y envolventes estancas IP66).
+El costo total estimado para la implementación del caso ideal asciende a \$1,145.40 USD, contemplando una reserva del 15\% (\$149.40 USD) frente a contingencias y variaciones de cambio. En términos de viabilidad económica, los sistemas comerciales propietarios de monitoreo de herramientas (TCM) en el mercado internacional, basados en dinamómetros de cuarzo o consolas cerradas, demandan entre \$10,000 y \$30,000 USD. El sistema propuesto en este caso ideal representa una fracción de dicha inversión, demostrando alta viabilidad, rápido retorno y un relevante valor de transferencia tecnológica.
 
-En términos de viabilidad económica y análisis costo-beneficio, las soluciones comerciales propietarias de Monitoreo de Condición de Herramientas (TCM) existentes en el mercado internacional (basadas en dinamómetros de cuarzo o consolas cerradas de fabricante) demandan presupuestos que oscilan entre \$10,000 y \$30,000~USD, resultando financieramente inviables para talleres metalmecánicos medianos en el contexto boliviano. La propuesta industrial ideal desarrollada en el presente proyecto representa una inversión inferior al 11.9\% del costo de los sistemas comerciales más económicos, garantizando un ahorro superior al 88\% a 96\% y consolidando una alta tasa de retorno de inversión mediante la reactivación productiva del parque CNC y la reducción de mermas por piezas fuera de tolerancia dimensional.
-
-Por otra parte, atendiendo a la realidad académica y con el propósito de viabilizar la ejecución empírica de las pruebas de laboratorio en las etapas de Taller de Grado I y II, se desarrolló una propuesta alternativa de prototipado funcional experimental. Dicha propuesta sustituye temporalmente los componentes de alta gama industrial por elementos de instrumentación periférica accesible (sensores de corriente SCT-013, acelerómetros MEMS ADXL345, microcontrolador STM32F4 y tarjetas PCB a medida), preservando con estricto rigor la correlación física y el desempeño algorítmico a una fracción del costo. El análisis detallado y desglose de costos de esta propuesta de prototipo (\$346.15~USD) se presenta de forma complementaria en el Anexo 2 (\tab{presupuesto_prototipo}).
+Asimismo, se establece una clara distinción metodológica entre el caso ideal industrial y la fase de prototipado de laboratorio. Para la validación experimental se seleccionaron componentes de alta disponibilidad local y bajo costo (transductores SCT-013, microcontrolador STM32F4 y acelerómetros MEMS), cuyo presupuesto detallado correspondiente al caso prototipo se presenta de forma complementaria en el Anexo 2 (\tab{presupuesto_prototipo}), permitiendo validar la correlación física y el desempeño algorítmico a coste mínimo.
