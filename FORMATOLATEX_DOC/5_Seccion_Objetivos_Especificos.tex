@@ -3,7 +3,7 @@
 \begin{itemize}
 \item Investigar la operación de mecanizado en torno CNC (cilindrado longitudinal), los mecanismos de desgaste de herramientas de corte y las tecnologías de inteligencia artificial en el borde (\textit{Edge AI}) orientadas al monitoreo de condición.
 \item Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, integrando acondicionamiento de señal, procesamiento en el borde, panel de visualización en dashboard e indicadores LED de alerta.
-\item Dimensionar los sensores de corriente, vibración y la unidad de procesamiento embebido.
+\item Dimensionar los sensores de variable eléctrica, vibración mecánica y la unidad de procesamiento embebido.
 \item Integrar el sistema periférico de adquisición, procesamiento inteligente, panel de visualización e indicadores luminosos LED para desgaste crítico.
 \item Validar experimentalmente el funcionamiento del sistema integrado mediante pruebas de corte en los tornos CNC de MAINSA.
 \end{itemize}
@@ -36,7 +36,7 @@ Con el propósito de operativizar cada uno de los objetivos específicos y detal
 \textbf{OE1.} Investigar la operación de mecanizado en torno CNC (cilindrado longitudinal), los mecanismos de desgaste de herramientas de corte y las tecnologías de inteligencia artificial en el borde (\textit{Edge AI}) orientadas al monitoreo de condición. & 
 • Revisión y caracterización de la operación de torneado CNC (cilindrado longitudinal) y cinemática de corte.\par\vspace{1mm}
 • Análisis de la fenomenología del desgaste de herramientas y patrones de falla según la norma ISO 3685.\par\vspace{1mm}
-• Estudio del estado del arte en sistemas de monitoreo indirecto de herramientas (TCM) mediante corriente y vibración.\par\vspace{1mm}
+• Estudio del estado del arte en sistemas de monitoreo indirecto de herramientas (TCM) mediante variables eléctricas y vibración mecánica.\par\vspace{1mm}
 • Evaluación de tecnologías de Inteligencia Artificial en el borde (\textit{Edge AI} / TinyML) y plataformas embebidas.\\ \hline
 
 \textbf{OE2.} Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, integrando acondicionamiento de señal, procesamiento en el borde, panel de visualización en dashboard e indicadores LED de alerta. & 
@@ -45,9 +45,9 @@ Con el propósito de operativizar cada uno de los objetivos específicos y detal
 • Diseño esquemático y ruteo de la placa de circuito impreso (PCB) con aislamiento galvánico industrial.\par\vspace{1mm}
 • Concepción del gabinete principal y especificación de la carcasa estanca IP67 con base imantada de neodimio para el acelerómetro en la torreta (quedando el modelado CAD detallado de la caja imantada como tarea de ingeniería de implementación).\\ \hline
 
-\textbf{OE3.} Dimensionar los sensores de corriente, vibración y la unidad de procesamiento embebido. & 
-• Dimensionamiento del rango de medición y relación de transformación del transductor de corriente según la potencia del motor.\par\vspace{1mm}
-• Selección del acelerómetro considerando sensibilidad, ancho de banda y rango dinámico de vibración en la torreta.\par\vspace{1mm}
+\textbf{OE3.} Dimensionar los sensores de variable eléctrica, vibración mecánica y la unidad de procesamiento embebido. & 
+• Dimensionamiento del rango de medición y relación de transformación del transductor de variable eléctrica (sensor de corriente) según la potencia del motor.\par\vspace{1mm}
+• Selección del sensor de vibración mecánica (acelerómetro) considerando sensibilidad, ancho de banda y rango dinámico en la torreta.\par\vspace{1mm}
 • Selección del microcontrolador evaluando periféricos ADC, DMA, instrucciones DSP y memoria requerida.\par\vspace{1mm}
 • Cálculo y selección de componentes pasivos de filtrado analógico, resistencias de carga y fuentes de alimentación.\par\vspace{1mm}
 • Elaboración del documento de avance semestral y preparación de la Defensa de Avance.\\ \hline

@@ -33,7 +33,7 @@ El presente anexo describe la arquitectura mecatrónica general y la interconexi
 
 \begin{enumerate}[leftmargin=0.8cm]
     \item Módulo I (Entorno Físico CNC y Proceso de Corte): Corresponde al torno CNC de bancada inclinada y carro móvil en Maestranza San Carlos (MAINSA), donde se ejecutan los ciclos de torneado exterior sobre barras de acero AISI 1045 y 4140 bajo condiciones de refrigeración por taladrina. La interacción de corte sobre el inserto CNMG 120408 transmite esfuerzos hacia el carro longitudinal (eje $Z$) y transversal (eje $X$), así como perturbaciones vibratorias a través de la torreta portaherramientas.
-    \item Módulo II (Transducción Sensorial No Invasiva): Disposición periférica del sensor de corriente de núcleo partido SCT-013 abrazado externamente a una de las fases de alimentación del servomotor de avance del carro portaherramientas (eje $Z$) en el armario eléctrico, y del acelerómetro digital triaxial ADXL345 fijado a la torreta mediante base magnética de neodimio N52 en cápsula estanca IP67.
+    \item Módulo II (Transducción Sensorial No Invasiva): Disposición periférica de transductores de variable eléctrica (sensor de corriente de núcleo partido SCT-013 abrazado externamente a una de las fases de alimentación del servomotor de avance del carro portaherramientas en el armario eléctrico) y de vibración mecánica (acelerómetro digital triaxial ADXL345 fijado a la torreta mediante base magnética de neodimio N52 en cápsula estanca IP67).
     \item Módulo III (Acondicionamiento Analógico y Enlace Digital Industrial): Red divisora resistiva de polarización DC Bias ($+1.65\,\text{V}$), resistencia Burden de precisión $R_B$, amplificador operacional LM358 configurado como seguidor de tensión de baja impedancia para adecuar la señal al rango del ADC (0 a 3.3~V), y bus digital serie SPI apantallado a 5~MHz con aislamiento frente a interferencia electromagnética (EMI).
     \item Módulo IV (Cerebro Mecatrónico y Edge AI): Unidad de procesamiento embebido sobre microcontrolador STM32F4 (ARM Cortex-M4 @ 100~MHz), con adquisición síncrona por DMA multicanal a 12 bits, filtrado digital Butterworth, ventaneo sincrónico activo durante el arranque de viruta ($I_a > I_{\text{vacío}}$), extracción de descriptores estadísticos temporales y frecuenciales ($I_{\text{RMS}}, a_{\text{RMS}}, Ku, CF$) e inferencia determinista ($<15\,\text{ms}$) con clasificador TinyML cuantizado en enteros de 8 bits (INT8) mediante STM32Cube.AI.
     \item Módulo V (Supervisión Local y Alerta Visual en Planta): Despliegue de métricas en panel gráfico local (dashboard) al pie del torno comunicado vía UART/RS485, e indicación luminosa triestado mediante semáforo LED de alta visibilidad: verde (inserto óptimo), amarillo (desgaste funcional moderado) y rojo (alerta crítica de parada preventiva por desgaste de flanco $VB \ge 0.3\,\text{mm}$ según norma ISO 3685).
@@ -64,16 +64,16 @@ A continuación se presenta la estimación presupuestaria correspondiente a la p
 \textbf{P. Unit. (\$)} & 
 \textbf{Total (\$)} \\ \hline \hline
 
-\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{1. Subsistema de sensado e instrumentación analógica}} \\ \hline
-1.1 & Sensor de corriente de núcleo partido no invasivo SCT013-000 (0--100~A) & 2 & 14.50 & 29.00 \\ \hline
-1.2 & Sensor de corriente de efecto Hall integrado ACS712-20A  & 1 & 8.50 & 8.50 \\ \hline
-1.3 & Acelerómetro digital triaxial MEMS ADXL345  & 2 & 9.00 & 18.00 \\ \hline
+\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{1. Subsistema de sensado e instrumentación analógica (variable eléctrica y vibración)}} \\ \hline
+1.1 & Sensor de variable eléctrica no invasivo de núcleo partido SCT-013-000 (0--100~A) & 2 & 14.50 & 29.00 \\ \hline
+1.2 & Sensor de variable eléctrica de efecto Hall integrado ACS712-20A & 1 & 8.50 & 8.50 \\ \hline
+1.3 & Sensor de vibración mecánica digital triaxial MEMS ADXL345 & 2 & 9.00 & 18.00 \\ \hline
 1.4 & Componentes de acondicionamiento  & 1 lote & 12.00 & 12.00 \\ \hline
 
 \multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{2. Subsistema de procesamiento embebido, telemetría y potencia}} \\ \hline
 2.1 & Placa de cómputo STM32F4 (ARM Cortex-M4 @ 84~MHz, FPU, CMSIS-DSP) & 1 & 24.00 & 24.00 \\ \hline
 2.2 & Módulo microcontrolador Wi-Fi / Bluetooth ESP32 & 1 & 9.50 & 9.50 \\ \hline
-2.3 & Fuente de alimentacion 5V/2A & 1 & 18.00 & 18.00 \\ \hline
+2.3 & Fuente de alimentación regulada 5~V / 2~A & 1 & 18.00 & 18.00 \\ \hline
 
 \multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{3. Fabricación, encapsulado estanco y montaje magnético}} \\ \hline
 3.1 & Fabricación de placa de circuito impreso PCB & 1 & 22.00 & 22.00 \\ \hline

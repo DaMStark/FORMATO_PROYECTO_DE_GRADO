@@ -16,11 +16,13 @@ El origen técnico de esta problemática radica en tres factores: la carencia de
 
 Cuando el inserto pierde agudeza sin ser detectado, deja de cizallar limpiamente el material, incrementando la fricción y el calor en la zona de corte. Esto no solo estropea la rugosidad superficial ($Ra$) y provoca el descarte de piezas costosas de acero aleado (AISI 1045 y 4140), sino que alimenta la desconfianza del personal hacia el mecanizado automatizado, perpetuando el uso de procesos manuales lentos.
 
-Ante este escenario, surge la necesidad imperiosa de diseñar un sistema periférico inteligente y no invasivo que capture variables de corriente y vibración mecánica, procesándolas en el borde (\textit{Edge AI}) para alertar al operario en tiempo real, previniendo fallas catastróficas, optimizando la vida útil de los insertos y reduciendo costos operativos.
+Ante este escenario, surge la necesidad imperiosa de diseñar un sistema periférico inteligente y no invasivo que capture la variable eléctrica en el servomotor de avance y la vibración mecánica en la torreta, procesándolas en el borde (\textit{Edge AI}) para alertar al operario en tiempo real, previniendo fallas catastróficas, optimizando la vida útil de los insertos y reduciendo costos operativos.
 
 \newpage
 \subsection{Formulación del problema}
 
-¿Cómo diseñar y validar, en un torno CNC de la empresa MAINSA, un sistema periférico no invasivo que, mediante la corriente del servomotor de avance y la aceleración en la torreta procesadas en el borde (\textit{Edge AI}), clasifique el estado de desgaste del inserto (nuevo, funcional, crítico) con una exactitud $\ge 90$\% y lo señalice en un dashboard local e indicador LED, para sustituir la inspección visual subjetiva por una alerta objetiva de reemplazo que reduzca el riesgo de paradas no planificadas y piezas fuera de tolerancia dimensional?
+¿Cómo diseñar un sistema periférico no invasivo para un torno CNC que permita reducir el desperdicio de materia prima, optimizar los costos de manufactura y disminuir los tiempos de producción en la empresa MAINSA?
+
+Con el fin de estructurar de manera organizada y visual las causas de origen técnico y sus respectivas repercusiones operacionales en la planta, en la \fig{arbol_de_problemas} se expone el árbol de problemas correspondiente a las operaciones de torneado CNC en MAINSA.
 
 \figura[width=0.75\textwidth]{arbol_de_problemas}{Árbol de problemas del proceso de torneado CNC en MAINSA}{Elaboración propia, 2026.}

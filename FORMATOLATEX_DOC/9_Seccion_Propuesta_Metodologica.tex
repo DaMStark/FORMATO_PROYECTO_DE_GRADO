@@ -8,7 +8,7 @@ La presente sección describe el marco metodológico que guía el diseño, desar
 El presente proyecto adopta un enfoque de investigación mixto con predominancia cuantitativa, articulando coherentemente métodos empíricos de diagnóstico con técnicas de medición e inferencia de alta precisión:
 \begin{itemize}
     \item Dimensión cualitativa: Se orienta al levantamiento preliminar de requerimientos operacionales y funcionales en la planta de MAINSA. A través de entrevistas técnicas y observación directa en el taller, se indagan las prácticas habituales de los torneros, las frecuencias estimadas de cambio de inserto, la percepción empírica de fallas de corte y las restricciones físicas del espacio de cabina y conexionado de los tornos CNC.
-    \item Dimensión cuantitativa: Constituye el núcleo del desarrollo ingenieril y se fundamenta en la adquisición analógica, discretización periódica, procesamiento digital y modelado matemático de magnitudes físicas continuas: el valor eficaz de la corriente de fase del servomotor de avance del carro portaherramientas ($I_{\text{RMS}}$ en amperios), la aceleración vibratoria en la torreta portaherramientas ($a_{\text{RMS}}$ en $g$), métricas estadísticas de distribución (Curtosis y Factor de Cresta), el ancho de desgaste de flanco ($VB$ en milímetros) y la rugosidad superficial aritmética de las piezas maquinadas ($Ra$ en micrómetros).
+    \item Dimensión cuantitativa: Constituye el núcleo del desarrollo ingenieril y se fundamenta en la adquisición analógica, discretización periódica, procesamiento digital y modelado matemático de magnitudes físicas continuas: el valor eficaz de la variable eléctrica (corriente de fase del servomotor de avance, $I_{\text{RMS}}$ en amperios), la aceleración por vibración mecánica en la torreta portaherramientas ($a_{\text{RMS}}$ en $g$), métricas estadísticas de distribución (Curtosis y Factor de Cresta), el ancho de desgaste de flanco ($VB$ en milímetros) y la rugosidad superficial aritmética de las piezas maquinadas ($Ra$ en micrómetros).
 \end{itemize}
 
 \subsection{Tipo de investigación}
@@ -49,24 +49,24 @@ Para asegurar la coherencia lógica interna entre los componentes metodológicos
 \endlastfoot
 
 Problema General & 
-¿Cómo diseñar y validar, en un torno CNC de la empresa MAINSA, un sistema periférico no invasivo que, mediante la corriente del servomotor de avance y la aceleración en la torreta procesadas en el borde (\textit{Edge AI}), clasifique el estado de desgaste del inserto (nuevo, funcional, crítico) con una exactitud $\ge 90$\% y lo señalice en un dashboard local e indicador LED, para sustituir la inspección visual subjetiva por una alerta objetiva de reemplazo que reduzca el riesgo de paradas no planificadas y piezas fuera de tolerancia dimensional? & 
+¿Cómo diseñar un sistema periférico no invasivo para un torno CNC que permita reducir el desperdicio de materia prima, optimizar los costos de manufactura y disminuir los tiempos de producción en la empresa MAINSA? & 
 Condición operativa de corte, interferencias electromagnéticas y parque de tornos CNC subutilizado. & 
 Incidencia de roturas intempestivas, piezas fuera de tolerancia dimensional y desvío de producción hacia tornos manuales.\\ \hline
 
 Objetivo General & 
-Diseñar y validar un sistema periférico no invasivo de monitoreo del desgaste de insertos de corte en un torno CNC de la empresa MAINSA, mediante la medición de corriente en el servomotor de avance y aceleración en la torreta procesadas con inteligencia artificial en el borde (\textit{Edge AI}), que clasifique tres estados de desgaste con una exactitud $\ge 90$\% y lo señalice en un dashboard local con indicadores luminosos LED de severidad, para sustituir la inspección visual subjetiva por una alerta objetiva de reemplazo del inserto que reduzca el riesgo de paradas no planificadas y la ocurrencia de piezas fuera de tolerancia dimensional. & 
-Integración de transductores de corriente SCT-013, acelerometría ADXL345 en torreta, microcontrolador STM32F4, dashboard e indicador LED triestado. & 
+Diseñar un sistema periférico no invasivo de monitoreo del desgaste de insertos de corte en un torno CNC de la empresa MAINSA, mediante la medición de variables eléctricas en el servomotor de avance y vibración mecánica en la torreta, procesadas con inteligencia artificial en el borde (\textit{Edge AI}), que clasifique tres estados de desgaste con una exactitud $\ge 90$\% y lo señalice en un dashboard local con indicadores luminosos de severidad, para sustituir la inspección visual subjetiva por una alerta objetiva de reemplazo del inserto que reduzca el riesgo de paradas no planificadas y la ocurrencia de piezas fuera de tolerancia dimensional. & 
+Integración de transductores de variable eléctrica SCT-013, acelerometría ADXL345 en torreta, microcontrolador STM32F4, dashboard e indicador LED triestado. & 
 Prototipo mecatrónico funcional montado en gabinete industrial operativo al pie de máquina.\\ \hline
 
 Hipótesis Ingenieril & 
-La fusión de la corriente eficaz del servomotor de avance ($I_{\text{RMS}}$) con descriptores de aceleración en la torreta ($a_{\text{RMS}}$, curtosis, factor de cresta), clasificada mediante un modelo ligero cuantizado en STM32, identifica tres estados de desgaste (definidos por $VB$, ISO 3685) con una exactitud $\ge 90$\%, con mejor desempeño que cada variable por separado y sin intervenir el cableado interno ni el control del torno. & 
+La fusión de la variable eléctrica del servomotor de avance ($I_{\text{RMS}}$) con descriptores de vibración mecánica en la torreta ($a_{\text{RMS}}$, curtosis, factor de cresta), clasificada mediante un modelo ligero cuantizado en STM32, identifica tres estados de desgaste (definidos por $VB$, ISO 3685) con una exactitud $\ge 90$\%, con mejor desempeño que cada variable por separado y sin intervenir el cableado interno ni el control del torno. & 
 Capacidad discriminante de la fusión sensorial frente al desgaste progresivo de flanco. & 
 Exactitud de clasificación global $\ge 90\%$ evaluada mediante matriz de confusión y cero invasión en cableado ni control de máquina.\\ \hline
 
 Variables Independientes & 
 Señales físicas primarias generadas durante la remoción de material en el proceso de torneado. & 
-• Corriente eficaz del servomotor del carro ($I_{RMS}$).\par\vspace{1mm}
-• Aceleración dinámica en torreta ($a_{RMS}$).\par\vspace{1mm}
+• Variable eléctrica: corriente eficaz del servomotor de avance ($I_{RMS}$).\par\vspace{1mm}
+• Vibración mecánica en torreta: aceleración dinámica ($a_{RMS}$).\par\vspace{1mm}
 • Curtosis ($Ku$) y Factor de Cresta ($CF$). & 
 Amplitud en amperios (A), aceleración en gravedad ($g$) y coeficientes estadísticos adimensionales.\\ \hline
 
@@ -95,7 +95,7 @@ Se empleará la técnica de entrevista semiestructurada, aplicada al jefe de pla
 Asimismo, se implementará la observación técnica directa en planta, utilizando una \textit{Ficha de Relevamiento Operacional y de Entorno}. Mediante este instrumento se registrarán las dimensiones físicas disponibles en la torreta portaherramientas, los puntos de fijación mecánica inmunes a proyecciones de viruta incandescente, la disposición del cableado eléctrico en el gabinete de fuerza y los niveles de ruido electromagnético ambiental producidos por los servodrivers.
 
 \subsubsection{Técnicas cuantitativas de adquisición y metrología experimental}
-Para la captura de las magnitudes electromecánicas en tiempo real se aplicará la técnica de adquisición digital de datos (DAQ embebido), instrumentada a través del microcontrolador \textit{STM32F4 (ARM Cortex-M4)}, el cual realiza la digitalización síncrona de las señales de corriente y aceleración a 12 bits mediante transferencias DMA circulares gobernadas por temporizadores de hardware sin retardo de CPU.
+Para la captura de las magnitudes electromecánicas en tiempo real se aplicará la técnica de adquisición digital de datos (DAQ embebido), instrumentada a través del microcontrolador \textit{STM32F4 (ARM Cortex-M4)}, el cual realiza la digitalización síncrona de las señales de variable eléctrica y vibración mecánica a 12 bits mediante transferencias DMA circulares gobernadas por temporizadores de hardware sin retardo de CPU.
 
 Con la finalidad de garantizar la fiabilidad metrológica de las lecturas, se empleará como instrumentación patrón de laboratorio una pinza amperimétrica digital True RMS calibrada y un osciloscopio digital de almacenamiento, utilizados para contrastar las curvas de respuesta temporal y calibrar estáticamente el factor de escala de los sensores de corriente.
 
@@ -105,14 +105,14 @@ Finalmente, para evaluar el impacto del desgaste sobre el producto final tornead
 
 \subsection{Arquitectura funcional de la propuesta de solución mecatrónica}
 
-Para materializar los requerimientos de no invasividad, procesamiento determinista al pie de máquina y desacoplamiento absoluto de redes externas, se estructuró la arquitectura de la propuesta de solución mecatrónica articulando cinco módulos funcionales interconectados. Con el propósito de no saturar el cuerpo metodológico del perfil y permitir una apreciación técnica integral de máxima resolución, el esquema general se presenta detalladamente en el Anexo 1 (Diagrama de bloques funcional de la propuesta de solución mecatrónica).
+Para materializar los requerimientos de no invasividad, procesamiento determinista al pie de máquina y desacoplamiento absoluto de redes externas, se estructuró la arquitectura de la propuesta de solución mecatrónica articulando cinco módulos funcionales interconectados. Con el propósito de no saturar el cuerpo metodológico del perfil y permitir una apreciación técnica integral de máxima resolución, el esquema general se presenta detalladamente en el Anexo~1 (\fig{anexo_diagrama_bloques}).
 
 A continuación se detalla la función ingenieril y la justificación técnica de cada uno de los bloques constitutivos:
 
 \begin{enumerate}[leftmargin=0.8cm]
     \item Módulo I: Proceso físico de torneado y máquina herramienta: Comprende el torno CNC de taller de MAINSA donde se ejecutan las operaciones de desbaste y acabado sobre barras de acero AISI 1045 y 4140. La interacción de corte genera esfuerzos mecánicos sobre el inserto de carburo cementado CNMG 120408, los cuales se transmiten cinemáticamente hacia el carro longitudinal (eje $Z$) y transversal (eje $X$), así como perturbaciones acústicas y vibratorias a través de la torreta portaherramientas.
     
-    \item Módulo II: Transducción sensorial no invasiva: Diseñado para capturar la fenomenología de corte sin intervenir la máquina herramienta:
+    \item Módulo II: Transducción sensorial no invasiva (variable eléctrica y vibración mecánica): Diseñado para capturar la fenomenología de corte sin intervenir la máquina herramienta:
     \begin{itemize}
         \item \textit{Sensor de corriente de núcleo partido SCT-013-000:} Abrazado externamente sobre una de las fases de alimentación del servomotor de avance del carro portaherramientas dentro del armario eléctrico, capturando variaciones de par de empuje sin alterar el cableado.
         \item \textit{Acelerómetro digital triaxial ADXL345:} Fijado sobre la torreta portaherramientas mediante una base magnética integrada con imanes de neodimio N52 dentro de un encapsulado con grado de protección industrial IP67, inmune a la proyección directa de viruta y fluido de corte (taladrina).

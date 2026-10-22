@@ -30,17 +30,17 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 \multicolumn{3}{c}{\textbf{Fuente:} Elaboración propia, 2026.}
 \endlastfoot
 
-\textbf{OE1.} Investigar las operaciones de mecanizado en torno CNC, los mecanismos de desgaste de herramientas de corte y las tecnologías de inteligencia artificial en el borde (\textit{Edge AI}) orientadas al monitoreo de condición. &
+\textbf{OE1.} Investigar la operación de mecanizado en torno CNC (cilindrado longitudinal), los mecanismos de desgaste de herramientas de corte y las tecnologías de inteligencia artificial en el borde (\textit{Edge AI}) orientadas al monitoreo de condición. &
 • Caracterización de operaciones de torneado CNC y cinemática de corte.\par\vspace{1mm}
 • Análisis de fenomenología del desgaste y patrones de falla según ISO 3685.\par\vspace{1mm}
-• Estudio del estado del arte en monitoreo indirecto (TCM) por corriente y vibración.\par\vspace{1mm}
+• Estudio del estado del arte en monitoreo indirecto (TCM) por variables eléctricas y vibración mecánica.\par\vspace{1mm}
 • Evaluación de \textit{Edge AI} / TinyML y plataformas embebidas. &
 • 8.2.1 Cinemática del torneado ($V_c, f, a_p, MRR$), fuerzas de corte y potencia ($P_c$).\par\vspace{1mm}
 • 8.2.2 Mecanismos tribológicos de desgaste y criterio $VB$ (ISO 3685).\par\vspace{1mm}
-• 8.2.3 Monitoreo de condición (TCM) indirecto mediante corriente y acelerometría.\par\vspace{1mm}
+• 8.2.3 Monitoreo de condición (TCM) indirecto mediante variable eléctrica (corriente) y vibración mecánica (acelerometría).\par\vspace{1mm}
 • 8.2.6 Inteligencia artificial en el borde (\textit{Edge AI} / TinyML). \\ \hline
 
-\textbf{OE2.} Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, integrando acondicionamiento de señal, procesamiento en el borde, dashboard e indicador LED. &
+\textbf{OE2.} Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, integrando acondicionamiento de señal, procesamiento en el borde, panel de visualización en dashboard e indicadores LED de alerta. &
 • Definición del diagrama de bloques funcional (adquisición, acondicionamiento y visualización).\par\vspace{1mm}
 • Diseño de circuito acondicionador analógico (rectificación y conversión a nivel RMS).\par\vspace{1mm}
 • Diseño esquemático y ruteo de PCB industrial con aislamiento galvánico.\par\vspace{1mm}
@@ -49,17 +49,17 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 • 8.2.5 Procesamiento digital de señales (adquisición determinista).\par\vspace{1mm}
 • 8.2.7 Arquitectura de supervisión local y señalización visual de desgaste. \\ \hline
 
-\textbf{OE3.} Dimensionar los sensores de corriente, vibración y la unidad de procesamiento embebido. &
-• Dimensionamiento de transductor SCT-013 según potencia del motor de avance del carro.\par\vspace{1mm}
-• Selección del acelerómetro considerando ancho de banda y rango dinámico en torreta.\par\vspace{1mm}
+\textbf{OE3.} Dimensionar los sensores de variable eléctrica, vibración mecánica y la unidad de procesamiento embebido. &
+• Dimensionamiento de transductor de variable eléctrica (SCT-013) según potencia del motor de avance del carro.\par\vspace{1mm}
+• Selección del sensor de vibración mecánica (acelerómetro) considerando ancho de banda y rango dinámico en torreta.\par\vspace{1mm}
 • Selección de microcontrolador analizando ADC, DMA, FPU, CMSIS-DSP y memoria.\par\vspace{1mm}
 • Cálculo y dimensionamiento de componentes pasivos de filtrado y fuentes conmutadas.\par\vspace{1mm}
 • Elaboración del documento de avance semestral y Defensa de Avance [Hito 2]. &
-• 8.2.4 Transductores de corriente y acelerómetros piezoeléctricos/MEMS.\par\vspace{1mm}
+• 8.2.4 Transductores de variable eléctrica (corriente) y sensores de vibración mecánica (acelerómetros MEMS).\par\vspace{1mm}
 • 8.2.5 Teorema de Nyquist, filtrado anti-aliasing y arquitectura ARM Cortex-M4.\par\vspace{1mm}
-• 8.2.8 Análisis comparativo y selección de componentes (microcontrolador, corriente y aceleración). \\ \hline
+• 8.2.8 Análisis comparativo y selección de componentes (microcontrolador, variable eléctrica y vibración mecánica). \\ \hline
 
-\textbf{OE4.} Integrar el sistema periférico de adquisición, procesamiento inteligente, panel de visualización e indicador LED. &
+\textbf{OE4.} Integrar el sistema periférico de adquisición, procesamiento inteligente, panel de visualización e indicadores luminosos LED para desgaste crítico. &
 • Ensamblaje, integración eléctrica y verificación funcional de PCB y gabinete.\par\vspace{1mm}
 • Programación del firmware STM32 para muestreo síncrono DMA y CMSIS-DSP.\par\vspace{1mm}
 • Campaña de mecanizado en MAINSA y construcción de dataset etiquetado.\par\vspace{1mm}
@@ -100,7 +100,7 @@ V_c = \frac{\pi \cdot D \cdot n}{1000}
 \label{eq:velocidad_corte}
 \end{equation}
 
-donde $V_c$ representa la velocidad de corte periférica expresada en metros por minuto, $D$ corresponde al diámetro inicial de la pieza de trabajo medido en milímetros y $n$ cuantifica la velocidad rotacional instantánea del husillo principal en revoluciones por minuto. Esta velocidad condiciona de forma directa la generación de calor en la interfaz de corte y la rapidez con la que se manifiesta el desgaste abrasivo sobre el filo.
+donde en la \eqref{eq:velocidad_corte}, $V_c$ representa la velocidad de corte periférica expresada en metros por minuto, $D$ corresponde al diámetro inicial de la pieza de trabajo medido en milímetros y $n$ cuantifica la velocidad rotacional instantánea del husillo principal en revoluciones por minuto. Esta velocidad condiciona de forma directa la generación de calor en la interfaz de corte y la rapidez con la que se manifiesta el desgaste abrasivo sobre el filo.
 
 A partir de los parámetros cinemáticos fijados numéricamente, se determina analíticamente la tasa volumétrica de remoción de material, la cual cuantifica el volumen desprendido por unidad de tiempo y condiciona la productividad global del proceso \citep{trent2000}. Dicha variable operacional se deduce matemáticamente considerando de forma conjunta la velocidad superficial relativa, el desplazamiento de avance lineal por cada vuelta y la penetración radial de la herramienta de corte en el material:
 
@@ -109,7 +109,7 @@ MRR = V_c \cdot f \cdot a_p \cdot 1000
 \label{eq:mrr}
 \end{equation}
 
-donde $MRR$ denota la tasa volumétrica de remoción de material calculada en milímetros cúbicos por minuto, $f$ simboliza el avance lineal de la torreta portaherramientas en milímetros por revolución y $a_p$ es la profundidad efectiva de pasada expresada en milímetros. Un incremento sustancial en el régimen de remoción eleva proporcionalmente las solicitaciones mecánicas sobre el inserto, acelerando los fenómenos tribológicos de degradación estructural.
+donde en la \eqref{eq:mrr}, $MRR$ denota la tasa volumétrica de remoción de material calculada en milímetros cúbicos por minuto, $f$ simboliza el avance lineal de la torreta portaherramientas en milímetros por revolución y $a_p$ es la profundidad efectiva de pasada expresada en milímetros. Un incremento sustancial en el régimen de remoción eleva proporcionalmente las solicitaciones mecánicas sobre el inserto, acelerando los fenómenos tribológicos de degradación estructural.
 
 Durante la interacción física de corte, las reacciones mecánicas tridimensionales generadas sobre la punta de la herramienta se descomponen ortogonalmente en tres componentes de fuerza fundamentales \citep{trejo2010, sandvik2020}. La disposición vectorial y orientación espacial de dichas fuerzas respecto al sistema cartesiano del torno CNC se ilustran en la \fig{torneado_geometria_fuerzas}.
 
@@ -122,7 +122,7 @@ P_c = \frac{F_c \cdot V_c}{60 \cdot 1000}
 \label{eq:potencia_corte}
 \end{equation}
 
-donde $P_c$ representa la potencia neta de corte demandada en kilovatios, $F_c$ cuantifica la fuerza tangencial principal en newtons y $V_c$ denota la velocidad de corte periférica calculada previamente. Por su parte, la fuerza de avance $F_a$ actúa paralelamente al eje longitudinal de la pieza en la dirección del desplazamiento lineal $f$, repercutiendo de forma directa sobre el servomotor del carro longitudinal, mientras que la fuerza radial $F_r$ actúa en dirección perpendicular a la superficie torneada, empujando la herramienta hacia afuera e incidiendo fuertemente en las deformaciones elásticas, vibraciones dinámicas y desviaciones dimensionales de la pieza mecanizada \citep{trejo2010}.
+donde en la \eqref{eq:potencia_corte}, $P_c$ representa la potencia neta de corte demandada en kilovatios, $F_c$ cuantifica la fuerza tangencial principal en newtons y $V_c$ denota la velocidad de corte periférica calculada previamente. Por su parte, la fuerza de avance $F_a$ actúa paralelamente al eje longitudinal de la pieza en la dirección del desplazamiento lineal $f$, repercutiendo de forma directa sobre el servomotor del carro longitudinal, mientras que la fuerza radial $F_r$ actúa en dirección perpendicular a la superficie torneada, empujando la herramienta hacia afuera e incidiendo fuertemente en las deformaciones elásticas, vibraciones dinámicas y desviaciones dimensionales de la pieza mecanizada \citep{trejo2010}.
 
 Desde la perspectiva de la mecánica del mecanizado por arranque de viruta, la formación de viruta se analiza convencionalmente a partir de dos esquemas cinemáticos: el modelo ideal de corte ortogonal bidimensional y el régimen tridimensional real de corte oblicuo \citep{trejo2010}, cuyos esquemas morfológicos se contrastan en la \fig{mecanica_corte}.
 
@@ -179,7 +179,7 @@ R_{a,\text{teórico}} \approx \frac{f^2}{32 \cdot r_\varepsilon}
 \label{eq:rugosidad_teorica}
 \end{equation}
 
-donde $R_{a,\text{teórico}}$ representa el valor medio de rugosidad aritmética superficial en milímetros, $f$ denota el avance lineal por vuelta y $r_\varepsilon$ simboliza el radio geométrico de la nariz de corte. A medida que el flanco de incidencia pierde agudeza por abrasión, el área de contacto elasto-plástico con la pieza se amplifica desproporcionadamente \citep{trejo2010}. Este frotamiento parásito no sólo arruina la tolerancia dimensional de diámetro exterior de las piezas procesadas en MAINSA, sino que actúa como una fuente directa de autoexcitación de vibraciones mecánicas dinámicas (\textit{chatter}), justificando con plena solidez técnica la necesidad de implementar sistemas de monitoreo continuo en línea.
+donde en la \eqref{eq:rugosidad_teorica}, $R_{a,\text{teórico}}$ representa el valor medio de rugosidad aritmética superficial en milímetros, $f$ denota el avance lineal por vuelta y $r_\varepsilon$ simboliza el radio geométrico de la nariz de corte. A medida que el flanco de incidencia pierde agudeza por abrasión, el área de contacto elasto-plástico con la pieza se amplifica desproporcionadamente \citep{trejo2010}. Este frotamiento parásito no sólo arruina la tolerancia dimensional de diámetro exterior de las piezas procesadas en MAINSA, sino que actúa como una fuente directa de autoexcitación de vibraciones mecánicas dinámicas (\textit{chatter}), justificando con plena solidez técnica la necesidad de implementar sistemas de monitoreo continuo en línea.
 
 \subsubsection{Sistemas de monitoreo de condición de herramientas (TCM)}
 
@@ -216,7 +216,7 @@ Tal como se desprende de la \tab{comparativa_variables_tcm}, la medición de tem
 
 No obstante, la influencia del factor temporal en la degradación térmica y tribológica se incorpora en la presente investigación a través del seguimiento del tiempo acumulado de corte activo ($t_{\text{corte}}$). Este parámetro contextual se registra en el firmware y se supervisa en el panel local, correlacionándose con el modelo empírico de vida útil de Taylor ($v_c \cdot T^n = C$), lo que complementa de manera determinista la inferencia dinámica de los modelos inteligentes.
 
-En virtud de estas consideraciones, la arquitectura del proyecto se fundamenta en la fusión sensorial de dos magnitudes indirectas plenamente viables y complementarias: la corriente eléctrica consumida por el servomotor de avance del carro portaherramientas y la vibración mecánica capturada en la torreta portaherramientas.
+En virtud de estas consideraciones, la arquitectura del proyecto se fundamenta en la fusión sensorial de dos magnitudes indirectas plenamente viables y complementarias: la variable eléctrica (corriente consumida por el servomotor de avance del carro portaherramientas) y la vibración mecánica capturada en la torreta portaherramientas.
 
 \subsubsection{Transductores y fundamentación analítica del sensado de corriente en el servomotor de avance}
 
@@ -247,7 +247,7 @@ A su vez, en servomotores síncronos de imanes permanentes (PMSM o servomotores 
 \label{eq:par_electrico_servo}
 \end{equation}
 
-donde $k_t$ es la constante de par del servomotor expresada en newton-metro por amperio ($\text{N}\cdot\text{m/A}$). Igualando el par electromagnético generado con el par resistente en régimen de maquinado cuasi-estacionario ($\tau_e \approx \tau_m$) y sustituyendo las relaciones \eqref{eq:fuerza_avance_desgaste} y \eqref{eq:par_mecanico_carro}, se obtiene la ecuación analítica directa que vincula el desgaste del inserto con la corriente del actuador:
+donde en la \eqref{eq:par_electrico_servo}, $k_t$ es la constante de par del servomotor expresada en newton-metro por amperio ($\text{N}\cdot\text{m/A}$). Igualando el par electromagnético generado con el par resistente en régimen de maquinado cuasi-estacionario ($\tau_e \approx \tau_m$) y sustituyendo las relaciones \eqref{eq:fuerza_avance_desgaste} y \eqref{eq:par_mecanico_carro}, se obtiene la ecuación analítica directa que vincula el desgaste del inserto con la corriente del actuador:
 
 \begin{equation}
 I_a = \frac{p}{2\pi \cdot \eta \cdot k_t} \cdot \left( F_{a0} + k_w \cdot VB \right)
@@ -307,7 +307,7 @@ x_{RMS} = \sqrt{\frac{1}{N} \sum_{i=1}^{N} x_i^2}
 \label{eq:rms}
 \end{equation}
 
-donde $x_i$ corresponde a cada valor numérico individual adquirido dentro de la ventana de procesamiento temporal y $N$ simboliza la cantidad total de muestras integradas en el cálculo. El seguimiento cronológico del valor eficaz permite evidenciar la tendencia gradual y sostenida del incremento de fuerza de corte vinculada directamente al desgaste de flanco de la herramienta, descartando perturbaciones transitorias ajenas al mecanizado.
+donde en la \eqref{eq:rms}, $x_i$ corresponde a cada valor numérico individual adquirido dentro de la ventana de procesamiento temporal y $N$ simboliza la cantidad total de muestras integradas en el cálculo. El seguimiento cronológico del valor eficaz permite evidenciar la tendencia gradual y sostenida del incremento de fuerza de corte vinculada directamente al desgaste de flanco de la herramienta, descartando perturbaciones transitorias ajenas al mecanizado.
 
 De manera simultánea, se computan parámetros estadísticos de orden superior altamente sensibles a eventos dinámicos anómalos, tales como impactos intermitentes derivados de fracturas de filo o desprendimientos microscópicos de recubrimiento \citep{sevilla2011}. Entre estos descriptores destacan la Curtosis, indicativa de la agudeza o pesadez de las colas de distribución de la señal, y el Factor de Cresta, definido como la razón entre el valor pico absoluto instantáneo y el valor eficaz cuadrático medio:
 
@@ -321,7 +321,7 @@ CF = \frac{\max(|x_i|)}{x_{RMS}}
 \label{eq:factor_cresta}
 \end{equation}
 
-donde $\bar{x}$ simboliza el promedio aritmético de las muestras contenidas en el intervalo analizado. Cuando el filo de corte sufre una rotura violenta o fractura imprevista, la presencia de picos transitorios repentinos eleva de forma abrupta los valores de curtosis y factor de cresta, permitiendo diferenciar con notable claridad un régimen de desgaste progresivo frente a una catástrofe mecánica inminente en plena operación.
+donde en las relaciones \eqref{eq:curtosis} y \eqref{eq:factor_cresta}, $\bar{x}$ simboliza el promedio aritmético de las muestras contenidas en el intervalo analizado. Cuando el filo de corte sufre una rotura violenta o fractura imprevista, la presencia de picos transitorios repentinos eleva de forma abrupta los valores de curtosis y factor de cresta, permitiendo diferenciar con notable claridad un régimen de desgaste progresivo frente a una catástrofe mecánica inminente en plena operación.
 
 \subsubsection{Inteligencia artificial en el borde (Edge AI / TinyML)}
 
@@ -361,7 +361,7 @@ Se contrastaron tres alternativas de microcontroladores de amplia difusión indu
     \item ATmega328P (Arquitectura AVR @ 16 MHz): Microcontrolador clásico de 8 bits sin FPU ni instrucciones DSP. Su baja tasa de muestreo analógico (máximo 15~kSPS a 10 bits) y su limitada memoria (2~KB SRAM) lo hacen completamente inviable para alojar buffers DMA y modelos de clasificación inteligente. \textit{Opción descartada.}
 \end{itemize}
 
-\paragraph{B. Sensor de corriente para monitoreo no invasivo en el carro portaherramientas}
+\paragraph{B. Sensor de variable eléctrica para monitoreo no invasivo en el carro portaherramientas}
 Se analizaron tres tecnologías de transducción de corriente eléctrica alterna para el monitoreo del accionamiento de avance del carro:
 \begin{itemize}
     \item Sensor de núcleo partido SCT-013-000 (0--100 A): Basado en acoplamiento magnético inductivo. Su pinza abisagrada permite abrazar el conductor de fase del servomotor de avance del carro portaherramientas sin seccionar el cableado ni alterar la instalación interna del torno CNC, cumpliendo con la exigencia de cero invasividad impuesta por MAINSA. \textit{Opción seleccionada para operación industrial en planta.}
@@ -369,7 +369,7 @@ Se analizaron tres tecnologías de transducción de corriente eléctrica alterna
     \item Resistencia Shunt de potencia: Exige cortar el conductor de fase e intercalar un resistor de bajo ohmiaje, disipando calor y careciendo de aislamiento galvánico intrínseco. \textit{Opción descartada por representar un riesgo operacional y violar el principio de no invasividad.}
 \end{itemize}
 
-\paragraph{C. Sensor de aceleración para vibración mecánica en torreta}
+\paragraph{C. Sensor de vibración mecánica (acelerometría MEMS) en torreta}
 Se evaluaron tres variantes de sensado inercial:
 \begin{itemize}
     \item ADXL345 (Digital MEMS triaxial de Analog Devices): Comunicación digital mediante bus SPI a 5~MHz y tasa de datos de salida (ODR) de hasta 3200~Hz ($BW = 1600\,\text{Hz}$), resolución de 13 bits y bajo consumo. Su inmunidad al ruido y su enlace SPI determinista lo convierten en la \textit{opción seleccionada para captura de vibración en la torreta portaherramientas.}
