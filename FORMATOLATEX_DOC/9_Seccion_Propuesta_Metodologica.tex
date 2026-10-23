@@ -55,7 +55,7 @@ Incidencia de roturas intempestivas, piezas fuera de tolerancia dimensional y de
 
 Objetivo General & 
 Diseñar un sistema periférico no invasivo de monitoreo del desgaste de insertos de corte en un torno CNC de la empresa MAINSA, mediante la medición de variables eléctricas en el servomotor de avance y vibración mecánica en la torreta, procesadas con inteligencia artificial en el borde (\textit{Edge AI}), que clasifique tres estados de desgaste con una exactitud $\ge 90$\% y lo señalice en un dashboard local con indicadores luminosos de severidad, para sustituir la inspección visual subjetiva por una alerta objetiva de reemplazo del inserto que reduzca el riesgo de paradas no planificadas y la ocurrencia de piezas fuera de tolerancia dimensional. & 
-Integración de transductores de variable eléctrica SCT-013, acelerometría ADXL345 en torreta, microcontrolador STM32F4, dashboard e indicador LED triestado. & 
+Integración de transductores de variable eléctrica SCT-013, acelerometría ADXL345 en torreta, microcontrolador STM32F4, dashboard e indicador LED pentaestado (cinco niveles de desgaste). & 
 Prototipo mecatrónico funcional montado en gabinete industrial operativo al pie de máquina.\\ \hline
 
 Hipótesis Ingenieril & 
@@ -131,7 +131,7 @@ A continuación se detalla la función ingenieril y la justificación técnica d
     Para garantizar que la advertencia de desgaste sea inmediata y comprensible para el operario de taller sin depender de internet ni de la nube:
     \begin{itemize}
         \item \textit{Dashboard local al pie de máquina:} Interfaz gráfica desplegada en pantalla de gabinete o estación técnica local comunicada vía UART/RS485, que visualiza la curva de evolución de corriente, el nivel de vibración y el valor estimado de desgaste de flanco ($VB$).
-        \item \textit{Semáforo luminoso LED triestado:} Módulo de señalización óptica de alta visibilidad en el frontal del sistema periférico: indicador verde para inserto en condición óptima ($VB < 0.15\,\text{mm}$), indicador amarillo para advertencia de desgaste funcional ($0.15 \le VB < 0.30\,\text{mm}$) e indicador rojo de alerta crítica de cambio inmediato cuando el modelo clasifica desgaste normativo severo ($VB \ge 0.30\,\text{mm}$), evitando desviaciones dimensionales o roturas catastróficas.
+        \item \textit{Semáforo luminoso LED pentaestado:} Módulo de señalización óptica de cinco niveles de alta visibilidad en el frontal del sistema periférico: LED verde oscuro para inserto nuevo en condición óptima ($VB < 0.10\,\text{mm}$), LED verde para buen estado operativo ($0.10 \le VB < 0.18\,\text{mm}$), LED verde claro para estado regular con seguimiento recomendado ($0.18 \le VB < 0.22\,\text{mm}$), LED naranja para condición aceptable con cambio próximo planificable ($0.22 \le VB < 0.30\,\text{mm}$) y LED rojo de alerta de cambio urgente cuando el modelo clasifica desgaste normativo severo ($VB \ge 0.30\,\text{mm}$ según norma ISO 3685), evitando desviaciones dimensionales o roturas catastróficas.
     \end{itemize}
 \end{enumerate}
 

@@ -14,5 +14,6 @@
 \contentsline {figure}{\numberline {10}{\ignorespaces Evolución temporal de la señal de corriente tras cada etapa de acondicionamiento analógico y rectificación de valor eficaz para el convertidor analógico-digital (ADC)}}{44}{figure.caption.12}%
 \contentsline {figure}{\numberline {11}{\ignorespaces Arquitectura y flujo secuencial de procesamiento de señales e inferencia Edge AI (TinyML) implementada en el sistema}}{50}{figure.caption.13}%
 \contentsline {figure}{\numberline {12}{\ignorespaces Ciclo iterativo de diseño, entrenamiento, cuantización INT8 y despliegue embebido de modelos TinyML}}{51}{figure.caption.14}%
-\contentsline {figure}{\numberline {13}{\ignorespaces Sensor acelerómetro digital MEMS triaxial ADXL345: (a) Módulo físico para encapsulado estanco IP67 y (b) Ejes ortogonales de sensibilidad triaxial (+X, +Y, +Z) vinculados a la cinemática de torneado}}{54}{figure.caption.15}%
-\contentsline {figure}{\numberline {14}{\ignorespaces Cronograma de actividades por objetivo específico (Gestión 2026 -- 2027)}}{66}{figure.caption.17}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Indicador LED pentaestado de desgaste de flanco: escala cromática de cinco niveles y umbrales normativos $VB$ según ISO 3685}}{52}{figure.caption.15}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Sensor acelerómetro digital MEMS triaxial ADXL345: (a) Módulo físico para encapsulado estanco IP67 y (b) Ejes ortogonales de sensibilidad triaxial (+X, +Y, +Z) vinculados a la cinemática de torneado}}{55}{figure.caption.16}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Cronograma de actividades por objetivo específico (Gestión 2026 -- 2027)}}{67}{figure.caption.18}%
