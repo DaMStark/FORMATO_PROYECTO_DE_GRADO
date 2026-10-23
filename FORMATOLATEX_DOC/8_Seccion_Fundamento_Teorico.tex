@@ -1,4 +1,4 @@
-﻿\newpage
+\newpage
 \section{FUNDAMENTO TEÓRICO}
 
 El presente capítulo expone los fundamentos teóricos y conceptuales que sustentan el diseño e implementación del sistema periférico no invasivo para el monitoreo de desgaste de herramientas de corte en tornos CNC industriales en MAINSA. Se articulan coherentemente los principios cinemáticos del mecanizado por arranque de viruta, los mecanismos tribológicos de degradación del inserto conforme a normas internacionales, las metodologías de supervisión indirecta mediante variables electromecánicas, las técnicas de acondicionamiento y procesamiento digital de señales, así como los modelos de aprendizaje automático en el borde y las arquitecturas de conectividad industrial.
@@ -218,7 +218,7 @@ No obstante, la influencia del factor temporal en la degradación térmica y tri
 
 En virtud de estas consideraciones, la arquitectura del proyecto se fundamenta en la fusión sensorial de dos magnitudes indirectas plenamente viables y complementarias: la variable eléctrica (corriente consumida por el servomotor de avance del carro portaherramientas) y la vibración mecánica capturada en la torreta portaherramientas.
 
-\subsubsection{Transductores y fundamentación analítica del sensado de corriente en el servomotor de avance}
+\subsubsection{Transductores y fundamentación analítica del sensado de variable eléctrica en el servomotor de avance}
 
 En el torneado de piezas cilíndricas, la monitorización sustentada en la corriente del motor del husillo principal presenta una limitación física relevante: la elevada inercia mecánica del plato de garras y el rotor, sumada a la fricción parásita de rodamientos de gran porte, diluye las pequeñas variaciones de par provocadas por el desgaste incipiente de la herramienta \citep{romero2003, trejo2010}. Por el contrario, tal como demostraron experimentalmente Romero-Troncoso et al. \citep{romero2003} y Sevilla-Camacho et al. \citep{sevilla2011}, el servomotor de avance del carro portaherramientas (eje longitudinal $Z$ y transversal $X$) ofrece una relación señal-ruido significativamente más favorable, debido a que su cadena cinemática acopla directamente el esfuerzo de empuje contra el filo de corte.
 
