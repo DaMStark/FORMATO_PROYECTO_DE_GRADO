@@ -341,7 +341,7 @@ Asimismo, en la \fig{tinyml_ciclo_optimizacion} se describe el ciclo metodológi
 
 \figura[width=0.82\textwidth]{tinyml_ciclo_optimizacion}{Ciclo iterativo de diseño, entrenamiento, cuantización INT8 y despliegue embebido de modelos TinyML}{Elaboración propia con base en Warden y Situnayake (2019)}
 
-El proceso de cuantización a números enteros de ocho bits disminuye la huella de memoria del modelo en almacenamiento no volátil en aproximadamente un setenta y cinco por ciento, reduciendo simultáneamente la ocupación de memoria dinámica y acelerando la ejecución aritmética \citep{warden2019}. Esta optimización algorítmica permite efectuar diagnósticos en tiempo real deterministas, categorizando el estado operativo del inserto de corte en tres clases discretas de condición: inserto nuevo, desgaste funcional y filo crítico.
+El proceso de cuantización a números enteros de ocho bits disminuye la huella de memoria del modelo en almacenamiento no volátil en aproximadamente un setenta y cinco por ciento, reduciendo simultáneamente la ocupación de memoria dinámica y acelerando la ejecución aritmética \citep{warden2019}. Esta optimización algorítmica permite efectuar diagnósticos en tiempo real deterministas, categorizando el estado operativo del inserto de corte en cinco niveles discretos de severidad de desgaste conforme a los criterios metrológicos de la norma ISO 3685.
 
 \subsubsection{Arquitectura de supervisión local y señalización visual de desgaste}
 
@@ -367,7 +367,7 @@ Se contrastaron tres alternativas de microcontroladores de amplia difusión indu
 Se analizaron tres tecnologías de transducción de corriente eléctrica alterna para el monitoreo del accionamiento de avance del carro:
 \begin{itemize}
     \item Sensor de núcleo partido SCT-013-000 (0--100 A): Basado en acoplamiento magnético inductivo. Su pinza abisagrada permite abrazar el conductor de fase del servomotor de avance del carro portaherramientas sin seccionar el cableado ni alterar la instalación interna del torno CNC, cumpliendo con la exigencia de cero invasividad impuesta por MAINSA. \textit{Opción seleccionada para operación industrial en planta.}
-    \item Sensor de efecto Hall integrado ACS712-20A: Dispositivo galvanicamente aislado con ancho de banda de 80~kHz, adecuado para la captura detallada de microperturbaciones de torque en régimen transitorio en bancos de prueba y tableros accesibles. \textit{Opción seleccionada como sensor complementario de validación en laboratorio.}
+    \item Sensor de efecto Hall integrado ACS712-20A: Dispositivo galvánicamente aislado con ancho de banda de 80~kHz, adecuado para la captura detallada de microperturbaciones de torque en régimen transitorio en bancos de prueba y tableros accesibles. \textit{Opción seleccionada como sensor complementario de validación en laboratorio.}
     \item Resistencia Shunt de potencia: Exige cortar el conductor de fase e intercalar un resistor de bajo ohmiaje, disipando calor y careciendo de aislamiento galvánico intrínseco. \textit{Opción descartada por representar un riesgo operacional y violar el principio de no invasividad.}
 \end{itemize}
 
