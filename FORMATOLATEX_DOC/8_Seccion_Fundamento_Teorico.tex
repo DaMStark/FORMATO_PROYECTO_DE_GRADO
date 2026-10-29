@@ -30,7 +30,7 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 \multicolumn{3}{c}{\textbf{Fuente:} Elaboración propia, 2026.}
 \endlastfoot
 
-\textbf{OE1.} Investigar la operación de mecanizado en torno CNC (cilindrado longitudinal), los mecanismos de desgaste de herramientas de corte y las tecnologías de inteligencia artificial en el borde (\textit{Edge AI}) orientadas al monitoreo de condición. &
+\textbf{OE1.} Recopilar información de la operación de mecanizado en torno CNC, los mecanismos de desgaste de herramientas de corte y las tecnologías de inteligencia artificial en el borde (\textit{Edge AI}) orientadas al monitoreo de condición. &
 • Caracterización de operaciones de torneado CNC y cinemática de corte.\par\vspace{1mm}
 • Análisis de fenomenología del desgaste y patrones de falla según ISO 3685.\par\vspace{1mm}
 • Estudio del estado del arte en monitoreo indirecto (TCM) por variables eléctricas y vibración mecánica.\par\vspace{1mm}
@@ -40,16 +40,7 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 • 8.2.3 Monitoreo de condición (TCM) indirecto mediante variable eléctrica (corriente) y vibración mecánica (acelerometría).\par\vspace{1mm}
 • 8.2.6 Inteligencia artificial en el borde (\textit{Edge AI} / TinyML). \\ \hline
 
-\textbf{OE2.} Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, integrando acondicionamiento de señal, procesamiento en el borde, panel de visualización en dashboard e indicadores LED de alerta. &
-• Definición del diagrama de bloques funcional (adquisición, acondicionamiento y visualización).\par\vspace{1mm}
-• Diseño de circuito acondicionador analógico (rectificación y conversión a nivel RMS).\par\vspace{1mm}
-• Diseño esquemático y ruteo de PCB industrial con aislamiento galvánico.\par\vspace{1mm}
-• Concepción de gabinete IP65 y carcasa estanca IP67 con base magnética de neodimio. &
-• 8.2.4 Transductores y acondicionamiento analógico (efecto Hall, acelerómetros MEMS, offset DC y EMC).\par\vspace{1mm}
-• 8.2.5 Procesamiento digital de señales (adquisición determinista).\par\vspace{1mm}
-• 8.2.7 Arquitectura de supervisión local y señalización visual de desgaste. \\ \hline
-
-\textbf{OE3.} Dimensionar los sensores de variable eléctrica, vibración mecánica y la unidad de procesamiento embebido. &
+\textbf{OE2.} Dimensionar los sensores de la variable eléctrica, vibración mecánica y la unidad de procesamiento embebido. &
 • Dimensionamiento de transductor de variable eléctrica (SCT-013) según potencia del motor de avance del carro.\par\vspace{1mm}
 • Selección del sensor de vibración mecánica (acelerómetro) considerando ancho de banda y rango dinámico en torreta.\par\vspace{1mm}
 • Selección de microcontrolador analizando ADC, DMA, FPU, CMSIS-DSP y memoria.\par\vspace{1mm}
@@ -59,7 +50,16 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 • 8.2.5 Teorema de Nyquist, filtrado anti-aliasing y arquitectura ARM Cortex-M4.\par\vspace{1mm}
 • 8.2.8 Análisis comparativo y selección de componentes (microcontrolador, variable eléctrica y vibración mecánica). \\ \hline
 
-\textbf{OE4.} Integrar el sistema periférico de adquisición, procesamiento inteligente, panel de visualización e indicadores luminosos LED para desgaste crítico. &
+\textbf{OE3.} Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, integrando acondicionamiento de señal, procesamiento en el borde, panel de visualización en dashboard e indicadores LED de alerta. &
+• Definición del diagrama de bloques funcional (adquisición, acondicionamiento y visualización).\par\vspace{1mm}
+• Diseño de circuito acondicionador analógico (rectificación y conversión a nivel RMS).\par\vspace{1mm}
+• Diseño esquemático y ruteo de PCB industrial con aislamiento galvánico.\par\vspace{1mm}
+• Concepción de gabinete IP65 y carcasa estanca IP67 con base magnética de neodimio. &
+• 8.2.4 Transductores y acondicionamiento analógico (efecto Hall, acelerómetros MEMS, offset DC y EMC).\par\vspace{1mm}
+• 8.2.5 Procesamiento digital de señales (adquisición determinista).\par\vspace{1mm}
+• 8.2.7 Arquitectura de supervisión local y señalización visual de desgaste. \\ \hline
+
+\textbf{OE4.} Integrar el sistema periférico de adquisición, procesamiento inteligente, panel de visualización e indicadores luminosos LED para desgaste. &
 • Ensamblaje, integración eléctrica y verificación funcional de PCB y gabinete.\par\vspace{1mm}
 • Programación del firmware STM32 para muestreo síncrono DMA y CMSIS-DSP.\par\vspace{1mm}
 • Campaña de mecanizado en MAINSA y construcción de dataset etiquetado.\par\vspace{1mm}
