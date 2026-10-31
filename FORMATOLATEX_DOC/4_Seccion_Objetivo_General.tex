@@ -2,3 +2,12 @@
 \section{OBJETIVO GENERAL}
 
 Desarrollar un sistema periférico no invasivo de monitoreo del desgaste de insertos de corte en un torno CNC de la empresa MAINSA, mediante la medición de variables eléctricas en el servomotor de avance y vibración mecánica en la torreta, procesadas con inteligencia artificial en el borde (\textit{Edge AI}), que clasifique cinco estados de desgaste con una exactitud $\ge 90$\% y lo señalice en un dashboard local con indicadores luminosos de severidad, para sustituir la inspección visual subjetiva por una alerta objetiva de reemplazo del inserto que reduzca el riesgo de paradas no planificadas y la ocurrencia de piezas fuera de tolerancia dimensional.
+
+\subsection{Criterios de medición y validación del objetivo general}
+Para facilitar la evaluación objetiva del cumplimiento del objetivo general, se establecen los siguientes criterios técnicos de medición y validación:
+\begin{itemize}
+    \item \textbf{Criterio de referencia metrológica (Ground Truth):} La condición real del filo se verificará mediante inspección óptica del desgaste de flanco ($VB$ en mm) con lente óptico de aumento en taller junto con los operarios, contrastando con los umbrales de la norma ISO 3685:1993 para categorizar los cinco niveles de desgaste.
+    \item \textbf{Criterio de desempeño del modelo inteligente:} El algoritmo de clasificación en TinyML deberá alcanzar una exactitud global $\ge 90$\% y un F1-score macro $\ge 0.88$ evaluados sobre un conjunto de datos de prueba independiente (\textit{hold-out set}) representativo de los cinco estados de desgaste.
+    \item \textbf{Criterio de tiempo de respuesta:} El sistema deberá ejecutar la inferencia de manera determinista en el microcontrolador con un tiempo de procesamiento $\le 15\,\text{ms}$, y actualizar el estado visual en el clasificador LED y dashboard en un tiempo $\le 1\,\text{s}$.
+    \item \textbf{Criterio de validación en proceso:} El prototipo se validará experimentalmente en el torno CNC de MAINSA durante operaciones reales de cilindrado longitudinal sobre barras de acero AISI 1045, verificando la ausencia de invasividad mecánica o eléctrica en la máquina herramienta.
+\end{itemize}

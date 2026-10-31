@@ -1,19 +1,19 @@
 \babel@toc {spanish}{}\relax 
 \thispagestyle {empty}
-\contentsline {figure}{\numberline {1}{\ignorespaces Árbol de problemas del proceso de torneado CNC en MAINSA}}{17}{figure.caption.1}%
-\contentsline {figure}{\numberline {2}{\ignorespaces Operaciones fundamentales de mecanizado por arranque de viruta en torno CNC}}{33}{figure.caption.3}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Cinemática del proceso de torneado cilíndrico y descomposición vectorial de las fuerzas de mecanizado}}{35}{figure.caption.4}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Comparativa esquemática entre el modelo de corte ortogonal y corte oblicuo}}{36}{figure.caption.5}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Corte ortogonal (modelo bidimensional)}}}{36}{subfigure.4.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Corte oblicuo (modelo tridimensional)}}}{36}{subfigure.4.2}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Geometría de insertos intercambiables de corte, ángulo de punta incluido y correlación con la resistencia mecánica frente a despostillamiento}}{37}{figure.caption.6}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Tipologías de acondicionamiento y microgeometría del filo de corte para refuerzo estructural del flanco}}{38}{figure.caption.7}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Morfología de los tipos de desgaste en la herramienta de corte y parámetros dimensionales de desgaste de flanco según ISO 3685}}{39}{figure.caption.8}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Curvas de evolución temporal del desgaste de flanco a diferentes velocidades de corte y delimitación de zonas tribológicas de desgaste}}{40}{figure.caption.9}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Esquema circuital del acondicionamiento analógico para sensor SCT-013 y forma de onda con desplazamiento de offset continuo}}{47}{figure.caption.11}%
-\contentsline {figure}{\numberline {10}{\ignorespaces Evolución temporal de la señal de corriente tras cada etapa de acondicionamiento analógico y rectificación de valor eficaz para el convertidor analógico-digital (ADC)}}{48}{figure.caption.12}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Arquitectura y flujo secuencial de procesamiento de señales e inferencia Edge AI (TinyML) implementada en el sistema}}{53}{figure.caption.13}%
-\contentsline {figure}{\numberline {12}{\ignorespaces Ciclo iterativo de diseño, entrenamiento, cuantización INT8 y despliegue embebido de modelos TinyML}}{54}{figure.caption.14}%
-\contentsline {figure}{\numberline {13}{\ignorespaces Clasificador LED por niveles de desgaste de flanco: escala cromática de cinco niveles y umbrales normativos $VB$ según ISO 3685}}{56}{figure.caption.15}%
-\contentsline {figure}{\numberline {14}{\ignorespaces Sensor acelerómetro digital MEMS triaxial ADXL345: (a) Módulo físico para encapsulado estanco IP67 y (b) Ejes ortogonales de sensibilidad triaxial (+X, +Y, +Z) vinculados a la cinemática de torneado}}{58}{figure.caption.16}%
-\contentsline {figure}{\numberline {15}{\ignorespaces Cronograma de actividades por objetivo específico (Gestión 2026 -- 2027)}}{73}{figure.caption.20}%
+\contentsline {figure}{\numberline {1}{\ignorespaces Árbol de problemas del proceso de torneado CNC en MAINSA}}{18}{figure.caption.1}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Operaciones fundamentales de mecanizado por arranque de viruta en torno CNC}}{35}{figure.caption.3}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Cinemática del proceso de torneado cilíndrico y descomposición vectorial de las fuerzas de mecanizado}}{37}{figure.caption.4}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Comparativa esquemática entre el modelo de corte ortogonal y corte oblicuo}}{38}{figure.caption.5}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Corte ortogonal (modelo bidimensional)}}}{38}{subfigure.4.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Corte oblicuo (modelo tridimensional)}}}{38}{subfigure.4.2}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Geometría de insertos intercambiables de corte, ángulo de punta incluido y correlación con la resistencia mecánica frente a despostillamiento}}{39}{figure.caption.6}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Tipologías de acondicionamiento y microgeometría del filo de corte para refuerzo estructural del flanco}}{40}{figure.caption.7}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Morfología de los tipos de desgaste en la herramienta de corte y parámetros dimensionales de desgaste de flanco según ISO 3685}}{41}{figure.caption.8}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Curvas de evolución temporal del desgaste de flanco a diferentes velocidades de corte y delimitación de zonas tribológicas de desgaste}}{42}{figure.caption.9}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Esquema circuital del acondicionamiento analógico para sensor SCT-013 y forma de onda con desplazamiento de offset continuo}}{49}{figure.caption.11}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Evolución temporal de la señal de corriente tras cada etapa de acondicionamiento analógico y rectificación de valor eficaz para el convertidor analógico-digital (ADC)}}{50}{figure.caption.12}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Arquitectura y flujo secuencial de procesamiento de señales e inferencia Edge AI (TinyML) implementada en el sistema}}{55}{figure.caption.13}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Ciclo iterativo de diseño, entrenamiento, cuantización INT8 y despliegue embebido de modelos TinyML}}{56}{figure.caption.14}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Clasificador LED por niveles de desgaste de flanco: escala cromática de cinco niveles y umbrales normativos $VB$ según ISO 3685}}{58}{figure.caption.15}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Sensor acelerómetro digital MEMS triaxial ADXL345: (a) Módulo físico para encapsulado estanco IP67 y (b) Ejes ortogonales de sensibilidad triaxial (+X, +Y, +Z) vinculados a la cinemática de torneado}}{60}{figure.caption.16}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Cronograma de actividades por objetivo específico (Gestión 2026 -- 2027)}}{74}{figure.caption.19}%

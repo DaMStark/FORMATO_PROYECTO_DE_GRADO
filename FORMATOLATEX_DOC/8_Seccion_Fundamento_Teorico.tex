@@ -71,13 +71,13 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 
 \textbf{OE5.} Validar experimentalmente el funcionamiento del sistema integrado mediante pruebas de corte en los tornos CNC de MAINSA. &
 • Instalación y calibración no invasiva del sistema periférico en torno CNC de taller.\par\vspace{1mm}
-• Ensayos de torneado cilíndrico con insertos nuevo, desgaste funcional y crítico.\par\vspace{1mm}
+• Ensayos de torneado cilíndrico registrando los cinco niveles de desgaste según la norma ISO 3685.\par\vspace{1mm}
 • Medición metrológica de rugosidad ($Ra$) en probetas y verificación dimensional.\par\vspace{1mm}
-• Evaluación de exactitud de clasificación y reducción de paradas y mermas.\par\vspace{1mm}
+• Evaluación de exactitud de clasificación y reducción de paradas y desperdicio de material.\par\vspace{1mm}
 • Redacción del informe final de grado y preparación de Defensa Pública [Hito 3]. &
 • 8.2.2 Desgaste de flanco ($VB$) y su impacto en rugosidad superficial ($Ra$).\par\vspace{1mm}
 • 8.2.6 Métricas de exactitud, matriz de confusión y latencia de inferencia en milisegundos.\par\vspace{1mm}
-• 8.2.7 Verificación de telemetría y supervisión remota en planta. \\ \hline
+• 8.2.7 Verificación de panel de supervisión local e indicadores de alerta. \\ \hline
 \end{longtable}
 }
 
@@ -367,7 +367,7 @@ Se contrastaron tres alternativas de microcontroladores de amplia difusión indu
 Se analizaron tres tecnologías de transducción de corriente eléctrica alterna para el monitoreo del accionamiento de avance del carro:
 \begin{itemize}
     \item Sensor de núcleo partido SCT-013-000 (0--100 A): Basado en acoplamiento magnético inductivo. Su pinza abisagrada permite abrazar el conductor de fase del servomotor de avance del carro portaherramientas sin seccionar el cableado ni alterar la instalación interna del torno CNC, cumpliendo con la exigencia de cero invasividad impuesta por MAINSA. \textit{Opción seleccionada para operación industrial en planta.}
-    \item Sensor de efecto Hall integrado ACS712-20A: Dispositivo galvánicamente aislado con ancho de banda de 80~kHz, adecuado para la captura detallada de microperturbaciones de torque en régimen transitorio en bancos de prueba y tableros accesibles. \textit{Opción seleccionada como sensor complementario de validación en laboratorio.}
+    \item Sensor de efecto Hall integrado ACS712-20A: Dispositivo galvánicamente aislado con ancho de banda de 80~kHz, adecuado para la captura detallada de microperturbaciones de torque en régimen transitorio en bancos de prueba y tableros accesibles. \textit{Opción seleccionada como sensor complementario de validación en banco de pruebas.}
     \item Resistencia Shunt de potencia: Exige cortar el conductor de fase e intercalar un resistor de bajo ohmiaje, disipando calor y careciendo de aislamiento galvánico intrínseco. \textit{Opción descartada por representar un riesgo operacional y violar el principio de no invasividad.}
 \end{itemize}
 

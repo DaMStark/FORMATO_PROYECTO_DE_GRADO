@@ -17,7 +17,7 @@
 \item Se establecerán criterios físicos, eléctricos y operativos de diseño a partir de las especificaciones técnicas del torno CNC y las condiciones reales de trabajo en MAINSA, definiendo rangos de medición de la variable eléctrica (corriente), anchos de banda para vibración mecánica, requerimientos de aislamiento y frecuencia de muestreo.
 \item Se adoptará como referencia operativa una tasa de muestreo adecuada para la captura de transitorios de corte y un tiempo de respuesta inferior a dos segundos para la notificación de advertencias o desgaste severo ante el operador.
 \item Se definirá un plan de pruebas con métricas numéricas, especificando para cada ensayo la variable física a medir, el instrumento de referencia o contraste, el criterio de aprobación y el número de repeticiones experimentales.
-\item Se comprobará la funcionalidad del sistema mediante un prototipo funcional periférico ensayado preliminarmente en laboratorio y validado experimentalmente en un torno CNC real en MAINSA, verificando adquisición de señales, estabilidad del acondicionamiento, exactitud en la inferencia del modelo embebido y confiabilidad en la visualización.
+\item Se comprobará la funcionalidad del sistema mediante un prototipo funcional periférico ensayado preliminarmente en banco de pruebas y validado experimentalmente en un torno CNC real en MAINSA, verificando adquisición de señales, estabilidad del acondicionamiento, exactitud en la inferencia del modelo embebido y confiabilidad en la visualización.
 \item Se elaborará documentación técnica básica y un procedimiento de instalación y operación segura en máquina, orientado a guiar la colocación no invasiva de los sensores sin alterar las líneas de potencia ni los lazos de control del torno CNC.
 \end{itemize}
 
@@ -57,9 +57,9 @@ Torneado longitudinal (cilindrado exterior) en aceros de alta exigencia mecánic
 Herramientas con insertos intercambiables de carburo de tungsteno recubierto. & Insertos cerámicos, cermet o materiales superabrasivos (CBN/PCD). \\ \hline
 Medición de variable eléctrica en servomotor de avance (sensor de corriente) y vibración mecánica en torreta (acelerómetro MEMS) bajo encapsulado IP67 con base imantada. & Dinamometría directa, perforaciones mecánicas invasivas ni instrumentación interna de husillo. \\ \hline
 Acondicionamiento RMS y componente fundamental cuasi-senoidal (inferencia de par). & Análisis espectral de distorsión armónica total (THD) ni transitorios de conmutación PWM. \\ \hline
-Clasificación discreta de estados de desgaste mediante modelo ligero Edge AI. & Estimación continua de vida útil remanente (RUL) ni gemelos digitales pesados. \\ \hline
+Clasificación en cinco niveles discretos de desgaste mediante modelo ligero Edge AI. & Estimación continua de vida útil remanente (RUL) ni gemelos digitales pesados. \\ \hline
 Diseño esquemático, ruteo y ensamblado propio; fabricación física por servicio externo. & Fabricación física del sustrato de PCB en laboratorio propio. \\ \hline
-Visualización en dashboard local e indicador luminoso LED para alerta de desgaste crítico. & Conectividad IoT en la nube, plataforma SCADA de planta ni integración ERP/CMMS corporativo. \\ \hline
+Visualización en dashboard local e indicador luminoso LED para alerta de desgaste. & Conectividad IoT en la nube, plataforma SCADA de planta ni integración ERP/CMMS corporativo. \\ \hline
 \end{tabular}
 \\[2pt]
 {\footnotesize \textbf{Fuente:} Elaboración propia, 2026.}
