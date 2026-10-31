@@ -61,10 +61,48 @@ Con el propósito de operativizar cada uno de los objetivos específicos y detal
 
 \textbf{OE5.} Validar experimentalmente el funcionamiento del sistema integrado mediante pruebas de corte en los tornos CNC de MAINSA. & 
 • Instalación y calibración del sistema periférico en el torno CNC bajo condiciones operativas de producción real.\par\vspace{1mm}
-• Ensayos de torneado cilíndrico registrando señales con insertos en estado nuevo, desgaste funcional y crítico.\par\vspace{1mm}
+• Ensayos de torneado cilíndrico registrando señales con cinco niveles discretos de desgaste de flanco según la norma ISO 3685: inserto en condición óptima, buen estado operativo, estado regular, aceptable con cambio próximo y cambio urgente.\par\vspace{1mm}
 • Medición metrológica de la rugosidad superficial ($Ra$) en probetas y verificación de tolerancias dimensionales.\par\vspace{1mm}
 • Evaluación cuantitativa de la exactitud de clasificación y cuantificación de la reducción de paradas y mermas.\par\vspace{1mm}
 • Redacción del informe final de grado, revisión con el tutor y preparación de la Defensa Pública.\\ \hline
+
+\end{longtable}
+}
+
+\subsection{Indicadores de logro y medios de verificación}
+Con el propósito de establecer criterios objetivos y verificables para cada objetivo específico, en la \tab{indicadores_logro} se presentan los indicadores cuantitativos de logro y los entregables asociados a cada fase del proyecto.
+
+{\setlength{\parskip}{1.5pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.7cm}|>{\raggedright\arraybackslash}p{6.5cm}|>{\raggedright\arraybackslash}p{5.8cm}|}
+\caption{Indicadores de logro y medios de verificación por objetivo específico}
+\label{tab:indicadores_logro}
+\\
+\hline
+\textbf{OE} & \textbf{Indicador cuantitativo de logro} & \textbf{Entregable / medio de verificación} \\
+\hline \hline
+\endfirsthead
+
+\hline
+\textbf{OE} & \textbf{Indicador cuantitativo de logro} & \textbf{Entregable / medio de verificación} \\
+\hline \hline
+\endhead
+
+\hline
+\endfoot
+
+\hline
+\multicolumn{3}{c}{\rule{0pt}{3ex}\textbf{Fuente:} Elaboración propia, 2026.}
+\endlastfoot
+
+OE1 & Documento de estado del arte con mínimo 10 fuentes indexadas revisadas; caracterización de parámetros de corte documentada. & Informe técnico de revisión bibliográfica y ficha de relevamiento operacional en MAINSA. \\ \hline
+
+OE2 & Transductores seleccionados con especificaciones documentadas (rango, sensibilidad, ancho de banda); microcontrolador seleccionado con verificación de SRAM $\leq 128$\,kB y Flash $\leq 512$\,kB. & Ficha técnica de dimensionamiento y hoja de cálculo de selección de componentes. \\ \hline
+
+OE3 & Esquemático circuital revisado; PCB ruteada lista para fabricación; diagrama de bloques funcional completo. & Archivos KiCad/EasyEDA del esquemático y PCB, más documentación de diseño mecatrónico. \\ \hline
+
+OE4 & Modelo TinyML cuantizado INT8 desplegado en STM32 con exactitud $\geq 90\%$ evaluada en conjunto de prueba \textit{hold-out}; dashboard local funcional. & Dataset etiquetado con mínimo 300 ventanas por clase; reporte de métricas (matriz de confusión, F1-score); código de firmware. \\ \hline
+
+OE5 & Exactitud de clasificación $\geq 90\%$ en condiciones reales de taller; latencia de inferencia $\leq 15$\,ms verificada. & Reporte de validación experimental con tablas de métricas, rugosidad $Ra$ medida y tiempo de inferencia documentado; informe final de grado. \\ \hline
 
 \end{longtable}
 }

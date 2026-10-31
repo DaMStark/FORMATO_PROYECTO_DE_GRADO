@@ -49,7 +49,7 @@ Para asegurar la coherencia lógica interna entre los componentes metodológicos
 \endlastfoot
 
 Problema General & 
-¿Cómo diseñar un sistema periférico no invasivo para un torno CNC que permita reducir el desperdicio de materia prima, optimizar los costos de manufactura y disminuir los tiempos de producción en la empresa MAINSA? & 
+¿Cómo desarrollar un sistema periférico no invasivo para un torno CNC que permita monitorear en tiempo real el desgaste de las herramientas de corte, reduciendo el desperdicio de materia prima, optimizando los costos de manufactura y disminuyendo los tiempos de producción en la empresa MAINSA? & 
 Condición operativa de corte, interferencias electromagnéticas y parque de tornos CNC subutilizado. & 
 Incidencia de roturas intempestivas, piezas fuera de tolerancia dimensional y desvío de producción hacia tornos manuales.\\ \hline
 
@@ -73,7 +73,7 @@ Amplitud en amperios (A), aceleración en gravedad ($g$) y coeficientes estadís
 Variables Dependientes & 
 Estado tribológico del inserto de carburo y calidad geométrica superficial resultante en la pieza. & 
 • Desgaste de flanco ($VB$ en mm según ISO 3685).\par\vspace{1mm}
-• Clase de condición: Inserto nuevo, Desgaste funcional o Filo crítico.\par\vspace{1mm}
+• Clase de condición: cinco niveles discretos de desgaste de flanco según la norma ISO 3685: inserto en condición óptima, buen estado operativo, estado regular, aceptable con cambio próximo y cambio urgente.\par\vspace{1mm}
 • Rugosidad media superficial ($Ra$ en $\upmu\text{m}$). & 
 Medición con microscopio óptico ($VB$), rugosímetro de contacto ($Ra$) y matriz de confusión del modelo.\\ \hline
 
@@ -102,6 +102,19 @@ Con la finalidad de garantizar la fiabilidad metrológica de las lecturas, se em
 Para la medición objetiva del desgaste de la herramienta (referencia patrón o \textit{Ground Truth}), se aplicará la técnica de inspección microscópica óptica mediante un \textit{microscopio óptico digital con retícula micrométrica calibrada}, registrando la evolución milimétrica del ancho de la banda de desgaste de flanco ($VB$) conforme a las pautas de la norma internacional ISO 3685.
 
 Finalmente, para evaluar el impacto del desgaste sobre el producto final torneado, se utilizará la técnica de rugosimetría de contacto, empleando un \textit{rugosímetro digital de precisión con palpador inductivo} para medir la rugosidad media aritmética ($Ra$) en diversas secciones longitudinales de las probetas maquinadas, correlacionando cuantitativamente el deterioro del filo con la degradación del acabado superficial.
+
+
+\subsection{Protocolo experimental para la recolección del dataset de desgaste}
+
+Para garantizar la reproducibilidad y el rigor estadístico del conjunto de datos etiquetado que alimentará el modelo TinyML, se establece el siguiente protocolo de ensayos de corte interrumpido en los tornos CNC de MAINSA:
+
+\begin{enumerate}[leftmargin=0.8cm]
+    \item \textbf{Parámetros de corte fijos.} Todos los ensayos se ejecutarán bajo las siguientes condiciones representativas del rango operativo de MAINSA: velocidad de corte $v_c = 180\,\text{m/min}$ (valor medio del rango de 100 a 300~m/min), avance por revolución $f = 0.20\,\text{mm/rev}$, profundidad de pasada $a_p = 1.5\,\text{mm}$, barras de acero AISI~1045 de diámetro nominal 50~mm como material de trabajo, insertos intercambiables de carburo cementado CNMG~120408 y refrigeración con taladrina soluble a caudal continuo. Estos parámetros quedarán registrados en la ficha de relevamiento operacional como variables de control del experimento y serán programados en el código G del torno CNC.
+
+    \item \textbf{Procedimiento de corte interrumpido para etiquetado (\textit{ground truth}).} Aproximadamente cada cinco pasadas longitudinales o cada 15~minutos de corte activo, se detendrá la máquina para inspeccionar el inserto. Se retirará el inserto de la torreta y se inspeccionará el desgaste de flanco ($VB$) con el lente óptico de aumento de alta resolución disponible en el taller de MAINSA; se registrará el valor estimado de $VB$ en milímetros y se asignará la etiqueta de condición correspondiente según los cinco niveles de desgaste definidos (ISO~3685:1993). A continuación, el inserto se reinstalará en la misma posición y el ciclo de corte continuará hasta la pasada siguiente.
+
+    \item \textbf{Criterio de repetibilidad estadística.} Se realizarán ensayos replicados con al menos tres insertos del mismo lote CNMG~120408 sobre barras de acero AISI~1045 bajo idénticas condiciones de corte. Se recolectarán mínimo 300 ventanas temporales de señal por cada nivel de desgaste, garantizando un dataset balanceado para el entrenamiento supervisado del modelo TinyML. Los parámetros programados en el código G quedarán registrados en la ficha de relevamiento operacional como variables de control del experimento.
+\end{enumerate}
 
 \subsection{Arquitectura funcional de la propuesta de solución mecatrónica}
 

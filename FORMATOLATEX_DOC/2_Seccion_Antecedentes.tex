@@ -17,7 +17,7 @@ Como complemento alternativo, \cite{ramirez2018} desarrollaron un sensor intelig
 
 Este requerimiento visual puede verse afectado negativamente por la presencia de viruta, refrigerante o diversas restricciones físicas de la máquina CNC. Por ello, el monitoreo basado en variables eléctricas mantiene una ventaja sumamente relevante y pragmática frente a los sistemas ópticos. Destaca de manera especial cuando se busca una implementación robusta de fácil instalación y de muy bajo costo computacional.
 
-La vigencia del monitoreo no invasivo por variable eléctrica se confirma fehacientemente con investigaciones recientes que incorporan aprendizaje profundo. \cite{lai2025} propusieron un sistema eficiente basado en señales de corriente del husillo principal. Dichas señales fueron obtenidas con un sensor no invasivo de tipo SCT-013 instalado externamente alrededor del cableado, sin intervenir para nada el controlador.
+La vigencia del monitoreo no invasivo por variable eléctrica se confirma fehacientemente con investigaciones recientes que incorporan aprendizaje profundo. \cite{lai2025} propusieron un sistema eficiente basado en señales de corriente del husillo principal. Dichas señales fueron obtenidas con un sensor no invasivo de tipo SCT-013 instalado externamente alrededor del cableado.
 
 Los autores analizaron las señales mediante la transformada rápida de Fourier y compararon diversos modelos de redes neuronales artificiales (ANN, DNN, CNN). Su objetivo primordial fue clasificar eventos de rotura, logrando detectar graves anomalías con una extraordinaria precisión y destacable rapidez. La utilización de una pinza SCT-013 es particularmente pertinente para instrumentación de muy bajo impacto y fácil despliegue.
 
@@ -36,5 +36,52 @@ De una manera bastante similar, el detallado estudio sobre la técnica ICFO-SVMD
 Además de requerir una constante mejora algorítmica, la incorporación de novedosa conectividad IoT logra potenciar sustancialmente las actuales capacidades del monitoreo. Permite fundamentalmente que el sistema embebido se convierta rápidamente en una moderna plataforma remota de apoyo a la toma de decisiones. El interesante caso de estudio aplicado de la prestigiosa Universidad de Sheffield se erige como un antecedente sumamente relevante \citep{sheffield2021}.
 
 Finalmente, \cite{hamasha2025} propusieron un marco integral tecnológico articulando sensores IoT, procesamiento local en el borde (\textit{Edge AI}), analítica predictiva y monitoreo remoto. El estudio identifica beneficios clave como la reducción de latencia y tiempos de respuesta, advirtiendo los desafíos en ciberseguridad industrial.
+
+\subsection{Análisis crítico comparativo de los antecedentes}
+
+La revisión bibliográfica realizada permite identificar convergencias y brechas entre los trabajos previos y las condiciones específicas del presente proyecto. Con el propósito de sistematizar dicha comparación, en la \tab{comparativo_antecedentes} se presentan los antecedentes principales junto con sus limitaciones técnicas respecto al contexto operativo de MAINSA.
+
+{\setlength{\parskip}{1.5pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{3.5cm}|>{\raggedright\arraybackslash}p{2.8cm}|>{\raggedright\arraybackslash}p{2.8cm}|>{\raggedright\arraybackslash}p{4.4cm}|}
+\caption{Comparativo de antecedentes respecto al contexto de MAINSA}
+\label{tab:comparativo_antecedentes}
+\\
+\hline
+\textbf{Autor(es) y Año} & \textbf{Variable sensada} & \textbf{Entorno de prueba} & \textbf{Limitación respecto a MAINSA} \\
+\hline \hline
+\endfirsthead
+
+\hline
+\textbf{Autor(es) y Año} & \textbf{Variable sensada} & \textbf{Entorno de prueba} & \textbf{Limitación respecto a MAINSA} \\
+\hline \hline
+\endhead
+
+\hline
+\endfoot
+
+\hline
+\multicolumn{4}{c}{\rule{0pt}{3ex}\textbf{Fuente:} Elaboración propia, 2026.}
+\endlastfoot
+
+\cite{romero2003} & Corriente de accionamiento & Fresadora CNC de laboratorio & El proceso estudiado es fresado, no torneado; los parámetros de corte y la dinámica de fuerza difieren sustancialmente de los tornos CNC de MAINSA. \\ \hline
+
+\cite{trejo2010} & Corriente y vibración & Torno CNC de laboratorio & El procesamiento se realizó en PC externa con FPGA de alto costo; no contempla despliegue embebido de bajo costo ni clasificación de múltiples niveles de desgaste. \\ \hline
+
+\cite{sevilla2011} & Corriente del motor de avance & Fresadora CNC de alta velocidad & El entorno es fresado de alta velocidad; la transformada wavelet discreta demanda recursos computacionales incompatibles con microcontroladores de gama media. \\ \hline
+
+\cite{ramirez2018} & Temperatura (termografía IR) & Fresadora CNC en seco y con refrigerante & Requiere línea de visibilidad directa hacia la zona de corte; inviable en el entorno cerrado de los tornos CNC de MAINSA con abundante refrigerante y viruta. \\ \hline
+
+\cite{lai2025} & Corriente del husillo (SCT-013) & Centro de mecanizado CNC & El sistema de clasificación depende de PC externa para inferencia; no contempla procesamiento embebido local ni indicadores visuales en planta. \\ \hline
+
+\cite{wang2024} & Corriente, vibración y fuerza de corte & Centro de mecanizado de alta gama & La inclusión de dinamómetros de fuerza implica un costo prohibitivo y modificaciones invasivas en la torreta, incompatibles con los recursos de MAINSA. \\ \hline
+
+\cite{huang2026} & Vibración y corriente & Fresadora CNC de laboratorio & El enfoque de aprendizaje por transferencia requiere conjuntos de datos etiquetados de otras máquinas y dependencia de infraestructura en la nube para reentrenamiento. \\ \hline
+
+\cite{jia2025} & Vibración (descomposición modal) & Torno y fresadora CNC & El método SVMD-ICFO está orientado al preprocesamiento offline; no contempla inferencia en tiempo real ni despliegue en microcontroladores con recursos limitados de memoria. \\ \hline
+
+\end{longtable}
+}
+
+Del análisis comparativo se desprende que ninguno de los antecedentes revisados integra simultáneamente sensado no invasivo de bajo costo, procesamiento embebido en tiempo real mediante TinyML y visualización local en el entorno específico del torneado CNC industrial. La mayoría de las propuestas dependen de PC externas, plataformas en la nube o instrumentación de alto costo, lo que limita su transferibilidad directa a talleres de manufactura como MAINSA. En consecuencia, el presente proyecto aborda este vacío tecnológico mediante el diseño de un sistema periférico autónomo que opera íntegramente en un microcontrolador STM32F4, prescindiendo de conectividad externa y reduciendo el umbral de implementación para entornos industriales de recursos limitados.
 
 A partir de los antecedentes revisados, se observa que existen sólidas investigaciones relativas a detección de fallas; sin embargo, abordan los componentes tecnológicos de manera aislada. Por consiguiente, el aporte ingenieril del presente proyecto radica en la integración simultánea de estas tecnologías operando en el entorno real de MAINSA.
