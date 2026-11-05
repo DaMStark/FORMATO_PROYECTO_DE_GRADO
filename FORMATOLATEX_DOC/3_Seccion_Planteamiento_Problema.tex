@@ -21,9 +21,136 @@ Ante este escenario, surge la necesidad imperiosa de desarrollar un sistema peri
 \newpage
 \subsection{Formulación del problema}
 
-¿Cómo desarrollar un sistema periférico no invasivo para un torno CNC que permita monitorear en tiempo real el desgaste de las herramientas de corte, reduciendo el desperdicio de materia prima, optimizando los costos de manufactura y disminuyendo los tiempos de producción en la empresa MAINSA? \\\\
+¿Cómo desarrollar un sistema periférico no invasivo para un torno CNC que permita monitorear en tiempo real el desgaste de las herramientas de corte, reduciendo el desperdicio de materia prima, optimizando los costos de manufactura y disminuyendo los tiempos de producción en la empresa MAINSA?
 
+Con el propósito de sistematizar de manera gráfica y objetiva la relación causa-efecto identificada en el proceso productivo, en la \fig{arbol_de_problemas} se presenta el árbol de problemas correspondiente a las operaciones de torneado CNC en MAINSA.
 
+\begin{figure}[!htb]
+\centering
+\caption{Árbol de problemas del proceso de torneado CNC en MAINSA}
+\label{fig:arbol_de_problemas}
+\vspace{0.2cm}
+\begin{tikzpicture}[
+    box/.style={
+        rectangle,
+        draw=black,
+        line width=0.6pt,
+        rounded corners=2pt,
+        inner sep=4pt,
+        align=center,
+        font=\fontsize{8pt}{10pt}\selectfont
+    },
+    centralbox/.style={
+        rectangle,
+        draw=black,
+        line width=1.1pt,
+        rounded corners=2pt,
+        fill=black!6,
+        inner sep=5pt,
+        align=center,
+        font=\fontsize{8.8pt}{11pt}\selectfont\bfseries
+    },
+    topbox/.style={
+        rectangle,
+        draw=black,
+        line width=0.7pt,
+        rounded corners=2pt,
+        fill=white,
+        inner sep=5pt,
+        align=center,
+        font=\fontsize{8.8pt}{11pt}\selectfont\bfseries
+    },
+    side/.style={
+        rotate=90,
+        font=\fontsize{7pt}{8.5pt}\selectfont\bfseries,
+        align=center
+    },
+    arrow/.style={
+        -{Stealth[length=2.0mm, width=1.4mm]},
+        line width=0.65pt,
+        draw=black
+    }
+]
 
+% Dimensiones ajustadas estrictamente al textwidth (14.3 cm total < 15.09 cm)
+\def\colw{4.55cm}
+\def\colgap{0.30cm}
+\def\totalw{14.25cm} % 3 * 4.55 + 2 * 0.30 = 14.25cm
 
-\figura[width=0.88\textwidth]{arbol_de_problemas}{Árbol de problemas del proceso de torneado CNC en MAINSA}{Elaboración propia, 2026.}
+% Posiciones x centradas compensando la etiqueta lateral
+\def\xmid{0.22cm}
+\def\xone{-4.63cm} % 0.22 - (4.55 + 0.30) = -4.63cm
+\def\xtwo{0.22cm}
+\def\xthree{5.07cm} % 0.22 + (4.55 + 0.30) = 5.07cm
+\def\xside{-7.20cm}
+
+% Coordenadas verticales
+\def\ytop{4.6cm}
+\def\yefectos{2.7cm}
+\def\ycentral{0.6cm}
+\def\ycausas{-1.7cm}
+
+% 1. NIVEL SUPERIOR: Efecto Final / Consolidado
+\node[topbox, text width=\totalw-10pt, minimum height=1.05cm] (top_effect) at (\xmid, \ytop) {
+    Pérdidas económicas por descarte de piezas fuera de tolerancia, sobrecostos en consumibles\\
+    y subutilización de la capacidad productiva de los tornos CNC en MAINSA
+};
+
+% 2. NIVEL MEDIO-SUPERIOR: Efectos Directos (3 cajas)
+\node[box, text width=\colw-8pt, minimum height=1.65cm] (efecto1) at (\xone, \yefectos) {
+    Piezas con cotas fuera de tolerancia y acabado superficial deficiente, generando reprocesos y rechazos en aceros AISI 1045 y 4140
+};
+
+\node[box, text width=\colw-8pt, minimum height=1.65cm] (efecto2) at (\xtwo, \yefectos) {
+    Rotura imprevista del filo en cabina cerrada que provoca paros de máquina no programados, retrasando entregas y dañando soportes
+};
+
+\node[box, text width=\colw-8pt, minimum height=1.65cm] (efecto3) at (\xthree, \yefectos) {
+    Sustitución prematura y empírica de insertos por temor del operario, desaprovechando su vida útil e incrementando costos
+};
+
+% Etiqueta lateral vertical EFECTOS
+\node[side] at (\xside, \yefectos) {EFECTOS};
+
+% 3. NIVEL MEDIO: Problema Central
+\node[centralbox, text width=\totalw-10pt, minimum height=1.3cm] (central_problem) at (\xmid, \ycentral) {
+    Imposibilidad de evaluar de forma continua y objetiva el desgaste progresivo de las herramientas\\
+    de corte durante el mecanizado en los tornos CNC de MAINSA, por aislamiento físico en cabina\\
+    cerrada y dependencia de inspecciones manuales subjetivas en máquina detenida
+};
+
+% 4. NIVEL INFERIOR: Causas Directas (3 cajas)
+\node[box, text width=\colw-8pt, minimum height=1.65cm] (causa1) at (\xone, \ycausas) {
+    Carencia de sensores y sistemas de adquisición en línea en los tornos CNC para medir las solicitaciones de corte en tiempo real
+};
+
+\node[box, text width=\colw-8pt, minimum height=1.65cm] (causa2) at (\xtwo, \ycausas) {
+    Detección supeditada a la inspección visual periódica y subjetiva del operario con la máquina detenida
+};
+
+\node[box, text width=\colw-8pt, minimum height=1.65cm] (causa3) at (\xthree, \ycausas) {
+    Arquitectura propietaria y cerrada del control numérico industrial que restringe el acceso a variables internas de servomotores
+};
+
+% Etiqueta lateral vertical CAUSAS DIRECTAS
+\node[side] at (\xside, \ycausas) {CAUSAS DIRECTAS};
+
+% FLECHAS VERTICALES: Causas -> Problema Central
+\draw[arrow] (causa1.north) -- (causa1.north |- central_problem.south);
+\draw[arrow] (causa2.north) -- (central_problem.south);
+\draw[arrow] (causa3.north) -- (causa3.north |- central_problem.south);
+
+% FLECHAS VERTICALES: Problema Central -> Efectos Directos
+\draw[arrow] (efecto1.south |- central_problem.north) -- (efecto1.south);
+\draw[arrow] (central_problem.north) -- (efecto2.south);
+\draw[arrow] (efecto3.south |- central_problem.north) -- (efecto3.south);
+
+% FLECHAS VERTICALES: Efectos Directos -> Efecto Final
+\draw[arrow] (efecto1.north) -- (efecto1.north |- top_effect.south);
+\draw[arrow] (efecto2.north) -- (top_effect.south);
+\draw[arrow] (efecto3.north) -- (efecto3.north |- top_effect.south);
+
+\end{tikzpicture}
+\par\vspace{0.2cm}
+{\centering\textbf{Fuente:} Elaboración propia, 2026.\par}
+\end{figure}
