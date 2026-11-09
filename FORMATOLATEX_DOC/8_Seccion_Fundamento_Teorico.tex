@@ -1,10 +1,10 @@
 \newpage
-\section{FUNDAMENTO TEÓRICO}
+\section{MARCO TEÓRICO}
 
 El presente capítulo expone los fundamentos teóricos y conceptuales que sustentan el diseño e implementación del sistema periférico no invasivo para el monitoreo de desgaste de herramientas de corte en tornos CNC industriales en MAINSA. Se articulan coherentemente los principios cinemáticos del mecanizado por arranque de viruta, los mecanismos tribológicos de degradación del inserto conforme a normas internacionales, las metodologías de supervisión indirecta mediante variables electromecánicas, las técnicas de acondicionamiento y procesamiento digital de señales, así como los modelos de aprendizaje automático en el borde y las arquitecturas de conectividad industrial.
 
 \subsection{Contenido temático y matriz de trazabilidad}
-Con la finalidad de garantizar que cada base conceptual sustente de manera directa el desarrollo técnico del proyecto, en la \tab{contenido_tematico} se presenta la matriz de trazabilidad que vincula los objetivos específicos, las acciones de ingeniería y los temas correspondientes del fundamento teórico, conforme a los lineamientos metodológicos de Taller de Grado.
+Con la finalidad de garantizar que cada base conceptual sustente de manera directa el desarrollo técnico del proyecto, en la \tab{contenido_tematico} se presenta la matriz de trazabilidad que vincula los objetivos específicos, las acciones de ingeniería y los temas correspondientes del marco teórico, conforme a los lineamientos metodológicos de Taller de Grado.
 
 {\footnotesize
 \setstretch{1.05}
@@ -14,12 +14,12 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 \caption{Matriz de trazabilidad entre objetivos específicos, acciones y fundamento teórico\label{tab:contenido_tematico}}
 \\
 \hline
-\textbf{Objetivo específico} & \textbf{Acciones del proyecto} & \textbf{Tema del fundamento teórico} \\
+\textbf{Objetivo específico} & \textbf{Acciones del proyecto} & \textbf{Tema del marco teórico} \\
 \hline \hline
 \endfirsthead
 
 \hline
-\textbf{Objetivo específico} & \textbf{Acciones del proyecto} & \textbf{Tema del fundamento teórico} \\
+\textbf{Objetivo específico} & \textbf{Acciones del proyecto} & \textbf{Tema del marco teórico} \\
 \hline \hline
 \endhead
 
@@ -81,7 +81,7 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 \end{longtable}
 }
 
-\subsection{Desarrollo del fundamento teórico}
+\subsection{Desarrollo del marco teórico}
 
 \subsubsection{Cinemática y parámetros del proceso de torneado en torno CNC}
 
@@ -329,6 +329,37 @@ El enfoque tradicional de mantenimiento predictivo fundamentado en la nube prese
 
 La disciplina de TinyML promueve la ejecución eficiente de modelos de aprendizaje automático directamente sobre microcontroladores con recursos rigurosamente limitados de memoria estática y potencia de cómputo \citep{warden2019}. Microcontroladores modernos de treinta y dos bits basados en la arquitectura ARM Cortex-M4, dotados de unidad de punto flotante e instrucciones de procesamiento digital de señales por hardware, ofrecen el entorno computacional propicio para ejecutar clasificadores inteligentes en milisegundos.
 
+\paragraph{Estructuración del flujo de IA: entradas, salidas y herramientas de desarrollo}
+Para garantizar la efectividad del diagnóstico y su factibilidad técnica en el microcontrolador, el pipeline de inteligencia artificial se define rigurosamente en tres componentes:
+
+\begin{enumerate}[leftmargin=0.8cm]
+    \item \textbf{Vector de entradas (Features):} A partir del muestreo síncrono de corriente en el servomotor de avance (SCT-013) y vibración en torreta (ADXL345) a una tasa de $f_s = 2000\,\text{Hz}$, se activa un buffer circular de ventaneo temporal de $\Delta t = 256\,\text{ms}$ ($N = 512$ muestras, solapamiento del $50\%$) únicamente durante el corte activo ($I_{\text{avance}} > I_{\text{vacío}}$). Sobre cada ventana se calculan diez descriptores estadísticos normalizados por puntuación $Z$:
+    \begin{itemize}
+        \item Corriente eficaz ($I_{\text{RMS}}$): Proporcional a la fuerza tangencial y de avance ante la degradación del filo.
+        \item Aceleración eficaz triaxial ($a_{x,\text{RMS}}, a_{y,\text{RMS}}, a_{z,\text{RMS}}$): Energía vibratoria en las direcciones radial ($F_r$), tangencial ($F_c$) y axial ($F_a$).
+        \item Curtosis de corriente y aceleración ($Ku_I, Ku_a$): Sensible a pulsos y microimpactos por roturas incipientes o desprendimiento irregular de viruta.
+        \item Factor de cresta ($CF_I, CF_a$): Razón entre el pico instantáneo y el valor eficaz, revelador de anomalías transitorias.
+        \item Varianza dinámica de aceleración ($\sigma^2_a$): Dispersión asociada a vibración inestable y autoexcitada (\textit{chatter}).
+        \item Energía espectral de alta frecuencia ($E_{\text{HF}}$): Potencia acumulada en la banda de $800$ a $1600\,\text{Hz}$ calculada mediante FFT en punto fijo con CMSIS-DSP.
+    \end{itemize}
+
+    \item \textbf{Vector de salidas (Labels / Clases):} El clasificador formula un mapeo supervisado hacia cinco estados discretos de desgaste de flanco ($VB$) normalizados bajo la norma internacional ISO 3685:1993:
+    \begin{itemize}
+        \item \textit{Clase 0 (Óptimo / Inserto nuevo):} $VB < 0.10\,\text{mm}$ $\rightarrow$ Vector: $[1, 0, 0, 0, 0]^T$ $\rightarrow$ LED Verde Oscuro.
+        \item \textit{Clase 1 (Buen estado operativo):} $0.10 \le VB < 0.18\,\text{mm}$ $\rightarrow$ Vector: $[0, 1, 0, 0, 0]^T$ $\rightarrow$ LED Verde.
+        \item \textit{Clase 2 (Estado regular):} $0.18 \le VB < 0.22\,\text{mm}$ $\rightarrow$ Vector: $[0, 0, 1, 0, 0]^T$ $\rightarrow$ LED Verde Claro.
+        \item \textit{Clase 3 (Desgaste avanzado / Cambio próximo):} $0.22 \le VB < 0.30\,\text{mm}$ $\rightarrow$ Vector: $[0, 0, 0, 1, 0]^T$ $\rightarrow$ LED Naranja.
+        \item \textit{Clase 4 (Desgaste crítico):} $VB \ge 0.30\,\text{mm}$ ($[0, 0, 0, 0, 1]^T$), alerta por LED Rojo (parada preventiva).
+    \end{itemize}
+
+    \item \textbf{Cadena de herramientas de ingeniería (Toolchain):}
+    \begin{itemize}
+        \item \textit{Estación de ingeniería (PC):} Entorno Python 3.10 con \textbf{TensorFlow 2.x} y \textbf{Keras} para diseñar y entrenar la red neuronal (Perceptrón Multicapa denso $10 \rightarrow 32 \rightarrow 16 \rightarrow 5$ con activaciones ReLU y regularización Dropout). El entrenamiento utiliza el optimizador Adam y la función de pérdida \textit{Categorical Cross-Entropy}, con validación cruzada estratificada de 5 pliegues (\textit{5-fold Stratified CV}) sobre el dataset balanceado de MAINSA.
+        \item \textit{Cuantización Post-Entrenamiento (TensorFlow Lite):} El modelo en punto flotante se cuantiza a enteros con signo de 8 bits (\texttt{int8}) mediante \textbf{TFLite Converter}, reduciendo el uso de memoria en un $75\%$ y prescindiendo de emulación matemática por software.
+        \item \textit{Despliegue embebido con STM32Cube.AI:} El modelo cuantizado (\texttt{.tflite}) se importa en el paquete oficial \textbf{STM32Cube.AI} (X-CUBE-AI) de STMicroelectronics, el cual genera código fuente C puro altamente optimizado que aprovecha las instrucciones SIMD de la biblioteca \textbf{CMSIS-NN} de ARM. Esto garantiza una latencia de inferencia determinista $\le 15\,\text{ms}$, con un consumo inferior a $20\,\text{KB}$ de RAM y $50\,\text{KB}$ de Flash en el microcontrolador STM32F4.
+    \end{itemize}
+\end{enumerate}
+
 Para el diagnóstico inteligente del estado de la herramienta se emplean algoritmos supervisados de clasificación capaces de cartografiar las características estadísticas hacia clases discretas de desgaste \citep{huang2026}. Modelos clásicos como los Perceptrones Multicapa, las Máquinas de Vectores de Soporte y los Bosques Aleatorios permiten definir fronteras de decisión precisas con requerimientos computacionales sumamente moderados, adecuados para entornos embebidos de respuesta temporal estricta y predecible.
 
 El despliegue efectivo de modelos de aprendizaje automático en microcontroladores de la familia STM32 se viabiliza mediante herramientas especializadas de optimización y cuantización como STM32Cube.AI \citep{stmicroelectronics2021}. Esta plataforma analiza la topología de la red entrenada en entornos como Scikit-Learn o TensorFlow y efectúa una conversión automática hacia código ANSI C altamente optimizado, adaptado de forma óptima a las capacidades arquitectónicas internas del silicio de procesamiento seleccionado.
@@ -382,4 +413,45 @@ Se evaluaron tres variantes de sensado inercial:
 En la \fig{adxl345_composicion_acelerometro} se presenta el dispositivo ADXL345 seleccionado y su disposición tridimensional de medición. Como se observa en el panel (a), el sensor cuenta con un factor de forma ultra compacto que permite su alojamiento dentro de una cápsula estanca IP67 con base magnética de neodimio N52. El panel (b) ilustra los tres ejes ortogonales de sensibilidad: el eje $+X$ se hace coincidir con la dirección radial de penetración ($F_r$), el eje $+Y$ con la dirección tangencial o de fuerza principal de corte ($F_c$), y el eje $+Z$ con la dirección longitudinal de avance del carro ($F_a$), garantizando la detección integral de la dinámica tribomecánica de remoción.
 
 \figura[width=0.92\textwidth]{adxl345_composicion_acelerometro}{Sensor acelerómetro digital MEMS triaxial ADXL345: (a) Módulo físico para encapsulado estanco IP67 y (b) Ejes ortogonales de sensibilidad triaxial (+X, +Y, +Z) vinculados a la cinemática de torneado}{Elaboración propia con base en Analog Devices (2024)}
+
+Con el propósito de sintetizar de forma estructurada las alternativas tecnológicas analizadas para la instrumentación y procesamiento del sistema periférico, en la \tab{comparativa_componentes} se presenta la matriz formal de selección técnica.
+
+{\small
+\setstretch{1.05}
+\setlength{\parskip}{1.5pt}
+\setlength{\tabcolsep}{3.0pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{2.3cm}|>{\raggedright\arraybackslash}p{2.5cm}|>{\raggedright\arraybackslash}p{2.3cm}|>{\raggedright\arraybackslash}p{4.6cm}|>{\raggedright\arraybackslash}p{2.1cm}|}
+\caption{Matriz comparativa de tecnologías candidatas para instrumentación y procesamiento embebido\label{tab:comparativa_componentes}}
+\\
+\hline
+\textbf{Subsistema} & \textbf{Tecnología} & \textbf{Principio} & \textbf{Ventajas y Limitaciones técnicas} & \textbf{Veredicto} \\
+\hline \hline
+\endfirsthead
+
+\hline
+\textbf{Subsistema} & \textbf{Tecnología} & \textbf{Principio} & \textbf{Ventajas y Limitaciones técnicas} & \textbf{Veredicto} \\
+\hline \hline
+\endhead
+
+\hline
+\endfoot
+
+\hline
+\multicolumn{5}{c}{\textbf{Fuente:} Elaboración propia, 2026.}
+\endlastfoot
+
+\multirow{3}{=}{\textbf{Variable eléctrica (Corriente)}} & SCT-013-030 / SCT-013-000 & Inducción mutua magnética (Split-Core) & Cero invasividad física; montaje abisagrado sin desconectar cables ni detener el torno; aislamiento galvánico de $1\,\text{kV}$. Requiere acondicionamiento DC Bias ($+1.65\,\text{V}$) y Burden. & \textbf{Seleccionada (Planta MAINSA)} \\ \cline{2-5}
+& Allegro ACS712 / ACS724 & Efecto Hall integrado & Medición AC/DC directa; ancho de banda de $80\,\text{kHz}$; aislamiento galvánico de $2.4\,\text{kV}$. Exige seccionar el conductor o intervenir borneras del torno CNC. & Descartada (uso solo en banco) \\ \cline{2-5}
+& Resistencia Shunt & Caída óhmica de tensión & Bajo costo y respuesta ultra rápida. Sin aislamiento galvánico; disipación térmica y riesgo severo de cortocircuito en servodrive. & Descartada (inviable y riesgosa) \\ \hline
+
+\multirow{3}{=}{\textbf{Vibración mecánica (Torreta)}} & ADXL345 & MEMS capacitivo triaxial digital & Salida digital SPI a $5\,\text{MHz}$ inmune a EMI; muestreo hasta $3200\,\text{Hz}$; factor ultra compacto; bajo costo (8 a 10 USD). Rango dinámico moderado ($\pm 16g$). & \textbf{Seleccionada (Torreta CNC)} \\ \cline{2-5}
+& TDK ICM-42688P / MPU-6050 & MEMS 6-DoF (Giro + Acel) & Ultra bajo ruido ($2.8\,\mu\text{g}/\sqrt{\text{Hz}}$); muestreo hasta $32\,\text{kHz}$. Bus I2C susceptible a cuelgues por EMI; ejes giroscópicos innecesarios. & Descartada (complejidad I2C) \\ \cline{2-5}
+& Piezoeléctrico IEPE (PCB / Kistler) & Cristal piezoeléctrico & Ancho de banda superior (> $10\,\text{kHz}$); estándar de laboratorio. Costo prohibitivo (> 350 USD); cable coaxial rígido e instrumentación costosa. & Descartada (inviabilidad económica) \\ \hline
+
+\multirow{3}{=}{\textbf{Unidad de cómputo (Edge AI)}} & STM32F411 / Nucleo-F401 & ARM Cortex-M4 (FPU + DSP) & FPU de 32 bits; instrucciones CMSIS-DSP; DMA multicanal; soporte STM32Cube.AI (cuantización INT8); latencia $\le 15\,\text{ms}$; bajo consumo. & \textbf{Seleccionada (Procesamiento)} \\ \cline{2-5}
+& Espressif ESP32-S3 & Xtensa Dual-Core (PIE Vectorial) & Instrucciones vectoriales para redes neuronales y Wi-Fi nativo. ADC con severas no-linealidades; jitter en RTOS por pila de radiofrecuencia. & Descartada (lazo duro de control) \\ \cline{2-5}
+& RP2040 / ATmega328P & Cortex-M0+ / AVR 8-bit clásico & Muy bajo costo. Sin FPU ni instrucciones DSP por hardware; memoria insuficiente para buffers DMA y modelos neuronales (ATmega: 2~KB). & Descartadas (carencia de FPU/DSP) \\ \hline
+
+\end{longtable}
+}
 
