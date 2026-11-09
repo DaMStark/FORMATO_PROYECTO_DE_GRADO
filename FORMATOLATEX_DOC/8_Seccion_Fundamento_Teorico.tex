@@ -398,7 +398,7 @@ Se contrastaron tres alternativas de microcontroladores de amplia difusión indu
 
 En la \fig{panel_microcontroladores} se contrastan visualmente las dos plataformas principales analizadas: la tarjeta de desarrollo STM32F411 Black Pill seleccionada para el procesamiento determinista frente al módulo ESP32-S3.
 
-\figura[width=0.88\textwidth]{panel_microcontroladores}{Plataformas embebidas evaluadas para inferencia Edge AI: (a) STM32F411CEU6 Black Pill seleccionada y (b) ESP32-S3-DevKitC-1 descartada para lazo duro de control}{Elaboración propia, 2026}
+\figura[width=0.88\textwidth]{panel_microcontroladores}{Plataformas embebidas para inferencia Edge AI: (a) STM32F411CEU6 Black Pill -- seleccionada -- y (b) ESP32-S3-DevKitC-1 -- descartada}{Elaboración propia, 2026}
 
 \paragraph{B. Sensor de variable eléctrica para monitoreo no invasivo en el carro portaherramientas}
 Se analizaron tres tecnologías de transducción de corriente eléctrica alterna para el monitoreo del accionamiento de avance del carro:
@@ -464,4 +464,148 @@ Con el propósito de sintetizar de forma estructurada las alternativas tecnológ
 
 \end{longtable}
 }
+
+
+% ======================================================================
+%  8.2.10  Ecosistema de programación y herramientas de desarrollo software
+% ======================================================================
+\subsubsection{Ecosistema de programación y herramientas de desarrollo software}
+
+El diseño de un sistema embebido orientado a inferencia con redes neuronales convolucionales
+(TinyML) exige distinguir con precisión dos dominios de programación claramente diferenciados:
+el entorno de alto nivel para el entrenamiento y validación del modelo en computadora personal
+o servidor GPU, y el entorno de bajo nivel para el despliegue del modelo cuantizado en la
+plataforma de hardware seleccionada (STM32F411CEU6).  La elección de los lenguajes, marcos de
+trabajo y entornos integrados de desarrollo (IDEs) en cada dominio se fundamenta en criterios
+de compatibilidad técnica, madurez de la cadena de herramientas y reproducibilidad científica.
+
+\paragraph{A. Python 3.10 para el pipeline de entrenamiento de inteligencia artificial}
+
+Python 3.10 constituye el lenguaje de facto para el desarrollo de modelos de aprendizaje
+automático en la etapa de entrenamiento, debido a su ecosistema científico consolidado:
+las bibliotecas \textit{NumPy} y \textit{SciPy} proveen operaciones matriciales y de señal
+vectorizadas; \textit{pandas} facilita la gestión tabular de conjuntos de datos de telemetría
+del torno; y \textit{Matplotlib} / \textit{Seaborn} producen las visualizaciones de curvas de
+entrenamiento y matrices de confusión requeridas por las evidencias documentales del proyecto.
+La integración nativa de TensorFlow 2.x con el intérprete CPython 3.10 garantiza el acceso
+directo a las APIs de alto nivel (Keras), el convertidor \textit{TFLiteConverter}, y el módulo
+de cuantización post-entrenamiento (\textit{Post-Training Quantization}, PTQ) en un flujo
+continuo sin dependencias externas adicionales.
+
+A diferencia de C/C++, donde la compilación cruzada (\textit{cross-compilation}) y la gestión
+manual de memoria elevan la complejidad del prototipado, Python permite la exploración iterativa
+de arquitecturas (MLP de 3 capas, CNN 1-D, etc.), el ajuste de hiperparámetros y la validación
+cruzada en tiempos de desarrollo considerablemente menores.  La penalización de rendimiento en
+tiempo de ejecución de Python es irrelevante en esta etapa, pues el cómputo intensivo es
+delegado a la GPU vía CUDA o a las instrucciones AVX del CPU del servidor de entrenamiento.
+
+\paragraph{B. Lenguaje ANSI C para el firmware embebido en STM32F411}
+
+En la plataforma de despliegue, el lenguaje C (estándar ISO C99 / ANSI C) es la única opción
+técnicamente viable por las siguientes razones formalmente documentadas:
+
+\begin{itemize}
+    \item La biblioteca \textit{CMSIS-NN} de ARM, que provee las rutinas de inferencia
+    optimizadas para Cortex-M4 (multiplicación acumulada MAC con saturación, activaciones
+    cuantizadas), está escrita íntegramente en C y requiere un compilador C compatible con el
+    conjunto de instrucciones Thumb-2 y las extensiones DSP del procesador.
+    \item El conjunto de API proporcionado por STM32Cube Hardware Abstraction Layer (HAL) —
+    empleado para la configuración de periféricos ADC, SPI, USART, DMA y GPIO — está definido
+    en cabeceras \texttt{.h} de C puro, garantizando portabilidad entre familias STM32 sin
+    requerir un compilador de C++.
+    \item La gestión determinista de la memoria en C (sin \textit{garbage collector}) es
+    indispensable para satisfacer los requisitos de latencia de inferencia $\leq 15\,\text{ms}$
+    en lazo duro de monitoreo, ya que las pausas no deterministas de un recolector de basura
+    invalidan las restricciones de tiempo real.
+    \item Lenguajes alternativos como MicroPython carecen de soporte para CMSIS-NN y presentan
+    un \textit{overhead} de intérprete incompatible con los 128~KB de RAM disponibles en el
+    STM32F411CEU6; C++ introduce \textit{name mangling} y excepciones que dificultan la
+    compilación cruzada con la cadena de herramientas \texttt{arm-none-eabi-gcc}.
+\end{itemize}
+
+\paragraph{C. TensorFlow 2.x / Keras frente a marcos de trabajo alternativos}
+
+La selección de TensorFlow 2.x (con frontend Keras) como marco de entrenamiento primario se
+sustenta en un análisis comparativo de los principales marcos de trabajo para TinyML,
+sintetizado en la \tab{frameworks_tinyml}.
+
+{\small
+\setstretch{1.05}
+\setlength{\parskip}{1.5pt}
+\setlength{\tabcolsep}{3.0pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{2.4cm}|>{\raggedright\arraybackslash}p{2.1cm}|>{\centering\arraybackslash}p{1.6cm}|>{\centering\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{3.9cm}|}
+\caption{Comparativa de marcos de trabajo TinyML evaluados para el sistema de monitoreo de desgaste de herramienta\label{tab:frameworks_tinyml}}
+\\
+\hline
+\textbf{Marco / Plataforma} & \textbf{Org. / Licencia} & \textbf{INT8 PTQ nativo} & \textbf{Despliegue STM32} & \textbf{Veredicto para este proyecto} \\
+\hline \hline
+\endfirsthead
+
+\hline
+\textbf{Marco / Plataforma} & \textbf{Org. / Licencia} & \textbf{INT8 PTQ nativo} & \textbf{Despliegue STM32} & \textbf{Veredicto para este proyecto} \\
+\hline \hline
+\endhead
+
+\hline
+\endfoot
+
+\hline
+\multicolumn{5}{c}{\textbf{Fuente:} Elaboración propia, 2026.}
+\endlastfoot
+
+TensorFlow 2.x / Keras + TFLite &
+Google, Apache 2.0 &
+Sí (PTQ + QAT) &
+Sí (X-CUBE-AI) &
+\textbf{Seleccionado.} Ruta oficial TFLite + cuantización INT8 vía X-CUBE-AI; mayor comunidad industrial y soporte ST oficial. \\ \hline
+
+PyTorch 2.x + TorchScript &
+Meta AI, BSD &
+Parcial (ExecuTorch) &
+No oficial &
+Descartado. Excelente para investigación con grafos dinámicos, pero sin ruta oficial de despliegue en STM32 vía X-CUBE-AI; ExecuTorch aún experimental para Cortex-M. \\ \hline
+
+Edge Impulse Studio &
+Edge Impulse Inc., Propietario &
+Sí (nube) &
+Sí (SDK generado) &
+Descartado. Plataforma en la nube con extracción de características propietaria; imposibilita la personalización del vector de entrada y la reproducibilidad académica fuera de la plataforma. \\ \hline
+
+Scikit-learn + micromlgen &
+BSD / MIT &
+No (emlearn) &
+Parcial &
+Descartado. MLP / SVM / RF codificados en C puro mediante micromlgen; precisión limitada por ausencia de cuantización INT8 y sin soporte de CMSIS-NN para aceleración DSP. \\ \hline
+
+NanoEdge AI Studio &
+ST Micro-electronics, Propietario &
+Sí (automatizado) &
+Sí (binario cerrado) &
+Descartado. Automatización de alto nivel sin acceso al código fuente del modelo; impide la validación reproducible del clasificador requerida por los estándares académicos UCB. \\ \hline
+
+\end{longtable}
+}
+
+\paragraph{D. Entornos integrados de desarrollo (IDEs)}
+
+La gestión del firmware embebido requiere un entorno que integre edición de código fuente C,
+compilación cruzada \texttt{arm-none-eabi-gcc}, depuración JTAG/SWD y el plugin de optimización
+de redes neuronales.  Los entornos evaluados son:
+
+\begin{itemize}
+    \item \textit{STM32CubeIDE} (ST Microelectronics, basado en Eclipse CDT): entorno oficial
+    para toda la familia STM32; incluye el plugin \textit{X-CUBE-AI} que automatiza la
+    conversión del modelo \texttt{.tflite} a código C optimizado con CMSIS-NN, el analizador de
+    memoria y el depurador integrado sobre la interfaz ST-LINK/V2.  Es la herramienta
+    \textit{seleccionada} para el desarrollo del firmware.
+    \item \textit{Visual Studio Code + extensión PlatformIO}: alternativa multiplataforma y
+    de código abierto; ofrece depuración OpenOCD y autocompletado con IntelliSense; sin embargo,
+    la integración con X-CUBE-AI requiere pasos manuales de importación de biblioteca.
+    \textit{Opción de respaldo} para colaboradores externos al ecosistema ST.
+    \item \textit{Keil MDK} (ARM / Arm Keil, licencia comercial): estándar industrial con
+    optimizador ARMCC v6; prescindible en este proyecto dado que \texttt{arm-none-eabi-gcc}
+    ofrece rendimiento equivalente bajo STM32CubeIDE con licencia libre.
+    \textit{Descartado por restricción de licencias.}
+\end{itemize}
+
 
