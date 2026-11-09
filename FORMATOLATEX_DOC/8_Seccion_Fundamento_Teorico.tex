@@ -360,6 +360,8 @@ Para garantizar la efectividad del diagnóstico y su factibilidad técnica en el
     \end{itemize}
 \end{enumerate}
 
+El flujo metodológico completo de la cadena de herramientas de ingeniería (Toolchain) para el diseño, cuantización INT8 y síntesis de código embebido determinista se presenta en detalle en el Anexo~\ref{anx:toolchain_edgai}.
+
 Para el diagnóstico inteligente del estado de la herramienta se emplean algoritmos supervisados de clasificación capaces de cartografiar las características estadísticas hacia clases discretas de desgaste \citep{huang2026}. Modelos clásicos como los Perceptrones Multicapa, las Máquinas de Vectores de Soporte y los Bosques Aleatorios permiten definir fronteras de decisión precisas con requerimientos computacionales sumamente moderados, adecuados para entornos embebidos de respuesta temporal estricta y predecible.
 
 El despliegue efectivo de modelos de aprendizaje automático en microcontroladores de la familia STM32 se viabiliza mediante herramientas especializadas de optimización y cuantización como STM32Cube.AI \citep{stmicroelectronics2021}. Esta plataforma analiza la topología de la red entrenada en entornos como Scikit-Learn o TensorFlow y efectúa una conversión automática hacia código ANSI C altamente optimizado, adaptado de forma óptima a las capacidades arquitectónicas internas del silicio de procesamiento seleccionado.
@@ -394,6 +396,10 @@ Se contrastaron tres alternativas de microcontroladores de amplia difusión indu
     \item ATmega328P (Arquitectura AVR @ 16 MHz): Microcontrolador clásico de 8 bits sin FPU ni instrucciones DSP. Su baja tasa de muestreo analógico (máximo 15~kSPS a 10 bits) y su limitada memoria (2~KB SRAM) lo hacen completamente inviable para alojar buffers DMA y modelos de clasificación inteligente. \textit{Opción descartada.}
 \end{itemize}
 
+En la \fig{panel_microcontroladores} se contrastan visualmente las dos plataformas principales analizadas: la tarjeta de desarrollo STM32F411 Black Pill seleccionada para el procesamiento determinista frente al módulo ESP32-S3.
+
+\figura[width=0.88\textwidth]{panel_microcontroladores}{Plataformas embebidas evaluadas para inferencia Edge AI: (a) STM32F411CEU6 Black Pill seleccionada y (b) ESP32-S3-DevKitC-1 descartada para lazo duro de control}{Elaboración propia, 2026}
+
 \paragraph{B. Sensor de variable eléctrica para monitoreo no invasivo en el carro portaherramientas}
 Se analizaron tres tecnologías de transducción de corriente eléctrica alterna para el monitoreo del accionamiento de avance del carro:
 \begin{itemize}
@@ -401,6 +407,10 @@ Se analizaron tres tecnologías de transducción de corriente eléctrica alterna
     \item Sensor de efecto Hall integrado ACS712-20A: Dispositivo galvánicamente aislado con ancho de banda de 80~kHz, adecuado para la captura detallada de microperturbaciones de torque en régimen transitorio en bancos de prueba y tableros accesibles. \textit{Opción seleccionada como sensor complementario de validación en banco de pruebas.}
     \item Resistencia Shunt de potencia: Exige cortar el conductor de fase e intercalar un resistor de bajo ohmiaje, disipando calor y careciendo de aislamiento galvánico intrínseco. \textit{Opción descartada por representar un riesgo operacional y violar el principio de no invasividad.}
 \end{itemize}
+
+En la \fig{panel_sensores_corriente} se ilustran los dos transductores de corriente evaluados: el sensor de núcleo partido SCT-013-030 seleccionado para operación no invasiva en planta y el módulo por efecto Hall integrado ACS712-20A.
+
+\figura[width=0.88\textwidth]{panel_sensores_corriente}{Transductores de variable eléctrica analizados: (a) Sensor de núcleo partido SCT-013-030 seleccionado para planta y (b) Módulo ACS712-20A por efecto Hall para banco de pruebas}{Elaboración propia, 2026}
 
 \paragraph{C. Sensor de vibración mecánica (acelerometría MEMS) en torreta}
 Se evaluaron tres variantes de sensado inercial:

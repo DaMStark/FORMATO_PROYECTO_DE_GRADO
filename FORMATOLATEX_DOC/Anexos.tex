@@ -38,6 +38,7 @@ El presente anexo describe la arquitectura mecatrónica general y la interconexi
     \item Módulo IV (Cerebro Mecatrónico y Edge AI): Unidad de procesamiento embebido sobre microcontrolador STM32F4 (ARM Cortex-M4 @ 100~MHz), con adquisición síncrona por DMA multicanal a 12 bits, filtrado digital Butterworth, ventaneo sincrónico activo durante el arranque de viruta ($I_a > I_{\text{vacío}}$), extracción de descriptores estadísticos temporales y frecuenciales ($I_{\text{RMS}}, a_{\text{RMS}}, Ku, CF$) e inferencia determinista ($<15\,\text{ms}$) con clasificador TinyML cuantizado en enteros de 8 bits (INT8) mediante STM32Cube.AI.
     \item Módulo V (Supervisión Local y Alerta Visual en Planta): Despliegue de métricas en panel gráfico local (dashboard) al pie del torno comunicado vía UART/RS485, e indicación luminosa mediante clasificador LED por niveles de desgaste (cinco etapas de alta visibilidad): verde oscuro ($VB < 0.10\,\text{mm}$, inserto nuevo u óptimo), verde ($0.10 \le VB < 0.18\,\text{mm}$, buen estado operativo), verde claro ($0.18 \le VB < 0.22\,\text{mm}$, estado regular), naranja ($0.22 \le VB < 0.30\,\text{mm}$, aceptable -- cambio próximo) y rojo ($VB \ge 0.30\,\text{mm}$, cambio urgente según norma ISO 3685).
 \end{enumerate}
+}
 
 \newpage
 \phantomsection
@@ -95,3 +96,32 @@ A continuación se presenta la estimación presupuestaria correspondiente a la p
 \vspace{1.5mm}
 \small \textbf{Fuente:} Elaboración propia, 2026.
 \end{table}
+
+
+\newpage
+\phantomsection
+\subsection*{Anexo 3: Cadena de herramientas de ingeniería y flujo de optimización Edge AI (TinyML Toolchain)}
+\label{anx:toolchain_edgai}
+\addcontentsline{toc}{subsection}{Anexo 3. Cadena de herramientas y flujo de optimización Edge AI}
+
+\begin{figure}[H]
+    \centering
+    \caption{Cadena metodológica de desarrollo, cuantización INT8 y despliegue embebido determinista (Toolchain Edge AI)}\label{fig:anexo_toolchain_tinyml}
+    \vspace{1.0mm}
+    \includegraphics[width=0.68\textwidth]{Figuras/diagrama_toolchain_tinyml.png}
+    \par\vspace{1.0mm}
+    \small \textbf{Fuente:} Elaboración propia, 2026
+\end{figure}
+\vspace{-3.5mm}
+
+{\footnotesize
+\setstretch{0.98}
+El presente anexo detalla la arquitectura metodológica y la secuencia de transformación algorítmica de la cadena de herramientas (Toolchain) implementada para la inferencia determinista en el microcontrolador al pie de máquina:
+
+\begin{enumerate}[leftmargin=0.6cm, itemsep=1.0pt, parsep=0pt, topsep=1pt]
+    \item \textbf{Etapa 1 (Diseño y Entrenamiento Neuronal en PC):} En un entorno de alto nivel bajo Python 3.10 con TensorFlow 2.x y Keras, se entrena la red Perceptrón Multicapa ($10 \rightarrow 32 \rightarrow 16 \rightarrow 5$) empleando el vector de diez descriptores estadísticos ($I_{\text{RMS}}, a_{x,\text{RMS}}, a_{y,\text{RMS}}, a_{z,\text{RMS}}, Ku_I, Ku_a, CF_I, CF_a, \sigma^2_a, E_{\text{HF}}$). La optimización se efectúa con Adam y \textit{Categorical Cross-Entropy}, con validación cruzada estratificada de 5 pliegues sobre el dataset de MAINSA, generando el modelo en punto flotante (\texttt{.h5} / \texttt{SavedModel}, $\sim 180\,\text{KB}$).
+    \item \textbf{Etapa 2 (Cuantización INT8 en TensorFlow Lite):} El modelo en precisión simple (32 bits) se procesa mediante TensorFlow Lite aplicando Cuantización Post-Entrenamiento (PTQ). Mediante un conjunto representativo de calibración del ciclo de corte, se mapean pesos y sesgos a enteros con signo de 8 bits (\texttt{int8}), reduciendo la huella de memoria en un $75\%$ sin emulación matemática por software (\texttt{modelo\_desgaste.tflite}, $\sim 45\,\text{KB}$).
+    \item \textbf{Etapa 3 (Síntesis de Código ANSI C con STM32Cube.AI):} El modelo cuantizado se importa en STM32Cube.AI (X-CUBE-AI) de STMicroelectronics. La herramienta evalúa la complejidad computacional, optimiza buffers de activación y valida numéricamente la exactitud contra silicio virtual, generando código fuente ANSI C (\texttt{network.c}, \texttt{network.h}, \texttt{network\_data.c}) vinculado con las rutinas SIMD de ARM CMSIS-NN.
+    \item \textbf{Etapa 4 (Despliegue y Ejecución en STM32F411):} El código C se compila en STM32CubeIDE y se despliega en el microcontrolador STM32F411CEU6 (ARM Cortex-M4 @ 100~MHz). La inferencia opera de forma determinista con latencia $\le 15\,\text{ms}$, consumiendo $< 20\,\text{KB}$ de RAM y $< 50\,\text{KB}$ de Flash. La salida clasifica el desgaste en cinco niveles normalizados bajo ISO 3685, activando el clasificador LED y transmitiendo al dashboard local por UART.
+\end{enumerate}
+}
