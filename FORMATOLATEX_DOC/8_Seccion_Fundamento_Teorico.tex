@@ -37,27 +37,30 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 • Evaluación de \textit{Edge AI} / TinyML y plataformas embebidas. &
 • 8.2.1 Cinemática del torneado ($V_c, f, a_p, MRR$), fuerzas de corte y potencia ($P_c$).\par\vspace{1mm}
 • 8.2.2 Mecanismos tribológicos de desgaste y criterio $VB$ (ISO 3685).\par\vspace{1mm}
-• 8.2.3 Monitoreo de condición (TCM) indirecto mediante variable eléctrica (corriente) y vibración mecánica (acelerometría).\par\vspace{1mm}
-• 8.2.6 Inteligencia artificial en el borde (\textit{Edge AI} / TinyML). \\ \hline
+• 8.2.3 Monitoreo de condición (TCM) indirecto mediante variable eléctrica y vibración mecánica.\par\vspace{1mm}
+• 8.2.7 Inteligencia artificial en el borde (\textit{Edge AI} / TinyML). \\ \hline
 
 \textbf{OE2.} Dimensionar los sensores de la variable eléctrica, vibración mecánica y la unidad de procesamiento embebido. &
-• Dimensionamiento de transductor de variable eléctrica (SCT-013) según potencia del motor de avance del carro.\par\vspace{1mm}
-• Selección del sensor de vibración mecánica (acelerómetro) considerando ancho de banda y rango dinámico en torreta.\par\vspace{1mm}
+• Dimensionamiento de transductor de corriente (SCT-013) para motor de avance.\par\vspace{1mm}
+• Selección del sensor de acelerometría MEMS (ADXL345) en torreta.\par\vspace{1mm}
 • Selección de microcontrolador analizando ADC, DMA, FPU, CMSIS-DSP y memoria.\par\vspace{1mm}
 • Cálculo y dimensionamiento de componentes pasivos de filtrado y fuentes conmutadas.\par\vspace{1mm}
 • Elaboración del documento de avance semestral y Defensa de Avance [Hito 2]. &
-• 8.2.4 Transductores de variable eléctrica (corriente) y sensores de vibración mecánica (acelerómetros MEMS).\par\vspace{1mm}
-• 8.2.5 Teorema de Nyquist, filtrado anti-aliasing y arquitectura ARM Cortex-M4.\par\vspace{1mm}
-• 8.2.8 Análisis comparativo y selección de componentes (microcontrolador, variable eléctrica y vibración mecánica). \\ \hline
+• 8.2.4 Sensado de variable eléctrica y acondicionamiento analógico DC Bias.\par\vspace{1mm}
+• 8.2.5 Sensado de vibraciones mecánicas y discriminación de ruidos espurios.\par\vspace{1mm}
+• 8.2.9 Análisis comparativo y selección de componentes clave.\par\vspace{1mm}
+• 8.2.11 Arquitectura interna ARM Cortex-M4 y recursos del STM32F411.\par\vspace{1mm}
+• 8.2.12 Convertidor analógico-digital SAR de 12 bits y adquisición DMA. \\ \hline
 
 \textbf{OE3.} Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, integrando acondicionamiento de señal, procesamiento en el borde, panel de visualización en dashboard e indicadores LED de alerta. &
 • Definición del diagrama de bloques funcional (adquisición, acondicionamiento y visualización).\par\vspace{1mm}
 • Diseño de circuito acondicionador analógico (rectificación y conversión a nivel RMS).\par\vspace{1mm}
 • Diseño esquemático y ruteo de PCB industrial con aislamiento galvánico.\par\vspace{1mm}
 • Concepción de gabinete IP65 y carcasa estanca IP67 con base magnética de neodimio. &
-• 8.2.4 Transductores y acondicionamiento analógico (efecto Hall, acelerómetros MEMS, offset DC y EMC).\par\vspace{1mm}
-• 8.2.5 Procesamiento digital de señales (adquisición determinista).\par\vspace{1mm}
-• 8.2.7 Arquitectura de supervisión local y señalización visual de desgaste. \\ \hline
+• 8.2.4 Circuito acondicionador, polarización DC Bias y etapas de rectificación.\par\vspace{1mm}
+• 8.2.6 Procesamiento digital de señales (DSP) en entornos industriales.\par\vspace{1mm}
+• 8.2.8 Arquitectura de supervisión local y señalización visual de desgaste.\par\vspace{1mm}
+• 8.2.12 Muestreo síncrono mediante temporizador hardware y doble buffer DMA. \\ \hline
 
 \textbf{OE4.} Integrar el sistema periférico de adquisición, procesamiento inteligente, panel de visualización e indicadores luminosos LED para desgaste. &
 • Ensamblaje, integración eléctrica y verificación funcional de PCB y gabinete.\par\vspace{1mm}
@@ -65,9 +68,11 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 • Campaña de mecanizado en MAINSA y construcción de dataset etiquetado.\par\vspace{1mm}
 • Entrenamiento, cuantización INT8 y despliegue del clasificador con STM32Cube.AI.\par\vspace{1mm}
 • Desarrollo del panel/dashboard de visualización local e integración del indicador LED de alerta. &
-• 8.2.5 Descriptores estadísticos ($I_{RMS}, a_{RMS}$, curtosis, factor de cresta).\par\vspace{1mm}
-• 8.2.6 Aprendizaje automático supervisado, cuantización INT8 y despliegue STM32Cube.AI.\par\vspace{1mm}
-• 8.2.7 Interfaz visual de supervisión local e indicadores LED de alerta. \\ \hline
+• 8.2.6 Descriptores estadísticos temporales ($I_{\text{RMS}}, a_{\text{RMS}}$, Curtosis, Factor de Cresta).\par\vspace{1mm}
+• 8.2.7 Pipeline Edge AI: vector de entradas de 10 características y vector de 5 clases ISO 3685.\par\vspace{1mm}
+• 8.2.8 Supervisión local en dashboard e indicación cromática LED por niveles.\par\vspace{1mm}
+• 8.2.10 Ecosistema de programación: Python 3.10, ANSI C, TensorFlow y STM32CubeIDE.\par\vspace{1mm}
+• 8.2.11 Instrucciones SIMD / MAC del Cortex-M4 y optimización CMSIS-NN. \\ \hline
 
 \textbf{OE5.} Validar experimentalmente el funcionamiento del sistema integrado mediante pruebas de corte en los tornos CNC de MAINSA. &
 • Instalación y calibración no invasiva del sistema periférico en torno CNC de taller.\par\vspace{1mm}
@@ -75,9 +80,9 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 • Medición metrológica de rugosidad ($Ra$) en probetas y verificación dimensional.\par\vspace{1mm}
 • Evaluación de exactitud de clasificación y reducción de paradas y desperdicio de material.\par\vspace{1mm}
 • Redacción del informe final de grado y preparación de Defensa Pública [Hito 3]. &
-• 8.2.2 Desgaste de flanco ($VB$) y su impacto en rugosidad superficial ($Ra$).\par\vspace{1mm}
-• 8.2.6 Métricas de exactitud, matriz de confusión y latencia de inferencia en milisegundos.\par\vspace{1mm}
-• 8.2.7 Verificación de panel de supervisión local e indicadores de alerta. \\ \hline
+• 8.2.2 Desgaste de flanco ($VB$) y modelo fenomenológico de Taylor.\par\vspace{1mm}
+• 8.2.13 Medición de desgaste $VB$ por microscopía de herramientas y rugosidad $Ra$ (ISO 4287).\par\vspace{1mm}
+• 8.2.14 Evaluación multiclase: Matriz de Confusión, Precisión, Exhaustividad, $F1_{\text{macro}}$ y latencia $\le 15\,\text{ms}$. \\ \hline
 \end{longtable}
 }
 
@@ -398,7 +403,7 @@ Se contrastaron tres alternativas de microcontroladores de amplia difusión indu
 
 En la \fig{panel_microcontroladores} se contrastan visualmente las dos plataformas principales analizadas: la tarjeta de desarrollo STM32F411 Black Pill seleccionada para el procesamiento determinista frente al módulo ESP32-S3.
 
-\figura[width=0.88\textwidth]{panel_microcontroladores}{Plataformas embebidas para inferencia Edge AI: (a) STM32F411CEU6 Black Pill -- seleccionada -- y (b) ESP32-S3-DevKitC-1 -- descartada}{Elaboración propia, 2026}
+\figura[width=0.88\textwidth]{panel_microcontroladores}{Plataformas embebidas para inferencia Edge AI: (a) STM32F411 seleccionada y (b) ESP32-S3 descartada para control}{Elaboración propia, 2026}
 
 \paragraph{B. Sensor de variable eléctrica para monitoreo no invasivo en el carro portaherramientas}
 Se analizaron tres tecnologías de transducción de corriente eléctrica alterna para el monitoreo del accionamiento de avance del carro:
@@ -607,5 +612,340 @@ de redes neuronales.  Los entornos evaluados son:
     ofrece rendimiento equivalente bajo STM32CubeIDE con licencia libre.
     \textit{Descartado por restricción de licencias.}
 \end{itemize}
+
+% ======================================================================
+%  8.2.11  Arquitectura interna del núcleo ARM Cortex-M4 y recursos del STM32F411
+% ======================================================================
+\subsubsection{Arquitectura interna ARM Cortex-M4 y recursos del STM32F411}
+
+La selección del microcontrolador no puede fundamentarse únicamente en las
+características enumeradas en la hoja de datos comercial; exige comprender la
+arquitectura interna del núcleo de procesamiento para justificar con rigor que
+los recursos de silicio disponibles satisfacen los requisitos de adquisición,
+procesamiento digital de señales e inferencia determinista impuestos por el
+sistema de monitoreo.
+
+\paragraph{A. Núcleo ARM Cortex-M4 y pipeline de tres etapas}
+
+El núcleo ARM Cortex-M4 implementa la arquitectura de conjunto de instrucciones
+reducido ARMv7E-M, dotada de un cauce de instrucciones (\textit{pipeline}) de
+tres etapas: captación (\textit{fetch}), decodificación (\textit{decode}) y
+ejecución (\textit{execute}) \citep{warden2019}. Este esquema permite que las
+instrucciones se solapen temporalmente, alcanzando rendimientos cercanos a un
+ciclo de reloj por instrucción (CPI $\approx 1$) para la mayoría de las
+operaciones aritméticas enteras. El conjunto de instrucciones Thumb-2 combina
+instrucciones de 16 y 32 bits, logrando una densidad de código superior a la
+arquitectura ARM de 32 bits clásica sin sacrificar capacidad de cómputo.
+
+\paragraph{B. Unidad de punto flotante (FPU) y extensiones DSP}
+
+El Cortex-M4 incorpora una unidad de punto flotante (\textit{Floating-Point
+Unit}, FPU) de precisión simple IEEE 754-2008, habilitada por el coprocesador
+VFPv4. Esta unidad ejecuta instrucciones de multiplicación-acumulación
+(\textit{Multiply-Accumulate}, MAC) en un único ciclo de reloj, operación
+central en la evaluación de cada neurona artificial del clasificador:
+
+\begin{equation}
+y = \sum_{i=0}^{N-1} w_i \cdot x_i + b
+\label{eq:mac_neurona}
+\end{equation}
+
+donde en la~\eqref{eq:mac_neurona}, $w_i$ son los pesos sinápticos del modelo
+cuantizado, $x_i$ son los valores de entrada normalizados, $b$ es el sesgo de
+la neurona y $N$ es el número de conexiones de la capa. Las extensiones
+SIMD (\textit{Single Instruction Multiple Data}) de las instrucciones
+DSP del ARMv7E-M permiten operar sobre pares de enteros de 16 bits en paralelo
+mediante instrucciones tipo \texttt{SMLAD} y \texttt{SMLABT}, duplicando
+efectivamente el rendimiento de las rutinas de convolución en la biblioteca
+CMSIS-NN respecto al Cortex-M3 sin extensiones DSP.
+
+\paragraph{C. Mapa de memoria y recursos internos del STM32F411CEU6}
+
+El microcontrolador STM32F411CEU6, basado en el núcleo Cortex-M4 cadenciado a
+100~MHz, dispone de los siguientes recursos de memoria y periféricos internos
+relevantes para el proyecto:
+
+\begin{itemize}
+    \item \textbf{Memoria Flash:} 512~KB de memoria no volátil para almacenar
+    el firmware compilado y el modelo neuronal cuantizado INT8. El modelo MLP
+    $(10 \to 32 \to 16 \to 5)$ cuantizado ocupa aproximadamente 4.8~KB,
+    dejando amplio margen para el firmware de adquisición y la pila CMSIS-NN.
+    \item \textbf{Memoria SRAM:} 128~KB de memoria dinámica de acceso aleatorio
+    para los buffers de adquisición DMA, las ventanas de muestras de 512 puntos
+    por canal y las tablas de activación del clasificador. Los buffers dobles
+    para corriente y aceleración triaxial requieren $4 \times 512 \times 2 =
+    4096$ bytes, operando con holgura dentro de los 128~KB disponibles.
+    \item \textbf{Controlador DMA:} Dos controladores DMA de doble puerto (DMA1
+    y DMA2) con 16 canales configurables independientemente. El DMA gestiona la
+    transferencia automática de las conversiones ADC hacia el buffer circular en
+    SRAM sin interrumpir al núcleo Cortex-M4, permitiendo que el procesador
+    ejecute los algoritmos DSP e inferencia en paralelo con la adquisición.
+    \item \textbf{Periféricos de comunicación:} Tres buses SPI (SPI1 a SPI3) con
+    velocidades de hasta 50~MHz, tres buses I2C, seis módulos USART/UART y un
+    bus USB Full Speed 2.0 (12~Mbps) para programación y depuración.
+    \item \textbf{Convertidores ADC:} Un ADC de 12 bits tipo SAR con 16 canales
+    multiplexados, capaz de hasta 2.4~MSPS en modo de un solo canal, configurado
+    en este proyecto para muestreo síncrono doble (corriente + vibración) a
+    $f_s = 2000$~Hz mediante disparador por temporizador hardware.
+\end{itemize}
+
+\paragraph{D. Arquitectura Harvard modificada y bus AHB}
+
+El Cortex-M4 implementa una arquitectura Harvard modificada, en la que los
+accesos a instrucciones (bus I-Code) y a datos (bus D-Code y System Bus)
+transcurren sobre canales físicos independientes, eliminando los conflictos de
+acceso a memoria que limitan las arquitecturas von Neumann clásicas. Todos los
+buses internos operan sobre la interconexión AHB Lite (\textit{Advanced
+High-performance Bus}) cadenciada a la frecuencia del núcleo (100~MHz), lo que
+garantiza latencias deterministas de un ciclo de reloj para accesos a SRAM,
+condición imprescindible para el cumplimiento de las restricciones temporales
+del lazo de monitoreo.
+
+% ======================================================================
+%  8.2.12  Convertidor Analógico-Digital SAR de 12 bits y adquisición DMA
+% ======================================================================
+\subsubsection{Convertidor analógico-digital SAR de 12 bits y adquisición DMA síncrona}
+
+La conversión de las señales analógicas de corriente y vibración hacia el dominio
+numérico discreto constituye la frontera técnica fundamental entre el mundo físico
+continuo del proceso de torneado y el dominio computacional del procesador embebido.
+La precisión, velocidad y determinismo de esta conversión condicionan directamente
+la calidad del vector de características extraído y, en consecuencia, la exactitud
+del clasificador inteligente.
+
+\paragraph{A. Principio de operación del ADC de aproximaciones sucesivas (SAR)}
+
+El convertidor analógico-digital del STM32F411 opera según el principio de
+Aproximaciones Sucesivas (\textit{Successive Approximation Register}, SAR),
+ejecutando una búsqueda binaria sobre el espacio de amplitudes en $N = 12$ pasos
+de comparación por conversión. En cada paso $k$, el comparador interno evalúa si
+la tensión de entrada $V_{in}$ supera o no la tensión generada por el DAC de
+referencia interna, actualizando el registro SAR de acuerdo con el resultado:
+
+\begin{equation}
+V_{DAC}^{(k)} = V_{ref} \cdot \sum_{j=k}^{N} \frac{b_j}{2^{j-k+1}}
+\label{eq:sar_dac}
+\end{equation}
+
+donde $b_j \in \{0, 1\}$ son los bits determinados en las iteraciones previas.
+Al cabo de $N = 12$ comparaciones, el registro SAR contiene el código digital
+de 12 bits que mejor aproxima la tensión analógica de entrada.
+
+\paragraph{B. Resolución analógica y relación señal-ruido teórica}
+
+La resolución de un convertidor de $N$ bits define el escalón mínimo distinguible
+entre dos códigos digitales consecutivos. Para el ADC de 12 bits del STM32F411
+con referencia de tensión $V_{ref} = 3.3\,\text{V}$:
+
+\begin{equation}
+\Delta V = \frac{V_{ref}}{2^N} = \frac{3.3}{4096} \approx 0.806\,\text{mV/bit}
+\label{eq:resolucion_adc}
+\end{equation}
+
+La relación señal-ruido teórica máxima de un convertidor ideal de $N$ bits,
+expresada en decibelios, se determina a partir del teorema de cuantización:
+
+\begin{equation}
+SNR_{dB} = 6.02 \cdot N + 1.76 \approx 74\,\text{dB} \quad (N = 12)
+\label{eq:snr_adc}
+\end{equation}
+
+Una relación señal-ruido de 74~dB garantiza la discriminación de variaciones de
+corriente tan pequeñas como el 0.025\% del fondo de escala, suficiente para
+detectar el incremento gradual de $I_{RMS}$ asociado al desgaste incipiente del
+inserto, estimado en un incremento del 3 al 8\% entre la clase 0 y la clase 1.
+
+\paragraph{C. Configuración DMA circular para adquisición continua}
+
+Para garantizar la adquisición determinista sin overhead del núcleo Cortex-M4,
+el ADC se configura en modo de conversión continua disparada por el temporizador
+TIM2 a exactamente $f_s = 2000\,\text{Hz}$, transfiriendo automáticamente cada
+resultado al buffer circular en SRAM mediante el canal DMA2\_Stream0. El
+controlador DMA opera en modo circular doble (\textit{double-buffer DMA}): mientras
+el núcleo procesa la primera mitad del buffer (Mitad A, 256 muestras), el DMA
+llena la segunda mitad (Mitad B, 256 muestras), y viceversa. Este esquema
+garantiza adquisición ininterrumpida sin pérdida de muestras y latencia de
+procesamiento acotada a $\Delta t = N/f_s = 128\,\text{ms}$ por ventana.
+
+La frecuencia de muestreo de 2000~Hz satisface el criterio de Nyquist-Shannon
+para la banda de interés del sistema ($f_{max} = 1000\,\text{Hz}$):
+$f_s = 2000\,\text{Hz} = 2 \cdot f_{max}$, con un margen de seguridad de 2:1
+respecto a la frecuencia de corte del filtro anti-aliasing software implementado
+en el Cortex-M4 mediante CMSIS-DSP.
+
+% ======================================================================
+%  8.2.13  Validación metrológica del desgaste (VB) y rugosidad superficial (Ra)
+% ======================================================================
+\subsubsection{Validación metrológica del desgaste de flanco y la calidad superficial}
+
+La validación experimental del sistema de monitoreo propuesto exige disponer de
+una referencia metrológica cuantitativa y trazable del desgaste real del inserto
+($VB$) y de la calidad superficial generada en la pieza ($Ra$), de forma que
+las predicciones del clasificador inteligente puedan contrastarse objetivamente
+con mediciones directas de la geometría del filo degradado.
+
+\paragraph{A. Medición del desgaste de flanco VB por microscopía de herramientas}
+
+El parámetro de desgaste de flanco $VB$ se mide directamente sobre el inserto
+retirado del portaherramientas mediante un microscopio de herramientas
+(\textit{toolmaker's microscope}) dotado de objetivo de larga distancia de
+trabajo, ocular micrométrico calibrado y platina de desplazamiento graduado en
+pasos de $1\,\upmu\text{m}$ \citep{iso3685}. El procedimiento de medición sigue
+los lineamientos de la norma ISO 3685:1993:
+
+\begin{enumerate}[leftmargin=0.8cm]
+    \item El inserto se retira del portaherramientas al término del ciclo de corte
+    programado y se limpia cuidadosamente con disolvente para eliminar residuos de
+    taladrina y viruta adherida sobre el flanco.
+    \item Se posiciona el inserto sobre la platina con iluminación rasante sobre
+    la cara de incidencia, que resalta la zona brillante de la franja de desgaste
+    por contraste respecto al recubrimiento original mate del substrato.
+    \item Con el retículo micrométrico del ocular, se mide el ancho promedio $VB$
+    de la franja de desgaste en la zona B central del filo, así como el valor
+    máximo $VB_{max}$ y el desgaste de nariz $VC$, conforme a la zonificación
+    normativa de la~\fig{tipos_desgaste_herramienta}.
+    \item Se registran tres lecturas independientes rotando el inserto y se calcula
+    la media aritmética para reducir el error de posicionamiento. La incertidumbre
+    expandida del método es $U(VB) = \pm 5\,\upmu\text{m}$ ($k=2$, $p=95\%$).
+\end{enumerate}
+
+\paragraph{B. Medición de la rugosidad superficial Ra según ISO 4287}
+
+La rugosidad superficial media aritmética $Ra$ se determina sobre las probetas
+torneadas mediante un rugosímetro de contacto tipo Mitutoyo SJ-210 (o equivalente),
+equipado con un palpador de diamante de radio de punta $r = 2\,\upmu\text{m}$ y
+radio de curvatura de punta cónica $60^\circ$, conforme a la norma ISO 4287:1997.
+El parámetro $Ra$ cuantifica la desviación media aritmética absoluta del perfil de
+rugosidad respecto a la línea media $m$ sobre una longitud de evaluación $l_n$:
+
+\begin{equation}
+Ra = \frac{1}{l_n} \int_0^{l_n} |z(x)|\, dx \approx \frac{1}{N} \sum_{i=1}^{N} |z_i|
+\label{eq:rugosidad_ra}
+\end{equation}
+
+donde $z(x)$ representa las alturas del perfil de rugosidad respecto a la línea
+media y $N$ es el número de puntos discretizados en el perfil de medición.
+
+\paragraph{C. Correlación experimental VB -- Ra}
+
+La relación entre el desgaste de flanco y el deterioro del acabado superficial
+constituye el vínculo físico que conecta la señal eléctrica inferida por el
+clasificador con el impacto productivo real en las piezas mecanizadas en MAINSA.
+Conforme a los resultados experimentales reportados en la literatura \citep{trejo2010,
+sandvik2020}, la rugosidad real medida supera consistentemente el valor teórico
+predicho por la~\eqref{eq:rugosidad_teorica} a medida que $VB$ crece:
+
+\begin{equation}
+Ra_{\text{real}}(VB) \approx Ra_{\text{te\'{o}rico}} + \alpha \cdot VB^{\beta}
+\label{eq:rugosidad_vs_vb}
+\end{equation}
+
+donde $\alpha$ y $\beta$ son coeficientes empíricos dependientes del material de
+la pieza, del substrato del inserto y de los parámetros de corte. El ajuste de
+estos coeficientes a partir de los datos experimentales del proyecto constituirá
+una contribución metrológica original del trabajo de grado, correlacionando la
+clase de desgaste inferida en tiempo real por el sistema con el incremento medible
+de la rugosidad superficial $Ra$ en la pieza torneada.
+
+% ======================================================================
+%  8.2.14  Métricas de evaluación del clasificador inteligente
+% ======================================================================
+\subsubsection{Métricas de evaluación del clasificador inteligente multiclase}
+
+La validación experimental del clasificador inteligente de desgaste requiere
+emplear un conjunto de métricas cuantitativas formalmente definidas que permitan
+evaluar de manera objetiva, reproducible e independiente de la distribución de
+clases el rendimiento del modelo sobre el conjunto de datos de prueba no visto
+durante el entrenamiento \citep{huang2026}.
+
+\paragraph{A. Matriz de confusión para clasificación multiclase}
+
+La herramienta fundamental de diagnóstico del rendimiento de un clasificador
+supervisado de $C$ clases es la \textit{Matriz de Confusión} $\mathbf{M} \in
+\mathbb{Z}^{C \times C}$, donde el elemento $M_{ij}$ contabiliza el número de
+muestras pertenecientes a la clase real $i$ que el modelo clasificó como clase $j$.
+Para el sistema de monitoreo con cinco clases de desgaste ($C = 5$), la diagonal
+principal $M_{ii}$ registra las predicciones correctas y los elementos fuera de
+la diagonal cuantifican los errores de confusión entre estados de desgaste
+adyacentes o no adyacentes.
+
+\paragraph{B. Métricas de precisión, exhaustividad y F1}
+
+A partir de la matriz de confusión se derivan las métricas fundamentales de
+evaluación. Para cada clase $c \in \{0, 1, 2, 3, 4\}$ se definen:
+
+\begin{equation}
+\text{Precision}_c = \frac{TP_c}{TP_c + FP_c}
+\label{eq:precision}
+\end{equation}
+
+\begin{equation}
+\text{Recall}_c = \frac{TP_c}{TP_c + FN_c}
+\label{eq:recall}
+\end{equation}
+
+\begin{equation}
+F1_c = \frac{2 \cdot \text{Precision}_c \cdot \text{Recall}_c}
+             {\text{Precision}_c + \text{Recall}_c}
+\label{eq:f1}
+\end{equation}
+
+donde $TP_c$ (\textit{True Positives}) es el número de muestras de la clase $c$
+correctamente identificadas; $FP_c$ (\textit{False Positives}) es el número de
+muestras de otras clases incorrectamente asignadas a la clase $c$; y $FN_c$
+(\textit{False Negatives}) es el número de muestras de la clase $c$ que el
+clasificador asignó a otras clases.
+
+La exactitud global del clasificador (\textit{Accuracy}) se define como la
+fracción de predicciones correctas sobre el total de muestras del conjunto de
+evaluación:
+
+\begin{equation}
+\text{Accuracy} = \frac{\sum_{c=0}^{C-1} TP_c}{\sum_{c=0}^{C-1}(TP_c + FP_c)}
+\label{eq:accuracy}
+\end{equation}
+
+\paragraph{C. F1-macro y criterio de aceptación}
+
+Dado que el dataset de MAINSA presentará una distribución de clases
+inherentemente desbalanceada (las clases extremas 0 y 4, correspondientes a
+inserto nuevo y desgaste crítico, tendrán menor representación muestral que las
+clases intermedias), la métrica de \textit{Accuracy} global puede resultar
+engañosamente optimista \citep{huang2026}. Por este motivo, se adopta como
+métrica primaria de evaluación el \textit{F1-macro}, definido como el promedio
+no ponderado de los F1-score individuales de cada clase:
+
+\begin{equation}
+F1_{\text{macro}} = \frac{1}{C} \sum_{c=0}^{C-1} F1_c
+\label{eq:f1_macro}
+\end{equation}
+
+Esta métrica penaliza de forma equitativa los errores en clases minoritarias y
+mayoritarias, siendo especialmente crítica para las clases 3 y 4 (desgaste
+avanzado y crítico), donde una tasa de Falsos Negativos elevada implicaría no
+detectar el momento de sustitución del inserto y producir piezas fuera de
+especificación en MAINSA. Los criterios cuantitativos de aceptación del
+clasificador se establecen en:
+
+\begin{itemize}
+    \item $\text{Accuracy} \ge 85\%$ sobre el conjunto de test estratificado.
+    \item $F1_{\text{macro}} \ge 0.80$ con especial énfasis en $F1_3 \ge 0.75$
+    y $F1_4 \ge 0.80$ para los estados de mayor criticidad operativa.
+    \item Latencia de inferencia determinista $\le 15\,\text{ms}$ medida
+    experimentalmente sobre el STM32F411CEU6 a 100~MHz con modelo cuantizado INT8.
+\end{itemize}
+
+\paragraph{D. Latencia de inferencia como métrica de rendimiento embebido}
+
+Además de las métricas estadísticas de clasificación, el rendimiento embebido
+del modelo se cuantifica mediante la latencia de inferencia, definida como el
+tiempo transcurrido entre la entrega del vector de características normalizado
+a la capa de entrada del modelo y la disponibilidad del vector de probabilidades
+de salida en la capa Softmax. Esta latencia se mide experimentalmente mediante
+la conmutación de un pin GPIO del STM32F411 y el registro del pulso con un
+analizador lógico, garantizando que el sistema de monitoreo clasifique el estado
+del inserto al menos cada 15~ms, equivalente a una tasa de diagnóstico de
+$f_{diag} = 66.7\,\text{Hz}$, claramente suficiente para detectar la transición
+entre estados de desgaste cuya evolución se produce en escala de minutos a horas.
 
 
