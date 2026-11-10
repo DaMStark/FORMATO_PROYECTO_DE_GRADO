@@ -94,109 +94,59 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 
 \subsubsection{Cinemática y parámetros del proceso de torneado en torno CNC}
 
-El proceso de torneado en máquinas de Control Numérico Computarizado (CNC) constituye una operación de conformado mecánico mediante la remoción controlada de material, donde la pieza cilíndrica adquiere rotación continua mientras la herramienta se desplaza en trayectorias programadas \citep{groover2010}. La interacción geométrica entre el filo del inserto y la pieza genera una concentración localizada de esfuerzos cortantes en la zona de cizallamiento, promoviendo la deformación plástica severa y el desprendimiento continuo o discontinuo de viruta metálica.
+El proceso de torneado en máquinas de Control Numérico Computarizado (CNC) constituye una operación de conformado mecánico mediante la remoción controlada de material, donde la pieza cilíndrica adquiere rotación continua mientras la herramienta se desplaza en trayectorias programadas \citep{groover2010}. La interacción geométrica entre el filo del inserto y la pieza genera una concentración localizada de esfuerzos cortantes en la zona de cizallamiento, promoviendo la deformación plástica severa y el desprendimiento de viruta. Aunque las máquinas herramientas de torneado ejecutan operaciones diversas como refrentado, cilindrado, ranurado y roscado (cuyo compendio morfológico se detalla en el Anexo~\ref{anx:operaciones_torneado}), el desbaste cilíndrico continuo concentra la mayor tasa de volumen desalojado en los ciclos productivos de MAINSA.
 
-La máquina herramienta de torno CNC permite ejecutar una amplia gama de operaciones de remoción de metal en función de la orientación geométrica, trayectoria del carro y geometría de la herramienta de corte seleccionada \citep{kalpakjian2014, trejo2010}. Estas operaciones abarcan desde el mecanizado de superficies cilíndricas exteriores e interiores hasta geometrías complejas, como se sintetiza esquemáticamente en la \fig{operaciones_torneado}.
-
-\figura[width=0.82\textwidth]{operaciones_torneado}{Operaciones fundamentales de mecanizado por arranque de viruta en torno CNC}{Adaptado de \textcite{kalpakjian2014} y \textcite{trejo2010}}
-
-Entre las operaciones representadas en la \fig{operaciones_torneado}, destacan el cilindrado longitudinal para reducción del diámetro exterior, el refrentado o careado para generación de caras planas perpendiculares al eje, el torneado cónico, el perfilado mediante trayectorias interpoladas, el ranurado exterior o frontal, el tronzado y el roscado. En los ciclos productivos industriales de talleres de mecanizado como MAINSA, el desbaste cilíndrico continuo concentra la mayor tasa de volumen de material desalojado, sometiendo la arista de corte a solicitaciones tribológicas y mecánicas severas y sostenidas.
-
-La cinemática del proceso de torneado se rige fundamentalmente por tres parámetros de corte gobernados numéricamente: la velocidad de corte periférica, la velocidad de avance lineal y la profundidad de pasada radial o axial \citep{kalpakjian2014}. La velocidad de corte establece la rapidez superficial relativa entre la herramienta y la superficie exterior de la pieza, determinándose de manera analítica mediante la formulación clásica vinculada con el diámetro y las revoluciones:
+La cinemática del proceso está regida por tres parámetros fundamentales: la velocidad de corte periférica ($V_c$), el avance lineal por vuelta ($f$) y la profundidad de pasada radial o axial ($a_p$) \citep{kalpakjian2014}. La velocidad de corte establece la rapidez superficial relativa entre la herramienta y la superficie exterior de la pieza:
 
 \begin{equation}
 V_c = \frac{\pi \cdot D \cdot n}{1000}
 \label{eq:velocidad_corte}
 \end{equation}
 
-donde en la \eqref{eq:velocidad_corte}, $V_c$ representa la velocidad de corte periférica expresada en metros por minuto, $D$ corresponde al diámetro inicial de la pieza de trabajo medido en milímetros y $n$ cuantifica la velocidad rotacional instantánea del husillo principal en revoluciones por minuto. Esta velocidad condiciona de forma directa la generación de calor en la interfaz de corte y la rapidez con la que se manifiesta el desgaste abrasivo sobre el filo.
-
-A partir de los parámetros cinemáticos fijados numéricamente, se determina analíticamente la tasa volumétrica de remoción de material, la cual cuantifica el volumen desprendido por unidad de tiempo y condiciona la productividad global del proceso \citep{trent2000}. Dicha variable operacional se deduce matemáticamente considerando de forma conjunta la velocidad superficial relativa, el desplazamiento de avance lineal por cada vuelta y la penetración radial de la herramienta de corte en el material:
+donde $V_c$ se expresa en metros por minuto ($\text{m/min}$), $D$ corresponde al diámetro inicial de la pieza en milímetros ($\text{mm}$) y $n$ cuantifica la velocidad rotacional instantánea del husillo principal en revoluciones por minuto ($\text{RPM}$). A partir de las variables cinemáticas se deduce analíticamente la tasa volumétrica de remoción de material ($MRR$), magnitud determinante en la productividad y en las solicitaciones tribomecánicas sobre el inserto \citep{trent2000}:
 
 \begin{equation}
 MRR = V_c \cdot f \cdot a_p \cdot 1000
 \label{eq:mrr}
 \end{equation}
 
-donde en la \eqref{eq:mrr}, $MRR$ denota la tasa volumétrica de remoción de material calculada en milímetros cúbicos por minuto, $f$ simboliza el avance lineal de la torreta portaherramientas en milímetros por revolución y $a_p$ es la profundidad efectiva de pasada expresada en milímetros. Un incremento sustancial en el régimen de remoción eleva proporcionalmente las solicitaciones mecánicas sobre el inserto, acelerando los fenómenos tribológicos de degradación estructural.
+donde $MRR$ se calcula en milímetros cúbicos por minuto ($\text{mm}^3/\text{min}$), $f$ en milímetros por revolución ($\text{mm/rev}$) y $a_p$ en milímetros ($\text{mm}$). Durante la remoción de material, las reacciones mecánicas tridimensionales generadas sobre la punta de corte se descomponen ortogonalmente en tres componentes de fuerza fundamentales \citep{trejo2010, sandvik2020}, cuya orientación espacial respecto al sistema cartesiano del torno se ilustra en la \fig{torneado_geometria_fuerzas}.
 
-Durante la interacción física de corte, las reacciones mecánicas tridimensionales generadas sobre la punta de la herramienta se descomponen ortogonalmente en tres componentes de fuerza fundamentales \citep{trejo2010, sandvik2020}. La disposición vectorial y orientación espacial de dichas fuerzas respecto al sistema cartesiano del torno CNC se ilustran en la \fig{torneado_geometria_fuerzas}.
+\figura[width=0.64\textwidth]{torneado_geometria_fuerzas}{Cinemática del proceso de torneado cilíndrico y descomposición vectorial de las fuerzas de mecanizado}{Adaptado de \textcite{trejo2010}}
 
-\figura[width=0.68\textwidth]{torneado_geometria_fuerzas}{Cinemática del proceso de torneado cilíndrico y descomposición vectorial de las fuerzas de mecanizado}{Adaptado de \textcite{trejo2010}}
-
-De acuerdo con la \fig{torneado_geometria_fuerzas}, la componente tangencial de corte $F_t$ (o $F_c$) actúa perpendicularmente al eje de la pieza en la dirección tangencial del movimiento principal de rotación. Esta fuerza representa entre el setenta y el ochenta por ciento de la fuerza resultante total, constituyendo la magnitud determinante en el par resistente aplicado al husillo y en la potencia consumida por el motor principal:
+La fuerza tangencial de corte $F_c$ (o $F_t$) actúa perpendicularmente al eje de la pieza en la dirección tangencial del giro, representando entre el 70\% y 80\% de la fuerza resultante total y condicionando directamente el par resistente y la potencia neta de corte consumida por el husillo principal:
 
 \begin{equation}
 P_c = \frac{F_c \cdot V_c}{60 \cdot 1000}
 \label{eq:potencia_corte}
 \end{equation}
 
-donde en la \eqref{eq:potencia_corte}, $P_c$ representa la potencia neta de corte demandada en kilovatios, $F_c$ cuantifica la fuerza tangencial principal en newtons y $V_c$ denota la velocidad de corte periférica calculada previamente. Por su parte, la fuerza de avance $F_a$ actúa paralelamente al eje longitudinal de la pieza en la dirección del desplazamiento lineal $f$, repercutiendo de forma directa sobre el servomotor del carro longitudinal, mientras que la fuerza radial $F_r$ actúa en dirección perpendicular a la superficie torneada, empujando la herramienta hacia afuera e incidiendo fuertemente en las deformaciones elásticas, vibraciones dinámicas y desviaciones dimensionales de la pieza mecanizada \citep{trejo2010}.
+donde $P_c$ se cuantifica en kilovatios ($\text{kW}$) y $F_c$ en newtons ($\text{N}$). Por su parte, la fuerza de avance $F_a$ actúa paralelamente al eje longitudinal $Z$, repercutiendo de manera directa sobre la demanda electromecánica del servomotor del carro portaherramientas, mientras que la fuerza radial $F_r$ actúa en dirección perpendicular a la superficie torneada, empujando la herramienta hacia afuera e incidiendo fuertemente en las deformaciones elásticas y vibraciones dinámicas de máquina.
 
-Desde la perspectiva de la mecánica del mecanizado por arranque de viruta, la formación de viruta se analiza convencionalmente a partir de dos esquemas cinemáticos: el modelo ideal de corte ortogonal bidimensional y el régimen tridimensional real de corte oblicuo \citep{trejo2010}, cuyos esquemas morfológicos se contrastan en la \fig{mecanica_corte}.
-
-\begin{figure}[!htb]
-    \centering
-    \caption{Comparativa esquemática entre el modelo de corte ortogonal y corte oblicuo}\label{fig:mecanica_corte}
-    \subfloat[Corte ortogonal (modelo bidimensional)]{\includegraphics[width=0.40\columnwidth]{corte_ortogonal}}
-    \qquad
-    \subfloat[Corte oblicuo (modelo tridimensional)]{\includegraphics[width=0.40\columnwidth]{corte_oblicuo}}
-    \\
-    \centering{\textbf{Fuente:} Adaptado de \textcite{trejo2010}}
-\end{figure}
-
-En el corte ortogonal (\fig{mecanica_corte}a), la arista cortante se posiciona rigurosamente perpendicular a la dirección del vector de velocidad relativa de corte, de modo que el plano de deformación plástica y el flujo de viruta se restringen a un plano bidimensional. La geometría de corte en este modelo se define mediante tres ángulos fundamentales acoplados en el plano ortogonal de referencia: el ángulo de ataque o desprendimiento $\gamma_o$, el ángulo de incidencia o de desahogo $\alpha_o$, y el ángulo de cuña del material $\beta_o$, cumpliendo la relación trigonométrica complementaria $\alpha_o + \beta_o + \gamma_o = 90^\circ$ \citep{kalpakjian2014}. Asimismo, el plano primario de cizallamiento se define mediante el ángulo de cizallamiento $\phi$, el cual relaciona la fuerza cortante y la fricción superficial según la solución teórica de Merchant ($\phi = 45^\circ + \frac{\gamma_o}{2} - \frac{\beta_{\text{fric}}}{2}$).
-
-En contraste, las operaciones industriales de torneado operan bajo el régimen de corte oblicuo (\fig{mecanica_corte}b), donde la arista cortante presenta una inclinación angular $\lambda_s$ respecto a la normal del vector velocidad. Dicha inclinación provoca que la viruta no deslice paralelamente a la cara, sino que fluya lateralmente con un ángulo de dirección de flujo de viruta $\eta_c$. Conforme a la hipótesis fenomenológica de Stabler, se cumple la aproximación $\eta_c \approx \lambda_s$, lo cual desvía la viruta lejos de la superficie mecanizada de la pieza, reduciendo la concentración térmica en el filo principal y redistribuyendo la presión de corte sobre la pastilla de carburo \citep{trejo2010}.
-
-En la manufactura moderna en tornos CNC, el corte se efectúa mediante insertos intercambiables estandarizados según normas ISO, fabricados en substratos duros de carburo de tungsteno (WC-Co) con recubrimientos protectores multicapa de TiN, TiCN o $\text{Al}_2\text{O}_3$ \citep{groover2010}. La geometría básica de un inserto viene definida por su forma geométrica y por el ángulo de punta incluido, magnitudes que condicionan de manera crítica la tenacidad y la durabilidad mecánica del filo, tal como se esquematiza en la \fig{formas_insertos_resistencia}.
-
-\figura[width=0.85\textwidth]{formas_insertos_resistencia}{Geometría de insertos intercambiables de corte, ángulo de punta incluido y correlación con la resistencia mecánica frente a despostillamiento}{Adaptado de \textcite{trejo2010}}
-
-Como se aprecia en la \fig{formas_insertos_resistencia}, existe una relación intrínseca de compromiso ingenieril entre la versatilidad geométrica de copiado y la resistencia mecánica de la punta de corte. Los insertos con ángulos incluidos amplios, como los redondos de $100^\circ$ e insertos cuadrados de $90^\circ$, disponen de un gran volumen de material de soporte que disipa eficazmente el calor y minimiza el riesgo de rotura catastrófica. Por el contrario, pastillas rómbicas de ángulo reducido como las de $55^\circ$ (tipo D) o $35^\circ$ (tipo V) ofrecen mayor accesibilidad para perfiles intrincados, pero su menor ángulo las vuelve vulnerables al astillamiento, microdespostillamiento y fractura repentina ante vibraciones o cortes discontinuos \citep{trejo2010}.
-
-Para mitigar la tendencia a la rotura en condiciones industriales pesadas, los fabricantes realizan tratamientos mecánicos específicos sobre la microgeometría de la arista cortante, denominados acondicionamiento o preparación del filo \citep{kalpakjian2014, trejo2010}. Las principales tipologías de acondicionamiento de arista se resumen gráficamente en la \fig{preparacion_filo_insertos}.
-
-\figura[width=0.62\textwidth]{preparacion_filo_insertos}{Tipologías de acondicionamiento y microgeometría del filo de corte para refuerzo estructural del flanco}{Adaptado de \textcite{trejo2010}}
-
-La \fig{preparacion_filo_insertos} evidencia que un filo con preparación negativa, dotado de cara inclinada o chaflán protector (\textit{chamfer} o \textit{T-land}) y microasentado (\textit{honing}), traslada las solicitaciones cortantes hacia el núcleo de compresión del inserto, incrementando sustancialmente la resistencia del flanco. En contraposición, los filos con ángulo positivo agudo presentan menor esfuerzo de corte inicial pero resultan altamente frágiles, siendo propensos a fallas microscópicas prematuras ante las sobrecargas mecánicas presentes en tornos industriales como los empleados en MAINSA.
+En el mecanizado industrial moderno, el proceso opera bajo régimen oblicuo tridimensional con desvío lateral de viruta $\eta_c \approx \lambda_s$ según la hipótesis de Stabler, alejando la concentración térmica del filo principal (véase el Anexo~\ref{anx:mecanica_corte}). Asimismo, se emplean insertos intercambiables normalizados según normas ISO, fabricados en carburo de tungsteno (WC-Co) con recubrimientos protectores multicapa de TiN, TiCN o Al$_2$O$_3$ (inserto tipo CNMG 120408 seleccionado para el proyecto). Los criterios de resistencia geométrica según el ángulo de punta incluido y el acondicionamiento del filo mediante microasentado (\textit{honing}) y chaflán (\textit{T-land}) para refuerzo estructural frente a rotura catastrófica se detallan exhaustivamente en el Anexo~\ref{anx:insertos_geometria}.
 
 \subsubsection{Fenomenología del desgaste y mecanismos de falla en herramientas de corte}
 
-El desgaste de las herramientas de mecanizado constituye un fenómeno tribológico inevitable, originado por las condiciones extremas de presión de contacto, fricción dinámica y gradientes térmicos elevados que concurren en la interfaz de corte \citep{trent2000}. Durante el maquinado de aceros al carbono en tornos industriales, las temperaturas en la zona de contacto pueden superar holgadamente los ochocientos grados centígrados, debilitando la fase aglutinante de cobalto y facilitando la degradación microestructural del carburo de tungsteno.
+El desgaste de las herramientas de mecanizado constituye un fenómeno tribológico inevitable originado por las condiciones extremas de presión de contacto, fricción dinámica y temperaturas que superan los 800\,$^\circ\text{C}$ en la interfaz de corte \citep{trent2000}. Los mecanismos primarios de deterioro del filo comprenden: la abrasión mecánica debida a carburos duros presentes en el acero, la adhesión metálica de microsoldaduras en frío bajo altas presiones, la difusión química atómica entre el inserto y la viruta a elevada temperatura, y la fatiga termo-mecánica superficial por fluctuaciones cíclicas de carga \citep{kalpakjian2014}.
 
-Los mecanismos primarios responsables del deterioro progresivo del filo comprenden la abrasión mecánica, la adhesión metálica, la difusión química y la fatiga termo-mecánica superficial \citep{kalpakjian2014}. La abrasión se produce por el frotamiento de carburos duros presentes en la pieza contra el flanco de la herramienta. Simultáneamente, la adhesión genera microsoldaduras en frío bajo altas presiones, cuyo desprendimiento periódico arranca fragmentos micrométricos de la matriz dura del inserto.
+Bajo los lineamientos de la norma técnica internacional ISO 3685, se tipifican formalmente las distintas morfologías espaciales de deterioro del inserto y se definen los parámetros dimensionales para la evaluación cuantitativa del desgaste de flanco \citep{iso3685, trejo2010}, cuya topología se detalla en la \fig{tipos_desgaste_herramienta}.
 
-Bajo las pautas de la norma técnica internacional ISO 3685, se tipifican formalmente las distintas morfologías espaciales de deterioro del inserto y se definen los parámetros dimensionales cuantitativos para la evaluación del desgaste de flanco \citep{iso3685, trejo2010}. La configuración topológica de estas zonas de desgaste y la caracterización de sus regiones críticas se detallan en la \fig{tipos_desgaste_herramienta}.
+\figura[width=0.78\textwidth]{tipos_desgaste_herramienta}{Morfología de los tipos de desgaste en la herramienta de corte y parámetros dimensionales de desgaste de flanco según ISO 3685}{Adaptado de \textcite{trejo2010}}
 
-\figura[width=0.85\textwidth]{tipos_desgaste_herramienta}{Morfología de los tipos de desgaste en la herramienta de corte y parámetros dimensionales de desgaste de flanco según ISO 3685}{Adaptado de \textcite{trejo2010}}
+Como se ilustra en la \fig{tipos_desgaste_herramienta}, el deterioro se zonifica en: zona C correspondiente a la punta o radio de nariz con desgaste $VC$, zona B central con ancho uniforme de desgaste de flanco $VB$ y valor máximo $VB_{\max}$, y zona exterior T con la entalla de profundidad $VT$. La norma ISO 3685 establece como criterio de fin de vida útil admisible el umbral escalar de $VB = 0.3\,\text{mm}$ \citep{iso3685}. La evolución temporal del desgaste atraviesa tres etapas descritas por el modelo experimental de Taylor: rodaje primario, régimen estacionario y aceleración terciaria previa a la fractura (cuyas curvas dinámicas se detallan en el Anexo~\ref{anx:curva_taylor}).
 
-Tal como se ilustra en la \fig{tipos_desgaste_herramienta}a, el desgaste se manifiesta en regiones bien diferenciadas del inserto: el desgaste de flanco sobre la cara de incidencia (1), el desgaste de cráter sobre la cara de ataque (2), la entalla o ranura primaria en la línea de profundidad de pasada (3), la ranura secundaria (4) y la muesca de contacto externo con viruta (5). En la \fig{tipos_desgaste_herramienta}b se aprecia la zonificación normalizada del flanco: la zona C correspondiente a la punta o radio de nariz con desgaste $VC$, la zona B central con ancho uniforme de desgaste de flanco $VB$ y valor máximo $VB_{\max}$, y la zona exterior T con la entalla de profundidad $VT$.
-
-Tradicionalmente, las investigaciones académicas e industriales evalúan el límite de vida útil admisible mediante el umbral escalar unidimensional de $VB = 0.3\,\text{mm}$ fijado por la norma ISO 3685 \citep{iso3685}. No obstante, tal como fundamenta analíticamente \textcite{trejo2010}, la consideración exclusiva de la cota puntual $VB$ desestima los efectos acumulativos del desgaste de nariz y las entallas laterales. Por consiguiente, se propone la integración del área superficial de desgaste de flanco $A_f$ como un descriptor morfométrico bidimensional mucho más fidedigno y directamente acoplado a la demanda electromecánica de potencia y al espectro vibratorio de la máquina herramienta.
-
-La evolución temporal del desgaste sobre el inserto durante el ciclo continuo de torneado no sigue un patrón uniforme, sino que atraviesa tres regímenes cinemáticos y tribológicos claramente diferenciados \citep{trejo2010}. Esta fenomenología clásica de vida de la herramienta se modela a partir del comportamiento experimental formulado por Taylor, cuyo comportamiento ante diversas velocidades de corte se ilustra en la \fig{curva_vida_desgaste_flanco}.
-
-\figura[width=0.75\textwidth]{curva_vida_desgaste_flanco}{Curvas de evolución temporal del desgaste de flanco a diferentes velocidades de corte y delimitación de zonas tribológicas de desgaste}{Adaptado de \textcite{trejo2010}}
-
-La \fig{curva_vida_desgaste_flanco} evidencia las tres etapas características de degradación: la Zona de desgaste primario o de rodaje inicial, donde la arista viva recién instalada experimenta una rápida atenuación plástica; la Zona de desgaste secundario o régimen estacionario, en la que la velocidad de desgaste permanece casi constante y predecible; y la Zona de desgaste terciario o acelerado, caracterizada por un incremento exponencial del desgaste, fricción incontrolada y sobrecalentamiento térmico severo. Asimismo, se comprueba que un incremento en la velocidad de corte ($V_4 > V_3 > V_2 > V_1$) contrae drásticamente el tiempo disponible de operación estable ($T_4 < T_3 < T_2 < T_1$), precipitando la entrada en la fase terciaria y elevando de forma inminente el peligro de fractura estructural del inserto \citep{trejo2010}.
-
-La progresión del desgaste de flanco incide de manera adversa e irreversible sobre la calidad geométrica del producto torneado, degradando el acabado superficial y elevando los niveles de rugosidad media aritmética \citep{sandvik2020}. En condiciones iniciales teóricas con arista íntegra y afilada, el acabado superficial se predice analíticamente en función del avance por revolución y del radio de curvatura de la punta:
+A medida que el flanco de incidencia pierde agudeza por abrasión, el área de contacto elasto-plástico con la pieza se amplifica, deteriorando el acabado superficial y elevando la rugosidad media aritmética ($Ra$). En filo íntegro, el valor teórico se predice según:
 
 \begin{equation}
 R_{a,\text{teórico}} \approx \frac{f^2}{32 \cdot r_\varepsilon}
 \label{eq:rugosidad_teorica}
 \end{equation}
 
-donde en la \eqref{eq:rugosidad_teorica}, $R_{a,\text{teórico}}$ representa el valor medio de rugosidad aritmética superficial en milímetros, $f$ denota el avance lineal por vuelta y $r_\varepsilon$ simboliza el radio geométrico de la nariz de corte. A medida que el flanco de incidencia pierde agudeza por abrasión, el área de contacto elasto-plástico con la pieza se amplifica desproporcionadamente \citep{trejo2010}. Este frotamiento parásito no sólo arruina la tolerancia dimensional de diámetro exterior de las piezas procesadas en MAINSA, sino que actúa como una fuente directa de autoexcitación de vibraciones mecánicas dinámicas (\textit{chatter}), justificando con plena solidez técnica la necesidad de implementar sistemas de monitoreo continuo en línea.
+donde $f$ es el avance por vuelta y $r_\varepsilon$ es el radio de nariz del inserto. El frotamiento parásito no solo arruina la tolerancia dimensional en MAINSA, sino que excita vibraciones dinámicas (\textit{chatter}), justificando la supervisión indirecta en tiempo real.
 
 \subsubsection{Sistemas de monitoreo de condición de herramientas (TCM)}
 
-Los sistemas de Monitoreo de Condición de Herramientas (TCM, por sus siglas en inglés \textit{Tool Condition Monitoring}) comprenden el conjunto de arquitecturas mecatrónicas y algoritmos computacionales destinados a diagnosticar en tiempo real el desgaste y posibles averías en herramientas de mecanizado \citep{byrne1995}. En el contexto de la manufactura inteligente moderna, los sistemas TCM evitan la fabricación de piezas fuera de especificación dimensional, optimizan los intervalos de reemplazo preventivo y previenen paradas no programadas de maquinaria en líneas de producción continua.
-
-Las metodologías de adquisición en sistemas TCM se clasifican comúnmente en dos enfoques estructurales: métodos directos y métodos indirectos \citep{teti2010}. Los métodos directos valoran físicamente la geometría del desgaste mediante sistemas ópticos, perfilometría tridimensional por triangulación láser o análisis de resistencia de contacto eléctrico. Aunque proporcionan una elevada precisión geométrica, su viabilidad industrial en planta resulta inviable durante el ciclo de trabajo debido a la presencia constante de lubricante refrigerante a presión, proyección de virutas incandescentes y nula visibilidad dentro de la cabina cerrada.
-
-En contraste, los métodos indirectos infieren la condición del filo mediante la adquisición continua de magnitudes físicas secundarias correlacionadas con el proceso de arranque de viruta \citep{byrne1995}. En la \tab{comparativa_variables_tcm} se sintetiza el análisis comparativo de las principales variables físicas empleadas en la literatura técnica para el monitoreo de condición en torneado CNC.
+Los sistemas de Monitoreo de Condición de Herramientas (TCM, \textit{Tool Condition Monitoring}) comprenden arquitecturas mecatrónicas y algoritmos computacionales orientados a diagnosticar en tiempo real el desgaste y evitar paradas de producción \citep{byrne1995}. Los métodos de adquisición se dividen en directos (ópticos, láser) e indirectos (sensado de variables secundarias) \citep{teti2010}. En entornos industriales con taladrina a presión y viruta continua, los métodos directos resultan inviables, siendo imperativa la medición indirecta (\tab{comparativa_variables_tcm}).
 
 {\small
 \setstretch{1.0}
@@ -221,104 +171,56 @@ En contraste, los métodos indirectos infieren la condición del filo mediante l
 \end{table}
 }
 
-Tal como se desprende de la \tab{comparativa_variables_tcm}, la medición de temperatura en la zona de corte, a pesar de su evidente relación termodinámica con la fricción del filo, resulta inviable en tornos CNC de producción real que operan con flujo continuo de taladrina a alta presión (3 a 6~bar). La niebla densa de refrigerante y el vapor bloquean la línea de visión de pirómetros ópticos o cámaras térmicas infrarrojas, mientras que el fluido genera un enfriamiento violento y discontinuo en la superficie externa que enmascara el gradiente térmico real del filo. Asimismo, la inserción de termopares requiere perforar el portaherramientas o el inserto, vulnerando el principio rector de no invasividad y comprometiendo la rigidez mecánica. 
+Tal como se desprende de la \tab{comparativa_variables_tcm}, la medición de temperatura en el corte resulta inviable por el flujo de taladrina (3 a 6~bar) que falsea sensores ópticos y la debilidad mecánica que introducen los termopares. Por tanto, el presente proyecto se fundamenta en la fusión sensorial no invasiva de dos variables indirectas complementarias: corriente del servomotor de avance y vibración mecánica en torreta.
 
-No obstante, la influencia del factor temporal en la degradación térmica y tribológica se incorpora en la presente investigación a través del seguimiento del tiempo acumulado de corte activo ($t_{\text{corte}}$). Este parámetro contextual se registra en el firmware y se supervisa en el panel local, correlacionándose con el modelo empírico de vida útil de Taylor ($v_c \cdot T^n = C$), lo que complementa de manera determinista la inferencia dinámica de los modelos inteligentes.
+\subsubsection{Transductores y fundamentación analítica del sensado de corriente en el servomotor de avance}
 
-En virtud de estas consideraciones, la arquitectura del proyecto se fundamenta en la fusión sensorial de dos magnitudes indirectas plenamente viables y complementarias: la variable eléctrica (corriente consumida por el servomotor de avance del carro portaherramientas) y la vibración mecánica capturada en la torreta portaherramientas.
-
-\subsubsection{Transductores y fundamentación analítica del sensado de variable eléctrica en el servomotor de avance}
-
-En el torneado de piezas cilíndricas, la monitorización sustentada en la corriente del motor del husillo principal presenta una limitación física relevante: la elevada inercia mecánica del plato de garras y el rotor, sumada a la fricción parásita de rodamientos de gran porte, diluye las pequeñas variaciones de par provocadas por el desgaste incipiente de la herramienta \citep{romero2003, trejo2010}. Por el contrario, tal como demostraron experimentalmente Romero-Troncoso et al. \citep{romero2003} y Sevilla-Camacho et al. \citep{sevilla2011}, el servomotor de avance del carro portaherramientas (eje longitudinal $Z$ y transversal $X$) ofrece una relación señal-ruido significativamente más favorable, debido a que su cadena cinemática acopla directamente el esfuerzo de empuje contra el filo de corte.
-
-La relación física entre el desgaste de flanco ($VB$) y la corriente demandada por el servomotor de avance se modela a partir de la interacción tribomecánica de corte. A medida que el inserto pierde agudeza, el contacto de frotamiento entre la zona de incidencia y la superficie mecanizada se amplifica, provocando un incremento progresivo en la componente axial de avance $F_a$ y en la componente radial de repulsión $F_r$ \citep{groover2010, trent2000}. De acuerdo con el modelo fenomenológico de corte ortogonal y oblicuo, la fuerza de avance en función del ancho de desgaste de flanco $VB$ puede aproximarse mediante:
+El servomotor de avance del carro portaherramientas (eje longitudinal $Z$) ofrece una relación señal-ruido significativamente más favorable que el husillo principal para detectar desgaste incipiente, ya que acopla directamente el esfuerzo de empuje contra el filo de corte \citep{romero2003, sevilla2011}. La fuerza de avance $F_a$ en función del desgaste de flanco $VB$ se modela mediante:
 
 \begin{equation}
 F_a(VB) = F_{a0} + k_w \cdot VB
 \label{eq:fuerza_avance_desgaste}
 \end{equation}
 
-donde $F_{a0}$ representa la fuerza de avance en régimen estacionario con herramienta afilada nueva en newtons (dependiente del avance $f$, la profundidad de pasada $a_p$ y la resistencia específica de corte del material), $k_w$ simboliza el coeficiente empírico de incremento de fuerza por desgaste en newtons por milímetro ($\text{N/mm}$), y $VB$ denota el ancho medio de la franja de desgaste de flanco en milímetros.
-
-En un torno CNC, el movimiento de avance del carro portaherramientas es gobernado por un mecanismo de tornillo sinfín con husillo a bolas recirculantes acoplado al eje del servomotor. El par mecánico resistente $\tau_m$ que el mecanismo traslada al eje del servomotor se expresa analíticamente según:
+donde $F_{a0}$ representa la fuerza de avance con filo afilado y $k_w$ simboliza el coeficiente empírico de incremento de fuerza por desgaste ($\text{N/mm}$). El par mecánico resistente $\tau_m$ trasladado por el husillo a bolas al servomotor es:
 
 \begin{equation}
 \tau_m = \frac{F_a(VB) \cdot p}{2\pi \cdot \eta}
 \label{eq:par_mecanico_carro}
 \end{equation}
 
-donde $p$ corresponde al paso del husillo a bolas en metros por revolución y $\eta$ denota el rendimiento mecánico cinemático de la transmisión (típicamente entre 0.90 y 0.95 en transmisiones a bolas precomprimidas).
-
-A su vez, en servomotores síncronos de imanes permanentes (PMSM o servomotores \textit{brushless} de CA) empleados universalmente en los ejes de avance CNC, el par electromagnético desarrollado $\tau_e$ guarda una relación estrictamente lineal con la corriente eficaz de armadura $I_a$ demandada por el convertidor de potencia:
-
-\begin{equation}
-\tau_e = k_t \cdot I_a
-\label{eq:par_electrico_servo}
-\end{equation}
-
-donde en la \eqref{eq:par_electrico_servo}, $k_t$ es la constante de par del servomotor expresada en newton-metro por amperio ($\text{N}\cdot\text{m/A}$). Igualando el par electromagnético generado con el par resistente en régimen de maquinado cuasi-estacionario ($\tau_e \approx \tau_m$) y sustituyendo las relaciones \eqref{eq:fuerza_avance_desgaste} y \eqref{eq:par_mecanico_carro}, se obtiene la ecuación analítica directa que vincula el desgaste del inserto con la corriente del actuador:
+donde $p$ es el paso del husillo en metros por revolución y $\eta$ denota el rendimiento de la transmisión. En servomotores síncronos de imanes permanentes (PMSM), el par electromagnético es estrictamente lineal con la corriente eficaz de armadura $I_a$ ($\tau_e = k_t \cdot I_a$). Igualando $\tau_e \approx \tau_m$, se deduce la ecuación analítica fundamental del monitoreo no invasivo:
 
 \begin{equation}
 I_a = \frac{p}{2\pi \cdot \eta \cdot k_t} \cdot \left( F_{a0} + k_w \cdot VB \right)
 \label{eq:corriente_avance_desgaste}
 \end{equation}
 
-La \eqref{eq:corriente_avance_desgaste} demuestra con rigor físico que un incremento continuo en el desgaste de flanco $VB$ genera un incremento proporcional y medible en la corriente eficaz $I_a$ del servomotor de avance, sustentando la premisa del monitoreo no invasivo.
+Para capturar $I_a$ sin alterar la instalación eléctrica de MAINSA, se implementa un transformador de corriente de núcleo partido SCT-013-000 (1000:1) abrazado a una de las fases del servodriver \citep{lai2025}. Dado que el ADC del STM32 opera exclusivamente en el rango unipolar de 0 a 3.3~V, el circuito integra una red de polarización divisora simétrica ($R_1 = R_2 = 10\,\text{k}\Omega$, $C = 10\,\upmu\text{F}$) que añade un desplazamiento continuo $V_{\text{bias}} = +1.65\,\text{V}$ (\fig{circuito_offset_forma_onda}). La evolución oscilográfica a través de cada etapa del circuito acondicionador se detalla en el Anexo~\ref{anx:etapas_rectificacion}.
 
-Para capturar esta magnitud eléctrica sin alterar el conexionado interno del accionamiento, se implementa un transformador de corriente de núcleo partido SCT-013-000 abrazado externamente a una de las líneas de alimentación del servomotor en el armario eléctrico \citep{lai2025}. El SCT-013 opera bajo el principio de inducción mutua de Faraday con una relación de transformación de 1000:1. Al conectar una resistencia de carga (\textit{burden}) de precisión en sus terminales secundarios, la corriente inducida se transforma en una señal de tensión alterna que refleja fidedignamente la dinámica del consumo de potencia.
-
-En la \fig{circuito_offset_forma_onda} se ilustra el esquema de principio del circuito de acondicionamiento analógico desarrollado para el transductor SCT-013. Dado que las entradas del convertidor analógico a digital (ADC) del microcontrolador STM32 operan exclusivamente en un rango unipolar estricto de 0 a 3.3~V, cualquier semiciclo negativo de la señal alterna inducida provocaría la saturación inmediata o la destrucción por sobretensión negativa de la compuerta interna del silicio. Por este motivo, el circuito integra una red de polarización mediante un divisor resistivo simétrico ($R_1 = R_2 = 10\,\text{k}\Omega$) desacoplado con un condensador electrolítico ($C = 10\,\upmu\text{F}$), el cual genera un nivel de referencia continuo estable $V_{\text{bias}} = V_{cc}/2 = 1.65\,\text{V}$. Al superponer la señal secundaria alterna sobre esta tensión continua, la señal resultante oscila de manera centrada y segura dentro del rango unipolar admisible del microcontrolador.
-
-\figura[width=0.88\textwidth]{circuito_offset_forma_onda}{Esquema circuital del acondicionamiento analógico para sensor SCT-013 y forma de onda con desplazamiento de offset continuo}{Elaboración propia con base en OpenEnergyMonitor (2024)}
-
-Para garantizar la comprensión rigurosa de la evolución de la magnitud eléctrica a través de la cadena física de medición, en la \fig{etapas_rectificacion_acondicionamiento} se detalla de forma secuencial la forma de onda registrada tras cada componente individual del circuito:
-
-\begin{enumerate}[leftmargin=0.8cm]
-    \item Etapa 1 (Conductor del servomotor): Corriente alterna pura de fase $i_{\text{ac}}(t)$, de naturaleza bipolar simétrica con amplitudes de hasta $\pm 8.5\,\text{A}$, portadora de armónicos de conmutación de los transistores IGBT del servodriver.
-    \item Etapa 2 (Terminales de la resistencia Burden $R_B$): Tensión alterna reducida $v_{\text{burden}}(t)$ proporcional a la corriente primaria (con amplitud típica de $\pm 1.0\,\text{V}$). Aunque se encuentra escalada en magnitud, conserva semiciclos negativos que impiden su conexión directa al microcontrolador.
-    \item Etapa 3 (Salida de la red de desplazamiento DC Bias): Señal alterna desplazada verticalmente en $+1.65\,\text{V}$, oscilando íntegramente en el rango de tensión positiva entre $0.65\,\text{V}$ y $2.65\,\text{V}$, manteniendo un margen de guarda de $0.65\,\text{V}$ respecto a los raíles de alimentación (0~V y 3.3~V).
-    \item Etapa 4 (Etapa de rectificación de precisión y filtrado pasivo True-RMS): A través de un amplificador operacional (LM358) configurado como seguidor de baja impedancia y un filtro activo paso bajo de segundo orden, se atenúa el rizado de alta frecuencia y se extrae el valor eficaz continuo proporcional a $I_{\text{RMS}}$, entregando una tensión continua pura y libre de ruido al canal de muestreo analógico de 12 bits.
-\end{enumerate}
-
-\figura[width=0.92\textwidth]{etapas_rectificacion_acondicionamiento}{Evolución temporal de la señal de corriente tras cada etapa de acondicionamiento analógico y rectificación de valor eficaz para el convertidor analógico-digital (ADC)}{Elaboración propia, 2026}
-
+\figura[width=0.82\textwidth]{circuito_offset_forma_onda}{Esquema circuital del acondicionamiento analógico para sensor SCT-013 y forma de onda con desplazamiento de offset continuo}{Elaboración propia con base en OpenEnergyMonitor (2024)}
 
 \subsubsection{Sensado de vibraciones mecánicas y discriminación de ruidos espurios de máquina}
 
-De forma complementaria a la corriente, las vibraciones mecánicas registradas en la torreta portaherramientas ofrecen una sensibilidad superior ante eventos dinámicos transitorios, microfisuras y fricción de alta frecuencia en la interfaz herramienta-pieza \citep{wang2024}. Para su transducción se emplea un acelerómetro digital triaxial basado en sistemas microelectromecánicos (MEMS), caracterizado por su reducido tamaño, enlace digital SPI de alta inmunidad y respuesta en frecuencia adecuada.
-
-Uno de los desafíos técnicos más críticos en el monitoreo vibratorio en entornos industriales reales radica en la presencia de vibraciones mecánicas espurias originadas por fuentes ajenas al proceso de corte, tales como el desbalanceo del cabezal principal, la holgura en rodamientos, el engranamiento de transmisiones y la excitación de los propios motores del torno. Para asegurar que el sistema discrimine con precisión las vibraciones atribuibles exclusivamente a la degradación del inserto, se implementan cuatro estrategias de ingeniería complementarias:
+Las vibraciones mecánicas en la torreta aportan sensibilidad ante eventos dinámicos transitorios, microfracturas y fricción de alta frecuencia \citep{wang2024}. Para discriminar las vibraciones debidas al desgaste frente a fuentes espurias de la máquina (desbalance del husillo, holguras, engranajes), se implementan cuatro estrategias de ingeniería:
 
 \begin{enumerate}[leftmargin=0.8cm]
-    \item Camino de transmisión acústica directo: El acelerómetro se fija rígidamente sobre la estructura ferrosa de la torreta portaherramientas, a escasos centímetros del vástago porta-insertos. Dado que las vibraciones mecánicas se atenúan exponencialmente al atravesar interfaces mecánicas desacopladas (guías lineales, bancada y juntas de unión), la torreta actúa como un filtro espacial natural, maximizando la relación de amplitud entre la señal del filo y el ruido de fondo transmitido desde el cabezal del torno.
-    
-    \item Discriminación espectral por bandas de frecuencia: Las vibraciones parásitas de máquina se concentran de manera predominante en la banda de bajas frecuencias (típicamente entre 10~Hz y 1000~Hz), correspondientes a la frecuencia de giro del husillo $f_{\text{rot}} = N/60$, armónicos de desbalance y frecuencias de paso de dientes de engranajes. En contraposición, los fenómenos tribológicos asociados al desgaste de flanco abrasivo y adhesivo excitan resonancias estructurales del conjunto portaherramientas en la banda media y alta, comprendida entre 2~kHz y 8~kHz \citep{trejo2010, jia2025}. El filtrado digital paso banda implementado aísla selectivamente este rango de frecuencias útiles.
-    
-    \item Uso de descriptores estadísticos impulsivos: Las vibraciones de rotación de la máquina presentan un comportamiento predominantemente armónico y estacionario (distribución cuasi-gaussiana con Curtosis $Ku \approx 3$). Por el contrario, el frotamiento irregular del filo desgastado y el desprendimiento de micropartículas generan impactos transitorios no gaussianos que disparan el valor de la Curtosis ($Ku > 4.5$) y el Factor de Cresta ($CF$). Estos indicadores permiten discriminar la condición del inserto independientemente de la amplitud de vibración basal de la máquina.
-    
-    \item Ventaneo sincrónico gobernado por corriente de corte activo: El algoritmo de procesamiento en el borde condiciona la adquisición y el cálculo de descriptores vibratorios al estado de corte efectivo. Únicamente cuando la corriente del servomotor de avance supera el umbral característico de acoplamiento de carga ($I_a > I_{\text{vacío}}$), el microcontrolador valida la ventana de datos de aceleración, descartando automáticamente vibraciones parásitas registradas durante fases de aproximación rápida en vacío (código G00) o detenciones de ciclo.
+    \item \textbf{Camino de transmisión acústica directo:} Acelerómetro fijado sobre la torreta portaherramientas a escasos centímetros del vástago, maximizando la relación señal-ruido del filo frente a vibraciones del cabezal atenuadas por las interfaces de la bancada.
+    \item \textbf{Discriminación espectral por bandas:} Ruidos de máquina se concentran en bajas frecuencias (<1000~Hz), mientras que los fenómenos tribológicos de desgaste excitan frecuencias de resonancia entre 2~kHz y 8~kHz \citep{trejo2010, jia2025}.
+    \item \textbf{Descriptores estadísticos impulsivos:} La rotación normal genera señales armónicas cuasi-gaussianas ($Ku \approx 3$). El frotamiento por desgaste y microimpactos disparan la Curtosis ($Ku > 4.5$) y el Factor de Cresta ($CF$).
+    \item \textbf{Ventaneo sincrónico condicionado por corriente:} La adquisición vibratoria se valida únicamente durante el corte activo ($I_a > I_{\text{vacío}}$), descartando fases de aproximación rápida en vacío (G00).
 \end{enumerate}
 
-El montaje físico del acelerómetro sobre la torreta portaherramientas se resuelve mediante una carcasa de encapsulado hermético con grado de protección industrial IP67, mecanizada en aleación de aluminio o polímero técnico resistente a hidrocarburos, y dotada de una base magnética integrada por imanes permanentes de neodimio de alto rendimiento (grado N52). Esta configuración asegura un acoplamiento acústico rígido de alta rigidez estática y dinámica, inmune al flujo continuo de taladrina a alta presión y a la proyección de viruta caliente, preservando plenamente la condición de no invasividad al no exigir taladros ni adhesivos permanentes sobre la máquina herramienta de MAINSA.
+El acelerómetro ADXL345 se aloja en una cápsula estanca IP67 con base magnética de neodimio N52, garantizando acoplamiento acústico rígido e inmunidad frente al flujo de taladrina en MAINSA.
 
 \subsubsection{Procesamiento digital de señales (DSP) en entornos industriales}
 
-El procesamiento digital de señales conforma la etapa computacional donde las magnitudes analógicas adquiridas son discretizadas, condicionadas y condensadas matemáticamente para extraer patrones representativos del proceso de remoción \citep{trejo2010}. En instalaciones de manufactura pesada, las señales registradas sufren severas interferencias electromagnéticas ocasionadas por la conmutación de contactores de potencia, accionamientos de variadores de velocidad e inductancias parásitas inherentes a la red eléctrica de suministro en planta.
-
-La digitalización de las magnitudes analógicas exige respetar rigurosamente el criterio de muestreo de Nyquist-Shannon, garantizando que la tasa de adquisición del convertidor supere el doble del ancho de banda de interés para evitar distorsiones por solapamiento espectral \citep{sevilla2011}. Para las señales continuas proporcionales de corriente resultan idóneas frecuencias de muestreo moderadas de varios cientos de hercios, mientras que la dinámica vibratoria demanda tasas discretas sensiblemente más elevadas en el orden de varios kilohercios.
-
-Tras la conversión analógica a digital, se implementan algoritmos de filtrado digital en tiempo real directamente sobre el microcontrolador para suprimir ruido blanco remanente y fluctuaciones térmicas \citep{jia2025}. Se estructuran filtros digitales de respuesta al impulso infinito de topología Butterworth paso bajo, seleccionados por su respuesta en frecuencia uniformemente plana en la banda de paso y su bajo coste de cómputo, asegurando series temporales depuradas para la subsiguiente extracción de características.
-
-A partir de las series numéricas filtradas, se procede a la extracción de descriptores estadísticos en el dominio del tiempo capaces de correlacionar cuantitativamente con la degradación progresiva del filo \citep{huang2026}. El parámetro estadístico elemental más representativo lo constituye el valor cuadrático medio o valor eficaz, el cual cuantifica el contenido energético total acumulado por la señal a lo largo de una ventana temporal discreta de observación conformada por $N$ muestras consecutivas:
+La digitalización respeta rigurosamente el teorema de Nyquist-Shannon ($f_s > 2 f_{\max}$) \citep{sevilla2011}. Tras la conversión A/D, se aplica un filtro digital IIR Butterworth paso bajo implementado en el microcontrolador mediante CMSIS-DSP para suprimir ruido blanco remanente \citep{jia2025}. A partir de las series discretizadas se extraen tres descriptores temporales fundamentales:
 
 \begin{equation}
 x_{RMS} = \sqrt{\frac{1}{N} \sum_{i=1}^{N} x_i^2}
 \label{eq:rms}
 \end{equation}
-
-donde en la \eqref{eq:rms}, $x_i$ corresponde a cada valor numérico individual adquirido dentro de la ventana de procesamiento temporal y $N$ simboliza la cantidad total de muestras integradas en el cálculo. El seguimiento cronológico del valor eficaz permite evidenciar la tendencia gradual y sostenida del incremento de fuerza de corte vinculada directamente al desgaste de flanco de la herramienta, descartando perturbaciones transitorias ajenas al mecanizado.
-
-De manera simultánea, se computan parámetros estadísticos de orden superior altamente sensibles a eventos dinámicos anómalos, tales como impactos intermitentes derivados de fracturas de filo o desprendimientos microscópicos de recubrimiento \citep{sevilla2011}. Entre estos descriptores destacan la Curtosis, indicativa de la agudeza o pesadez de las colas de distribución de la señal, y el Factor de Cresta, definido como la razón entre el valor pico absoluto instantáneo y el valor eficaz cuadrático medio:
 
 \begin{equation}
 Ku = \frac{\frac{1}{N}\sum_{i=1}^{N}(x_i - \bar{x})^4}{\left(\frac{1}{N}\sum_{i=1}^{N}(x_i - \bar{x})^2\right)^2}
@@ -330,110 +232,59 @@ CF = \frac{\max(|x_i|)}{x_{RMS}}
 \label{eq:factor_cresta}
 \end{equation}
 
-donde en las relaciones \eqref{eq:curtosis} y \eqref{eq:factor_cresta}, $\bar{x}$ simboliza el promedio aritmético de las muestras contenidas en el intervalo analizado. Cuando el filo de corte sufre una rotura violenta o fractura imprevista, la presencia de picos transitorios repentinos eleva de forma abrupta los valores de curtosis y factor de cresta, permitiendo diferenciar con notable claridad un régimen de desgaste progresivo frente a una catástrofe mecánica inminente en plena operación.
+donde $x_i$ son las muestras y $N$ el tamaño de ventana. El valor eficaz $x_{RMS}$ rastrea el incremento progresivo de fuerza de corte, mientras que $Ku$ y $CF$ detectan anomalías transitorias y despostillamientos repentinos del filo \citep{sevilla2011}.
+
+Complementariamente, para caracterizar el comportamiento no estacionario de las vibraciones en regímenes de corte discontinuo o transitorios de entrada/salida de herramienta, se utiliza la Transformada de Fourier de Tiempo Reducido (STFT):
+
+\begin{equation}
+X(m, \omega) = \sum_{n=-\infty}^{\infty} x[n] \cdot w[n - m] \cdot e^{-j \omega n}
+\label{eq:stft}
+\end{equation}
+
+donde $w[n]$ representa una ventana de ponderación temporal tipo Hanning de longitud finita centrada en el instante $m$. A partir de la distribución tiempo-frecuencia $|X(m, \omega)|^2$ (espectrograma), se cuantifica la concentración de energía en bandas armónicas altas excitadas por el frotamiento del flanco desgastado contra la superficie mecanizada.
 
 \subsubsection{Inteligencia artificial en el borde (Edge AI / TinyML)}
 
-El enfoque tradicional de mantenimiento predictivo fundamentado en la nube presenta serios inconvenientes operacionales en aplicaciones industriales críticas, asociados a retardos impredecibles de transmisión, saturación del canal de comunicaciones y dependencia vulnerable de redes externas \citep{hamasha2025}. La Inteligencia Artificial en el Borde supera radicalmente tales desventajas transfiriendo la inferencia analítica y la toma de decisiones algorítmicas hacia el propio hardware embebido instalado de forma periférica en la máquina herramienta.
+TinyML traslada la inferencia algorítmica directamente al hardware embebido de la máquina, eliminando latencias de red y dependencia de la nube \citep{warden2019, hamasha2025}. La arquitectura de procesamiento adoptada se ilustra en la \fig{tinyml_pipeline_dos_colores}.
 
-La disciplina de TinyML promueve la ejecución eficiente de modelos de aprendizaje automático directamente sobre microcontroladores con recursos rigurosamente limitados de memoria estática y potencia de cómputo \citep{warden2019}. Microcontroladores modernos de treinta y dos bits basados en la arquitectura ARM Cortex-M4, dotados de unidad de punto flotante e instrucciones de procesamiento digital de señales por hardware, ofrecen el entorno computacional propicio para ejecutar clasificadores inteligentes en milisegundos.
+\figura[width=0.92\textwidth]{tinyml_pipeline_dos_colores}{Arquitectura y flujo secuencial de procesamiento de señales e inferencia Edge AI (TinyML) implementada en el sistema}{Elaboración propia, 2026}
 
-\paragraph{Estructuración del flujo de IA: entradas, salidas y herramientas de desarrollo}
-Para garantizar la efectividad del diagnóstico y su factibilidad técnica en el microcontrolador, el pipeline de inteligencia artificial se define rigurosamente en tres componentes:
-
+El flujo de IA se estructura formalmente en tres bloques:
 \begin{enumerate}[leftmargin=0.8cm]
-    \item \textbf{Vector de entradas (Features):} A partir del muestreo síncrono de corriente en el servomotor de avance (SCT-013) y vibración en torreta (ADXL345) a una tasa de $f_s = 2000\,\text{Hz}$, se activa un buffer circular de ventaneo temporal de $\Delta t = 256\,\text{ms}$ ($N = 512$ muestras, solapamiento del $50\%$) únicamente durante el corte activo ($I_{\text{avance}} > I_{\text{vacío}}$). Sobre cada ventana se calculan diez descriptores estadísticos normalizados por puntuación $Z$:
-    \begin{itemize}
-        \item Corriente eficaz ($I_{\text{RMS}}$): Proporcional a la fuerza tangencial y de avance ante la degradación del filo.
-        \item Aceleración eficaz triaxial ($a_{x,\text{RMS}}, a_{y,\text{RMS}}, a_{z,\text{RMS}}$): Energía vibratoria en las direcciones radial ($F_r$), tangencial ($F_c$) y axial ($F_a$).
-        \item Curtosis de corriente y aceleración ($Ku_I, Ku_a$): Sensible a pulsos y microimpactos por roturas incipientes o desprendimiento irregular de viruta.
-        \item Factor de cresta ($CF_I, CF_a$): Razón entre el pico instantáneo y el valor eficaz, revelador de anomalías transitorias.
-        \item Varianza dinámica de aceleración ($\sigma^2_a$): Dispersión asociada a vibración inestable y autoexcitada (\textit{chatter}).
-        \item Energía espectral de alta frecuencia ($E_{\text{HF}}$): Potencia acumulada en la banda de $800$ a $1600\,\text{Hz}$ calculada mediante FFT en punto fijo con CMSIS-DSP.
-    \end{itemize}
+    \item \textbf{Vector de entradas (10 features):} Ventaneo temporal síncrono de $\Delta t = 256\,\text{ms}$ ($N=512$ muestras a $f_s = 2000\,\text{Hz}$, solapamiento 50\%) durante corte activo ($I_a > I_{\text{vacío}}$): corriente eficaz ($I_{\text{RMS}}$), aceleraciones eficaces triaxiales ($a_{x,\text{RMS}}, a_{y,\text{RMS}}, a_{z,\text{RMS}}$), curtosis ($Ku_I, Ku_a$), factor de cresta ($CF_I, CF_a$), varianza vibratoria ($\sigma^2_a$) y energía de alta frecuencia ($E_{\text{HF}}$ de 800 a 1600~Hz calculada por FFT).
+    \item \textbf{Vector de salidas (5 clases ISO 3685):} Clase 0 (Óptimo, $VB < 0.10\,\text{mm}$), Clase 1 (Bueno, $0.10 \le VB < 0.18\,\text{mm}$), Clase 2 (Regular, $0.18 \le VB < 0.22\,\text{mm}$), Clase 3 (Avanzado, $0.22 \le VB < 0.30\,\text{mm}$) y Clase 4 (Crítico, $VB \ge 0.30\,\text{mm}$).
+    \item \textbf{Toolchain de ingeniería y cuantización INT8:} Entrenamiento en Python 3.10 con TensorFlow 2.x/Keras (MLP $10 \to 32 \to 16 \to 5$ con optimizador Adam y regularización por Dropout al 20\%). Para posibilitar su ejecución determinista en microcontroladores de recursos acotados, los tensores en punto flotante de 32 bits ($r \in \mathbb{R}$) se convierten a formato entero cuantizado ($q \in \mathbb{Z}$) mediante cuantización afín uniforme post-entrenamiento (PTQ):
 
-    \item \textbf{Vector de salidas (Labels / Clases):} El clasificador formula un mapeo supervisado hacia cinco estados discretos de desgaste de flanco ($VB$) normalizados bajo la norma internacional ISO 3685:1993:
-    \begin{itemize}
-        \item \textit{Clase 0 (Óptimo / Inserto nuevo):} $VB < 0.10\,\text{mm}$ $\rightarrow$ Vector: $[1, 0, 0, 0, 0]^T$ $\rightarrow$ LED Verde Oscuro.
-        \item \textit{Clase 1 (Buen estado operativo):} $0.10 \le VB < 0.18\,\text{mm}$ $\rightarrow$ Vector: $[0, 1, 0, 0, 0]^T$ $\rightarrow$ LED Verde.
-        \item \textit{Clase 2 (Estado regular):} $0.18 \le VB < 0.22\,\text{mm}$ $\rightarrow$ Vector: $[0, 0, 1, 0, 0]^T$ $\rightarrow$ LED Verde Claro.
-        \item \textit{Clase 3 (Desgaste avanzado / Cambio próximo):} $0.22 \le VB < 0.30\,\text{mm}$ $\rightarrow$ Vector: $[0, 0, 0, 1, 0]^T$ $\rightarrow$ LED Naranja.
-        \item \textit{Clase 4 (Desgaste crítico):} $VB \ge 0.30\,\text{mm}$ ($[0, 0, 0, 0, 1]^T$), alerta por LED Rojo (parada preventiva).
-    \end{itemize}
+\begin{equation}
+q = \text{clip}\left( \left\lfloor \frac{r}{S} \right\rceil + Z, \, q_{\min}, \, q_{\max} \right)
+\label{eq:cuantizacion_int8}
+\end{equation}
 
-    \item \textbf{Cadena de herramientas de ingeniería (Toolchain):}
-    \begin{itemize}
-        \item \textit{Estación de ingeniería (PC):} Entorno Python 3.10 con \textbf{TensorFlow 2.x} y \textbf{Keras} para diseñar y entrenar la red neuronal (Perceptrón Multicapa denso $10 \rightarrow 32 \rightarrow 16 \rightarrow 5$ con activaciones ReLU y regularización Dropout). El entrenamiento utiliza el optimizador Adam y la función de pérdida \textit{Categorical Cross-Entropy}, con validación cruzada estratificada de 5 pliegues (\textit{5-fold Stratified CV}) sobre el dataset balanceado de MAINSA.
-        \item \textit{Cuantización Post-Entrenamiento (TensorFlow Lite):} El modelo en punto flotante se cuantiza a enteros con signo de 8 bits (\texttt{int8}) mediante \textbf{TFLite Converter}, reduciendo el uso de memoria en un $75\%$ y prescindiendo de emulación matemática por software.
-        \item \textit{Despliegue embebido con STM32Cube.AI:} El modelo cuantizado (\texttt{.tflite}) se importa en el paquete oficial \textbf{STM32Cube.AI} (X-CUBE-AI) de STMicroelectronics, el cual genera código fuente C puro altamente optimizado que aprovecha las instrucciones SIMD de la biblioteca \textbf{CMSIS-NN} de ARM. Esto garantiza una latencia de inferencia determinista $\le 15\,\text{ms}$, con un consumo inferior a $20\,\text{KB}$ de RAM y $50\,\text{KB}$ de Flash en el microcontrolador STM32F4.
-    \end{itemize}
+donde $S$ es el factor de escala real positivo ($S = \frac{r_{\max} - r_{\min}}{q_{\max} - q_{\min}}$), $Z$ es el punto cero entero (\textit{zero-point}) que preserva la representación exacta del valor real cero, y $\lfloor \cdot \rceil$ denota el redondeo al entero más próximo. En el esquema INT8 simétrico con $q_{\min} = -128$ y $q_{\max} = 127$, se fija $Z = 0$, reduciendo la multiplicación de tensores a operaciones de enteros de 8 bits aceleradas por hardware vía CMSIS-NN. La síntesis de código C ANSI optimizado mediante X-CUBE-AI asegura una latencia de inferencia menor a $15\,\text{ms}$, con consumos de memoria de $4.8\,\text{KB}$ en Flash y $2.1\,\text{KB}$ en SRAM. La secuencia completa del flujo de desarrollo se documenta en el Anexo~\ref{anx:toolchain_edgai}.
 \end{enumerate}
-
-El flujo metodológico completo de la cadena de herramientas de ingeniería (Toolchain) para el diseño, cuantización INT8 y síntesis de código embebido determinista se presenta en detalle en el Anexo~\ref{anx:toolchain_edgai}.
-
-Para el diagnóstico inteligente del estado de la herramienta se emplean algoritmos supervisados de clasificación capaces de cartografiar las características estadísticas hacia clases discretas de desgaste \citep{huang2026}. Modelos clásicos como los Perceptrones Multicapa, las Máquinas de Vectores de Soporte y los Bosques Aleatorios permiten definir fronteras de decisión precisas con requerimientos computacionales sumamente moderados, adecuados para entornos embebidos de respuesta temporal estricta y predecible.
-
-El despliegue efectivo de modelos de aprendizaje automático en microcontroladores de la familia STM32 se viabiliza mediante herramientas especializadas de optimización y cuantización como STM32Cube.AI \citep{stmicroelectronics2021}. Esta plataforma analiza la topología de la red entrenada en entornos como Scikit-Learn o TensorFlow y efectúa una conversión automática hacia código ANSI C altamente optimizado, adaptado de forma óptima a las capacidades arquitectónicas internas del silicio de procesamiento seleccionado.
-
-En la \fig{tinyml_pipeline_dos_colores} se esquematiza el flujo funcional y secuencial de procesamiento de señales e inferencia en el borde adoptado en el prototipo, estructurado en dos colores sobrios institucionales. La arquitectura articula coherentemente la adquisición síncrona de magnitudes físicas de corriente y vibración, el acondicionamiento y ventaneo digital DSP, la síntesis analítica de descriptores representativos (RMS, Curtosis, Factor de Cresta), la inferencia algorítmica cuantizada sobre el silicio ARM Cortex-M4 y la generación final de diagnósticos al pie de máquina en menos de 15~ms.
-
-\figura[width=0.98\textwidth]{tinyml_pipeline_dos_colores}{Arquitectura y flujo secuencial de procesamiento de señales e inferencia Edge AI (TinyML) implementada en el sistema}{Elaboración propia, 2026}
-
-Asimismo, en la \fig{tinyml_ciclo_optimizacion} se describe el ciclo metodológico iterativo de desarrollo para modelos TinyML en entornos industriales. Este flujo comprende la recolección de series temporales brutas en planta, el entrenamiento del modelo en estación de ingeniería, la posterior poda y cuantización post-entrenamiento a enteros de 8 bits (INT8) para reducir drásticamente los requisitos de memoria y cómputo, culminando en la validación experimental directa sobre el microcontrolador al pie de torno.
-
-\figura[width=0.82\textwidth]{tinyml_ciclo_optimizacion}{Ciclo iterativo de diseño, entrenamiento, cuantización INT8 y despliegue embebido de modelos TinyML}{Elaboración propia con base en Warden y Situnayake (2019)}
-
-El proceso de cuantización a números enteros de ocho bits disminuye la huella de memoria del modelo en almacenamiento no volátil en aproximadamente un setenta y cinco por ciento, reduciendo simultáneamente la ocupación de memoria dinámica y acelerando la ejecución aritmética \citep{warden2019}. Esta optimización algorítmica permite efectuar diagnósticos en tiempo real deterministas, categorizando el estado operativo del inserto de corte en cinco niveles discretos de severidad de desgaste conforme a los criterios metrológicos de la norma ISO 3685.
 
 \subsubsection{Arquitectura de supervisión local y señalización visual de desgaste}
 
-La supervisión del estado tribológico de la herramienta de corte se estructura a nivel de planta mediante una interfaz gráfica local tipo dashboard y un sistema de señalización luminosa mediante indicadores LED acoplados directamente al gabinete periférico. Esta disposición permite una advertencia directa, rápida y sin depender de servicios en la nube o redes externas que introduzcan latencias o riesgos de desconexión en el taller industrial.
+La supervisión opera al pie de máquina mediante un panel gráfico (dashboard) que consolida variables en tiempo real y un clasificador LED por niveles de desgaste de cinco etapas normalizado según ISO 3685 (\fig{clasificador_led_desgaste}).
 
-El panel de supervisión local (dashboard) consolida en tiempo real las métricas descriptivas del proceso (corriente eficaz, aceleración dinámica, curtosis y estado inferido por el modelo TinyML), facilitando al operario la visualización cuantitativa del desgaste de flanco ($VB$) estimado. De manera complementaria, el módulo de señalización visual incorpora un clasificador LED por niveles de desgaste de cinco etapas de alta visibilidad montado en el frontal del sistema periférico, con la siguiente escala de diagnóstico tribológico: LED verde oscuro ($VB < 0.10\,\text{mm}$) indica inserto nuevo en condición óptima; LED verde ($0.10 \le VB < 0.18\,\text{mm}$) señala buen estado operativo; LED verde claro ($0.18 \le VB < 0.22\,\text{mm}$) advierte estado regular con seguimiento recomendado; LED naranja ($0.22 \le VB < 0.30\,\text{mm}$) alerta una condición aceptable con cambio próximo planificable; y LED rojo ($VB \ge 0.30\,\text{mm}$) activa la alerta de cambio urgente conforme al umbral normativo de la norma ISO 3685, indicando la necesidad de sustitución inmediata del inserto antes de que se produzcan desviaciones de tolerancia en la pieza o roturas catastróficas del filo. En la \fig{clasificador_led_desgaste} se ilustra la escala visual completa del clasificador LED por niveles de desgaste con su correspondiente codificación cromática y umbrales normativos.
+\figura[width=0.82\textwidth]{clasificador_led_desgaste}{Clasificador LED por niveles de desgaste de flanco: escala cromática de cinco niveles y umbrales normativos $VB$ según ISO 3685}{Elaboración propia, 2026}
 
-\figura[width=0.88\textwidth]{clasificador_led_desgaste}{Clasificador LED por niveles de desgaste de flanco: escala cromática de cinco niveles y umbrales normativos $VB$ según ISO 3685}{Elaboración propia, 2026}
+La escala visual opera como sigue: LED verde oscuro ($VB < 0.10\,\text{mm}$, inserto nuevo), LED verde ($0.10 \le VB < 0.18\,\text{mm}$, buen estado), LED verde claro ($0.18 \le VB < 0.22\,\text{mm}$, seguimiento recomendado), LED naranja ($0.22 \le VB < 0.30\,\text{mm}$, cambio próximo planificable) y LED rojo ($VB \ge 0.30\,\text{mm}$, cambio urgente por norma ISO 3685).
 
 \subsubsection{Análisis comparativo y selección de componentes clave del sistema}
 
-Conforme a las buenas prácticas de diseño en ingeniería mecatrónica y a las directrices metodológicas de evaluación técnica, para cada subsistema crítico del proyecto se evaluaron al menos dos opciones tecnológicas (idealmente tres), fundamentando rigurosamente la selección final en función de los requerimientos de no invasividad, determinismo temporal y robustez industrial.
-
-\paragraph{A. Unidad de procesamiento embebido y ejecución de TinyML}
-Se contrastaron tres alternativas de microcontroladores de amplia difusión industrial:
+Se evaluaron al menos dos tecnologías por subsistema conforme a criterios de no invasividad y determinismo:
 \begin{itemize}
-    \item STM32F411 / Nucleo-F401RE (ARM Cortex-M4 @ 84--100 MHz): Incorpora unidad de punto flotante (FPU), controlador DMA multicanal e instrucciones DSP dedicadas (CMSIS-DSP). Posee soporte nativo para compresión y cuantización INT8 mediante STM32Cube.AI, logrando inferencias deterministas en menos de 15~ms sin latencias de red. \textit{Opción seleccionada para el procesamiento analítico y la inferencia en el borde.}
-    \item ESP32 (Xtensa Dual-Core @ 240 MHz): Ofrece conectividad Wi-Fi y Bluetooth nativa; sin embargo, su convertidor ADC interno presenta severas no-linealidades (especialmente por debajo de 0.1~V y por encima de 2.6~V) y el RTOS de conectividad interrumpe el determinismo temporal del muestreo periódico. Por tal motivo, \textit{se descarta para tareas duras de muestreo y DSP, destinándolo opcionalmente como controlador auxiliar de visualización.}
-    \item ATmega328P (Arquitectura AVR @ 16 MHz): Microcontrolador clásico de 8 bits sin FPU ni instrucciones DSP. Su baja tasa de muestreo analógico (máximo 15~kSPS a 10 bits) y su limitada memoria (2~KB SRAM) lo hacen completamente inviable para alojar buffers DMA y modelos de clasificación inteligente. \textit{Opción descartada.}
+    \item \textbf{Unidad de procesamiento:} STM32F411CEU6 (Cortex-M4 @ 100~MHz, FPU, CMSIS-DSP, DMA, latencia $\le 15\,\text{ms}$) \textit{seleccionada} frente a ESP32 (ADC no lineal, jitter por stack Wi-Fi) y ATmega328P (8 bits, sin FPU ni memoria para buffers DMA), ilustradas en la \fig{panel_microcontroladores}.
+    \item \textbf{Variable eléctrica:} SCT-013-000 (núcleo partido, no invasivo, aislamiento galvánico de 1~kV) \textit{seleccionado para planta} frente a ACS712 (invasivo, exige seccionar conductor) y Shunt (inviable, sin aislamiento).
+    \item \textbf{Vibración mecánica:} ADXL345 (MEMS triaxial, enlace digital SPI a 5~MHz inmune a EMI, ODR hasta 3200~Hz) \textit{seleccionado} (\fig{adxl345_composicion_acelerometro}) frente a MPU-6050 (I2C susceptible a EMI) y Piezoeléctrico IEPE (costo prohibitivo >\$350 USD).
 \end{itemize}
 
-En la \fig{panel_microcontroladores} se contrastan visualmente las dos plataformas principales analizadas: la tarjeta de desarrollo STM32F411 Black Pill seleccionada para el procesamiento determinista frente al módulo ESP32-S3.
+\figura[width=0.80\textwidth]{panel_microcontroladores}{Plataformas embebidas para inferencia Edge AI: (a) STM32F411 seleccionada y (b) ESP32-S3 descartada para control}{Elaboración propia, 2026}
 
-\figura[width=0.88\textwidth]{panel_microcontroladores}{Plataformas embebidas para inferencia Edge AI: (a) STM32F411 seleccionada y (b) ESP32-S3 descartada para control}{Elaboración propia, 2026}
+\figura[width=0.84\textwidth]{adxl345_composicion_acelerometro}{Sensor acelerómetro digital MEMS triaxial ADXL345: (a) Módulo físico para encapsulado estanco IP67 y (b) Ejes ortogonales de sensibilidad triaxial (+X, +Y, +Z) vinculados a la cinemática de torneado}{Elaboración propia con base en Analog Devices (2024)}
 
-\paragraph{B. Sensor de variable eléctrica para monitoreo no invasivo en el carro portaherramientas}
-Se analizaron tres tecnologías de transducción de corriente eléctrica alterna para el monitoreo del accionamiento de avance del carro:
-\begin{itemize}
-    \item Sensor de núcleo partido SCT-013-000 (0--100 A): Basado en acoplamiento magnético inductivo. Su pinza abisagrada permite abrazar el conductor de fase del servomotor de avance del carro portaherramientas sin seccionar el cableado ni alterar la instalación interna del torno CNC, cumpliendo con la exigencia de cero invasividad impuesta por MAINSA. \textit{Opción seleccionada para operación industrial en planta.}
-    \item Sensor de efecto Hall integrado ACS712-20A: Dispositivo galvánicamente aislado con ancho de banda de 80~kHz, adecuado para la captura detallada de microperturbaciones de torque en régimen transitorio en bancos de prueba y tableros accesibles. \textit{Opción seleccionada como sensor complementario de validación en banco de pruebas.}
-    \item Resistencia Shunt de potencia: Exige cortar el conductor de fase e intercalar un resistor de bajo ohmiaje, disipando calor y careciendo de aislamiento galvánico intrínseco. \textit{Opción descartada por representar un riesgo operacional y violar el principio de no invasividad.}
-\end{itemize}
-
-En la \fig{panel_sensores_corriente} se ilustran los dos transductores de corriente evaluados: el sensor de núcleo partido SCT-013-030 seleccionado para operación no invasiva en planta y el módulo por efecto Hall integrado ACS712-20A.
-
-\figura[width=0.88\textwidth]{panel_sensores_corriente}{Transductores de variable eléctrica analizados: (a) Sensor de núcleo partido SCT-013-030 seleccionado para planta y (b) Módulo ACS712-20A por efecto Hall para banco de pruebas}{Elaboración propia, 2026}
-
-\paragraph{C. Sensor de vibración mecánica (acelerometría MEMS) en torreta}
-Se evaluaron tres variantes de sensado inercial:
-\begin{itemize}
-    \item ADXL345 (Digital MEMS triaxial de Analog Devices): Comunicación digital mediante bus SPI a 5~MHz y tasa de datos de salida (ODR) de hasta 3200~Hz ($BW = 1600\,\text{Hz}$), resolución de 13 bits y bajo consumo. Su inmunidad al ruido y su enlace SPI determinista lo convierten en la \textit{opción seleccionada para captura de vibración en la torreta portaherramientas.}
-    \item MPU-6050 (Acelerómetro + Giroscopio MEMS): Opera únicamente mediante bus I2C (máximo 400~kHz), susceptible a bloqueos de bus por transitorios electromagnéticos (EMI) severos producidos por los servodrivers del torno. \textit{Opción descartada.}
-    \item Acelerómetro piezoeléctrico industrial IEPE: Proporciona ancho de banda superior (>10~kHz) pero exige acondicionadores de señal costosos y cables coaxiales especializados, elevando el presupuesto individual a más de \$350~USD. \textit{Opción descartada por inviabilidad económica.}
-\end{itemize}
-
-En la \fig{adxl345_composicion_acelerometro} se presenta el dispositivo ADXL345 seleccionado y su disposición tridimensional de medición. Como se observa en el panel (a), el sensor cuenta con un factor de forma ultra compacto que permite su alojamiento dentro de una cápsula estanca IP67 con base magnética de neodimio N52. El panel (b) ilustra los tres ejes ortogonales de sensibilidad: el eje $+X$ se hace coincidir con la dirección radial de penetración ($F_r$), el eje $+Y$ con la dirección tangencial o de fuerza principal de corte ($F_c$), y el eje $+Z$ con la dirección longitudinal de avance del carro ($F_a$), garantizando la detección integral de la dinámica tribomecánica de remoción.
-
-\figura[width=0.92\textwidth]{adxl345_composicion_acelerometro}{Sensor acelerómetro digital MEMS triaxial ADXL345: (a) Módulo físico para encapsulado estanco IP67 y (b) Ejes ortogonales de sensibilidad triaxial (+X, +Y, +Z) vinculados a la cinemática de torneado}{Elaboración propia con base en Analog Devices (2024)}
-
-Con el propósito de sintetizar de forma estructurada las alternativas tecnológicas analizadas para la instrumentación y procesamiento del sistema periférico, en la \tab{comparativa_componentes} se presenta la matriz formal de selección técnica.
+La síntesis formal de selección se presenta en la matriz comparativa de la \tab{comparativa_componentes}.
 
 {\small
 \setstretch{1.05}
@@ -474,69 +325,18 @@ Con el propósito de sintetizar de forma estructurada las alternativas tecnológ
 \end{longtable}
 }
 
-
-% ======================================================================
-%  8.2.10  Ecosistema de programación y herramientas de desarrollo software
-% ======================================================================
 \subsubsection{Ecosistema de programación y herramientas de desarrollo software}
 
-El diseño de un sistema embebido orientado a inferencia con redes neuronales convolucionales
-(TinyML) exige distinguir con precisión dos dominios de programación claramente diferenciados:
-el entorno de alto nivel para el entrenamiento y validación del modelo en computadora personal
-o servidor GPU, y el entorno de bajo nivel para el despliegue del modelo cuantizado en la
-plataforma de hardware seleccionada (STM32F411CEU6).  La elección de los lenguajes, marcos de
-trabajo y entornos integrados de desarrollo (IDEs) en cada dominio se fundamenta en criterios
-de compatibilidad técnica, madurez de la cadena de herramientas y reproducibilidad científica.
+El diseño de un sistema embebido orientado a TinyML exige distinguir con precisión dos dominios de programación claramente diferenciados: el entorno de alto nivel para el entrenamiento del modelo en estación de ingeniería y el entorno de bajo nivel para el despliegue del firmware cuantizado en el microcontrolador STM32F411CEU6.
 
-\paragraph{A. Python 3.10 para el pipeline de entrenamiento de inteligencia artificial}
-
-Python 3.10 constituye el lenguaje de facto para el desarrollo de modelos de aprendizaje
-automático en la etapa de entrenamiento, debido a su ecosistema científico consolidado:
-las bibliotecas \textit{NumPy} y \textit{SciPy} proveen operaciones matriciales y de señal
-vectorizadas; \textit{pandas} facilita la gestión tabular de conjuntos de datos de telemetría
-del torno; y \textit{Matplotlib} / \textit{Seaborn} producen las visualizaciones de curvas de
-entrenamiento y matrices de confusión requeridas por las evidencias documentales del proyecto.
-La integración nativa de TensorFlow 2.x con el intérprete CPython 3.10 garantiza el acceso
-directo a las APIs de alto nivel (Keras), el convertidor \textit{TFLiteConverter}, y el módulo
-de cuantización post-entrenamiento (\textit{Post-Training Quantization}, PTQ) en un flujo
-continuo sin dependencias externas adicionales.
-
-A diferencia de C/C++, donde la compilación cruzada (\textit{cross-compilation}) y la gestión
-manual de memoria elevan la complejidad del prototipado, Python permite la exploración iterativa
-de arquitecturas (MLP de 3 capas, CNN 1-D, etc.), el ajuste de hiperparámetros y la validación
-cruzada en tiempos de desarrollo considerablemente menores.  La penalización de rendimiento en
-tiempo de ejecución de Python es irrelevante en esta etapa, pues el cómputo intensivo es
-delegado a la GPU vía CUDA o a las instrucciones AVX del CPU del servidor de entrenamiento.
+\paragraph{A. Python 3.10 para el pipeline de entrenamiento de IA}
+Python 3.10 constituye el estándar con \textit{NumPy}, \textit{SciPy}, \textit{pandas} y \textit{Matplotlib}. Ofrece integración nativa con TensorFlow 2.x/Keras, el módulo \textit{TFLiteConverter} y cuantización post-entrenamiento (PTQ) en un flujo continuo, acelerado por GPU vía CUDA. A diferencia de C/C++, donde la compilación cruzada y la gestión manual de memoria elevan la complejidad del prototipado, Python permite la exploración iterativa de arquitecturas neuronales y la validación cruzada en tiempos de desarrollo sustancialmente menores.
 
 \paragraph{B. Lenguaje ANSI C para el firmware embebido en STM32F411}
+En la plataforma de despliegue, el estándar ISO C99/ANSI C es mandatario por: compatibilidad nativa con la biblioteca ARM \textit{CMSIS-NN} y la capa STM32Cube HAL; gestión de memoria determinista sin pausas de \textit{garbage collection} para satisfacer la latencia $\le 15\,\text{ms}$; e incompatibilidad del \textit{overhead} de MicroPython con los 128~KB de RAM disponibles.
 
-En la plataforma de despliegue, el lenguaje C (estándar ISO C99 / ANSI C) es la única opción
-técnicamente viable por las siguientes razones formalmente documentadas:
-
-\begin{itemize}
-    \item La biblioteca \textit{CMSIS-NN} de ARM, que provee las rutinas de inferencia
-    optimizadas para Cortex-M4 (multiplicación acumulada MAC con saturación, activaciones
-    cuantizadas), está escrita íntegramente en C y requiere un compilador C compatible con el
-    conjunto de instrucciones Thumb-2 y las extensiones DSP del procesador.
-    \item El conjunto de API proporcionado por STM32Cube Hardware Abstraction Layer (HAL) —
-    empleado para la configuración de periféricos ADC, SPI, USART, DMA y GPIO — está definido
-    en cabeceras \texttt{.h} de C puro, garantizando portabilidad entre familias STM32 sin
-    requerir un compilador de C++.
-    \item La gestión determinista de la memoria en C (sin \textit{garbage collector}) es
-    indispensable para satisfacer los requisitos de latencia de inferencia $\leq 15\,\text{ms}$
-    en lazo duro de monitoreo, ya que las pausas no deterministas de un recolector de basura
-    invalidan las restricciones de tiempo real.
-    \item Lenguajes alternativos como MicroPython carecen de soporte para CMSIS-NN y presentan
-    un \textit{overhead} de intérprete incompatible con los 128~KB de RAM disponibles en el
-    STM32F411CEU6; C++ introduce \textit{name mangling} y excepciones que dificultan la
-    compilación cruzada con la cadena de herramientas \texttt{arm-none-eabi-gcc}.
-\end{itemize}
-
-\paragraph{C. TensorFlow 2.x / Keras frente a marcos de trabajo alternativos}
-
-La selección de TensorFlow 2.x (con frontend Keras) como marco de entrenamiento primario se
-sustenta en un análisis comparativo de los principales marcos de trabajo para TinyML,
-sintetizado en la \tab{frameworks_tinyml}.
+\paragraph{C. Comparativa de marcos de trabajo TinyML}
+La selección de TensorFlow 2.x frente a las demás alternativas se fundamenta en la \tab{frameworks_tinyml}.
 
 {\small
 \setstretch{1.05}
@@ -596,710 +396,221 @@ Descartado. Automatización de alto nivel sin acceso al código fuente del model
 }
 
 \paragraph{D. Entornos integrados de desarrollo (IDEs)}
+Se selecciona \textit{STM32CubeIDE} (STMicroelectronics) por incorporar el plugin oficial \textit{X-CUBE-AI}, compilador cruzado \texttt{arm-none-eabi-gcc} y depuración ST-LINK/V2. Se mantiene \textit{VS Code + PlatformIO} como opción de respaldo y se descarta \textit{Keil MDK} por restricciones de licenciamiento comercial.
 
-La gestión del firmware embebido requiere un entorno que integre edición de código fuente C,
-compilación cruzada \texttt{arm-none-eabi-gcc}, depuración JTAG/SWD y el plugin de optimización
-de redes neuronales.  Los entornos evaluados son:
-
-\begin{itemize}
-    \item \textit{STM32CubeIDE} (ST Microelectronics, basado en Eclipse CDT): entorno oficial
-    para toda la familia STM32; incluye el plugin \textit{X-CUBE-AI} que automatiza la
-    conversión del modelo \texttt{.tflite} a código C optimizado con CMSIS-NN, el analizador de
-    memoria y el depurador integrado sobre la interfaz ST-LINK/V2.  Es la herramienta
-    \textit{seleccionada} para el desarrollo del firmware.
-    \item \textit{Visual Studio Code + extensión PlatformIO}: alternativa multiplataforma y
-    de código abierto; ofrece depuración OpenOCD y autocompletado con IntelliSense; sin embargo,
-    la integración con X-CUBE-AI requiere pasos manuales de importación de biblioteca.
-    \textit{Opción de respaldo} para colaboradores externos al ecosistema ST.
-    \item \textit{Keil MDK} (ARM / Arm Keil, licencia comercial): estándar industrial con
-    optimizador ARMCC v6; prescindible en este proyecto dado que \texttt{arm-none-eabi-gcc}
-    ofrece rendimiento equivalente bajo STM32CubeIDE con licencia libre.
-    \textit{Descartado por restricción de licencias.}
-\end{itemize}
-
-% ======================================================================
-%  8.2.11  Arquitectura interna del núcleo ARM Cortex-M4 y recursos del STM32F411
-% ======================================================================
 \subsubsection{Arquitectura interna ARM Cortex-M4 y recursos del STM32F411}
 
-La selección del microcontrolador no puede fundamentarse únicamente en las
-características enumeradas en la hoja de datos comercial; exige comprender la
-arquitectura interna del núcleo de procesamiento para justificar con rigor que
-los recursos de silicio disponibles satisfacen los requisitos de adquisición,
-procesamiento digital de señales e inferencia determinista impuestos por el
-sistema de monitoreo.
+La selección del microcontrolador para el nodo Edge AI exige verificar que la microarquitectura de silicio satisfaga los requisitos de cálculo en tiempo real, latencia determinista y memoria acotada exigidos por el procesamiento de señales e inferencia en el borde \citep{warden2019}.
 
 \paragraph{A. Núcleo ARM Cortex-M4 y pipeline de tres etapas}
+El STM32F411CEU6 implementa el núcleo ARM Cortex-M4 basado en la arquitectura ARMv7E-M, dotado de un cauce de instrucciones (\textit{pipeline}) de tres etapas: captación (\textit{fetch}), decodificación (\textit{decode}) y ejecución (\textit{execute}). El conjunto de instrucciones Thumb-2 combina códigos de 16 y 32 bits, alcanzando una métrica de rendimiento cercana a un ciclo por instrucción (CPI $\approx 1$) a una frecuencia máxima de operación de 100~MHz.
 
-El núcleo ARM Cortex-M4 implementa la arquitectura de conjunto de instrucciones
-reducido ARMv7E-M, dotada de un cauce de instrucciones (\textit{pipeline}) de
-tres etapas: captación (\textit{fetch}), decodificación (\textit{decode}) y
-ejecución (\textit{execute}) \citep{warden2019}. Este esquema permite que las
-instrucciones se solapen temporalmente, alcanzando rendimientos cercanos a un
-ciclo de reloj por instrucción (CPI $\approx 1$) para la mayoría de las
-operaciones aritméticas enteras. El conjunto de instrucciones Thumb-2 combina
-instrucciones de 16 y 32 bits, logrando una densidad de código superior a la
-arquitectura ARM de 32 bits clásica sin sacrificar capacidad de cómputo.
-
-\paragraph{B. Unidad de punto flotante (FPU) y extensiones DSP}
-
-El Cortex-M4 incorpora una unidad de punto flotante (\textit{Floating-Point
-Unit}, FPU) de precisión simple IEEE 754-2008, habilitada por el coprocesador
-VFPv4. Esta unidad ejecuta instrucciones de multiplicación-acumulación
-(\textit{Multiply-Accumulate}, MAC) en un único ciclo de reloj, operación
-central en la evaluación de cada neurona artificial del clasificador:
+\paragraph{B. Unidad de punto flotante (FPU) e instrucciones SIMD/DSP}
+El microcontrolador incorpora una FPU de precisión simple (VFPv4, IEEE 754-2008) que ejecuta operaciones en punto flotante en un único ciclo de reloj. Asimismo, integra extensiones de procesamiento digital de señales (DSP) e instrucciones SIMD (\textit{Single Instruction Multiple Data}) que permiten operar sobre dos enteros de 16 bits empaquetados simultáneamente (\texttt{SMLAD}). Esto optimiza el cálculo del producto escalar de la neurona artificial:
 
 \begin{equation}
 y = \sum_{i=0}^{N-1} w_i \cdot x_i + b
 \label{eq:mac_neurona}
 \end{equation}
 
-donde en la~\eqref{eq:mac_neurona}, $w_i$ son los pesos sinápticos del modelo
-cuantizado, $x_i$ son los valores de entrada normalizados, $b$ es el sesgo de
-la neurona y $N$ es el número de conexiones de la capa. Las extensiones
-SIMD (\textit{Single Instruction Multiple Data}) de las instrucciones
-DSP del ARMv7E-M permiten operar sobre pares de enteros de 16 bits en paralelo
-mediante instrucciones tipo \texttt{SMLAD} y \texttt{SMLABT}, duplicando
-efectivamente el rendimiento de las rutinas de convolución en la biblioteca
-CMSIS-NN respecto al Cortex-M3 sin extensiones DSP.
+donde $w_i$ son los pesos del modelo, $x_i$ las variables de entrada y $b$ el sesgo. La biblioteca CMSIS-NN aprovecha estas instrucciones para reducir el número de ciclos requeridos en capas densas en un factor de $2\times$ a $4\times$ frente a procesadores Cortex-M3.
 
-\paragraph{C. Mapa de memoria y recursos internos del STM32F411CEU6}
+\paragraph{C. Recursos de memoria y buses internos}
+El dispositivo dispone de 512~KB de memoria Flash embebida no volátil (el modelo cuantizado ocupa $\sim 4.8\,\text{KB}$, consumiendo menos del 1\% de este espacio) y 128~KB de SRAM estática de acceso en cero estados de espera. La interconexión se articula sobre una matriz de bus AHB (\textit{Advanced High-performance Bus}) de 32 bits que comunica el núcleo, la memoria y dos controladores DMA de 8 canales cada uno de forma desacoplada y determinista.
 
-El microcontrolador STM32F411CEU6, basado en el núcleo Cortex-M4 cadenciado a
-100~MHz, dispone de los siguientes recursos de memoria y periféricos internos
-relevantes para el proyecto:
-
-\begin{itemize}
-    \item \textbf{Memoria Flash:} 512~KB de memoria no volátil para almacenar
-    el firmware compilado y el modelo neuronal cuantizado INT8. El modelo MLP
-    $(10 \to 32 \to 16 \to 5)$ cuantizado ocupa aproximadamente 4.8~KB,
-    dejando amplio margen para el firmware de adquisición y la pila CMSIS-NN.
-    \item \textbf{Memoria SRAM:} 128~KB de memoria dinámica de acceso aleatorio
-    para los buffers de adquisición DMA, las ventanas de muestras de 512 puntos
-    por canal y las tablas de activación del clasificador. Los buffers dobles
-    para corriente y aceleración triaxial requieren $4 \times 512 \times 2 =
-    4096$ bytes, operando con holgura dentro de los 128~KB disponibles.
-    \item \textbf{Controlador DMA:} Dos controladores DMA de doble puerto (DMA1
-    y DMA2) con 16 canales configurables independientemente. El DMA gestiona la
-    transferencia automática de las conversiones ADC hacia el buffer circular en
-    SRAM sin interrumpir al núcleo Cortex-M4, permitiendo que el procesador
-    ejecute los algoritmos DSP e inferencia en paralelo con la adquisición.
-    \item \textbf{Periféricos de comunicación:} Tres buses SPI (SPI1 a SPI3) con
-    velocidades de hasta 50~MHz, tres buses I2C, seis módulos USART/UART y un
-    bus USB Full Speed 2.0 (12~Mbps) para programación y depuración.
-    \item \textbf{Convertidores ADC:} Un ADC de 12 bits tipo SAR con 16 canales
-    multiplexados, capaz de hasta 2.4~MSPS en modo de un solo canal, configurado
-    en este proyecto para muestreo síncrono doble (corriente + vibración) a
-    $f_s = 2000$~Hz mediante disparador por temporizador hardware.
-\end{itemize}
-
-\paragraph{D. Arquitectura Harvard modificada y bus AHB}
-
-El Cortex-M4 implementa una arquitectura Harvard modificada, en la que los
-accesos a instrucciones (bus I-Code) y a datos (bus D-Code y System Bus)
-transcurren sobre canales físicos independientes, eliminando los conflictos de
-acceso a memoria que limitan las arquitecturas von Neumann clásicas. Todos los
-buses internos operan sobre la interconexión AHB Lite (\textit{Advanced
-High-performance Bus}) cadenciada a la frecuencia del núcleo (100~MHz), lo que
-garantiza latencias deterministas de un ciclo de reloj para accesos a SRAM,
-condición imprescindible para el cumplimiento de las restricciones temporales
-del lazo de monitoreo.
-
-% ======================================================================
-%  8.2.12  Convertidor Analógico-Digital SAR de 12 bits y adquisición DMA
-% ======================================================================
 \subsubsection{Convertidor analógico-digital SAR de 12 bits y adquisición DMA síncrona}
 
-La conversión de las señales analógicas de corriente y vibración hacia el dominio
-numérico discreto constituye la frontera técnica fundamental entre el mundo físico
-continuo del proceso de torneado y el dominio computacional del procesador embebido.
-La precisión, velocidad y determinismo de esta conversión condicionan directamente
-la calidad del vector de características extraído y, en consecuencia, la exactitud
-del clasificador inteligente.
+La conversión de las señales analógicas de corriente hacia el dominio discreto constituye la etapa crítica entre el fenómeno electromecánico continuo y el procesamiento numérico del clasificador inteligente.
 
-\paragraph{A. Principio de operación del ADC de aproximaciones sucesivas (SAR)}
-
-El convertidor analógico-digital del STM32F411 opera según el principio de
-Aproximaciones Sucesivas (\textit{Successive Approximation Register}, SAR),
-ejecutando una búsqueda binaria sobre el espacio de amplitudes en $N = 12$ pasos
-de comparación por conversión. En cada paso $k$, el comparador interno evalúa si
-la tensión de entrada $V_{in}$ supera o no la tensión generada por el DAC de
-referencia interna, actualizando el registro SAR de acuerdo con el resultado:
+\paragraph{A. Principio de aproximaciones sucesivas (SAR)}
+El convertidor ADC integrado en el STM32 opera bajo el esquema de Registro de Aproximaciones Sucesivas (\textit{Successive Approximation Register}, SAR), ejecutando una búsqueda binaria en $N = 12$ pasos de comparación por muestra. En cada paso $k$, el comparador contrasta la tensión de entrada $V_{in}$ frente a la generada por una red interna de capacitores ponderados en binario:
 
 \begin{equation}
 V_{DAC}^{(k)} = V_{ref} \cdot \sum_{j=k}^{N} \frac{b_j}{2^{j-k+1}}
 \label{eq:sar_dac}
 \end{equation}
 
-donde $b_j \in \{0, 1\}$ son los bits determinados en las iteraciones previas.
-Al cabo de $N = 12$ comparaciones, el registro SAR contiene el código digital
-de 12 bits que mejor aproxima la tensión analógica de entrada.
+donde $b_j \in \{0, 1\}$ denota los bits evaluados en iteraciones previas. Al término de los 12 pasos, se obtiene el valor digital proporcional a la tensión analógica con alta linealidad (INL $<\pm 2\,\text{LSB}$).
 
-\paragraph{B. Resolución analógica y relación señal-ruido teórica}
-
-La resolución de un convertidor de $N$ bits define el escalón mínimo distinguible
-entre dos códigos digitales consecutivos. Para el ADC de 12 bits del STM32F411
-con referencia de tensión $V_{ref} = 3.3\,\text{V}$:
+\paragraph{B. Resolución y relación señal-ruido teórica}
+Para una tensión de referencia $V_{ref} = 3.3\,\text{V}$ provista por el regulador LDO de bajo ruido, el cuanto de resolución analógica $\Delta V$ y la relación señal-ruido teórica máxima ($SNR_{dB}$) se determinan formalmente por:
 
 \begin{equation}
-\Delta V = \frac{V_{ref}}{2^N} = \frac{3.3}{4096} \approx 0.806\,\text{mV/bit}
+\Delta V = \frac{V_{ref}}{2^{12}} = \frac{3.3}{4096} \approx 0.806\,\text{mV/bit}, \quad SNR_{dB} = 6.02 \cdot N + 1.76 \approx 74.0\,\text{dB}
 \label{eq:resolucion_adc}
 \end{equation}
 
-La relación señal-ruido teórica máxima de un convertidor ideal de $N$ bits,
-expresada en decibelios, se determina a partir del teorema de cuantización:
+Esta resolución de $0.806\,\text{mV}$ por bit permite resolver variaciones de corriente de $0.024\,\text{A}$ sobre el rango dinámico del sensor SCT-013-030 ($30\,\text{A}$), lo cual garantiza la detección sensible del incremento gradual de $I_{\text{RMS}}$ (del orden de $0.15\,\text{A}$ a $0.4\,\text{A}$) asociado a las etapas iniciales de degradación del inserto.
+
+\paragraph{C. Disparo por temporizador hardware y buffer DMA circular}
+Para evitar el \textit{jitter} de muestreo introducido por la latencia de interrupciones de software, el ADC es disparado de forma síncrona por el evento de actualización del temporizador general hardware TIM2 configurado a $f_s = 2000\,\text{Hz}$. Cada conversión completada transfiere el dato directamente a la memoria SRAM mediante un controlador DMA en modo circular de doble búfer (\textit{ping-pong buffer}):
 
 \begin{equation}
-SNR_{dB} = 6.02 \cdot N + 1.76 \approx 74\,\text{dB} \quad (N = 12)
-\label{eq:snr_adc}
+\mathcal{B} = [\mathcal{B}_1, \mathcal{B}_2], \quad \dim(\mathcal{B}_1) = \dim(\mathcal{B}_2) = 256\,\text{muestras}
+\label{eq:ping_pong_buffer}
 \end{equation}
 
-Una relación señal-ruido de 74~dB garantiza la discriminación de variaciones de
-corriente tan pequeñas como el 0.025\% del fondo de escala, suficiente para
-detectar el incremento gradual de $I_{RMS}$ asociado al desgaste incipiente del
-inserto, estimado en un incremento del 3 al 8\% entre la clase 0 y la clase 1.
+Mientras el canal DMA2\_Stream0 llena el búfer $\mathcal{B}_2$ de forma autónoma en el fondo, la CPU procesa el bloque $\mathcal{B}_1$ extrayendo las características estadísticas de la ventana temporal. Este mecanismo asegura una tasa de adquisición estrictamente continua con cero pérdida de muestras y carga de CPU nula durante la transferencia.
 
-\paragraph{C. Configuración DMA circular para adquisición continua}
-
-Para garantizar la adquisición determinista sin overhead del núcleo Cortex-M4,
-el ADC se configura en modo de conversión continua disparada por el temporizador
-TIM2 a exactamente $f_s = 2000\,\text{Hz}$, transfiriendo automáticamente cada
-resultado al buffer circular en SRAM mediante el canal DMA2\_Stream0. El
-controlador DMA opera en modo circular doble (\textit{double-buffer DMA}): mientras
-el núcleo procesa la primera mitad del buffer (Mitad A, 256 muestras), el DMA
-llena la segunda mitad (Mitad B, 256 muestras), y viceversa. Este esquema
-garantiza adquisición ininterrumpida sin pérdida de muestras y latencia de
-procesamiento acotada a $\Delta t = N/f_s = 128\,\text{ms}$ por ventana.
-
-La frecuencia de muestreo de 2000~Hz satisface el criterio de Nyquist-Shannon
-para la banda de interés del sistema ($f_{max} = 1000\,\text{Hz}$):
-$f_s = 2000\,\text{Hz} = 2 \cdot f_{max}$, con un margen de seguridad de 2:1
-respecto a la frecuencia de corte del filtro anti-aliasing software implementado
-en el Cortex-M4 mediante CMSIS-DSP.
-
-% ======================================================================
-%  8.2.13  Validación metrológica del desgaste (VB) y rugosidad superficial (Ra)
-% ======================================================================
 \subsubsection{Validación metrológica del desgaste de flanco y la calidad superficial}
 
-La validación experimental del sistema de monitoreo propuesto exige disponer de
-una referencia metrológica cuantitativa y trazable del desgaste real del inserto
-($VB$) y de la calidad superficial generada en la pieza ($Ra$), de forma que
-las predicciones del clasificador inteligente puedan contrastarse objetivamente
-con mediciones directas de la geometría del filo degradado.
+La contrastación experimental del sistema de monitoreo propuesto exige disponer de mediciones metrológicas cuantitativas y trazables que sirvan como referencia de verdad terreno (\textit{ground truth}) para validar el clasificador inteligente.
 
-\paragraph{A. Medición del desgaste de flanco VB por microscopía de herramientas}
+\paragraph{A. Medición óptica de desgaste de flanco $VB$ conforme a ISO 3685}
+El desgaste de flanco se cuantifica mediante inspección visual directa en un microscopio de taller equipado con platina micrométrica digital de resolución $1\,\upmu\text{m}$ e iluminación rasante conforme a la norma ISO 3685 \citep{iso3685}. La medición se focaliza en la zona central B del filo de corte (denominada $VB$), registrando la distancia media perpendicular entre el filo de corte original no desgastado y el límite inferior de la banda de desgaste. La incertidumbre expandida de la medición se estima en $U(VB) = \pm 5\,\upmu\text{m}$ con factor de cobertura $k = 2$ (nivel de confianza del 95\%).
 
-El parámetro de desgaste de flanco $VB$ se mide directamente sobre el inserto
-retirado del portaherramientas mediante un microscopio de herramientas
-(\textit{toolmaker's microscope}) dotado de objetivo de larga distancia de
-trabajo, ocular micrométrico calibrado y platina de desplazamiento graduado en
-pasos de $1\,\upmu\text{m}$ \citep{iso3685}. El procedimiento de medición sigue
-los lineamientos de la norma ISO 3685:1993:
-
-\begin{enumerate}[leftmargin=0.8cm]
-    \item El inserto se retira del portaherramientas al término del ciclo de corte
-    programado y se limpia cuidadosamente con disolvente para eliminar residuos de
-    taladrina y viruta adherida sobre el flanco.
-    \item Se posiciona el inserto sobre la platina con iluminación rasante sobre
-    la cara de incidencia, que resalta la zona brillante de la franja de desgaste
-    por contraste respecto al recubrimiento original mate del substrato.
-    \item Con el retículo micrométrico del ocular, se mide el ancho promedio $VB$
-    de la franja de desgaste en la zona B central del filo, así como el valor
-    máximo $VB_{max}$ y el desgaste de nariz $VC$, conforme a la zonificación
-    normativa de la~\fig{tipos_desgaste_herramienta}.
-    \item Se registran tres lecturas independientes rotando el inserto y se calcula
-    la media aritmética para reducir el error de posicionamiento. La incertidumbre
-    expandida del método es $U(VB) = \pm 5\,\upmu\text{m}$ ($k=2$, $p=95\%$).
-\end{enumerate}
-
-\paragraph{B. Medición de la rugosidad superficial Ra según ISO 4287}
-
-La rugosidad superficial media aritmética $Ra$ se determina sobre las probetas
-torneadas mediante un rugosímetro de contacto tipo Mitutoyo SJ-210 (o equivalente),
-equipado con un palpador de diamante de radio de punta $r = 2\,\upmu\text{m}$ y
-radio de curvatura de punta cónica $60^\circ$, conforme a la norma ISO 4287:1997.
-El parámetro $Ra$ cuantifica la desviación media aritmética absoluta del perfil de
-rugosidad respecto a la línea media $m$ sobre una longitud de evaluación $l_n$:
+\paragraph{B. Evaluación metrológica de rugosidad superficial $Ra$ según ISO 4287}
+La calidad superficial de las probetas cilíndricas de acero AISI 1045 mecanizadas se determina mediante un rugosímetro de contacto Mitutoyo Surftest SJ-210 provisto de palpador inductivo de punta de diamante cónica ($r_{tip} = 2\,\upmu\text{m}$, ángulo de $60^\circ$) y fuerza de medición de $0.75\,\text{mN}$. El parámetro normalizado de rugosidad media aritmética $Ra$ se calcula conforme a ISO 4287:
 
 \begin{equation}
 Ra = \frac{1}{l_n} \int_0^{l_n} |z(x)|\, dx \approx \frac{1}{N} \sum_{i=1}^{N} |z_i|
 \label{eq:rugosidad_ra}
 \end{equation}
 
-donde $z(x)$ representa las alturas del perfil de rugosidad respecto a la línea
-media y $N$ es el número de puntos discretizados en el perfil de medición.
+donde $l_n$ es la longitud de evaluación normalizada ($l_n = 5 \cdot \lambda_c$, con longitud de corte $\lambda_c = 0.8\,\text{mm}$ y filtro Gaussiano) y $z(x)$ son las desviaciones del perfil respecto a la línea media.
 
-\paragraph{C. Correlación experimental VB -- Ra}
-
-La relación entre el desgaste de flanco y el deterioro del acabado superficial
-constituye el vínculo físico que conecta la señal eléctrica inferida por el
-clasificador con el impacto productivo real en las piezas mecanizadas en MAINSA.
-Conforme a los resultados experimentales reportados en la literatura \citep{trejo2010,
-sandvik2020}, la rugosidad real medida supera consistentemente el valor teórico
-predicho por la~\eqref{eq:rugosidad_teorica} a medida que $VB$ crece:
+\paragraph{C. Correlación empírica entre $VB$ y $Ra$}
+En operaciones de acabado y desbaste fino, la rugosidad experimental supera a la predicción cinemática teórica (\eqref{eq:rugosidad_teorica}) debido al incremento progresivo del desgaste de flanco, que altera el radio de punta y genera microvibraciones regenerativas \citep{trejo2010}:
 
 \begin{equation}
-Ra_{\text{real}}(VB) \approx Ra_{\text{te\'{o}rico}} + \alpha \cdot VB^{\beta}
+Ra_{\text{real}}(VB) = \frac{f^2}{32 \cdot r_\epsilon} + \alpha_r \cdot \left( \frac{VB}{VB_{\text{lim}}} \right)^{\beta_r}
 \label{eq:rugosidad_vs_vb}
 \end{equation}
 
-donde $\alpha$ y $\beta$ son coeficientes empíricos dependientes del material de
-la pieza, del substrato del inserto y de los parámetros de corte. El ajuste de
-estos coeficientes a partir de los datos experimentales del proyecto constituirá
-una contribución metrológica original del trabajo de grado, correlacionando la
-clase de desgaste inferida en tiempo real por el sistema con el incremento medible
-de la rugosidad superficial $Ra$ en la pieza torneada.
+donde $\alpha_r$ y $\beta_r$ son coeficientes empíricos determinados por regresión no lineal a partir de los ensayos de validación en MAINSA. Esta relación demuestra cuantitativamente que el deterioro del inserto impacta directamente sobre la tolerancia superficial de la pieza, fundamentando la necesidad de detección temprana en las clases 1 y 2.
 
-% ======================================================================
-%  8.2.14  Métricas de evaluación del clasificador inteligente
-% ======================================================================
 \subsubsection{Métricas de evaluación del clasificador inteligente multiclase}
 
-La validación experimental del clasificador inteligente de desgaste requiere
-emplear un conjunto de métricas cuantitativas formalmente definidas que permitan
-evaluar de manera objetiva, reproducible e independiente de la distribución de
-clases el rendimiento del modelo sobre el conjunto de datos de prueba no visto
-durante el entrenamiento \citep{huang2026}.
+La validación del modelo de clasificación en el borde exige aplicar un conjunto formal de métricas estadísticas que permitan cuantificar objetivamente la exactitud global y la sensibilidad por estado de desgaste sobre el conjunto de test independiente no visto \citep{huang2026}.
 
 \paragraph{A. Matriz de confusión para clasificación multiclase}
-
-La herramienta fundamental de diagnóstico del rendimiento de un clasificador
-supervisado de $C$ clases es la \textit{Matriz de Confusión} $\mathbf{M} \in
-\mathbb{Z}^{C \times C}$, donde el elemento $M_{ij}$ contabiliza el número de
-muestras pertenecientes a la clase real $i$ que el modelo clasificó como clase $j$.
-Para el sistema de monitoreo con cinco clases de desgaste ($C = 5$), la diagonal
-principal $M_{ii}$ registra las predicciones correctas y los elementos fuera de
-la diagonal cuantifican los errores de confusión entre estados de desgaste
-adyacentes o no adyacentes.
-
-\paragraph{B. Métricas de precisión, exhaustividad y F1}
-
-A partir de la matriz de confusión se derivan las métricas fundamentales de
-evaluación. Para cada clase $c \in \{0, 1, 2, 3, 4\}$ se definen:
+Para el clasificador discreto de 5 clases ($C = 5$, correspondientes a los estados de desgaste 0 a 4), la matriz de confusión $\mathbf{C} \in \mathbb{N}^{5 \times 5}$ concentra en sus elementos $c_{ij}$ el número de ventanas temporales cuya etiqueta real era la clase $i$ y fueron clasificadas por el modelo como clase $j$. A partir de ella se derivan los valores de Verdaderos Positivos ($TP_k$), Falsos Positivos ($FP_k$), Falsos Negativos ($FN_k$) y Verdaderos Negativos ($TN_k$) para cada clase $k$:
 
 \begin{equation}
-\text{Precision}_c = \frac{TP_c}{TP_c + FP_c}
-\label{eq:precision}
+TP_k = c_{kk}, \quad FP_k = \sum_{i \neq k} c_{ik}, \quad FN_k = \sum_{j \neq k} c_{kj}, \quad TN_k = \sum_{i \neq k} \sum_{j \neq k} c_{ij}
+\label{eq:matriz_metricas}
+\end{equation}
+
+\paragraph{B. Precisión, Sensibilidad y puntuación $F_1$ por clase}
+Las métricas por clase permiten diagnosticar desbalances de rendimiento que quedarían enmascarados por la exactitud global:
+
+\begin{equation}
+\text{Precisión}_k = \frac{TP_k}{TP_k + FP_k}, \quad \text{Sensibilidad}_k (\text{Recall}) = \frac{TP_k}{TP_k + FN_k}
+\label{eq:precision_recall}
 \end{equation}
 
 \begin{equation}
-\text{Recall}_c = \frac{TP_c}{TP_c + FN_c}
-\label{eq:recall}
+F_{1,k} = 2 \cdot \frac{\text{Precisión}_k \cdot \text{Sensibilidad}_k}{\text{Precisión}_k + \text{Sensibilidad}_k} = \frac{2 \cdot TP_k}{2 \cdot TP_k + FP_k + FN_k}
+\label{eq:f1_score}
 \end{equation}
+
+\paragraph{C. Exactitud global y Macro-$F_1$}
+Para evaluar el desempeño general del clasificador sobre todas las categorías de desgaste, se emplean la exactitud global (\textit{Accuracy}) y la media armónica no ponderada Macro-$F_1$:
 
 \begin{equation}
-F1_c = \frac{2 \cdot \text{Precision}_c \cdot \text{Recall}_c}
-             {\text{Precision}_c + \text{Recall}_c}
-\label{eq:f1}
+\text{Exactitud} = \frac{\sum_{k=0}^{4} TP_k}{\sum_{i=0}^{4}\sum_{j=0}^{4} c_{ij}}, \quad \text{Macro-}F_1 = \frac{1}{5} \sum_{k=0}^{4} F_{1,k}
+\label{eq:macro_f1}
 \end{equation}
 
-donde $TP_c$ (\textit{True Positives}) es el número de muestras de la clase $c$
-correctamente identificadas; $FP_c$ (\textit{False Positives}) es el número de
-muestras de otras clases incorrectamente asignadas a la clase $c$; y $FN_c$
-(\textit{False Negatives}) es el número de muestras de la clase $c$ que el
-clasificador asignó a otras clases.
+La métrica Macro-$F_1$ asigna idéntico peso a cada una de las cinco clases con independencia del número de muestras disponible en el dataset, evitando que la clase 1 (fase de desgaste estable, con mayor duración temporal) distorsione artificialmente la evaluación de las clases críticas 3 y 4. Desde la perspectiva de producción en MAINSA, un falso negativo en la Clase 4 (clasificar una herramienta al final de vida útil como herramienta en buen estado) acarrea costos significativos por rotura catastrófica del filo, justificando una exigencia de sensibilidad superior al 95\% en dicha categoría.
 
-La exactitud global del clasificador (\textit{Accuracy}) se define como la
-fracción de predicciones correctas sobre el total de muestras del conjunto de
-evaluación:
-
-\begin{equation}
-\text{Accuracy} = \frac{\sum_{c=0}^{C-1} TP_c}{\sum_{c=0}^{C-1}(TP_c + FP_c)}
-\label{eq:accuracy}
-\end{equation}
-
-\paragraph{C. F1-macro y criterio de aceptación}
-
-Dado que el dataset de MAINSA presentará una distribución de clases
-inherentemente desbalanceada (las clases extremas 0 y 4, correspondientes a
-inserto nuevo y desgaste crítico, tendrán menor representación muestral que las
-clases intermedias), la métrica de \textit{Accuracy} global puede resultar
-engañosamente optimista \citep{huang2026}. Por este motivo, se adopta como
-métrica primaria de evaluación el \textit{F1-macro}, definido como el promedio
-no ponderado de los F1-score individuales de cada clase:
-
-\begin{equation}
-F1_{\text{macro}} = \frac{1}{C} \sum_{c=0}^{C-1} F1_c
-\label{eq:f1_macro}
-\end{equation}
-
-Esta métrica penaliza de forma equitativa los errores en clases minoritarias y
-mayoritarias, siendo especialmente crítica para las clases 3 y 4 (desgaste
-avanzado y crítico), donde una tasa de Falsos Negativos elevada implicaría no
-detectar el momento de sustitución del inserto y producir piezas fuera de
-especificación en MAINSA. Los criterios cuantitativos de aceptación del
-clasificador se establecen en:
-
-\begin{itemize}
-    \item $\text{Accuracy} \ge 85\%$ sobre el conjunto de test estratificado.
-    \item $F1_{\text{macro}} \ge 0.80$ con especial énfasis en $F1_3 \ge 0.75$
-    y $F1_4 \ge 0.80$ para los estados de mayor criticidad operativa.
-    \item Latencia de inferencia determinista $\le 15\,\text{ms}$ medida
-    experimentalmente sobre el STM32F411CEU6 a 100~MHz con modelo cuantizado INT8.
-\end{itemize}
-
-\paragraph{D. Latencia de inferencia como métrica de rendimiento embebido}
-
-Además de las métricas estadísticas de clasificación, el rendimiento embebido
-del modelo se cuantifica mediante la latencia de inferencia, definida como el
-tiempo transcurrido entre la entrega del vector de características normalizado
-a la capa de entrada del modelo y la disponibilidad del vector de probabilidades
-de salida en la capa Softmax. Esta latencia se mide experimentalmente mediante
-la conmutación de un pin GPIO del STM32F411 y el registro del pulso con un
-analizador lógico, garantizando que el sistema de monitoreo clasifique el estado
-del inserto al menos cada 15~ms, equivalente a una tasa de diagnóstico de
-$f_{diag} = 66.7\,\text{Hz}$, claramente suficiente para detectar la transición
-entre estados de desgaste cuya evolución se produce en escala de minutos a horas.
-
-% ======================================================================
-%  8.2.15  Protocolo de comunicación SPI y configuración de registros del ADXL345
-% ======================================================================
 \subsubsection{Protocolo de comunicación SPI y configuración de registros del ADXL345}
 
-La adquisición de datos de acelerometría triaxial a tasas de muestreo en el rango
-de los kilohercios exige una interfaz digital de alta velocidad e inmunidad frente
-a perturbaciones electromagnéticas severas. Si bien el sensor MEMS ADXL345 soporta
-comunicación tanto por bus I2C como por SPI, el entorno operacional de un torno
-CNC industrial impone restricciones que condicionan de forma decisiva la elección
-del protocolo de enlace.
+La adquisición triaxial de aceleración en entornos industriales requiere una interfaz de enlace síncrona, robusta frente al ruido de conmutación electromagnética y con suficiente ancho de banda para transferir las lecturas de los tres ejes sin retardos acumulativos.
 
-\paragraph{A. Justificación técnica de SPI frente a I2C en entornos industriales}
+\paragraph{A. Selección de la interfaz SPI frente a I2C}
+El sensor MEMS ADXL345 soporta comunicación mediante los buses I2C y SPI. Para la aplicación mecatrónica en el torno CNC se selecciona de forma exclusiva el bus SPI (\textit{Serial Peripheral Interface}) en modo de 4 hilos (SCLK, MOSI, MISO, $\overline{\text{CS}}$) operando a una frecuencia de reloj de $5\,\text{MHz}$. El bus SPI ofrece ventajas determinantes frente a I2C: arquitectura de líneas dedicadas en contrafase sin necesidad de resistencias de \textit{pull-up} (inmune a degradaciones de flanco por capacitancia distribuida del cableado industrial), operación \textit{full-duplex} nativa y ausencia del riesgo de bloqueo permanente de línea SDA ocasionado por transitorios inductivos severos.
 
-El bus I2C opera mediante líneas de drenador abierto (\textit{open-drain}) con
-resistencias de elevación (\textit{pull-up}), lo que limita su ancho de banda a un
-máximo de 400~kHz en modo rápido y lo hace extremadamente susceptible al ruido
-eléctrico inducido. En el taller de MAINSA, la conmutación de los transistores
-IGBT de los servodrivers genera transitorios electromagnéticos de alta frecuencia
-($dv/dt > 5\,\text{kV}/\upmu\text{s}$) que inducen pulsos espurios en líneas de alta
-impedancia, provocando bloqueos frecuentes de la máquina de estados del bus I2C
-(\textit{bus lockup}) que paralizan la adquisición.
-
-Por el contrario, el bus SPI (\textit{Serial Peripheral Interface}) opera mediante
-excitadores activos en contrafase (\textit{push-pull}) de baja impedancia, lo que
-permite alcanzar frecuencias de reloj de hasta 5~MHz con transiciones rápidas y
-alta inmunidad frente a acoplamientos capacitivos parásitos. Asimismo, el protocolo
-SPI implementa una topología síncrona de cuatro líneas independientes: reloj
-serie (SCLK), salida de datos maestro/entrada esclavo (MOSI/SDI), entrada de datos
-maestro/salida esclavo (MISO/SDO) y selección de esclavo por nivel bajo
-($\overline{\text{CS}}$), garantizando un enlace determinista sin arbitraje de
-direcciones.
-
-\paragraph{B. Configuración de modos de reloj y trama de datos SPI}
-
-El microcontrolador STM32F411 se configura como maestro SPI en Modo 3, definido
-por una polaridad de reloj inactivo en nivel alto ($\text{CPOL} = 1$) y captura de
-datos en el flanco ascendente de transición ($\text{CPHA} = 1$). La comunicación
-se estructura mediante tramas de 16 bits compuestas por un byte de comando y un
-byte de datos:
+\paragraph{B. Configuración de registros internos del acelerómetro}
+Para maximizar la relación señal-ruido y adaptar la sensibilidad a los niveles de vibración del portaherramientas, los registros del ADXL345 se configuran en la inicialización del firmware conforme a los siguientes parámetros clave:
 
 \begin{itemize}
-    \item \textbf{Bit 7 ($R/\overline{W}$):} Bit de control de lectura ($1$) o
-    escritura ($0$).
-    \item \textbf{Bit 6 ($MB$):} Bit de lectura/escritura múltiple (\textit{multi-byte
-    burst}). En nivel alto ($1$), permite leer de forma continua y secuencial los
-    seis registros de aceleración triaxial ($X_0, X_1, Y_0, Y_1, Z_0, Z_1$) en una
-    sola transacción sin alternar la línea $\overline{\text{CS}}$.
-    \item \textbf{Bits 5--0 ($A_5$--$A_0$):} Dirección hexadecimal del registro
-    interno de destino.
-    \item \textbf{Bits 15--8 ($D_7$--$D_0$):} Carga útil transmitida o recibida.
+    \item \textbf{Registro \texttt{POWER\_CTL} (\texttt{0x2D}):} Se escribe el valor \texttt{0x08} para activar el bit de medición (\textit{Measure bit}), transitando del modo de reposo al modo de adquisición activa.
+    \item \textbf{Registro \texttt{DATA\_FORMAT} (\texttt{0x31}):} Se configura en \texttt{0x0B}, fijando el rango de medición en $\pm 16\,\text{g}$ y activando el modo de resolución completa (\textit{Full Resolution Mode}). En esta modalidad, la escala se mantiene constante a $3.9\,\text{mg/LSB}$ (resolución de 13 bits), garantizando sensibilidad uniforme ante microvibraciones en la banda de mecanizado.
+    \item \textbf{Registro \texttt{BW\_RATE} (\texttt{0x2C}):} Se escribe \texttt{0x0C}, estableciendo una tasa de datos de salida de $f_{s,\text{vib}} = 400\,\text{Hz}$ (ancho de banda analógico interno de $200\,\text{Hz}$), suficiente para captar las componentes dinámicas del corte sin incurrir en submuestreo de las vibraciones mecánicas.
 \end{itemize}
 
-A una frecuencia de bus de $f_{\text{SPI}} = 5\,\text{MHz}$, la transferencia de
-una trama ráfaga de seis ejes (7 bytes totales: 1 byte de comando más 6 bytes de
-datos) requiere exactamente $t_{\text{xfer}} = (7 \times 8) / 5\,\text{MHz} =
-11.2\,\upmu\text{s}$, consumiendo menos del 2.5\% del período de muestreo del
-sistema ($T_s = 500\,\upmu\text{s}$ a $f_s = 2000\,\text{Hz}$).
+\paragraph{C. Modo FIFO Stream y líneas de interrupción hardware}
+El sensor cuenta con una memoria FIFO interna de 32 niveles por eje. Se configura en modo \textit{Stream} (registro \texttt{FIFO\_CTL} en \texttt{0x80}), permitiendo almacenar continuamente las últimas muestras generadas mientras la CPU atiende otras rutinas. La línea de interrupción hardware INT1 del sensor se conecta a un pin de interrupción externa (EXTI) del STM32, activándose en ráfaga (\textit{burst read}) mediante DMA cada vez que se acumulan nuevas muestras, minimizando el tiempo de retención de bus a menos de $45\,\upmu\text{s}$ por lectura triaxial.
 
-\paragraph{C. Registros de control y calibración interna del sensor}
-
-Para adecuar el acelerómetro ADXL345 a la cinemática de corte y maximizar la
-relación señal-ruido, el firmware del STM32 inicializa los siguientes registros
-estratégicos:
-
-\begin{itemize}
-    \item \textbf{Registro \texttt{BW\_RATE} (dirección \texttt{0x2C}):} Se
-    escribe el valor hexadecimal \texttt{0x0F}, configurando una tasa de datos de
-    salida de $\text{ODR} = 3200\,\text{Hz}$ y un ancho de banda analógico interno
-    de corte $f_c = 1600\,\text{Hz}$. Esta configuración preserva las componentes
-    espectrales tribológicas de alta frecuencia excitadas por el desgaste de
-    flanco.
-    \item \textbf{Registro \texttt{DATA\_FORMAT} (dirección \texttt{0x31}):} Se
-    configura en \texttt{0x0B}, activando el modo de resolución completa (13 bits),
-    rango dinámico de $\pm 16g$ y factor de escala constante de $3.9\,\text{mg/LSB}$,
-    lo que asegura que la resolución no se degrade al operar a amplitudes
-    dinámicas elevadas.
-    \item \textbf{Registro \texttt{FIFO\_CTL} (dirección \texttt{0x38}):} Se
-    habilita en modo \textit{Stream} (\texttt{0x80}), permitiendo que un buffer
-    circular interno de 32 muestras retenga las aceleraciones continuas, evitando
-    pérdida de datos en caso de contención de interrupciones en el microcontrolador.
-    \item \textbf{Registro \texttt{POWER\_CTL} (dirección \texttt{0x2D}):} Se
-    establece en \texttt{0x08} para transicionar el transductor del modo de bajo
-    consumo (\textit{standby}) al régimen de medición activa continua.
-\end{itemize}
-
-% ======================================================================
-%  8.2.16  Metodología de construcción del dataset experimental y balanceo de clases
-% ======================================================================
 \subsubsection{Metodología de construcción del dataset experimental y balanceo de clases}
 
-El entrenamiento riguroso de modelos supervisados de aprendizaje automático
-depende críticamente de la calidad, representatividad y balanceo estadístico del
-conjunto de datos adquirido durante las campañas experimentales de mecanizado. En
-el entorno de taller de MAINSA, la obtención de series temporales fiables exige un
-protocolo sistemático de adquisición y etiquetado metrológico trazable.
+La representatividad estadística y el balanceo del conjunto de datos de entrenamiento condicionan directamente la capacidad de generalización del clasificador neuronal en el borde.
 
-\paragraph{A. Formalización matemática del conjunto de datos de entrenamiento}
-
-El conjunto de datos supervisado se formaliza como un conjunto de $M$ pares de
-entrenamiento:
+\paragraph{A. Formalización matemática del conjunto de datos supervisado}
+El conjunto de datos experimental se estructura formalmente como un conjunto de pares ordenados de características y etiquetas metrológicas:
 
 \begin{equation}
-\mathcal{D} = \left\{ \left( \mathbf{x}_i, y_i \right) \right\}_{i=1}^{M}, \quad \mathbf{x}_i \in \mathbb{R}^{10}, \quad y_i \in \{0, 1, 2, 3, 4\}
+\mathcal{D} = \left\{ (\mathbf{x}_k, y_k) \right\}_{k=1}^{M}, \quad \mathbf{x}_k \in \mathbb{R}^{16}, \quad y_k \in \{0, 1, 2, 3, 4\}
 \label{eq:dataset_formal}
 \end{equation}
 
-donde $\mathbf{x}_i$ es el vector de 10 características estadísticas extraído en
-la ventana temporal $i$ ($I_{\text{RMS}}, a_{x,\text{RMS}}, a_{y,\text{RMS}},
-a_{z,\text{RMS}}, Ku_I, Ku_a, CF_I, CF_a, \sigma^2_a, E_{\text{HF}}$), normalizado
-mediante el puntaje estándar $Z$-score:
+donde cada vector $\mathbf{x}_k$ agrupa 16 descriptores calculados en el dominio del tiempo y de la frecuencia a partir de las señales de corriente y vibración (RMS, curtosis, factor de cresta, potencia espectral en bandas seleccionadas), y $y_k$ representa la categoría de desgaste determinada por microscopía óptica según los umbrales de la norma ISO 3685.
+
+\paragraph{B. Segmentación por ventanas temporales móviles}
+Las series temporales continuas adquiridas durante el mecanizado de probetas se segmentan en ventanas de longitud fija $N_w = 512$ muestras (equivalente a $256\,\text{ms}$ a $f_s = 2000\,\text{Hz}$), con un solapamiento (\textit{overlap}) de $50\%$ ($N_{ov} = 256$ muestras):
 
 \begin{equation}
-\tilde{x}_{i,j} = \frac{x_{i,j} - \mu_j}{\sigma_j}, \quad j = 1, \dots, 10
-\label{eq:z_score}
+\Delta t_{\text{salto}} = \frac{N_w - N_{ov}}{f_s} = \frac{256}{2000} = 128\,\text{ms}
+\label{eq:tiempo_ventana}
 \end{equation}
 
-donde $\mu_j$ y $\sigma_j$ representan la media y la desviación estándar de la
-característica $j$ calculadas sobre el subconjunto de entrenamiento. La variable
-$y_i$ codifica la clase de desgaste de flanco conforme a los umbrales de la norma
-ISO 3685:1993.
+Este esquema garantiza estacionariedad local de la señal durante la pasada de corte y multiplica por dos la cantidad de instancias disponibles para entrenamiento, capturando la evolución dinámica de la corriente y la vibración a lo largo de la trayectoria de avance.
 
-\paragraph{B. Protocolo de etiquetado cruzado y trazabilidad metrológica}
-
-Para garantizar la correspondencia unívoca entre las señales electromecánicas y la
-degradación geométrica del inserto, se implementa un protocolo de parada
-programada en los ensayos de cilindrado continuo:
-
-\begin{enumerate}[leftmargin=0.8cm]
-    \item Cada inserto CNMG 120408 inicia el ensayo en estado virgen (Clase 0:
-    $VB < 0.10\,\text{mm}$ verificado por microscopio).
-    \item Se ejecutan pasadas longitudinales de torneado sobre barras de acero
-    AISI 1045 y 4140 a parámetros constantes ($V_c = 180\,\text{m/min}$,
-    $f = 0.2\,\text{mm/rev}$, $a_p = 1.5\,\text{mm}$).
-    \item Al finalizar cada pasada, el ciclo se interrumpe y se retira el inserto
-    para medir el ancho de flanco $VB$ en el microscopio de taller con retículo
-    graduado ($U = \pm 5\,\upmu\text{m}$).
-    \item Las ventanas de señales adquiridas durante dicha pasada se etiquetan
-    automáticamente con la clase correspondiente al desgaste medido. Este
-    procedimiento elimina cualquier ambigüedad de asignación (\textit{ground truth}
-    objetivo).
-\end{enumerate}
-
-\paragraph{C. Tratamiento del desbalanceo de clases mediante ponderación de coste}
-
-Debido a la naturaleza de la curva de desgaste de Taylor (\fig{curva_vida_desgaste_flanco}),
-la fase secundaria o estacionaria posee una duración temporal sustancialmente mayor
-que la fase inicial de rodaje (Clase 0) y la fase terciaria de desgaste acelerado
-(Clases 3 y 4). Como consecuencia, el dataset bruto presenta un marcado desbalance
-muestral ($M_{\text{intermedio}} \gg M_{\text{extremo}}$), lo que induciría un sesgo
-indeseado en clasificadores convencionales hacia las clases mayoritarias.
-
-Para neutralizar este fenómeno sin generar muestras sintéticas artificiales que
-distorsionen la física tribológica, se incorpora la técnica de aprendizaje sensible
-al coste (\textit{cost-sensitive learning}) mediante la ponderación de pérdidas por
-pesos de clase (\textit{class weights}). En la función de pérdida de entropía
-cruzada categórica (\textit{Categorical Cross-Entropy}), se pondera la contribución
-de cada clase de forma inversamente proporcional a su frecuencia de aparición:
+\paragraph{C. Mitigación del desbalance de clases mediante ponderación de pérdidas}
+La física del desgaste de herramientas determina que la fase inicial (Clase 0) y la fase terminal crítica (Clases 3 y 4) tengan una duración temporal significativamente menor que la fase estacionaria intermedia (Clases 1 y 2). Para compensar este desbalance inherente sin sintetizar datos artificiales que pudieran alterar la coherencia física de las señales, se aplica ponderación de costes (\textit{class weights}) en la función de pérdida de entropía cruzada categórica durante el entrenamiento:
 
 \begin{equation}
-\mathcal{L} = -\frac{1}{M} \sum_{i=1}^{M} \sum_{c=0}^{C-1} w_c \cdot y_{i,c} \cdot \log(\hat{y}_{i,c}), \quad w_c = \frac{M}{C \cdot M_c}
+\mathcal{L} = -\frac{1}{M} \sum_{i=1}^{M} \sum_{c=0}^{4} w_c \cdot y_{i,c} \cdot \log(\hat{y}_{i,c}), \quad w_c = \frac{M}{5 \cdot M_c}
 \label{eq:weighted_loss}
 \end{equation}
 
-donde $M_c$ es el número de muestras de la clase $c$, $C = 5$ es el número total
-de clases y $\hat{y}_{i,c}$ denota la probabilidad inferida por la capa Softmax.
-De este modo, los errores en las clases minoritarias pero críticas (Clase 4:
-$VB \ge 0.30\,\text{mm}$) reciben una penalización matemática significativamente
-mayor, forzando a la red neuronal a optimizar las fronteras de decisión en los
-límites de fin de vida útil.
+donde $M_c$ es el número de muestras correspondientes a la clase $c$. La partición del dataset se fija rigurosamente en 70\% para entrenamiento, 15\% para validación con parada temprana (\textit{Early Stopping}) y 15\% para prueba ciego, validándose mediante validación cruzada estratificada de 5 pliegues (\textit{5-fold stratified cross-validation}).
 
-\paragraph{D. Estrategia de partición estratificada del conjunto de datos}
-
-El dataset depurado se divide en tres particiones independientes garantizando
-la misma proporción de clases en cada subconjunto:
-
-\begin{itemize}
-    \item \textbf{Conjunto de entrenamiento (70\%):} Empleado para ajustar los
-    pesos sinápticos mediante el algoritmo Adam ($\eta = 0.001$, $\beta_1 = 0.9$,
-    $\beta_2 = 0.999$) a lo largo de 100 épocas con tamaño de lote
-    (\textit{batch size}) de 32 muestras.
-    \item \textbf{Conjunto de validación (15\%):} Utilizado para evaluar el
-    rendimiento tras cada época, activar el criterio de parada temprana
-    (\textit{Early Stopping} con paciencia de 10 épocas) y prevenir el
-    sobreajuste (\textit{overfitting}).
-    \item \textbf{Conjunto de prueba ciego (15\%):} Reservado estrictamente para
-    el cálculo final de las métricas de generalización y la matriz de confusión
-    multiclase, evaluado mediante validación cruzada estratificada de 5 pliegues
-    (\textit{5-fold Stratified Cross-Validation}).
-\end{itemize}
-
-% ======================================================================
-%  8.2.17  Enlace de comunicaciones industriales UART / RS-485 para supervisión local
-% ======================================================================
 \subsubsection{Enlace de comunicaciones industriales UART / RS-485 para supervisión local}
 
-La arquitectura mecatrónica del sistema periférico exige transferir continuamente
-los diagnósticos calculados por el microcontrolador (estado del inserto, valor de
-corriente eficaz $I_{\text{RMS}}$, aceleraciones dinámicas y tiempo acumulado de
-corte) hacia el panel de visualización local montado en la estructura exterior del
-torno CNC. La selección del enlace físico de comunicaciones debe garantizar
-integridad de datos frente al severo ruido eléctrico ambiental generado por la
-electrónica de potencia del taller.
+La arquitectura mecatrónica requiere comunicar el diagnóstico del estado del filo, las magnitudes calculadas ($I_{\text{RMS}}$, vibraciones) y los estados de alarma hacia el módulo de visualización exterior instalado en el panel de mando del torno.
 
-\paragraph{A. Protocolo asíncrono UART en el controlador de borde}
-
-A nivel de procesador, la transmisión de telemetría se implementa sobre el
-periférico USART2 del microcontrolador STM32F411, configurado en modo asíncrono
-(UART) con las siguientes características:
-
-\begin{itemize}
-    \item Tasa de baudios: $115200\,\text{bps}$ (tiempo de bit $t_b = 8.68\,\upmu\text{s}$).
-    \item Formato de trama: 1 bit de inicio (\textit{start bit}), 8 bits de datos,
-    sin paridad y 1 bit de parada (\textit{stop bit}) (formato 8N1, 10 bits por byte).
-    \item Transmisión gestionada por canal DMA1\_Stream6 en modo memoria a
-    periférico, liberando a la CPU de bucles de espera de transmisión.
-\end{itemize}
-
-A una tasa de 115200 bps, un paquete de telemetría típico de 32 bytes se transmite
-en $t_{\text{paq}} = (32 \times 10) / 115200 \approx 2.78\,\text{ms}$, permitiendo
-actualizar el panel gráfico a frecuencias de refresco visual de hasta 20~Hz sin
-comprometer los recursos computacionales de la inferencia TinyML.
-
-\paragraph{B. Conversión a señalización diferencial balanceada RS-485}
-
-Dado que los niveles de tensión TTL/CMOS de la UART (0 a 3.3~V) son referenciados
-a tierra y se degradan rápidamente ante atenuaciones resistivas o interferencias
-electromagnéticas a distancias superiores a 30~cm, se intercala un transceptor
-industrial conforme a la norma internacional TIA/EIA-485-A (RS-485).
-
-El estándar RS-485 sustituye la señal referenciada a masa por una línea diferencial
-balanceada compuesta por dos conductores ($A$ y $B$). La información lógica no
-depende de la tensión absoluta respecto a tierra, sino de la diferencia de potencial
-entre ambas líneas:
+\paragraph{A. Señalización diferencial RS-485 y norma TIA/EIA-485-A}
+La transmisión de datos se articula a través del periférico USART2 del microcontrolador conectado a un transceptor industrial (MAX485/SN65HVD). El enlace opera en configuración semi-dúplex (\textit{half-duplex}) a una tasa de $115200\,\text{bps}$ (8 bits de datos, sin paridad, 1 bit de parada), transmitiendo paquetes diagnósticos a intervalos regulares de $100\,\text{ms}$. El transceptor convierte los niveles lógicos TTL ($0\text{--}3.3\,\text{V}$) a señalización diferencial balanceada sobre un par trenzado apantallado con impedancia característica de $120\,\Omega$:
 
 \begin{equation}
-V_{AB} = V_A - V_B
-\label{eq:rs485_diff}
+V_{AB} = V_A - V_B, \quad |V_{AB}| \ge 200\,\text{mV}
+\label{eq:tension_diferencial}
 \end{equation}
 
-donde un estado lógico 1 (\textit{Mark}) se define cuando $V_A - V_B < -200\,\text{mV}$,
-y un estado lógico 0 (\textit{Space}) cuando $V_A - V_B > +200\,\text{mV}$.
-
-\paragraph{C. Mecanismo de rechazo de ruido en modo común (CMRR)}
-
-La ventaja técnica fundamental del estándar RS-485 en tornos CNC radica en su
-elevada inmunidad frente al ruido electromagnético de modo común. Cuando un cable de
-par trenzado blindado atraviesa las proximidades de los cables de potencia de un
-servomotor trifásico, los campos electromagnéticos inducen una tensión de ruido
-parásita $V_{\text{ruido}}(t)$ con idéntica amplitud y fase en ambos conductores:
+\paragraph{B. Inmunidad frente a ruido de modo común (CMRR)}
+En el entorno electromagnético severo del taller de MAINSA, los variadores de frecuencia y los contactores inducen perturbaciones electromagnéticas transitorias de gran magnitud sobre las líneas de cableado. En una línea diferencial trenzada, el ruido inducido $V_{\text{ruido}}(t)$ afecta con idéntica amplitud y fase a ambos conductores ($V_A' = V_A + V_{\text{ruido}}$, $V_B' = V_B + V_{\text{ruido}}$). Al calcular la diferencia en el receptor balanceado:
 
 \begin{equation}
-V_A'(t) = V_A(t) + V_{\text{ruido}}(t), \quad V_B'(t) = V_B(t) + V_{\text{ruido}}(t)
-\label{eq:modo_comun}
-\end{equation}
-
-En el extremo receptor del panel de visualización, el amplificador diferencial
-del transceptor efectúa la resta analógica de ambas señales, suprimiendo
-algebraicamente la perturbación inducida:
-
-\begin{equation}
-V_{AB}'(t) = V_A'(t) - V_B'(t) = \left( V_A(t) + V_{\text{ruido}}(t) \right) - \left( V_B(t) + V_{\text{ruido}}(t) \right) = V_A(t) - V_B(t)
+V_{AB}'(t) = \left( V_A(t) + V_{\text{ruido}}(t) \right) - \left( V_B(t) + V_{\text{ruido}}(t) \right) = V_A(t) - V_B(t)
 \label{eq:cancelacion_ruido}
 \end{equation}
 
-Esta propiedad, combinada con una impedancia característica de línea de $120\,\Omega$
-adaptada mediante resistores terminales de balanceo en ambos extremos, permite
-tender cables de comunicación de hasta 1200 metros con tasas de error de bit
-despreciables, posibilitando la ubicación ergonómica del panel de supervisión en el
-exterior de la cabina del torno CNC sin peligro de corrupción de datos.
+el ruido de modo común se cancela algebraicamente, permitiendo enlaces de hasta $1200\,\text{m}$ con tasa de error de bit ($BER < 10^{-9}$) prácticamente nula. Para garantizar la integridad de los datos, la trama de 16 bytes incorpora un byte de inicio (\texttt{0xAA}), carga útil codificada y un código de redundancia cíclica CRC-8 para detección de corrupción de paquetes.
 
-% ======================================================================
-%  8.2.18  Consideraciones de diseño de PCB industrial y compatibilidad electromagnética (EMC)
-% ======================================================================
 \subsubsection{Consideraciones de diseño de PCB industrial y compatibilidad electromagnética (EMC)}
 
-La confiabilidad física y la repetibilidad metrológica del sistema periférico
-exigen que el diseño del circuito impreso (PCB) cumpla con los estándares
-industriales de Compatibilidad Electromagnética (EMC) conforme a las normas
-IPC-2221 e IEC 61000-4, mitigando los acoplamientos parásitos y protegiendo los
-semiconductores frente a sobretensiones transitorias habituales en talleres de
-mecanizado.
+La operación continua del prototipo mecatrónico dentro del gabinete eléctrico del torno CNC exige cumplir directrices de diseño de circuitos impresos conformes a las normas IPC-2221 e IEC 61000-4 de compatibilidad electromagnética.
 
-\paragraph{A. Topología de capas y plano de masa continuo (Ground Plane)}
-
-El diseño de la PCB se estructura en doble cara (2 capas) con un espesor estándar
-de cobre de $1\,\text{oz}$ ($35\,\upmu\text{m}$). La cara inferior se reserva
-íntegramente como un plano de masa continuo de baja impedancia (\textit{ground plane}),
-evitando cualquier división o ranurado que obligue a las corrientes de retorno a
-describir trayectorias indirectas.
-
-Conforme a la ley de Ampère y el principio de mínima inductancia en alta frecuencia,
-las corrientes de retorno fluyen directamente por debajo de las pistas superiores de
-señal. Mantener el plano de masa íntegro reduce el área del bucle de corriente
-$\mathcal{A}_{\text{bucle}}$, minimizando la inductancia parásita $L_{\text{par}}$ y
-la tensión de ruido inducida por acoplamiento magnético:
+\paragraph{A. Plano de masa continuo y reducción del área de bucle}
+La placa se diseña en tecnología de 2 capas con espesor de cobre de $1\,\text{oz}$ ($35\,\upmu\text{m}$). Toda la cara inferior se reserva como plano de masa continuo (\textit{ground plane}). Este diseño minimiza el área de los bucles de retorno de corriente $\mathcal{A}_{\text{bucle}}$, reduciendo drásticamente la tensión inducida por acoplamiento magnético ante campos transitorios $dH/dt$:
 
 \begin{equation}
-V_{\text{ind}} = -\frac{d\Phi}{dt} = -\mu_0 \cdot \mathcal{A}_{\text{bucle}} \cdot \frac{dH}{dt}
+V_{\text{ind}} = -\mu_0 \cdot \mathcal{A}_{\text{bucle}} \cdot \frac{dH}{dt}
 \label{eq:induccion_bucle}
 \end{equation}
 
-Al minimizar $\mathcal{A}_{\text{bucle}}$, la inmunidad frente a radiación
-electromagnética externa se incrementa sustancialmente, reduciendo al mismo tiempo
-las emisiones radiadas por las conmutaciones digitales del microcontrolador.
+Asimismo, el plano continuo provee un camino de retorno de muy baja impedancia para las corrientes de alta frecuencia de las señales digitales (reloj SPI de 5~MHz y USART).
 
-\paragraph{B. Red de desacoplamiento de alta frecuencia y filtrado de alimentación}
-
-Para estabilizar las líneas de alimentación y absorber las fluctuaciones de
-corriente demandadas durante las transiciones de reloj del Cortex-M4 a 100~MHz, se
-distribuye una red de condensadores de desacoplamiento desacoplada en dos etapas:
-
-\begin{itemize}
-    \item \textbf{Desacoplamiento local de alta frecuencia:} Condensadores
-    cerámicos multicapa (MLCC) dieléctrico X7R de $100\,\text{nF}$, ubicados a una
-    distancia física inferior a $2\,\text{mm}$ de cada pin $V_{DD}$ y $V_{DDA}$ del
-    STM32F411, con vías directas al plano de masa para minimizar la inductancia de
-    pista.
-    \item \textbf{Filtrado de almacenamiento a granel:} Condensadores de tantalio
-    o electrolíticos de bajo ESR de $10\,\upmu\text{F}$ en la entrada de los
-    reguladores lineales de tensión (LDO), encargados de amortiguar oscilaciones
-    de baja frecuencia provenientes de la fuente primaria.
-\end{itemize}
-
-\paragraph{C. Segregación topológica de dominios analógicos y digitales}
-
-Para evitar que el ruido digital de conmutación de alta frecuencia contamine las
-mediciones analógicas de baja amplitud del sensor de corriente SCT-013, la placa
-se divide físicamente en tres zonas topológicas segregadas:
-
-\begin{enumerate}[leftmargin=0.8cm]
-    \item \textbf{Zona analógica sensible:} Aloja el circuito de carga
-    (\textit{burden}), el divisor resistivo DC Bias ($+1.65\,\text{V}$) desacoplado
-    con condensador de polipropileno y el amplificador operacional LM358 configurado
-    como seguidor de tensión con pista de guarda (\textit{guard ring}).
-    \item \textbf{Zona digital de procesamiento:} Concentra el microcontrolador
-    STM32F411, el resonador cerámico de cuarzo de alta precisión (HSE de 25~MHz)
-    y las líneas de comunicación SPI hacia el acelerómetro.
-    \item \textbf{Zona de interfaz de potencia y comunicaciones:} Contiene el
-    transceptor RS-485, el regulador reductor de tensión (\textit{buck converter})
-    y las borneras de tornillo industriales con protección ESD mediante diodos
-    TVS (\textit{Transient Voltage Suppressor}) bidireccionales en paralelo.
+\paragraph{B. Segregación topológica y punto estrella (*Star Grounding*)}
+La PCB se distribuye en tres zonas físicas estrictamente segregadas:
+\begin{enumerate}
+    \item \textbf{Zona analógica sensible:} Aloja el conector del sensor SCT-013, el circuito de polarización $V_{bias}$, los filtros pasabajas pasivos y el operacional LM358, rodeada por un anillo de guarda a potencial de referencia.
+    \item \textbf{Zona digital de procesamiento:} Contiene el microcontrolador STM32F411, el cristal oscilador de cuarzo de 25~MHz situado a menos de 3~mm de los pines OSC\_IN/OUT, y el bus SPI hacia el sensor MEMS.
+    \item \textbf{Zona de potencia e interfaz:} Concentra el regulador de tensión LDO de bajo ruido, el transceptor RS-485, los diodos supresores de transitorios TVS y los conectores de salida industrial.
 \end{enumerate}
+Las masas analógica (AGND) y digital (DGND) se mantienen independientes en la placa y se unen eléctricamente en un único punto estrella (*star grounding*) junto a la entrada de alimentación del regulador, eliminando bucles de tierra parásitos.
 
-La unión entre la masa analógica (AGND) y la masa digital (DGND) se realiza en un
-único punto geográfico en estrella (\textit{star grounding}) situado inmediatamente
-debajo del terminal analógico de tierra del microcontrolador, eliminando bucles de
-tierra cerrados (\textit{ground loops}) y asegurando que las corrientes digitales
-no atraviesen la referencia analógica del ADC.
-
-
+\paragraph{C. Desacoplamiento capacitivo y protección frente a transitorios}
+Cada pin de alimentación del microcontrolador cuenta con un condensador cerámico multicapa MLCC tipo X7R de $100\,\text{nF}$ montado a menos de $2\,\text{mm}$ para absorber corrientes transitorias de conmutación. En las líneas de comunicación RS-485 y entrada de alimentación se instalan diodos TVS bidireccionales de respuesta en subnanosegundos, verificando inmunidad ante descargas electrostáticas (ESD, norma IEC 61000-4-2 hasta $\pm 8\,\text{kV}$) y ráfagas de transitorios rápidos (\textit{EFT/Burst}, norma IEC 61000-4-4 hasta $\pm 2\,\text{kV}$).

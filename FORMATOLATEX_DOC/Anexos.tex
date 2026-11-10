@@ -14,6 +14,8 @@
 \renewcommand{\theHfigure}{A.\arabic{figure}}
 \renewcommand{\theHtable}{A.\arabic{table}}
 \captionsetup{list=no} % Para que no aparezca en índice de figuras del cuerpo preliminar
+\captionsetup[subfloat]{list=no}
+\captionsetup[figure]{list=no}
 
 \phantomsection
 \subsection*{Anexo 1: Diagrama de bloques funcional de la propuesta de solución mecatrónica}
@@ -124,3 +126,104 @@ El presente anexo detalla la arquitectura metodológica y la secuencia de transf
     \item \textbf{Etapa 4 (Despliegue y Ejecución en STM32F411):} El código C se compila en STM32CubeIDE y se despliega en el microcontrolador STM32F411CEU6 (ARM Cortex-M4 @ 100~MHz). La inferencia opera de forma determinista con latencia $\le 15\,\text{ms}$, consumiendo $< 20\,\text{KB}$ de RAM y $< 50\,\text{KB}$ de Flash. La salida clasifica el desgaste en cinco niveles normalizados bajo ISO 3685, activando el clasificador LED y transmitiendo al dashboard local por UART.
 \end{enumerate}
 }
+
+\newpage
+\phantomsection
+\subsection*{Anexo 4: Operaciones fundamentales de mecanizado en torno CNC}
+\label{anx:operaciones_torneado}
+\addcontentsline{toc}{subsection}{Anexo 4. Operaciones fundamentales de mecanizado en torno CNC}
+
+\begin{figure}[H]
+    \centering
+    \caption{Operaciones fundamentales de torneado por remoción de material en torno CNC}\label{fig:anexo_operaciones_torneado}
+    \vspace{2mm}
+    \includegraphics[width=0.78\textwidth]{Figuras/operaciones_torneado.png}
+    \par\vspace{2mm}
+    \small \textbf{Fuente:} Adaptado de \textcite{kalpakjian2014} y \textcite{trejo2010}
+\end{figure}
+
+El presente anexo ilustra las operaciones fundamentales de remoción de metal ejecutables en torno CNC en función de las trayectorias interpoladas del carro y la geometría de la herramienta: cilindrado exterior longitudinal, refrentado o careado perpendicular, torneado cónico, perfilado complejo de contornos, ranurado frontal/exterior, tronzado de piezas acabadas y roscado sincrónico. En el contexto de MAINSA, el desbaste cilíndrico longitudinal constituye la operación predominante con mayor tasa de remoción volumétrica.
+
+\newpage
+\phantomsection
+\subsection*{Anexo 5: Mecánica de corte ortogonal y corte oblicuo}
+\label{anx:mecanica_corte}
+\addcontentsline{toc}{subsection}{Anexo 5. Mecánica de corte ortogonal y corte oblicuo}
+
+\begin{figure}[H]
+    \centering
+    \caption{Comparativa esquemática entre el modelo de corte ortogonal y corte oblicuo}\label{fig:anexo_mecanica_corte}
+    \vspace{2mm}
+    \subfloat[][Corte ortogonal (modelo bidimensional)]{\includegraphics[width=0.42\columnwidth]{Figuras/corte_ortogonal.png}}
+    \qquad
+    \subfloat[][Corte oblicuo (modelo tridimensional)]{\includegraphics[width=0.42\columnwidth]{Figuras/corte_oblicuo.png}}
+    \par\vspace{2mm}
+    \small \textbf{Fuente:} Adaptado de \textcite{trejo2010}
+\end{figure}
+
+El presente anexo contrasta los dos esquemas clásicos de deformación plástica y formación de viruta:
+\begin{enumerate}[leftmargin=0.6cm, itemsep=1.5pt]
+    \item \textbf{Corte ortogonal (a):} Modelo bidimensional de referencia donde la arista de corte es rigurosamente perpendicular al vector de velocidad. La geometría se rige por el ángulo de ataque $\gamma_o$, incidencia $\alpha_o$ y cuña $\beta_o$ ($\alpha_o + \beta_o + \gamma_o = 90^\circ$), con plano primario de cizallamiento definido según la solución de Merchant ($\phi = 45^\circ + \gamma_o/2 - \beta_{\text{fric}}/2$).
+    \item \textbf{Corte oblicuo (b):} Régimen tridimensional industrial real del torneado en MAINSA, donde la arista cortante presenta una inclinación angular $\lambda_s$, evacuando la viruta con un ángulo de flujo lateral $\eta_c \approx \lambda_s$ según la hipótesis de Stabler, alejando el flujo térmico de la superficie mecanizada.
+\end{enumerate}
+
+\newpage
+\phantomsection
+\subsection*{Anexo 6: Geometría y microgeometría de insertos intercambiables de corte}
+\label{anx:insertos_geometria}
+\addcontentsline{toc}{subsection}{Anexo 6. Geometría y microgeometría de insertos intercambiables ISO}
+
+\begin{figure}[H]
+    \centering
+    \caption{Geometría de insertos intercambiables ISO y correlación con la tenacidad mecánica de punta}\label{fig:anexo_formas_insertos}
+    \vspace{2mm}
+    \includegraphics[width=0.78\textwidth]{Figuras/formas_insertos_resistencia.png}
+    \par\vspace{2mm}
+    \small \textbf{Fuente:} Adaptado de \textcite{trejo2010}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \caption{Tipologías de microgeometría y acondicionamiento del filo de corte para refuerzo estructural}\label{fig:anexo_preparacion_filo}
+    \vspace{2mm}
+    \includegraphics[width=0.58\textwidth]{Figuras/preparacion_filo_insertos.png}
+    \par\vspace{2mm}
+    \small \textbf{Fuente:} Adaptado de \textcite{trejo2010}
+\end{figure}
+
+El presente anexo sintetiza los criterios de selección geométrica de los insertos intercambiables de carburo de tungsteno (WC-Co). Existe un compromiso directo entre la accesibilidad geométrica de copiado y la resistencia mecánica de la punta: insertos con ángulos incluidos amplios (redondos y rómbicos de 80$^\circ$ tipo C como el CNMG 120408 seleccionado) ofrecen máximo volumen de soporte y resistencia al despostillamiento frente a geometrías agudas de 55$^\circ$ o 35$^\circ$. Asimismo, el acondicionamiento del filo mediante microasentado (\textit{honing}) y chaflán protector (\textit{chamfer} o \textit{T-land}) traslada las cargas cortantes al núcleo de compresión del inserto, previniendo microfracturas prematuras.
+
+\newpage
+\phantomsection
+\subsection*{Anexo 7: Evolución temporal del desgaste de flanco y modelo de Taylor}
+\label{anx:curva_taylor}
+\addcontentsline{toc}{subsection}{Anexo 7. Evolución temporal del desgaste de flanco y modelo de Taylor}
+
+\begin{figure}[H]
+    \centering
+    \caption{Curvas de evolución temporal del desgaste de flanco a diferentes velocidades de corte}\label{fig:anexo_curva_vida_taylor}
+    \vspace{2mm}
+    \includegraphics[width=0.72\textwidth]{Figuras/curva_vida_desgaste_flanco.png}
+    \par\vspace{2mm}
+    \small \textbf{Fuente:} Adaptado de \textcite{trejo2010}
+\end{figure}
+
+El presente anexo describe los tres regímenes tribológicos universales de degradación del filo: Zona I o de rodaje inicial (atenuación plástica rápida de la arista viva), Zona II o régimen estacionario (velocidad de desgaste casi constante y predecible) y Zona III o régimen terciario acelerado (fricción descontrolada y peligro inminente de rotura catastrófica). El modelo clásico de Taylor ($V_c \cdot T^n = C$) formaliza cómo un incremento de velocidad de corte contrae exponencialmente la vida útil del inserto ($T_4 < T_3 < T_2 < T_1$), sustentando la necesidad de detección temprana antes de alcanzar la fase terciaria.
+
+\newpage
+\phantomsection
+\subsection*{Anexo 8: Etapas de acondicionamiento y rectificación analógica de corriente}
+\label{anx:etapas_rectificacion}
+\addcontentsline{toc}{subsection}{Anexo 8. Etapas de acondicionamiento y rectificación de valor eficaz}
+
+\begin{figure}[H]
+    \centering
+    \caption{Evolución temporal de la señal de corriente tras cada etapa de acondicionamiento y rectificación}\label{fig:anexo_etapas_rectificacion}
+    \vspace{2mm}
+    \includegraphics[width=0.85\textwidth]{Figuras/etapas_rectificacion_acondicionamiento.png}
+    \par\vspace{2mm}
+    \small \textbf{Fuente:} Elaboración propia, 2026
+\end{figure}
+
+El presente anexo detalla la forma de onda registrada secuencialmente a través de las cuatro etapas del circuito acondicionador analógico: Etapa 1 (corriente de fase bipolar alterna $\pm 8.5\,\text{A}$), Etapa 2 (tensión alterna en bornes de la resistencia Burden $\pm 1.0\,\text{V}$), Etapa 3 (señal desplazada en $+1.65\,\text{V}$ oscilando unipolarmente entre $0.65\,\text{V}$ y $2.65\,\text{V}$) y Etapa 4 (señal rectificada de precisión y filtrada paso bajo entregando el valor eficaz continuo proporcional a $I_{\text{RMS}}$ para el canal ADC de 12 bits del STM32).
+

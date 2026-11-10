@@ -614,31 +614,6 @@
       \verb 10.1007/s00170-010-2907-9
       \endverb
     \endentry
-    \entry{stmicroelectronics2021}{manual}{}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=c38884ab3cf908c2798725960369391b}{%
-           family={{STMicroelectronics}},
-           familyi={S\bibinitperiod}}}%
-      }
-      \strng{namehash}{c38884ab3cf908c2798725960369391b}
-      \strng{fullhash}{c38884ab3cf908c2798725960369391b}
-      \strng{fullhashraw}{c38884ab3cf908c2798725960369391b}
-      \strng{bibnamehash}{c38884ab3cf908c2798725960369391b}
-      \strng{authorbibnamehash}{c38884ab3cf908c2798725960369391b}
-      \strng{authornamehash}{c38884ab3cf908c2798725960369391b}
-      \strng{authorfullhash}{c38884ab3cf908c2798725960369391b}
-      \strng{authorfullhashraw}{c38884ab3cf908c2798725960369391b}
-      \field{sortinit}{S}
-      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \true{uniqueprimaryauthor}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{note}{User Manual UM2526}
-      \field{title}{Getting started with {X-CUBE-AI} Expansion Package for Artificial Intelligence ({AI})}
-      \field{year}{2021}
-    \endentry
     \entry{teti2010}{article}{}{}
       \name{author}{4}{}{%
         {{un=0,uniquepart=base,hash=dcb71ef83441938c0acf45540faaf61c}{%
@@ -1471,31 +1446,6 @@
       \verb{doi}
       \verb 10.1007/s00170-010-2907-9
       \endverb
-    \endentry
-    \entry{stmicroelectronics2021}{manual}{}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=c38884ab3cf908c2798725960369391b}{%
-           family={{STMicroelectronics}},
-           familyi={S\bibinitperiod}}}%
-      }
-      \strng{namehash}{c38884ab3cf908c2798725960369391b}
-      \strng{fullhash}{c38884ab3cf908c2798725960369391b}
-      \strng{fullhashraw}{c38884ab3cf908c2798725960369391b}
-      \strng{bibnamehash}{c38884ab3cf908c2798725960369391b}
-      \strng{authorbibnamehash}{c38884ab3cf908c2798725960369391b}
-      \strng{authornamehash}{c38884ab3cf908c2798725960369391b}
-      \strng{authorfullhash}{c38884ab3cf908c2798725960369391b}
-      \strng{authorfullhashraw}{c38884ab3cf908c2798725960369391b}
-      \field{sortinit}{S}
-      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \true{uniqueprimaryauthor}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{note}{User Manual UM2526}
-      \field{title}{Getting started with {X-CUBE-AI} Expansion Package for Artificial Intelligence ({AI})}
-      \field{year}{2021}
     \endentry
     \entry{teti2010}{article}{}{}
       \name{author}{4}{}{%
