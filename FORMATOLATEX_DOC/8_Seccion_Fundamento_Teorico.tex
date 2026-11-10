@@ -50,7 +50,8 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 • 8.2.5 Sensado de vibraciones mecánicas y discriminación de ruidos espurios.\par\vspace{1mm}
 • 8.2.9 Análisis comparativo y selección de componentes clave.\par\vspace{1mm}
 • 8.2.11 Arquitectura interna ARM Cortex-M4 y recursos del STM32F411.\par\vspace{1mm}
-• 8.2.12 Convertidor analógico-digital SAR de 12 bits y adquisición DMA. \\ \hline
+• 8.2.12 Convertidor analógico-digital SAR de 12 bits y adquisición DMA.\par\vspace{1mm}
+• 8.2.15 Protocolo de comunicación SPI y configuración de registros del ADXL345. \\ \hline
 
 \textbf{OE3.} Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, integrando acondicionamiento de señal, procesamiento en el borde, panel de visualización en dashboard e indicadores LED de alerta. &
 • Definición del diagrama de bloques funcional (adquisición, acondicionamiento y visualización).\par\vspace{1mm}
@@ -60,7 +61,9 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 • 8.2.4 Circuito acondicionador, polarización DC Bias y etapas de rectificación.\par\vspace{1mm}
 • 8.2.6 Procesamiento digital de señales (DSP) en entornos industriales.\par\vspace{1mm}
 • 8.2.8 Arquitectura de supervisión local y señalización visual de desgaste.\par\vspace{1mm}
-• 8.2.12 Muestreo síncrono mediante temporizador hardware y doble buffer DMA. \\ \hline
+• 8.2.12 Muestreo síncrono mediante temporizador hardware y doble buffer DMA.\par\vspace{1mm}
+• 8.2.17 Enlace de comunicaciones industriales UART / RS-485 para supervisión local.\par\vspace{1mm}
+• 8.2.18 Consideraciones de diseño de PCB industrial y compatibilidad electromagnética (EMC). \\ \hline
 
 \textbf{OE4.} Integrar el sistema periférico de adquisición, procesamiento inteligente, panel de visualización e indicadores luminosos LED para desgaste. &
 • Ensamblaje, integración eléctrica y verificación funcional de PCB y gabinete.\par\vspace{1mm}
@@ -72,7 +75,8 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 • 8.2.7 Pipeline Edge AI: vector de entradas de 10 características y vector de 5 clases ISO 3685.\par\vspace{1mm}
 • 8.2.8 Supervisión local en dashboard e indicación cromática LED por niveles.\par\vspace{1mm}
 • 8.2.10 Ecosistema de programación: Python 3.10, ANSI C, TensorFlow y STM32CubeIDE.\par\vspace{1mm}
-• 8.2.11 Instrucciones SIMD / MAC del Cortex-M4 y optimización CMSIS-NN. \\ \hline
+• 8.2.11 Instrucciones SIMD / MAC del Cortex-M4 y optimización CMSIS-NN.\par\vspace{1mm}
+• 8.2.16 Metodología de construcción del dataset experimental y balanceo de clases. \\ \hline
 
 \textbf{OE5.} Validar experimentalmente el funcionamiento del sistema integrado mediante pruebas de corte en los tornos CNC de MAINSA. &
 • Instalación y calibración no invasiva del sistema periférico en torno CNC de taller.\par\vspace{1mm}
@@ -947,5 +951,355 @@ analizador lógico, garantizando que el sistema de monitoreo clasifique el estad
 del inserto al menos cada 15~ms, equivalente a una tasa de diagnóstico de
 $f_{diag} = 66.7\,\text{Hz}$, claramente suficiente para detectar la transición
 entre estados de desgaste cuya evolución se produce en escala de minutos a horas.
+
+% ======================================================================
+%  8.2.15  Protocolo de comunicación SPI y configuración de registros del ADXL345
+% ======================================================================
+\subsubsection{Protocolo de comunicación SPI y configuración de registros del ADXL345}
+
+La adquisición de datos de acelerometría triaxial a tasas de muestreo en el rango
+de los kilohercios exige una interfaz digital de alta velocidad e inmunidad frente
+a perturbaciones electromagnéticas severas. Si bien el sensor MEMS ADXL345 soporta
+comunicación tanto por bus I2C como por SPI, el entorno operacional de un torno
+CNC industrial impone restricciones que condicionan de forma decisiva la elección
+del protocolo de enlace.
+
+\paragraph{A. Justificación técnica de SPI frente a I2C en entornos industriales}
+
+El bus I2C opera mediante líneas de drenador abierto (\textit{open-drain}) con
+resistencias de elevación (\textit{pull-up}), lo que limita su ancho de banda a un
+máximo de 400~kHz en modo rápido y lo hace extremadamente susceptible al ruido
+eléctrico inducido. En el taller de MAINSA, la conmutación de los transistores
+IGBT de los servodrivers genera transitorios electromagnéticos de alta frecuencia
+($dv/dt > 5\,\text{kV}/\upmu\text{s}$) que inducen pulsos espurios en líneas de alta
+impedancia, provocando bloqueos frecuentes de la máquina de estados del bus I2C
+(\textit{bus lockup}) que paralizan la adquisición.
+
+Por el contrario, el bus SPI (\textit{Serial Peripheral Interface}) opera mediante
+excitadores activos en contrafase (\textit{push-pull}) de baja impedancia, lo que
+permite alcanzar frecuencias de reloj de hasta 5~MHz con transiciones rápidas y
+alta inmunidad frente a acoplamientos capacitivos parásitos. Asimismo, el protocolo
+SPI implementa una topología síncrona de cuatro líneas independientes: reloj
+serie (SCLK), salida de datos maestro/entrada esclavo (MOSI/SDI), entrada de datos
+maestro/salida esclavo (MISO/SDO) y selección de esclavo por nivel bajo
+($\overline{\text{CS}}$), garantizando un enlace determinista sin arbitraje de
+direcciones.
+
+\paragraph{B. Configuración de modos de reloj y trama de datos SPI}
+
+El microcontrolador STM32F411 se configura como maestro SPI en Modo 3, definido
+por una polaridad de reloj inactivo en nivel alto ($\text{CPOL} = 1$) y captura de
+datos en el flanco ascendente de transición ($\text{CPHA} = 1$). La comunicación
+se estructura mediante tramas de 16 bits compuestas por un byte de comando y un
+byte de datos:
+
+\begin{itemize}
+    \item \textbf{Bit 7 ($R/\overline{W}$):} Bit de control de lectura ($1$) o
+    escritura ($0$).
+    \item \textbf{Bit 6 ($MB$):} Bit de lectura/escritura múltiple (\textit{multi-byte
+    burst}). En nivel alto ($1$), permite leer de forma continua y secuencial los
+    seis registros de aceleración triaxial ($X_0, X_1, Y_0, Y_1, Z_0, Z_1$) en una
+    sola transacción sin alternar la línea $\overline{\text{CS}}$.
+    \item \textbf{Bits 5--0 ($A_5$--$A_0$):} Dirección hexadecimal del registro
+    interno de destino.
+    \item \textbf{Bits 15--8 ($D_7$--$D_0$):} Carga útil transmitida o recibida.
+\end{itemize}
+
+A una frecuencia de bus de $f_{\text{SPI}} = 5\,\text{MHz}$, la transferencia de
+una trama ráfaga de seis ejes (7 bytes totales: 1 byte de comando más 6 bytes de
+datos) requiere exactamente $t_{\text{xfer}} = (7 \times 8) / 5\,\text{MHz} =
+11.2\,\upmu\text{s}$, consumiendo menos del 2.5\% del período de muestreo del
+sistema ($T_s = 500\,\upmu\text{s}$ a $f_s = 2000\,\text{Hz}$).
+
+\paragraph{C. Registros de control y calibración interna del sensor}
+
+Para adecuar el acelerómetro ADXL345 a la cinemática de corte y maximizar la
+relación señal-ruido, el firmware del STM32 inicializa los siguientes registros
+estratégicos:
+
+\begin{itemize}
+    \item \textbf{Registro \texttt{BW\_RATE} (dirección \texttt{0x2C}):} Se
+    escribe el valor hexadecimal \texttt{0x0F}, configurando una tasa de datos de
+    salida de $\text{ODR} = 3200\,\text{Hz}$ y un ancho de banda analógico interno
+    de corte $f_c = 1600\,\text{Hz}$. Esta configuración preserva las componentes
+    espectrales tribológicas de alta frecuencia excitadas por el desgaste de
+    flanco.
+    \item \textbf{Registro \texttt{DATA\_FORMAT} (dirección \texttt{0x31}):} Se
+    configura en \texttt{0x0B}, activando el modo de resolución completa (13 bits),
+    rango dinámico de $\pm 16g$ y factor de escala constante de $3.9\,\text{mg/LSB}$,
+    lo que asegura que la resolución no se degrade al operar a amplitudes
+    dinámicas elevadas.
+    \item \textbf{Registro \texttt{FIFO\_CTL} (dirección \texttt{0x38}):} Se
+    habilita en modo \textit{Stream} (\texttt{0x80}), permitiendo que un buffer
+    circular interno de 32 muestras retenga las aceleraciones continuas, evitando
+    pérdida de datos en caso de contención de interrupciones en el microcontrolador.
+    \item \textbf{Registro \texttt{POWER\_CTL} (dirección \texttt{0x2D}):} Se
+    establece en \texttt{0x08} para transicionar el transductor del modo de bajo
+    consumo (\textit{standby}) al régimen de medición activa continua.
+\end{itemize}
+
+% ======================================================================
+%  8.2.16  Metodología de construcción del dataset experimental y balanceo de clases
+% ======================================================================
+\subsubsection{Metodología de construcción del dataset experimental y balanceo de clases}
+
+El entrenamiento riguroso de modelos supervisados de aprendizaje automático
+depende críticamente de la calidad, representatividad y balanceo estadístico del
+conjunto de datos adquirido durante las campañas experimentales de mecanizado. En
+el entorno de taller de MAINSA, la obtención de series temporales fiables exige un
+protocolo sistemático de adquisición y etiquetado metrológico trazable.
+
+\paragraph{A. Formalización matemática del conjunto de datos de entrenamiento}
+
+El conjunto de datos supervisado se formaliza como un conjunto de $M$ pares de
+entrenamiento:
+
+\begin{equation}
+\mathcal{D} = \left\{ \left( \mathbf{x}_i, y_i \right) \right\}_{i=1}^{M}, \quad \mathbf{x}_i \in \mathbb{R}^{10}, \quad y_i \in \{0, 1, 2, 3, 4\}
+\label{eq:dataset_formal}
+\end{equation}
+
+donde $\mathbf{x}_i$ es el vector de 10 características estadísticas extraído en
+la ventana temporal $i$ ($I_{\text{RMS}}, a_{x,\text{RMS}}, a_{y,\text{RMS}},
+a_{z,\text{RMS}}, Ku_I, Ku_a, CF_I, CF_a, \sigma^2_a, E_{\text{HF}}$), normalizado
+mediante el puntaje estándar $Z$-score:
+
+\begin{equation}
+\tilde{x}_{i,j} = \frac{x_{i,j} - \mu_j}{\sigma_j}, \quad j = 1, \dots, 10
+\label{eq:z_score}
+\end{equation}
+
+donde $\mu_j$ y $\sigma_j$ representan la media y la desviación estándar de la
+característica $j$ calculadas sobre el subconjunto de entrenamiento. La variable
+$y_i$ codifica la clase de desgaste de flanco conforme a los umbrales de la norma
+ISO 3685:1993.
+
+\paragraph{B. Protocolo de etiquetado cruzado y trazabilidad metrológica}
+
+Para garantizar la correspondencia unívoca entre las señales electromecánicas y la
+degradación geométrica del inserto, se implementa un protocolo de parada
+programada en los ensayos de cilindrado continuo:
+
+\begin{enumerate}[leftmargin=0.8cm]
+    \item Cada inserto CNMG 120408 inicia el ensayo en estado virgen (Clase 0:
+    $VB < 0.10\,\text{mm}$ verificado por microscopio).
+    \item Se ejecutan pasadas longitudinales de torneado sobre barras de acero
+    AISI 1045 y 4140 a parámetros constantes ($V_c = 180\,\text{m/min}$,
+    $f = 0.2\,\text{mm/rev}$, $a_p = 1.5\,\text{mm}$).
+    \item Al finalizar cada pasada, el ciclo se interrumpe y se retira el inserto
+    para medir el ancho de flanco $VB$ en el microscopio de taller con retículo
+    graduado ($U = \pm 5\,\upmu\text{m}$).
+    \item Las ventanas de señales adquiridas durante dicha pasada se etiquetan
+    automáticamente con la clase correspondiente al desgaste medido. Este
+    procedimiento elimina cualquier ambigüedad de asignación (\textit{ground truth}
+    objetivo).
+\end{enumerate}
+
+\paragraph{C. Tratamiento del desbalanceo de clases mediante ponderación de coste}
+
+Debido a la naturaleza de la curva de desgaste de Taylor (\fig{curva_vida_desgaste_flanco}),
+la fase secundaria o estacionaria posee una duración temporal sustancialmente mayor
+que la fase inicial de rodaje (Clase 0) y la fase terciaria de desgaste acelerado
+(Clases 3 y 4). Como consecuencia, el dataset bruto presenta un marcado desbalance
+muestral ($M_{\text{intermedio}} \gg M_{\text{extremo}}$), lo que induciría un sesgo
+indeseado en clasificadores convencionales hacia las clases mayoritarias.
+
+Para neutralizar este fenómeno sin generar muestras sintéticas artificiales que
+distorsionen la física tribológica, se incorpora la técnica de aprendizaje sensible
+al coste (\textit{cost-sensitive learning}) mediante la ponderación de pérdidas por
+pesos de clase (\textit{class weights}). En la función de pérdida de entropía
+cruzada categórica (\textit{Categorical Cross-Entropy}), se pondera la contribución
+de cada clase de forma inversamente proporcional a su frecuencia de aparición:
+
+\begin{equation}
+\mathcal{L} = -\frac{1}{M} \sum_{i=1}^{M} \sum_{c=0}^{C-1} w_c \cdot y_{i,c} \cdot \log(\hat{y}_{i,c}), \quad w_c = \frac{M}{C \cdot M_c}
+\label{eq:weighted_loss}
+\end{equation}
+
+donde $M_c$ es el número de muestras de la clase $c$, $C = 5$ es el número total
+de clases y $\hat{y}_{i,c}$ denota la probabilidad inferida por la capa Softmax.
+De este modo, los errores en las clases minoritarias pero críticas (Clase 4:
+$VB \ge 0.30\,\text{mm}$) reciben una penalización matemática significativamente
+mayor, forzando a la red neuronal a optimizar las fronteras de decisión en los
+límites de fin de vida útil.
+
+\paragraph{D. Estrategia de partición estratificada del conjunto de datos}
+
+El dataset depurado se divide en tres particiones independientes garantizando
+la misma proporción de clases en cada subconjunto:
+
+\begin{itemize}
+    \item \textbf{Conjunto de entrenamiento (70\%):} Empleado para ajustar los
+    pesos sinápticos mediante el algoritmo Adam ($\eta = 0.001$, $\beta_1 = 0.9$,
+    $\beta_2 = 0.999$) a lo largo de 100 épocas con tamaño de lote
+    (\textit{batch size}) de 32 muestras.
+    \item \textbf{Conjunto de validación (15\%):} Utilizado para evaluar el
+    rendimiento tras cada época, activar el criterio de parada temprana
+    (\textit{Early Stopping} con paciencia de 10 épocas) y prevenir el
+    sobreajuste (\textit{overfitting}).
+    \item \textbf{Conjunto de prueba ciego (15\%):} Reservado estrictamente para
+    el cálculo final de las métricas de generalización y la matriz de confusión
+    multiclase, evaluado mediante validación cruzada estratificada de 5 pliegues
+    (\textit{5-fold Stratified Cross-Validation}).
+\end{itemize}
+
+% ======================================================================
+%  8.2.17  Enlace de comunicaciones industriales UART / RS-485 para supervisión local
+% ======================================================================
+\subsubsection{Enlace de comunicaciones industriales UART / RS-485 para supervisión local}
+
+La arquitectura mecatrónica del sistema periférico exige transferir continuamente
+los diagnósticos calculados por el microcontrolador (estado del inserto, valor de
+corriente eficaz $I_{\text{RMS}}$, aceleraciones dinámicas y tiempo acumulado de
+corte) hacia el panel de visualización local montado en la estructura exterior del
+torno CNC. La selección del enlace físico de comunicaciones debe garantizar
+integridad de datos frente al severo ruido eléctrico ambiental generado por la
+electrónica de potencia del taller.
+
+\paragraph{A. Protocolo asíncrono UART en el controlador de borde}
+
+A nivel de procesador, la transmisión de telemetría se implementa sobre el
+periférico USART2 del microcontrolador STM32F411, configurado en modo asíncrono
+(UART) con las siguientes características:
+
+\begin{itemize}
+    \item Tasa de baudios: $115200\,\text{bps}$ (tiempo de bit $t_b = 8.68\,\upmu\text{s}$).
+    \item Formato de trama: 1 bit de inicio (\textit{start bit}), 8 bits de datos,
+    sin paridad y 1 bit de parada (\textit{stop bit}) (formato 8N1, 10 bits por byte).
+    \item Transmisión gestionada por canal DMA1\_Stream6 en modo memoria a
+    periférico, liberando a la CPU de bucles de espera de transmisión.
+\end{itemize}
+
+A una tasa de 115200 bps, un paquete de telemetría típico de 32 bytes se transmite
+en $t_{\text{paq}} = (32 \times 10) / 115200 \approx 2.78\,\text{ms}$, permitiendo
+actualizar el panel gráfico a frecuencias de refresco visual de hasta 20~Hz sin
+comprometer los recursos computacionales de la inferencia TinyML.
+
+\paragraph{B. Conversión a señalización diferencial balanceada RS-485}
+
+Dado que los niveles de tensión TTL/CMOS de la UART (0 a 3.3~V) son referenciados
+a tierra y se degradan rápidamente ante atenuaciones resistivas o interferencias
+electromagnéticas a distancias superiores a 30~cm, se intercala un transceptor
+industrial conforme a la norma internacional TIA/EIA-485-A (RS-485).
+
+El estándar RS-485 sustituye la señal referenciada a masa por una línea diferencial
+balanceada compuesta por dos conductores ($A$ y $B$). La información lógica no
+depende de la tensión absoluta respecto a tierra, sino de la diferencia de potencial
+entre ambas líneas:
+
+\begin{equation}
+V_{AB} = V_A - V_B
+\label{eq:rs485_diff}
+\end{equation}
+
+donde un estado lógico 1 (\textit{Mark}) se define cuando $V_A - V_B < -200\,\text{mV}$,
+y un estado lógico 0 (\textit{Space}) cuando $V_A - V_B > +200\,\text{mV}$.
+
+\paragraph{C. Mecanismo de rechazo de ruido en modo común (CMRR)}
+
+La ventaja técnica fundamental del estándar RS-485 en tornos CNC radica en su
+elevada inmunidad frente al ruido electromagnético de modo común. Cuando un cable de
+par trenzado blindado atraviesa las proximidades de los cables de potencia de un
+servomotor trifásico, los campos electromagnéticos inducen una tensión de ruido
+parásita $V_{\text{ruido}}(t)$ con idéntica amplitud y fase en ambos conductores:
+
+\begin{equation}
+V_A'(t) = V_A(t) + V_{\text{ruido}}(t), \quad V_B'(t) = V_B(t) + V_{\text{ruido}}(t)
+\label{eq:modo_comun}
+\end{equation}
+
+En el extremo receptor del panel de visualización, el amplificador diferencial
+del transceptor efectúa la resta analógica de ambas señales, suprimiendo
+algebraicamente la perturbación inducida:
+
+\begin{equation}
+V_{AB}'(t) = V_A'(t) - V_B'(t) = \left( V_A(t) + V_{\text{ruido}}(t) \right) - \left( V_B(t) + V_{\text{ruido}}(t) \right) = V_A(t) - V_B(t)
+\label{eq:cancelacion_ruido}
+\end{equation}
+
+Esta propiedad, combinada con una impedancia característica de línea de $120\,\Omega$
+adaptada mediante resistores terminales de balanceo en ambos extremos, permite
+tender cables de comunicación de hasta 1200 metros con tasas de error de bit
+despreciables, posibilitando la ubicación ergonómica del panel de supervisión en el
+exterior de la cabina del torno CNC sin peligro de corrupción de datos.
+
+% ======================================================================
+%  8.2.18  Consideraciones de diseño de PCB industrial y compatibilidad electromagnética (EMC)
+% ======================================================================
+\subsubsection{Consideraciones de diseño de PCB industrial y compatibilidad electromagnética (EMC)}
+
+La confiabilidad física y la repetibilidad metrológica del sistema periférico
+exigen que el diseño del circuito impreso (PCB) cumpla con los estándares
+industriales de Compatibilidad Electromagnética (EMC) conforme a las normas
+IPC-2221 e IEC 61000-4, mitigando los acoplamientos parásitos y protegiendo los
+semiconductores frente a sobretensiones transitorias habituales en talleres de
+mecanizado.
+
+\paragraph{A. Topología de capas y plano de masa continuo (Ground Plane)}
+
+El diseño de la PCB se estructura en doble cara (2 capas) con un espesor estándar
+de cobre de $1\,\text{oz}$ ($35\,\upmu\text{m}$). La cara inferior se reserva
+íntegramente como un plano de masa continuo de baja impedancia (\textit{ground plane}),
+evitando cualquier división o ranurado que obligue a las corrientes de retorno a
+describir trayectorias indirectas.
+
+Conforme a la ley de Ampère y el principio de mínima inductancia en alta frecuencia,
+las corrientes de retorno fluyen directamente por debajo de las pistas superiores de
+señal. Mantener el plano de masa íntegro reduce el área del bucle de corriente
+$\mathcal{A}_{\text{bucle}}$, minimizando la inductancia parásita $L_{\text{par}}$ y
+la tensión de ruido inducida por acoplamiento magnético:
+
+\begin{equation}
+V_{\text{ind}} = -\frac{d\Phi}{dt} = -\mu_0 \cdot \mathcal{A}_{\text{bucle}} \cdot \frac{dH}{dt}
+\label{eq:induccion_bucle}
+\end{equation}
+
+Al minimizar $\mathcal{A}_{\text{bucle}}$, la inmunidad frente a radiación
+electromagnética externa se incrementa sustancialmente, reduciendo al mismo tiempo
+las emisiones radiadas por las conmutaciones digitales del microcontrolador.
+
+\paragraph{B. Red de desacoplamiento de alta frecuencia y filtrado de alimentación}
+
+Para estabilizar las líneas de alimentación y absorber las fluctuaciones de
+corriente demandadas durante las transiciones de reloj del Cortex-M4 a 100~MHz, se
+distribuye una red de condensadores de desacoplamiento desacoplada en dos etapas:
+
+\begin{itemize}
+    \item \textbf{Desacoplamiento local de alta frecuencia:} Condensadores
+    cerámicos multicapa (MLCC) dieléctrico X7R de $100\,\text{nF}$, ubicados a una
+    distancia física inferior a $2\,\text{mm}$ de cada pin $V_{DD}$ y $V_{DDA}$ del
+    STM32F411, con vías directas al plano de masa para minimizar la inductancia de
+    pista.
+    \item \textbf{Filtrado de almacenamiento a granel:} Condensadores de tantalio
+    o electrolíticos de bajo ESR de $10\,\upmu\text{F}$ en la entrada de los
+    reguladores lineales de tensión (LDO), encargados de amortiguar oscilaciones
+    de baja frecuencia provenientes de la fuente primaria.
+\end{itemize}
+
+\paragraph{C. Segregación topológica de dominios analógicos y digitales}
+
+Para evitar que el ruido digital de conmutación de alta frecuencia contamine las
+mediciones analógicas de baja amplitud del sensor de corriente SCT-013, la placa
+se divide físicamente en tres zonas topológicas segregadas:
+
+\begin{enumerate}[leftmargin=0.8cm]
+    \item \textbf{Zona analógica sensible:} Aloja el circuito de carga
+    (\textit{burden}), el divisor resistivo DC Bias ($+1.65\,\text{V}$) desacoplado
+    con condensador de polipropileno y el amplificador operacional LM358 configurado
+    como seguidor de tensión con pista de guarda (\textit{guard ring}).
+    \item \textbf{Zona digital de procesamiento:} Concentra el microcontrolador
+    STM32F411, el resonador cerámico de cuarzo de alta precisión (HSE de 25~MHz)
+    y las líneas de comunicación SPI hacia el acelerómetro.
+    \item \textbf{Zona de interfaz de potencia y comunicaciones:} Contiene el
+    transceptor RS-485, el regulador reductor de tensión (\textit{buck converter})
+    y las borneras de tornillo industriales con protección ESD mediante diodos
+    TVS (\textit{Transient Voltage Suppressor}) bidireccionales en paralelo.
+\end{enumerate}
+
+La unión entre la masa analógica (AGND) y la masa digital (DGND) se realiza en un
+único punto geográfico en estrella (\textit{star grounding}) situado inmediatamente
+debajo del terminal analógico de tierra del microcontrolador, eliminando bucles de
+tierra cerrados (\textit{ground loops}) y asegurando que las corrientes digitales
+no atraviesen la referencia analógica del ADC.
 
 
