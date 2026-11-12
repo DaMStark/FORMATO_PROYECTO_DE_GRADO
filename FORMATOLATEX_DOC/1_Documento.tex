@@ -454,8 +454,8 @@ Cf. \printnames[][-\value{listtotal}]{labelname}
 %-------------------------------------
 
 % Reduce itemize space
-\let\olditemize\itemize
-\def\itemize{\olditemize\itemsep=-1pt }
+%\let\olditemize\itemize
+%\def\itemize{\olditemize\itemsep=-1pt }
 \setlist[itemize]{noitemsep, topsep=-1pt}
 
 % Evita que imágenes menores a 80% del total de la hoja se queden solas
@@ -474,9 +474,9 @@ Cf. \printnames[][-\value{listtotal}]{labelname}
 % \acrfull{lcm} -> Greatest Common Divisor (GCD)
 
 %\setglossarystyle{long}% puede cambiar
-%\newglossary[slg]{symbols}{not}{ntn}{Symbols}   %crea el tipo symbols en los glosarios
-%\makeglossaries
-%\input{Glosario.tex}
+\newglossary[slg]{symbols}{not}{ntn}{Symbols}   %crea el tipo symbols en los glosarios
+\makeglossaries
+\input{Glosario.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DATOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -515,13 +515,13 @@ de corte en tornos CNC industriales en MAINSA}
 \newcommand{\carrera}{Ingeniería Mecatrónica}
 
 % Tipo de titulación
-\newcommand{\titulacion}{Perfil de Proyecto de Grado}
+\newcommand{\titulacion}{Proyecto de Grado}
 
 % Grado Académico
 \newcommand{\grado}{Licenciatura}
 
 % Fecha
-\date{Octubre de 2026}
+\date{Noviembre de 2026}
 
 
 %----------------Comentarios y Sugerencias---------------------------- 
@@ -564,7 +564,7 @@ de corte en tornos CNC industriales en MAINSA}
 
 
     \input{2_Caratula.tex}
-    % \input{3_Dedicatorias.tex} % Excluido para presentación de Perfil de Grado
+    \input{3_Dedicatorias.tex}
     
     % Asegurar pagestyle empty para todos los preliminares
     \pagestyle{empty}
@@ -574,7 +574,7 @@ de corte en tornos CNC industriales en MAINSA}
     \setlength{\parskip}{4mm}       % Entre párrafos
     \setstretch{1.4}                % Interlineado CORRECTO
     
-    % \input{4_Resumen.tex}          % Excluido: el Perfil de Grado no incluye Resumen/Abstract
+    \input{4_Resumen.tex}
     
     % Índice General
     \newpage
@@ -599,22 +599,27 @@ de corte en tornos CNC industriales en MAINSA}
     \listoftables
     \thispagestyle{empty}
 
-    % Estilo de hoja para el cuerpo del perfil
+    % Índice de símbolos
+    \newpage
+    \glsaddall
+    \printglossary[type=symbols, title={\normalsize\centerline{\textbf{ÍNDICE DE SÍMBOLOS}}}]
+    \thispagestyle{empty}
+
+    % Glosario de acrónimos
+    \newpage
+    \printglossary[type=\acronymtype, title={\normalsize\centerline{\textbf{GLOSARIO DE ACRÓNIMOS}}}]
+    \thispagestyle{empty}
+
+    % Estilo de hoja para el cuerpo formal
     \newpage
     \pagestyle{fancy}
 
-    \input{1_Seccion_Introduccion.tex}
-    \input{2_Seccion_Antecedentes.tex}
-    \input{3_Seccion_Planteamiento_Problema.tex}
-    \input{4_Seccion_Objetivo_General.tex}
-    \input{5_Seccion_Objetivos_Especificos.tex}
-    \input{6_Seccion_Alcances_Limites.tex}
-    \input{7_Seccion_Justificacion.tex}
-    \input{8_Seccion_Fundamento_Teorico.tex}
-    \input{9_Seccion_Propuesta_Metodologica.tex}
-    \input{10_Seccion_Presupuesto.tex}
-    \input{11_Seccion_Cronograma.tex}
-    \input{12_Seccion_Temario_Tentativo.tex}
+    \input{5_Introduccion.tex}
+    \input{6_Marco_Teorico.tex}
+    \input{7_Marco_Metodologico.tex}
+    %\input{8_Marco_Practico.tex}
+    %\input{9_Conclusiones.tex}
+    %\input{10_Recomendaciones.tex}
 
     % Bibliografía
     \newpage

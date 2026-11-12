@@ -1,11 +1,10 @@
 \babel@toc {spanish}{}\relax 
 \thispagestyle {empty}
-\contentsline {figure}{\numberline {1}{\ignorespaces Árbol de problemas del proceso de torneado CNC en MAINSA}}{17}{figure.caption.1}%
-\contentsline {figure}{\numberline {2}{\ignorespaces Cinemática del proceso de torneado cilíndrico y descomposición vectorial de las fuerzas de mecanizado}}{34}{figure.caption.3}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Morfología de los tipos de desgaste en la herramienta de corte y parámetros dimensionales de desgaste de flanco según ISO 3685}}{36}{figure.caption.4}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Esquema circuital del acondicionamiento analógico para sensor SCT-013 y forma de onda con desplazamiento de offset continuo}}{42}{figure.caption.6}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Arquitectura y flujo secuencial de procesamiento de señales e inferencia Edge AI (TinyML) implementada en el sistema}}{45}{figure.caption.7}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Clasificador LED por niveles de desgaste de flanco: escala cromática de cinco niveles y umbrales normativos $VB$ según ISO 3685}}{47}{figure.caption.8}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Plataformas embebidas para inferencia Edge AI: (a) STM32F411 seleccionada y (b) ESP32-S3 descartada para control}}{50}{figure.caption.11}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Sensor acelerómetro digital MEMS triaxial ADXL345: (a) Módulo físico para encapsulado estanco IP67 y (b) Ejes ortogonales de sensibilidad triaxial (+X, +Y, +Z) vinculados a la cinemática de torneado}}{50}{figure.caption.12}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Cronograma de actividades por objetivo específico (Gestión 2026 -- 2027)}}{74}{figure.caption.17}%
+\contentsline {figure}{\numberline {1}{\ignorespaces Árbol de problemas del proceso de torneado CNC en MAINSA}}{20}{figure.caption.6}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Cinemática del proceso de torneado cilíndrico y descomposición vectorial de las fuerzas de mecanizado}}{35}{figure.caption.20}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Morfología de los tipos de desgaste en la herramienta de corte y parámetros dimensionales de desgaste de flanco según ISO 3685}}{37}{figure.caption.21}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Esquema circuital del acondicionamiento analógico para sensor SCT-013 y forma de onda con desplazamiento de offset continuo}}{43}{figure.caption.23}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Arquitectura y flujo secuencial de procesamiento de señales e inferencia Edge AI (TinyML) implementada en el sistema}}{51}{figure.caption.24}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Plataformas embebidas para inferencia Edge AI: (a) STM32F411 seleccionada y (b) ESP32-S3 descartada para control}}{55}{figure.caption.26}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Sensor acelerómetro digital MEMS triaxial ADXL345: (a) Módulo físico para encapsulado estanco IP67 y (b) Ejes ortogonales de sensibilidad triaxial (+X, +Y, +Z) vinculados a la cinemática de torneado}}{55}{figure.caption.27}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Clasificador LED por niveles de desgaste de flanco: escala cromática de cinco niveles y umbrales normativos $VB$ según ISO 3685}}{59}{figure.caption.29}%
