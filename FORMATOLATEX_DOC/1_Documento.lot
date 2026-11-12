@@ -5,9 +5,11 @@
 \contentsline {table}{\numberline {3}{\ignorespaces Indicadores de logro y medios de verificación por objetivo específico}}{23}{table.3}%
 \contentsline {table}{\numberline {4}{\ignorespaces Matriz comparativa de alcances y límites del proyecto}}{28}{table.caption.2}%
 \contentsline {table}{\numberline {5}{\ignorespaces Matriz de trazabilidad entre objetivos específicos, acciones y fundamento teórico}}{31}{table.5}%
-\contentsline {table}{\numberline {6}{\ignorespaces Comparativa de variables físicas para monitoreo indirecto de herramientas (TCM)}}{38}{table.caption.5}%
-\contentsline {table}{\numberline {7}{\ignorespaces Matriz comparativa de tecnologías candidatas para instrumentación y procesamiento embebido}}{46}{table.7}%
-\contentsline {table}{\numberline {8}{\ignorespaces Comparativa de marcos de trabajo TinyML evaluados para el sistema de monitoreo de desgaste de herramienta}}{49}{table.8}%
-\contentsline {table}{\numberline {9}{\ignorespaces Matriz de consistencia metodológica del proyecto}}{64}{table.9}%
-\contentsline {table}{\numberline {10}{\ignorespaces Presupuesto detallado para la implementación industrial del caso ideal (en \$USD)}}{71}{table.caption.11}%
-\contentsline {table}{\numberline {11}{\ignorespaces Estructura de financiamiento y recursos de contraparte del proyecto}}{72}{table.caption.12}%
+\contentsline {table}{\numberline {6}{\ignorespaces Comparativa de variables físicas para monitoreo indirecto de herramientas (TCM)}}{39}{table.caption.5}%
+\contentsline {table}{\numberline {7}{\ignorespaces Protocolo operativo de señalización visual LED según niveles de desgaste ISO 3685}}{48}{table.caption.9}%
+\contentsline {table}{\numberline {8}{\ignorespaces Matriz comparativa de tecnologías candidatas para instrumentación y procesamiento embebido}}{49}{table.caption.10}%
+\contentsline {table}{\numberline {9}{\ignorespaces Comparativa de marcos de trabajo TinyML evaluados para el sistema de monitoreo de desgaste de herramienta}}{51}{table.caption.13}%
+\contentsline {table}{\numberline {10}{\ignorespaces Estructura de la trama de telemetría industrial transmitida mediante RS-485}}{58}{table.caption.14}%
+\contentsline {table}{\numberline {11}{\ignorespaces Matriz de consistencia metodológica del proyecto}}{63}{table.11}%
+\contentsline {table}{\numberline {12}{\ignorespaces Presupuesto detallado para la implementación industrial del caso ideal (en \$USD)}}{70}{table.caption.15}%
+\contentsline {table}{\numberline {13}{\ignorespaces Estructura de financiamiento y recursos de contraparte del proyecto}}{71}{table.caption.16}%
