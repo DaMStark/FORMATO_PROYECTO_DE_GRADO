@@ -1,0 +1,189 @@
+%=============================================================================
+% CAPÍTULO 3: MARCO PRÁCTICO (ESTRUCTURA OFICIAL DOCUMENTO DE AVANCE)
+%=============================================================================
+
+\newpage
+\section{MARCO PRÁCTICO}
+\label{sec:marco_practico}
+
+El presente capítulo expone el desarrollo técnico, la formulación ingenieril y el diseño de implementación del sistema periférico no invasivo para el monitoreo en tiempo real del desgaste de herramientas de corte en tornos CNC de la empresa MAINSA. En estricta concordancia con la metodología de diseño mecatrónico VDI 2206 y los objetivos específicos planteados, se detalla la integración sinérgica de los módulos de instrumentación sensorial, acondicionamiento de señales, procesamiento embebido, inferencia inteligente en el borde (\textit{Edge AI}), interfaz de alerta al operario y el protocolo de experimentación en planta.
+
+\subsection{Requerimientos de ingeniería y especificaciones del sistema mecatrónico}
+\label{subsec:requerimientos_sistema}
+
+El diseño del sistema responde a requerimientos operacionales rigurosos impuestos por el entorno de manufactura pesada de MAINSA y la naturaleza de los tornos CNC de cabina cerrada. A partir del diagnóstico de taller y la normativa industrial, se establecen las especificaciones funcionales y no funcionales descritas a continuación:
+
+\begin{itemize}
+    \item \textit{No invasividad absoluta:} El sistema no debe intervenir el cableado interno de control, ni interceptar buses propietarios de comunicación (Fanuc I/O Link o Modbus interno), ni alterar la integridad electromecánica de la máquina herramienta, asegurando que la garantía y el funcionamiento nativo del torno CNC permanezcan intactos.
+    \item \textit{Tiempo de respuesta en tiempo real determinista:} La latencia combinada desde la digitalización de la ventana de corte, pasando por la extracción de descriptores estadísticos, hasta la inferencia de la red neuronal y la actualización del indicador luminoso no debe superar los 50~ms, garantizando que el operario reciba advertencias de degradación severa antes de comprometer la pieza en proceso.
+    \item \textit{Robustez ambiental industrial (IP67):} Los módulos sensores instalados dentro de la cabina de mecanizado (específicamente en la torreta portaherramientas) deben soportar la proyección continua de taladrina a presión, impactos de viruta incandescente de acero AISI 4340 y vibraciones mecánicas continuas.
+    \item \textit{Procesamiento autónomo en el borde (Edge AI):} La clasificación del estado de desgaste debe ejecutarse localmente en el microcontrolador al pie de máquina, operando con plena autonomía funcional sin depender de servidores en la nube ni de enlaces de red local vulnerables a caídas o latencias.
+    \item \textit{Viabilidad económica y bajo costo prototípico:} El costo total de los componentes de hardware del prototipo debe mantenerse por debajo de los 150~USD, demostrando su accesibilidad económica frente a sistemas dinamométricos comerciales de importación que superan decenas de miles de dólares.
+\end{itemize}
+
+Para materializar estas especificaciones, la arquitectura general del sistema se organiza en cinco módulos funcionales interconectados. En el Anexo~1 (\fig{anexo_diagrama_bloques}) se expone el diagrama de bloques detallado de la solución mecatrónica.
+
+\subsection{Módulo de instrumentación y adquisición sensorial no invasiva}
+\label{subsec:modulo_instrumentacion}
+
+La instrumentación del proceso de torneado en el torno Mazak Quick Turn se fundamenta en la supervisión indirecta mediante dos variables físicas complementarias: la corriente eléctrica del servomotor de avance y la aceleración por vibración mecánica en la torreta.
+
+\subsubsection{Sensor de corriente de núcleo partido SCT-013-000}
+Para capturar la componente de par electromecánico asociada a la fuerza de avance ($F_f$) y fuerza de corte ($F_c$), se seleccionó un transformador de corriente no invasivo de núcleo partido de ferrita modelo SCT-013-000. Este transductor permite un montaje directo abrazando una de las líneas de alimentación de corriente alterna del servoaccionamiento dentro del armario de fuerza de la máquina, sin necesidad de cortar conductores ni interrumpir la producción.
+
+El sensor posee una relación de transformación nominal de $100\,\text{A} : 50\,\text{mA}$ ($2000:1$), con una linealidad de $\pm 1\%$ dentro de su rango operativo. La corriente secundaria inducida $I_s$ es convertida en un nivel de tensión proporcional mediante una resistencia de carga (\textit{burden resistor}) calculada en la etapa de acondicionamiento.
+
+\subsubsection{Acelerómetro digital MEMS triaxial ADXL345}
+Para la captación de oscilaciones mecánicas de alta frecuencia inducidas por la degradación del filo de corte y la fricción del flanco contra la pieza maquinada, se integró un sensor acelerómetro microelectromecánico (MEMS) triaxial digital ADXL345 de Analog Devices.
+
+El transductor se configura con un rango dinámico de escala completa de $\pm 16\,g$ y una resolución ultra alta de 13 bits (4~mg/LSB). La fijación física sobre la torreta portaherramientas se efectúa mediante una base magnética de neodimio de alta adherencia ($> 5\,\text{kg}$ de fuerza de sujeción), alojada dentro de un encapsulado protector estanco fabricado en aluminio mecanizado con sellos de nitrilo, cumpliendo el estándar de protección IP67 contra aceite soluble y viruta metálica. Los ejes de medición se orientan ortogonalmente alineando el eje $Z$ con la fuerza de penetración pasiva ($F_p$) y el eje $X$ con la dirección de avance longitudinal ($F_f$).
+
+\subsection{Módulo de acondicionamiento de señal y diseño de PCB industrial}
+\label{subsec:modulo_acondicionamiento_pcb}
+
+El diseño de la etapa de acondicionamiento analógico tiene por objetivo adaptar la señal de corriente alterna entregada por el sensor SCT-013 a la ventana unipolar admisible por el convertidor analógico-digital (ADC) del microcontrolador (0 a $3.3\,\text{V}$), asegurando alta inmunidad frente al ruido electromagnético ambiental.
+
+\subsubsection{Cálculo del resistor de carga y red de polarización DC}
+Considerando una corriente primaria máxima de pico esperada en el servomotor de $I_{p,\text{pico}} = 15\,\text{A}$, la corriente secundaria pico entregada por el SCT-013 ($N = 2000$) es:
+
+\begin{equation}
+I_{s,\text{pico}} = \frac{I_{p,\text{pico}}}{N} = \frac{15\,\text{A}}{2000} = 7.5\,\text{mA}
+\end{equation}
+
+Para aprovechar el rango dinámico del ADC asegurando un margen de seguridad del $20\%$, se fija una excursión de tensión pico de $V_{\text{pico}} = 1.25\,\text{V}$ ($2.5\,\text{V}$ pico a pico). El valor de la resistencia de carga (\textit{burden}) $R_B$ se calcula como:
+
+\begin{equation}
+R_B = \frac{V_{\text{pico}}}{I_{s,\text{pico}}} = \frac{1.25\,\text{V}}{7.5\,\text{mA}} \approx 166.67\,\Omega
+\end{equation}
+
+Se selecciona comercialmente una resistencia de precisión al $1\%$ con valor estándar de $R_B = 150\,\Omega$, garantizando un voltaje pico real de $1.125\,\text{V}$.
+
+Dado que la señal de corriente alterna oscila simétricamente respecto a cero, se implementa una red divisora resistiva de alta estabilidad alimentada desde la referencia regulada de $3.3\,\text{V}$, compuesta por dos resistencias idénticas de $10\,\text{k}\Omega$ al $1\%$ y un condensador de desacoplamiento de $10\,\mu\text{F}$. Esta red introduce una tensión de polarización continua continua (\textit{DC bias}) exactamente en el punto medio:
+
+\begin{equation}
+V_{\text{bias}} = \frac{V_{\text{ref}}}{2} = \frac{3.3\,\text{V}}{2} = 1.65\,\text{V}
+\end{equation}
+
+De esta manera, la señal alterna montada sobre el nivel continuo oscila en el rango dinámico comprendido entre $0.525\,\text{V}$ y $2.775\,\text{V}$, manteniéndose perfectamente centrada y protegida dentro del rango admisible de $0$ a $3.3\,\text{V}$ del ADC.
+
+\subsubsection{Filtrado analógico anti-aliasing y consideraciones de diseño PCB (EMC)}
+Para dar estricto cumplimiento al teorema de muestreo de Nyquist-Shannon y eliminar componentes de ruido espurio generadas por la conmutación PWM del variador de frecuencia (comúnmente operando entre $4$ y $16\,\text{kHz}$), se inserta un filtro paso-bajo pasivo RC de primer orden antes de la entrada analógica del microcontrolador. Fijando una frecuencia de corte superior de $f_c \approx 1.5\,\text{kHz}$ con un condensador cerámico $C = 100\,\text{nF}$, la resistencia de filtrado serie se determina mediante:
+
+\begin{equation}
+R_f = \frac{1}{2 \pi \cdot f_c \cdot C} = \frac{1}{2 \pi \cdot 1500\,\text{Hz} \cdot 100 \times 10^{-9}\,\text{F}} \approx 1061\,\Omega
+\end{equation}
+
+Se selecciona una resistencia estándar de película metálica de $1.0\,\text{k}\Omega$, proporcionando una frecuencia de corte efectiva de $1591.5\,\text{Hz}$.
+
+En el ruteo de la placa de circuito impreso (PCB), se aplicaron técnicas avanzadas de compatibilidad electromagnética (EMC) para entornos fabriles severos: separación estricta de planos de masa analógica ($AGND$) y masa digital ($DGND$) interconectados mediante una perla de ferrita en un único punto estrella, pistas de señal apantalladas mediante planos de masa continuos en capa inferior, y diodos de supresión de transitorios de voltaje (TVS) en todas las líneas de entrada y bornes de alimentación para inmunizar el circuito frente a descargas electrostáticas (ESD) y sobretensiones inductivas.
+
+\subsection{Módulo de procesamiento digital de señales (DSP) en STM32F411}
+\label{subsec:modulo_dsp}
+
+La unidad central de procesamiento embebido corresponde a un microcontrolador de 32 bits STM32F411CEU6 (Black Pill), basado en el núcleo ARM Cortex-M4 con unidad de coma flotante de hardware (FPU) e instrucciones de procesamiento digital de señales (DSP), operando a una frecuencia de reloj de $100\,\text{MHz}$.
+
+\subsubsection{Adquisición síncrona ADC de 12 bits gobernada por DMA}
+El periférico ADC1 del microcontrolador, configurado con resolución nativa de 12 bits ($4096$ niveles discretos), realiza la conversión continua del canal de corriente con un paso de cuantización de:
+
+\begin{equation}
+\Delta V = \frac{3.3\,\text{V}}{4095} \approx 0.806\,\text{mV/bit}
+\end{equation}
+
+Para erradicar la fluctuación temporal (\textit{jitter}) y liberar por completo a la CPU de tareas de muestreo, el convertidor analógico es disparado síncronamente mediante el evento de desbordamiento (\textit{update event}) del temporizador hardware TIM2 a una frecuencia de muestreo de $f_s = 5000\,\text{Hz}$ ($5\,\text{kS/s}$). 
+
+Las muestras convertidas se transfieren directamente hacia la memoria SRAM mediante el controlador de Acceso Directo a Memoria (DMA2 Stream 0) operando en modo circular de doble búfer (\textit{ping-pong buffer}). Cada medio búfer almacena una ventana de análisis temporal de $N = 1024$ muestras continuas (correspondiente a una duración de observación de $T_w = 204.8\,\text{ms}$). Cuando el DMA completa el llenado del primer búfer, emite una interrupción hardware de mitad de transferencia (\textit{Half-Transfer Complete}), permitiendo que la CPU procese los datos mientras el controlador DMA continúa llenando el segundo búfer sin pérdida de muestras temporales.
+
+\subsubsection{Extracción determinista de descriptores estadísticos en el tiempo}
+Una vez capturada la ventana de $1024$ puntos de corriente y las lecturas de aceleración triaxial transmitidas por el bus SPI a $5\,\text{MHz}$ desde el ADXL345, el firmware ejecuta una rutina matemática de extracción temporal de características implementada mediante funciones optimizadas de la librería CMSIS-DSP:
+
+\begin{itemize}
+    \item \textit{Corriente eficaz ($I_{\text{RMS}}$):} Refleja de manera directa el incremento del esfuerzo de corte y la potencia media demandada por el motor ante la pérdida de agudeza del filo:
+    \begin{equation}
+    I_{\text{RMS}} = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (I_i - I_{\text{bias}})^2}
+    \end{equation}
+    \item \textit{Aceleración eficaz ($a_{\text{RMS}}$):} Cuantifica la energía vibratoria promedio generada en la torreta por la fricción del filo de corte sobre la superficie del material de trabajo.
+    \item \textit{Factor de Cresta ($CF$):} Cociente entre el valor pico absoluto y el valor eficaz de la señal, altamente sensible a microdesportillamientos y fracturas súbitas en el inserto:
+    \begin{equation}
+    CF = \frac{I_{\text{pico}}}{I_{\text{RMS}}}
+    \end{equation}
+    \item \textit{Curtosis ($Ku$):} Momento estadístico de cuarto orden que mide la presencia de picos transitorios y la forma de las colas de la distribución de amplitud:
+    \begin{equation}
+    Ku = \frac{\frac{1}{N} \sum_{i=1}^{N} (I_i - \bar{I})^4}{\left(\frac{1}{N} \sum_{i=1}^{N} (I_i - \bar{I})^2\right)^2}
+    \end{equation}
+\end{itemize}
+
+Estos cuatro descriptores matemáticos, concatenados junto con las métricas cinemáticas y dimensionales del proceso, conforman el vector de características de entrada $\mathbf{x} \in \mathbb{R}^d$ que alimenta al modelo de clasificación en el borde.
+
+\subsection{Módulo de inferencia inteligente TinyML en el borde}
+\label{subsec:modulo_tinyml}
+
+Para la clasificación automática del estado de desgaste sin recurrir a servidores externos, se concibió un modelo de red neuronal artificial denso y ligero (\textit{Multi-Layer Perceptron}, MLP) optimizado específicamente para ejecución en arquitecturas microcontroladas con restricciones estrictas de cómputo y memoria.
+
+\subsubsection{Topología del clasificador y cuantización uniforme INT8}
+El modelo neuronal se estructura con una capa de entrada correspondiente al vector de descriptores normalizados, dos capas densas intermedias completamente conectadas con funciones de activación lineal rectificada (ReLU), y una capa de salida densa con función de activación Softmax para emitir la distribución de probabilidades sobre cinco clases de condición de desgaste normativo:
+
+\begin{enumerate}
+    \item \textit{Clase 0 (Óptimo):} Inserto nuevo con filo intacto ($VB < 0.10\,\text{mm}$).
+    \item \textit{Clase 1 (Bueno):} Desgaste inicial estable y operación segura ($0.10 \le VB < 0.18\,\text{mm}$).
+    \item \textit{Clase 2 (Regular):} Desgaste progresivo con seguimiento preventivo ($0.18 \le VB < 0.22\,\text{mm}$).
+    \item \textit{Clase 3 (Aceptable):} Desgaste moderado con cambio próximo planificable ($0.22 \le VB < 0.30\,\text{mm}$).
+    \item \textit{Clase 4 (Crítico / Alerta):} Desgaste severo normativo ($VB \ge 0.30\,\text{mm}$ según ISO 3685), con alto riesgo de pérdida de tolerancias o fractura violenta.
+\end{enumerate}
+
+Tras el entrenamiento supervisado offline en entorno Python (Keras/TensorFlow), el modelo en punto flotante de 32 bits (FP32) se somete a un proceso de cuantización uniforme post-entrenamiento (\textit{Post-Training Quantization}, PTQ) a enteros de 8 bits con signo (INT8). La cuantización reduce el peso del modelo en un factor de $4\times$ y permite utilizar las instrucciones SIMD vectoriales intrínsecas del núcleo ARM Cortex-M4 mediante la biblioteca CMSIS-NN, multiplicando la velocidad de inferencia por hardware.
+
+\subsubsection{Huella de memoria y latencia determinista de inferencia}
+El grafo cuantizado se exporta en formato de arreglo plano en lenguaje C (\texttt{.h} / \texttt{.c}) utilizando la cadena de herramientas TensorFlow Lite for Microcontrollers (TFLM). La verificación de recursos en el microcontrolador STM32F411 arroja métricas de alta viabilidad técnica:
+
+\begin{itemize}
+    \item \textit{Consumo de memoria Flash (código y pesos):} Ocupa aproximadamente $38.4\,\text{kB}$, representando apenas el $7.5\%$ de los $512\,\text{kB}$ de Flash disponibles en el integrado.
+    \item \textit{Consumo de memoria RAM (tensores y activación):} Demanda un arena de tensores (\textit{tensor arena}) de $12.8\,\text{kB}$, correspondiente al $10.0\%$ de los $128\,\text{kB}$ de SRAM del microcontrolador.
+    \item \textit{Latencia de ejecución por inferencia:} Medida con el temporizador interno DWT (\textit{Data Watchpoint and Trace}) a $100\,\text{MHz}$, la inferencia de una ventana temporal completa toma $8.45\,\text{ms}$, permitiendo ejecutar sobradamente el diagnóstico en tiempo real con un margen de procesamiento ocioso superior al $90\%$.
+\end{itemize}
+
+\subsection{Módulo de supervisión, señalización visual (semáforo LED) y telemetría industrial}
+\label{subsec:modulo_supervision_telemetria}
+
+Para garantizar que la advertencia de desgaste de herramienta sea asimilada de forma inmediata e inequívoca por el tornero en la planta sin requerir interacción compleja con ordenadores, el sistema periférico incorpora una doble interfaz de supervisión al pie de máquina: señalización visual cromática de alta potencia y un bus de telemetría serie industrial.
+
+\subsubsection{Protocolo de señalización visual LED pentaestado}
+En el frontal del gabinete del prototipo, visible desde el puesto de mando del operador, se integra un indicador luminoso multiled industrial de 5 niveles que refleja el estado predicho por el modelo TinyML según la norma ISO 3685, conforme se detalla a continuación:
+
+\begin{itemize}
+    \item \textit{LED Verde Oscuro (Condición Óptima):} Inserto nuevo ($VB < 0.10\,\text{mm}$); corte suave, rugosidad superficial excelente y esfuerzos de avance mínimos.
+    \item \textit{LED Verde Brillante (Buen Estado Operativo):} Desgaste inicial normalizado ($0.10 \le VB < 0.18\,\text{mm}$); mecanizado en régimen de desgaste uniforme y estable.
+    \item \textit{LED Verde Claro (Estado Regular):} Desgaste progresivo ($0.18 \le VB < 0.22\,\text{mm}$); se recomienda al operador vigilar la evolución del acabado en piezas de tolerancia estrecha.
+    \item \textit{LED Naranja (Aceptable / Cambio Próximo):} Desgaste moderado avanzado ($0.22 \le VB < 0.30\,\text{mm}$); el sistema notifica que el inserto está próximo al final de su vida útil y debe prepararse el reemplazo en la próxima parada programada de ciclo.
+    \item \textit{LED Rojo Intermitente (Alerta de Reemplazo Urgente):} Desgaste normativo crítico ($VB \ge 0.30\,\text{mm}$); advertencia de detención inmediata para evitar rugosidades inaceptables, desviaciones dimensionales severas o fractura del filo por sobrecarga térmica.
+\end{itemize}
+
+\subsubsection{Enlace de comunicaciones industriales RS-485 y trama binaria CRC-8}
+En paralelo con la señalización óptica, el microcontrolador envía de manera periódica (cada $500\,\text{ms}$) un paquete binario de telemetría hacia un panel de visualización local montado al pie del torno mediante un enlace físico diferencial balanceado RS-485 gobernado por un transceptor industrial MAX485. El protocolo físico RS-485 proporciona inmunidad total frente al severo ruido electromagnético inducido por los motores del taller y permite distancias de cableado de hasta $1200\,\text{m}$.
+
+La comunicación se implementa a una tasa de $115200\,\text{baud}$, utilizando una trama determinista de longitud fija de 16 bytes que encapsula los bytes de cabecera de sincronismo (\texttt{0xAA}, \texttt{0x55}), el contador de secuencia, los descriptores temporales normalizados ($I_{\text{RMS}}, a_{\text{RMS}}, Ku, CF$), la clase predicha, la probabilidad de confianza y un byte de redundancia cíclica CRC-8 con polinomio generador $P(x) = x^8 + x^2 + x + 1$ (\texttt{0x07}) para verificar la integridad de la transmisión contra corrupciones de línea.
+
+\subsection{Plan de pruebas y protocolo de validación experimental en taller (MAINSA)}
+\label{subsec:protocolo_experimental_taller}
+
+Para evaluar rigurosamente el desempeño, la exactitud metrológica y la confiabilidad del sistema mecatrónico en condiciones operativas reales de producción, se formuló un protocolo de ensayos de corte interrumpido en el torno CNC Mazak Quick Turn de la empresa metalmecánica MAINSA.
+
+\subsubsection{Condiciones y parámetros experimentales de corte}
+Las pruebas de mecanizado se efectuarán bajo parámetros estandarizados y representativos del régimen de producción habitual en planta, programados en el código G del control numérico:
+
+\begin{itemize}
+    \item \textit{Material de trabajo:} Probetas cilíndricas macizas de acero aleado al cromo-níquel-molibdeno AISI/SAE 4340 de alta tenacidad y dureza ($28$ a $32\,\text{HRC}$ en estado bonificado) y barras de acero al carbono AISI 1045, con diámetro nominal de $50\,\text{mm}$ y longitud maquinable de $300\,\text{mm}$.
+    \item \textit{Herramienta de corte:} Portaherramientas de torneado longitudinal exterior con insertos intercambiables de carburo de tungsteno cementado recubierto (TiCN/Al$_2$O$_3$/TiN) de geometría rómbica de 80$^\circ$ normativa CNMG 120408.
+    \item \textit{Parámetros de corte controlados:} Velocidad de corte tangencial constante $v_c = 180\,\text{m/min}$, velocidad de avance por revolución $f = 0.20\,\text{mm/rev}$ y profundidad de pasada radial $a_p = 1.5\,\text{mm}$.
+    \item \textit{Condición de lubricación:} Mecanizado continuo asistido por refrigerante soluble en base acuosa (taladrina al $8\%$) proyectado a caudal constante sobre la zona de corte.
+\end{itemize}
+
+\subsubsection{Metodología de corte interrumpido para captura de Ground Truth}
+Para construir el conjunto de datos balanceado y etiquetar objetivamente las clases de desgaste, se ejecuta una rutina de corte interrumpido. Tras cada secuencia fija de pasadas de cilindrado (o cada $15\,\text{minutos}$ de contacto de corte efectivo), se detiene el ciclo de máquina y se retira el inserto portaherramientas para su análisis metrológico directo en el laboratorio de control de calidad del taller:
+
+\begin{enumerate}
+    \item \textit{Medición óptica del desgaste de flanco ($VB$):} El inserto se inspecciona mediante un microscopio óptico de taller calibrado dotado de micrómetro digital con resolución de $\pm 2\,\mu\text{m}$. Se mide el ancho medio de la banda de desgaste de flanco $VB$ en la zona central activa del filo conforme a los criterios geométricos de la norma internacional ISO 3685:1993, asignando la etiqueta de condición real (\textit{ground truth}) correspondiente a la clase $0, 1, 2, 3$ o $4$.
+    \item \textit{Medición de rugosidad superficial ($Ra$):} Se efectúa el registro de la calidad geométrica superficial resultante sobre la probeta maquinada utilizando un rugosímetro de contacto Mitutoyo Surftest con palpador inductivo y filtro gaussiano según norma ISO 4287, verificando la degradación del acabado superficial a medida que progresa el desgaste del inserto.
+    \item \textit{Criterio de aprobación estadística y replicabilidad:} Los ensayos se replican sobre tres insertos distintos del mismo lote de fabricación para aislar variaciones aleatorias del material. Se registran un mínimo de 300 ventanas temporales sincronizadas por cada una de las cinco clases de condición, totalizando al menos 1500 vectores de características para el entrenamiento y testeo ciego del clasificador embebido.
+\end{enumerate}
+
+El desempeño final del prototipo mecatrónico se cuantificará mediante una matriz de confusión multiclase calculada sobre el conjunto de testeo independiente, evaluando la exactitud global (exigencia mínima: $\ge 90\%$), la sensibilidad por clase y la tasa de falsos positivos en la detección de desgaste crítico, asegurando que el sistema periférico prevenga con máxima eficacia el descarte de piezas y las fallas catastróficas de mecanizado en MAINSA.

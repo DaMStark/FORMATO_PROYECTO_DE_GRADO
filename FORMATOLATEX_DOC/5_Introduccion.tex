@@ -1,14 +1,13 @@
-% No modificar estas líneas de código, por favor dirigirse a INTRODUCCIÓN 
+%=============================================================================
+% CAPÍTULO 1: GENERALIDADES (ESTRUCTURA OFICIAL DOCUMENTO DE AVANCE)
+%=============================================================================
+
 \newpage
-\phantomsection\addcontentsline{toc}{section}{INTRODUCCIÓN} 
+\section{GENERALIDADES}
+\label{sec:generalidades}
 
-%------------------------
-%
-%       INTRODUCCIÓN
-%
-%------------------------
-
-\section*{INTRODUCCIÓN}
+\subsection{Introducción}
+\label{subsec:introduccion}
 
 En los procesos de manufactura moderna, el mecanizado por arranque de viruta mediante tornos de Control Numérico Computarizado (CNC) representa una de las operaciones más críticas y demandadas para la fabricación de componentes de alta precisión. Dentro de este proceso, la herramienta de corte es el elemento primario que interactúa directamente con el material de trabajo, estando sometida continuamente a severos esfuerzos mecánicos, elevadas temperaturas y fricción dinámica. Como consecuencia natural de esta interacción termomecánica, los insertos experimentan una degradación progresiva en la geometría de su filo.
 
@@ -18,12 +17,12 @@ Frente a estas limitaciones operativas, el desarrollo de sistemas de Monitoreo d
 
 En este contexto tecnológico, el presente proyecto de grado tiene como propósito diseñar e implementar un sistema periférico no invasivo de monitoreo de condición para tornos CNC, integrando adquisición de señales de corriente y vibración, procesamiento inteligente en el borde (\textit{Edge AI}) y conectividad industrial. La investigación y validación experimental del sistema se desarrollan específicamente en el entorno operativo de la empresa metalmecánica Maestranza San Carlos (MAINSA), adaptando la solución a las exigencias reales de su línea de producción.
 
-\subsection*{Antecedentes}
-\phantomsection\addcontentsline{toc}{subsection}{Antecedentes}
+\subsection{Antecedentes}
+\label{subsec:antecedentes}
 
 El monitoreo de condición de herramientas de corte constituye una estrategia relevante para mejorar la calidad de manufactura. Permite disminuir la generación de piezas defectuosas y reducir paradas no planificadas en máquinas CNC. Dentro de las técnicas indirectas de monitoreo, el análisis de señales eléctricas de los accionamientos representa una alternativa de bajo impacto. Esto permite inferir cambios en la carga de corte sin necesidad de instalar sensores invasivos directamente sobre la herramienta de corte.
 
-En este enfoque, las variaciones de desgaste, pérdida de filo o rotura modifican las fuerzas de mecanizado. En consecuencia, se altera la corriente consumida por el motor del husillo o por los motores de avance. Un antecedente temprano y fundamental de este enfoque es el trabajo de \cite{romero2003}, quienes propusieron detectar la rotura de herramientas en fresadoras CNC. Lograron esto mediante el análisis continuo de la corriente de los accionamientos durante el mecanizado.
+En este enfoque, las variaciones de desgaste, pérdida de filo o rotura modifican las fuerzas de mecanizado. En consecuencia, se altera la corriente consumida por el motor del husillo o por los motores de avance. Un antecedente temprano y fundamental de este enfoque es el trabajo de \cite{romero2003}, quienes propusieron detectar la rotura de herramientas en fresadoras CNC mediante el análisis continuo de la corriente de los accionamientos durante el mecanizado.
 
 Su propuesta permitió identificar eventos asociados a la rotura sin recurrir a dinamómetros ni a sensores de fuerza de alto costo. Además, evitó realizar modificaciones importantes en la estructura mecánica de la máquina, lo que consolidó el uso de señales internas. A este enfoque indirecto y pragmático se le denomina frecuentemente en la literatura como monitoreo \textit{sensorless} o de instrumentación mínima.
 
@@ -37,13 +36,13 @@ Como complemento alternativo, \cite{ramirez2018} desarrollaron un sensor intelig
 
 Este requerimiento visual puede verse afectado negativamente por la presencia de viruta, refrigerante o diversas restricciones físicas de la máquina CNC. Por ello, el monitoreo basado en el análisis de corriente mantiene una ventaja sumamente relevante y pragmática frente a los sistemas ópticos. Destaca de manera especial cuando se busca una implementación robusta de fácil instalación y de muy bajo costo computacional.
 
-La vigencia del monitoreo no invasivo por corriente se confirma fehacientemente con investigaciones recientes que incorporan aprendizaje profundo. \cite{lai2025} propusieron un sistema eficiente basado en señales de corriente del husillo principal. Dichas señales fueron obtenidas con un sensor no invasivo de tipo SCT013 instalado externamente alrededor del cableado, sin intervenir para nada el controlador.
+La vigencia del monitoreo no invasivo por corriente se confirma fehacientemente con investigaciones recientes que incorporan aprendizaje profundo. \cite{lai2025} propusieron un sistema eficiente basado en señales de corriente del husillo principal. Dichas señales fueron obtenidas con un sensor no invasivo de tipo SCT-013 instalado externamente alrededor del cableado, sin intervenir para nada el controlador.
 
-Los autores analizaron las señales mediante la transformada rápida de Fourier y compararon diversos modelos de redes neuronales artificiales (ANN, DNN, CNN). Su objetivo primordial fue clasificar eventos de rotura, logrando detectar graves anomalías con una extraordinaria precisión y destacable rapidez. La utilización de una pinza SCT013 es particularmente pertinente para instrumentación de muy bajo impacto y fácil despliegue.
+Los autores analizaron las señales mediante la transformada rápida de Fourier y compararon diversos modelos de redes neuronales artificiales (ANN, DNN, CNN). Su objetivo primordial fue clasificar eventos de rotura, logrando detectar graves anomalías con una extraordinaria precisión y destacable rapidez. La utilización de una pinza SCT-013 es particularmente pertinente para instrumentación de muy bajo impacto y fácil despliegue.
 
-El sensor SCT013 permite implementar un sistema de adquisición de datos totalmente reversible y seguro para maquinaria heredada sin conectividad nativa. No obstante, el diseño meticuloso del sistema debe considerar rigurosamente el rango nominal de la corriente de trabajo y la frecuencia de muestreo adecuada. También requiere implementar de manera obligatoria un óptimo acondicionamiento de señal para lograr rechazar el elevado ruido eléctrico industrial en planta.
+El sensor SCT-013 permite implementar un sistema de adquisición de datos totalmente reversible y seguro para maquinaria heredada sin conectividad nativa. No obstante, el diseño meticuloso del sistema debe considerar rigurosamente el rango nominal de la corriente de trabajo y la frecuencia de muestreo adecuada. También requiere implementar de manera obligatoria un óptimo acondicionamiento de señal para lograr rechazar el elevado ruido eléctrico industrial en planta.
 
-Por otra parte, \cite{wang2024} propusieron una innovadora metodología de predicción basada estrictamente en la fusión de información multisensorial. El estudio científico integra conjuntamente complejas señales de corriente, niveles de vibración mecánica y medición directa de la fuerza de corte. Esto demuestra fehacientemente que las variables eléctricas y mecánicas siempre logran aportar información complementaria para un diagnóstico holístico.
+Por otra parte, \cite{wang2024} propusieron una innovadora metodología de predicción basada estrictamente en la fusión de información multisensorial. El estudio científico integra conjuntamente señales de corriente, niveles de vibración mecánica y medición directa de la fuerza de corte. Esto demuestra fehacientemente que las variables eléctricas y mecánicas siempre logran aportar información complementaria para un diagnóstico holístico.
 
 Una limitación frecuente de los modelos tradicionales es su drástica disminución de desempeño general cuando cambian drásticamente las condiciones operativas de trabajo. \cite{huang2026} abordaron y resolvieron este problema directamente mediante la estratégica fusión de señales de vibración y corriente. Esta técnica se complementó excepcionalmente con un esquema avanzado de algoritmos de aprendizaje por transferencia completamente supervisado.
 
@@ -53,14 +52,20 @@ Las señales medidas operativamente en una máquina CNC pueden contener elevado 
 
 De una manera bastante similar, el detallado estudio sobre la técnica ICFO-SVMD propuso una prometedora metodología que integra optimización algorítmica y descomposición modal \citep{icfo2026}. El principal objetivo analítico fue lograr procesar señales marcadamente no estacionarias que estaban severamente afectadas por ruido electromagnético de origen industrial. En consecuencia, el presente proyecto aplicará un esquema de procesamiento robusto y fuertemente escalonado por etapas.
 
-Además de requerir una constante mejora algorítmica, la incorporación de novedosa conectividad IoT logra potenciar sustancialmente las actuales capacidades del monitoreo. Permite fundamentalmente que el sistema embebido se convierta rápidamente en una moderna plataforma remota de apoyo a la toma de decisiones. El interesante caso de estudio aplicado de la prestigiosa Universidad de Sheffield se erige como un antecedente sumamente relevante \citep{sheffield2021}.
+Además de requerir una constante mejora algorítmica, la incorporación de conectividad IoT logra potenciar sustancialmente las actuales capacidades del monitoreo. Permite fundamentalmente que el sistema embebido se convierta rápidamente en una moderna plataforma remota de apoyo a la toma de decisiones. El interesante caso de estudio aplicado de la prestigiosa Universidad de Sheffield se erige como un antecedente sumamente relevante \citep{sheffield2021}.
 
-Finalmente, \cite{hamasha2025} propusieron un complejo y completo marco integral tecnológico e industrial de indudable y gran envergadura. Dicho marco funcional articula eficientemente diversos sensores IoT, procesamiento local en el extremo o borde operativo (\textit{Edge AI}), analítica predictiva y monitoreo remoto. El estudio logra identificar cuantiosos beneficios clave como la reducción drástica de latencia y tiempos de respuesta, advirtiendo enormes desafíos en ciberseguridad industrial.
+Finalmente, \cite{hamasha2025} propusieron un completo marco integral tecnológico e industrial de indudable envergadura. Dicho marco funcional articula eficientemente diversos sensores IoT, procesamiento local en el extremo o borde operativo (\textit{Edge AI}), analítica predictiva y monitoreo remoto. El estudio logra identificar cuantiosos beneficios clave como la reducción drástica de latencia y tiempos de respuesta, advirtiendo desafíos en ciberseguridad industrial.
 
-A partir de todos los numerosos antecedentes exhaustivamente revisados, se observa que ya existen sólidas investigaciones consolidadas relativas a detección y fallas. Sin embargo, dichos estudios literarios abordan los diferentes componentes tecnológicos mayoritariamente de manera totalmente independiente y sumamente aislada. Por consiguiente, el gran y ambicioso aporte ingenieril de este proyecto radica en la inusual integración simultánea de estas tecnologías operando en el entorno real de MAINSA.
+A partir de todos los antecedentes exhaustivamente revisados, se observa que ya existen sólidas investigaciones consolidadas relativas a detección y fallas. Sin embargo, dichos estudios literarios abordan los diferentes componentes tecnológicos mayoritariamente de manera totalmente independiente y aislada. Por consiguiente, el aporte ingenieril de este proyecto radica en la integración sinérgica de estas tecnologías operando en el entorno real de MAINSA.
 
-\subsection*{Identificación del problema}%
-\phantomsection\addcontentsline{toc}{subsection}{Identificación del problema}
+\subsection{Planteamiento del problema}
+\label{subsec:planteamiento_problema}
+
+El proceso de mecanizado por desprendimiento de viruta en tornos CNC exige mantener estrictas tolerancias geométricas y rugosidades superficiales. A continuación, se delimita la problemática operacional diagnosticada en el taller de producción.
+
+\subsubsection{Identificación del problema}
+\label{subsubsec:identificacion_problema}
+
 En el sector industrial metalmecánico, los procesos de mecanizado por arranque de viruta mediante tornos de Control Numérico Computarizado (CNC) constituyen una etapa fundamental para la fabricación seriada de componentes cilíndricos de alta precisión dimensional y rigurosa calidad superficial.
 
 En la empresa metalmecánica Maestranza San Carlos (MAINSA), el control del estado y desgaste de los insertos de corte se efectúa de forma manual y empírica. La supervisión depende por completo de inspecciones visuales periódicas en pausas de máquina y del criterio subjetivo del operador, quien evalúa el sonido del corte y el aspecto exterior de la pieza terminada.
@@ -84,31 +89,33 @@ Con el fin de estructurar de manera organizada y visual las causas de origen té
     \label{fig:arbol_de_problemas}
 \end{figure}
 
-\clearpage
+\subsubsection{Formulación del problema}
+\label{subsubsec:formulacion_problema}
 
-\subsection*{Formulación del problema}%
-\phantomsection\addcontentsline{toc}{subsection}{Formulación del problema}
 ¿Cómo diseñar un sistema periférico no invasivo para el monitoreo en tiempo real del desgaste de herramientas de corte en los tornos CNC de la empresa MAINSA, que permita superar la dependencia de la inspección visual subjetiva, prevenir paradas no planificadas por rotura de filo y reducir las mermas operativas en el taller?
 
-\subsection*{Objetivos}%
-\phantomsection\addcontentsline{toc}{subsection}{Objetivos}
+\subsection{Objetivos}
+\label{subsec:objetivos}
 
-\subsubsection*{Objetivo general}%
-\phantomsection\addcontentsline{toc}{subsubsection}{Objetivo general}
+\subsubsection{Objetivo general}
+\label{subsubsec:objetivo_general}
+
 Diseñar un sistema periférico no invasivo para el monitoreo en tiempo real del desgaste de herramientas de corte en tornos CNC de la empresa MAINSA, mediante la medición de variables de corriente y vibración procesadas con algoritmos de inteligencia artificial en el borde (\textit{Edge AI}), para anticipar oportunamente fallas críticas en los insertos y reducir paradas no planificadas en el proceso de mecanizado.
 
-\subsubsection*{Objetivos específicos}%
-\phantomsection\addcontentsline{toc}{subsubsection}{Objetivos específicos}
+\subsubsection{Objetivos específicos}
+\label{subsubsec:objetivos_especificos}
+
 \begin{itemize}
 \item Investigar las operaciones de mecanizado en torno CNC, los mecanismos de desgaste de herramientas de corte y las tecnologías de inteligencia artificial en el borde (\textit{Edge AI}) orientadas al monitoreo de condición.
-\item Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, integrando acondicionamiento de señal, procesamiento en el borde y conectividad IoT.
+\item Diseñar la arquitectura mecatrónica del sistema periférico de monitoreo, integrando acondicionamiento de señal, procesamiento en el borde y conectividad industrial.
 \item Dimensionar los sensores de corriente, vibración y la unidad de procesamiento embebido.
 \item Integrar el sistema periférico de adquisición, procesamiento inteligente y supervisión remota.
 \item Validar experimentalmente el funcionamiento del sistema integrado mediante pruebas de corte en los tornos CNC de MAINSA.
 \end{itemize}
 
-\subsubsection*{Acciones por objetivo específico}%
-\phantomsection\addcontentsline{toc}{subsubsection}{Acciones por objetivo específico}
+\subsubsection{Objetivos específicos y acciones}
+\label{subsubsec:acciones_objetivos}
+
 Con el propósito de operativizar cada uno de los objetivos específicos y detallar la metodología de ejecución técnica, en la \tab{acciones_objetivos} se desglosan las acciones concretas asociadas a cada fase del proyecto.
 
 {\setlength{\parskip}{1.5pt}
@@ -165,31 +172,43 @@ Validar experimentalmente el funcionamiento del sistema integrado mediante prueb
 \end{longtable}
 }
 
-\subsection*{Justificación}%
-\phantomsection\addcontentsline{toc}{subsection}{Justificación}
-La justificación del presente proyecto expone las razones que sustentan su desarrollo, articulando la necesidad identificada en el taller de mecanizado, el beneficio técnico-operativo de la solución mecatrónica, la importancia de la innovación tecnológica y los beneficiarios directos e indirectos, estructurándose en tres dimensiones:
+\subsection{Justificación}
+\label{subsec:justificacion}
 
-\subsubsection*{Justificación técnica}%
-\phantomsection\addcontentsline{toc}{subsubsection}{Justificación técnica}
+La justificación del presente proyecto expone las razones que sustentan su desarrollo, articulando la necesidad identificada en el taller de mecanizado, el beneficio técnico-operativo de la solución mecatrónica y el valor académico e industrial generado.
+
+\subsubsection{Justificación técnica}
+\label{subsubsec:justificacion_tecnica}
+
 Desde la perspectiva técnica, la problemática de los acabados superficiales deficientes y la pérdida de precisión dimensional en el mecanizado radica en la imposibilidad de evaluar de forma continua el desgaste de los insertos durante el corte. En este contexto, el desarrollo de un sistema periférico no invasivo representa una solución idónea frente a la arquitectura cerrada de los tornos CNC de MAINSA, permitiendo instrumentar la máquina sin intervenir el cableado interno ni alterar la estabilidad del equipo. La integración sinérgica de sensores de corriente en el husillo y acelerometría en la torreta captura tanto la variación en los esfuerzos globales de corte como las oscilaciones dinámicas de alta frecuencia originadas por la degradación del filo.
 
 Asimismo, la incorporación de procesamiento inteligente en el borde (\textit{Edge AI}) sobre una unidad embebida resuelve la necesidad de respuesta inmediata ante anomalías operativas de mecanizado. Al realizar la inferencia algorítmica de manera local, se prescinde de la transmisión masiva de señales hacia servidores remotos, eliminando la latencia de red y asegurando una supervisión continua y robusta. Esta arquitectura técnica garantiza que el sistema opere de forma confiable frente al elevado ruido electromagnético característico del taller industrial, proporcionando un diagnóstico oportuno del estado del inserto antes de que se produzcan mermas en las piezas trabajadas.
 
-\subsubsection*{Justificación económica}%
-\phantomsection\addcontentsline{toc}{subsubsection}{Justificación económica}
+\subsubsection{Justificación económica}
+\label{subsubsec:justificacion_economica}
+
 En el ámbito económico, el desarrollo de una solución tecnológica a nivel nacional en Bolivia ofrece una viabilidad significativamente superior en comparación con la adquisición de sistemas comerciales de importación. El desarrollo local prescinde de los elevados costos asociados a la logística de transporte internacional, trámites aduaneros, pago de aranceles e intermediación comercial, haciendo accesible una tecnología de monitoreo avanzada para talleres metalmecánicos medianos como MAINSA. Esta accesibilidad económica viabiliza la modernización tecnológica de maquinaria heredada sin incurrir en inversiones de capital prohibitivas para el entorno productivo local.
 
 Adicionalmente, el beneficio económico del sistema se manifiesta directamente en la reducción de costos operativos dentro del taller. El desgaste inadvertido de las herramientas suele provocar el descarte definitivo de piezas semielaboradas o demandar costosas jornadas de retrabajo para corregir tolerancias y rugosidades fuera de norma, además de consumir horas improductivas de máquina por paradas imprevistas. Al proporcionar una alerta temprana sobre la pérdida de filo, el sistema permite sustituir los insertos en el momento técnicamente oportuno, maximizando la vida útil de cada filo de carburo, disminuyendo el desperdicio de materia prima y optimizando la rentabilidad global del proceso de manufactura.
 
-\subsubsection*{Justificación social}%
-\phantomsection\addcontentsline{toc}{subsubsection}{Justificación social}
-En el plano social, el proyecto genera un impacto positivo directo en las condiciones de trabajo y en la cadena de valor manufacturera, identificando con claridad a sus beneficiarios primarios y secundarios. Como beneficiario primario directo se encuentra la empresa MAINSA, que fortalece su productividad mediante la modernización de sus procesos de mecanizado. De igual manera, los operarios de los tornos CNC constituyen beneficiarios primarios fundamentales: el sistema mitiga de manera sustancial la exposición a riesgos de accidentes laborales por desprendimiento violento de esquirlas ante roturas catastróficas de insertos, al tiempo que reduce el estrés laboral y la fatiga asociados a la supervisión visual continua y subjetiva en caliente.
+\subsubsection{Justificación académica}
+\label{subsubsec:justificacion_academica}
 
-Por su parte, los beneficiarios secundarios corresponden a los clientes del taller metalmecánico, quienes reciben componentes manufacturados que cumplen estrictamente con los requerimientos de rugosidad superficial y tolerancias geométricas solicitadas. La disminución de piezas defectuosas y la erradicación de paradas no programadas aseguran el cumplimiento riguroso de los plazos de entrega comprometidos, fortaleciendo la confianza comercial e impulsando la calidad del sector metalmecánico regional mediante la adopción práctica de tecnologías de la Industria 4.0.
+En el plano académico y científico, el proyecto realiza una contribución significativa a las líneas de investigación en manufactura inteligente, automatización industrial y aprendizaje automático embebido (\textit{TinyML}) dentro del Departamento de Ingeniería y Ciencias Exactas de la Universidad Católica Boliviana. La investigación articula de forma transdisciplinaria la mecánica de corte de viruta, la tribología según normas internacionales (ISO 3685), el procesamiento digital de señales (DSP) en tiempo real y el despliegue de redes neuronales cuantizadas (INT8) sobre microcontroladores ARM Cortex-M4 de bajo consumo y costo accesible.
 
-\subsection*{Alcances}%
-\phantomsection\addcontentsline{toc}{subsection}{Alcances}
-El alcance establece con precisión el nivel de desarrollo de la solución, los procesos considerados, las funcionalidades incluidas y los resultados tangibles que el proyecto entregará a su conclusión en estricta coherencia con los objetivos específicos. A continuación, se detallan los alcances técnicos del sistema:
+Esta articulación metodológica genera un precedente tecnológico formal para la academia nacional, demostrando la viabilidad de transferir soluciones de borde industrial sin depender de infraestructura en la nube ni de controladores propietarios costosos. Asimismo, el proyecto sienta las bases para la creación de datasets experimentales abiertos de mecanizado industrial en aleaciones de alta resistencia (como AISI 4340 y AISI 4140), sirviendo como plataforma didáctica y de experimentación aplicada para futuros tesistas e investigadores de la carrera de Ingeniería Mecatrónica.
+
+En complemento al impacto académico, el proyecto genera un beneficio social directo en el entorno laboral de MAINSA. Al proveer una alerta predictiva luminosa y automatizada, se mitiga sustancialmente la exposición de los torneros a accidentes ocupacionales provocados por el desprendimiento violento de esquirlas ante fracturas catastróficas de insertos, reduciendo además el estrés psicofísico derivado de la supervisión visual continua y subjetiva en caliente.
+
+\subsection{Alcances y límites}
+\label{subsec:alcances_limites}
+
+La delimitación del proyecto define con precisión el alcance ingenieril de la solución y las fronteras operacionales asumidas para su desarrollo y validación.
+
+\subsubsection{Alcances}
+\label{subsubsec:alcances}
+
+El alcance establece con precisión el nivel de desarrollo de la solución, los procesos considerados, las funcionalidades incluidas y los resultados tangibles que el proyecto entregará a su conclusión en estricta coherencia con los objetivos específicos:
 
 \begin{itemize}
 \item Se desarrollará el diseño y dimensionamiento de un sistema mecatrónico periférico no invasivo orientado al monitoreo en tiempo real del desgaste de herramientas de corte en tornos CNC de la empresa metalmecánica MAINSA.
@@ -199,18 +218,17 @@ El alcance establece con precisión el nivel de desarrollo de la solución, los 
 \item Se desarrollará el diseño circuital esquemático, dimensionamiento de componentes y ruteo de la placa de circuito impreso (PCB) para acondicionamiento y procesamiento, contratando el servicio de fabricación física a una empresa terciaria especializada, para posteriormente realizar el ensamble, soldadura manual e integración en el sistema periférico.
 \item Se integrará un sistema de adquisición multisensorial compuesto por un transductor de corriente no invasivo de núcleo partido para el motor del husillo principal y un sensor acelerómetro MEMS para la captación de vibraciones mecánicas en la torreta portaherramientas.
 \item Se implementará una arquitectura de procesamiento en el borde (\textit{Edge AI}) sobre una unidad embebida para el filtrado digital de señales, extracción de descriptores estadísticos en el dominio del tiempo y ejecución local de un algoritmo ligero de clasificación de estados de desgaste.
-\item Se incorporará un esquema de comunicación inalámbrica mediante protocolo IoT industrial (MQTT/HTTP) para la transmisión periódica de métricas de operación y alertas de desgaste crítico hacia un panel de supervisión remota.
+\item Se incorporará un esquema de supervisión local mediante panel LED pentaestado de severidad lumínica y enlace industrial RS-485 para telemetría al pie de máquina.
 \item Se establecerán criterios físicos, eléctricos y operativos de diseño a partir de las especificaciones técnicas del torno CNC y las condiciones reales de trabajo en MAINSA, definiendo rangos de medición de corriente, anchos de banda para vibración, requerimientos de aislamiento y frecuencia de muestreo.
 \item Se adoptará como referencia operativa una tasa de muestreo adecuada para la captura de transitorios de corte y un tiempo de respuesta inferior a dos segundos para la notificación de advertencias o desgaste severo ante el operador.
 \item Se definirá un plan de pruebas con métricas numéricas, especificando para cada ensayo la variable física a medir, el instrumento de referencia o contraste, el criterio de aprobación y el número de repeticiones experimentales.
-\item Se comprobará la funcionalidad del sistema mediante un prototipo funcional periférico ensayado preliminarmente en laboratorio y validado experimentalmente en un torno CNC real en MAINSA, verificando adquisición de señales, estabilidad del acondicionamiento, exactitud en la inferencia del modelo embebido y confiabilidad en la transmisión de datos.
-\item Se elaborará documentación técnica básica y un procedimiento de instalación y operación segura en máquina, orientado a guiar la colocación no invasiva de los sensores sin alterar las líneas de potencia ni los lazos de control del torno CNC.
+\item Se comprobará la funcionalidad del sistema mediante un prototipo funcional periférico ensayado preliminarmente en laboratorio y validado experimentalmente en un torno CNC real en MAINSA.
 \end{itemize}
 
-\newpage
-\subsection*{Límites}%
-\phantomsection\addcontentsline{toc}{subsection}{Límites}
-Los límites establecen con rigurosidad qué aspectos no serán desarrollados o considerados dentro del proyecto, permitiendo delimitar el campo de acción para evitar expectativas que excedan los recursos y tiempos disponibles. Con el propósito de contrastar de forma directa lo que el proyecto desarrollará frente a lo que no desarrollará, en la \tab{alcance_limites} se presenta la matriz comparativa de alcances y límites según las pautas metodológicas de la asignatura.
+\subsubsection{Límites}
+\label{subsubsec:limites}
+
+Los límites establecen con rigurosidad qué aspectos no serán desarrollados o considerados dentro del proyecto, permitiendo delimitar el campo de acción para evitar expectativas que excedan los recursos y tiempos disponibles. Con el propósito de contrastar de forma directa lo que el proyecto desarrollará frente a lo que no desarrollará, en la \tab{alcance_limites} se presenta la matriz comparativa de alcances y límites.
 
 {\setlength{\parskip}{1.5pt}
 \begin{table}[htbp]
@@ -227,7 +245,7 @@ Medición de corriente del husillo y acelerometría MEMS en la torreta. & Dinamo
 Acondicionamiento RMS y componente fundamental cuasi-senoidal (inferencia de par). & Análisis espectral de distorsión armónica total (THD) ni transitorios de conmutación PWM. \\ \hline
 Clasificación discreta de estados de desgaste mediante modelo ligero Edge AI. & Estimación continua de vida útil remanente (RUL) ni gemelos digitales pesados. \\ \hline
 Diseño esquemático, ruteo y ensamblado propio; fabricación física por servicio externo. & Fabricación física del sustrato de PCB en laboratorio propio. \\ \hline
-Transmisión IoT (MQTT/HTTP) hacia panel de supervisión local del taller. & Plataforma SCADA de planta ni integración ERP/CMMS corporativo. \\ \hline
+Supervisión local e indicador LED pentaestado con telemetría RS-485 al pie de máquina. & Plataforma SCADA de planta completa ni integración ERP/CMMS corporativo. \\ \hline
 \end{tabular}
 \\[2pt]
 {\footnotesize \textbf{Fuente:} Elaboración propia}
@@ -251,7 +269,135 @@ A continuación, se describen en detalle los límites y restricciones operativas
 \item El proyecto no incluirá el desarrollo de una plataforma SCADA o software de gestión integral de mantenimiento (CMMS/ERP) a nivel de toda la fábrica, aunque los datos transmitidos podrán servir como insumo preliminar para futuras integraciones en entornos de manufactura inteligente.
 \end{itemize}
 
-\subsection*{Estructura del documento}
-\phantomsection\addcontentsline{toc}{subsection}{Estructura del documento}
+\subsection{Metodología}
+\label{subsec:metodologia}
 
-El presente documento se encuentra estructurado en acápites y capítulos correlativos conforme a las directrices metodológicas institucionales. La sección de Introducción expone la contextualización, los antecedentes, el problema, los objetivos y la justificación. El Capítulo 1 desarrolla el Marco Teórico con los fundamentos de mecanizado, señales, \textit{Edge AI} e IoT. Finalmente, los capítulos sucesivos abordan el Marco Metodológico, el diseño e implementación del prototipo práctico, concluyendo con el análisis de resultados y recomendaciones.
+La metodología define los principios epistemológicos, el diseño de investigación, las herramientas operativas y el procedimiento sistemático seguido para alcanzar los objetivos formulados.
+
+\subsubsection{Enfoque de la investigación}
+\label{subsubsec:enfoque_investigacion}
+
+El presente proyecto adopta un enfoque de investigación mixto con predominancia cuantitativa empírico-analítica, articulando coherentemente métodos de relevamiento cualitativo con técnicas de instrumentación, adquisición de datos y modelado computacional de alta precisión:
+\begin{itemize}
+    \item Dimensión cualitativa: Se orienta al levantamiento preliminar de requerimientos operacionales y funcionales en la planta de MAINSA. A través de entrevistas técnicas y observación directa en el taller, se indagan las prácticas habituales de los torneros, las frecuencias estimadas de cambio de inserto, la percepción empírica de fallas de corte y las restricciones físicas del espacio de cabina y conexionado de los tornos CNC.
+    \item Dimensión cuantitativa: Constituye el núcleo del desarrollo ingenieril y se fundamenta en la adquisición analógica, discretización periódica, procesamiento digital y modelado matemático de magnitudes físicas continuas: el valor eficaz de la variable eléctrica (corriente de fase del servomotor de avance, $I_{\text{RMS}}$ en amperios), la aceleración por vibración mecánica en la torreta portaherramientas ($a_{\text{RMS}}$ en $g$), métricas estadísticas de distribución (curtosis y factor de cresta), el ancho de desgaste de flanco ($VB$ en milímetros) y la rugosidad superficial aritmética de las piezas maquinadas ($Ra$ en micrómetros).
+\end{itemize}
+
+\subsubsection{Tipo de investigación}
+\label{subsubsec:tipo_investigacion}
+
+La investigación se clasifica como de tipo aplicada, tecnológica y experimental:
+\begin{itemize}
+    \item Finalidad aplicada: Persigue dar solución directa a una problemática industrial concreta en Maestranza San Carlos: la supervisión a ciegas del filo de corte provocada por el cerramiento hermético de la cabina y la proyección de refrigerante a alta presión, sustituyendo el criterio subjetivo del operario por un diagnóstico predictivo automatizado.
+    \item Nivel tecnológico-experimental: Implica el diseño, construcción, calibración y validación empírica de un prototipo mecatrónico funcional en banco de pruebas y sobre maquinaria real de taller, manipulando deliberadamente los regímenes de avance ($f$) y profundidad de corte ($a_p$) sobre probetas de acero para contrastar el comportamiento de herramientas nuevas frente a insertos degradados.
+\end{itemize}
+
+\subsubsection{Método de investigación}
+\label{subsubsec:metodo_investigacion}
+
+Se adopta el método ingenieril estructurado bajo un enfoque iterativo e incremental, formalizado a través del modelo de Ciclo en V establecido en la norma internacional VDI 2206 para el diseño de sistemas mecatrónicos. Este método comprende ciclos sucesivos de análisis de requerimientos, diseño disciplinario (mecánico, electrónico, computacional y telemático), integración modular, pruebas de calibración y validación experimental en planta con bucles de realimentación y rediseño.
+
+Para asegurar la coherencia lógica interna entre los componentes metodológicos del proyecto, en la \tab{matriz_consistencia} se sintetiza la matriz de consistencia metodológica transversal.
+
+{\footnotesize
+\setstretch{1.05}
+\setlength{\parskip}{1.5pt}
+\setlength{\tabcolsep}{3.5pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{2.1cm}|>{\raggedright\arraybackslash}p{3.8cm}|>{\raggedright\arraybackslash}p{3.8cm}|>{\raggedright\arraybackslash}p{3.8cm}|}
+\caption{Matriz de consistencia metodológica del proyecto}
+\label{tab:matriz_consistencia}
+\\
+\hline
+\textbf{Elemento} & \textbf{Definición conceptual} & \textbf{Variables / Parámetros} & \textbf{Indicador de verificación} \\
+\hline \hline
+\endfirsthead
+
+\hline
+\textbf{Elemento} & \textbf{Definición conceptual} & \textbf{Variables / Parámetros} & \textbf{Indicador de verificación} \\
+\hline \hline
+\endhead
+
+\hline
+\endfoot
+
+\hline
+\multicolumn{4}{c}{\textbf{Fuente:} Elaboración propia}
+\endlastfoot
+
+Problema General & 
+¿Cómo desarrollar un sistema periférico no invasivo para un torno CNC que permita monitorear en tiempo real el desgaste de las herramientas de corte, reduciendo el desperdicio de materia prima, optimizando los costos de manufactura y disminuyendo los tiempos de producción en la empresa MAINSA? & 
+Condición operativa de corte, interferencias electromagnéticas y parque de tornos CNC subutilizado. & 
+Incidencia de roturas intempestivas, piezas fuera de tolerancia dimensional y desvío de producción hacia tornos manuales.\\ \hline
+
+Objetivo General & 
+Desarrollar un sistema periférico no invasivo de monitoreo del desgaste de insertos de corte en un torno CNC de la empresa MAINSA, mediante la medición de variables eléctricas en el servomotor de avance y vibración mecánica en la torreta, procesadas con inteligencia artificial en el borde (\textit{Edge AI}), que clasifique cinco estados de desgaste con una exactitud $\ge 90$\% y lo señalice en un dashboard local con indicadores luminosos de severidad, para sustituir la inspección visual subjetiva por una alerta objetiva de reemplazo del inserto que reduzca el riesgo de paradas no planificadas y la ocurrencia de piezas fuera de tolerancia dimensional. & 
+Integración de transductores de variable eléctrica SCT-013, acelerometría ADXL345 en torreta, microcontrolador STM32F4, dashboard e indicador LED pentaestado (cinco niveles de desgaste). & 
+Prototipo mecatrónico funcional montado en gabinete industrial operativo al pie de máquina.\\ \hline
+
+Hipótesis Ingenieril & 
+La fusión de la variable eléctrica del servomotor de avance ($I_{\text{RMS}}$) con descriptores de vibración mecánica en la torreta ($a_{\text{RMS}}$, curtosis, factor de cresta), clasificada mediante un modelo ligero cuantizado en STM32, identifica cinco niveles de desgaste (definidos por $VB$, ISO 3685) con una exactitud $\ge 90$\%, con mejor desempeño que cada variable por separado y sin intervenir el cableado interno ni el control del torno. & 
+Capacidad discriminante de la fusión sensorial frente al desgaste progresivo de flanco. & 
+Exactitud de clasificación global $\ge 90\%$ evaluada mediante matriz de confusión y cero invasión en cableado ni control de máquina.\\ \hline
+
+Variables Independientes & 
+Señales físicas primarias generadas durante la remoción de material en el proceso de torneado. & 
+• Variable eléctrica: corriente eficaz del servomotor de avance ($I_{\text{RMS}}$).\par\vspace{1mm}
+• Vibración mecánica en torreta: aceleración dinámica ($a_{\text{RMS}}$).\par\vspace{1mm}
+• Curtosis ($Ku$) y Factor de Cresta ($CF$). & 
+Amplitud en amperios (A), aceleración en gravedad ($g$) y coeficientes estadísticos adimensionales.\\ \hline
+
+Variables Dependientes & 
+Estado tribológico del inserto de carburo y calidad geométrica superficial resultante en la pieza. & 
+• Desgaste de flanco ($VB$ en mm según ISO 3685).\par\vspace{1mm}
+• Clase de condición: cinco niveles discretos de desgaste de flanco según la norma ISO 3685: inserto en condición óptima, buen estado operativo, estado regular, aceptable con cambio próximo y cambio urgente.\par\vspace{1mm}
+• Rugosidad media superficial ($Ra$ en $\mu\text{m}$). & 
+Medición con microscopio óptico ($VB$), rugosímetro de contacto ($Ra$) y matriz de confusión del modelo.\\ \hline
+
+Variables Intervinientes & 
+Factores externos del entorno operacional de planta que inciden en el régimen de corte. & 
+• Material de trabajo (AISI 1045, 4140 y 4340).\par\vspace{1mm}
+• Profundidad de pasada ($a_p$) y avance ($f$).\par\vspace{1mm}
+• Presencia y flujo de fluido refrigerante (taladrina). & 
+Registro riguroso de parámetros programados en el código G del control numérico del torno CNC.\\ \hline
+\end{longtable}
+}
+
+\subsubsection{Técnicas e instrumentos de recolección de datos}
+\label{subsubsec:tecnicas_instrumentos}
+
+Para el levantamiento y validación rigurosa de la información técnica del proyecto, se seleccionaron técnicas estructuradas e instrumentos especializados:
+
+\paragraph*{Técnicas cualitativas de diagnóstico industrial.}
+Se empleará la técnica de entrevista semiestructurada, aplicada al jefe de planta y a los operarios especializados de torneado de MAINSA mediante una \textit{Guía de Entrevista Técnica}. Este instrumento permite recolectar información de primera mano sobre las pautas empíricas de sustitución de insertos, el historial de paradas de máquina por rotura catastrófica de filo, las marcas y geometrías de insertos más utilizadas (CNMG 120408) y los horarios y rutinas de mantenimiento del parque de tornos CNC.
+
+Asimismo, se implementará la observación técnica directa en planta, utilizando una \textit{Ficha de Relevamiento Operacional y de Entorno}. Mediante este instrumento se registrarán las dimensiones físicas disponibles en la torreta portaherramientas, los puntos de fijación mecánica inmunes a proyecciones de viruta incandescente, la disposición del cableado eléctrico en el gabinete de fuerza y los niveles de ruido electromagnético ambiental producidos por los servodrivers.
+
+\paragraph*{Técnicas cuantitativas de adquisición y metrología experimental.}
+Para la captura de las magnitudes electromecánicas en tiempo real se aplicará la técnica de adquisición digital de datos (DAQ embebido), instrumentada a través del microcontrolador \textit{STM32F411 (ARM Cortex-M4)}, el cual realiza la digitalización síncrona de las señales de variable eléctrica y vibración mecánica a 12 bits mediante transferencias DMA circulares gobernadas por temporizadores de hardware sin consumo de ciclos de CPU.
+
+Con la finalidad de garantizar la fiabilidad metrológica de las lecturas, se empleará como instrumentación de contraste una pinza amperimétrica digital y un osciloscopio digital, utilizados para verificar las curvas de respuesta temporal y ajustar el factor de escala de los sensores de corriente.
+
+Para la medición objetiva del desgaste de la herramienta (referencia patrón o \textit{Ground Truth}), se aplicará la técnica de inspección microscópica óptica mediante un lente óptico de aumento en taller junto con los operarios, registrando la evolución milimétrica del ancho de la banda de desgaste de flanco ($VB$) conforme a las pautas de la norma internacional ISO 3685.
+
+Finalmente, para evaluar el impacto del desgaste sobre el producto final torneado, se utilizará la técnica de rugosimetría de contacto, empleando un rugosímetro digital de precisión con palpador inductivo para medir la rugosidad media aritmética ($Ra$) en diversas secciones longitudinales de las probetas maquinadas, correlacionando cuantitativamente el deterioro del filo con la degradación del acabado superficial.
+
+\subsubsection{Procedimiento metodológico}
+\label{subsubsec:procedimiento_metodologico}
+
+El procedimiento metodológico se estructura en cuatro fases correlativas fundamentadas en la directriz de ingeniería mecatrónica VDI 2206:
+
+\begin{enumerate}[leftmargin=0.8cm]
+    \item \textbf{Fase 1: Análisis de requerimientos operacionales y caracterización inicial.} Levantamiento de especificaciones técnicas del torno CNC Mazak Quick Turn en MAINSA, rangos de corriente del servomotor de avance, dinámica de vibración en la torreta y definición de condiciones de corte para barras de acero AISI 4340 y 1045.
+    
+    \item \textbf{Fase 2: Diseño conceptual y arquitectónico del sistema periférico.} Concepción del diagrama de bloques funcional mecatrónico que articula los módulos de transducción no invasiva, acondicionamiento analógico con filtro anti-aliasing, unidad de procesamiento en el borde, indicador visual pentaestado y telemetría RS-485.
+    
+    \item \textbf{Fase 3: Diseño detallado e implementación disciplinaria.}
+    \begin{itemize}
+        \item \textit{Electrónica y PCB:} Cálculo de resistencias de carga ($R_B$), circuito de bias de offset ($+1.65\,\text{V}$), filtro paso-bajo analógico y ruteo de PCB con aislamiento galvánico y planos de tierra separados.
+        \item \textit{Firmware y DSP:} Programación sobre STM32F411 para adquisición síncrona ADC-DMA ping-pong, filtrado digital Butterworth y extracción en tiempo real de descriptores temporales ($I_{\text{RMS}}, a_{\text{RMS}}, Ku, CF$).
+        \item \textit{Edge AI y TinyML:} Entrenamiento supervisado de la red neuronal multiclase, optimización, cuantización uniforme a 8 bits (INT8) con TensorFlow Lite for Microcontrollers y despliegue embebido determinista.
+        \item \textit{Supervisión y control:} Lógica de control para semáforo LED de 5 niveles según umbrales ISO 3685 y protocolo de comunicaciones RS-485 con trama determinista protegida por CRC-8.
+    \end{itemize}
+    
+    \item \textbf{Fase 4: Integración del sistema y protocolo de validación experimental en taller.} Montaje físico no invasivo del prototipo en el torno CNC de MAINSA, ejecución de ensayos de corte interrumpido bajo condiciones controladas de torneado ($v_c = 180\,\text{m/min}$, $f = 0.20\,\text{mm/rev}$, $a_p = 1.5\,\text{mm}$), contraste metrológico del desgaste de flanco $VB$ mediante microscopio óptico y rugosímetro de contacto, y evaluación de la exactitud de clasificación mediante matrices de confusión multiclase.
+\end{enumerate}
