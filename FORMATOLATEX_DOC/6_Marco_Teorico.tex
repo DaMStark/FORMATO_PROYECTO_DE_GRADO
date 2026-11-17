@@ -40,23 +40,23 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 • Análisis de fenomenología del desgaste y patrones de falla según ISO 3685.\par\vspace{1mm}
 • Estudio del estado del arte en monitoreo indirecto (TCM) por variables eléctricas y vibración mecánica.\par\vspace{1mm}
 • Evaluación de \textit{Edge AI} / TinyML y plataformas embebidas. &
-\textbf{8.2.1.} Cinemática y parámetros del torneado CNC.\par\vspace{1mm}
-\textbf{8.2.2.} Fenomenología del desgaste de herramientas (ISO 3685).\par\vspace{1mm}
-\textbf{8.2.3.} Sistemas de monitoreo de condición (TCM).\par\vspace{1mm}
-\textbf{8.2.7.} Inteligencia artificial en el borde (TinyML).\par\vspace{1mm}
-\textbf{8.2.9.} Análisis comparativo de tecnologías candidatas.\par\vspace{1mm}
-\textbf{8.2.10.} Ecosistema de programación software. \\ \hline
+\textbf{2.2.} Cinemática y parámetros del torneado CNC.\par\vspace{1mm}
+\textbf{2.3.} Fenomenología del desgaste de herramientas (ISO 3685).\par\vspace{1mm}
+\textbf{2.4.} Sistemas de monitoreo de condición (TCM).\par\vspace{1mm}
+\textbf{2.7.} Inteligencia artificial en el borde (TinyML).\par\vspace{1mm}
+\textbf{2.7.3.} Análisis comparativo de tecnologías candidatas.\par\vspace{1mm}
+\textbf{2.7.4.} Ecosistema de programación software. \\ \hline
 
 \textbf{OE2.} Diseñar un circuito no invasivo para la captación de señales de corriente en el motor del carro portaherramientas y vibraciones en el cabezal de la herramienta de corte. &
 • Selección y dimensionamiento del transductor de corriente no invasivo.\par\vspace{1mm}
 • Selección del acelerómetro MEMS triaxial para la torreta.\par\vspace{1mm}
 • Diseño de etapas de acondicionamiento analógico y desacoplamiento DC.\par\vspace{1mm}
 • Diseño del PCB industrial, supresión de ruido EMI y desacoplamiento. &
-\textbf{8.2.4.} Transductores y sensado de corriente en el servomotor.\par\vspace{1mm}
-\textbf{8.2.5.} Sensado de vibraciones mecánicas y discriminación de ruido.\par\vspace{1mm}
-\textbf{8.2.12.} Conversión A/D SAR y adquisición DMA síncrona.\par\vspace{1mm}
-\textbf{8.2.15.} Protocolo SPI y configuración de registros del acelerómetro.\par\vspace{1mm}
-\textbf{8.2.18.} Diseño de PCB industrial y compatibilidad EMC. \\ \hline
+\textbf{2.5.1.} Transductores y sensado de corriente en el servomotor.\par\vspace{1mm}
+\textbf{2.5.2.} Sensado de vibraciones mecánicas y discriminación de ruido.\par\vspace{1mm}
+\textbf{2.5.3.} Protocolo SPI y configuración de registros del acelerómetro.\par\vspace{1mm}
+\textbf{2.5.4.} Consideraciones de diseño de PCB industrial y compatibilidad EMC.\par\vspace{1mm}
+\textbf{2.6.1.} Conversión A/D SAR y adquisición DMA síncrona. \\ \hline
 
 \textbf{OE3.} Desarrollar el modelo de aprendizaje automático para el procesamiento y clasificación del estado de desgaste de la herramienta a partir de las señales adquiridas. &
 • Filtrado digital y reducción de ruido en señales de máquina.\par\vspace{1mm}
@@ -64,35 +64,36 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 • Construcción, limpieza y balanceo del dataset experimental.\par\vspace{1mm}
 • Entrenamiento y optimización del modelo neuronal.\par\vspace{1mm}
 • Cuantización INT8 y evaluación de métricas multiclase. &
-\textbf{8.2.6.} Procesamiento digital de señales (DSP).\par\vspace{1mm}
-\textbf{8.2.7.} Modelos de aprendizaje automático (\textit{Edge AI}).\par\vspace{1mm}
-\textbf{8.2.14.} Métricas de evaluación del clasificador multiclase.\par\vspace{1mm}
-\textbf{8.2.16.} Metodología de dataset y balanceo de clases. \\ \hline
+\textbf{2.6.} Procesamiento digital de señales (DSP).\par\vspace{1mm}
+\textbf{2.6.2.} Extracción de descriptores estadísticos en el tiempo.\par\vspace{1mm}
+\textbf{2.7.} Inteligencia artificial en el borde (\textit{Edge AI}).\par\vspace{1mm}
+\textbf{2.7.5.} Metodología de dataset y balanceo de clases.\par\vspace{1mm}
+\textbf{2.7.6.} Métricas de evaluación del clasificador multiclase. \\ \hline
 
 \textbf{OE4.} Implementar el sistema periférico integrando los componentes hardware y el algoritmo optimizado para inferencia en tiempo real al pie de máquina. &
 • Selección y configuración del microcontrolador industrial.\par\vspace{1mm}
 • Despliegue del modelo cuantizado con aceleración por hardware.\par\vspace{1mm}
 • Programación del firmware embebido en C/C++ determinista.\par\vspace{1mm}
 • Implementación del enlace industrial RS-485 hacia el panel de mando. &
-\textbf{8.2.11.} Arquitectura interna ARM Cortex-M4 y recursos hardware.\par\vspace{1mm}
-\textbf{8.2.12.} Adquisición síncrona por DMA en búfer circular.\par\vspace{1mm}
-\textbf{8.2.17.} Enlace de comunicaciones industriales UART / RS-485. \\ \hline
+\textbf{2.7.1.} Pipeline de inferencia y cuantización INT8.\par\vspace{1mm}
+\textbf{2.7.2.} Arquitectura ARM Cortex-M4 y recursos hardware.\par\vspace{1mm}
+\textbf{2.8.2.} Enlace de comunicaciones industriales UART / RS-485. \\ \hline
 
 \textbf{OE5.} Validar experimentalmente el desempeño del sistema periférico evaluando la precisión del diagnóstico de desgaste frente a las condiciones reales de mecanizado en MAINSA. &
 • Campañas experimentales de torneado en probetas cilíndricas de acero.\par\vspace{1mm}
 • Medición metrológica del desgaste de flanco $VB$ por microscopía óptica.\par\vspace{1mm}
 • Medición de rugosidad superficial $Ra$ con rugosímetro de contacto.\par\vspace{1mm}
 • Verificación de tiempos de respuesta, latencia y robustez industrial. &
-\textbf{8.2.8.} Arquitectura de supervisión local y señalización LED.\par\vspace{1mm}
-\textbf{8.2.13.} Validación metrológica de desgaste y calidad superficial.\par\vspace{1mm}
-\textbf{8.2.14.} Evaluación de exactitud y matriz de confusión en planta. \\ \hline
+\textbf{2.6.3.} Validación metrológica de desgaste y calidad superficial.\par\vspace{1mm}
+\textbf{2.7.6.} Evaluación de exactitud y matriz de confusión en planta.\par\vspace{1mm}
+\textbf{2.8.1.} Arquitectura de supervisión local y señalización LED. \\ \hline
 
 \end{longtable}
 }
 
 
-\subsection{Procesos de mecanizado por arranque de viruta en torno CNC}
-\subsubsection{Cinemática y parámetros del proceso de torneado en torno CNC}
+\subsection{Cinemática y parámetros del proceso de torneado en torno CNC}
+\label{subsec:cinematica_torneado}
 
 El proceso de torneado en máquinas de Control Numérico Computarizado (CNC) constituye una operación de conformado mecánico por arranque de viruta, en la cual una pieza de geometría cilíndrica adquiere rotación continua alrededor de su eje de simetría mientras la herramienta de corte se desplaza en trayectorias lineales programadas \citep{groover2010}. La interacción geométrica directa entre el filo del inserto y el material en movimiento genera una concentración severa de esfuerzos cortantes en la zona de cizallamiento primario, promoviendo la deformación plástica y el corte continuo de la viruta. En los ciclos productivos de la empresa MAINSA, la operación predominante es el cilindrado longitudinal exterior de barras de acero al carbono AISI 1045 (cuyo compendio gráfico de operaciones fundamentales de torneado se ilustra en el Anexo~\ref{anx:operaciones_torneado}).
 
@@ -158,7 +159,7 @@ En las operaciones industriales de taller, el proceso opera bajo régimen de cor
 
 
 \subsection{Fenomenología del desgaste y mecanismos de falla en herramientas de corte}
-\subsubsection{Fenomenología del desgaste y mecanismos de falla en herramientas de corte}
+\label{subsec:fenomenologia_desgaste}
 
 El desgaste de las herramientas de corte es un fenómeno tribológico y termomecánico inevitable originado por las condiciones extremas de fricción dinámica, altas presiones de contacto y temperaturas localizadas que superan los 800\,$^\circ\text{C}$ en la interfaz de corte \citep{trent2000, ramirez2018}. La norma internacional ISO 3685 establece los criterios formales para clasificar y evaluar cuantitativamente las diferentes manifestaciones de deterioro en herramientas de torneado \citep{iso3685}, tal como se ilustra en la \fig{tipos_desgaste_herramienta}.
 
@@ -190,11 +191,11 @@ A lo largo del ciclo operativo de mecanizado, la curva de desgaste de flanco $VB
 
 
 \subsection{Sistemas de monitoreo de condición de herramientas (TCM)}
-\subsubsection{Sistemas de monitoreo de condición de herramientas (TCM)}
+\label{subsec:sistemas_tcm}
 
 Los sistemas de monitoreo de condición de herramientas (\textit{Tool Condition Monitoring}, TCM) permiten supervisar el estado físico del filo durante el mecanizado continuo con el objetivo de prevenir roturas imprevistas, mermas de precisión dimensional y paradas no programadas de la línea de producción \citep{byrne1995, teti2010}. En entornos de taller reales como MAINSA, los métodos directos (inspección por cámaras ópticas de visión artificial o sensores láser) quedan prácticamente inhabilitados durante el corte debido a la presencia constante de virutas desprendidas, la niebla de aceite y el chorro directo de refrigerante líquido (\textit{taladrina}) que oculta la zona de corte.
 
-Por este motivo, el presente proyecto adopta un enfoque de **monitoreo indirecto no invasivo**, consistente en captar magnitudes físicas medibles en el exterior de la máquina que presentan una correlación directa con la degradación progresiva del filo. En la \tab{comparativa_tcm} se evalúan las principales variables físicas documentadas en el estado del arte industrial.
+Por este motivo, el presente proyecto adopta un enfoque de monitoreo indirecto no invasivo, consistente en captar magnitudes físicas medibles en el exterior de la máquina que presentan una correlación directa con la degradación progresiva del filo. En la \tab{comparativa_tcm} se evalúan las principales variables físicas documentadas en el estado del arte industrial.
 
 \begin{table}[H]
 \centering
@@ -214,13 +215,18 @@ Temperatura de corte & Media & Baja & Descartada: alta inercia térmica y falsea
 \footnotesize \textbf{Fuente:} Elaboración propia con base en \textcite{teti2010}.
 \end{table}
 
-A partir de esta evaluación técnica, se implementa una estrategia de **fusión sensorial bimodal**: la corriente del servomotor de avance registra la evolución sostenida de las fuerzas de corte en bajas frecuencias, mientras que las vibraciones mecánicas captan los transitorios dinámicos de alta frecuencia provocados por la fricción abrasiva en la interfaz herramienta-pieza.
+A partir de esta evaluación técnica, se implementa una estrategia de fusión sensorial bimodal: la corriente del servomotor de avance registra la evolución sostenida de las fuerzas de corte en bajas frecuencias, mientras que las vibraciones mecánicas captan los transitorios dinámicos de alta frecuencia provocados por la fricción abrasiva en la interfaz herramienta-pieza.
 
 
 \subsection{Transductores y acondicionamiento analógico de señales}
-\subsubsection{Transductores y fundamentación analítica del sensado de corriente en el servomotor de avance}
+\label{subsec:transductores_acondicionamiento}
 
-El monitoreo de corriente en el servomotor del carro portaherramientas se fundamenta en el principio de acoplamiento electromecánico del tren motriz del torno CNC. A medida que progresa el desgaste de flanco $VB$, el área de contacto con la pieza aumenta, originando un incremento en la fuerza de fricción axial de avance $F_a$. En los servomotores síncronos de imanes permanentes (PMSM/BLDC) utilizados en máquinas herramientas de control numérico, el torque electromagnético generado ($T_m$) es estrictamente proporcional a la corriente de armadura ($I_a$):
+\subsubsection{Transductores y fundamentación analítica del sensado de corriente en el servomotor de avance}
+\label{subsubsec:sensado_corriente_servomotor}
+
+El monitoreo de corriente en el servomotor del carro portaherramientas se fundamenta en el acoplamiento electromecánico del tren motriz del torno CNC. En las máquinas herramientas industriales modernas, el avance lineal de los ejes coordenados (ejes longitudinal $Z$ y transversal $X$) es accionado por servomotores síncronos de imanes permanentes de corriente alterna (PMSM, \textit{Permanent Magnet Synchronous Motors}) o servomotores sin escobillas (\textit{Brushless AC}). Estos actuadores mecatrónicos incorporan un estator con devanados trifásicos distribuidos geométricamente a $120^\circ$ eléctricos y un rotor dotado de imanes permanentes de tierras raras (neodimio-hierro-boro, NdFeB), ofreciendo una elevada densidad de potencia volumétrica, un reducido momento de inercia rotacional y una dinámica de aceleración ultra rápida.
+
+El gobierno del servomotor se efectúa mediante un convertidor electrónico de potencia (\textit{servodrive}) bajo la estrategia de control vectorial o control por orientación del campo (FOC, \textit{Field-Oriented Control}). Mediante transformaciones matemáticas ortogonales de Clarke y Park referenciadas a la posición angular instantánea del rotor (adquirida con alta resolución mediante encoder óptico), el servocontrolador desacopla la corriente estatórica trifásica en dos componentes ortogonales sobre el marco de referencia síncrono $d-q$: la componente de eje directo ($I_d$), encargada de mantener el flujo magnético en el entrehierro, y la componente de eje en cuadratura ($I_q$), responsable exclusiva de la producción de par electromagnético. Al operar dentro del régimen de par constante (por debajo de la velocidad base de debilitamiento de campo), el lazo de corriente impone $I_d = 0$, estableciéndose una relación estrictamente lineal y proporcional entre el torque electromagnético desarrollado ($T_m$) y la corriente eficaz de fase ($I_a$):
 
 \begin{equation}
 T_m = K_t \cdot I_a
@@ -229,12 +235,28 @@ T_m = K_t \cdot I_a
 
 \noindent\textbf{Variables de la ecuación:}
 \begin{itemize}
-    \item $T_m$: Torque electromagnético desarrollado por el servomotor ($\text{N}\cdot\text{m}$).
-    \item $K_t$: Constante de torque característica del servomotor ($\text{N}\cdot\text{m/A}$).
-    \item $I_a$: Corriente de fase consumida por el servomotor de avance ($\text{A}$).
+    \item $T_m$: Torque electromagnético desarrollado en el eje del servomotor ($\text{N}\cdot\text{m}$).
+    \item $K_t$: Constante de torque electromecánica del servomotor ($\text{N}\cdot\text{m/A}$).
+    \item $I_a$: Corriente de fase eficaz consumida por el servomotor de avance ($\text{A}$).
 \end{itemize}
 
-El husillo de bolas recirculantes transforma el movimiento rotacional del motor en desplazamiento lineal del carro. Al presentarse mayor resistencia mecánica de avance ($F_a$) por causa del desgaste del inserto, el carro exige un torque superior, provocando un aumento medible y monótono de la corriente eficaz $I_{\text{RMS}}$ del motor (entre un 5\% y 25\% con respecto a la condición de herramienta nueva).
+Cinemáticamente, el eje del servomotor se conecta mecánicamente (en forma directa mediante acoplamiento rígido-torsional o elástico libre de juego) a un husillo de bolas recirculantes rectificado y precargado. El husillo transforma el par de rotación del motor en la fuerza longitudinal requerida para desplazar el carro portaherramientas contra la resistencia del material mecanizado. La relación analítica entre la fuerza axial de avance ($F_a$) y el torque resistente suministrado por el servomotor ($T_m$) se formula como:
+
+\begin{equation}
+T_m = \frac{F_a \cdot p}{2\pi \cdot \eta}
+\label{eq:torque_avance_husillo}
+\end{equation}
+
+\noindent\textbf{Variables de la ecuación:}
+\begin{itemize}
+    \item $T_m$: Torque mecánico resistente que debe suministrar el servomotor de avance ($\text{N}\cdot\text{m}$).
+    \item $F_a$: Fuerza axial de avance ejercida sobre el carro portaherramientas ($\text{N}$).
+    \item $p$: Paso del husillo de bolas recirculantes del eje longitudinal de avance ($\text{m/rev}$).
+    \item $\eta$: Rendimiento mecánico de la transmisión cinemática por husillo de bolas ($\eta \approx 0.90$).
+    \item $2\pi$: Factor angular de rotación por revolución completa ($\text{rad}$).
+\end{itemize}
+
+A medida que progresa el desgaste de flanco $VB$ en el inserto de corte, el área de contacto abrasivo contra la superficie de la probeta se incrementa sensiblemente, provocando un aumento directo de la fuerza de fricción axial de avance $F_a$. Puesto que el control numérico del torno obliga a mantener la velocidad de avance de mecanizado programada ($f$), el servodrive eleva de forma inmediata la corriente de cuadratura $I_q$ para compensar la carga mecánica adicional. Dicha respuesta se traduce en un incremento monótono y medible de la corriente eficaz $I_{\text{RMS}}$ del motor (entre un 5\% y 25\% con respecto a la condición de herramienta afilada nueva), sustentando el principio físico del monitoreo indirecto no invasivo.
 
 Para medir esta variable de forma estrictamente no invasiva, se instala un transformador de corriente de núcleo partido SCT-013-030 abrazando una de las fases del servomotor dentro del gabinete eléctrico, sin necesidad de cortar cables ni alterar la instalación de la máquina. La corriente secundaria inducida pasa por una resistencia de carga interna (\textit{burden resistor}) que convierte la señal en una caída de voltaje proporcional:
 
@@ -508,13 +530,13 @@ Unidad de procesamiento & STM32F411CEU6 (ARM Cortex-M4, 100~MHz, FPU) & ESP32-S3
 
 En la \fig{panel_microcontroladores} se contrastan visualmente las dos plataformas electrónicas analizadas para la unidad de procesamiento central.
 
-\figura[width=0.88\textwidth]{panel_microcontroladores}{Plataformas embebidas para inferencia Edge AI: (a) STM32F411 seleccionada y (b) ESP32-S3 descartada para control}{Elaboración propia con base en STMicroelectronics (2024) y Espressif Systems (2024)}
+\figura[width=0.88\textwidth]{panel_microcontroladores}{Plataformas embebidas para inferencia Edge AI: 1) STM32F411 seleccionada y 2) ESP32-S3 descartada para control}{Elaboración propia con base en STMicroelectronics (2024) y Espressif Systems (2024)}
 
 Asimismo, en la \fig{adxl345_composicion_acelerometro} se muestra la configuración del sensor de aceleración triaxial digital ADXL345 seleccionado para el monitoreo de vibraciones dinámicas sobre la torreta.
 
-\figura[width=0.88\textwidth]{adxl345_composicion_acelerometro}{Sensor acelerómetro digital MEMS triaxial ADXL345: (a) Módulo físico para encapsulado estanco IP67 y (b) Ejes ortogonales de sensibilidad triaxial (+X, +Y, +Z) vinculados a la cinemática de torneado}{Elaboración propia con base en Analog Devices (2024)}
+\figura[width=0.88\textwidth]{adxl345_composicion_acelerometro}{Sensor acelerómetro digital MEMS triaxial ADXL345: 1) Módulo físico para encapsulado estanco IP67 y 2) Ejes ortogonales de sensibilidad triaxial (+X, +Y, +Z) vinculados a la cinemática de torneado}{Elaboración propia con base en Analog Devices (2024)}
 
-Como se detalla en la \fig{adxl345_composicion_acelerometro}(b), la orientación espacial de los ejes de aceleración se acopla a la cinemática del torno: el eje $X$ mide las aceleraciones en el plano radial perpendicular al eje de la pieza (asociado a la fuerza pasiva $F_r$), el eje $Y$ capta la dirección tangencial de corte principal (asociado a $F_c$), y el eje $Z$ registra la aceleración longitudinal a lo largo del avance del carro (asociado a $F_a$).
+Como se detalla en la \fig{adxl345_composicion_acelerometro} (panel 2), la orientación espacial de los ejes de aceleración se acopla a la cinemática del torno: el eje $X$ mide las aceleraciones en el plano radial perpendicular al eje de la pieza (asociado a la fuerza pasiva $F_r$), el eje $Y$ capta la dirección tangencial de corte principal (asociado a $F_c$), y el eje $Z$ registra la aceleración longitudinal a lo largo del avance del carro (asociado a $F_a$).
 
 
 \subsubsection{Ecosistema de programación y herramientas de desarrollo software}
@@ -542,7 +564,7 @@ Edge Impulse Studio & En la nube & Vía SDK generado & Descartado: plataforma co
 
 La calidad del dataset experimental define la confiabilidad del diagnóstico del modelo neuronal. Las series temporales de corriente y vibración registradas durante las pasadas de mecanizado en probetas de acero AISI 1045 se dividen en ventanas móviles de $512$ muestras ($256\,\text{ms}$ a $2000\,\text{Hz}$) con un solapamiento del 50\% ($128\,\text{ms}$). A partir de cada ventana se calcula un vector de 16 características en el dominio temporal y frecuencial, asociado al valor de desgaste de flanco $VB$ medido en microscopio.
 
-Debido a que la fase de desgaste estable (Clases 1 y 2) abarca más del 60\% de la vida del inserto, el dataset resultante contiene un desbalance natural frente a las fases de menor duración (Clase 0 y Clase 4). Para contrarrestar este efecto sin generar datos artificiales sintéticos que puedan distorsionar la física del proceso, se aplica una técnica de **ponderación de costes (\textit{class weights})** durante el entrenamiento: se asigna una penalización mayor a los errores cometidos en las clases con menor número de muestras, garantizando que el clasificador preste la máxima atención a la detección de la condición crítica de fin de vida útil.
+Debido a que la fase de desgaste estable (Clases 1 y 2) abarca más del 60\% de la vida del inserto, el dataset resultante contiene un desbalance natural frente a las fases de menor duración (Clase 0 y Clase 4). Para contrarrestar este efecto sin generar datos artificiales sintéticos que puedan distorsionar la física del proceso, se aplica una técnica de ponderación de costes (\textit{class weights}) durante el entrenamiento: se asigna una penalización mayor a los errores cometidos en las clases con menor número de muestras, garantizando que el clasificador preste la máxima atención a la detección de la condición crítica de fin de vida útil.
 
 El conjunto global de datos se segmenta en tres grupos independientes: 70\% para el entrenamiento de los pesos, 15\% para validación con parada temprana (\textit{Early Stopping}) y 15\% para evaluación ciega, validada mediante una prueba cruzada estratificada de 5 pliegues (\textit{5-fold CV}).
 

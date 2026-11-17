@@ -17,10 +17,16 @@
 \captionsetup[subfloat]{list=no}
 \captionsetup[figure]{list=no}
 
-\phantomsection
-\subsection*{Anexo 1: Diagrama de bloques funcional de la propuesta de solución mecatrónica}
-\label{anx:diagrama_bloques}
-\addcontentsline{toc}{subsection}{Anexo 1. Diagrama de bloques funcional de la propuesta de solución}
+\newcounter{anexocount}
+\newcommand{\anexotitle}[2]{%
+    \refstepcounter{anexocount}%
+    \phantomsection
+    \subsection*{Anexo \arabic{anexocount}: #1}%
+    \label{anx:#2}%
+    \addcontentsline{toc}{subsection}{Anexo \arabic{anexocount}. #1}%
+}
+
+\anexotitle{Diagrama de bloques funcional de la propuesta de solución mecatrónica}{diagrama_bloques}
 
 \begin{figure}[H]
     \centering
@@ -42,68 +48,7 @@ El presente anexo describe la arquitectura mecatrónica general y la interconexi
 \end{enumerate}
 
 \newpage
-\phantomsection
-\subsection*{Anexo 2: Estimación presupuestaria para el diseño del prototipo}
-\label{anx:presupuesto_prototipo}
-\addcontentsline{toc}{subsection}{Anexo 2. Estimación presupuestaria del prototipo}
-
-A continuación se presenta la estimación presupuestaria correspondiente al diseño, desarrollo y validación experimental del sistema periférico mecatrónico en laboratorio y taller (\tab{presupuesto_prototipo}).
-
-\begin{table}[H]
-\centering
-\caption{Presupuesto detallado para el desarrollo y validación del prototipo (en \$USD)}
-\label{tab:presupuesto_prototipo}
-\vspace{1.0mm}
-{\scriptsize
-\setstretch{0.95}
-\setlength{\tabcolsep}{2.8pt}
-\renewcommand{\arraystretch}{0.90}
-\begin{tabular}{|C{1.0cm}|L{7.4cm}|C{1.4cm}|R{1.8cm}|R{1.8cm}|}
-\hline
-\textbf{Ítem} & 
-\textbf{Descripción del componente / servicio} & 
-\textbf{Cant.} & 
-\textbf{P. Unit. (\$)} & 
-\textbf{Total (\$)} \\ \hline \hline
-
-\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{1. Subsistema de sensado e instrumentación analógica (variable eléctrica y vibración)}} \\ \hline
-1.1 & Sensor de variable eléctrica no invasivo de núcleo partido SCT-013-000 (0--100~A) & 2 & 14.50 & 29.00 \\ \hline
-1.2 & Sensor de variable eléctrica de efecto Hall integrado ACS712-20A & 1 & 8.50 & 8.50 \\ \hline
-1.3 & Sensor de vibración mecánica digital triaxial MEMS ADXL345 & 2 & 9.00 & 18.00 \\ \hline
-1.4 & Componentes de acondicionamiento  & 1 lote & 12.00 & 12.00 \\ \hline
-
-\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{2. Subsistema de procesamiento embebido, telemetría y potencia}} \\ \hline
-2.1 & Placa de cómputo STM32F4 (ARM Cortex-M4 @ 84~MHz, FPU, CMSIS-DSP) & 1 & 24.00 & 24.00 \\ \hline
-2.2 & Módulo microcontrolador Wi-Fi / Bluetooth ESP32 & 1 & 9.50 & 9.50 \\ \hline
-2.3 & Fuente de alimentación regulada 5~V / 2~A & 1 & 18.00 & 18.00 \\ \hline
-
-\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{3. Fabricación, encapsulado estanco y montaje magnético}} \\ \hline
-3.1 & Fabricación de placa de circuito impreso PCB & 1 & 22.00 & 22.00 \\ \hline
-3.2 & Gabinete y carcasa con base magnética & 1 & 25.00 & 25.00 \\ \hline
-3.3 & Cables de conexionado apantallado (M8/M12) & 1 lote (3~m) & 16.00 & 16.00 \\ \hline
-
-\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{4. Materiales fungibles de experimentación y mecanizado en MAINSA}} \\ \hline
-4.1 & Barras cilíndricas de acero aleado AISI 1045 y AISI 4140  & 3 barras & 18.00 & 54.00 \\ \hline
-4.2 & Insertos intercambiables de carburo de tungsteno ISO CNMG 120408 & 1 lote (3 u.) & 30.00 & 30.00 \\ \hline
-
-\multicolumn{5}{|l|}{\cellcolor{gray!12}\textbf{5. Instrumental de inspección óptica de desgaste en taller}} \\ \hline
-5.1 & Lente óptico de aumento e instrumental de inspección de desgaste en taller & 1 & 35.00 & 35.00 \\ \hline
-
-\multicolumn{2}{|l|}{\textbf{SUBTOTAL DE RECURSOS DIRECTOS}} & \textbf{--} & \textbf{--} & \textbf{301.00} \\ \hline
-\multicolumn{2}{|l|}{\textbf{CONTINGENCIA TÉCNICA Y CAMBIARIA (15\%)}} & \textbf{--} & \textbf{--} & \textbf{45.15} \\ \hline
-\multicolumn{2}{|l|}{\textbf{COSTO TOTAL ESTIMADO DEL PROYECTO (\$USD)}} & \textbf{--} & \textbf{--} & \textbf{346.15} \\ \hline
-\end{tabular}
-}
-\vspace{1.5mm}
-\small \textbf{Fuente:} Elaboración propia, 2026.
-\end{table}
-
-
-\newpage
-\phantomsection
-\subsection*{Anexo 3: Cadena de herramientas de ingeniería y flujo de optimización Edge AI (TinyML Toolchain)}
-\label{anx:toolchain_edgai}
-\addcontentsline{toc}{subsection}{Anexo 3. Cadena de herramientas y flujo de optimización Edge AI}
+\anexotitle{Cadena de herramientas de ingeniería y flujo de optimización Edge AI (TinyML Toolchain)}{toolchain_edgai}
 
 \begin{figure}[H]
     \centering
@@ -128,10 +73,7 @@ El presente anexo detalla la arquitectura metodológica y la secuencia de transf
 }
 
 \newpage
-\phantomsection
-\subsection*{Anexo 4: Operaciones fundamentales de mecanizado en torno CNC}
-\label{anx:operaciones_torneado}
-\addcontentsline{toc}{subsection}{Anexo 4. Operaciones fundamentales de mecanizado en torno CNC}
+\anexotitle{Operaciones fundamentales de mecanizado en torno CNC}{operaciones_torneado}
 
 \begin{figure}[H]
     \centering
@@ -145,10 +87,7 @@ El presente anexo detalla la arquitectura metodológica y la secuencia de transf
 El presente anexo ilustra las operaciones fundamentales de remoción de metal ejecutables en torno CNC en función de las trayectorias interpoladas del carro y la geometría de la herramienta: cilindrado exterior longitudinal, refrentado o careado perpendicular, torneado cónico, perfilado complejo de contornos, ranurado frontal/exterior, tronzado de piezas acabadas y roscado sincrónico. En el contexto de MAINSA, el desbaste cilíndrico longitudinal constituye la operación predominante con mayor tasa de remoción volumétrica.
 
 \newpage
-\phantomsection
-\subsection*{Anexo 5: Mecánica de corte ortogonal y corte oblicuo}
-\label{anx:mecanica_corte}
-\addcontentsline{toc}{subsection}{Anexo 5. Mecánica de corte ortogonal y corte oblicuo}
+\anexotitle{Mecánica de corte ortogonal y corte oblicuo}{mecanica_corte}
 
 \begin{figure}[H]
     \centering
@@ -163,15 +102,12 @@ El presente anexo ilustra las operaciones fundamentales de remoción de metal ej
 
 El presente anexo contrasta los dos esquemas clásicos de deformación plástica y formación de viruta:
 \begin{enumerate}[leftmargin=0.6cm, itemsep=1.5pt]
-    \item \textbf{Corte ortogonal (a):} Modelo bidimensional de referencia donde la arista de corte es rigurosamente perpendicular al vector de velocidad. La geometría se rige por el ángulo de ataque $\gamma_o$, incidencia $\alpha_o$ y cuña $\beta_o$ ($\alpha_o + \beta_o + \gamma_o = 90^\circ$), con plano primario de cizallamiento definido según la solución de Merchant ($\phi = 45^\circ + \gamma_o/2 - \beta_{\text{fric}}/2$).
-    \item \textbf{Corte oblicuo (b):} Régimen tridimensional industrial real del torneado en MAINSA, donde la arista cortante presenta una inclinación angular $\lambda_s$, evacuando la viruta con un ángulo de flujo lateral $\eta_c \approx \lambda_s$ según la hipótesis de Stabler, alejando el flujo térmico de la superficie mecanizada.
+    \item \textbf{Corte ortogonal (modelo bidimensional):} Modelo bidimensional de referencia donde la arista de corte es rigurosamente perpendicular al vector de velocidad. La geometría se rige por el ángulo de ataque $\gamma_o$, incidencia $\alpha_o$ y cuña $\beta_o$ ($\alpha_o + \beta_o + \gamma_o = 90^\circ$), con plano primario de cizallamiento definido según la solución de Merchant ($\phi = 45^\circ + \gamma_o/2 - \beta_{\text{fric}}/2$).
+    \item \textbf{Corte oblicuo (modelo tridimensional):} Régimen tridimensional industrial real del torneado en MAINSA, donde la arista cortante presenta una inclinación angular $\lambda_s$, evacuando la viruta con un ángulo de flujo lateral $\eta_c \approx \lambda_s$ según la hipótesis de Stabler, alejando el flujo térmico de la superficie mecanizada.
 \end{enumerate}
 
 \newpage
-\phantomsection
-\subsection*{Anexo 6: Geometría y microgeometría de insertos intercambiables de corte}
-\label{anx:insertos_geometria}
-\addcontentsline{toc}{subsection}{Anexo 6. Geometría y microgeometría de insertos intercambiables ISO}
+\anexotitle{Geometría y microgeometría de insertos intercambiables de corte}{insertos_geometria}
 
 \begin{figure}[H]
     \centering
@@ -194,10 +130,7 @@ El presente anexo contrasta los dos esquemas clásicos de deformación plástica
 El presente anexo sintetiza los criterios de selección geométrica de los insertos intercambiables de carburo de tungsteno (WC-Co). Existe un compromiso directo entre la accesibilidad geométrica de copiado y la resistencia mecánica de la punta: insertos con ángulos incluidos amplios (redondos y rómbicos de 80$^\circ$ tipo C como el CNMG 120408 seleccionado) ofrecen máximo volumen de soporte y resistencia al despostillamiento frente a geometrías agudas de 55$^\circ$ o 35$^\circ$. Asimismo, el acondicionamiento del filo mediante microasentado (\textit{honing}) y chaflán protector (\textit{chamfer} o \textit{T-land}) traslada las cargas cortantes al núcleo de compresión del inserto, previniendo microfracturas prematuras.
 
 \newpage
-\phantomsection
-\subsection*{Anexo 7: Evolución temporal del desgaste de flanco y modelo de Taylor}
-\label{anx:curva_taylor}
-\addcontentsline{toc}{subsection}{Anexo 7. Evolución temporal del desgaste de flanco y modelo de Taylor}
+\anexotitle{Evolución temporal del desgaste de flanco y modelo de Taylor}{curva_taylor}
 
 \begin{figure}[H]
     \centering
@@ -211,10 +144,7 @@ El presente anexo sintetiza los criterios de selección geométrica de los inser
 El presente anexo describe los tres regímenes tribológicos universales de degradación del filo: Zona I o de rodaje inicial (atenuación plástica rápida de la arista viva), Zona II o régimen estacionario (velocidad de desgaste casi constante y predecible) y Zona III o régimen terciario acelerado (fricción descontrolada y peligro inminente de rotura catastrófica). El modelo clásico de Taylor ($V_c \cdot T^n = C$) formaliza cómo un incremento de velocidad de corte contrae exponencialmente la vida útil del inserto ($T_4 < T_3 < T_2 < T_1$), sustentando la necesidad de detección temprana antes de alcanzar la fase terciaria.
 
 \newpage
-\phantomsection
-\subsection*{Anexo 8: Etapas de acondicionamiento y rectificación analógica de corriente}
-\label{anx:etapas_rectificacion}
-\addcontentsline{toc}{subsection}{Anexo 8. Etapas de acondicionamiento y rectificación de valor eficaz}
+\anexotitle{Etapas de acondicionamiento y rectificación analógica de corriente}{etapas_rectificacion}
 
 \begin{figure}[H]
     \centering
@@ -226,4 +156,3 @@ El presente anexo describe los tres regímenes tribológicos universales de degr
 \end{figure}
 
 El presente anexo detalla la forma de onda registrada secuencialmente a través de las cuatro etapas del circuito acondicionador analógico: Etapa 1 (corriente de fase bipolar alterna $\pm 8.5\,\text{A}$), Etapa 2 (tensión alterna en bornes de la resistencia Burden $\pm 1.0\,\text{V}$), Etapa 3 (señal desplazada en $+1.65\,\text{V}$ oscilando unipolarmente entre $0.65\,\text{V}$ y $2.65\,\text{V}$) y Etapa 4 (señal rectificada de precisión y filtrada paso bajo entregando el valor eficaz continuo proporcional a $I_{\text{RMS}}$ para el canal ADC de 12 bits del STM32).
-
