@@ -15,7 +15,7 @@ Con la finalidad de garantizar que cada base conceptual sustente de manera direc
 \setstretch{1.05}
 \setlength{\parskip}{1.5pt}
 \setlength{\tabcolsep}{4.0pt}
-\begin{longtable}{|>{\raggedright\arraybackslash}p{3.3cm}|>{\raggedright\arraybackslash}p{5.2cm}|>{\raggedright\arraybackslash}p{5.2cm}|}
+\begin{longtable}{>{\raggedright\arraybackslash}p{3.3cm}>{\raggedright\arraybackslash}p{5.2cm}>{\raggedright\arraybackslash}p{5.2cm}}
 \caption{Matriz de trazabilidad entre objetivos específicos, acciones y fundamento teórico\label{tab:contenido_tematico}}
 \\
 \hline
@@ -195,14 +195,14 @@ A lo largo del ciclo operativo de mecanizado, la curva de desgaste de flanco $VB
 
 Los sistemas de monitoreo de condición de herramientas (\textit{Tool Condition Monitoring}, TCM) permiten supervisar el estado físico del filo durante el mecanizado continuo con el objetivo de prevenir roturas imprevistas, mermas de precisión dimensional y paradas no programadas de la línea de producción \citep{byrne1995, teti2010}. En entornos de taller reales como MAINSA, los métodos directos (inspección por cámaras ópticas de visión artificial o sensores láser) quedan prácticamente inhabilitados durante el corte debido a la presencia constante de virutas desprendidas, la niebla de aceite y el chorro directo de refrigerante líquido (\textit{taladrina}) que oculta la zona de corte.
 
-Por este motivo, el presente proyecto adopta un enfoque de monitoreo indirecto no invasivo, consistente en captar magnitudes físicas medibles en el exterior de la máquina que presentan una correlación directa con la degradación progresiva del filo. En la \tab{comparativa_tcm} se evalúan las principales variables físicas documentadas en el estado del arte industrial.
+Por este motivo, el presente proyecto adopta un enfoque de <<monitoreo indirecto no invasivo>>, consistente en captar magnitudes físicas medibles en el exterior de la máquina que presentan una correlación directa con la degradación progresiva del filo. En la \tab{comparativa_tcm} se evalúan las principales variables físicas documentadas en el estado del arte industrial.
 
 \begin{table}[H]
 \centering
 \caption{Comparativa de variables físicas para monitoreo indirecto de herramientas (TCM)}\label{tab:comparativa_tcm}
 \vspace{2mm}
 \small
-\begin{tabular}{|p{3.2cm}|p{2.3cm}|p{3.0cm}|p{4.8cm}|}
+\begin{tabular}{p{3.2cm}p{2.3cm}p{3.0cm}p{4.8cm}}
 \hline
 \textbf{Variable física} & \textbf{Intrusividad} & \textbf{Sensibilidad} & \textbf{Idoneidad en torno CNC} \\ \hline \hline
 Fuerzas dinamométricas & Muy alta & Muy alta & Descartada: requiere modificar mecánicamente la torreta y costo prohibitivo ($>\$15\,000$). \\ \hline
@@ -215,7 +215,7 @@ Temperatura de corte & Media & Baja & Descartada: alta inercia térmica y falsea
 \footnotesize \textbf{Fuente:} Elaboración propia con base en \textcite{teti2010}.
 \end{table}
 
-A partir de esta evaluación técnica, se implementa una estrategia de fusión sensorial bimodal: la corriente del servomotor de avance registra la evolución sostenida de las fuerzas de corte en bajas frecuencias, mientras que las vibraciones mecánicas captan los transitorios dinámicos de alta frecuencia provocados por la fricción abrasiva en la interfaz herramienta-pieza.
+A partir de esta evaluación técnica, se implementa una estrategia de <<fusión sensorial bimodal>>: la corriente del servomotor de avance registra la evolución sostenida de las fuerzas de corte en bajas frecuencias, mientras que las vibraciones mecánicas captan los transitorios dinámicos de alta frecuencia provocados por la fricción abrasiva en la interfaz herramienta-pieza.
 
 
 \subsection{Transductores y acondicionamiento analógico de señales}
@@ -429,7 +429,7 @@ La digitalización de las señales analógicas se efectúa bajo el cumplimiento 
     \item $N$: Cantidad total de muestras contenidas en el bloque ($N=512$).
 \end{itemize}
 
-Complementariamente, la estadística de **Curtosis ($Ku$)** mide el nivel de impulsividad de la señal. En condiciones de herramienta nueva, la vibración sigue una distribución cuasi-gaussiana suave con $Ku \approx 3$. Cuando el inserto sufre desportilladuras microscópicas o frotamiento severo en el flanco, los picos abruptos elevan la curtosis a valores $Ku > 4.5$, indicando anomalías dinámicas antes de que el valor RMS global cambie significativamente.
+Complementariamente, la estadística de <<curtosis>> ($Ku$) mide el nivel de impulsividad de la señal. En condiciones de herramienta nueva, la vibración sigue una distribución cuasi-gaussiana suave con $Ku \approx 3$. Cuando el inserto sufre desportilladuras microscópicas o frotamiento severo en el flanco, los picos abruptos elevan la curtosis a valores $Ku > 4.5$, indicando anomalías dinámicas antes de que el valor RMS global cambie significativamente.
 
 En el dominio espectral, la Transformada Rápida de Fourier (FFT) permite descomponer la señal de vibración en sus frecuencias armónicas, calculando la energía acumulada en la banda crítica de $800\,\text{Hz}$ a $1600\,\text{Hz}$. A medida que el flanco del inserto pierde filo, el rozamiento constante contra la superficie mecanizada excita componentes armónicas en dicha banda, aportando un discriminador fiable de los estados iniciales de degradación.
 
@@ -517,7 +517,7 @@ La selección de los componentes de instrumentación y procesamiento responde a 
 \caption{Matriz comparativa de tecnologías candidatas para instrumentación y procesamiento embebido}\label{tab:comparativa_componentes}
 \vspace{2mm}
 \small\sloppy
-\begin{tabular}{|p{2.2cm}|p{3.0cm}|p{2.9cm}|p{4.6cm}|}
+\begin{tabular}{p{2.2cm}p{3.0cm}p{2.9cm}p{4.6cm}}
 \hline
 \textbf{Subsistema} & \textbf{Candidato 1} & \textbf{Candidato 2} & \textbf{Decisión de ingeniería} \\ \hline \hline
 Sensor de corriente & SCT-013-030 (Transformador núcleo partido) & ACS712 (Efecto Hall invasivo en serie) & \textbf{SCT-013 seleccionado:} No requiere cortar cables ni alterar la instalación eléctrica del torno; aislamiento galvánico intrínseco. \\ \hline
@@ -548,7 +548,7 @@ El desarrollo informático del proyecto articula dos entornos tecnológicos: Pyt
 \caption{Comparativa de marcos de trabajo TinyML evaluados para el sistema de monitoreo de desgaste de herramienta}\label{tab:comparativa_tinyml_frameworks}
 \vspace{2mm}
 \small
-\begin{tabular}{|p{3.2cm}|p{2.3cm}|p{2.3cm}|p{5.4cm}|}
+\begin{tabular}{p{3.2cm}p{2.3cm}p{2.3cm}p{5.4cm}}
 \hline
 \textbf{Framework} & \textbf{Cuantización} & \textbf{Soporte STM32} & \textbf{Dictamen técnico de selección} \\ \hline \hline
 TensorFlow Lite for Microcontrollers & INT8 (PTQ y QAT) & Oficial vía X-CUBE-AI & \textbf{Seleccionado:} Ruta oficial de STMicroelectronics con generación automática de código C y aceleración CMSIS-NN. \\ \hline
@@ -629,7 +629,7 @@ En la \tab{protocolo_semaforo_led} se sintetiza el protocolo operativo que vincu
 \caption{Protocolo operativo de señalización visual LED según niveles de desgaste ISO 3685}\label{tab:protocolo_semaforo_led}
 \vspace{2mm}
 \small
-\begin{tabular}{|c|p{2.0cm}|p{2.3cm}|p{3.0cm}|p{4.0cm}|}
+\begin{tabular}{cp{2.0cm}p{2.3cm}p{3.0cm}p{4.0cm}}
 \hline
 \textbf{Clase} & \textbf{Color LED} & \textbf{Rango $VB$ (ISO)} & \textbf{Estado físico} & \textbf{Acción del operario} \\ \hline \hline
 0 & Verde Oscuro & $VB < 0.10\,\text{mm}$ & Filo nuevo / rodaje & Operación normal; registrar lote de inserto. \\ \hline
@@ -647,7 +647,7 @@ En la \tab{protocolo_semaforo_led} se sintetiza el protocolo operativo que vincu
 
 Para transmitir los datos calculados por el microcontrolador ($I_{\text{RMS}}$, vibraciones y estado del semáforo LED) hacia el panel de mando exterior del operario, se utiliza el puerto USART2 del microcontrolador acoplado a un transceptor industrial RS-485 (MAX485/SN65HVD) operando a una velocidad de $115200\,\text{bps}$.
 
-El estándar TIA/EIA-485-A transmite la información mediante **señalización diferencial** sobre un par trenzado apantallado con una resistencia de terminación de $120\,\Omega$:
+El estándar TIA/EIA-485-A transmite la información mediante <<señalización diferencial>> sobre un par trenzado apantallado con una resistencia de terminación de $120\,\Omega$:
 
 \begin{equation}
 V_{AB} = V_A - V_B
@@ -676,7 +676,7 @@ Para la transmisión periódica de diagnósticos hacia el panel exterior, se def
 \caption{Estructura de la trama de telemetría industrial transmitida mediante RS-485}\label{tab:estructura_trama_rs485}
 \vspace{2mm}
 \small
-\begin{tabular}{|p{2.0cm}|p{2.2cm}|p{2.6cm}|p{6.4cm}|}
+\begin{tabular}{p{2.0cm}p{2.2cm}p{2.6cm}p{6.4cm}}
 \hline
 \textbf{Campo} & \textbf{Longitud} & \textbf{Valor / Formato} & \textbf{Descripción técnica} \\ \hline \hline
 Encabezado & 1 byte & \texttt{0xAA} & Byte de sincronización de inicio de paquete. \\ \hline

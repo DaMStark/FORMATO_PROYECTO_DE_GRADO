@@ -185,7 +185,7 @@ A lo largo del ciclo operativo de mecanizado, la curva de desgaste de flanco $VB
 
 Los sistemas de monitoreo de condición de herramientas (\textit{Tool Condition Monitoring}, TCM) permiten supervisar el estado físico del filo durante el mecanizado continuo con el objetivo de prevenir roturas imprevistas, mermas de precisión dimensional y paradas no programadas de la línea de producción \citep{byrne1995, teti2010}. En entornos de taller reales como MAINSA, los métodos directos (inspección por cámaras ópticas de visión artificial o sensores láser) quedan prácticamente inhabilitados durante el corte debido a la presencia constante de virutas desprendidas, la niebla de aceite y el chorro directo de refrigerante líquido (\textit{taladrina}) que oculta la zona de corte.
 
-Por este motivo, el presente proyecto adopta un enfoque de **monitoreo indirecto no invasivo**, consistente en captar magnitudes físicas medibles en el exterior de la máquina que presentan una correlación directa con la degradación progresiva del filo. En la \tab{comparativa_tcm} se evalúan las principales variables físicas documentadas en el estado del arte industrial.
+Por este motivo, el presente proyecto adopta un enfoque de <<monitoreo indirecto no invasivo>>, consistente en captar magnitudes físicas medibles en el exterior de la máquina que presentan una correlación directa con la degradación progresiva del filo. En la \tab{comparativa_tcm} se evalúan las principales variables físicas documentadas en el estado del arte industrial.
 
 \begin{table}[H]
 \centering
@@ -205,7 +205,7 @@ Temperatura de corte & Media & Baja & Descartada: alta inercia térmica y falsea
 \footnotesize \textbf{Fuente:} Elaboración propia con base en \textcite{teti2010}.
 \end{table}
 
-A partir de esta evaluación técnica, se implementa una estrategia de **fusión sensorial bimodal**: la corriente del servomotor de avance registra la evolución sostenida de las fuerzas de corte en bajas frecuencias, mientras que las vibraciones mecánicas captan los transitorios dinámicos de alta frecuencia provocados por la fricción abrasiva en la interfaz herramienta-pieza.
+A partir de esta evaluación técnica, se implementa una estrategia de <<fusión sensorial bimodal>>: la corriente del servomotor de avance registra la evolución sostenida de las fuerzas de corte en bajas frecuencias, mientras que las vibraciones mecánicas captan los transitorios dinámicos de alta frecuencia provocados por la fricción abrasiva en la interfaz herramienta-pieza.
 
 \subsubsection{Transductores y fundamentación analítica del sensado de corriente en el servomotor de avance}
 
@@ -327,7 +327,7 @@ La digitalización de las señales analógicas se efectúa bajo el cumplimiento 
     \item $N$: Cantidad total de muestras contenidas en el bloque ($N=512$).
 \end{itemize}
 
-Complementariamente, la estadística de **Curtosis ($Ku$)** mide el nivel de impulsividad de la señal. En condiciones de herramienta nueva, la vibración sigue una distribución cuasi-gaussiana suave con $Ku \approx 3$. Cuando el inserto sufre desportilladuras microscópicas o frotamiento severo en el flanco, los picos abruptos elevan la curtosis a valores $Ku > 4.5$, indicando anomalías dinámicas antes de que el valor RMS global cambie significativamente.
+Complementariamente, la estadística de <<Curtosis ($Ku$)>> mide el nivel de impulsividad de la señal. En condiciones de herramienta nueva, la vibración sigue una distribución cuasi-gaussiana suave con $Ku \approx 3$. Cuando el inserto sufre desportilladuras microscópicas o frotamiento severo en el flanco, los picos abruptos elevan la curtosis a valores $Ku > 4.5$, indicando anomalías dinámicas antes de que el valor RMS global cambie significativamente.
 
 En el dominio espectral, la Transformada Rápida de Fourier (FFT) permite descomponer la señal de vibración en sus frecuencias armónicas, calculando la energía acumulada en la banda crítica de $800\,\text{Hz}$ a $1600\,\text{Hz}$. A medida que el flanco del inserto pierde filo, el rozamiento constante contra la superficie mecanizada excita componentes armónicas en dicha banda, aportando un discriminador fiable de los estados iniciales de degradación.
 
@@ -573,7 +573,7 @@ El acelerómetro almacena continuamente las muestras en su memoria interna FIFO 
 
 La calidad del dataset experimental define la confiabilidad del diagnóstico del modelo neuronal. Las series temporales de corriente y vibración registradas durante las pasadas de mecanizado en probetas de acero AISI 1045 se dividen en ventanas móviles de $512$ muestras ($256\,\text{ms}$ a $2000\,\text{Hz}$) con un solapamiento del 50\% ($128\,\text{ms}$). A partir de cada ventana se calcula un vector de 16 características en el dominio temporal y frecuencial, asociado al valor de desgaste de flanco $VB$ medido en microscopio.
 
-Debido a que la fase de desgaste estable (Clases 1 y 2) abarca más del 60\% de la vida del inserto, el dataset resultante contiene un desbalance natural frente a las fases de menor duración (Clase 0 y Clase 4). Para contrarrestar este efecto sin generar datos artificiales sintéticos que puedan distorsionar la física del proceso, se aplica una técnica de **ponderación de costes (\textit{class weights})** durante el entrenamiento: se asigna una penalización mayor a los errores cometidos en las clases con menor número de muestras, garantizando que el clasificador preste la máxima atención a la detección de la condición crítica de fin de vida útil.
+Debido a que la fase de desgaste estable (Clases 1 y 2) abarca más del 60\% de la vida del inserto, el dataset resultante contiene un desbalance natural frente a las fases de menor duración (Clase 0 y Clase 4). Para contrarrestar este efecto sin generar datos artificiales sintéticos que puedan distorsionar la física del proceso, se aplica una técnica de ponderación de costes (\textit{class weights}) durante el entrenamiento: se asigna una penalización mayor a los errores cometidos en las clases con menor número de muestras, garantizando que el clasificador preste la máxima atención a la detección de la condición crítica de fin de vida útil.
 
 El conjunto global de datos se segmenta en tres grupos independientes: 70\% para el entrenamiento de los pesos, 15\% para validación con parada temprana (\textit{Early Stopping}) y 15\% para evaluación ciega, validada mediante una prueba cruzada estratificada de 5 pliegues (\textit{5-fold CV}).
 
@@ -581,7 +581,7 @@ El conjunto global de datos se segmenta en tres grupos independientes: 70\% para
 
 Para transmitir los datos calculados por el microcontrolador ($I_{\text{RMS}}$, vibraciones y estado del semáforo LED) hacia el panel de mando exterior del operario, se utiliza el puerto USART2 del microcontrolador acoplado a un transceptor industrial RS-485 (MAX485/SN65HVD) operando a una velocidad de $115200\,\text{bps}$.
 
-El estándar TIA/EIA-485-A transmite la información mediante **señalización diferencial** sobre un par trenzado apantallado con una resistencia de terminación de $120\,\Omega$:
+El estándar TIA/EIA-485-A transmite la información mediante <<señalización diferencial>> sobre un par trenzado apantallado con una resistencia de terminación de $120\,\Omega$:
 
 \begin{equation}
 V_{AB} = V_A - V_B
