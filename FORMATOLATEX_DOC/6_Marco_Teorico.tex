@@ -155,7 +155,7 @@ Ra_{\text{teórico}} \approx \frac{f^2}{32 \cdot r_\epsilon}
     \item $r_\epsilon$: Radio de curvatura de la punta del inserto intercambiable ($\text{mm}$).
 \end{itemize}
 
-En las operaciones industriales de taller, el proceso opera bajo régimen de corte oblicuo tridimensional con desvío lateral de viruta, alejando el flujo térmico del filo principal (véase el Anexo~\ref{anx:mecanica_corte}). Para soportar las exigencias del mecanizado de acero AISI 1045, se seleccionan insertos intercambiables de carburo de tungsteno (WC-Co) normalizados según norma ISO tipo CNMG 120408, dotados de recubrimientos duros multicapa (TiN/TiCN/Al$_2$O$_3$) y microgeometría de filo reforzada para prevenir fracturas prematuras (véase el Anexo~\ref{anx:insertos_geometria}).
+En las operaciones industriales de taller, el proceso opera bajo régimen de corte oblicuo tridimensional con desvío lateral de viruta, alejando el flujo térmico del filo principal (véase el Anexo~\ref{anx:mecanica_corte}). Para soportar las exigencias del mecanizado de acero AISI 1045, se seleccionan insertos intercambiables de carburo de tungsteno (WC-Co) normalizados según norma ISO tipo CNMG 120408 y VNMG montados en portaherramientas exteriores rígidos (cuchillas de torneado, como se ilustra en la \fig{ubicacion_sensor_vibraciones_cuchilla}), dotados de recubrimientos duros multicapa (TiN/TiCN/Al$_2$O$_3$) y microgeometría de filo reforzada para prevenir fracturas prematuras (véase el Anexo~\ref{anx:insertos_geometria}).
 
 
 \subsection{Fenomenología del desgaste y mecanismos de falla en herramientas de corte}
@@ -308,7 +308,9 @@ Las vibraciones mecánicas registradas sobre la torreta constituyen un indicador
     \item \textbf{Filtrado temporal condicionado por corriente:} La recolección de acelerometría se sincroniza con el umbral de corriente del servomotor, asegurando que solo se analicen datos durante el contacto real de corte y descartando los movimientos de aproximación en vacío (código G00).
 \end{enumerate}
 
-El módulo acelerómetro digital ADXL345 se instala dentro de un encapsulado protector estanco de grado industrial IP67 provisto de una base magnética de neodimio N52, garantizando un acoplamiento mecánico rígido y total inmunidad ante el rocío continuo de refrigerante y virutas incandescentes en el torno CNC.
+El módulo acelerómetro digital ADXL345 se instala dentro de un encapsulado protector estanco de grado industrial IP67 provisto de una base magnética de neodimio N52, garantizando un acoplamiento mecánico rígido y total inmunidad ante el rocío continuo de refrigerante y virutas incandescentes en el torno CNC. En la \fig{ubicacion_sensor_vibraciones_cuchilla} se ilustra la herramienta de corte exterior o cuchilla de torneado (portaherramientas MVJNR 2525M 16 con inserto de carburo cementado) y la disposición física del sensor de vibraciones sobre el lomo rectificado del vástago, evidenciando el trayecto directo de propagación de las ondas elásticas de alta frecuencia desde el filo cortante hacia el transductor.
+
+\figura[width=0.88\textwidth]{ubicacion_sensor_vibraciones_cuchilla}{Disposición física y punto de fijación del sensor acelerómetro de vibraciones en el lomo de la cuchilla portaherramientas exterior de torneado}{Elaboración propia con base en especificaciones de taller, 2026}
 
 
 \subsubsection{Protocolo de comunicación SPI y configuración de registros del ADXL345}
