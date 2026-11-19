@@ -5,16 +5,19 @@
 \newpage
 \phantomsection
 \addcontentsline{toc}{section}{ANEXOS}
-\section*{ANEXOS}
-
+\vspace*{2mm}
+{\bfseries\normalsize ANEXOS\par}
+\vspace{4mm}
 
 \newcounter{anexocount}
 \newcommand{\anexotitle}[2]{%
     \refstepcounter{anexocount}%
-    \phantomsection
-    \subsection*{Anexo \arabic{anexocount}: #1}%
     \label{anx:#2}%
+    \phantomsection
     \addcontentsline{toc}{subsection}{Anexo \arabic{anexocount}. #1}%
+    \vspace{2mm}%
+    {\centering \normalsize\bfseries Anexo \arabic{anexocount}: #1\par}%
+    \vspace{3mm}%
 }
 
 \anexotitle{Diagrama de bloques funcional de la propuesta de solución mecatrónica}{diagrama_bloques}
