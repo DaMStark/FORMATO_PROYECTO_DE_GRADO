@@ -1,12 +1,13 @@
 \babel@toc {spanish}{}\relax 
 \thispagestyle {empty}
-\contentsline {figure}{\numberline {1}{\ignorespaces Árbol de problemas del proceso de torneado CNC en MAINSA}}{21}{figure.caption.3}%
-\contentsline {figure}{\numberline {2}{\ignorespaces Cinemática del proceso de torneado cilíndrico y descomposición vectorial de las fuerzas de mecanizado}}{42}{figure.caption.5}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Morfología de los tipos de desgaste en la herramienta de corte y parámetros dimensionales de desgaste de flanco según ISO 3685}}{44}{figure.caption.6}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Composición interna de un servomotor: 1) Despiece del tren de engranajes con motor eléctrico y etapas helicoidales de reducción; 2) Unidad de servomotor PMSM industrial de imanes permanentes}}{48}{figure.caption.8}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Esquema circuital del acondicionamiento analógico para sensor SCT-013 y forma de onda con desplazamiento de offset continuo}}{52}{figure.caption.9}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Arquitectura y flujo secuencial de procesamiento de señales e inferencia Edge AI (TinyML) implementada en el sistema}}{60}{figure.caption.10}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Plataformas embebidas para inferencia Edge AI: 1) STM32F411 seleccionada y 2) ESP32-S3 descartada para control}}{63}{figure.caption.12}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Sensor acelerómetro digital MEMS triaxial ADXL345: 1) Módulo físico para encapsulado estanco IP67 y 2) Ejes ortogonales de sensibilidad triaxial (+X, +Y, +Z) vinculados a la cinemática de torneado}}{64}{figure.caption.13}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Clasificador LED por niveles de desgaste de flanco: escala cromática de cinco niveles y umbrales normativos $VB$ según ISO 3685}}{67}{figure.caption.15}%
-\contentsline {figure}{\numberline {10}{\ignorespaces Diagrama esquemático de disposición de componentes del sistema periférico en el torno CNC: sensado no invasivo en gabinete eléctrico y torreta, con procesamiento y supervisión local}}{72}{figure.caption.18}%
+\contentsline {figure}{\numberline {1}{\ignorespaces Árbol de problemas del proceso de torneado CNC en MAINSA}}{17}{figure.caption.1}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Cinemática del proceso de torneado cilíndrico y descomposición vectorial de las fuerzas de mecanizado}}{38}{figure.caption.3}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Morfología de los tipos de desgaste en la herramienta de corte y parámetros dimensionales de desgaste de flanco según ISO 3685}}{41}{figure.caption.4}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Composición interna de un servomotor: 1) Despiece del tren de engranajes con motor eléctrico y etapas helicoidales de reducción; 2) Unidad de servomotor PMSM industrial de imanes permanentes}}{44}{figure.caption.6}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Esquema circuital del acondicionamiento analógico para sensor SCT-013 y forma de onda con desplazamiento de offset continuo}}{48}{figure.caption.7}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Disposición física y punto de fijación del sensor acelerómetro de vibraciones en el lomo de la cuchilla portaherramientas exterior de torneado}}{50}{figure.caption.8}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Arquitectura y flujo secuencial de procesamiento de señales e inferencia Edge AI (TinyML) implementada en el sistema}}{56}{figure.caption.9}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Plataformas embebidas para inferencia Edge AI: 1) STM32F411 seleccionada y 2) ESP32-S3 descartada para control}}{60}{figure.caption.11}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Sensor acelerómetro digital MEMS triaxial ADXL345: 1) Módulo físico para encapsulado estanco IP67 y 2) Ejes ortogonales de sensibilidad triaxial (+X, +Y, +Z) vinculados a la cinemática de torneado}}{60}{figure.caption.12}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Clasificador LED por niveles de desgaste de flanco: escala cromática de cinco niveles y umbrales normativos $VB$ según ISO 3685}}{64}{figure.caption.14}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Diagrama esquemático de disposición de componentes del sistema periférico en el torno CNC: sensado no invasivo en gabinete eléctrico y torreta, con procesamiento y supervisión local}}{69}{figure.caption.17}%
