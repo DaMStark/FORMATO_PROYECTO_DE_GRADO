@@ -478,7 +478,7 @@ La computación en el borde (\textit{Edge AI} / TinyML) permite trasladar la inf
 
 Tal como se esquematiza en el diagrama de bloques de la \fig{tinyml_pipeline_dos_colores}, la arquitectura de IA se organiza en tres etapas consecutivas:
 \begin{enumerate}
-    \item \textbf{Vector de características de entrada (10 descriptores):} Se calculan en ventanas temporales de $256\,\text{ms}$ ($512$ muestras a $2000\,\text{Hz}$ con solapamiento del 50\%) durante la pasada activa: corriente eficaz ($I_{\text{RMS}}$), aceleraciones eficaces triaxiales ($a_{x,\text{RMS}}, a_{y,\text{RMS}}, a_{z,\text{RMS}}$), factores de forma y energía espectral en alta frecuencia.
+    \item \textbf{Vector de características de entrada (10 descriptores):} Se calculan en ventanas temporales de $204.8\,\text{ms}$ ($1024$ muestras adquiridas síncronamente mediante DMA a $5000\,\text{Hz}$) durante la pasada activa: corriente eficaz ($I_{\text{RMS}}$), aceleraciones eficaces triaxiales ($a_{x,\text{RMS}}, a_{y,\text{RMS}}, a_{z,\text{RMS}}$), factores de forma, curtosis y energía espectral en alta frecuencia.
     \item \textbf{Vector de salida multiclase (5 categorías ISO 3685):} Diagnóstico clasificado en: Clase 0 (Óptimo, $VB < 0.10\,\text{mm}$), Clase 1 (Bueno, $0.10 \le VB < 0.18\,\text{mm}$), Clase 2 (Regular, $0.18 \le VB < 0.22\,\text{mm}$), Clase 3 (Avanzado, $0.22 \le VB < 0.30\,\text{mm}$) y Clase 4 (Crítico, $VB \ge 0.30\,\text{mm}$).
     \item \textbf{Red neuronal densa y cuantización INT8:} Se entrena una red neuronal Perceptrón Multicapa (MLP) con estructura $10 \to 32 \to 16 \to 5$ en el entorno TensorFlow/Keras. Para posibilitar su ejecución en hardware con memoria limitada, los parámetros en coma flotante de 32 bits se comprimen a números enteros de 8 bits mediante cuantización uniforme:
 \end{enumerate}
@@ -495,7 +495,7 @@ Tal como se esquematiza en el diagrama de bloques de la \fig{tinyml_pipeline_dos
     \item $\text{Factor de Escala}$: Factor constante que adapta linealmente el rango real al intervalo discreto de 8 bits.
 \end{itemize}
 
-Esta técnica de compresión reduce el tamaño del modelo en un 75\%, requiriendo únicamente $4.8\,\text{KB}$ de memoria Flash y permitiendo ejecutar cada ciclo de inferencia en menos de $15\,\text{ms}$ en el microcontrolador STM32. La secuencia metodológica completa de entrenamiento y optimización se presenta en el Anexo~\ref{anx:toolchain_edgai}.
+Esta técnica de compresión reduce el tamaño del modelo en un 75\%, requiriendo un espacio acotado de memoria Flash ($\le 12.0\,\text{kB}$) y permitiendo ejecutar cada ciclo de inferencia en menos de $2.0\,\text{ms}$ en el microcontrolador STM32F411. La secuencia metodológica completa de entrenamiento y optimización se presenta en el Anexo~\ref{anx:toolchain_edgai}.
 
 
 \subsubsection{Arquitectura interna ARM Cortex-M4 y recursos del STM32F411}
