@@ -426,7 +426,7 @@ Como se desprende de la \tab{balance_potencia_hardware_mp}, el consumo total de 
 \subsubsection{Ficha técnica consolidada de dimensionamiento mecatrónico (Entregable formal OE2)}
 \label{subsubsec:ficha_tecnica_oe2}
 
-En conformidad con las directrices académicas de Taller de Grado y el plan de acciones del proyecto, en la \tab{ficha_tecnica_dimensionamiento_oe2} se consolida la ficha técnica de dimensionamiento y especificación de componentes de hardware que certifica el cumplimiento pleno del segundo objetivo específico.
+En conformidad con los requerimientos de ingeniería del proyecto de grado y el plan de acciones establecido, en la \tab{ficha_tecnica_dimensionamiento_oe2} se consolida la ficha técnica de dimensionamiento y especificación de componentes de hardware que certifica el cumplimiento pleno del segundo objetivo específico.
 
 {\setlength{\parskip}{1.5pt}
 \setlength{\tabcolsep}{3.0pt}
@@ -511,13 +511,15 @@ Para la clasificación automática del estado de desgaste sin recurrir a servido
 \subsubsection{Topología del clasificador y cuantización uniforme INT8}
 El modelo neuronal se estructura con una capa de entrada correspondiente al vector de descriptores normalizados, dos capas densas intermedias completamente conectadas con funciones de activación lineal rectificada (ReLU), y una capa de salida densa con función de activación Softmax para emitir la distribución de probabilidades sobre cinco clases de condición de desgaste normativo:
 
-\begin{enumerate}
+{\setstretch{1.15}
+\begin{itemize}[leftmargin=0.55cm, itemsep=2.0pt, parsep=0pt, topsep=2.5pt, partopsep=0pt]
     \item \textit{Clase 0 (Óptimo):} Inserto nuevo con filo intacto ($VB < 0.10\,\text{mm}$).
     \item \textit{Clase 1 (Bueno):} Desgaste inicial estable y operación segura ($0.10 \le VB < 0.18\,\text{mm}$).
-    \item \textit{Clase 2 (Regular):} Desgaste progresivo con seguimiento preventivo ($0.18 \le VB < 0.22\,\text{mm}$).
-    \item \textit{Clase 3 (Aceptable):} Desgaste moderado con cambio próximo planificable ($0.22 \le VB < 0.30\,\text{mm}$).
-    \item \textit{Clase 4 (Crítico / Alerta):} Desgaste severo normativo ($VB \ge 0.30\,\text{mm}$ según ISO 3685), con alto riesgo de pérdida de tolerancias o fractura violenta.
-\end{enumerate}
+    \item \textit{Clase 2 (Regular):} Desgaste progresivo y preventivo ($0.18 \le VB < 0.22\,\text{mm}$).
+    \item \textit{Clase 3 (Aceptable):} Desgaste moderado y cambio programable ($0.22 \le VB < 0.30\,\text{mm}$).
+    \item \textit{Clase 4 (Crítico / Alerta):} Desgaste severo normativo ($VB \ge 0.30\,\text{mm}$, ISO 3685) con alto riesgo de pérdida de tolerancias o fractura violenta.
+\end{itemize}
+}
 
 Tras el entrenamiento supervisado offline en entorno Python (Keras/TensorFlow), el modelo en punto flotante de 32 bits (FP32) se somete a un proceso de cuantización uniforme post-entrenamiento (\textit{Post-Training Quantization}, PTQ) a enteros de 8 bits con signo (INT8). La cuantización reduce el peso del modelo en un factor de $4\times$ y permite utilizar las instrucciones SIMD vectoriales intrínsecas del núcleo ARM Cortex-M4 mediante la biblioteca CMSIS-NN, multiplicando la velocidad de inferencia por hardware.
 
