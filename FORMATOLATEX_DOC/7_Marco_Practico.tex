@@ -68,59 +68,387 @@ Operación representativa & Cilindrado longitudinal exterior continuo e interrum
 \end{longtable}
 }
 
-\subsection{Módulo de instrumentación y adquisición sensorial no invasiva}
-\label{subsec:modulo_instrumentacion}
+\subsection{Dimensionamiento y selección de sensores no invasivos de variable eléctrica y vibración (OE2)}
+\label{subsec:dimensionamiento_sensores}
 
-La instrumentación del proceso de torneado en el torno Mazak Quick Turn se fundamenta en la supervisión indirecta mediante dos variables físicas complementarias: la corriente eléctrica del servomotor de avance y la aceleración por vibración mecánica en la torreta.
+El cumplimiento del segundo objetivo específico inicia con el dimensionamiento metrológico y la selección ingenieril de los transductores primarios, asegurando que capturen la dinámica de corte con alta fidelidad, linealidad e inmunidad ambiental, sin alterar la integridad electromecánica ni el cableado nativo del torno CNC Mazak Quick Turn de MAINSA.
 
-\subsubsection{Sensor de corriente de núcleo partido SCT-013-000}
-Para capturar la componente de par electromecánico asociada a la fuerza de avance ($F_f$) y fuerza de corte ($F_c$), se seleccionó un transformador de corriente no invasivo de núcleo partido de ferrita modelo SCT-013-000. Este transductor permite un montaje directo abrazando una de las líneas de alimentación de corriente alterna del servoaccionamiento dentro del armario de fuerza de la máquina, sin necesidad de cortar conductores ni interrumpir la producción.
+\subsubsection{Dimensionamiento analítico del sensor de variable eléctrica (SCT-013) según la potencia del motor}
+\label{subsubsec:dimensionamiento_sensor_corriente}
 
-El sensor posee una relación de transformación nominal de $100\,\text{A} : 50\,\text{mA}$ ($2000:1$), con una linealidad de $\pm 1\%$ dentro de su rango operativo. La corriente secundaria inducida $I_s$ es convertida en un nivel de tensión proporcional mediante una resistencia de carga (\textit{burden resistor}) calculada en la etapa de acondicionamiento.
+En los procesos de torneado CNC en desbaste y acabado sobre aceros aleados de alta solicitación mecánica (AISI 1045 y AISI 4140), el par electromagnético demandado por los accionamientos eléctricos de la máquina herramienta guarda una correlación directa con la fuerza principal de corte ($F_c$) y la fuerza axial de avance ($F_f$). A medida que el filo del inserto experimenta desgaste abrasivo de flanco ($VB$), el radio de punta se degrada y la fricción contra la pieza mecanizada se eleva sustancialmente, incrementando la potencia eléctrica consumida.
 
-\subsubsection{Acelerómetro digital MEMS triaxial ADXL345}
-Para la captación de oscilaciones mecánicas de alta frecuencia inducidas por la degradación del filo de corte y la fricción del flanco contra la pieza maquinada, se integró un sensor acelerómetro microelectromecánico (MEMS) triaxial digital ADXL345 de Analog Devices.
+Para dimensionar el rango de medición del transductor de variable eléctrica sin interrumpir el suministro de fuerza, se analizaron los dos puntos de acoplamiento de la celda de torneado caracterizada en la \tab{especificaciones_torno_mainsa}:
 
-El transductor se configura con un rango dinámico de escala completa de $\pm 16\,g$ y una resolución ultra alta de 13 bits (4~mg/LSB). La fijación física sobre la torreta portaherramientas se efectúa mediante una base magnética de neodimio de alta adherencia ($> 5\,\text{kg}$ de fuerza de sujeción), alojada dentro de un encapsulado protector estanco fabricado en aluminio mecanizado con sellos de nitrilo, cumpliendo el estándar de protección IP67 contra aceite soluble y viruta metálica. Los ejes de medición se orientan ortogonalmente alineando el eje $Z$ con la fuerza de penetración pasiva ($F_p$) y el eje $X$ con la dirección de avance longitudinal ($F_f$).
+\begin{enumerate}
+    \item \textit{Motor del husillo principal (Spindle):} Motor trifásico de inducción de $P_n = 15.0\,\text{kW}$ ($20\,\text{HP}$), con tensión de línea nominal $V_{LL} = 380\,\text{V AC}$, factor de potencia $\cos\phi \approx 0.85$ y rendimiento electromecánico $\eta \approx 0.89$. La corriente de fase nominal a plena carga se calcula mediante:
+    \begin{equation}
+    I_{n,\text{husillo}} = \frac{P_n}{\sqrt{3} \cdot V_{LL} \cdot \cos\phi \cdot \eta} = \frac{15000\,\text{W}}{\sqrt{3} \cdot 380\,\text{V} \cdot 0.85 \cdot 0.89} \approx 30.12\,\text{A}_{\text{RMS}}
+    \label{eq:mp_corriente_husillo}
+    \end{equation}
+    \noindent donde $P_n$ representa la potencia mecánica en el eje, $V_{LL}$ la tensión entre fases, $\cos\phi$ el factor de potencia inductivo y $\eta$ la eficiencia de conversión. Considerando transitorios de aceleración y sobrecargas puntuales de corte pesado de hasta un $50\%$, la corriente máxima de pico alcanza:
+    \begin{equation}
+    I_{\text{pico,husillo}} = 1.50 \cdot I_{n,\text{husillo}} \cdot \sqrt{2} \approx 1.50 \cdot 30.12\,\text{A} \cdot 1.4142 \approx 63.89\,\text{A}_{\text{pico}}
+    \label{eq:mp_corriente_pico_husillo}
+    \end{equation}
 
-\subsection{Módulo de acondicionamiento de señal y diseño de PCB industrial}
-\label{subsec:modulo_acondicionamiento_pcb}
+    \item \textit{Servomotor del eje de avance longitudinal Z (Carro portaherramientas):} Servomotor síncrono AC Brushless / PMSM de $P_n = 2.0\,\text{kW}$, tensión nominal $V_{LL} = 220\,\text{V AC}$ y corriente de fase en régimen continuo de $I_n \approx 5.8\,\text{A}_{\text{RMS}}$. Durante pasadas de desbaste severo con profundidad de corte $a_p = 2.5\,\text{mm}$ y avance $f = 0.25\,\text{mm/rev}$ en acero bonificado AISI 4140 (presión específica de corte $k_c \approx 2200\,\text{N/mm}^2$), la fuerza tangencial de corte es $F_c = k_c \cdot a_p \cdot f \approx 1375\,\text{N}$. La fuerza axial de avance resultante equivale aproximadamente a $F_f \approx 0.40 \cdot F_c \approx 550\,\text{N}$. Sumando la fuerza de fricción de las guías prismáticas templadas ($F_{\text{fric}} \approx 172\,\text{N}$), la fuerza axial neta sobre el husillo de bolas recirculantes ($p = 10\,\text{mm/rev}$, rendimiento $\eta_b = 0.90$) impone un torque resistente de:
+    \begin{equation}
+    T_m = \frac{(F_f + F_{\text{fric}}) \cdot p}{2\pi \cdot \eta_b} = \frac{(550\,\text{N} + 172\,\text{N}) \cdot 0.010\,\text{m}}{2\pi \cdot 0.90} \approx 1.277\,\text{N}\cdot\text{m}
+    \label{eq:mp_torque_avance}
+    \end{equation}
+    Con una constante de par del servomotor $K_t \approx 0.85\,\text{N}\cdot\text{m/A}$, la corriente de fase demandada en corte nuevo es de aproximadamente $1.50\,\text{A}_{\text{RMS}}$. Sin embargo, ante el desgaste severo del inserto ($VB \ge 0.30\,\text{mm}$), las fuerzas de corte experimentan un incremento del $40\%$ al $60\%$ por fricción abrasiva en el flanco, demandando corrientes de pico de hasta $I_{p,\text{pico}} \le 12.0 - 15.0\,\text{A}_{\text{pico}}$.
+\end{enumerate}
 
-El diseño de la etapa de acondicionamiento analógico tiene por objetivo adaptar la señal de corriente alterna entregada por el sensor SCT-013 a la ventana unipolar admisible por el convertidor analógico-digital (ADC) del microcontrolador (0 a $3.3\,\text{V}$), asegurando alta inmunidad frente al ruido electromagnético ambiental.
+A partir de estas demandas operacionales, se evaluó la serie industrial de transformadores de corriente no invasivos de núcleo partido de ferrita SCT-013. A diferencia de sensores basados en efecto Hall invasivos (como la serie ACS712) que obligan a desatornillar bornes de potencia y cortar conductores de máquina (infringiendo el principio de no invasividad), el modelo SCT-013 permite abrazar directamente el conductor de fase en el armario eléctrico.
 
-\subsubsection{Cálculo del resistor de carga y red de polarización DC}
-Considerando una corriente primaria máxima de pico esperada en el servomotor de $I_{p,\text{pico}} = 15\,\text{A}$, la corriente secundaria pico entregada por el SCT-013 ($N = 2000$) es:
-
+Para maximizar la resolución y adaptabilidad en la tarjeta de adquisición, se seleccionó el modelo SCT-013-000, el cual proporciona salida pura en corriente con una relación de transformación de:
 \begin{equation}
-I_{s,\text{pico}} = \frac{I_{p,\text{pico}}}{N} = \frac{15\,\text{A}}{2000} = 7.5\,\text{mA}
+K_N = \frac{N_p}{N_s} = \frac{1}{2000} \implies I_s = \frac{I_p}{2000}
+\label{eq:mp_relacion_transformacion}
+\end{equation}
+\noindent donde $I_p$ es la corriente primaria que atraviesa el conductor abrazado e $I_s$ es la corriente secundaria inducida ($100\,\text{A} : 50\,\text{mA}$). Al no poseer resistencia de carga interna integrada (a diferencia de los modelos SCT-013-030 o SCT-013-050 cuya salida en tensión está prefijada a $1.0\,\text{V}$), el modelo SCT-013-000 permite al ingeniero calcular y soldar externamente en la placa PCB una resistencia de carga (\textit{burden}) de alta precisión, optimizando la escala completa de tensión hacia la ventana unipolar exacta del convertidor analógico-digital (ADC) del microcontrolador. En la \fig{sct013_sensor_corriente} se muestra el transductor SCT-013-000 seleccionado y su mecanismo de núcleo partido con clip de cierre rápido.
+
+\figura[width=0.75\textwidth]{sct013_sensor_corriente}{Sensor de corriente no invasivo de núcleo partido SCT-013-000 con relación de transformación 2000:1 y núcleo magnético de ferrita}{Elaboración propia con base en especificaciones de fabricante, 2026}
+
+El núcleo de ferrita de alta permeabilidad magnética del SCT-013 garantiza un error de no linealidad inferior a $\pm 1.0\%$ en el rango de $10\,\text{A}$ a $100\,\text{A}$, rigidez dieléctrica de aislamiento galvánico de $1000\,\text{V AC} / 1\,\text{min}$ entre el cable primario y los terminales de salida, y una respuesta frecuencial plana entre $50\,\text{Hz}$ y $1000\,\text{Hz}$, suficiente para capturar las componentes fundamentales y armónicas del servomotor de avance sin riesgo de saturación magnética.
+
+\subsubsection{Dimensionamiento metrológico del sensor de aceleración triaxial (ADXL345) en la torreta}
+\label{subsubsec:dimensionamiento_acelerometro}
+
+La segunda variable física fundamental para el monitoreo indirecto del desgaste de herramienta está constituida por las vibraciones mecánicas de alta frecuencia transmitidas a través de la torreta portaherramientas. Durante el arranque de viruta, la separación cizallante del material genera deformaciones elasto-plásticas continuas, mientras que el frotamiento abrasivo entre el flanco desgastado del inserto y la pieza engendra microimpactos dinámicos y oscilaciones tribológicas.
+
+Para dimensionar correctamente el ancho de banda y el rango dinámico del sensor de aceleración, se efectuó el análisis elastodinámico de la celda de torneado:
+
+\begin{enumerate}
+    \item \textit{Frecuencia de corte y vibraciones de máquina:} En operaciones de torneado exterior continuo a velocidades de husillo de $n = 800 - 2500\,\text{RPM}$, la frecuencia rotacional básica del cabezal se sitúa en $f_0 = \frac{n}{60} \in [13.33 - 41.67]\,\text{Hz}$. Las perturbaciones mecánicas de baja frecuencia derivadas de correas, poleas y desbalance de plato se concentran por debajo de $500\,\text{Hz}$. En contrapartida, las excitaciones dinámicas provocadas por el desgaste de flanco ($VB$), microrroturas y desprendimiento discontinuo de viruta excitan primordialmente la banda espectral de $500\,\text{Hz}$ a $2500\,\text{Hz}$.
+    
+    \item \textit{Frecuencia natural del conjunto cuchilla-portaherramientas:} Considerando un portaherramientas estándar MVJNR 2525M 16 de acero aleado con sección transversal cuadrada de $b = h = 25.0\,\text{mm}$ y longitud en voladizo $L = 40.0\,\text{mm}$ desde el asiento de la torreta hasta la punta del inserto (módulo de elasticidad $E = 210\,\text{GPa}$, densidad $\rho = 7850\,\text{kg/m}^3$), el momento de inercia de la sección es $I_y = \frac{b h^3}{12} = \frac{0.025 \cdot (0.025)^3}{12} \approx 3.255 \times 10^{-8}\,\text{m}^4$ y la masa por unidad de longitud es $m' = \rho \cdot b \cdot h = 7850 \cdot (0.025)^2 \approx 4.906\,\text{kg/m}$. Modelando el mango como una viga empotrada-libre, la frecuencia natural del primer modo flexional se determina analíticamente mediante:
+    \begin{equation}
+    \begin{split}
+    f_{n1} &= \frac{3.516}{2\pi \cdot L^2} \sqrt{\frac{E \cdot I_y}{m'}} \\
+    &= \frac{3.516}{2\pi \cdot (0.040\,\text{m})^2} \sqrt{\frac{210 \times 10^9\,\text{N/m}^2 \cdot 3.255 \times 10^{-8}\,\text{m}^4}{4.906\,\text{kg/m}}} \approx 4130\,\text{Hz}
+    \end{split}
+    \label{eq:mp_frecuencia_natural_torreta}
+    \end{equation}
+    Por consiguiente, el ancho de banda del sensor no invasivo debe cubrir eficazmente hasta $1.6\,\text{kHz} - 2.0\,\text{kHz}$ para aislar la firma de degradación del inserto sin distorsión por la resonancia estructural propia del mango.
+
+    \item \textit{Rango dinámico de aceleración ($g$):} En condiciones de cilindrado continuo con herramienta nueva y corte estable, las aceleraciones eficaces en la torreta oscilan típicamente entre $0.5\,g$ y $2.0\,g$. No obstante, ante insertos en estado crítico ($VB \ge 0.30\,\text{mm}$), desportillamiento repentino del filo o fenómenos de traqueteo regenerativo (\textit{regenerative chatter}), se generan picos de aceleración transitoria que alcanzan magnitudes de $8.0\,g$ a $12.0\,g$. Sensores comerciales configurados en escalas de $\pm 2\,g$ o $\pm 4\,g$ saturan de inmediato ante estos eventos, perdiendo la información crítica de fallo. Por tal motivo, se dimensiona el rango de escala completa en $\pm 16.0\,g$, garantizando un margen de guarda del $33.3\%$ respecto a los picos transitorios máximos estimados.
+\end{enumerate}
+
+Para seleccionar la tecnología sensorial adecuada, en la \tab{comparativa_acelerometros_mp} se evalúan de forma comparativa tres alternativas técnicas de instrumentación vibratoria.
+
+{\setlength{\parskip}{1.5pt}
+\begin{table}[H]
+\centering
+\caption{Matriz comparativa de tecnologías candidatas para el sensado de vibración mecánica}\label{tab:comparativa_acelerometros_mp}
+\vspace{2mm}
+\small
+\begin{tabular}{p{2.6cm}p{3.0cm}p{3.0cm}p{4.8cm}}
+\hline
+\textbf{Criterio técnico} & \textbf{Acelerómetro IEPE (Piezoeléctrico)} & \textbf{MEMS Analógico (ADXL1002)} & \textbf{MEMS Digital SPI (ADXL345)} \\ \hline \hline
+Ancho de banda & $> 10.0\,\text{kHz}$ & $> 11.0\,\text{kHz}$ & Hasta $1.6\,\text{kHz}$ ($3200\,\text{Hz}$ ODR) \\ \hline
+Rango dinámico & $\pm 50.0\,g$ a $\pm 500.0\,g$ & $\pm 50.0\,g$ & Seleccionable: $\pm 2g, \pm 4g, \pm 8g, \pm 16g$ \\ \hline
+Tipo de salida & Analógica diferencial (acoplador IEPE) & Tensión analógica ratiométrica & Digital serie por bus SPI a $5\,\text{MHz}$ \\ \hline
+Inmunidad a ruido & Media (cable coaxial susceptible) & Baja en tendidos largos & Ultra alta (trama digital con paridad) \\ \hline
+Costo prototípico & Elevado ($> 600\,\text{USD}$ con acondicionador) & Moderado ($\approx 45\,\text{USD}$) & Muy accesible ($< 5.0\,\text{USD}$) \\ \hline
+Dictamen & Descartado por costo excesivo e invasividad & Descartado por demanda de ADC externo & \textbf{Seleccionado:} Excelente balance técnico-económico, salida SPI directa y fácil encapsulado IP67. \\ \hline
+\end{tabular}
+\par\vspace{2mm}
+\footnotesize \textbf{Fuente:} Elaboración propia, 2026.
+\end{table}
+}
+
+Con base en la evaluación de la \tab{comparativa_acelerometros_mp}, se seleccionó el acelerómetro microelectromecánico digital ADXL345 de Analog Devices. El sensor se configura con una resolución completa de 13 bits (sensibilidad fija de $3.9\,\text{mg/LSB}$ en cualquier escala dinámica) y una tasa de salida de datos (ODR, \textit{Output Data Rate}) de $3200\,\text{Hz}$ (ancho de banda analógico interno de $1600\,\text{Hz}$), acoplado al microcontrolador mediante bus serie digital SPI a $5.0\,\text{MHz}$.
+
+Para garantizar la no invasividad mecánica dentro de la cabina cerrada de la máquina, el sensor ADXL345 se aloja en el interior de una cápsula estanca mecanizada con grado de protección IP67, la cual incorpora en su base un imán permanente de neodimio sinterizado N52 ($\varnothing 20 \times 5\,\text{mm}$). La fuerza de sujeción magnética vertical garantizada por el imán es de $F_{\text{mag}} \ge 58.0\,\text{N}$ ($\approx 5.91\,\text{kgf}$). 
+
+Considerando que la masa total de la cápsula ensamblada con el sensor y cableado es de $m_{\text{cápsula}} = 45.0\,\text{g} = 0.045\,\text{kg}$, la fuerza de inercia máxima que experimenta la cápsula bajo una aceleración límite de $a_{\max} = 16\,g$ equivale a:
+\begin{equation}
+F_{\text{inercia}} = m_{\text{cápsula}} \cdot (16 \cdot g) = 0.045\,\text{kg} \cdot (16 \cdot 9.8066\,\text{m/s}^2) \approx 7.06\,\text{N}
+\label{eq:mp_fuerza_inercia_adxl}
+\end{equation}
+El coeficiente de seguridad estático y dinámico frente al desprendimiento accidental de la base magnética es:
+\begin{equation}
+CS = \frac{F_{\text{mag}}}{F_{\text{inercia}}} = \frac{58.0\,\text{N}}{7.06\,\text{N}} \approx 8.21 \gg 2.0
+\label{eq:mp_factor_seguridad_iman}
+\end{equation}
+Este factor de seguridad confirma que la cápsula permanecerá sólidamente fijada sobre el cuerpo rectificado de la torreta portaherramientas durante todo el ciclo de torneado, resistiendo choques vibratorios y la presión de salida del fluido de corte refrigerante (taladrina proyectada a $0.35\,\text{MPa}$). En la \fig{adxl345_modulo_real} se ilustra el módulo sensor ADXL345 y los ejes ortogonales de captación triaxial alineados con la cinemática de mecanizado.
+
+\figura[width=0.72\textwidth]{adxl345_modulo_real}{Módulo acelerómetro digital MEMS triaxial ADXL345 empleado en la instrumentación de la torreta}{Elaboración propia con base en Analog Devices, 2026}
+
+\subsection{Dimensionamiento y selección de la unidad de procesamiento embebido (OE2)}
+\label{subsec:dimensionamiento_procesamiento}
+
+La unidad central de procesamiento embebido constituye el núcleo mecatrónico del sistema periférico, teniendo bajo su responsabilidad tres tareas críticas concurrentes: la adquisición analógica de corriente mediante DMA con fluctuación temporal nula (\textit{zero jitter}), la lectura del bus digital SPI del acelerómetro, el preprocesamiento digital de señales (DSP) y la inferencia en tiempo real determinista mediante el modelo ligero de inteligencia artificial en el borde (\textit{Edge AI}).
+
+\subsubsection{Matriz cuantitativa multicriterio para la selección del microcontrolador}
+\label{subsubsec:matriz_seleccion_mcu}
+
+Para seleccionar objetivamente la plataforma de procesamiento embebido entre las opciones disponibles en el mercado tecnológico, se formuló una matriz de decisión cuantitativa ponderada basada en siete criterios de ingeniería esenciales para la aplicación en taller. En la \tab{seleccion_microcontrolador_mp} se presenta la evaluación comparativa entre cinco familias de procesadores embebidos.
+
+{\small
+\setlength{\parskip}{1.5pt}
+\setlength{\tabcolsep}{2.0pt}
+\begin{longtable}{L{3.5cm}C{1.0cm}C{1.8cm}C{1.8cm}C{1.8cm}C{1.8cm}C{1.8cm}}
+\caption{Matriz multicriterio para la selección de la unidad de procesamiento embebido}
+\label{tab:seleccion_microcontrolador_mp}
+\\
+\hline
+\textbf{Criterio de ingeniería} & \textbf{Peso} & \shortstack{\textbf{ATmega}\\\textbf{328P}} & \shortstack{\textbf{STM32}\\\textbf{F103}} & \shortstack{\textbf{ESP32}\\\textbf{-S3}} & \textbf{RP2040} & \shortstack{\textbf{STM32}\\\textbf{F411}} \\
+\hline \hline
+\endfirsthead
+
+\hline
+\textbf{Criterio de ingeniería} & \textbf{Peso} & \shortstack{\textbf{ATmega}\\\textbf{328P}} & \shortstack{\textbf{STM32}\\\textbf{F103}} & \shortstack{\textbf{ESP32}\\\textbf{-S3}} & \textbf{RP2040} & \shortstack{\textbf{STM32}\\\textbf{F411}} \\
+\hline \hline
+\endhead
+
+\hline
+\endfoot
+
+\multicolumn{7}{c}{\textbf{Fuente:} Elaboración propia, 2026.}
+\endlastfoot
+
+Unidad FPU hardware e instrucciones vectoriales DSP & 20\% & 1 & 1 & 4 & 2 & 5 \\ \hline
+Controlador DMA avanzado y timers para muestreo síncrono & 20\% & 1 & 4 & 4 & 4 & 5 \\ \hline
+Resolución y velocidad ADC ($\ge 12\,\text{bits}$, SAR) & 15\% & 2 & 4 & 3 & 4 & 5 \\ \hline
+Determinismo temporal (ejecución bare-metal sin jitter) & 15\% & 5 & 5 & 2 & 4 & 5 \\ \hline
+Capacidad de memoria ($\ge 256\,\text{kB}$ Flash, $\ge 64\,\text{kB}$ SRAM) & 15\% & 1 & 2 & 5 & 4 & 4 \\ \hline
+Soporte de frameworks Edge AI (CMSIS-NN / TFLM) & 10\% & 1 & 2 & 4 & 3 & 5 \\ \hline
+Costo accesible de placa y disponibilidad en mercado local & 5\% & 5 & 5 & 4 & 5 & 5 \\ \hline \hline
+\textbf{Puntuación total ponderada (1 a 5)} & \textbf{100\%} & \textbf{1.80} & \textbf{3.10} & \textbf{3.70} & \textbf{3.55} & \textbf{4.80} \\ \hline
+\textbf{Dictamen técnico} & -- & Descartado & Descartado & Descartado & Descartado & \textbf{Seleccionado} \\ \hline
+
+\end{longtable}
+}
+
+El dictamen técnico fundamenta la elección del microcontrolador STM32F411CEU6 (tarjeta de desarrollo de bajo costo comúnmente denominada Black Pill), perteneciente a la familia de microcontroladores de 32 bits de STMicroelectronics. A diferencia de arquitecturas de 8 bits (ATmega328P) que carecen de memoria y potencia de cálculo, o del ESP32-S3 cuyo convertidor ADC integrado presenta no linealidades severas y jitter temporal originado por las tareas de fondo de conectividad inalámbrica, el STM32F411CEU6 integra un núcleo ARM Cortex-M4 con unidad de coma flotante de hardware (FPU de precisión simple compatible con IEEE 754), instrucciones vectoriales SIMD y módulo de multiplicación-acumulación (MAC) en un solo ciclo de reloj (`SMLAD`), operando a una frecuencia máxima de $100\,\text{MHz}$ con acelerador de memoria en tiempo real ART Accelerator (\textit{Adaptive Real-Time Accelerator}) que permite ejecución con cero estados de espera desde la memoria Flash. En la \fig{stm32f411_blackpill_board} se ilustra el módulo de procesamiento seleccionado.
+
+\figura[width=0.70\textwidth]{stm32f411_blackpill_board}{Placa de procesamiento embebido STM32F411CEU6 (ARM Cortex-M4 @ 100\,MHz)}{Elaboración propia con base en STMicroelectronics, 2026}
+
+\subsubsection{Dimensionamiento de recursos de memoria (Flash y SRAM) y presupuesto de tiempo de CPU}
+\label{subsubsec:presupuesto_memoria_cpu}
+
+Para verificar que la unidad de procesamiento seleccionada satisfaga sobradamente las restricciones computacionales del sistema sin riesgo de desbordamiento de memoria ni bloqueos en tiempo de ejecución, se elaboró el balance de recursos analítico para el firmware:
+
+\begin{enumerate}
+    \item \textit{Dimensionamiento de la memoria no volátil Flash (ROM):} La memoria Flash disponible en el STM32F411CEU6 es de $512.0\,\text{kB}$. El desglose de ocupación estática proyectado para los componentes binarios compilados en C99 bajo optimización `-O3` es:
+    \begin{itemize}
+        \item Vector table de interrupciones, startup code y rutinas CMSIS base: $4.50\,\text{kB}$.
+        \item Capa de abstracción de hardware y controladores de periféricos (STM32 HAL / LL): $18.20\,\text{kB}$.
+        \item Biblioteca CMSIS-DSP de procesamiento digital: $14.50\,\text{kB}$.
+        \item Motor de inferencia TensorFlow Lite for Microcontrollers (TFLM runtime) y operadores cuantizados de CMSIS-NN: $22.40\,\text{kB}$.
+        \item Grafo de la red neuronal cuantizada en enteros INT8 (pesos sinápticos y sesgos): $4.80\,\text{kB}$.
+        \item Lógica de aplicación, máquina de estados de supervisión, módulo de semáforo LED y protocolo de telemetría RS-485: $7.60\,\text{kB}$.
+    \end{itemize}
+    El consumo total de Flash es de aproximadamente $72.0\,\text{kB}$, lo que representa apenas el $14.06\%$ de la capacidad instalada ($512.0\,\text{kB}$), dejando un margen de reserva libre del $85.94\%$ para futuras expansiones algorítmicas.
+
+    \item \textit{Dimensionamiento de la memoria estática volátil SRAM (RAM):} La SRAM disponible en el microcontrolador es de $128.0\,\text{kB}$ distribuidos en bus AHB de 32 bits. La demanda de memoria dinámica y búferes se estructura como:
+    \begin{itemize}
+        \item Búfer circular de doble almacenamiento (\textit{ping-pong}) para transferencias DMA2 del ADC1 (2 semibúferes $\times 1024\,\text{muestras} \times 2\,\text{bytes}$): $4.096\,\text{kB}$.
+        \item Búfer de recepción SPI para tramas triaxiales de aceleración ($32\,\text{muestras} \times 6\,\text{bytes}$): $0.192\,\text{kB}$.
+        \item Vectores temporales para cálculo de descriptores estadísticos en punto flotante ($I_{\text{RMS}}, a_{\text{RMS}}, Ku, CF$): $0.512\,\text{kB}$.
+        \item Espacio reservado para el motor de inferencia neuronal (\textit{Tensor Arena} de TFLM para almacenamiento de tensores de activación intermedia): $12.800\,\text{kB}$.
+        \item Pila de ejecución de llamadas y variables locales del procesador (\textit{Stack}): $4.096\,\text{kB}$.
+        \item Montículo de memoria para asignación estática (\textit{Heap}): $4.096\,\text{kB}$.
+        \item Descriptores de periféricos del sistema, variables globales de telemetría y contadores: $2.048\,\text{kB}$.
+    \end{itemize}
+    La ocupación total de SRAM asciende a $27.744\,\text{kB}$, correspondiente al $21.68\%$ de la memoria física disponible ($128.0\,\text{kB}$). El margen de reserva libre en SRAM es del $78.32\%$, asegurando que jamás se presenten fallas críticas por colisión entre pila y montículo (\textit{Stack-Heap Collision}).
+
+    \item \textit{Presupuesto de tiempo de CPU y factor de utilización ($U$):} Operando a la frecuencia base de $100.0\,\text{MHz}$ ($10.0\,\text{ns}$ por ciclo de instrucción), el tiempo insumido por cada etapa dentro de una ventana temporal de $N = 1024$ muestras adquiridas a $f_s = 5000\,\text{Hz}$ (duración de la ventana: $T_w = \frac{1024}{5000\,\text{Hz}} = 204.80\,\text{ms}$) se desglosa como:
+    \begin{itemize}
+        \item Conversión analógica y transferencia de datos a memoria: $0.00\,\text{ms}$ de tiempo de CPU, al ser ejecutada de forma completamente autónoma por el hardware del DMA2 Stream 0 y el temporizador TIM2.
+        \item Transferencia de lecturas SPI desde el ADXL345: $0.05\,\text{ms}$ mediante interrupción por hardware.
+        \item Extracción de los cuatro descriptores estadísticos temporales mediante rutinas aceleradas CMSIS-DSP: $1.85\,\text{ms}$.
+        \item Inferencia de clasificación en la red neuronal cuantizada INT8 utilizando instrucciones SIMD de CMSIS-NN: $8.45\,\text{ms}$.
+        \item Actualización del estado luminoso del semáforo LED y transmisión serie RS-485 del paquete de telemetría de 16 bytes a $115200\,\text{baud}$: $1.40\,\text{ms}$.
+    \end{itemize}
+    El tiempo de cálculo acumulado por ciclo de diagnóstico es de $T_{\text{proc}} = 0.05 + 1.85 + 8.45 + 1.40 = 11.75\,\text{ms}$. El factor de utilización de la CPU se define mediante:
+    \begin{equation}
+    U = \frac{T_{\text{proc}}}{T_w} = \frac{11.75\,\text{ms}}{204.80\,\text{ms}} \approx 0.0574 \implies 5.74\%
+    \label{eq:mp_utilizacion_cpu}
+    \end{equation}
+    El microcontrolador permanece ocioso el $94.26\%$ del tiempo en modo de bajo consumo esperando la siguiente interrupción de mitad de transferencia DMA, lo que garantiza un riguroso determinismo temporal en tiempo real duro y descarta cualquier retraso en la emisión de alertas al operario.
+\end{enumerate}
+
+\subsection{Cálculo y dimensionamiento de componentes pasivos, acondicionamiento y alimentación regulada (OE2)}
+\label{subsec:dimensionamiento_pasivos_alimentacion}
+
+La cuarta acción del segundo objetivo específico comprende el cálculo matemático de los elementos pasivos de acondicionamiento de señal, el diseño de la red de polarización continua, el filtrado anti-aliasing y el dimensionamiento de la etapa de alimentación eléctrica regulada con protecciones industriales.
+
+\subsubsection{Cálculo del resistor de carga Burden (\texorpdfstring{$R_B$}{RB}) y red de polarización DC Bias}
+\label{subsubsec:calculo_resistor_burden}
+
+Dado que el transductor SCT-013-000 seleccionado entrega una corriente alterna secundaria $I_s$ proporcional a la corriente primaria del servomotor ($K_N = 2000:1$), dicha corriente debe convertirse en una caída de potencial alterna mediante una resistencia de carga (\textit{burden resistor}, $R_B$). 
+
+Fijando la corriente primaria pico máxima de diseño en $I_{p,\text{pico}} = 15.0\,\text{A}$ (correspondiente a corte severo con herramienta desgastada), la corriente secundaria pico entregada a los bornes del sensor es:
+\begin{equation}
+I_{s,\text{pico}} = \frac{I_{p,\text{pico}}}{K_N} = \frac{15.0\,\text{A}}{2000} = 7.50\,\text{mA}_{\text{pico}}
+\label{eq:mp_corriente_secundaria_pico}
 \end{equation}
 
-Para aprovechar el rango dinámico del ADC asegurando un margen de seguridad del $20\%$, se fija una excursión de tensión pico de $V_{\text{pico}} = 1.25\,\text{V}$ ($2.5\,\text{V}$ pico a pico). El valor de la resistencia de carga (\textit{burden}) $R_B$ se calcula como:
-
+El convertidor analógico-digital (ADC1) del STM32F411 opera en una escala unipolar de $0.0\,\text{V}$ a $V_{\text{ref}} = 3.30\,\text{V}$. Para aprovechar al máximo el rango dinámico de cuantización de 12 bits sin aproximarse a los rieles de saturación ni provocar alineamiento no lineal en los extremos del convertidor SAR, se fija una excursión de tensión pico de diseño de $V_{\text{pico}} = 1.125\,\text{V}$ ($V_{\text{pp}} = 2.25\,\text{V}$ pico a pico). El valor teórico de la resistencia de carga $R_B$ se calcula como:
 \begin{equation}
-R_B = \frac{V_{\text{pico}}}{I_{s,\text{pico}}} = \frac{1.25\,\text{V}}{7.5\,\text{mA}} \approx 166.67\,\Omega
+R_B = \frac{V_{\text{pico}}}{I_{s,\text{pico}}} = \frac{1.125\,\text{V}}{7.50 \times 10^{-3}\,\text{A}} = 150.0\,\Omega
+\label{eq:mp_calculo_rb}
 \end{equation}
 
-Se selecciona comercialmente una resistencia de precisión al $1\%$ con valor estándar de $R_B = 150\,\Omega$, garantizando un voltaje pico real de $1.125\,\text{V}$.
+El valor de $150\,\Omega$ coincide exactamente con un valor estándar de la serie comercial E24/E96. Se selecciona una resistencia de película metálica de precisión con tolerancia del $\pm 1.0\%$ y coeficiente de temperatura de $\pm 25\,\text{ppm/}^\circ\text{C}$.
 
-Dado que la señal de corriente alterna oscila simétricamente respecto a cero, se implementa una red divisora resistiva de alta estabilidad alimentada desde la referencia regulada de $3.3\,\text{V}$, compuesta por dos resistencias idénticas de $10\,\text{k}\Omega$ al $1\%$ y un condensador de desacoplamiento de $10\,\mu\text{F}$. Esta red introduce una tensión de polarización continua continua (\textit{DC bias}) exactamente en el punto medio:
-
+La disipación de potencia en el resistor de carga bajo régimen continuo máximo se calcula considerando la corriente secundaria eficaz $I_{s,\text{RMS}} = \frac{I_{s,\text{pico}}}{\sqrt{2}} = \frac{7.50\,\text{mA}}{1.4142} \approx 5.303\,\text{mA}_{\text{RMS}}$:
 \begin{equation}
-V_{\text{bias}} = \frac{V_{\text{ref}}}{2} = \frac{3.3\,\text{V}}{2} = 1.65\,\text{V}
+P_{R_B} = (I_{s,\text{RMS}})^2 \cdot R_B = (5.303 \times 10^{-3}\,\text{A})^2 \cdot 150.0\,\Omega \approx 4.22\,\text{mW}
+\label{eq:mp_disipacion_rb}
+\end{equation}
+Especificando una resistencia comercial de potencia nominal $P_{\text{nom}} = 0.25\,\text{W}$ ($250.0\,\text{mW}$), el componente operará al $1.69\%$ de su capacidad térmica máxima admisible, descartando por completo derivas de calibración o calentamiento por efecto Joule.
+
+Para centrar la señal alterna dentro de la ventana admisible del ADC ($0$ a $3.3\,\text{V}$), se implementa una red divisora resistiva simétrica alimentada desde la línea regulada de $3.30\,\text{V}$, constituida por dos resistencias idénticas $R_1 = R_2 = 10.0\,\text{k}\Omega$ de película metálica al $\pm 1.0\%$. La tensión de polarización continua continua (\textit{DC bias}) generada en el nodo central es:
+\begin{equation}
+V_{\text{bias}} = V_{\text{ref}} \cdot \left(\frac{R_2}{R_1 + R_2}\right) = 3.30\,\text{V} \cdot \left(\frac{10\,\text{k}\Omega}{20\,\text{k}\Omega}\right) = 1.650\,\text{V}
+\label{eq:mp_voltaje_bias}
 \end{equation}
 
-De esta manera, la señal alterna montada sobre el nivel continuo oscila en el rango dinámico comprendido entre $0.525\,\text{V}$ y $2.775\,\text{V}$, manteniéndose perfectamente centrada y protegida dentro del rango admisible de $0$ a $3.3\,\text{V}$ del ADC.
+La resistencia equivalente de Thévenin de la red es $R_{\text{Th}} = R_1 \parallel R_2 = 5.0\,\text{k}\Omega$. Para crear una masa virtual de CA de bajísima impedancia y desacoplar cualquier rizado proveniente de la fuente de alimentación, se conecta en paralelo con $R_2$ un condensador de tántalo de $C_{\text{bias1}} = 10.0\,\mu\text{F}$ en derivación con un condensador cerámico multicapa (MLCC) de $C_{\text{bias2}} = 100\,\text{nF}$. Para evitar que la impedancia de Thévenin degrade el tiempo de carga del circuito de muestreo y retención (\textit{Sample and Hold}) del ADC SAR del microcontrolador, la tensión de $1.65\,\text{V}$ se acopla a través de un amplificador operacional de precisión en configuración seguidora de ganancia unitaria (buffer LM358), reduciendo la impedancia dinámica de salida a menos de $0.05\,\Omega$.
 
-\subsubsection{Filtrado analógico anti-aliasing y consideraciones de diseño PCB (EMC)}
-Para dar estricto cumplimiento al teorema de muestreo de Nyquist-Shannon y eliminar componentes de ruido espurio generadas por la conmutación PWM del variador de frecuencia (comúnmente operando entre $4$ y $16\,\text{kHz}$), se inserta un filtro paso-bajo pasivo RC de primer orden antes de la entrada analógica del microcontrolador. Fijando una frecuencia de corte superior de $f_c \approx 1.5\,\text{kHz}$ con un condensador cerámico $C = 100\,\text{nF}$, la resistencia de filtrado serie se determina mediante:
-
+De esta forma, ante una corriente primaria máxima de $\pm 15.0\,\text{A}_{\text{pico}}$, la tensión en bornes de entrada del ADC oscila estrictamente entre:
 \begin{equation}
-R_f = \frac{1}{2 \pi \cdot f_c \cdot C} = \frac{1}{2 \pi \cdot 1500\,\text{Hz} \cdot 100 \times 10^{-9}\,\text{F}} \approx 1061\,\Omega
+V_{\text{ADC},\min} = 1.650\,\text{V} - 1.125\,\text{V} = 0.525\,\text{V}, \qquad V_{\text{ADC},\max} = 1.650\,\text{V} + 1.125\,\text{V} = 2.775\,\text{V}
+\label{eq:mp_rango_adc}
+\end{equation}
+quedando protegida con un margen de guarda de $0.525\,\text{V}$ sobre el carril inferior y superior, previniendo daños en el microcontrolador ante sobretensiones transitorias.
+
+\subsubsection{Diseño y respuesta frecuencial del filtro analógico anti-aliasing}
+\label{subsubsec:diseno_filtro_antialiasing}
+
+Conforme al teorema de muestreo de Nyquist-Shannon, la frecuencia de muestreo establecida para la adquisición de corriente en el microcontrolador es de $f_s = 5000\,\text{Hz}$ ($5.0\,\text{kS/s}$), lo que fija la frecuencia crítica de plegamiento espectral (\textit{Nyquist frequency}) en:
+\begin{equation}
+f_{\text{Nyq}} = \frac{f_s}{2} = \frac{5000\,\text{Hz}}{2} = 2500\,\text{Hz}
+\label{eq:mp_frecuencia_nyquist}
 \end{equation}
 
-Se selecciona una resistencia estándar de película metálica de $1.0\,\text{k}\Omega$, proporcionando una frecuencia de corte efectiva de $1591.5\,\text{Hz}$.
+Cualquier componente electromagnética espuria presente por encima de $2500\,\text{Hz}$ se plegaría de forma destructiva sobre la banda base audible, distorsionando el cálculo de $I_{\text{RMS}}$ y la curtosis. En los talleres metalmecánicos con tornos CNC, los servodrivers y variadores de velocidad del husillo modulan el par mediante pulsos PWM de alta frecuencia comprendidos típicamente entre $4.0\,\text{kHz}$ y $16.0\,\text{kHz}$.
 
-En el ruteo de la placa de circuito impreso (PCB), se aplicaron técnicas avanzadas de compatibilidad electromagnética (EMC) para entornos fabriles severos: separación estricta de planos de masa analógica ($AGND$) y masa digital ($DGND$) interconectados mediante una perla de ferrita en un único punto estrella, pistas de señal apantalladas mediante planos de masa continuos en capa inferior, y diodos de supresión de transitorios de voltaje (TVS) en todas las líneas de entrada y bornes de alimentación para inmunizar el circuito frente a descargas electrostáticas (ESD) y sobretensiones inductivas.
+Para erradicar dicho ruido de conmutación antes de la etapa de conversión, se insertó un filtro paso-bajo pasivo RC de primer orden entre el circuito de acondicionamiento y el pin analógico del ADC. Fijando un condensador cerámico de alta estabilidad térmica C0G/NP0 de $C_f = 100.0\,\text{nF}$, la resistencia serie teórica para una frecuencia de corte de $f_c \approx 1500\,\text{Hz}$ es:
+\begin{equation}
+R_{f,\text{teórico}} = \frac{1}{2\pi \cdot f_c \cdot C_f} = \frac{1}{2\pi \cdot 1500\,\text{Hz} \cdot 100 \times 10^{-9}\,\text{F}} \approx 1061.0\,\Omega
+\label{eq:mp_calculo_rf}
+\end{equation}
+
+Normalizando a la serie estándar de resistencias de película metálica al $1\%$, se selecciona $R_f = 1.0\,\text{k}\Omega$ ($1000.0\,\Omega$). La frecuencia de corte superior efectiva resultante a $-3\,\text{dB}$ se recalcula como:
+\begin{equation}
+f_{c,\text{real}} = \frac{1}{2\pi \cdot 1000.0\,\Omega \cdot 100.0 \times 10^{-9}\,\text{F}} \approx 1591.55\,\text{Hz}
+\label{eq:mp_fc_real}
+\end{equation}
+
+La función de transferencia del filtro en el dominio de Laplace es:
+\begin{equation}
+H(s) = \frac{V_{\text{out}}(s)}{V_{\text{in}}(s)} = \frac{1}{1 + s \cdot R_f C_f} = \frac{1}{1 + s \cdot (1.0 \times 10^{-4}\,\text{s})}
+\label{eq:mp_funcion_transferencia_rc}
+\end{equation}
+
+La magnitud de atenuación frente a la frecuencia de conmutación del variador PWM a $f_{\text{PWM}} = 8000\,\text{Hz}$ equivale a:
+\begin{equation}
+|H(j 2\pi \cdot 8000)| = \frac{1}{\sqrt{1 + \left(\frac{8000}{1591.55}\right)^2}} = \frac{1}{\sqrt{1 + (5.026)^2}} \approx 0.1951
+\label{eq:mp_atenuacion_8khz}
+\end{equation}
+\noindent cuya atenuación expresada en decibelios corresponde a:
+\begin{equation}
+A_{\text{dB}} = 20\log_{10}(0.1951) \approx -14.19\,\text{dB}
+\label{eq:mp_atenuacion_db}
+\end{equation}
+A la frecuencia armónica de $16.0\,\text{kHz}$, la atenuación alcanza $-20.12\,\text{dB}$, atenuando en más de un $90\%$ la amplitud de las perturbaciones parásitas inducidas por los semiconductores de potencia del torno CNC. En la \fig{circuito_sct013_acondicionamiento} se detalla el esquema circuital completo de la etapa de acondicionamiento analógico para el sensor SCT-013.
+
+\figura[width=0.88\textwidth]{circuito_sct013_acondicionamiento}{Esquema electrónico de acondicionamiento para SCT-013: resistor de carga, DC Bias y filtro RC}{Elaboración propia con base en el diseño circuital, 2026}
+
+\subsubsection{Dimensionamiento de la etapa de alimentación regulada industrial y protecciones}
+\label{subsubsec:fuente_alimentacion_protecciones}
+
+En el armario eléctrico del torno CNC Mazak Quick Turn se dispone de una línea de alimentación estándar de control de $24.0\,\text{V DC} \pm 10\%$ ($21.6\,\text{V}$ a $26.4\,\text{V}$). Para convertir este nivel de tensión en los carriles regulados requeridos por la electrónica del sistema mecatrónico ($5.0\,\text{V DC}$ para la interfaz de visualización/relés y $3.30\,\text{V DC}$ para el microcontrolador y acelerómetro), se diseñó una etapa de potencia industrial en dos fases escalonadas:
+
+\begin{enumerate}
+    \item \textit{Protecciones de entrada de grado industrial:} La bornera de alimentación de $24\,\text{V DC}$ incorpora una red de robustez eléctrica conformada por:
+    \begin{itemize}
+        \item Fusible rearmable polimérico PPTC de $500.0\,\text{mA}$ ($I_{\text{hold}} = 500\,\text{mA}$, $I_{\text{trip}} = 1000\,\text{mA}$) contra sobrecorrientes.
+        \item Diodo supresor TVS bidireccional SMBJ28CA ($600\,\text{W}$ de pico) para recortar picos de sobretensión inductiva del torno.
+        \item Diodo rectificador Schottky de alta velocidad SS34 ($3.0\,\text{A}, 40\,\text{V}$) conectado en serie para bloquear cualquier inversión accidental de polaridad en el conexionado de taller.
+    \end{itemize}
+
+    \item \textit{Regulador reductor conmutado primario (Buck Step-Down DC-DC):} Reduce la tensión continua de entrada de $24.0\,\text{V}$ a un nivel intermedio eficiente de $5.0\,\text{V DC}$ mediante un regulador síncrono MP1584 de alta frecuencia ($1.5\,\text{MHz}$). Con una eficiencia térmica superior al $88.5\%$, este convertidor entrega hasta $1.5\,\text{A}$ sin requerir disipadores térmicos voluminosos.
+    
+    \item \textit{Regulador lineal secundario de bajo ruido (LDO):} Para generar la línea analógica limpia de $3.30\,\text{V DC}$ que alimenta el microcontrolador STM32, el acelerómetro ADXL345 y la tensión de referencia del ADC, se emplea un regulador lineal de baja caída (\textit{Low Drop-Out}) AMS1117-3.3 alimentado desde la línea de $5.0\,\text{V}$. Esta topología de dos etapas aísla por completo el rizado de conmutación de alta frecuencia ($V_{\text{ripple}} < 4.5\,\text{mV}_{\text{pp}}$), garantizando que las mediciones de corriente no sufran modulación por ruido de fuente.
+\end{enumerate}
+
+Para validar el dimensionamiento térmico y eléctrico de la fuente de alimentación, en la \tab{balance_potencia_hardware_mp} se resume el balance analítico de consumo de corriente y potencia de todos los subsistemas del prototipo.
+
+{\setlength{\parskip}{1.5pt}
+\begin{table}[H]
+\centering
+\caption{Balance de consumo de corriente y potencia eléctrica del sistema periférico}\label{tab:balance_potencia_hardware_mp}
+\vspace{2mm}
+\small
+\begin{tabular}{p{5.5cm}p{2.2cm}p{2.2cm}p{3.5cm}}
+\hline
+\textbf{Subsistema / Componente} & \textbf{Tensión ($V$)} & \textbf{Corriente ($I$)} & \textbf{Potencia disipada} \\ \hline \hline
+Microcontrolador STM32F411CEU6 @ 100 MHz & $3.30\,\text{V DC}$ & $28.0\,\text{mA}$ & $92.4\,\text{mW}$ \\ \hline
+Acelerómetro digital MEMS ADXL345 & $3.30\,\text{V DC}$ & $0.14\,\text{mA}$ & $0.46\,\text{mW}$ \\ \hline
+Acondicionador operacional LM358 + divisores & $3.30\,\text{V DC}$ & $1.40\,\text{mA}$ & $4.62\,\text{mW}$ \\ \hline
+Transceptor RS-485 diferencial (MAX485) & $5.00\,\text{V DC}$ & $35.0\,\text{mA}$ & $175.0\,\text{mW}$ \\ \hline
+Pantalla OLED local de 0.96'' (I2C) & $3.30\,\text{V DC}$ & $18.0\,\text{mA}$ & $59.4\,\text{mW}$ \\ \hline
+Columna de señalización LED pentaestado & $24.0\,\text{V DC}$ & $45.0\,\text{mA}$ & $1080.0\,\text{mW}$ \\ \hline
+Regulador lineal LDO AMS1117-3.3 (calor) & $(5 - 3.3)\,\text{V}$ & $47.54\,\text{mA}$ & $80.8\,\text{mW}$ \\ \hline
+Pérdidas convertidor Buck MP1584 & $24.0\,\text{V DC}$ & $6.2\,\text{mA}$ & $148.8\,\text{mW}$ \\ \hline \hline
+\textbf{Consumo total del sistema periférico} & \textbf{24.0 V DC} & \textbf{98.5 mA} & \textbf{2364.5 mW ($\approx 2.36$ W)} \\ \hline
+\end{tabular}
+\par\vspace{2mm}
+\footnotesize \textbf{Fuente:} Elaboración propia, 2026.
+\end{table}
+}
+
+Como se desprende de la \tab{balance_potencia_hardware_mp}, el consumo total de potencia eléctrica de todo el sistema de instrumentación y diagnóstico asciende a apenas $2.36\,\text{W}$ ($98.5\,\text{mA}$ a $24\,\text{V DC}$), lo que representa una carga despreciable para la fuente de alimentación industrial del torno CNC (capacidad típica de $24\,\text{V} / 5\,\text{A} = 120\,\text{W}$), asegurando que el prototipo pueda conectarse sin generar caídas de tensión ni sobrecalentamiento en el armario eléctrico.
+
+\subsubsection{Ficha técnica consolidada de dimensionamiento mecatrónico (Entregable formal OE2)}
+\label{subsubsec:ficha_tecnica_oe2}
+
+En conformidad con las directrices académicas de Taller de Grado y el plan de acciones del proyecto, en la \tab{ficha_tecnica_dimensionamiento_oe2} se consolida la ficha técnica de dimensionamiento y especificación de componentes de hardware que certifica el cumplimiento pleno del segundo objetivo específico.
+
+{\setlength{\parskip}{1.5pt}
+\setlength{\tabcolsep}{3.0pt}
+\begin{longtable}{L{2.5cm}L{2.9cm}L{3.3cm}L{4.5cm}}
+\caption{Ficha técnica consolidada de dimensionamiento de hardware del sistema periférico (OE2)}
+\label{tab:ficha_tecnica_dimensionamiento_oe2}
+\\
+\hline
+\textbf{Elemento mecatrónico} & \textbf{Parámetro de diseño} & \textbf{Valor / Componente} & \textbf{Criterio de validación técnica} \\
+\hline \hline
+\endfirsthead
+
+\hline
+\textbf{Elemento mecatrónico} & \textbf{Parámetro de diseño} & \textbf{Valor / Componente} & \textbf{Criterio de validación técnica} \\
+\hline \hline
+\endhead
+
+\hline
+\endfoot
+
+\multicolumn{4}{c}{\textbf{Fuente:} Elaboración propia, 2026.}
+\endlastfoot
+
+Transductor de corriente & Rango y relación de vueltas & $100\,\text{A} : 50\,\text{mA}$ ($2000:1$), modelo SCT-013-000 & No invasivo; soporta picos de $15\,\text{A}$ en servomotor de avance con linealidad $\pm 1\%$. \\ \hline
+Resistor de carga (\textit{Burden}) & Resistencia y potencia nominal & $R_B = 150.0\,\Omega$, $0.25\,\text{W}$, tolerancia $\pm 1\%$ película metálica & Excursión $V_{\text{pico}} = 1.125\,\text{V}$; disipación $4.22\,\text{mW}$ ($1.69\%$ de $P_{\text{nom}}$), deriva $< 25\,\text{ppm/}^\circ\text{C}$. \\ \hline
+Red de polarización & Tensión de offset continuo & $V_{\text{bias}} = 1.650\,\text{V}$ con $R_1=R_2=10\,\text{k}\Omega$ ($1\%$) y $C=10\,\mu\text{F}$ tántalo & Centra la señal de CA en $V_{\text{ref}}/2$; entrada protegida entre $0.525\,\text{V}$ y $2.775\,\text{V}$. \\ \hline
+Amplificador buffer & Aislamiento de impedancia & Seguidor de ganancia unitaria con op-amp LM358 & Reduce impedancia de fuente a $<0.05\,\Omega$, previniendo errores de carga en el ADC SAR. \\ \hline
+Filtro anti-aliasing & Frecuencia de corte analógica & $f_c = 1591.5\,\text{Hz}$ ($R_f=1.0\,\text{k}\Omega$, $C_f=100\,\text{nF}$ cerámico C0G) & Cumple Nyquist ($f_s/2 = 2.5\,\text{kHz}$); atenúa $-14.2\,\text{dB}$ el ruido PWM del variador a $8\,\text{kHz}$. \\ \hline
+Sensor de vibraciones & Rango, resolución e interfaz & ADXL345: $\pm 16\,g$, 13 bits ($3.9\,\text{mg/LSB}$), bus SPI a $5\,\text{MHz}$ & Inmune a saturación por chatter; ancho de banda analógico $1.6\,\text{kHz}$ ($3200\,\text{Hz}$ ODR). \\ \hline
+Fijación de acelerómetro & Fuerza de sujeción magnética & Base magnética neodimio N52 ($\varnothing 20 \times 5\,\text{mm}$), $F_{\text{mag}} \ge 58\,\text{N}$ & Coeficiente de seguridad $CS = 8.21$ frente a inercia a $16\,g$ ($7.06\,\text{N}$); encapsulado IP67. \\ \hline
+Unidad de procesamiento & Procesador, reloj y periféricos & STM32F411CEU6 (ARM Cortex-M4 @ 100 MHz, FPU hardware, DMA) & Inferencia determinista de redes cuantizadas INT8 con CMSIS-NN; ADC SAR 12 bits síncrono. \\ \hline
+Memoria Flash & Capacidad y margen libre & Demanda $72.0\,\text{kB}$ de $512.0\,\text{kB}$ ($14.06\%$ ocupación) & Margen de reserva de Flash libre: $85.94\%$ para código de firmware y grafo de IA. \\ \hline
+Memoria SRAM & Capacidad y margen libre & Demanda $27.74\,\text{kB}$ de $128.0\,\text{kB}$ ($21.68\%$ ocupación) & Margen de reserva de SRAM libre: $78.32\%$; cero riesgo de colisión de Stack y Heap. \\ \hline
+Carga de CPU & Tiempo de cálculo y latencia & $11.75\,\text{ms}$ por ventana de $204.8\,\text{ms}$ ($U = 5.74\%$) & Procesador en tiempo libre ocioso el $94.26\%$ del tiempo; determinismo en tiempo real duro. \\ \hline
+Alimentación y protecciones & Conversión y protecciones & $24\,\text{V DC} \rightarrow 5\,\text{V}$ (Buck MP1584) $\rightarrow 3.3\,\text{V}$ (LDO AMS1117) & Fusible PPTC $500\,\text{mA}$, TVS SMBJ28CA ($600\,\text{W}$) y diodo Schottky SS34; potencia $2.36\,\text{W}$. \\ \hline
+
+\end{longtable}
+}
 
 \subsection{Módulo de procesamiento digital de señales (DSP) en STM32F411}
 \label{subsec:modulo_dsp}
