@@ -28,11 +28,21 @@ Para materializar estas especificaciones, la arquitectura general del sistema se
 \subsubsection{Caracterización técnica de la celda de torneado CNC objeto de estudio (MAINSA)}
 \label{subsubsec:caracterizacion_torno_mainsa}
 
-La implementación del sistema mecatrónico se circunscribe a la línea de mecanizado de piezas cilíndricas y ejes de transmisión en la empresa metalmecánica MAINSA. A partir del relevamiento operacional y la inspección electromecánica de la celda de manufactura, en la \tab{especificaciones_torno_mainsa} se sistematizan las especificaciones técnicas fundamentales del torno CNC Mazak Quick Turn y los requerimientos de acoplamiento físico y eléctrico impuestos sobre el sistema periférico no invasivo.
+La implementación y validación experimental del sistema mecatrónico se circunscribe a la línea de mecanizado de piezas cilíndricas y ejes de transmisión en la empresa metalmecánica MAINSA. La máquina herramienta objetivo corresponde al torno CNC Romi-Bridgeport EZ Path S, equipado con un controlador numérico computarizado industrial SZGH-CNC 1000TDb, como se muestra en la \fig{torno_cnc_romi_bridgeport_mainsa}.
+
+\figura[width=0.82\textwidth]{torno_cnc_romi_bridgeport_mainsa}{Torno CNC Romi-Bridgeport EZ Path S operando en la planta de MAINSA con controlador industrial SZGH-CNC 1000TDb}{Fotografía propia tomada en taller, 2026}
+
+En la \fig{panel_controlador_szgh_cnc1000tdb} se aprecia en detalle el panel del operador del controlador CNC SZGH-CNC 1000TDb, el cual incorpora pantalla a color, consola de mando manual con perillas de regulación porcentual de avance (\textit{Feed Rate}) y velocidad de husillo (\textit{Spindle Rate}), pulsadores de ciclo y parada de emergencia. Asimismo, en la \fig{camara_mecanizado_torreta_romi} se ilustra el interior de la cámara de corte, destacando el plato de sujeción autocentrante de tres garras, el resguardo móvil con visor transparente y la torreta portaherramientas donde se instala la instrumentación de vibración.
+
+\figura[width=0.68\textwidth]{panel_controlador_szgh_cnc1000tdb}{Panel de control y consola de operación del controlador CNC industrial SZGH-CNC 1000TDb}{Fotografía propia tomada en taller, 2026}
+
+\figura[width=0.78\textwidth]{camara_mecanizado_torreta_romi}{Cámara de mecanizado del torno CNC: plato de garras, guías de bancada y torreta portaherramientas}{Fotografía propia tomada en taller, 2026}
+
+A partir de la inspección electromecánica directa y el relevamiento operacional en taller, en la \tab{especificaciones_torno_mainsa} se sistematizan las especificaciones técnicas fundamentales del torno CNC Romi-Bridgeport EZ Path S y los condicionantes impuestos sobre el sistema periférico no invasivo.
 
 {\setlength{\parskip}{1.5pt}
 \begin{longtable}{L{3.4cm}L{5.2cm}L{5.2cm}}
-\caption{Especificaciones técnicas del torno CNC Mazak Quick Turn y condicionantes mecatrónicos de instrumentación en MAINSA}
+\caption{Especificaciones técnicas del torno CNC Romi-Bridgeport EZ Path S (controlador SZGH-CNC 1000TDb) en MAINSA}
 \label{tab:especificaciones_torno_mainsa}
 \\
 \hline
@@ -51,17 +61,19 @@ La implementación del sistema mecatrónico se circunscribe a la línea de mecan
 \multicolumn{3}{c}{\textbf{Fuente:} Elaboración propia, 2026.}
 \endlastfoot
 
-Modelo y cinemática & Torno CNC Mazak Quick Turn, bancada inclinada y cabina hermética cerrada. & Requiere montaje periférico no invasivo sin perforar bancada ni desarmar guardas.\\ \hline
+Modelo y cinemática & Torno CNC Romi-Bridgeport EZ Path S con guías templadas y cabina con resguardo móvil. & Requiere montaje periférico no invasivo sin perforar bancada ni desarmar guardas.\\ \hline
 
-Husillo principal (Spindle) & Motor trifásico AC de $15\,\text{kW}$ ($20\,\text{HP}$), rango $35 - 3500\,\text{RPM}$, tensión $380\,\text{V AC} / 220\,\text{V AC}$, corriente $I_n \approx 30\,\text{A}$ (pico $45\,\text{A}$). & Demanda sensado de corriente sin interrupción de línea mediante transformador de núcleo partido.\\ \hline
+Controlador numérico & SZGH-CNC 1000TDb (2 ejes X/Z, panel con pantalla a color de $8''$, puertos USB y RS-232). & No invasividad: prohíbe intervenir buses internos o modificar el software del CNC nativo.\\ \hline
 
-Servomotor de avance (Eje Z) & Servomotor AC brushless de $2.0\,\text{kW}$; corriente nominal $5 - 6\,\text{A}$ y corriente máxima de corte $I_{p,\text{pico}} \le 15\,\text{A}$. & Fija el rango de medición del transductor SCT-013 y el dimensionamiento del resistor de carga $R_B = 150\,\Omega$.\\ \hline
+Husillo principal (Spindle) & Motor trifásico AC de $7.5\,\text{kW}$ ($10\,\text{HP}$), velocidad máxima $4000\,\text{RPM}$ (gama baja $25 - 1000\,\text{RPM}$, gama alta $100 - 4000\,\text{RPM}$). & Sensado de corriente no invasivo mediante transformador de núcleo partido en el armario de fuerza.\\ \hline
 
-Torreta portaherramientas & Torreta automática servocontrolada de 12 estaciones para mangos de $25 \times 25\,\text{mm}$ (ej. MVJNR 2525M 16). & Impone fijación magnética no invasiva con imán de neodimio ($> 5\,\text{kg}$) en cara plana de la herramienta.\\ \hline
+Servomotor de avance (Eje Z) & Servomotor AC brushless de $2.0\,\text{kW}$; corriente nominal $5.8\,\text{A}_{\text{RMS}}$ y corriente máxima de corte $I_{p,\text{pico}} \le 15.0\,\text{A}$. & Fija el rango de medición del transductor SCT-013 y el dimensionamiento del resistor de carga $R_B = 150\,\Omega$.\\ \hline
 
-Fluido de corte (Taladrina) & Emulsión acuosa de taladrina al 8\% proyectada a $0.35\,\text{MPa}$ ($3.5\,\text{bar}$) con viruta metálica caliente. & Exige grado de estanqueidad IP67 en la cápsula del sensor e inhabilita inspección óptica en corte.\\ \hline
+Torreta portaherramientas & Torreta portaherramientas para mangos normalizados de $20 \times 20\,\text{mm}$ y $25 \times 25\,\text{mm}$ (ej. MVJNR 2525M 16). & Impone fijación magnética no invasiva con imán de neodimio N52 ($F_{\text{mag}} \ge 58\,\text{N}$) en el cuerpo portaherramientas.\\ \hline
 
-Materiales procesados & Barras cilíndricas en aceros AISI 1045 y aceros aleados bonificados AISI 4140 ($28 - 32\,\text{HRC}$). & Define los niveles de solicitación mecánica y la tasa de desgaste de flanco $VB$ según ISO 3685.\\ \hline
+Fluido de corte (Taladrina) & Emulsión acuosa de taladrina proyectada a presión continua sobre el filo de corte con viruta caliente. & Exige grado de estanqueidad IP67 en la cápsula del sensor e inhabilita inspección óptica directa durante el corte.\\ \hline
+
+Materiales procesados & Barras cilíndricas en aceros al carbono AISI 1045 y aceros aleados bonificados AISI 4140 ($28 - 32\,\text{HRC}$). & Define los niveles de solicitación mecánica y la tasa de desgaste de flanco $VB$ según ISO 3685.\\ \hline
 
 Operación representativa & Cilindrado longitudinal exterior continuo e interrumpido (80\% del tiempo de taller). & Establece el régimen de corte experimental para la adquisición de señales y balanceo del dataset.\\ \hline
 
@@ -71,7 +83,7 @@ Operación representativa & Cilindrado longitudinal exterior continuo e interrum
 \subsection{Dimensionamiento y selección de sensores no invasivos de variable eléctrica y vibración (OE2)}
 \label{subsec:dimensionamiento_sensores}
 
-El cumplimiento del segundo objetivo específico inicia con el dimensionamiento metrológico y la selección ingenieril de los transductores primarios, asegurando que capturen la dinámica de corte con alta fidelidad, linealidad e inmunidad ambiental, sin alterar la integridad electromecánica ni el cableado nativo del torno CNC Mazak Quick Turn de MAINSA.
+El cumplimiento del segundo objetivo específico inicia con el dimensionamiento metrológico y la selección ingenieril de los transductores primarios, asegurando que capturen la dinámica de corte con alta fidelidad, linealidad e inmunidad ambiental, sin alterar la integridad electromecánica ni el cableado nativo del torno CNC Romi-Bridgeport EZ Path S de MAINSA.
 
 \subsubsection{Dimensionamiento analítico del sensor de variable eléctrica (SCT-013) según la potencia del motor}
 \label{subsubsec:dimensionamiento_sensor_corriente}
@@ -364,7 +376,7 @@ A la frecuencia armónica de $16.0\,\text{kHz}$, la atenuación alcanza $-20.12\
 \subsubsection{Dimensionamiento de la etapa de alimentación regulada industrial y protecciones}
 \label{subsubsec:fuente_alimentacion_protecciones}
 
-En el armario eléctrico del torno CNC Mazak Quick Turn se dispone de una línea de alimentación estándar de control de $24.0\,\text{V DC} \pm 10\%$ ($21.6\,\text{V}$ a $26.4\,\text{V}$). Para convertir este nivel de tensión en los carriles regulados requeridos por la electrónica del sistema mecatrónico ($5.0\,\text{V DC}$ para la interfaz de visualización/relés y $3.30\,\text{V DC}$ para el microcontrolador y acelerómetro), se diseñó una etapa de potencia industrial en dos fases escalonadas:
+En el armario eléctrico del torno CNC Romi-Bridgeport EZ Path S se dispone de una línea de alimentación estándar de control de $24.0\,\text{V DC} \pm 10\%$ ($21.6\,\text{V}$ a $26.4\,\text{V}$). Para convertir este nivel de tensión en los carriles regulados requeridos por la electrónica del sistema mecatrónico ($5.0\,\text{V DC}$ para la interfaz de visualización/relés y $3.30\,\text{V DC}$ para el microcontrolador y acelerómetro), se diseñó una etapa de potencia industrial en dos fases escalonadas:
 
 \begin{enumerate}
     \item \textit{Protecciones de entrada de grado industrial:} La bornera de alimentación de $24\,\text{V DC}$ incorpora una red de robustez eléctrica conformada por:
@@ -538,7 +550,7 @@ La comunicación se implementa a una tasa de $115200\,\text{baud}$, utilizando u
 \subsection{Plan de pruebas y protocolo de validación experimental en taller (MAINSA)}
 \label{subsec:protocolo_experimental_taller}
 
-Para evaluar rigurosamente el desempeño, la exactitud metrológica y la confiabilidad del sistema mecatrónico en condiciones operativas reales de producción, se formuló un protocolo de ensayos de corte interrumpido en el torno CNC Mazak Quick Turn de la empresa metalmecánica MAINSA.
+Para evaluar rigurosamente el desempeño, la exactitud metrológica y la confiabilidad del sistema mecatrónico en condiciones operativas reales de producción, se formuló un protocolo de ensayos de corte interrumpido en el torno CNC Romi-Bridgeport EZ Path S (controlador SZGH-CNC 1000TDb) de la empresa metalmecánica MAINSA.
 
 \subsubsection{Condiciones y parámetros experimentales de corte}
 Conforme a la caracterización operacional expuesta en la \tab{especificaciones_torno_mainsa}, las pruebas de mecanizado se focalizan en el cilindrado longitudinal exterior continuo e interrumpido sobre probetas cilíndricas macizas, asegurando un régimen cinemático cuasi-estacionario para correlacionar con máxima fidelidad el desgaste de flanco $VB$ con las firmas de corriente y vibración. Los parámetros de corte programados en el código G del control numérico son:
