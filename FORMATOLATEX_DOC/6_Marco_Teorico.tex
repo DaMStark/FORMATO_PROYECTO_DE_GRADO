@@ -268,7 +268,7 @@ T_m = \frac{F_a \cdot p}{2\pi \cdot \eta}
 
 A medida que progresa el desgaste de flanco $VB$ en el inserto de corte, el área de contacto abrasivo contra la superficie de la probeta se incrementa sensiblemente, provocando un aumento directo de la fuerza de fricción axial de avance $F_a$. Puesto que el control numérico del torno obliga a mantener la velocidad de avance de mecanizado programada ($f$), el servodrive eleva de forma inmediata la corriente de cuadratura $I_q$ para compensar la carga mecánica adicional. Dicha respuesta se traduce en un incremento monótono y medible de la corriente eficaz $I_{\text{RMS}}$ del motor (entre un 5\% y 25\% con respecto a la condición de herramienta afilada nueva), sustentando el principio físico del monitoreo indirecto no invasivo.
 
-Para medir esta variable de forma estrictamente no invasiva, se instala un transformador de corriente de núcleo partido SCT-013-030 abrazando una de las fases del servomotor dentro del gabinete eléctrico, sin necesidad de cortar cables ni alterar la instalación de la máquina. La corriente secundaria inducida pasa por una resistencia de carga interna (\textit{burden resistor}) que convierte la señal en una caída de voltaje proporcional:
+Para medir esta variable de forma estrictamente no invasiva, se instala un transformador de corriente de núcleo partido de la serie SCT-013 abrazando una de las fases del servomotor dentro del gabinete eléctrico, sin necesidad de cortar cables ni alterar la instalación de la máquina. La corriente secundaria inducida pasa por una resistencia de carga (\textit{burden resistor}, $R_{\text{carga}}$) que convierte la señal en una caída de voltaje proporcional:
 
 \begin{equation}
 V_{\text{salida}} = I_{\text{sensor}} \cdot R_{\text{carga}}
@@ -278,11 +278,11 @@ V_{\text{salida}} = I_{\text{sensor}} \cdot R_{\text{carga}}
 \noindent\textbf{Variables de la ecuación:}
 \begin{itemize}
     \item $V_{\text{salida}}$: Tensión alterna proporcional entregada por el transductor ($\text{V}$).
-    \item $I_{\text{sensor}}$: Corriente secundaria inducida por el transformador ($I_{\text{sensor}} = I_{\text{primario}} / 1800$).
-    \item $R_{\text{carga}}$: Resistencia de carga interna (\textit{burden resistor}) calibrada para fijar la escala de voltaje ($\Omega$).
+    \item $I_{\text{sensor}}$: Corriente secundaria inducida por el transformador según su relación de espiras $K_N = N_p / N_s$.
+    \item $R_{\text{carga}}$: Resistencia de carga (\textit{burden resistor}) calibrada para fijar la escala de voltaje ($\Omega$).
 \end{itemize}
 
-El dimensionamiento del resistor de carga interno responde a la relación de diseño:
+El dimensionamiento del resistor de carga responde a la relación de diseño:
 
 \begin{equation}
 R_{\text{carga}} = \frac{V_{\text{pico}}}{I_{s,\text{pico}}}
@@ -291,12 +291,12 @@ R_{\text{carga}} = \frac{V_{\text{pico}}}{I_{s,\text{pico}}}
 
 \noindent\textbf{Variables de la ecuación:}
 \begin{itemize}
-    \item $R_{\text{carga}}$: Resistencia de carga interna del sensor ($62\,\Omega$ en el modelo SCT-013-030).
-    \item $V_{\text{pico}}$: Amplitud máxima pico deseada a la salida ($\pm 1.0\,\text{V}$ para corriente nominal).
-    \item $I_{s,\text{pico}}$: Corriente secundaria pico inducida para una corriente nominal de $30\,\text{A}_{\text{RMS}}$ ($I_{s,\text{pico}} \approx 23.57\,\text{mA}$).
+    \item $R_{\text{carga}}$: Resistencia de carga (\textit{burden resistor}) seleccionada para calibrar el rango de escala ($\Omega$).
+    \item $V_{\text{pico}}$: Amplitud máxima pico deseada a la entrada del convertidor analógico-digital ($\text{V}$).
+    \item $I_{s,\text{pico}}$: Corriente secundaria pico inducida para la máxima corriente primaria de diseño ($I_{s,\text{pico}} = I_{p,\text{pico}} / K_N$).
 \end{itemize}
 
-Esta calibración asegura que para una corriente de fase de hasta $30\,\text{A}$ en el servomotor, la tensión de salida nunca exceda el rango seguro de $\pm 1\,\text{V}$ pico.
+Esta formulación analítica asegura que para el régimen máximo de corriente demandado por el servomotor de avance, la excursión de tensión alterna nunca exceda la ventana dinámica admisible del convertidor analógico-digital.
 
 Dado que la salida del sensor SCT-013 oscila con valores alternos positivos y negativos ($\pm 1\,\text{V}$ pico), mientras que el convertidor analógico-digital (ADC) del microcontrolador STM32 solo admite voltajes estrictamente positivos entre $0\,\text{V}$ y $3.3\,\text{V}$, se diseña un circuito de acondicionamiento analógico con divisor resistivo para montar la señal sobre un voltaje continuo de polarización (\textit{DC bias}) de $1.65\,\text{V}$, tal como se ilustra en el circuito y forma de onda de la \fig{circuito_offset_forma_onda}.
 
@@ -532,8 +532,8 @@ La selección de los componentes de instrumentación y procesamiento responde a 
 \begin{tabular}{p{2.2cm}p{3.0cm}p{2.9cm}p{4.6cm}}
 \hline
 \textbf{Subsistema} & \textbf{Candidato 1} & \textbf{Candidato 2} & \textbf{Decisión de ingeniería} \\ \hline \hline
-Sensor de corriente & SCT-013-030 (Transformador núcleo partido) & ACS712 (Efecto Hall invasivo en serie) & \textbf{SCT-013 seleccionado:} No requiere cortar cables ni alterar la instalación eléctrica del torno; aislamiento galvánico intrínseco. \\ \hline
-Sensor de vibraciones & ADXL345 (Acelerómetro MEMS triaxial digital) & Acelerómetro piezoeléctrico IEPE industrial & \textbf{ADXL345 seleccionado:} Excelente balance costo-rendimiento ($<\$5$ vs $>\$1000$), salida digital SPI directa y facilidad de montaje en cápsula IP67. \\ \hline
+Sensor de corriente & SCT-013 (Transformador núcleo partido) & ACS712 (Efecto Hall invasivo en serie) & \textbf{SCT-013 seleccionado:} No requiere cortar cables ni alterar la instalación eléctrica del torno; aislamiento galvánico intrínseco. \\ \hline
+Sensor de vibraciones & ADXL345 (Acelerómetro MEMS triaxial digital) & Acelerómetro piezoeléctrico IEPE industrial & \textbf{ADXL345 seleccionado:} Excelente balance costo-rendimiento ($< 5\,\text{USD}$ vs $> 1000\,\text{USD}$), salida digital SPI directa y facilidad de montaje en cápsula IP67. \\ \hline
 Unidad de procesamiento & STM32F411CEU6 (ARM Cortex-M4, 100~MHz, FPU) & ESP32-S3 (Xtensa dual-core con WiFi/BT) & \textbf{STM32F411 seleccionado:} Mayor determinismo temporal, periféricos DMA avanzados y compatibilidad oficial con X-CUBE-AI. \\ \hline
 \end{tabular}
 \par\vspace{2mm}
