@@ -97,14 +97,14 @@ En los procesos de torneado CNC en desbaste y acabado sobre aceros aleados de al
 Para dimensionar el rango de medición del transductor de variable eléctrica sin interrumpir el suministro de fuerza, se analizaron los dos puntos de acoplamiento de la celda de torneado caracterizada en la \tab{especificaciones_torno_mainsa}:
 
 \begin{enumerate}
-    \item \textit{Motor del husillo principal (Spindle):} Motor trifásico de inducción de $P_n = 15.0\,\text{kW}$ ($20\,\text{HP}$), con tensión de línea nominal $V_{LL} = 380\,\text{V AC}$, factor de potencia $\cos\phi \approx 0.85$ y rendimiento electromecánico $\eta \approx 0.89$. La corriente de fase nominal a plena carga se calcula mediante:
+    \item \textit{Motor del husillo principal (Spindle):} Motor trifásico de inducción de $P_n = 7.5\,\text{kW}$ ($10\,\text{HP}$), con tensión de línea nominal $V_{LL} = 380\,\text{V AC}$, factor de potencia $\cos\phi \approx 0.85$ y rendimiento electromecánico $\eta \approx 0.89$. La corriente de fase nominal a plena carga se calcula mediante:
     \begin{equation}
-    I_{n,\text{husillo}} = \frac{P_n}{\sqrt{3} \cdot V_{LL} \cdot \cos\phi \cdot \eta} = \frac{15000\,\text{W}}{\sqrt{3} \cdot 380\,\text{V} \cdot 0.85 \cdot 0.89} \approx 30.12\,\text{A}_{\text{RMS}}
+    I_{n,\text{husillo}} = \frac{P_n}{\sqrt{3} \cdot V_{LL} \cdot \cos\phi \cdot \eta} = \frac{7500\,\text{W}}{\sqrt{3} \cdot 380\,\text{V} \cdot 0.85 \cdot 0.89} \approx 15.06\,\text{A}_{\text{RMS}}
     \label{eq:mp_corriente_husillo}
     \end{equation}
     \noindent donde $P_n$ representa la potencia mecánica en el eje, $V_{LL}$ la tensión entre fases, $\cos\phi$ el factor de potencia inductivo y $\eta$ la eficiencia de conversión. Considerando transitorios de aceleración y sobrecargas puntuales de corte pesado de hasta un $50\%$, la corriente máxima de pico alcanza:
     \begin{equation}
-    I_{\text{pico,husillo}} = 1.50 \cdot I_{n,\text{husillo}} \cdot \sqrt{2} \approx 1.50 \cdot 30.12\,\text{A} \cdot 1.4142 \approx 63.89\,\text{A}_{\text{pico}}
+    I_{\text{pico,husillo}} = 1.50 \cdot I_{n,\text{husillo}} \cdot \sqrt{2} \approx 1.50 \cdot 15.06\,\text{A} \cdot 1.4142 \approx 31.95\,\text{A}_{\text{pico}}
     \label{eq:mp_corriente_pico_husillo}
     \end{equation}
 
@@ -527,7 +527,7 @@ Tras el entrenamiento supervisado offline en entorno Python (Keras/TensorFlow), 
 El grafo cuantizado se exporta en formato de arreglo plano en lenguaje C (\texttt{.h} / \texttt{.c}) utilizando la cadena de herramientas TensorFlow Lite for Microcontrollers (TFLM). La verificación de recursos en el microcontrolador STM32F411 arroja métricas de alta viabilidad técnica:
 
 \begin{itemize}
-    \item \textit{Consumo de memoria Flash (código y pesos):} Ocupa aproximadamente $38.4\,\text{kB}$, representando apenas el $7.5\%$ de los $512\,\text{kB}$ de Flash disponibles en el integrado.
+    \item \textit{Consumo de memoria Flash (subsistema de inferencia):} El motor de inferencia TFLM junto con los operadores CMSIS-NN cuantizados y el grafo de pesos INT8 ocupan en conjunto aproximadamente $27.2\,\text{kB}$ ($22.4\,\text{kB}$ de runtime más $4.8\,\text{kB}$ de pesos), lo que representa el $5.3\%$ de los $512\,\text{kB}$ de Flash disponibles en el integrado. El consumo total acumulado del firmware completo asciende a $72.0\,\text{kB}$ ($14.1\%$ de la Flash).
     \item \textit{Consumo de memoria RAM (tensores y activación):} Demanda un arena de tensores (\textit{tensor arena}) de $12.8\,\text{kB}$, correspondiente al $10.0\%$ de los $128\,\text{kB}$ de SRAM del microcontrolador.
     \item \textit{Latencia de ejecución por inferencia:} Medida con el temporizador interno DWT (\textit{Data Watchpoint and Trace}) a $100\,\text{MHz}$, la inferencia de una ventana temporal completa toma $8.45\,\text{ms}$, permitiendo ejecutar sobradamente el diagnóstico en tiempo real con un margen de procesamiento ocioso superior al $90\%$.
 \end{itemize}
